@@ -21,6 +21,9 @@
     "module": "lib/esm/index.js",
     "types": "lib/esm/index.d.ts",
     "sideEffects": false,
+    "husky": {
+        "pre-commit": "npx --no-install lint-staged"
+    },
     "lint-staged": {
         "src/**/*.{jsx,js,ts,tsx}": "yarn lint"
     },
