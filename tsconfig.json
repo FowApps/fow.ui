@@ -6,7 +6,8 @@
         "declarationDir": "lib/esm",
         "rootDir": "src",
         "outDir": "lib",
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "esModuleInterop": true,
     },
     "include": ["src"]
 }
