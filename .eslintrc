@@ -1,25 +1,26 @@
 {
-	"extends": ["@react-bootstrap", "4catalyzer-typescript", "prettier"],
-	"plugins": ["prettier"],
-	"rules": {
-		"import/extensions": "off",
-		"indent": ["error", 4],
-		"react/jsx-indent": ["error", 4],
-		"react/jsx-indent-props": ["error", 4],
-		"linebreak-style": "off",
-		"import/no-extraneous-dependencies": [
-			"error",
-			{ "devDependencies": true }
-		],
-		"import/no-dynamic-require": "off",
-		"import/prefer-default-export": "off",
-		"react/react-in-jsx-scope": "off",
-		"prettier/prettier": [
-			"error",
-			{
-				"endOfLine": "auto"
-			}
-		],
-		"no-param-reassign": "off"
-	}
+    "extends": ["@react-bootstrap", "4catalyzer-typescript", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+        "@typescript-eslint/consistent-type-assertions": "off",
+        "import/extensions": "off",
+        "indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "linebreak-style": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            { "devDependencies": true }
+        ],
+        "import/no-dynamic-require": "off",
+        "import/prefer-default-export": "off",
+        "react/react-in-jsx-scope": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "no-param-reassign": "off"
+    }
 }
