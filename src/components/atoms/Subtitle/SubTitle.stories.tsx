@@ -9,25 +9,12 @@ export default {
         level: {
             control: {
                 type: 'select',
-                labels: {
-                    1: '1',
-                    2: '2',
-                },
             },
             options: [1, 2],
         },
         color: {
             control: {
                 type: 'select',
-                labels: {
-                    primary: 'primary',
-                    secondary: 'secondary',
-                    disabled: 'disabled',
-                    black: 'black',
-                    success: 'success',
-                    warning: 'warning',
-                    error: 'error',
-                },
             },
             options: [
                 'primary',
