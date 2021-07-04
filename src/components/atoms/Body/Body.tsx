@@ -9,7 +9,7 @@ export interface BodyProps {
     /**
      * color
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'

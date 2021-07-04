@@ -4,7 +4,7 @@
     "rules": {
         "@typescript-eslint/consistent-type-assertions": "off",
         "import/extensions": "off",
-        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "indent": ["off", 4, { "SwitchCase": 1 }],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
         "linebreak-style": "off",
