@@ -1,7 +1,7 @@
 {
-    "name": "fow.ui.boilerplate",
+    "name": "fow.ui.v2",
     "version": "1.0.0",
-    "description": "empty ui library boilerplate with react, storybook, typescript, styled-components, webpack",
+    "description": "Fow UI Library V2",
     "scripts": {
         "build": "node tools/build.js",
         "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
