@@ -1,0 +1,87 @@
+{
+    "name": "fow.ui.boilerplate",
+    "version": "1.0.0",
+    "description": "empty ui library boilerplate with react, storybook, typescript, styled-components, webpack",
+    "scripts": {
+        "build": "node tools/build.js",
+        "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "lint": "eslint src/**"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "files": [
+        "lib",
+        "dist",
+        "es"
+    ],
+    "main": "lib/cjs/index.js",
+    "module": "lib/esm/index.js",
+    "types": "lib/esm/index.d.ts",
+    "sideEffects": false,
+    "lint-staged": {
+        "src/**/*.{jsx,js,ts,tsx}": "yarn lint"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.14.0",
+        "@types/react": "^17.0.13",
+        "polished": "4.1.1"
+    },
+    "devDependencies": {
+        "@4c/tsconfig": "^0.4.0",
+        "@babel/cli": "^7.14.5",
+        "@babel/core": "^7.14.5",
+        "@babel/preset-typescript": "^7.14.5",
+        "@babel/register": "^7.14.5",
+        "@react-bootstrap/babel-preset": "^2.1.0",
+        "@react-bootstrap/eslint-config": "^2.0.0",
+        "@storybook/addon-actions": "6.3.2",
+        "@storybook/addon-essentials": "6.3.2",
+        "@storybook/addon-links": "6.3.2",
+        "@storybook/builder-webpack5": "6.3.2",
+        "@storybook/manager-webpack5": "^6.3.2",
+        "@storybook/react": "6.3.2",
+        "@types/react-dom": "^17.0.8",
+        "@types/styled-components": "^5.1.11",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.2",
+        "babel-plugin-import": "^1.13.3",
+        "chalk": "^4.1.1",
+        "cherry-pick": "^0.5.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^5.2.6",
+        "dtslint": "^4.1.0",
+        "eslint": "^7.28.0",
+        "eslint-config-4catalyzer-typescript": "^3.1.0",
+        "eslint-import-resolver-node": "^0.3.4",
+        "eslint-import-resolver-webpack": "^0.13.1",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-react": "^7.24.0",
+        "execa": "^5.1.1",
+        "fs-extra": "^10.0.0",
+        "husky": "^7.0.0",
+        "lint-staged": "^11.0.0",
+        "prettier": "^2.3.1",
+        "process": "^0.11.10",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "styled-components": "5.2.3",
+        "typescript": "^4.3.2",
+        "webpack": "5.40.0"
+    },
+    "peerDependencies": {
+        "process": "^0.11.10",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "styled-components": "5.2.3"
+    },
+    "resolutions": {
+        "webpack": "5.40.0"
+    }
+}

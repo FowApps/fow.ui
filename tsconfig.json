@@ -1,0 +1,12 @@
+{
+    "extends": "@4c/tsconfig/web.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "declaration": true,
+        "declarationDir": "lib/esm",
+        "rootDir": "src",
+        "outDir": "lib",
+        "noImplicitAny": false
+    },
+    "include": ["src"]
+}
