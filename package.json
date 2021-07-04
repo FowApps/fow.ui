@@ -7,7 +7,8 @@
         "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "lint": "eslint src/**"
+        "pre-commit-lint": "eslint src/**",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -25,7 +26,7 @@
         "pre-commit": "npx --no-install lint-staged"
     },
     "lint-staged": {
-        "src/**/*.{jsx,js,ts,tsx}": "yarn lint"
+        "src/**/*.{jsx,js,ts,tsx}": "eslint src/**"
     },
     "dependencies": {
         "@babel/runtime": "^7.14.0",

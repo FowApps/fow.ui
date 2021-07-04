@@ -17,7 +17,6 @@ export interface BodyProps {
         | 'black'
         | 'success'
         | 'warning'
-        
         | 'error';
     children: React.ReactNode;
 }
