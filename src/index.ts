@@ -13,5 +13,6 @@ export const Typography = {
 
 export { default as Avatar } from './components/atoms/Avatar';
 export { default as Icon } from './components/atoms/Icon';
+export { default as Checkbox } from './components/atoms/Checkbox';
 
 export { FowThemeProvider } from './theme';
