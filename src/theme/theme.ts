@@ -68,15 +68,11 @@ export const theme: DefaultTheme = {
             transparent48: 'rgba(253, 114, 95, 0.48)',
         },
         grey: {
-            900: '#161C24',
-            800: '#212B36',
-            700: '#454F5B',
-            600: '#637381',
-            500: '#919EAB',
-            400: '#C4CDD5',
-            300: '#DFE3E8',
-            200: '#F4F6F8',
-            100: '#F9FAFB',
+            darker: '#212B36', // 800
+            dark: '#637381', // 600
+            main: '#919EAB', // 500
+            light: '#C4CDD5', // 400
+            lighter: '#DFE3E8', // 300
             transparent8: 'rgba(145, 158, 171, 0.08)',
             transparent12: 'rgba(145, 158, 171, 0.12)',
             transparent16: 'rgba(145, 158, 171, 0.16)',

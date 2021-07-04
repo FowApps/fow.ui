@@ -69,15 +69,11 @@ declare module 'styled-components' {
                 transparent48: string;
             };
             grey: {
-                900: string;
-                800: string;
-                700: string;
-                600: string;
-                500: string;
-                400: string;
-                300: string;
-                200: string;
-                100: string;
+                darker: string;
+                dark: string;
+                main: string;
+                light: string;
+                lighter: string;
                 transparent8: string;
                 transparent12: string;
                 transparent16: string;
