@@ -12,14 +12,16 @@ export const StyledDivider = styled.div<DividerProps>`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: ${(props) => props.theme.colors.divider};
+    color: ${(props) => props.theme.fow.colors.divider};
     font-size: 1.4rem;
     font-variant: tabular-nums;
     line-height: 1.5715;
     list-style: none;
     font-feature-settings: 'tnum';
     border-top: ${(props) =>
-        props.hasTitle ? 'none' : `1px solid ${props.theme.colors.divider}`};
+        props.hasTitle
+            ? 'none'
+            : `1px solid ${props.theme.fow.colors.divider}`};
 
     ${(props) => type[props.type]}
     ${(props) => props.hasTitle && setOriantation(props.orientation)};
@@ -27,7 +29,7 @@ export const StyledDivider = styled.div<DividerProps>`
 
 export const Title = styled.span`
     display: inline-block;
-    padding: 0 ${(props) => props.theme.spacing.small};
-    color: ${(props) => props.theme.colors.text.secondary};
+    padding: 0 ${(props) => props.theme.fow.spacing.small};
+    color: ${(props) => props.theme.fow.colors.text.secondary};
     white-space: nowrap;
 `;

@@ -21,18 +21,18 @@ export const StyledLabel = styled.label`
 `;
 
 export const LabelText = styled(Body)<LabelTextProps>`
-    margin-left: ${(props) => props.theme.spacing.small};
+    margin-left: ${(props) => props.theme.fow.spacing.small};
 
     ${(props) =>
         props.disabled &&
         css`
-            color: ${props.theme.colors.text.disabled};
+            color: ${props.theme.fow.colors.text.disabled};
             cursor: not-allowed;
         `};
 `;
 
 export const MarkBox = styled.div`
-    border: 2px solid ${(props) => props.theme.colors.text.secondary};
+    border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
     box-sizing: border-box;
     border-radius: 4px;
     width: 2rem;
@@ -58,12 +58,12 @@ export const StyledInput = styled.input<InputProps>`
         border: 2px solid
             ${(props) =>
                 props.color === 'primary'
-                    ? props.theme.colors.primary.main
-                    : props.theme.colors.grey.main};
+                    ? props.theme.fow.colors.primary.main
+                    : props.theme.fow.colors.grey.main};
         background-color: ${(props) =>
             props.color === 'primary'
-                ? props.theme.colors.primary.main
-                : props.theme.colors.grey.main};
+                ? props.theme.fow.colors.primary.main
+                : props.theme.fow.colors.grey.main};
         ${Mark} {
             display: block;
         }
@@ -74,7 +74,7 @@ export const StyledInput = styled.input<InputProps>`
             props.disabled &&
             css`
                 border: none;
-                background-color: ${props.theme.colors.grey.light};
+                background-color: ${props.theme.fow.colors.grey.light};
                 cursor: not-allowed;
 
                 ${Mark} {
@@ -87,8 +87,8 @@ export const StyledInput = styled.input<InputProps>`
         ${(props) =>
             props.disabled &&
             css`
-                background-color: ${props.theme.colors.common.white};
-                border-color: ${props.theme.colors.text.disabled};
+                background-color: ${props.theme.fow.colors.common.white};
+                border-color: ${props.theme.fow.colors.text.disabled};
                 cursor: not-allowed;
             `}
     }

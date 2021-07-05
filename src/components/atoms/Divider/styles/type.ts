@@ -5,7 +5,7 @@ const horizontal = css`
     clear: both;
     width: 100%;
     min-width: 100%;
-    margin: ${(props) => props.theme.spacing.xlarge} 0;
+    margin: ${(props) => props.theme.fow.spacing.xlarge} 0;
 `;
 
 const vertical = css`
@@ -13,10 +13,10 @@ const vertical = css`
     top: -0.084rem;
     display: inline-block;
     height: 1.25em;
-    margin: 0 ${(props) => props.theme.spacing.xsmall};
+    margin: 0 ${(props) => props.theme.fow.spacing.xsmall};
     vertical-align: middle;
     border-top: 0;
-    border-left: 1px solid ${(props) => props.theme.colors.divider};
+    border-left: 1px solid ${(props) => props.theme.fow.colors.divider};
 `;
 
 const types = {

@@ -5,17 +5,17 @@ const setColor = (variant: string): any => {
     switch (variant) {
         case 'primary':
             return css`
-                background-color: ${theme.colors.primary.main};
+                background-color: ${theme.fow.colors.primary.main};
                 p {
-                    color: ${theme.colors.common.white};
+                    color: ${theme.fow.colors.common.white};
                 }
             `;
         default:
             return css`
-                background-color: ${theme.colors.grey.light};
+                background-color: ${theme.fow.colors.grey.light};
 
                 p {
-                    color: ${theme.colors.text.secondary};
+                    color: ${theme.fow.colors.text.secondary};
                 }
             `;
     }

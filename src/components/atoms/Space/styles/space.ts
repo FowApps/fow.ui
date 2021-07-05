@@ -17,21 +17,21 @@ export const setSpaceAndDirection = (direction: Direction, size: Size): any => {
             return css`
                 flex-direction: row;
                 > *:not(:last-child) {
-                    margin-right: ${(props) => props.theme.spacing[size]};
+                    margin-right: ${(props) => props.theme.fow.spacing[size]};
                 }
             `;
         case 'vertical':
             return css`
                 flex-direction: column;
                 > *:not(:last-child) {
-                    margin-bottom: ${(props) => props.theme.spacing[size]};
+                    margin-bottom: ${(props) => props.theme.fow.spacing[size]};
                 }
             `;
         default:
             return css`
                 flex-direction: row;
                 > *:not(:last-child) {
-                    margin-right: ${(props) => props.theme.spacing[size]};
+                    margin-right: ${(props) => props.theme.fow.spacing[size]};
                 }
             `;
     }

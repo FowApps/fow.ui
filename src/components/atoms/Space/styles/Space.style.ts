@@ -27,10 +27,10 @@ export const StyledSpace = styled.div<SpaceProps>`
         props.direction === 'horizontal' &&
         css`
             flex-wrap: wrap;
-            margin-bottom: -${props.theme.spacing.medium};
+            margin-bottom: -${props.theme.fow.spacing.medium};
 
             > * {
-                margin-bottom: ${props.theme.spacing.medium};
+                margin-bottom: ${props.theme.fow.spacing.medium};
             }
         `}
 `;

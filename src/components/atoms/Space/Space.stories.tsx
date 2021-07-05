@@ -39,7 +39,7 @@ export default {
 const Box = styled.div`
     width: 30px;
     height: 30px;
-    background-color: ${(props) => props.theme.colors.primary.light};
+    background-color: ${(props) => props.theme.fow.colors.primary.light};
     color: #fff;
     border-radius: 6px;
     display: flex;

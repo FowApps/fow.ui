@@ -30,8 +30,8 @@ const getElementType = (as: AsProps) => {
 export const StyledHeading = styled.h1<HeadingProps>`
     color: ${(props) =>
         props.invert
-            ? props.theme.colors.common.white
-            : props.theme.colors.text.primary};
+            ? props.theme.fow.colors.common.white
+            : props.theme.fow.colors.text.primary};
     font-style: normal;
     margin: 0;
 
