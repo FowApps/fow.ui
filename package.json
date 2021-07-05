@@ -1,14 +1,16 @@
 {
-    "name": "fow.ui.v2",
-    "version": "1.0.0",
-    "description": "Fow UI Library V2",
+    "name": "@fowapps/fow-ui",
+    "version": "0.0.1",
+    "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",
         "build-types": "yarn tsc -d --emitDeclarationOnly --outDir types",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "pre-commit-lint": "eslint src/**",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "publish": "npm publish --access private",
+        "publish-public": "npm publish --access public"
     },
     "keywords": [],
     "author": "",
