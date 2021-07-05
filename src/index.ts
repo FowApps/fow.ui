@@ -17,5 +17,6 @@ export { default as Checkbox } from './components/atoms/Checkbox';
 export { default as Space } from './components/atoms/Space';
 export { default as Chip } from './components/atoms/Chip';
 export { default as Divider } from './components/atoms/Divider';
+export { default as Card } from './components/atoms/Card';
 
 export { FowThemeProvider } from './theme';
