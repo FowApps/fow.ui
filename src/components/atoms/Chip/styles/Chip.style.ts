@@ -9,13 +9,13 @@ type ChipProps = {
 };
 
 export const StyledChip = styled.span<ChipProps>`
-    font-style: normal;
-    font-size: 1.4rem;
-    line-height: 2.2rem;
-    font-weight: 400;
-    margin: 0;
     display: inline-flex;
     align-items: center;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.4rem;
+    font-style: normal;
+    line-height: 2.2rem;
     border-radius: 5rem;
 
     ${(props) => setColor(props.type, props.color)}

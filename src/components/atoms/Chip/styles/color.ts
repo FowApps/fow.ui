@@ -8,85 +8,85 @@ export const setColor = (type: TypeTypes, color: ColorTypes) => {
         case 'grey':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.text.primary};
                     background-color: ${(props) =>
                         props.theme.fow.colors.grey.transparent16};
-                    color: ${(props) => props.theme.fow.colors.text.primary};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.text.primary};
                 background-color: transparent;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.grey.transparent32};
-                color: ${(props) => props.theme.fow.colors.text.primary};
             `;
         case 'primary':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.common.white};
                     background-color: ${(props) =>
                         props.theme.fow.colors.primary.main};
-                    color: ${(props) => props.theme.fow.colors.common.white};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.primary.main};
                 background-color: transparent;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.primary.main};
-                color: ${(props) => props.theme.fow.colors.primary.main};
             `;
         case 'info':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.common.white};
                     background-color: ${(props) =>
                         props.theme.fow.colors.info.main};
-                    color: ${(props) => props.theme.fow.colors.common.white};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.info.main};
                 background-color: transparent;
                 border: 1px solid ${(props) => props.theme.fow.colors.info.main};
-                color: ${(props) => props.theme.fow.colors.info.main};
             `;
         case 'success':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.text.primary};
                     background-color: ${(props) =>
                         props.theme.fow.colors.success.main};
-                    color: ${(props) => props.theme.fow.colors.text.primary};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.success.main};
                 background-color: transparent;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.success.main};
-                color: ${(props) => props.theme.fow.colors.success.main};
             `;
         case 'warning':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.text.primary};
                     background-color: ${(props) =>
                         props.theme.fow.colors.warning.main};
-                    color: ${(props) => props.theme.fow.colors.text.primary};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.warning.main};
                 background-color: transparent;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.warning.main};
-                color: ${(props) => props.theme.fow.colors.warning.main};
             `;
         case 'error':
             if (type === 'filled') {
                 return css`
+                    color: ${(props) => props.theme.fow.colors.common.white};
                     background-color: ${(props) =>
                         props.theme.fow.colors.error.main};
-                    color: ${(props) => props.theme.fow.colors.common.white};
                 `;
             }
             return css`
+                color: ${(props) => props.theme.fow.colors.error.main};
                 background-color: transparent;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.error.main};
-                color: ${(props) => props.theme.fow.colors.error.main};
             `;
 
         default:

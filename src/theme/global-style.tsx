@@ -22,9 +22,9 @@ const GlobalStyle = createGlobalStyle`
         }
 
     &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.05);
         background-color: #F5F5F5;
         border-radius: 1rem;
+        box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.05);
     }
 
     &::-webkit-scrollbar {
@@ -34,8 +34,8 @@ const GlobalStyle = createGlobalStyle`
     }
     
     &::-webkit-scrollbar-thumb {
-        border-radius: 1rem;
         background-color: ${(props) => props.theme.fow.colors.grey.main};
+        border-radius: 1rem;
     }
 `;
 

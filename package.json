@@ -8,6 +8,7 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "pre-commit-lint": "eslint src/**",
+        "lint:css": "stylelint 'src/**'",
         "prepare": "husky install",
         "prepublishOnly": "npm run build",
         "publish-private": "npm publish",
@@ -29,7 +30,7 @@
         "pre-commit": "npx --no-install lint-staged"
     },
     "lint-staged": {
-        "src/**/*.{jsx,js,ts,tsx}": "eslint src/**"
+        "src/**/*.{jsx,js,ts,tsx}": "eslint stylelint src/**"
     },
     "dependencies": {
         "@babel/runtime": "^7.14.0",
@@ -82,6 +83,13 @@
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "styled-components": "5.2.3",
+        "stylelint": "^13.13.1",
+        "stylelint-config-rational-order": "^0.1.2",
+        "stylelint-config-recommended": "^5.0.0",
+        "stylelint-config-standard": "^22.0.0",
+        "stylelint-config-styled-components": "^0.1.1",
+        "stylelint-order": "^4.1.0",
+        "stylelint-processor-styled-components": "^1.10.0",
         "typescript": "^4.3.2",
         "webpack": "5.40.0"
     },

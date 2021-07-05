@@ -37,14 +37,14 @@ export default {
 } as Meta;
 
 const Box = styled.div`
-    width: 30px;
-    height: 30px;
-    background-color: ${(props) => props.theme.fow.colors.primary.light};
-    color: #fff;
-    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: ${(props) => props.theme.fow.colors.primary.light};
+    border-radius: 6px;
 `;
 
 const Template: Story<SpaceProps> = (args) => (
