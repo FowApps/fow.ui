@@ -1,35 +1,35 @@
 import { css } from 'styled-components';
 
 const black = css`
-    color: ${(props) => props.theme.colors.text.primary};
+    color: ${(props) => props.theme.fow.colors.text.primary};
 `;
 
 const white = css`
-    color: ${(props) => props.theme.colors.common.white};
+    color: ${(props) => props.theme.fow.colors.common.white};
 `;
 
 const primary = css`
-    color: ${(props) => props.theme.colors.primary.main};
+    color: ${(props) => props.theme.fow.colors.primary.main};
 `;
 
 const secondary = css`
-    color: ${(props) => props.theme.colors.text.secondary};
+    color: ${(props) => props.theme.fow.colors.text.secondary};
 `;
 
 const disabled = css`
-    color: ${(props) => props.theme.colors.text.disabled};
+    color: ${(props) => props.theme.fow.colors.text.disabled};
 `;
 
 const warning = css`
-    color: ${(props) => props.theme.colors.warning.main};
+    color: ${(props) => props.theme.fow.colors.warning.main};
 `;
 
 const success = css`
-    color: ${(props) => props.theme.colors.success.main};
+    color: ${(props) => props.theme.fow.colors.success.main};
 `;
 
 const error = css`
-    color: ${(props) => props.theme.colors.error.main};
+    color: ${(props) => props.theme.fow.colors.error.main};
 `;
 
 const color = {

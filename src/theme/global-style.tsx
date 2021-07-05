@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     
     &::-webkit-scrollbar-thumb {
         border-radius: 1rem;
-        background-color: ${(props) => props.theme.colors.grey.main};
+        background-color: ${(props) => props.theme.fow.colors.grey.main};
     }
 `;
 

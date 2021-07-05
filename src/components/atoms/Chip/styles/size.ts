@@ -7,12 +7,12 @@ export const setSize = (size: SizeTypes): any => {
         case 'medium':
             return css`
                 height: 3.2rem;
-                padding: 0 ${(props) => props.theme.spacing.small};
+                padding: 0 ${(props) => props.theme.fow.spacing.small};
             `;
         case 'small':
             return css`
                 height: 2.4rem;
-                padding: 0 ${(props) => props.theme.spacing.xsmall};
+                padding: 0 ${(props) => props.theme.fow.spacing.xsmall};
                 font-size: 1.4rem;
                 line-height: 2.2rem;
             `;

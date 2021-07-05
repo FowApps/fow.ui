@@ -18,20 +18,26 @@ export interface PrimaryColorTypes {
 }
 export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
+    oldUITheme?: any;
     children: React.ReactNode;
 }
 
 const FowTheme = ({
     appPrimaryColors,
+    oldUITheme, // temporary old ui theme variables
     children,
 }: FowThemeProps): JSX.Element => (
     <ThemeProvider
         theme={{
             ...theme,
-            colors: {
-                ...theme.colors,
-                primary: {
-                    ...(appPrimaryColors || theme.colors.primary),
+            ...oldUITheme,
+            fow: {
+                ...theme.fow,
+                colors: {
+                    ...theme.fow.colors,
+                    primary: {
+                        ...(appPrimaryColors || theme.fow.colors.primary),
+                    },
                 },
             },
         }}>
