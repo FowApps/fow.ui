@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import SubTitle, { SubTitleProps } from './SubTitle';
 
 export default {
-    title: 'Atoms/SubTitle',
+    title: 'Atoms/Typography/SubTitle',
     component: SubTitle,
     argTypes: {
         level: {

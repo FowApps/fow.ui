@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Body, { BodyProps } from './Body';
 
 export default {
-    title: 'Atoms/Body',
+    title: 'Atoms/Typography/Body',
     component: Body,
     argTypes: {
         level: {
