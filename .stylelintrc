@@ -1,0 +1,28 @@
+{
+  "extends": "stylelint-config-rational-order",
+  "processors": [["stylelint-processor-styled-components", {
+    "moduleName": "styled-components",
+    "importName": "default",
+    "strict": false,
+    "ignoreFiles": [],
+    "parserPlugins": [
+      "jsx",
+      ["decorators", { "decoratorsBeforeExport": true }],
+      "classProperties",
+      "exportExtensions",
+      "functionBind",
+      "functionSent"
+    ]
+  }]],
+  "rules": {
+    "order/properties-order": [],
+    "plugin/rational-order": [true, {
+      "border-in-box-model": false,
+      "empty-line-between-groups": false,
+    }]
+  },
+  "plugins": [
+    "stylelint-order",
+    "stylelint-config-rational-order/plugin"
+  ]
+}

@@ -13,8 +13,8 @@ export const StyledAvatar = styled.div<AvatarProps>`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    transition: background-color 200ms ease;
     cursor: pointer;
+    transition: background-color 200ms ease;
 
     ${(props) => setColor(props.use)}
 
@@ -27,9 +27,9 @@ export const StyledAvatar = styled.div<AvatarProps>`
   p {
         margin: 0;
         padding: 0;
+        font-weight: 600;
         font-size: 13px;
         font-style: normal;
-        font-weight: 600;
         line-height: 16px;
         letter-spacing: 0.2px;
         ${(props) => props.src && `display:none;`}
