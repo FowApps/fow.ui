@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import styled, { css } from 'styled-components';
-import config, { DIMENSIONS } from '../../../../utils/gridConfig';
+import config, { DIMENSIONS } from '../../../../config/gridConfig';
 
 type ColProps = {
     xs?: number;

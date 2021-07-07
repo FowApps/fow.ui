@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import config, { DIMENSIONS } from '../../../../utils/gridConfig';
+import config, { DIMENSIONS } from '../../../../config/gridConfig';
 
 type RowProps = {
     debug: boolean;

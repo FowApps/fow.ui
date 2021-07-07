@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Body, { BodyProps } from '../../Body';
+import Body, { BodyProps } from '../../Typography/Body';
 import Icon from '../../Icon';
 
 interface LabelTextProps extends BodyProps {

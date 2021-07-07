@@ -1,4 +1,4 @@
-module.exports = api => {
+module.exports = (api) => {
     const env = api.env();
 
     let dev = false;
@@ -26,13 +26,13 @@ module.exports = api => {
                     removePropTypes: !dev,
                 },
             ],
+            '@babel/preset-react',
+            ['@babel/preset-env', { targets: { node: 'current' } }],
             '@babel/preset-typescript',
         ],
-        "plugins": [
-            [
-                "import", 
-                { "libraryName": "antd", "style": "css" }
-            ]
-        ]
-    }
-}
+        plugins: [
+            ['import', { libraryName: 'antd', style: 'css' }],
+            '"@babel/transform-runtime"',
+        ],
+    };
+};

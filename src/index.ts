@@ -6,11 +6,11 @@ import Row from './components/atoms/Row';
 import Container from './components/atoms/Container';
 
 // Typography
-import Heading from './components/atoms/Heading';
-import SubTitle from './components/atoms/Subtitle';
-import Body from './components/atoms/Body';
-import Overline from './components/atoms/Overline';
-import Caption from './components/atoms/Caption';
+import Heading from './components/atoms/Typography/Heading';
+import SubTitle from './components/atoms/Typography/Subtitle';
+import Body from './components/atoms/Typography/Body';
+import Overline from './components/atoms/Typography/Overline';
+import Caption from './components/atoms/Typography/Caption';
 
 export { default as Avatar } from './components/atoms/Avatar';
 export { default as Icon } from './components/atoms/Icon';
