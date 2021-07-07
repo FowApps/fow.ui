@@ -12,7 +12,7 @@ export const setLevel = (level: number): any => {
         case 2:
             return css`
                 font-size: 1.4rem;
-                font-weight: 500;
+                font-weight: 600;
                 line-height: 2.2rem;
                 letter-spacing: 0.1px;
             `;
