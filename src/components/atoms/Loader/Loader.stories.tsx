@@ -20,8 +20,8 @@ WithCard.args = {
     children: <Card>Hello from card</Card>,
 };
 
-export const WithLFullPage = Template.bind({});
-WithLFullPage.args = {
+export const WithFullPage = Template.bind({});
+WithFullPage.args = {
     isLoading: false,
     text: 'Loading',
     fullPage: true,
