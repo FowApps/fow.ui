@@ -6,6 +6,7 @@ report.*.json
 .env
 .idea
 .vscode
+coverage/
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,react
