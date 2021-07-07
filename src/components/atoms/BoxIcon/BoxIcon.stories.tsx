@@ -2,15 +2,15 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 
-import ColoredIcon, { ColoredIconProps } from './ColoredIcon';
+import BoxIcon, { BoxIconProps } from './BoxIcon';
 
 const iconList = Object.keys(Icons)
     .filter((key) => key !== 'fas' && key !== 'prefix')
     .map((icon) => Icons[icon]);
 
 export default {
-    title: 'Atoms/ColoredIcon',
-    component: ColoredIcon,
+    title: 'Atoms/BoxIcon',
+    component: BoxIcon,
     argTypes: {
         color: {
             control: {
@@ -27,7 +27,7 @@ export default {
     },
 } as Meta;
 
-const Template: Story<ColoredIconProps> = (args) => <ColoredIcon {...args} />;
+const Template: Story<BoxIconProps> = (args) => <BoxIcon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

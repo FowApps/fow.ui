@@ -1,10 +1,11 @@
 import React from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
+import { theme } from '../../../theme/theme';
 
 import { Wrapper } from './styles';
 
-export interface ColoredIconProps {
+export interface BoxIconProps {
     /**
      * color of icon
      */
@@ -16,16 +17,14 @@ export interface ColoredIconProps {
     children: React.ReactNode;
 }
 
-const ColoredIcon = ({
+const BoxIcon = ({
     color = 'info',
     icon,
     ...rest
-}: ColoredIconProps): JSX.Element => (
+}: BoxIconProps): JSX.Element => (
     <Wrapper color={color} {...rest}>
-        <span>
-            <Icon size="sm" icon={icon} color="white" />
-        </span>
+        <Icon size="lg" icon={icon} color={theme.fow.colors[color].main} />
     </Wrapper>
 );
 
-export default ColoredIcon;
+export default BoxIcon;

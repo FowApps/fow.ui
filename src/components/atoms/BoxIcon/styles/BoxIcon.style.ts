@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import color from './color';
 
-type ColoredIconProps = {
+type BoxIconProps = {
     color: 'primary' | 'info' | 'success' | 'warning' | 'error';
 };
 
-export const Wrapper = styled.span<ColoredIconProps>`
+export const Wrapper = styled.span<BoxIconProps>`
     display: flex;
     align-items: center;
     justify-content: center;
