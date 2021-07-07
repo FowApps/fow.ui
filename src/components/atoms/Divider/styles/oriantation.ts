@@ -7,7 +7,6 @@ const setOriantation = (oriantation: OrientationType) => {
         case 'left':
             return css`
                 &:before {
-                    top: 50%;
                     width: 5%;
                     position: relative;
                     border-top: 1px solid transparent;
@@ -18,7 +17,6 @@ const setOriantation = (oriantation: OrientationType) => {
                 }
 
                 &:after {
-                    top: 50%;
                     width: 95%;
                     position: relative;
                     border-top: 1px solid transparent;
@@ -31,7 +29,6 @@ const setOriantation = (oriantation: OrientationType) => {
         case 'right':
             return css`
                 &:before {
-                    top: 50%;
                     width: 95%;
                     position: relative;
                     border-top: 1px solid transparent;
@@ -42,7 +39,6 @@ const setOriantation = (oriantation: OrientationType) => {
                 }
 
                 &:after {
-                    top: 50%;
                     width: 5%;
                     position: relative;
                     border-top: 1px solid transparent;
@@ -56,7 +52,6 @@ const setOriantation = (oriantation: OrientationType) => {
             return css`
                 &:before,
                 &:after {
-                    top: 50%;
                     width: 50%;
                     position: relative;
                     border-top: 1px solid transparent;
