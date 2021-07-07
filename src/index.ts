@@ -14,7 +14,7 @@ import Caption from './components/atoms/Caption';
 
 export { default as Avatar } from './components/atoms/Avatar';
 export { default as Icon } from './components/atoms/Icon';
-export { default as ColoredIcon } from './components/atoms/ColoredIcon';
+export { default as BoxIcon } from './components/atoms/BoxIcon';
 export { default as Checkbox } from './components/atoms/Checkbox';
 export { default as Space } from './components/atoms/Space';
 export { default as Chip } from './components/atoms/Chip';
