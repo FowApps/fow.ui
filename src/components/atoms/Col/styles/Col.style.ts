@@ -38,7 +38,7 @@ export const StyledCol = styled.div<ColProps>`
             ${DIMENSIONS.map(
                 (d) =>
                     config(theme).breakpoints[d] &&
-                    config(theme).media[d]`padding: ${
+                    config(theme).media[d]`padding: 0 ${
                         config(theme).gutterWidth[d] / 2
                     }rem;
                 `,

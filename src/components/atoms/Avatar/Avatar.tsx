@@ -3,6 +3,8 @@ import React from 'react';
 import { StyledAvatar } from './styles';
 
 import Icon from '../Icon';
+import Subtitle from '../Subtitle';
+
 import getFirstLetters from '../../../utils/getFirstLetters';
 
 export interface AvatarProps {
@@ -28,7 +30,9 @@ const Avatar = ({
 }: AvatarProps): JSX.Element => (
     <StyledAvatar src={src} use={use} {...rest}>
         {text ? (
-            <p>{getFirstLetters(text)}</p>
+            <Subtitle color="secondary" level={2}>
+                {getFirstLetters(text)}
+            </Subtitle>
         ) : (
             <Icon icon="user" color="white" />
         )}

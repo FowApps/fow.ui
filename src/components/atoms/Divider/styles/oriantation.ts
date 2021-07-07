@@ -7,8 +7,6 @@ const setOriantation = (oriantation: OrientationType) => {
         case 'left':
             return css`
                 &:before {
-                    position: relative;
-                    top: 50%;
                     width: 5%;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
@@ -18,8 +16,6 @@ const setOriantation = (oriantation: OrientationType) => {
                 }
 
                 &:after {
-                    position: relative;
-                    top: 50%;
                     width: 95%;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
@@ -31,8 +27,6 @@ const setOriantation = (oriantation: OrientationType) => {
         case 'right':
             return css`
                 &:before {
-                    position: relative;
-                    top: 50%;
                     width: 95%;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
@@ -42,8 +36,6 @@ const setOriantation = (oriantation: OrientationType) => {
                 }
 
                 &:after {
-                    position: relative;
-                    top: 50%;
                     width: 5%;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
@@ -56,8 +48,6 @@ const setOriantation = (oriantation: OrientationType) => {
             return css`
                 &:before,
                 &:after {
-                    position: relative;
-                    top: 50%;
                     width: 50%;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
