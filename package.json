@@ -28,7 +28,7 @@
     "sideEffects": false,
     "husky": {
         "hooks": {
-            "pre-commit": "npx --no-install lint-staged"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
