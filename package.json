@@ -9,7 +9,7 @@
         "build-storybook": "build-storybook",
         "pre-commit-lint": "eslint src/** && stylelint src/**",
         "lint:css": "stylelint 'src/**'",
-        "prepare": "husky install",
+        "prepare": "husky install && chmod ug+x .husky/* && chmod ug+x .git/hooks/*",
         "prepublishOnly": "npm run build",
         "publish-private": "npm publish",
         "publish-public": "npm publish --access public"
