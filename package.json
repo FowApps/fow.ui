@@ -27,7 +27,9 @@
     "types": "lib/esm/index.d.ts",
     "sideEffects": false,
     "husky": {
-        "pre-commit": "npx --no-install lint-staged"
+        "hooks": {
+            "pre-commit": "npx --no-install lint-staged"
+        }
     },
     "lint-staged": {
         "src/**/*.{jsx,js,ts,tsx}": "eslint src/** && stylelint src/**"
