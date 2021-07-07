@@ -30,7 +30,7 @@
         "pre-commit": "npx --no-install lint-staged"
     },
     "lint-staged": {
-        "src/**/*.{jsx,js,ts,tsx}": "eslint stylelint src/**"
+        "src/**/*.{jsx,js,ts,tsx}": "eslint src/** && stylelint src/**"
     },
     "dependencies": {
         "@babel/runtime": "^7.14.0",
