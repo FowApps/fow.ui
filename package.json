@@ -27,12 +27,10 @@
     "types": "lib/esm/index.d.ts",
     "sideEffects": false,
     "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
+        "pre-commit": "npx --no-install lint-staged"
     },
     "lint-staged": {
-        "src/**/*.{jsx,js,ts,tsx}": "eslint src/** && stylelint src/**"
+        "src/**/*.{jsx,js,ts,tsx}": "eslint src/**"
     },
     "dependencies": {
         "@babel/runtime": "^7.14.0",
