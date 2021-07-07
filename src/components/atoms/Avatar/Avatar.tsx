@@ -20,8 +20,6 @@ export interface AvatarProps {
     use?: 'primary' | 'grey';
 }
 
-console.log('ss');
-
 const Avatar = ({
     src,
     text,
