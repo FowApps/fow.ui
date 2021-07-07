@@ -14,11 +14,11 @@ type ColProps = {
 };
 
 export const StyledCol = styled.div<ColProps>`
-    box-sizing: border-box;
-    flex: 1 0 auto;
-    max-width: 100%;
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
+    box-sizing: border-box;
+    max-width: 100%;
 
     ${({ theme, ...rest }) => css`
         ${DIMENSIONS.map(

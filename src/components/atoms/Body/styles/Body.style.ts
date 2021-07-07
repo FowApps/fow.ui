@@ -16,8 +16,8 @@ type BodyProps = {
 };
 
 export const StyledSubTitle = styled.h3<BodyProps>`
-    font-style: normal;
     margin: 0;
+    font-style: normal;
 
     ${(props) => color[props.color]}
     ${(props) => setLevel(props.level)}

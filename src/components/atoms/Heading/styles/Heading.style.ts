@@ -28,12 +28,12 @@ const getElementType = (as: AsProps) => {
 };
 
 export const StyledHeading = styled.h1<HeadingProps>`
+    margin: 0;
     color: ${(props) =>
         props.invert
             ? props.theme.fow.colors.common.white
             : props.theme.fow.colors.text.primary};
     font-style: normal;
-    margin: 0;
 
     ${(props) => getElementType(props.as)}
 `;

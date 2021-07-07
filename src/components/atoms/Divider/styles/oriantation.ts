@@ -8,7 +8,6 @@ const setOriantation = (oriantation: OrientationType) => {
             return css`
                 &:before {
                     width: 5%;
-                    position: relative;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
                     border-bottom: 0;
@@ -18,7 +17,6 @@ const setOriantation = (oriantation: OrientationType) => {
 
                 &:after {
                     width: 95%;
-                    position: relative;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
                     border-bottom: 0;
@@ -30,7 +28,6 @@ const setOriantation = (oriantation: OrientationType) => {
             return css`
                 &:before {
                     width: 95%;
-                    position: relative;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
                     border-bottom: 0;
@@ -40,7 +37,6 @@ const setOriantation = (oriantation: OrientationType) => {
 
                 &:after {
                     width: 5%;
-                    position: relative;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
                     border-bottom: 0;
@@ -53,7 +49,6 @@ const setOriantation = (oriantation: OrientationType) => {
                 &:before,
                 &:after {
                     width: 50%;
-                    position: relative;
                     border-top: 1px solid transparent;
                     border-top-color: inherit;
                     border-bottom: 0;

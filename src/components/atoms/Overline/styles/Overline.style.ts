@@ -14,11 +14,11 @@ type OverlineProps = {
 };
 
 export const StyledOverline = styled.p<OverlineProps>`
-    font-style: normal;
     margin: 0;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
     font-weight: 700;
+    font-size: 1.2rem;
+    font-style: normal;
+    line-height: 1.8rem;
     letter-spacing: 1.2;
 
     ${(props) => color[props.color]}

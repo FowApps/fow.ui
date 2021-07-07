@@ -6,10 +6,10 @@ type RowProps = {
 };
 
 export const StyledRow = styled.div<RowProps>`
-    box-sizing: border-box;
     display: flex;
     flex: 1 1 auto;
     flex-wrap: wrap;
+    box-sizing: border-box;
 
     ${({ theme }) => css`
         ${DIMENSIONS.map(
@@ -18,7 +18,7 @@ export const StyledRow = styled.div<RowProps>`
                 config(theme).media[d]`
                 margin-left: -${config(theme).gutterWidth[d] / 2}rem;
                 margin-right: -${config(theme).gutterWidth[d] / 2}rem;
-              `,
+            `,
         )}
     `}
 

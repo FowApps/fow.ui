@@ -16,8 +16,8 @@ type SubTitleProps = {
 };
 
 export const StyledSubTitle = styled.h3<SubTitleProps>`
-    font-style: normal;
     margin: 0;
+    font-style: normal;
 
     ${(props) => color[props.color]}
     ${(props) => setLevel(props.level)}

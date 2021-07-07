@@ -11,11 +11,11 @@ interface InputProps {
 }
 
 export const StyledLabel = styled.label`
-    display: inline-flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
     position: relative;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
     cursor: pointer;
     user-select: none;
 `;
@@ -32,14 +32,14 @@ export const LabelText = styled(Body)<LabelTextProps>`
 `;
 
 export const MarkBox = styled.div`
-    border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
-    box-sizing: border-box;
-    border-radius: 4px;
-    width: 2rem;
-    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
+    border-radius: 4px;
     transition: background-color 0.4s ease;
 `;
 
@@ -49,21 +49,21 @@ export const Mark = styled(Icon)`
 
 export const StyledInput = styled.input<InputProps>`
     position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
     width: 0;
+    height: 0;
+    cursor: pointer;
+    opacity: 0;
 
     &:checked ~ ${MarkBox} {
+        background-color: ${(props) =>
+            props.color === 'primary'
+                ? props.theme.fow.colors.primary.main
+                : props.theme.fow.colors.grey.main};
         border: 2px solid
             ${(props) =>
                 props.color === 'primary'
                     ? props.theme.fow.colors.primary.main
                     : props.theme.fow.colors.grey.main};
-        background-color: ${(props) =>
-            props.color === 'primary'
-                ? props.theme.fow.colors.primary.main
-                : props.theme.fow.colors.grey.main};
         ${Mark} {
             display: block;
         }
