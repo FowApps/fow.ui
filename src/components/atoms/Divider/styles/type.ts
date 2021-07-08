@@ -5,7 +5,7 @@ const horizontal = css`
     clear: both;
     width: 100%;
     min-width: 100%;
-    margin: ${(props) => props.theme.fow.spacing.xlarge} 0;
+    margin: ${(props) => props.theme.fow.spacing.medium} 0;
 `;
 
 const vertical = css`
