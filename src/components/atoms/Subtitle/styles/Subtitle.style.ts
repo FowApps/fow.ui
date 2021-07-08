@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { setLevel } from './level';
 import color from './color';
 
-type SubTitleProps = {
+type SubtitleProps = {
     level: 1 | 2;
     color:
         | 'primary'
@@ -15,7 +15,7 @@ type SubTitleProps = {
         | 'error';
 };
 
-export const StyledSubTitle = styled.h3<SubTitleProps>`
+export const StyledSubtitle = styled.h3<SubtitleProps>`
     margin: 0;
     font-style: normal;
 

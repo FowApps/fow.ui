@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import SubTitle, { SubTitleProps } from './SubTitle';
+import Subtitle, { SubtitleProps } from './Subtitle';
 
 export default {
-    title: 'Atoms/Typography/SubTitle',
-    component: SubTitle,
+    title: 'Atoms/Typography/Subtitle',
+    component: Subtitle,
     argTypes: {
         level: {
             control: {
@@ -29,7 +29,7 @@ export default {
     },
 } as Meta;
 
-const Template: Story<SubTitleProps> = (args) => <SubTitle {...args} />;
+const Template: Story<SubtitleProps> = (args) => <Subtitle {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

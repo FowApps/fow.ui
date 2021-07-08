@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledSubTitle } from './styles';
+import { StyledSubtitle } from './styles';
 
 export interface BodyProps {
     /**
@@ -21,15 +21,15 @@ export interface BodyProps {
     children: React.ReactNode;
 }
 
-const SubTitle = ({
+const Subtitle = ({
     level = 1,
     color = 'black',
     children,
     ...rest
 }: BodyProps): JSX.Element => (
-    <StyledSubTitle level={level} color={color} {...rest}>
+    <StyledSubtitle level={level} color={color} {...rest}>
         {children}
-    </StyledSubTitle>
+    </StyledSubtitle>
 );
 
-export default SubTitle;
+export default Subtitle;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyledSubTitle } from './styles';
+import { StyledSubtitle } from './styles';
 
-export interface SubTitleProps {
+export interface SubtitleProps {
     /**
      * size level
      */
@@ -9,7 +9,7 @@ export interface SubTitleProps {
     /**
      * color
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'
@@ -21,15 +21,15 @@ export interface SubTitleProps {
     children: React.ReactNode;
 }
 
-const SubTitle = ({
+const Subtitle = ({
     level = 1,
     color = 'black',
     children,
     ...rest
-}: SubTitleProps): JSX.Element => (
-    <StyledSubTitle level={level} color={color} {...rest}>
+}: SubtitleProps): JSX.Element => (
+    <StyledSubtitle level={level} color={color} {...rest}>
         {children}
-    </StyledSubTitle>
+    </StyledSubtitle>
 );
 
-export default SubTitle;
+export default Subtitle;

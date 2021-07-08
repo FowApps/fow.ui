@@ -7,11 +7,12 @@ import Container from './components/atoms/Container';
 
 // Typography
 import Heading from './components/atoms/Heading';
-import SubTitle from './components/atoms/Subtitle';
+import Subtitle from './components/atoms/Subtitle';
 import Body from './components/atoms/Body';
 import Overline from './components/atoms/Overline';
 import Caption from './components/atoms/Caption';
 
+// Atoms
 export { default as Avatar } from './components/atoms/Avatar';
 export { default as Icon } from './components/atoms/Icon';
 export { default as BoxIcon } from './components/atoms/BoxIcon';
@@ -24,7 +25,7 @@ export { default as Loader } from './components/atoms/Loader';
 
 export const Typography = {
     Heading,
-    SubTitle,
+    Subtitle,
     Body,
     Overline,
     Caption,
@@ -36,4 +37,8 @@ export const Grid = {
     Container,
 };
 
+// Molecules
+export { default as Accordion } from './components/molecules/Accordion';
+
+// Providers
 export { FowThemeProvider } from './theme';

@@ -15,7 +15,7 @@ type BodyProps = {
         | 'error';
 };
 
-export const StyledSubTitle = styled.h3<BodyProps>`
+export const StyledSubtitle = styled.h3<BodyProps>`
     margin: 0;
     font-style: normal;
 

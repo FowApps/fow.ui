@@ -1,2 +1,2 @@
-export { default } from './SubTitle';
-export * from './SubTitle';
+export { default } from './Subtitle';
+export * from './Subtitle';
