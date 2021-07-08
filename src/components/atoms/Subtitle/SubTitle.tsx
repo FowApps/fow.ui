@@ -9,7 +9,7 @@ export interface SubTitleProps {
     /**
      * color
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'
