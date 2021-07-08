@@ -20,6 +20,7 @@ export { default as Space } from './components/atoms/Space';
 export { default as Chip } from './components/atoms/Chip';
 export { default as Divider } from './components/atoms/Divider';
 export { default as Card } from './components/atoms/Card';
+export { default as Loader } from './components/atoms/Loader';
 
 export const Typography = {
     Heading,

@@ -29,7 +29,8 @@
     "dependencies": {
         "@babel/runtime": "^7.14.0",
         "@types/react": "^17.0.13",
-        "polished": "4.1.1"
+        "polished": "4.1.1",
+        "react-loading-overlay": "^1.0.1"
     },
     "devDependencies": {
         "@4c/tsconfig": "^0.4.0",
@@ -49,6 +50,7 @@
         "@storybook/manager-webpack5": "^6.3.2",
         "@storybook/react": "6.3.2",
         "@types/react-dom": "^17.0.8",
+        "@types/react-loading-overlay": "^1.0.0",
         "@types/styled-components": "^5.1.11",
         "@typescript-eslint/eslint-plugin": "^4.26.1",
         "@typescript-eslint/parser": "^4.26.1",
