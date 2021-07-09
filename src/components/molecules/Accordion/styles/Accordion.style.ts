@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 type TriggerProps = {
     isCollapsed?: boolean;
+    bordered?: boolean;
 };
 
 type WrapperProps = {
@@ -25,18 +26,22 @@ export const Trigger = styled.div<TriggerProps>`
     justify-content: space-between;
     padding-inline: ${(props) => props.theme.fow.spacing.xxlarge};
     padding-block: ${(props) => props.theme.fow.spacing.medium};
+    background-color: ${(props) => props.theme.fow.colors.common.white};
     border-bottom: 1px solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
     cursor: pointer;
     transition: color 0.4s ease;
 
     &:last-of-type {
-        border-bottom: none;
+        border-bottom: ${(props) =>
+            props.bordered
+                ? props.theme.fow.colors.grey.transparent32
+                : 'none'};
     }
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
-    background-color: ${(props) => props.theme.fow.colors.common.white};
+    background-color: transparent;
     border: ${(props) => (props.bordered ? '1px' : '0')} solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
