@@ -94,7 +94,7 @@ const Item = ({
                 return index % 2 === 1;
         }
     };
-    console.log(children);
+
     return (
         <LineWrapper
             align={align}
