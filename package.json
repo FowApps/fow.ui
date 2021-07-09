@@ -9,7 +9,7 @@
         "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages",
         "pre-commit-lint": "eslint src/** && stylelint src/**",
-        "lint:css": "stylelint 'src/**'",
+        "lint:css": "stylelint src/**",
         "prepare": "husky install && chmod ug+x .husky/* && chmod ug+x .git/hooks/*",
         "prepublishOnly": "yarn && yarn run build && yarn run deploy-storybook",
         "publish-private": "npm publish",
