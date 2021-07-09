@@ -11,6 +11,7 @@ interface StaticPlaceholderProps {
 
 export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
     &.fow-loader-overlay_wrapper {
+        width: 100%;
         height: 100%;
     }
     .fow-loader-overlay_overlay {
