@@ -9,12 +9,12 @@ export interface BoxIconProps {
     /**
      * color of icon
      */
-    color: 'primary' | 'info' | 'success' | 'warning' | 'error';
+    color?: 'primary' | 'info' | 'success' | 'warning' | 'error';
     /**
      * name of icon
      */
     icon: FontAwesomeIconProps['icon'];
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const BoxIcon = ({
