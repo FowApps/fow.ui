@@ -19,20 +19,18 @@ export interface AvatarProps {
     /**
      * color variant
      */
-    use?: 'primary' | 'grey';
+    color?: 'primary' | 'grey';
 }
 
 const Avatar = ({
     src,
     text,
-    use = 'grey',
+    color = 'grey',
     ...rest
 }: AvatarProps): JSX.Element => (
-    <StyledAvatar src={src} use={use} {...rest}>
+    <StyledAvatar src={src} color={color} {...rest}>
         {text ? (
-            <Subtitle color="secondary" level={2}>
-                {getFirstLetters(text)}
-            </Subtitle>
+            <Subtitle level={2}>{getFirstLetters(text)}</Subtitle>
         ) : (
             <Icon icon="user" color="white" />
         )}

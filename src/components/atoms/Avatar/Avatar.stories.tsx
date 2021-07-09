@@ -6,7 +6,7 @@ export default {
     title: 'Atoms/Avatar',
     component: Avatar,
     argTypes: {
-        use: {
+        color: {
             control: {
                 type: 'select',
             },
@@ -19,5 +19,5 @@ const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    use: 'grey',
+    color: 'grey',
 };
