@@ -37,11 +37,14 @@ export const setSpaceAndDirection = (
                 flex-direction: ${reverse ? 'row-column' : 'column'};
                 > *:not(:last-child) {
                     ${reverse
-                        ? `margin-top: ${(props) =>
-                              props.theme.fow.spacing[size]};`
-                        : `margin-bottom: ${(props) =>
-                              props.theme.fow.spacing[size]};`};
-                    margin-bottom: ${(props) => props.theme.fow.spacing[size]};
+                        ? css`
+                              margin-top: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `
+                        : css`
+                              margin-bottom: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `};
                 }
             `;
         default:
@@ -49,10 +52,14 @@ export const setSpaceAndDirection = (
                 flex-direction: ${reverse ? 'row-reverse' : 'row'};
                 > *:not(:last-child) {
                     ${reverse
-                        ? `margin-left: ${(props) =>
-                              props.theme.fow.spacing[size]};`
-                        : `margin-right: ${(props) =>
-                              props.theme.fow.spacing[size]};`};
+                        ? css`
+                              margin-left: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `
+                        : css`
+                              margin-right: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `};
                 }
             `;
     }
