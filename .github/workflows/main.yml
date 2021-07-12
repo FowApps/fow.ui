@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Test & publish code coverage
     steps:
+      - name: where am I?
+        run: ls -l
+        
       - name: yarn ci
         run: yarn install --frozen-lockfile
 
