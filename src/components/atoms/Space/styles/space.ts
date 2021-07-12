@@ -11,27 +11,55 @@ type Size =
     | 'xxlarge'
     | 'xxxlarge';
 
-export const setSpaceAndDirection = (direction: Direction, size: Size): any => {
+export const setSpaceAndDirection = (
+    direction: Direction,
+    size: Size,
+    reverse: boolean,
+): any => {
     switch (direction) {
         case 'horizontal':
             return css`
-                flex-direction: row;
+                flex-direction: ${reverse ? 'row-reverse' : 'row'};
                 > *:not(:last-child) {
-                    margin-right: ${(props) => props.theme.fow.spacing[size]};
+                    ${reverse
+                        ? css`
+                              margin-left: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `
+                        : css`
+                              margin-right: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `};
                 }
             `;
         case 'vertical':
             return css`
-                flex-direction: column;
+                flex-direction: ${reverse ? 'row-column' : 'column'};
                 > *:not(:last-child) {
-                    margin-bottom: ${(props) => props.theme.fow.spacing[size]};
+                    ${reverse
+                        ? css`
+                              margin-top: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `
+                        : css`
+                              margin-bottom: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `};
                 }
             `;
         default:
             return css`
-                flex-direction: row;
+                flex-direction: ${reverse ? 'row-reverse' : 'row'};
                 > *:not(:last-child) {
-                    margin-right: ${(props) => props.theme.fow.spacing[size]};
+                    ${reverse
+                        ? css`
+                              margin-left: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `
+                        : css`
+                              margin-right: ${(props) =>
+                                  props.theme.fow.spacing[size]};
+                          `};
                 }
             `;
     }

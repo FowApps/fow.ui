@@ -5,7 +5,7 @@ export interface OverlineProps {
     /**
      * color of text
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'

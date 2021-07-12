@@ -6,7 +6,7 @@ const setColor = (variant: string): any => {
         case 'primary':
             return css`
                 background-color: ${theme.fow.colors.primary.main};
-                p {
+                h3 {
                     color: ${theme.fow.colors.common.white};
                 }
             `;
@@ -14,7 +14,7 @@ const setColor = (variant: string): any => {
             return css`
                 background-color: ${theme.fow.colors.grey.light};
 
-                p {
+                h3 {
                     color: ${theme.fow.colors.text.secondary};
                 }
             `;

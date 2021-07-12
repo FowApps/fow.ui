@@ -100,7 +100,7 @@ const Accordion = ({
     };
 
     const items = React.Children.map(children, (child: any) =>
-        child.type.name === 'Item' ? child : null,
+        child?.type?.name === 'Item' ? child : null,
     );
 
     return (

@@ -19,13 +19,30 @@ export interface SpaceProps {
      */
     align?: 'start' | 'end' | 'center' | 'baseline';
     /**
+     * flex or inline-flex flag
+     */
+    inline?: boolean;
+    /**
      * direction of flex row
      */
     direction?: 'horizontal' | 'vertical';
     /**
+     * justify content of flex
+     */
+    justify?:
+        | 'flex-start'
+        | 'center'
+        | 'flex-end'
+        | 'space-around'
+        | 'space-between';
+    /**
      * flag for flex wrap
      */
     wrap?: boolean;
+    /**
+     * reverse flex
+     */
+    reverse?: boolean;
     children: React.ReactNode;
 }
 
@@ -34,6 +51,9 @@ const Space = ({
     size = 'small',
     align = 'center',
     wrap = false,
+    reverse = false,
+    inline = true,
+    justify = 'flex-start',
     children,
     ...rest
 }: SpaceProps): JSX.Element => (
@@ -42,6 +62,9 @@ const Space = ({
         size={size}
         align={align}
         wrap={wrap ? 1 : 0}
+        reverse={reverse}
+        inline={inline}
+        justify={justify}
         {...rest}>
         {children}
     </StyledSpace>

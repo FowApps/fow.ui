@@ -5,7 +5,7 @@ export interface CaptionProps {
     /**
      * color of text
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'
