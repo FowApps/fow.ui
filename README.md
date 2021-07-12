@@ -1,0 +1,1 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/6a470e24185e2e0dcff2/maintainability)](https://codeclimate.com/repos/60ec17c6ac80f5016200adf8/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/6a470e24185e2e0dcff2/test_coverage)](https://codeclimate.com/repos/60ec17c6ac80f5016200adf8/test_coverage)
