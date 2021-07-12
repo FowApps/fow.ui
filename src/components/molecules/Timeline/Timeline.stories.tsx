@@ -2,13 +2,13 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import Card from '../../atoms/Card';
-import Heading from '../../atoms/Heading';
-import Body from '../../atoms/Body';
+import Heading from '../../atoms/Typography/Heading';
+import Body from '../../atoms/Typography/Body';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
-import Caption from '../../atoms/Caption';
-import Overline from '../../atoms/Overline';
-import Subtitle from '../../atoms/Subtitle';
+import Caption from '../../atoms/Typography/Caption';
+import Overline from '../../atoms/Typography/Overline';
+import Subtitle from '../../atoms/Typography/Subtitle';
 
 import Timeline, { TimelineProps } from './Timeline';
 
