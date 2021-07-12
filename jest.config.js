@@ -10,9 +10,8 @@ module.exports = {
     // Automatically clear mock calls and instances between every test
     clearMocks: true,
 
-    // COMPONENTLERE UNIT TEST YAZMAYA BAŞLADIĞIMIZ ZAMAN BU SATIRIN COMMENTINI KALDIRACAGIZ !!!!!!!!
-    // // An array of glob patterns indicating a set of files for which coverage information should be collected
-    // collectCoverageFrom: ['src/**/*.{js,jsx,mjs,ts,tsx}'],
+    // An array of glob patterns indicating a set of files for which coverage information should be collected
+    collectCoverageFrom: ['src/**/*.{js,jsx,mjs,ts,tsx}'],
 
     // The directory where Jest should output its coverage files
     // coverageDirectory: 'coverage',
@@ -28,10 +27,10 @@ module.exports = {
 
     coverageThreshold: {
         global: {
-            statements: 100,
-            branches: 100,
-            functions: 100,
-            lines: 100,
+            statements: 0,
+            branches: 0,
+            functions: 0,
+            lines: 0,
         },
     },
 };
