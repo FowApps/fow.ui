@@ -15,6 +15,3 @@ jobs:
           CC_TEST_REPORTER_ID: e41a77d5702892867ac1a8b4cf6298e4fc8edf2c65606ad1afe57d51c85827ae
         with:
           coverageCommand: npm run test
-          debug: true
-
-
