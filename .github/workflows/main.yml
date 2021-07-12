@@ -1,8 +1,20 @@
-steps:
-  - name: Test & publish code coverage
-    uses: paambaati/codeclimate-action@v2.7.5
-    env:
-      CC_TEST_REPORTER_ID: e41a77d5702892867ac1a8b4cf6298e4fc8edf2c65606ad1afe57d51c85827ae
-    with:
-      coverageCommand: yarn run test
-      debug: true
+name: Test & publish code coverage
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  test_coverage:
+    runs-on: ubuntu-latest
+    name: Test & publish code coverage
+    steps:
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: e41a77d5702892867ac1a8b4cf6298e4fc8edf2c65606ad1afe57d51c85827ae
+        with:
+          coverageCommand: yarn run test
+          debug: true
+
+
