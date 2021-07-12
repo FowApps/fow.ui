@@ -1,15 +1,11 @@
 export default (text: string): string => {
     let name = '';
 
-    const splitedText = text.trim().split(' ');
+    const splittedText = text.trim().split(' ');
 
-    if (splitedText.length >= 0) {
-        name = `${splitedText[0].charAt(0)}${splitedText[
-            splitedText.length - 1
-        ].charAt(0)}`;
-    } else {
-        name = `${splitedText[0].charAt(0)}${splitedText[0].charAt(1)}`;
-    }
+    name = `${splittedText[0].charAt(0)}${splittedText[
+        splittedText.length - 1
+    ].charAt(0)}`;
 
     return name.toUpperCase();
 };

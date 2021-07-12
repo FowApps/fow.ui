@@ -3,7 +3,7 @@ import React from 'react';
 import { StyledAvatar } from './styles';
 
 import Icon from '../Icon';
-import Subtitle from '../Subtitle';
+import Subtitle from '../Typography/Subtitle';
 
 import getFirstLetters from '../../../utils/getFirstLetters';
 

@@ -8,6 +8,8 @@
         "outDir": "lib",
         "noImplicitAny": false,
         "esModuleInterop": true,
+        "typeRoots": ["./node-modules/@types/", "./src/index.ts"],
+        "types": ["jest", "node", "@types/jest"]
     },
     "include": ["src"]
 }
