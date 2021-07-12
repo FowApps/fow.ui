@@ -5,16 +5,14 @@ on:
     branches: [master]
 
 jobs:
-  test_coverage:
+  coverage:
     runs-on: ubuntu-latest
-    name: Test & publish code coverage
     steps:
-      - name: yarn ci
-        run: yarn install --frozen-lockfile
-
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.5
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn install --frozen-lockfile
+      - uses: paambaati/codeclimate-action@v2.7.5
         env:
-          CC_TEST_REPORTER_ID: e41a77d5702892867ac1a8b4cf6298e4fc8edf2c65606ad1afe57d51c85827ae
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: yarn run test
