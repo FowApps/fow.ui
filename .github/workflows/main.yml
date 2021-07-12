@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Test & publish code coverage
     steps:
-      - name: npm ci
-        run: npm ci
+      - name: yarn ci
+        run: yarn install --frozen-lockfile
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: e41a77d5702892867ac1a8b4cf6298e4fc8edf2c65606ad1afe57d51c85827ae
         with:
-          coverageCommand: npm run test
+          coverageCommand: yarn run test
