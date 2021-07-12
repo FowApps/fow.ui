@@ -32,7 +32,7 @@ module.exports = (api) => {
         ],
         plugins: [
             ['import', { libraryName: 'antd', style: 'css' }],
-            '"@babel/transform-runtime"',
+            ['@babel/plugin-transform-runtime'],
         ],
     };
 };

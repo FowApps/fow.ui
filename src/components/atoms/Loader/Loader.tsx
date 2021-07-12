@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Overline from '../Overline';
+import Overline from '../Typography/Overline';
 
 import { StyledLoader, StaticPlaceholder } from './styles/Loader.style';
 

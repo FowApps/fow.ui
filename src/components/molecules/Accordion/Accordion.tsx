@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Space from '../../atoms/Space';
-import Heading from '../../atoms/Heading';
+import Heading from '../../atoms/Typography/Heading';
 import Icon from '../../atoms/Icon';
 
 import { Wrapper, Trigger, Content } from './styles';
