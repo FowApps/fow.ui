@@ -40,6 +40,7 @@ export const Grid = {
 // Molecules
 export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
+export { default as Menu } from './components/molecules/Menu';
 
 // Providers
 export { FowThemeProvider } from './theme';
