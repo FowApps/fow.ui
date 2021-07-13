@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -11,10 +12,6 @@ export interface MenuProps {
      * initial open index
      */
     defaultIndex: number;
-    /**
-     * click event on trigger
-     */
-    onItemClick: (index: number) => void;
     children: React.ReactNode | React.ReactNode[];
 }
 
@@ -27,13 +24,14 @@ export interface ItemProps {
     collapsable?: boolean;
     isCollapsed?: boolean;
     children: React.ReactNode | React.ReactNode[];
-    handleClick?: () => void;
+    onClick?: () => void;
     index: number;
 }
 
 export interface SubItemProps {
     icon?: React.ReactNode;
     text: string;
+    onClick: () => void;
 }
 
 const Item = ({
@@ -42,7 +40,7 @@ const Item = ({
     isCollapsed,
     children,
     label,
-    handleClick,
+    onClick,
 }: ItemProps) => (
     <>
         {collapsable ? (
@@ -51,7 +49,7 @@ const Item = ({
                     isCollapsed={isCollapsed}
                     collapsable={collapsable}
                     role="button"
-                    onClick={handleClick}>
+                    onClick={onClick}>
                     <Space>
                         {icon}
                         <span>{label}</span>
@@ -83,34 +81,33 @@ const Item = ({
                 </AnimatePresence>
             </>
         ) : (
-            <ItemWrapper role="button" isCollapsed={isCollapsed}>
+            <ItemWrapper
+                role="button"
+                isCollapsed={isCollapsed}
+                onClick={onClick}>
                 <Space>
                     {icon}
                     <span>{label}</span>
                 </Space>
+                {children && <Content>{children}</Content>}
             </ItemWrapper>
         )}
     </>
 );
 
-const SubItem = ({ text, icon }: SubItemProps) => (
-    <>
+const SubItem = ({ text, icon, onClick }: SubItemProps) => (
+    <div role="button" onClick={onClick}>
         <Space>{icon}</Space>
         <span>{text}</span>
-    </>
+    </div>
 );
 
-const Menu = ({
-    defaultIndex,
-    onItemClick,
-    children,
-}: MenuProps): JSX.Element => {
+const Menu = ({ defaultIndex, children }: MenuProps): JSX.Element => {
     const [menuItemIndex, setMenuItemIndex] = useState(defaultIndex);
     const [isActive, setIsActive] = useState(false);
 
     const changeItem = (itemIndex: number) => {
         setIsActive(!isActive);
-        if (typeof onItemClick === 'function') onItemClick(itemIndex);
         if (itemIndex !== menuItemIndex) {
             setMenuItemIndex(itemIndex);
         } else {
@@ -131,7 +128,10 @@ const Menu = ({
                     isCollapsed={menuItemIndex !== props.index}
                     collapsable={props.collapsable}
                     label={props.label}
-                    handleClick={() => changeItem(props.index)}
+                    onClick={() => {
+                        changeItem(props.index);
+                        props.onClick();
+                    }}
                     index={props.index}>
                     {props.children}
                 </Item>

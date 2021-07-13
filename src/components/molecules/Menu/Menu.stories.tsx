@@ -10,33 +10,54 @@ export default {
     argTypes: {},
 } as Meta;
 
-const wrapperStyles = {
-    padding: 16,
-    height: 300,
-    backgroundColor: '#F4F6F8',
-};
+const menu = [
+    {
+        id: 1,
+        title: 'Activitiies',
+        children: [
+            {
+                id: 2,
+                title: 'Today',
+                icon: 'user',
+            },
+            {
+                id: 3,
+                title: 'Overdue',
+                icon: 'user',
+            },
+        ],
+    },
+    {
+        id: 4,
+        title: 'Calendar',
+        icon: 'calendar',
+    },
+];
 
 const Template: Story<MenuProps> = (args) => (
     <div>
         <Menu {...args}>
-            <Menu.Item
-                icon={<Icon icon="trash" />}
-                index={1}
-                label="Item 1"
-                collapsable={false}>
-                <div style={wrapperStyles}>
-                    <Menu.SubItem text="savas" icon={<Icon icon="circle" />} />
-                </div>
-            </Menu.Item>
-            <Menu.Item
-                icon={<Icon icon="trash" />}
-                index={2}
-                label="Item 2"
-                collapsable>
-                <div style={wrapperStyles}>
-                    <Menu.SubItem text="item" icon={<Icon icon="circle" />} />
-                </div>
-            </Menu.Item>
+            {menu.map((item) => (
+                <Menu.Item
+                    icon={<Icon icon="trash" />}
+                    index={1}
+                    label={item.title}
+                    onClick={() => {
+                        console.log(item);
+                    }}
+                    collapsable={item?.children?.length > 0}>
+                    {item?.children?.map((child) => (
+                        <Menu.SubItem
+                            onClick={() => {
+                                console.log(child);
+                            }}
+                            key={child.id}
+                            text={child.title}
+                            icon={<Icon icon="circle" />}
+                        />
+                    ))}
+                </Menu.Item>
+            ))}
         </Menu>
     </div>
 );
