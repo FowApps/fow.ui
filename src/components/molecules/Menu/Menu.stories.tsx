@@ -45,7 +45,7 @@ const Template: Story<MenuProps> = (args) => (
                     onClick={() => {
                         console.log(item);
                     }}
-                    collapsable={item?.children?.length > 0}>
+                    collapsable={!!item?.children?.length}>
                     {item?.children?.map((child) => (
                         <Menu.SubItem
                             onClick={() => {
@@ -65,7 +65,4 @@ const Template: Story<MenuProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     defaultIndex: 1,
-    onItemClick: (item: number) => {
-        console.log(item);
-    },
 };
