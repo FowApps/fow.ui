@@ -3,6 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import GlobalStyle from './global-style';
 
+import ToastContextProvider from '../components/molecules/Toast/ToastProvider';
+
 export interface PrimaryColorTypes {
     darker: string;
     dark: string;
@@ -42,7 +44,7 @@ const FowTheme = ({
             },
         }}>
         <GlobalStyle />
-        {children}
+        <ToastContextProvider>{children}</ToastContextProvider>
     </ThemeProvider>
 );
 

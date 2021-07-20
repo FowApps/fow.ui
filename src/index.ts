@@ -41,5 +41,8 @@ export const Grid = {
 export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
 
+// Hooks
+export { default as useToast } from './components/molecules/Toast/useToast';
+
 // Providers
 export { FowThemeProvider } from './theme';
