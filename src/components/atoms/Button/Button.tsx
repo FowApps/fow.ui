@@ -7,17 +7,38 @@ import { StyledButton, StyledButtonLoader } from './styles';
 import Space from '../Space';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    /**
+     * color scheme of button
+     */
     color?: 'primary' | 'info' | 'warning' | 'success' | 'error' | 'grey';
+    /**
+     * size of button
+     */
     size?: 'large' | 'medium' | 'small';
+    /**
+     * variant of button
+     */
     variant?: 'text' | 'outlined' | 'contained';
+    /**
+     * fluid flag (fluid means width: '100%')
+     */
     fluid?: boolean;
-    type?: 'button' | 'submit' | 'reset';
-    disabled?: boolean;
+    /**
+     * loading spinner flag
+     */
     loading?: boolean;
+    /**
+     * insert fab styles
+     */
     fab?: boolean;
+    /**
+     * prefix icon name
+     */
     leftIcon?: FontAwesomeIconProps['icon'] | null;
+    /**
+     * suffix icon name
+     */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    hasChildren?: boolean;
     children: React.ReactNode;
 }
 
@@ -43,9 +64,7 @@ const Button = (
         color = 'primary',
         variant = 'contained',
         size = 'medium',
-        type = 'button',
         fluid = false,
-        disabled = false,
         loading = false,
         leftIcon = null,
         rightIcon = null,
@@ -60,9 +79,7 @@ const Button = (
             ref={ref}
             color={color}
             variant={variant}
-            type={type}
             fluid={fluid}
-            disabled={disabled}
             loading={loading ? 1 : 0}
             size={size}
             fab={fab}

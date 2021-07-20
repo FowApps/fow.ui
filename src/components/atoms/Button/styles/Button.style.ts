@@ -9,8 +9,6 @@ type ButtonProps = {
     size: 'large' | 'medium' | 'small';
     variant: 'text' | 'outlined' | 'contained';
     fluid: boolean;
-    type: 'button' | 'submit' | 'reset';
-    disabled: boolean;
     fab: boolean;
     hasChildren: boolean;
     loading: number;
