@@ -22,6 +22,9 @@ export { default as Chip } from './components/atoms/Chip';
 export { default as Divider } from './components/atoms/Divider';
 export { default as Card } from './components/atoms/Card';
 export { default as Loader } from './components/atoms/Loader';
+export { default as Select } from './components/atoms/Select/StaticSelect';
+export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
+export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
 
 export const Typography = {
     Heading,

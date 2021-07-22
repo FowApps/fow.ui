@@ -3,14 +3,41 @@ import Select from 'react-select';
 import { theme } from '../../../theme/theme';
 
 export interface BaseSelectProps {
+    /**
+     * placeholder text
+     */
     placeholder?: string;
+    /**
+     *multiple tag select flag
+     */
     isMulti?: boolean;
+    /**
+     * searchable flag
+     */
     isSearchable?: boolean;
+    /**
+     * disable flag
+     */
     isDisabled?: boolean;
+    /**
+     * show clear icon flag
+     */
     isClearable?: boolean;
+    /**
+     * close menu after selection flag
+     */
     closeMenuOnSelect?: boolean;
+    /**
+     * value key of given options
+     */
     valueKey?: string;
+    /**
+     * label key of given options
+     */
     labelKey?: string;
+    /**
+     * options of select
+     */
     options: any[];
     onChange?: (option: any) => void;
 }

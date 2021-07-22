@@ -8,10 +8,25 @@ import { theme } from '../../../theme/theme';
 import debounce from '../../../utils/debounce';
 
 export interface AsyncSelectProps extends BaseSelectProps {
+    /**
+     * cache option flag. look react-select docs for more info.
+     */
     cacheOptions?: boolean;
+    /**
+     * default option flag. look react-select docs for more info.
+     */
     defaultOptions?: boolean;
+    /**
+     * delay of async searching
+     */
     debounceTime?: number;
+    /**
+     * load method for async logic
+     */
     loadOptions(searchQuery?: string): any;
+    /**
+     * loading indicator text
+     */
     loadingMessage?: string;
 }
 
