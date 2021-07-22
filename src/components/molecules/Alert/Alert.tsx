@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
+import Space from '../../atoms/Space';
+import Icon from '../../atoms/Icon';
+
 import { theme } from '../../../theme/theme';
-import { Icon } from '../../..';
 
 import {
     StyledAlert,
@@ -11,7 +13,6 @@ import {
     StyledSubtitle,
     ContentWrapper,
 } from './styles';
-import Space from '../../atoms/Space';
 
 export interface AlertProps {
     /**
