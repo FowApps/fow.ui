@@ -49,7 +49,12 @@ const Template: Story<FormProps> = () => {
                                 message: 'Required Field',
                             },
                         }}>
-                        <StaticSelect options={fruits} />
+                        <StaticSelect
+                            options={fruits}
+                            onChange={(e) => {
+                                console.log(e);
+                            }}
+                        />
                     </Form.Field>
                 </Col>
                 <Col xs={6}>
@@ -85,7 +90,11 @@ const Template: Story<FormProps> = () => {
                 </Col>
                 <Col xs={6}>
                     <Form.Field label="I Agree" name="isAgreed">
-                        <Checkbox />
+                        <Checkbox
+                            onChange={(e) => {
+                                console.log(e);
+                            }}
+                        />
                     </Form.Field>
                 </Col>
                 <Col xs={12}>
