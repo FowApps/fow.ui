@@ -8,7 +8,6 @@ interface LabelTextProps extends BodyProps {
 
 interface InputProps {
     color: 'primary' | 'grey';
-    checked: boolean;
 }
 
 export const StyledLabel = styled.label`
