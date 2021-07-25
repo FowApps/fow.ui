@@ -32,6 +32,7 @@
         "@babel/runtime": "^7.14.0",
         "@types/react": "^17.0.13",
         "polished": "4.1.1",
+        "react-hook-form": "^7.11.1",
         "react-loading-overlay": "^1.0.1",
         "react-select": "^4.3.1",
         "react-select-async-paginate": "^0.5.3"
