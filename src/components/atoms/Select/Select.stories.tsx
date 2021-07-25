@@ -14,61 +14,31 @@ type Additional = {
     page: number;
 };
 
-// Mocks
-const staticOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
-
-// Methods
-const onChange = (value) => {
-    console.log(value);
-};
-
-const loadOptionsAsync = async (searchQuery: string) => {
-    const response = await fetch(
-        `https://www.anapioficeandfire.com/api/houses?name=${searchQuery}&page=1&pageSize=10`,
-    );
-    const responseJSON = await response.json();
-
-    return responseJSON;
-};
-
-const loadOptionsAsyncPaginate = async (
-    searchQuery: string,
-    loadedOptions: any[],
-    { page }: Additional,
-) => {
-    const response = await fetch(
-        `https://www.anapioficeandfire.com/api/houses?name=${searchQuery}&page=${page}&pageSize=10`,
-    );
-    const responseJSON = await response.json();
-
-    return {
-        options: responseJSON,
-        hasMore: responseJSON.length >= 1,
-        additional: {
-            page: page + 1,
-        },
-    };
-};
-
-// Stories
 const AsyncSelectTemplate: Story<AsyncSelectProps> = (args) => (
     <AsyncSelect {...args} />
 );
+
 export const WithAsyncSelect = AsyncSelectTemplate.bind({});
 WithAsyncSelect.args = {
     placeholder: 'Please Select',
+    label: 'Async Select',
     valueKey: 'name',
     labelKey: 'name',
     isMulti: false,
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onChange,
-    loadOptions: loadOptionsAsync,
+    onSelect: (value) => {
+        console.log(value);
+    },
+    loadOptions: async () => {
+        const response = await fetch(
+            `https://www.anapioficeandfire.com/api/houses?page=1&pageSize=10`,
+        );
+        const responseJSON = await response.json();
+
+        return responseJSON;
+    },
 };
 
 const AsyncPaginateSelectTemplate: Story<AsyncPaginateSelectProps> = (args) => (
@@ -77,14 +47,34 @@ const AsyncPaginateSelectTemplate: Story<AsyncPaginateSelectProps> = (args) => (
 export const WithAsyncPaginate = AsyncPaginateSelectTemplate.bind({});
 WithAsyncPaginate.args = {
     placeholder: 'Please Select',
+    label: 'Async with infinite scroll pagination',
     valueKey: 'name',
     labelKey: 'name',
     isMulti: false,
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onChange,
-    loadOptions: loadOptionsAsyncPaginate,
+    onSelect: (value) => {
+        console.log(value);
+    },
+    loadOptions: async (
+        searchQuery: string,
+        loadedOptions: any[],
+        { page }: Additional,
+    ) => {
+        const response = await fetch(
+            `https://www.anapioficeandfire.com/api/houses?name=${searchQuery}&page=${page}&pageSize=10`,
+        );
+        const responseJSON = await response.json();
+
+        return {
+            options: responseJSON,
+            hasMore: responseJSON.length >= 1,
+            additional: {
+                page: page + 1,
+            },
+        };
+    },
 };
 
 const StaticSelectTemplate: Story<BaseSelectProps> = (args) => (
@@ -92,11 +82,18 @@ const StaticSelectTemplate: Story<BaseSelectProps> = (args) => (
 );
 export const WithStatic = StaticSelectTemplate.bind({});
 WithStatic.args = {
+    label: 'Static Select',
     placeholder: 'Please Select',
     isMulti: false,
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onChange,
-    options: staticOptions,
+    onSelect: (value) => {
+        console.log(value);
+    },
+    options: [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+    ],
 };
