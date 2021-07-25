@@ -1,11 +1,22 @@
-import React from 'react';
+/* eslint-disable no-return-await */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { forwardRef, RefObject, useState, useEffect } from 'react';
 import Async from 'react-select/async';
 
 import { BaseSelectProps } from './StaticSelect';
 import Loader from '../Loader';
+import Space from '../Space';
+import Caption from '../Typography/Caption';
 
-import { theme } from '../../../theme/theme';
 import debounce from '../../../utils/debounce';
+
+import {
+    renderControlStyles,
+    themeColors,
+    Wrapper,
+    Label,
+    ValidationMessage,
+} from './styles';
 
 export interface AsyncSelectProps extends BaseSelectProps {
     /**
@@ -30,30 +41,48 @@ export interface AsyncSelectProps extends BaseSelectProps {
     loadingMessage?: string;
 }
 
-const AsyncSelect = ({
-    placeholder,
-    isMulti = false,
-    isSearchable = false,
-    isDisabled = false,
-    isClearable = false,
-    closeMenuOnSelect = true,
-    valueKey = 'value',
-    labelKey = 'label',
-    cacheOptions = true,
-    defaultOptions = true,
-    debounceTime = 500,
-    loadingMessage = 'Loading',
-    loadOptions,
-    onChange,
-    ...rest
-}: AsyncSelectProps): JSX.Element => {
-    const handleChange = (option: any) => {
-        if (typeof onChange === 'function') {
-            onChange(option);
+const AsyncSelect = (
+    {
+        placeholder,
+        isMulti = false,
+        isSearchable = false,
+        isDisabled = false,
+        isClearable = false,
+        closeMenuOnSelect = true,
+        valueKey = 'value',
+        labelKey = 'label',
+        cacheOptions = true,
+        defaultOptions = true,
+        debounceTime = 500,
+        loadingMessage = 'Loading',
+        loadOptions,
+        onSelect,
+        onChange,
+        error,
+        label,
+        required,
+        value,
+        ...rest
+    }: AsyncSelectProps,
+    ref: RefObject<any>,
+): JSX.Element => {
+    const [controlledValue, setControlledValue] = useState<any[] | any>();
+    const [options, setOptions] = useState([]);
+    const handleChange = (data: any) => {
+        let values = data[valueKey];
+        if (Array.isArray(data) && isMulti) {
+            values = data.map((option) => option[valueKey]);
         }
+        if (typeof onChange === 'function') onChange(values);
+        if (typeof onSelect === 'function') onSelect(values);
+        setControlledValue(data);
     };
 
-    const debouncedLoadOptions = debounce(loadOptions, debounceTime);
+    const debouncedLoadOptions = debounce(async (inputValue) => {
+        const loadedOptions = await loadOptions(inputValue);
+        setOptions(loadedOptions);
+        return loadedOptions;
+    }, debounceTime);
 
     const LoadingMessage = (props: any) => (
         <div
@@ -63,47 +92,79 @@ const AsyncSelect = ({
         </div>
     );
 
+    useEffect(() => {
+        if (options.length > 0) {
+            if (Array.isArray(value) && isMulti) {
+                const defaultMultipleValues = value.map((val) => {
+                    const selecedValue = options.find(
+                        (option) => option[valueKey] === val,
+                    );
+                    return selecedValue;
+                });
+                setControlledValue(defaultMultipleValues);
+            } else {
+                const defaultValue = options.find(
+                    (option) => option[valueKey] === value,
+                );
+                setControlledValue(defaultValue);
+            }
+        }
+    }, [options]);
+
     return (
-        <Async
-            theme={(defaultTheme) => ({
-                ...defaultTheme,
-                borderRadius: 8,
-                colors: {
-                    ...defaultTheme.colors,
-                    primary25: theme.fow.colors.primary.transparent12,
-                    primary50: theme.fow.colors.primary.lighter,
-                    primary75: theme.fow.colors.primary.light,
-                    primary: theme.fow.colors.primary.main,
-                    danger: theme.fow.colors.error.main,
-                    dangerLight: theme.fow.colors.error.light,
-                },
-            })}
-            styles={{
-                control: (styles) => ({
-                    ...styles,
-                    transition: 'all 0.3s ease',
-                    minHeight: '4rem',
+        <Wrapper>
+            {label && (
+                <Space size="xxsmall">
+                    {required && <Caption color="error">*</Caption>}
+                    <Label>{label}</Label>
+                </Space>
+            )}
+            <Async
+                {...rest}
+                ref={ref}
+                theme={(defaultTheme) => ({
+                    ...defaultTheme,
                     borderRadius: 8,
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                }),
-            }}
-            cacheOptions={cacheOptions}
-            defaultOptions={defaultOptions}
-            loadOptions={debouncedLoadOptions}
-            getOptionValue={(option) => option[valueKey]}
-            getOptionLabel={(option) => option[labelKey]}
-            onChange={handleChange}
-            isMulti={isMulti}
-            isClearable={isClearable}
-            isDisabled={isDisabled}
-            isSearchable={isSearchable}
-            placeholder={placeholder}
-            closeMenuOnSelect={closeMenuOnSelect}
-            components={{ LoadingMessage }}
-            {...rest}
-        />
+                    colors: {
+                        ...defaultTheme.colors,
+                        ...themeColors,
+                    },
+                })}
+                styles={{
+                    control: (styles, { isFocused }) => ({
+                        ...styles,
+                        ...{ ...renderControlStyles(isFocused, !!error) },
+                    }),
+                    menu: (styles) => ({
+                        ...styles,
+                        top: 'calc(100% - 2.4rem)',
+                    }),
+                }}
+                options={options}
+                cacheOptions={cacheOptions}
+                defaultOptions={defaultOptions}
+                loadOptions={async (inputValue) =>
+                    await debouncedLoadOptions(inputValue)
+                }
+                getOptionValue={(option) => option[valueKey]}
+                getOptionLabel={(option) => option[labelKey]}
+                onChange={handleChange}
+                isMulti={isMulti}
+                isClearable={isClearable}
+                isDisabled={isDisabled}
+                isSearchable={isSearchable}
+                placeholder={placeholder}
+                closeMenuOnSelect={closeMenuOnSelect}
+                components={{ LoadingMessage }}
+                value={controlledValue}
+            />
+            {error && (
+                <ValidationMessage color="error">
+                    {error.message}
+                </ValidationMessage>
+            )}
+        </Wrapper>
     );
 };
 
-export default AsyncSelect;
+export default forwardRef(AsyncSelect);
