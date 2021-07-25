@@ -1,4 +1,4 @@
-import React, { forwardRef, RefObject } from 'react';
+import React, { forwardRef, RefObject, useState } from 'react';
 import { AsyncPaginate } from 'react-select-async-paginate';
 
 import Space from '../Space';
@@ -73,9 +73,33 @@ const AsyncPaginateSelect = (
     }: AsyncPaginateSelectProps,
     ref: RefObject<any>,
 ): JSX.Element => {
-    const handleChange = (option: any) => {
-        if (typeof onChange === 'function') onChange(option);
-        if (typeof onSelect === 'function') onSelect(option);
+    const [controlledValue, setControlledValue] = useState<any[] | any>();
+    const [options, setOptions] = useState<any[]>([]);
+
+    const handleChange = (data: any) => {
+        let values = data[valueKey];
+        if (Array.isArray(data) && isMulti) {
+            values = data.map((option) => option[valueKey]);
+        }
+        if (typeof onChange === 'function') onChange(values);
+        if (typeof onSelect === 'function') onSelect(values);
+        setControlledValue(data);
+    };
+
+    const paginatedLoadedOptions = async (
+        inputValue: string,
+        loadedOptions: any[],
+        { page }: Additional,
+    ) => {
+        const loadedOptionsResponse = await loadOptions(
+            inputValue,
+            loadedOptions,
+            {
+                page,
+            },
+        );
+        setOptions(loadedOptionsResponse.options);
+        return loadedOptionsResponse;
     };
 
     const LoadingMessage = (props: any) => (
@@ -115,10 +139,11 @@ const AsyncPaginateSelect = (
                         top: 'calc(100% - 2.4rem)',
                     }),
                 }}
+                options={options}
                 debounceTimeout={debounceTime}
                 cacheOptions={cacheOptions}
                 defaultOptions={defaultOptions}
-                loadOptions={loadOptions}
+                loadOptions={paginatedLoadedOptions}
                 getOptionValue={(option) => option[valueKey]}
                 getOptionLabel={(option) => option[labelKey]}
                 onChange={handleChange}
@@ -129,6 +154,7 @@ const AsyncPaginateSelect = (
                 placeholder={placeholder}
                 closeMenuOnSelect={closeMenuOnSelect}
                 components={{ LoadingMessage }}
+                value={controlledValue}
                 additional={{
                     page: 1,
                 }}
