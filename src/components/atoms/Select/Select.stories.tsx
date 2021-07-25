@@ -65,9 +65,11 @@ WithAsyncPaginate.args = {
         const response = await fetch(
             `https://www.anapioficeandfire.com/api/houses?name=${searchQuery}&page=${page}&pageSize=10`,
         );
+
         const responseJSON = await response.json();
 
         return {
+            loadedOptions,
             options: responseJSON,
             hasMore: responseJSON.length >= 1,
             additional: {
