@@ -4,17 +4,9 @@ import { StyledLabel, StyledInput, MarkBox, Mark, LabelText } from './styles';
 
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
     /**
-     * input name
-     */
-    name: string;
-    /**
      * input label
      */
     label?: string;
-    /**
-     * for react hook form
-     */
-    register?: (e: string) => any;
     /**
      * disable state flag
      */
@@ -23,11 +15,10 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Checkbox = ({
-    name,
     label = '',
     disabled = false,
-    register,
     color = 'primary',
+    value,
     ...rest
 }: CheckboxProps): JSX.Element => (
     <StyledLabel>
@@ -40,7 +31,7 @@ const Checkbox = ({
             type="checkbox"
             disabled={disabled}
             color={color}
-            {...(register && register(name))}
+            checked={!!value}
             {...rest}
         />
         <MarkBox>
