@@ -50,11 +50,7 @@ export interface BaseSelectProps {
      */
     options?: any[];
     /**
-     * use for manual changes to get value
-     */
-    onSelect?: (option: any) => void;
-    /**
-     * for form api
+     * fire after change option
      */
     onChange?: (option: any) => void;
     /**
@@ -86,7 +82,6 @@ const StaticSelect = (
         valueKey = 'value',
         labelKey = 'label',
         options,
-        onSelect,
         onChange,
         error,
         label,
@@ -97,15 +92,13 @@ const StaticSelect = (
     ref: RefObject<any>,
 ): JSX.Element => {
     const [controlledValue, setControlledValue] = useState<any[] | any>();
-
     const handleChange = (data: any) => {
+        setControlledValue(data);
         let values = data[valueKey];
         if (Array.isArray(data) && isMulti) {
             values = data.map((option) => option[valueKey]);
         }
         if (typeof onChange === 'function') onChange(values);
-        if (typeof onSelect === 'function') onSelect(values);
-        setControlledValue(data);
     };
 
     useEffect(() => {

@@ -56,7 +56,6 @@ const AsyncSelect = (
         debounceTime = 500,
         loadingMessage = 'Loading',
         loadOptions,
-        onSelect,
         onChange,
         error,
         label,
@@ -69,13 +68,12 @@ const AsyncSelect = (
     const [controlledValue, setControlledValue] = useState<any[] | any>();
     const [options, setOptions] = useState([]);
     const handleChange = (data: any) => {
+        setControlledValue(data);
         let values = data[valueKey];
         if (Array.isArray(data) && isMulti) {
             values = data.map((option) => option[valueKey]);
         }
         if (typeof onChange === 'function') onChange(values);
-        if (typeof onSelect === 'function') onSelect(values);
-        setControlledValue(data);
     };
 
     const debouncedLoadOptions = debounce(async (inputValue) => {

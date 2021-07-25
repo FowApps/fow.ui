@@ -28,7 +28,7 @@ WithAsyncSelect.args = {
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onSelect: (value) => {
+    onChange: (value) => {
         console.log(value);
     },
     loadOptions: async () => {
@@ -54,7 +54,7 @@ WithAsyncPaginate.args = {
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onSelect: (value) => {
+    onChange: (value) => {
         console.log(value);
     },
     loadOptions: async (
@@ -88,7 +88,7 @@ WithStatic.args = {
     isSearchable: false,
     isDisabled: false,
     isClearable: false,
-    onSelect: (value) => {
+    onChange: (value) => {
         console.log(value);
     },
     options: [
