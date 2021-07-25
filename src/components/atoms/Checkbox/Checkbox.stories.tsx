@@ -10,4 +10,8 @@ export default {
 const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    onChange: (e) => {
+        console.log(e);
+    },
+};
