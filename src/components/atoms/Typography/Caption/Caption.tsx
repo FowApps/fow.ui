@@ -17,7 +17,7 @@ export interface CaptionProps {
     children: React.ReactNode;
 }
 
-const Overline = ({
+const Caption = ({
     color = 'black',
     children,
     ...rest
@@ -27,4 +27,4 @@ const Overline = ({
     </StyledCaption>
 );
 
-export default Overline;
+export default Caption;
