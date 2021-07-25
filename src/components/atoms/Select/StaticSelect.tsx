@@ -1,6 +1,16 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { forwardRef, RefObject, useState, useEffect } from 'react';
 import Select from 'react-select';
-import { theme } from '../../../theme/theme';
+import Space from '../Space';
+import Caption from '../Typography/Caption';
+
+import {
+    renderControlStyles,
+    themeColors,
+    Wrapper,
+    Label,
+    ValidationMessage,
+} from './styles';
 
 export interface BaseSelectProps {
     /**
@@ -38,72 +48,131 @@ export interface BaseSelectProps {
     /**
      * options of select
      */
-    options: any[];
+    options?: any[];
+    /**
+     * use for manual changes to get value
+     */
+    onSelect?: (option: any) => void;
+    /**
+     * for form api
+     */
     onChange?: (option: any) => void;
+    /**
+     * for form api
+     */
+    error?: any;
+    /**
+     * label for form field
+     */
+    label?: string;
+    /**
+     * required flag form field
+     */
+    required?: boolean;
+    /**
+     * value of select for form api
+     */
+    value?: boolean;
 }
 
-const StaticSelect = ({
-    placeholder,
-    isMulti = false,
-    isSearchable = false,
-    isDisabled = false,
-    isClearable = false,
-    closeMenuOnSelect = true,
-    valueKey = 'value',
-    labelKey = 'label',
-    options,
-    onChange,
-    ...rest
-}: BaseSelectProps): JSX.Element => {
-    const handleChange = (option: any) => {
-        if (typeof onChange === 'function') {
-            onChange(option);
+const StaticSelect = (
+    {
+        placeholder,
+        isMulti = false,
+        isSearchable = false,
+        isDisabled = false,
+        isClearable = false,
+        closeMenuOnSelect = true,
+        valueKey = 'value',
+        labelKey = 'label',
+        options,
+        onSelect,
+        onChange,
+        error,
+        label,
+        required,
+        value,
+        ...rest
+    }: BaseSelectProps,
+    ref: RefObject<any>,
+): JSX.Element => {
+    const [controlledValue, setControlledValue] = useState<any[] | any>();
+
+    const handleChange = (data: any) => {
+        let values = data[valueKey];
+        if (Array.isArray(data) && isMulti) {
+            values = data.map((option) => option[valueKey]);
         }
+        if (typeof onChange === 'function') onChange(values);
+        if (typeof onSelect === 'function') onSelect(values);
+        setControlledValue(data);
     };
+
+    useEffect(() => {
+        if (Array.isArray(value) && isMulti) {
+            const defaultMultipleValues = value.map((val) => {
+                const selecedValue = options?.find(
+                    (option) => option[valueKey] === val,
+                );
+                return selecedValue;
+            });
+            setControlledValue(defaultMultipleValues);
+        } else {
+            const defaultValue = options?.find(
+                (option) => option[valueKey] === value,
+            );
+            setControlledValue(defaultValue);
+        }
+    }, []);
+
     return (
-        <Select
-            theme={(defaultTheme) => ({
-                ...defaultTheme,
-                borderRadius: 8,
-                colors: {
-                    ...defaultTheme.colors,
-                    primary25: theme.fow.colors.primary.transparent12,
-                    primary50: theme.fow.colors.primary.lighter,
-                    primary75: theme.fow.colors.primary.light,
-                    primary: theme.fow.colors.primary.main,
-                    danger: theme.fow.colors.error.main,
-                    dangerLight: theme.fow.colors.error.light,
-                },
-            })}
-            styles={{
-                control: (styles, { isFocused }) => ({
-                    ...styles,
-                    transition: 'all 0.3s ease',
-                    minHeight: '4rem',
+        <Wrapper>
+            {label && (
+                <Space size="xxsmall">
+                    {required && <Caption color="error">*</Caption>}
+                    <Label>{label}</Label>
+                </Space>
+            )}
+            <Select
+                {...rest}
+                ref={ref}
+                theme={(defaultTheme) => ({
+                    ...defaultTheme,
                     borderRadius: 8,
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                    borderColor: isFocused
-                        ? theme.fow.colors.primary.main
-                        : styles.borderColor,
-                    boxShadow: isFocused
-                        ? `0 0 0 1px ${theme.fow.colors.primary.main}`
-                        : styles.boxShadow,
-                }),
-            }}
-            options={options}
-            getOptionValue={(option) => option[valueKey]}
-            getOptionLabel={(option) => option[labelKey]}
-            onChange={handleChange}
-            isMulti={isMulti}
-            isClearable={isClearable}
-            isDisabled={isDisabled}
-            isSearchable={isSearchable}
-            placeholder={placeholder}
-            closeMenuOnSelect={closeMenuOnSelect}
-            {...rest}
-        />
+                    colors: {
+                        ...defaultTheme.colors,
+                        ...themeColors,
+                    },
+                })}
+                styles={{
+                    control: (styles, { isFocused }) => ({
+                        ...styles,
+                        ...{ ...renderControlStyles(isFocused, !!error) },
+                    }),
+                    menu: (styles) => ({
+                        ...styles,
+                        top: 'calc(100% - 2.4rem)',
+                    }),
+                }}
+                options={options}
+                getOptionValue={(option) => option[valueKey]}
+                getOptionLabel={(option) => option[labelKey]}
+                isMulti={isMulti}
+                isClearable={isClearable}
+                isDisabled={isDisabled}
+                isSearchable={isSearchable}
+                placeholder={placeholder}
+                closeMenuOnSelect={closeMenuOnSelect}
+                onChange={handleChange}
+                value={controlledValue}
+            />
+            {error && (
+                <ValidationMessage color="error">
+                    {error.message}
+                </ValidationMessage>
+            )}
+        </Wrapper>
     );
 };
 
-export default StaticSelect;
+export default forwardRef(StaticSelect);
