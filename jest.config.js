@@ -11,13 +11,14 @@ module.exports = {
     clearMocks: true,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    collectCoverageFrom: ['src/**/*.{js,jsx,mjs,ts,tsx}'],
+    // When start to write test to components, change here with ['src/**/*.{js,jsx,mjs,ts,tsx}'], now test only utils
+    collectCoverageFrom: ['src/utils/*.{ts,tsx}'],
 
     // The directory where Jest should output its coverage files
     // coverageDirectory: 'coverage',
 
     // The test environment that will be used for testing
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     testPathIgnorePatterns: ['/node_modules'],
@@ -27,10 +28,10 @@ module.exports = {
 
     coverageThreshold: {
         global: {
-            statements: 0,
-            branches: 0,
-            functions: 0,
-            lines: 0,
+            statements: 100,
+            branches: 100,
+            functions: 100,
+            lines: 100,
         },
     },
 };
