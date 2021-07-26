@@ -1,6 +1,7 @@
 {
     "extends": ["@react-bootstrap", "4catalyzer-typescript", "prettier"],
     "plugins": ["prettier"],
+    "ignorePatterns": ["**/*.stories.tsx"],
     "rules": {
         "@typescript-eslint/consistent-type-assertions": "off",
         "import/extensions": "off",
