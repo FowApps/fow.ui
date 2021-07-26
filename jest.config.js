@@ -35,5 +35,11 @@ module.exports = {
             functions: 0,
             lines: 0,
         },
+        'src/utils': {
+            statements: 100,
+            branches: 100,
+            functions: 100,
+            lines: 100,
+        },
     },
 };
