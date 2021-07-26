@@ -4,4 +4,4 @@ checks:
         config:
             threshold: 100
 exclude_patterns:
-    - '*.stories.tsx'
+    - 'src/**/*.stories.{js,jsx,mjs,ts,tsx}'
