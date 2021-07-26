@@ -1,0 +1,7 @@
+version: '2'
+checks:
+    method-lines:
+        config:
+            threshold: 100
+exclude_patterns:
+    - '*.stories.tsx'
