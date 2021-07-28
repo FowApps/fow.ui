@@ -18,7 +18,6 @@ export const renderControlStyles = (isFocused: boolean, hasError: boolean) => {
         minHeight: '4rem',
         fontSize: '1.6rem',
         lineHeight: '2.4rem',
-        marginBottom: '2.4rem',
     };
     if (hasError) {
         return {
@@ -48,7 +47,7 @@ export const Label = styled(Body)`
 `;
 
 export const ValidationMessage = styled(Caption)`
-    position: absolute;
+    position: relative;
     bottom: 0;
     align-self: flex-end;
 `;

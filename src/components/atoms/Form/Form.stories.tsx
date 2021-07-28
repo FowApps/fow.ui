@@ -51,6 +51,7 @@ const Template: Story<FormProps> = () => {
                         }}>
                         <StaticSelect
                             options={fruits}
+                            isClearable
                             onChange={(e) => {
                                 console.log(e);
                             }}
@@ -62,6 +63,8 @@ const Template: Story<FormProps> = () => {
                         <StaticSelect options={cars} />
                     </Form.Field>
                 </Col>
+            </Row>
+            <Row>
                 <Col xs={6}>
                     <Form.Field
                         label="Houses"
@@ -85,6 +88,9 @@ const Template: Story<FormProps> = () => {
 
                                 return responseJSON;
                             }}
+                            onChange={(e) => {
+                                console.log(e);
+                            }}
                         />
                     </Form.Field>
                 </Col>
@@ -97,6 +103,8 @@ const Template: Story<FormProps> = () => {
                         />
                     </Form.Field>
                 </Col>
+            </Row>
+            <Row>
                 <Col xs={12}>
                     <button type="submit">Save</button>
                 </Col>
