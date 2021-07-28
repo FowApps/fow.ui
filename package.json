@@ -36,7 +36,8 @@
         "react-loading-overlay": "^1.0.1",
         "react-select": "^4.3.1",
         "react-select-async-paginate": "^0.5.3",
-        "uuid": "^8.3.2"
+        "uuid": "^8.3.2",
+        "yarn": "^1.22.11"
     },
     "devDependencies": {
         "@4c/tsconfig": "^0.4.0",

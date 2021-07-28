@@ -20,15 +20,20 @@ export interface AvatarProps {
      * color variant
      */
     color?: 'primary' | 'grey';
+    /**
+     * size variant
+     */
+    size?: 'xsmall' | 'small' | 'medium' | 'large';
 }
 
 const Avatar = ({
     src,
     text,
     color = 'grey',
+    size = 'medium',
     ...rest
 }: AvatarProps): JSX.Element => (
-    <StyledAvatar src={src} color={color} {...rest}>
+    <StyledAvatar src={src} color={color} size={size} {...rest}>
         {text ? (
             <Subtitle level={2}>{getFirstLetters(text)}</Subtitle>
         ) : (
