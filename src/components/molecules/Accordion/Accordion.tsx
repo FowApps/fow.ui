@@ -60,7 +60,7 @@ const Item = ({
                 <Heading as="h6">{label}</Heading>
             </Space>
             <Space>
-                {extra}
+                <div>{extra}</div>
                 {isCollapsed ? (
                     <Icon icon="chevron-down" />
                 ) : (
