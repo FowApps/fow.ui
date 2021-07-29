@@ -12,6 +12,12 @@ export default {
             },
             options: ['grey', 'primary', 'info', 'success', 'warning', 'error'],
         },
+        variant: {
+            control: {
+                type: 'select',
+            },
+            options: ['outlined', 'filled', 'ghost'],
+        },
     },
 } as Meta;
 
@@ -19,6 +25,7 @@ const Template: Story<LabelProps> = (args) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+    variant: 'filled',
     color: 'grey',
     text: 'Lorem Ipsum Dolor',
 };

@@ -22,14 +22,27 @@ export const StyledAvatar = styled.div<AvatarProps>`
     ${(props) =>
         props.src &&
         `background-size: cover;
-      background-image: url('${props.src}');
+        background-image: url('${props.src}');
     `}
 
-  p {
+  h3 {
         margin: 0;
         padding: 0;
         font-weight: 600;
-        font-size: 13px;
+        font-size: ${(props) => {
+            switch (props.size) {
+                case 'xsmall':
+                    return '0.9rem';
+                case 'small':
+                    return '1rem';
+                case 'medium':
+                    return '1.3rem';
+                case 'large':
+                    return '1.6rem';
+                default:
+                    return '';
+            }
+        }};
         font-style: normal;
         line-height: 16px;
         letter-spacing: 0.2px;

@@ -7,13 +7,28 @@ export interface LabelProps {
      */
     color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
     /**
-     * text of chip
+     * variant of button
      */
+    variant?: 'outlined' | 'filled' | 'ghost';
+    /**
+     * label marketplace
+     */
+    marketplace?: boolean;
     text: React.ReactNode | 'string';
 }
 
-const Label = ({ color = 'grey', text, ...rest }: LabelProps): JSX.Element => (
-    <StyledLabel color={color} {...rest}>
+const Label = ({
+    marketplace = false,
+    variant = 'filled',
+    color = 'grey',
+    text,
+    ...rest
+}: LabelProps): JSX.Element => (
+    <StyledLabel
+        marketplace={marketplace}
+        variant={variant}
+        color={color}
+        {...rest}>
         {text}
     </StyledLabel>
 );
