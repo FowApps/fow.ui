@@ -108,7 +108,7 @@ const Accordion = ({
     };
 
     const items = React.Children.map(children, (child: any) =>
-        child?.type?.name === 'Item' ? child : null,
+        child?.type?.displayName === 'Item' ? child : null,
     );
 
     return (
@@ -128,6 +128,8 @@ const Accordion = ({
         </Wrapper>
     );
 };
+Accordion.displayName = 'Accordion';
+Item.displayName = 'Item';
 
 Accordion.Item = Item;
 
