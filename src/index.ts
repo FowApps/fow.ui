@@ -46,6 +46,7 @@ export const Grid = {
 export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
 export { default as Alert } from './components/molecules/Alert';
+export { default as Carousel } from './components/molecules/Carousel';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
