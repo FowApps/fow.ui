@@ -5,3 +5,10 @@ checks:
             threshold: 100
 exclude_patterns:
     - 'src/**/*.stories.{js,jsx,mjs,ts,tsx}'
+plugins:
+    eslint:
+        enabled: true
+            config:
+                config: .eslintrc
+    stylelint:
+        enabled: true
