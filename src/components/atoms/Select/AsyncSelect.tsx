@@ -69,7 +69,7 @@ const AsyncSelect = (
     const [options, setOptions] = useState([]);
     const handleChange = (data: any) => {
         setControlledValue(data);
-        let values = data[valueKey];
+        let values = data?.[valueKey] || null;
         if (Array.isArray(data) && isMulti) {
             values = data.map((option) => option[valueKey]);
         }
@@ -133,9 +133,11 @@ const AsyncSelect = (
                         ...styles,
                         ...{ ...renderControlStyles(isFocused, !!error) },
                     }),
-                    menu: (styles) => ({
+                    option: (styles) => ({
                         ...styles,
-                        top: 'calc(100% - 2.4rem)',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
                     }),
                 }}
                 options={options}

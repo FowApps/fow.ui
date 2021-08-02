@@ -21,6 +21,10 @@ type Additional = {
 
 export interface AsyncPaginateSelectProps extends BaseSelectProps {
     /**
+     * start page number
+     */
+    initialPage: number;
+    /**
      * cache option flag. look react-select docs for more info.
      */
     cacheOptions?: boolean;
@@ -68,6 +72,7 @@ const AsyncPaginateSelect = (
         error,
         label,
         required,
+        initialPage = 0,
         ...rest
     }: AsyncPaginateSelectProps,
     ref: RefObject<any>,
@@ -77,7 +82,7 @@ const AsyncPaginateSelect = (
 
     const handleChange = (data: any) => {
         setControlledValue(data);
-        let values = data[valueKey];
+        let values = data?.[valueKey] || null;
         if (Array.isArray(data) && isMulti) {
             values = data.map((option) => option[valueKey]);
         }
@@ -132,9 +137,11 @@ const AsyncPaginateSelect = (
                         ...styles,
                         ...{ ...renderControlStyles(isFocused, !!error) },
                     }),
-                    menu: (styles) => ({
+                    option: (styles) => ({
                         ...styles,
-                        top: 'calc(100% - 2.4rem)',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
                     }),
                 }}
                 options={options}
@@ -154,7 +161,7 @@ const AsyncPaginateSelect = (
                 components={{ LoadingMessage }}
                 value={controlledValue}
                 additional={{
-                    page: 1,
+                    page: initialPage,
                 }}
             />
             {error && (

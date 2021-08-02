@@ -20,7 +20,9 @@ const Template: Story<AccordionProps> = (args) => (
             <Accordion.Item
                 icon={<Icon icon="trash" />}
                 index={1}
-                label="Item 1">
+                label="Item 1"
+                extra="Extra Content Here"
+                >
                 <div style={wrapperStyles}>Test</div>
             </Accordion.Item>
             <Accordion.Item

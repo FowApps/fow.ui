@@ -30,7 +30,7 @@ export const StyledButton = styled.button<ButtonProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: ${(props) => (props.fluid ? '100%' : 'auto')};
+    width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
     overflow: hidden;
     white-space: nowrap;
     border-radius: ${(props) => (props.fab ? 50 : 8)}px;

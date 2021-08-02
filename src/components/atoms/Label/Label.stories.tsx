@@ -1,30 +1,31 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Avatar, { AvatarProps } from './Avatar';
+import Label, { LabelProps } from './Label';
 
 export default {
-    title: 'Atoms/Avatar',
-    component: Avatar,
+    title: 'Atoms/Label',
+    component: Label,
     argTypes: {
         color: {
             control: {
                 type: 'select',
             },
-            options: ['grey', 'primary'],
+            options: ['grey', 'primary', 'info', 'success', 'warning', 'error'],
         },
-        size: {
+        variant: {
             control: {
                 type: 'select',
             },
-            options: ['xsmall', 'small', 'medium', 'large'],
+            options: ['outlined', 'filled', 'ghost'],
         },
     },
 } as Meta;
 
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
+const Template: Story<LabelProps> = (args) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    size: 'medium',
+    variant: 'filled',
     color: 'grey',
+    text: 'Lorem Ipsum Dolor',
 };

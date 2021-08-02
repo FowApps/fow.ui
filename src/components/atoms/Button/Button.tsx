@@ -74,35 +74,33 @@ const Button = (
     }: ButtonProps,
     ref: RefObject<HTMLButtonElement>,
 ): JSX.Element => (
-    <div>
-        <StyledButton
-            ref={ref}
-            color={color}
-            variant={variant}
-            fluid={fluid}
-            loading={loading ? 1 : 0}
-            size={size}
-            fab={fab}
-            hasChildren={!!children}
-            {...rest}>
-            {loading && (
-                <StyledButtonLoader
-                    initial="hidden"
-                    animate="show"
-                    variants={loadingVariants}
-                    variant={variant}
-                    color={color}
-                />
-            )}
-            <span>
-                <Space inline={false}>
-                    {leftIcon && <Icon icon={leftIcon} />}
-                    {children && <span>{children}</span>}
-                    {rightIcon && !fab && <Icon icon={rightIcon} />}
-                </Space>
-            </span>
-        </StyledButton>
-    </div>
+    <StyledButton
+        ref={ref}
+        color={color}
+        variant={variant}
+        fluid={fluid}
+        loading={loading ? 1 : 0}
+        size={size}
+        fab={fab}
+        hasChildren={!!children}
+        {...rest}>
+        {loading && (
+            <StyledButtonLoader
+                initial="hidden"
+                animate="show"
+                variants={loadingVariants}
+                variant={variant}
+                color={color}
+            />
+        )}
+        <span>
+            <Space inline={false}>
+                {leftIcon && <Icon icon={leftIcon} />}
+                {children && <span>{children}</span>}
+                {rightIcon && !fab && <Icon icon={rightIcon} />}
+            </Space>
+        </span>
+    </StyledButton>
 );
 
 export default forwardRef(Button);
