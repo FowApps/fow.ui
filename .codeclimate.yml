@@ -9,4 +9,4 @@ plugins:
     eslint:
         enabled: true
     stylelint:
-        enabled: true
+        enabled: false
