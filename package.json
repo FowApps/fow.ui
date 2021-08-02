@@ -52,7 +52,7 @@
         "@fortawesome/react-fontawesome": "^0.1.14",
         "@react-bootstrap/babel-preset": "^2.1.0",
         "@react-bootstrap/eslint-config": "^2.0.0",
-        "@storybook/addon-actions": "6.3.2",
+        "@storybook/addon-actions": "6.3.6",
         "@storybook/addon-essentials": "6.3.2",
         "@storybook/addon-links": "6.3.6",
         "@storybook/builder-webpack5": "6.3.2",
