@@ -18,6 +18,7 @@
       "contributions": [
         "projectManagement",
         "code",
+        "bug",
         "review"
       ]
     },
