@@ -8,7 +8,5 @@ exclude_patterns:
 plugins:
     eslint:
         enabled: true
-            config:
-                config: .eslintrc
     stylelint:
         enabled: true
