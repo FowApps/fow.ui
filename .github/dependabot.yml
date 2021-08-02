@@ -1,0 +1,11 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase-if-necessary
+    commit-message:
+      prefix: "⬆️ "
