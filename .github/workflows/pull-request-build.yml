@@ -16,5 +16,3 @@ jobs:
         run: yarn run pre-commit-lint
       - name: Build
         run: yarn run build
-      - name: Test
-        run: yarn run test
