@@ -9,7 +9,7 @@ export default {
     argTypes: {},
 } as Meta;
 
-const arr = [
+const menuItems = [
     {
         name: 'Item1',
         icon: 'X',
@@ -42,7 +42,7 @@ const arr = [
         children: [
             {
                 name: 'Child41',
-                url: '#child41',
+                url: 'www.google.com',
             },
             {
                 name: 'Child42',
@@ -50,6 +50,7 @@ const arr = [
             },
             {
                 name: 'Child43',
+                icon: 'chevron-up',
                 children: [
                     {
                         name: 'Child431',
@@ -70,7 +71,7 @@ const arr = [
 ];
 
 // @ts-ignore
-const Template: Story<MenuProps> = () => <div>{Menu(arr)}</div>;
+const Template: Story<MenuProps> = () => <div>{Menu(menuItems)}</div>;
 
 export const Default = Template.bind({});
 Default.args = {};
