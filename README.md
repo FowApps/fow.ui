@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/FowApps/fow.ui.v2/raw/master/.github/fow.opensource.png" style="max-width:100%;" height="80" />
+</p>
+
 # fow.ui.v2
 
 [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://fowapps.github.io/fow.ui.v2/)
@@ -5,7 +9,9 @@
 [![npm](https://img.shields.io/badge/npm-0.0.10-%9f9f9f)](https://npmjs.com/package/@fowapps/fow-ui) [![Maintainability](https://api.codeclimate.com/v1/badges/6a470e24185e2e0dcff2/maintainability)](https://codeclimate.com/repos/60ec17c6ac80f5016200adf8/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/6a470e24185e2e0dcff2/test_coverage)](https://codeclimate.com/repos/60ec17c6ac80f5016200adf8/test_coverage)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors ✨
