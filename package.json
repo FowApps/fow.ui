@@ -101,7 +101,7 @@
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-test-renderer": "^17.0.2",
-        "styled-components": "5.2.3",
+        "styled-components": "5.3.0",
         "stylelint": "^13.13.1",
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-recommended": "^5.0.0",
@@ -121,7 +121,7 @@
         "process": "^0.11.10",
         "react": "17.0.2",
         "react-dom": "17.0.2",
-        "styled-components": "5.2.3"
+        "styled-components": "5.3.0"
     },
     "resolutions": {
         "webpack": "5.48.0"
