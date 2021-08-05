@@ -5,10 +5,10 @@ checks:
             threshold: 100
     identical-code:
         config:
-            threshold: 10
+            threshold: 25
     similar-code:
         config:
-            threshold: 25
+            threshold: 75
 exclude_patterns:
     - 'src/**/*.stories.{js,jsx,mjs,ts,tsx}'
 plugins:
