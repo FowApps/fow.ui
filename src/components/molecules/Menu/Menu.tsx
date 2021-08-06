@@ -10,6 +10,10 @@ import {
     StyledNavItem,
     StyledLinkItem,
     StyledItemGroup,
+    StyledItem,
+    StyledName,
+    StyledItemIconWrapper,
+    StyledLinkItemNameWrapper,
     Content,
 } from './styles';
 
@@ -36,24 +40,33 @@ const Item = ({
     isOpen,
 }: ItemProps): JSX.Element => (
     <StyledItemGroup onClick={onClick} key={idx}>
-        <div className="nav-link">
-            {icon && (
-                <div className="icon">
-                    <Icon icon={icon} />
-                </div>
+        <StyledItem>
+            <StyledName>
+                {icon && (
+                    <StyledItemIconWrapper>
+                        <Icon icon={icon} />
+                    </StyledItemIconWrapper>
+                )}
+                <span>{name}</span>
+            </StyledName>
+            {children && (
+                <span>
+                    <Icon icon="chevron-right" />
+                </span>
             )}
-            <span>{name}</span>
-        </div>
+        </StyledItem>
         <AnimatePresence>
             {isOpen && (
                 <Content
-                    className={`nav-submenu ${isOpen} ? 'open' : ''}`}
                     key="content"
                     initial="collapsed"
                     animate="open"
                     exit="collapsed"
                     variants={{
-                        open: { opacity: 1, height: 'auto' },
+                        open: {
+                            opacity: 1,
+                            height: 'auto',
+                        },
                         collapsed: { opacity: 0, height: 0 },
                     }}
                     transition={{
@@ -92,12 +105,14 @@ const Menu = (children: MenuProps): JSX.Element => {
                         onClick={(e) => handleClick(e, child?.name)}
                         key={i}>
                         <StyledNavLink href={child?.url}>
-                            <StyledIconWrapper>
-                                {child?.icon ? (
-                                    <Icon icon={child?.icon} />
-                                ) : null}
-                            </StyledIconWrapper>
-                            <span>{child?.name}</span>
+                            <StyledLinkItemNameWrapper>
+                                {child?.icon && (
+                                    <StyledIconWrapper>
+                                        <Icon icon={child?.icon} />
+                                    </StyledIconWrapper>
+                                )}
+                                <span>{child?.name}</span>
+                            </StyledLinkItemNameWrapper>
                         </StyledNavLink>
                     </StyledLinkItem>
                 </>
@@ -108,7 +123,7 @@ const Menu = (children: MenuProps): JSX.Element => {
                 {category}
                 <Item
                     name={child?.name}
-                    icon={child?.name}
+                    icon={child?.icon}
                     idx={i}
                     onClick={(e) => handleClick(e, child?.name)}
                     isOpen={itemState[child?.name]}>

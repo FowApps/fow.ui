@@ -12,16 +12,16 @@ export default {
 const menuItems = [
     {
         name: 'Item1',
-        icon: 'X',
+        icon: 'cloud',
         url: '#item1',
     },
     {
         name: 'Item2',
-        icon: 'X',
         url: '#item2',
     },
     {
         name: 'Item3',
+        icon: 'cloud',
         children: [
             {
                 name: 'Child31',
@@ -50,7 +50,6 @@ const menuItems = [
             },
             {
                 name: 'Child43',
-                icon: 'chevron-up',
                 children: [
                     {
                         name: 'Child431',
