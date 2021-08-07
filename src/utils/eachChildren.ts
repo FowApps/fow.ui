@@ -4,6 +4,7 @@ export type Options = Partial<{
     maxDepth: number;
     visit: 'breadthFirst' | 'depthFirst';
 }>;
+
 type MapReturn<T, C> = C extends null | undefined
     ? C
     : Array<Exclude<T, boolean | null | undefined>>;
@@ -28,7 +29,7 @@ function _map<T, C extends ReactNode>(
         }
 
         return fn(child);
-    });
+    }) as MapReturn<T, C>;
 }
 
 /**
