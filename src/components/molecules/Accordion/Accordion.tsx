@@ -29,6 +29,10 @@ export interface AccordionItemProps {
      */
     label: string;
     /**
+     * extra content for end of trigger
+     */
+    extra?: string | React.ReactNode | React.ReactNode[];
+    /**
      * icon of trigger
      */
     icon?: React.ReactNode;
@@ -44,6 +48,7 @@ export interface AccordionItemProps {
 const Item = ({
     icon,
     label,
+    extra,
     isCollapsed,
     handleClick,
     children,
@@ -54,11 +59,14 @@ const Item = ({
                 {icon}
                 <Heading as="h6">{label}</Heading>
             </Space>
-            {isCollapsed ? (
-                <Icon icon="chevron-down" />
-            ) : (
-                <Icon icon="chevron-up" />
-            )}
+            <Space>
+                <div>{extra}</div>
+                {isCollapsed ? (
+                    <Icon icon="chevron-down" />
+                ) : (
+                    <Icon icon="chevron-up" />
+                )}
+            </Space>
         </Trigger>
         <AnimatePresence>
             {!isCollapsed && (
@@ -100,7 +108,7 @@ const Accordion = ({
     };
 
     const items = React.Children.map(children, (child: any) =>
-        child?.type?.name === 'Item' ? child : null,
+        child?.type?.displayName === 'Item' ? child : null,
     );
 
     return (
@@ -111,6 +119,7 @@ const Accordion = ({
                     key={`accordion-item-${props.index}`}
                     isCollapsed={bindIndex !== props.index}
                     label={props.label}
+                    extra={props.extra}
                     handleClick={() => changeItem(props.index)}
                     index={props.index}>
                     {props.children}
@@ -119,6 +128,8 @@ const Accordion = ({
         </Wrapper>
     );
 };
+Accordion.displayName = 'Accordion';
+Item.displayName = 'Item';
 
 Accordion.Item = Item;
 

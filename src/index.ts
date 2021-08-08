@@ -19,6 +19,7 @@ export { default as BoxIcon } from './components/atoms/BoxIcon';
 export { default as Checkbox } from './components/atoms/Checkbox';
 export { default as Space } from './components/atoms/Space';
 export { default as Chip } from './components/atoms/Chip';
+export { default as Label } from './components/atoms/Label';
 export { default as Divider } from './components/atoms/Divider';
 export { default as Card } from './components/atoms/Card';
 export { default as Loader } from './components/atoms/Loader';
@@ -47,6 +48,7 @@ export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
 export { default as Alert } from './components/molecules/Alert';
 export { default as Carousel } from './components/molecules/Carousel';
+export { default as Message } from './components/molecules/Message';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
