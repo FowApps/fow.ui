@@ -11,21 +11,33 @@ export interface LabelProps {
      */
     variant?: 'outlined' | 'filled' | 'ghost';
     /**
-     * label marketplace
+     * label shape
      */
-    marketplace?: boolean;
+    shape?: 'flat' | 'rounded';
+    /**
+     * label shape
+     */
+    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    /**
+     * label size
+     */
+    size?: 'small' | 'medium' | 'large';
     text: React.ReactNode | 'string';
 }
 
 const Label = ({
-    marketplace = false,
+    shape = 'rounded',
+    size = 'medium',
+    textTransfrom = 'capitalize',
     variant = 'filled',
     color = 'grey',
     text,
     ...rest
 }: LabelProps): JSX.Element => (
     <StyledLabel
-        marketplace={marketplace}
+        shape={shape}
+        size={size}
+        textTransfrom={textTransfrom}
         variant={variant}
         color={color}
         {...rest}>
