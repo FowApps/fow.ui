@@ -26,7 +26,7 @@ const Template: Story<CarouselProps> = (args) => (
         <div>
             <img
                 style={{ margin: 'auto' }}
-                src={'https://via.placeholder.com/150x100'}
+                src={'https://via.placeholder.com/250x100'}
             />
         </div>
         <div>

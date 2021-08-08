@@ -37,6 +37,7 @@
         "react-select": "^4.3.1",
         "react-select-async-paginate": "^0.5.3",
         "react-slick": "^0.28.1",
+        "slick-carousel": "^1.8.1",
         "uuid": "^8.3.2"
     },
     "devDependencies": {
