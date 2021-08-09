@@ -3,10 +3,16 @@ checks:
     method-lines:
         config:
             threshold: 100
+    identical-code:
+        config:
+            threshold: 25
+    similar-code:
+        config:
+            threshold: 75
 exclude_patterns:
     - 'src/**/*.stories.{js,jsx,mjs,ts,tsx}'
 plugins:
     eslint:
         enabled: true
     stylelint:
-        enabled: true
+        enabled: false
