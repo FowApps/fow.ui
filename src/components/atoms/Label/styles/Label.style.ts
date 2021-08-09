@@ -14,8 +14,6 @@ type LabelProps = {
 export const StyledLabel = styled.div<LabelProps>`
     display: inline-flex;
     align-items: center;
-    padding: ${(props) =>
-        props.shape === 'flat' ? '0.8rem 1.6rem' : '0.2rem 0.8rem'};
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
