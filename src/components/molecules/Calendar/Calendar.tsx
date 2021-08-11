@@ -17,16 +17,50 @@ import { Wrapper, EventWrapper } from './styles';
 import { theme } from '../../../theme/theme';
 
 export interface CalendarProps {
+    /**
+     * invoke when calendar date change(prev, next, today, views)
+     */
     onDateChange?: (startDate?: Date, endDate?: Date) => void;
+    /**
+     * handle click event item
+     */
     onEventClick?: (event: any) => void;
+    /**
+     * handle change event item(drag, drop, resize event)
+     */
     onEventChange?: (event: any) => Promise<void>;
+    /**
+     * ui button text
+     */
     buttonText?: ButtonTextCompoundInput;
+    /**
+     * all day slot text
+     */
     allDayText?: string;
+    /**
+     * global loading
+     */
     isLoading?: boolean;
+    /**
+     * global loading text
+     */
     loadingText?: string;
+    /**
+     * show more event button text
+     */
     moreLinkText?: string;
+    /**
+     * locale
+     */
     locale?: string;
+    /**
+     * calendar events
+     */
     events: EventSourceInput;
+    /**
+     * extended prop key for event object, using for find loading event
+     */
+    extendedPropKey?: string;
 }
 
 export interface CalendarState {
@@ -46,6 +80,21 @@ const CALENDAR_VIEW_TYPES = {
 };
 
 class Calendar extends React.Component<CalendarProps, CalendarState> {
+    static defaultProps = {
+        extendedPropKey: 'event',
+        locale: 'en',
+        moreLinkText: 'More',
+        loadingText: 'Loading',
+        allDayText: 'All Day',
+        buttonText: {
+            day: 'Day',
+            month: 'Month',
+            week: 'Week',
+            today: 'Today',
+            allDay: 'All Day',
+        },
+    };
+
     calendarRef = createRef<FullCalendar>();
 
     customButtons: { [key: string]: CustomButtonInput } = {
@@ -118,7 +167,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         try {
             this.setState({
                 eventIsLoading: true,
-                changedEventId: event.event.extendedProps.activity.id,
+                changedEventId:
+                    event.event.extendedProps?.[this.props.extendedPropKey!]
+                        ?.id,
             });
             await this.props.onEventChange?.(event);
         } catch (error) {
@@ -138,14 +189,14 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             <Loader
                 isLoading={
                     this.state.eventIsLoading &&
-                    event.extendedProps.activity.id ===
+                    event.extendedProps?.[this.props.extendedPropKey!]?.id ===
                         this.state.changedEventId
                 }>
                 <EventWrapper
                     isLoading={
                         this.state.eventIsLoading &&
-                        event.extendedProps.activity.id ===
-                            this.state.changedEventId
+                        event.extendedProps?.[this.props.extendedPropKey!]
+                            ?.id === this.state.changedEventId
                     }
                     title={event.title}>
                     <Space inline={false}>
