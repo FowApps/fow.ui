@@ -55,7 +55,7 @@
         "@storybook/addon-actions": "6.3.7",
         "@storybook/addon-essentials": "6.3.7",
         "@storybook/addon-links": "6.3.7",
-        "@storybook/builder-webpack5": "6.3.6",
+        "@storybook/builder-webpack5": "6.3.7",
         "@storybook/manager-webpack5": "^6.3.2",
         "@storybook/react": "6.3.7",
         "@storybook/storybook-deployer": "^2.8.10",
