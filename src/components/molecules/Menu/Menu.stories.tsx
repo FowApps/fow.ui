@@ -20,7 +20,7 @@ const menuItems = [
         url: '#item2',
     },
     {
-        name: 'Item3',
+        name: `${<div>savas</div>}`,
         icon: 'cloud',
         children: [
             {

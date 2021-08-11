@@ -27,7 +27,7 @@ export { default as Button } from './components/atoms/Button';
 export { default as Select } from './components/atoms/Select/StaticSelect';
 export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
 export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
-export { default as Form } from './components/atoms/Form';
+export { default as Dropdown } from './components/atoms/Dropdown';
 
 export const Typography = {
     Heading,
@@ -48,6 +48,7 @@ export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
 export { default as Alert } from './components/molecules/Alert';
 export { default as Message } from './components/molecules/Message';
+export { default as Menu } from './components/molecules/Menu';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
