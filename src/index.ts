@@ -49,6 +49,7 @@ export { default as Timeline } from './components/molecules/Timeline';
 export { default as Alert } from './components/molecules/Alert';
 export { default as Carousel } from './components/molecules/Carousel';
 export { default as Message } from './components/molecules/Message';
+export { default as Calendar } from './components/molecules/Calendar';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
