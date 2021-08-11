@@ -1,6 +1,7 @@
 import React, { createRef } from 'react';
 import FullCalendar, {
     ButtonTextCompoundInput,
+    CalendarApi,
     CustomButtonInput,
     EventSourceInput,
 } from '@fullcalendar/react';
@@ -138,22 +139,22 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     handleNext = () => {
         const api = this.calendarRef.current?.getApi();
         api?.next();
-        const startDate = api?.view.currentStart;
-        const endDate = api?.view.currentEnd;
-        this.props?.onDateChange?.(startDate, endDate);
+        this.handleDateChange(api);
     };
 
     handlePrev = () => {
         const api = this.calendarRef.current?.getApi();
         api?.prev();
-        const startDate = api?.view.currentStart;
-        const endDate = api?.view.currentEnd;
-        this.props?.onDateChange?.(startDate, endDate);
+        this.handleDateChange(api);
     };
 
     handleToday = () => {
         const api = this.calendarRef.current?.getApi();
         api?.today();
+        this.handleDateChange(api);
+    };
+
+    handleDateChange = (api?: CalendarApi) => {
         const startDate = api?.view.currentStart;
         const endDate = api?.view.currentEnd;
         this.props?.onDateChange?.(startDate, endDate);
@@ -184,20 +185,16 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         this.setState({ viewType: view.type });
     };
 
+    isLoading = (event: any) =>
+        this.state.eventIsLoading &&
+        event.extendedProps?.[this.props.extendedPropKey!]?.id ===
+            this.state.changedEventId;
+
     renderEvent = ({ event }: any) =>
         this.state.viewType === CALENDAR_VIEW_TYPES.MONTH ? (
-            <Loader
-                isLoading={
-                    this.state.eventIsLoading &&
-                    event.extendedProps?.[this.props.extendedPropKey!]?.id ===
-                        this.state.changedEventId
-                }>
+            <Loader isLoading={this.isLoading(event)}>
                 <EventWrapper
-                    isLoading={
-                        this.state.eventIsLoading &&
-                        event.extendedProps?.[this.props.extendedPropKey!]
-                            ?.id === this.state.changedEventId
-                    }
+                    isLoading={this.isLoading(event)}
                     title={event.title}>
                     <Space inline={false}>
                         <Icon
