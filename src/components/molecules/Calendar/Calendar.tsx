@@ -174,9 +174,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             });
             await this.props.onEventChange?.(event);
         } catch (error) {
-            this.setState({ eventIsLoading: false, changedEventId: '' });
+            this.resetEventState();
         } finally {
-            this.setState({ eventIsLoading: false, changedEventId: '' });
+            this.resetEventState();
         }
     };
 
@@ -189,6 +189,10 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         this.state.eventIsLoading &&
         event.extendedProps?.[this.props.extendedPropKey!]?.id ===
             this.state.changedEventId;
+
+    resetEventState = () => {
+        this.setState({ eventIsLoading: false, changedEventId: '' });
+    };
 
     renderEvent = ({ event }: any) =>
         this.state.viewType === CALENDAR_VIEW_TYPES.MONTH ? (
