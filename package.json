@@ -30,6 +30,10 @@
     "sideEffects": false,
     "dependencies": {
         "@babel/runtime": "^7.14.0",
+        "@fullcalendar/daygrid": "^5.9.0",
+        "@fullcalendar/interaction": "^5.9.0",
+        "@fullcalendar/react": "^5.9.0",
+        "@fullcalendar/timegrid": "^5.9.0",
         "@types/react": "^17.0.13",
         "polished": "4.1.3",
         "react-hook-form": "^7.11.1",
@@ -101,6 +105,7 @@
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-test-renderer": "^17.0.2",
+        "style-loader": "^3.2.1",
         "styled-components": "5.3.0",
         "stylelint": "^13.13.1",
         "stylelint-config-rational-order": "^0.1.2",

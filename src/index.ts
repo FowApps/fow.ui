@@ -48,6 +48,7 @@ export { default as Accordion } from './components/molecules/Accordion';
 export { default as Timeline } from './components/molecules/Timeline';
 export { default as Alert } from './components/molecules/Alert';
 export { default as Message } from './components/molecules/Message';
+export { default as Calendar } from './components/molecules/Calendar';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
