@@ -14,13 +14,14 @@ type LabelProps = {
 export const StyledLabel = styled.div<LabelProps>`
     display: inline-flex;
     align-items: center;
+    padding-right: 1.1rem;
+    padding-left: 1.1rem;
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
     font-style: normal;
     line-height: 2rem;
     border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.6)}rem;
-
     ${(props) => setVariant(props.color, props.variant)}
     ${(props) => setSize(props.size)}
     ${(props) => setTextTransform(props.textTransfrom)}
