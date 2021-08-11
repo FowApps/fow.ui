@@ -1,0 +1,59 @@
+{
+  "projectName": "@fowapps/fow-ui",
+  "projectOwner": "fowapps",
+  "repoType": "github",
+  "repoHost": "https://github.com/FowApps/fow.ui.v2",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "gitmoji",
+  "contributors": [
+    {
+      "login": "sercanuste",
+      "name": "Sercan Üste",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5119317?v=4",
+      "profile": "https://sercanuste.com/",
+      "contributions": [
+        "projectManagement",
+        "code",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "grkmtsn",
+      "name": "Görkem Tosun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23257390?v=4",
+      "profile": "https://github.com/grkmtsn",
+      "contributions": [
+        "code",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "savasozcan",
+      "name": "Savaş Özcan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40321541?v=4",
+      "profile": "https://github.com/savasozcan",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "mcagataykaban",
+      "name": "Cagatay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52887078?v=4",
+      "profile": "https://github.com/mcagataykaban",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": false
+}

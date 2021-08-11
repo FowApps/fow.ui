@@ -53,7 +53,7 @@ WithAsyncPaginate.args = {
     isMulti: false,
     isSearchable: false,
     isDisabled: false,
-    isClearable: false,
+    isClearable: true,
     onChange: (value) => {
         console.log(value);
     },
