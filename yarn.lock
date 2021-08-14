@@ -2748,8 +2748,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.13":
-  version "17.0.17"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.17.tgz#1772d3d5425128e0635a716f49ef57c2955df055"
+  version "17.0.18"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.18.tgz#4109cbbd901be9582e5e39e3d77acd7b66bb7fbe"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
