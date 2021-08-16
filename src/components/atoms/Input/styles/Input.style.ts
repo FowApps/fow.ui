@@ -56,7 +56,6 @@ export const StyledInput = styled.input<InputProps>`
     color: ${(props) => props.theme.fow.colors.text.primary};
     font-size: 1.4rem;
     line-height: 2.4rem;
-    letter-spacing: 0.1px;
     border: 1px solid
         ${(props) =>
             props.hasError
