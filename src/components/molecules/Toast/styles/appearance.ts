@@ -10,7 +10,10 @@ const setAppearance = (
                     props.theme.fow.colors.grey.darker};
             `;
         default:
-            return ``;
+            return css`
+                background-color: ${(props) =>
+                    props.theme.fow.colors.common.white};
+            `;
     }
 };
 

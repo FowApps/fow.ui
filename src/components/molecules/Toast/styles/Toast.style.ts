@@ -13,6 +13,7 @@ export const ToastContainer = styled.div`
     position: absolute;
     top: 2rem;
     right: 2rem;
+    z-index: 1001;
 `;
 
 export const ToastWrapper = styled.div<ToastWrapperType>`
@@ -23,6 +24,7 @@ export const ToastWrapper = styled.div<ToastWrapperType>`
     min-width: 28.5rem;
     max-width: 28.5rem;
     padding: ${(props) => props.theme.fow.spacing.small};
+    word-break: break-word;
     border-radius: 8px;
     box-shadow: ${(props) => props.theme.fow.shadows.z8};
     ${(props) => setAppearance(props.appearance)}
