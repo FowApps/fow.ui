@@ -13,23 +13,32 @@ type LabelProps = {
     required: boolean;
 };
 
-const commonIconStyles = css`
+type IconWrapperProps = {
+    position: 'prefix' | 'suffix';
+};
+
+export const IconWrapper = styled.div<IconWrapperProps>`
     position: absolute;
     top: ${(props) => props.theme.fow.spacing.small};
     font-size: 1.4rem;
     transition: color 0.3s ease;
-`;
 
-export const PrefixIconWrapper = styled.div`
-    ${commonIconStyles}
-    left: ${(props) => props.theme.fow.spacing.small};
-    margin-right: ${(props) => props.theme.fow.spacing.small};
-`;
-
-export const SuffixIconWrapper = styled.div`
-    ${commonIconStyles}
-    right: ${(props) => props.theme.fow.spacing.small};
-    margin-left: ${(props) => props.theme.fow.spacing.small};
+    ${(props) => {
+        switch (props.position) {
+            case 'prefix':
+                return css`
+                    left: ${props.theme.fow.spacing.small};
+                    margin-right: ${props.theme.fow.spacing.small};
+                `;
+            case 'suffix':
+                return css`
+                    right: ${props.theme.fow.spacing.small};
+                    margin-left: ${props.theme.fow.spacing.small};
+                `;
+            default:
+                return '';
+        }
+    }}
 `;
 
 export const StyledInput = styled.input<InputProps>`
@@ -57,7 +66,7 @@ export const StyledInput = styled.input<InputProps>`
     outline: none;
     transition: all 0.3s ease;
 
-    ~ ${PrefixIconWrapper}, ~ ${SuffixIconWrapper} {
+    ~ ${IconWrapper} {
         color: ${(props) => props.theme.fow.colors.text.disabled};
     }
 
@@ -72,7 +81,7 @@ export const StyledInput = styled.input<InputProps>`
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.grey.darker};
 
-        ~ ${PrefixIconWrapper}, ~ ${SuffixIconWrapper} {
+        ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.text.primary};
         }
     }
@@ -84,7 +93,7 @@ export const StyledInput = styled.input<InputProps>`
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.primary.main};
 
-        ~ ${PrefixIconWrapper}, ~ ${SuffixIconWrapper} {
+        ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.primary.main};
         }
     }

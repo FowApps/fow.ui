@@ -8,8 +8,7 @@ import {
     InputWrapper,
     Message,
     Label,
-    PrefixIconWrapper,
-    SuffixIconWrapper,
+    IconWrapper,
 } from './styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -68,14 +67,14 @@ const Input = ({
                     {...rest}
                 />
                 {prefixIcon && (
-                    <PrefixIconWrapper>
+                    <IconWrapper position="prefix">
                         <Icon icon={prefixIcon} />
-                    </PrefixIconWrapper>
+                    </IconWrapper>
                 )}
                 {suffixIcon && (
-                    <SuffixIconWrapper>
+                    <IconWrapper position="suffix">
                         <Icon icon={suffixIcon} />
-                    </SuffixIconWrapper>
+                    </IconWrapper>
                 )}
                 {!!error && <Message>{error?.message}</Message>}
             </InputWrapper>
