@@ -74,7 +74,7 @@ export const StyledInput = styled.input<InputProps>`
         color: ${(props) => props.theme.fow.colors.text.disabled};
     }
 
-    :hover {
+    :hover:not(:disabled) {
         border: 1px solid
             ${(props) =>
                 props.hasError
@@ -86,7 +86,7 @@ export const StyledInput = styled.input<InputProps>`
         }
     }
 
-    :focus-visible {
+    :focus-visible:not(:disabled) {
         border: 1px solid
             ${(props) =>
                 props.hasError
@@ -96,6 +96,13 @@ export const StyledInput = styled.input<InputProps>`
         ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.primary.main};
         }
+    }
+
+    :disabled {
+        color: ${(props) => props.theme.fow.colors.text.disabled};
+        border: 1px solid
+            ${(props) => props.theme.fow.colors.grey.transparent24};
+        cursor: not-allowed;
     }
 `;
 
