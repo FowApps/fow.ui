@@ -30,7 +30,7 @@ const Form = ({
     // add 'control' prop each children field
     const fn = (el: any) => {
         let cloneEl = el;
-        if (el?.props?.name && el?.type?.name === 'Field') {
+        if (el?.props?.name && el?.type?.displayName === 'Field') {
             cloneEl = React.cloneElement(el, {
                 ...el.props,
                 key: el.props.name,
@@ -71,6 +71,8 @@ const Field = ({
         }
     />
 );
+
+Field.displayName = 'Field';
 
 Form.Field = Field;
 
