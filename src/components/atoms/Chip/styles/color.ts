@@ -1,7 +1,14 @@
 import { css } from 'styled-components';
 
 type TypeTypes = 'filled' | 'outlined';
-type ColorTypes = 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+type ColorTypes =
+    | 'grey'
+    | 'darkGrey'
+    | 'primary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'error';
 
 export const setColor = (type: TypeTypes, color: ColorTypes) => {
     switch (color) {
@@ -11,6 +18,20 @@ export const setColor = (type: TypeTypes, color: ColorTypes) => {
                     color: ${(props) => props.theme.fow.colors.text.primary};
                     background-color: ${(props) =>
                         props.theme.fow.colors.grey.transparent16};
+                `;
+            }
+            return css`
+                color: ${(props) => props.theme.fow.colors.text.primary};
+                background-color: transparent;
+                border: 1px solid
+                    ${(props) => props.theme.fow.colors.grey.transparent32};
+            `;
+        case 'darkGrey':
+            if (type === 'filled') {
+                return css`
+                    color: ${(props) => props.theme.fow.colors.text.primary};
+                    background-color: ${(props) =>
+                        props.theme.fow.colors.grey.light};
                 `;
             }
             return css`

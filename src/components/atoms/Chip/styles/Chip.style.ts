@@ -5,7 +5,14 @@ import { setColor } from './color';
 type ChipProps = {
     size: 'small' | 'medium';
     type: 'filled' | 'outlined';
-    color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+    color:
+        | 'grey'
+        | 'darkGrey'
+        | 'primary'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'error';
 };
 
 export const StyledChip = styled.span<ChipProps>`

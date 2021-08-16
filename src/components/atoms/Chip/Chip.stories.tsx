@@ -22,7 +22,15 @@ export default {
             control: {
                 type: 'select',
             },
-            options: ['grey', 'primary', 'info', 'success', 'warning', 'error'],
+            options: [
+                'grey',
+                'darkGrey',
+                'primary',
+                'info',
+                'success',
+                'warning',
+                'error',
+            ],
         },
     },
 } as Meta;
