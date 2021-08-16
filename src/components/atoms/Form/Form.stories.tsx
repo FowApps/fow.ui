@@ -8,6 +8,7 @@ import Col from '../Col';
 import StaticSelect from '../Select/StaticSelect';
 import AsyncSelect from '../Select/AsyncSelect';
 import Checkbox from '../Checkbox';
+import Input from '../Input';
 
 export default {
     title: 'Atoms/Form',
@@ -17,7 +18,7 @@ export default {
 const Template: Story<FormProps> = () => {
     const defaultValues = {
         car: 'volvo',
-        isAgreed: true,
+        name: 'Fow',
     };
 
     const fruits = [
@@ -95,12 +96,16 @@ const Template: Story<FormProps> = () => {
                     </Form.Field>
                 </Col>
                 <Col xs={6}>
-                    <Form.Field label="I Agree" name="isAgreed">
-                        <Checkbox
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                        />
+                    <Form.Field
+                        label="Name"
+                        name="name"
+                        rules={{
+                            required: {
+                                value: true,
+                                message: 'Required Field',
+                            },
+                        }}>
+                        <Input placeholder="Name" prefixIcon="paper-plane"/>
                     </Form.Field>
                 </Col>
             </Row>
