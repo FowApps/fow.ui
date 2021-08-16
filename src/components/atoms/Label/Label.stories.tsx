@@ -18,6 +18,18 @@ export default {
             },
             options: ['outlined', 'filled', 'ghost'],
         },
+        shape: {
+            control: {
+                type: 'select',
+            },
+            options: ['flat', 'rounded'],
+        },
+        size: {
+            control: {
+                type: 'select',
+            },
+            options: ['small', 'medium', 'large'],
+        },
     },
 } as Meta;
 
@@ -26,6 +38,8 @@ const Template: Story<LabelProps> = (args) => <Label {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     variant: 'filled',
+    size: 'medium',
+    shape: 'rounded',
     color: 'grey',
     text: 'Lorem Ipsum Dolor',
 };
