@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import setVariant from './variant';
 import { setSize } from './size';
 import { setTextTransform } from '../../../../theme/textTransform';
-import { theme } from '../../../../theme/theme';
 
 type LabelProps = {
     color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
@@ -15,8 +14,8 @@ type LabelProps = {
 export const StyledLabel = styled.div<LabelProps>`
     display: inline-flex;
     align-items: center;
-    padding-right: ${theme.fow.spacing.small};
-    padding-left: ${theme.fow.spacing.small};
+    padding-right: ${(props) => props.theme.fow.spacing.small};
+    padding-left: ${(props) => props.theme.fow.spacing.small};
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
