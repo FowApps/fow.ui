@@ -11,6 +11,7 @@ checks:
             threshold: 75
 exclude_patterns:
     - 'src/**/*.stories.{js,jsx,mjs,ts,tsx}'
+    - '**.d.ts'
 plugins:
     eslint:
         enabled: true
