@@ -8,7 +8,9 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
     switch (variant) {
         case 'text':
             return css`
-                color: ${theme.fow.colors[color].main};
+                color: ${color === 'grey'
+                    ? theme.fow.colors.grey.darker
+                    : theme.fow.colors[color].main};
                 background-color: transparent;
                 border: none !important;
 
@@ -27,7 +29,9 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
             `;
         case 'outlined':
             return css`
-                color: ${theme.fow.colors[color].main};
+                color: ${color === 'grey'
+                    ? theme.fow.colors.grey.darker
+                    : theme.fow.colors[color].main};
                 background-color: ${theme.fow.colors.common.white};
                 border: 1px solid ${theme.fow.colors[color].transparent48};
 
@@ -49,10 +53,14 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
             `;
         case 'contained':
             return css`
-                color: ${color === 'success' || color === 'warning'
+                color: ${color === 'success' ||
+                color === 'warning' ||
+                color === 'grey'
                     ? theme.fow.colors.grey.darker
                     : theme.fow.colors.common.white};
-                background-color: ${theme.fow.colors[color].main};
+                background-color: ${color === 'grey'
+                    ? theme.fow.colors.grey.lighter
+                    : theme.fow.colors[color].main};
                 border: none;
                 box-shadow: 0px 8px 16px
                     ${theme.fow.colors[color].transparent24};
