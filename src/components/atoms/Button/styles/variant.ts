@@ -1,7 +1,10 @@
 import { css } from 'styled-components';
 import { theme } from '../../../../theme/theme';
 
-const setVariant = (color: string, variant: string): any => {
+type VariantTypes = 'text' | 'outlined' | 'contained';
+type ColorTypes = 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+
+const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
     switch (variant) {
         case 'text':
             return css`
@@ -46,17 +49,21 @@ const setVariant = (color: string, variant: string): any => {
             `;
         case 'contained':
             return css`
-                color: ${theme.fow.colors.common.white};
+                color: ${color === 'success' || color === 'warning'
+                    ? theme.fow.colors.grey.darker
+                    : theme.fow.colors.common.white};
                 background-color: ${theme.fow.colors[color].main};
                 border: none;
                 box-shadow: 0px 8px 16px
                     ${theme.fow.colors[color].transparent24};
 
                 &:hover {
+                    color: ${theme.fow.colors.common.white};
                     background-color: ${theme.fow.colors[color].dark};
                 }
 
                 &:active {
+                    color: ${theme.fow.colors.common.white};
                     background-color: ${theme.fow.colors[color].darker};
                 }
 
