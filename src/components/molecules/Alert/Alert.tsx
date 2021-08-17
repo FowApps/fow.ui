@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { DefaultTheme, withTheme } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 
 import Space from '../../atoms/Space';
 import Icon from '../../atoms/Icon';
-
-import { theme } from '../../../theme/theme';
 
 import {
     StyledAlert,
@@ -35,6 +34,7 @@ export interface AlertProps {
      * invoke when closing alert
      */
     onClose: () => void;
+    theme: DefaultTheme;
 }
 
 const Alert = ({
@@ -43,6 +43,7 @@ const Alert = ({
     description,
     closable = false,
     onClose,
+    theme,
 }: AlertProps): JSX.Element => {
     const [closed, setClosed] = useState(false);
     const handleClose = () => {
@@ -116,4 +117,4 @@ const Alert = ({
     );
 };
 
-export default Alert;
+export default withTheme(Alert);
