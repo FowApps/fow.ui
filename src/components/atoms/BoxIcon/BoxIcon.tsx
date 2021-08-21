@@ -1,7 +1,7 @@
 import React from 'react';
+import { DefaultTheme, withTheme } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
-import { theme } from '../../../theme/theme';
 
 import { Wrapper } from './styles';
 
@@ -14,12 +14,14 @@ export interface BoxIconProps {
      * name of icon
      */
     icon: FontAwesomeIconProps['icon'];
+    theme: DefaultTheme;
     children?: React.ReactNode;
 }
 
 const BoxIcon = ({
     color = 'info',
     icon,
+    theme,
     ...rest
 }: BoxIconProps): JSX.Element => (
     <Wrapper color={color} {...rest}>
@@ -27,4 +29,4 @@ const BoxIcon = ({
     </Wrapper>
 );
 
-export default BoxIcon;
+export default withTheme(BoxIcon);
