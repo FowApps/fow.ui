@@ -1,4 +1,5 @@
 import React, { forwardRef, RefObject, useState } from 'react';
+import { withTheme } from 'styled-components';
 import { AsyncPaginate } from 'react-select-async-paginate';
 
 import Space from '../Space';
@@ -73,6 +74,7 @@ const AsyncPaginateSelect = (
         label,
         required,
         initialPage = 0,
+        theme,
         ...rest
     }: AsyncPaginateSelectProps,
     ref: RefObject<any>,
@@ -129,13 +131,15 @@ const AsyncPaginateSelect = (
                     borderRadius: 8,
                     colors: {
                         ...defaultTheme.colors,
-                        ...themeColors,
+                        ...themeColors(theme),
                     },
                 })}
                 styles={{
                     control: (styles, { isFocused }) => ({
                         ...styles,
-                        ...{ ...renderControlStyles(isFocused, !!error) },
+                        ...{
+                            ...renderControlStyles(isFocused, !!error, theme),
+                        },
                     }),
                     option: (styles) => ({
                         ...styles,
@@ -173,4 +177,4 @@ const AsyncPaginateSelect = (
     );
 };
 
-export default forwardRef(AsyncPaginateSelect);
+export default withTheme(forwardRef(AsyncPaginateSelect));

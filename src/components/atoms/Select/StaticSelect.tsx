@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { forwardRef, RefObject, useState, useEffect } from 'react';
+import { DefaultTheme, withTheme } from 'styled-components';
 import Select from 'react-select';
 import Space from '../Space';
 import Caption from '../Typography/Caption';
@@ -69,6 +70,7 @@ export interface BaseSelectProps {
      * value of select for form api
      */
     value?: boolean;
+    theme: DefaultTheme;
 }
 
 const StaticSelect = (
@@ -87,6 +89,7 @@ const StaticSelect = (
         label,
         required,
         value,
+        theme,
         ...rest
     }: BaseSelectProps,
     ref: RefObject<any>,
@@ -134,13 +137,15 @@ const StaticSelect = (
                     borderRadius: 8,
                     colors: {
                         ...defaultTheme.colors,
-                        ...themeColors,
+                        ...themeColors(theme),
                     },
                 })}
                 styles={{
                     control: (styles, { isFocused }) => ({
                         ...styles,
-                        ...{ ...renderControlStyles(isFocused, !!error) },
+                        ...{
+                            ...renderControlStyles(isFocused, !!error, theme),
+                        },
                     }),
                     option: (styles) => ({
                         ...styles,
@@ -170,4 +175,4 @@ const StaticSelect = (
     );
 };
 
-export default forwardRef(StaticSelect);
+export default withTheme(forwardRef(StaticSelect));

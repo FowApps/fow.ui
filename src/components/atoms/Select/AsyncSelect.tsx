@@ -1,6 +1,7 @@
 /* eslint-disable no-return-await */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { forwardRef, RefObject, useState, useEffect } from 'react';
+import { withTheme } from 'styled-components';
 import Async from 'react-select/async';
 
 import { BaseSelectProps } from './StaticSelect';
@@ -61,6 +62,7 @@ const AsyncSelect = (
         label,
         required,
         value,
+        theme,
         ...rest
     }: AsyncSelectProps,
     ref: RefObject<any>,
@@ -125,13 +127,15 @@ const AsyncSelect = (
                     borderRadius: 8,
                     colors: {
                         ...defaultTheme.colors,
-                        ...themeColors,
+                        ...themeColors(theme),
                     },
                 })}
                 styles={{
                     control: (styles, { isFocused }) => ({
                         ...styles,
-                        ...{ ...renderControlStyles(isFocused, !!error) },
+                        ...{
+                            ...renderControlStyles(isFocused, !!error, theme),
+                        },
                     }),
                     option: (styles) => ({
                         ...styles,
@@ -167,4 +171,4 @@ const AsyncSelect = (
     );
 };
 
-export default forwardRef(AsyncSelect);
+export default withTheme(forwardRef(AsyncSelect));

@@ -1,4 +1,5 @@
 import React, { createRef } from 'react';
+import { DefaultTheme, withTheme } from 'styled-components';
 import FullCalendar, {
     ButtonTextCompoundInput,
     CalendarApi,
@@ -15,7 +16,6 @@ import Space from '../../atoms/Space';
 import Body from '../../atoms/Typography/Body';
 
 import { Wrapper, EventWrapper } from './styles';
-import { theme } from '../../../theme/theme';
 
 export interface CalendarProps {
     /**
@@ -62,6 +62,7 @@ export interface CalendarProps {
      * extended prop key for event object, using for find loading event
      */
     extendedPropKey?: string;
+    theme: DefaultTheme;
 }
 
 export interface CalendarState {
@@ -204,7 +205,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                         <Icon
                             icon="circle"
                             size="xs"
-                            color={theme.fow.colors.primary.main}
+                            color={this.props.theme.fow.colors.primary.main}
                         />
                         <Body level={2}>{event.title}</Body>
                     </Space>
@@ -257,7 +258,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                         eventChange={this.handleEventChange}
                         eventContent={this.renderEvent}
                         dayMaxEvents={3}
-                        eventColor={theme.fow.colors.primary.main}
+                        eventColor={this.props.theme.fow.colors.primary.main}
                         displayEventTime
                         viewDidMount={this.handleChangeView}
                         moreLinkText={this.props.moreLinkText}
@@ -292,4 +293,4 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     }
 }
 
-export default Calendar;
+export default withTheme(Calendar);

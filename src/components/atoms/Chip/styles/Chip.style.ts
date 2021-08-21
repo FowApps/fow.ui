@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { setSize } from './size';
-import { setColor } from './color';
+import { setType } from './type';
 
 type ChipProps = {
     size: 'small' | 'medium';
@@ -18,6 +18,6 @@ export const StyledChip = styled.span<ChipProps>`
     line-height: 2.2rem;
     border-radius: 5rem;
 
-    ${(props) => setColor(props.type, props.color)}
+    ${(props) => setType(props.color, props.type)}
     ${(props) => setSize(props.size)}
 `;
