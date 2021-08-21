@@ -1,18 +1,21 @@
-import styled from 'styled-components';
-import { theme } from '../../../../theme/theme';
+import styled, { DefaultTheme } from 'styled-components';
 import Body from '../../Typography/Body';
 import Caption from '../../Typography/Caption';
 
-export const themeColors = {
+export const themeColors = (theme: DefaultTheme) => ({
     primary25: theme.fow.colors.primary.transparent12,
     primary50: theme.fow.colors.primary.lighter,
     primary75: theme.fow.colors.primary.light,
     primary: theme.fow.colors.primary.main,
     danger: theme.fow.colors.error.main,
     dangerLight: theme.fow.colors.error.light,
-};
+});
 
-export const renderControlStyles = (isFocused: boolean, hasError: boolean) => {
+export const renderControlStyles = (
+    isFocused: boolean,
+    hasError: boolean,
+    theme: DefaultTheme,
+) => {
     const commonStyles = {
         transition: 'all 0.3s ease',
         minHeight: '4rem',
