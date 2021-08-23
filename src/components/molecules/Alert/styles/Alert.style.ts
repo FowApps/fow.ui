@@ -18,12 +18,12 @@ export const StyledAlert = styled(motion.div)<AlertProps>`
     align-items: flex-start;
     justify-content: space-between;
     overflow: hidden;
-    padding-inline: ${(props) => props.theme.fow.spacing.medium};
-    padding-block: ${(props) => props.theme.fow.spacing.xsmall};
-    background-color: ${(props) => props.theme.fow.colors[props.type].lighter};
     border: 1px solid ${(props) => props.theme.fow.colors[props.type].light};
     border-radius: 8px;
+    background-color: ${(props) => props.theme.fow.colors[props.type].lighter};
     transform-origin: top;
+    padding-inline: ${(props) => props.theme.fow.spacing.medium};
+    padding-block: ${(props) => props.theme.fow.spacing.xsmall};
 
     h3 {
         margin-bottom: 0;

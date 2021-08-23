@@ -6,9 +6,9 @@ export const setColor = (color: ColorTypes) => {
     switch (color) {
         case 'grey':
             return css`
-                color: ${(props) => props.theme.fow.colors.grey.darker};
                 background-color: ${(props) =>
                     props.theme.fow.colors.grey.transparent16};
+                color: ${(props) => props.theme.fow.colors.grey.darker};
             `;
         case 'primary':
             return css`
@@ -22,15 +22,15 @@ export const setColor = (color: ColorTypes) => {
             `;
         case 'success':
             return css`
-                color: ${(props) => props.theme.fow.colors.grey.darker};
                 background-color: ${(props) =>
                     props.theme.fow.colors.success.main};
+                color: ${(props) => props.theme.fow.colors.grey.darker};
             `;
         case 'warning':
             return css`
-                color: ${(props) => props.theme.fow.colors.grey.darker};
                 background-color: ${(props) =>
                     props.theme.fow.colors.warning.main};
+                color: ${(props) => props.theme.fow.colors.grey.darker};
             `;
         case 'error':
             return css`

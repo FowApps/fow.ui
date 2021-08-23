@@ -7,11 +7,11 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
     switch (variant) {
         case 'text':
             return css`
+                border: none !important;
+                background-color: transparent;
                 color: ${color === 'grey'
                     ? (props) => props.theme.fow.colors.grey.darker
                     : (props) => props.theme.fow.colors[color].main};
-                background-color: transparent;
-                border: none !important;
 
                 &:hover {
                     background-color: ${(props) =>
@@ -24,26 +24,26 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
                 }
 
                 &:disabled {
+                    background-color: transparent !important;
                     color: ${(props) =>
                         props.theme.fow.colors.grey.transparent48} !important;
-                    background-color: transparent !important;
                 }
             `;
         case 'outlined':
             return css`
+                border: 1px solid
+                    ${(props) => props.theme.fow.colors[color].transparent48};
+                background-color: ${(props) =>
+                    props.theme.fow.colors.common.white};
                 color: ${color === 'grey'
                     ? (props) => props.theme.fow.colors.grey.darker
                     : (props) => props.theme.fow.colors[color].main};
-                background-color: ${(props) =>
-                    props.theme.fow.colors.common.white};
-                border: 1px solid
-                    ${(props) => props.theme.fow.colors[color].transparent48};
 
                 &:hover {
-                    background-color: ${(props) =>
-                        props.theme.fow.colors[color].transparent8};
                     border-color: ${(props) =>
                         props.theme.fow.colors[color].main} !important;
+                    background-color: ${(props) =>
+                        props.theme.fow.colors[color].transparent8};
                 }
 
                 &:active {
@@ -52,44 +52,44 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
                 }
 
                 &:disabled {
-                    color: ${(props) =>
-                        props.theme.fow.colors.grey.transparent48} !important;
-                    background-color: transparent !important;
                     border-color: ${(props) =>
                         props.theme.fow.colors.grey.transparent24} !important;
+                    background-color: transparent !important;
+                    color: ${(props) =>
+                        props.theme.fow.colors.grey.transparent48} !important;
                 }
             `;
         case 'contained':
             return css`
+                border: none;
+                background-color: ${color === 'grey'
+                    ? (props) => props.theme.fow.colors.grey.lighter
+                    : (props) => props.theme.fow.colors[color].main};
                 color: ${color === 'success' ||
                 color === 'warning' ||
                 color === 'grey'
                     ? (props) => props.theme.fow.colors.grey.darker
                     : (props) => props.theme.fow.colors.common.white};
-                background-color: ${color === 'grey'
-                    ? (props) => props.theme.fow.colors.grey.lighter
-                    : (props) => props.theme.fow.colors[color].main};
-                border: none;
                 box-shadow: 0px 8px 16px
                     ${(props) => props.theme.fow.colors[color].transparent24};
 
                 &:hover {
-                    color: ${(props) => props.theme.fow.colors.common.white};
                     background-color: ${(props) =>
                         props.theme.fow.colors[color].dark};
+                    color: ${(props) => props.theme.fow.colors.common.white};
                 }
 
                 &:active {
-                    color: ${(props) => props.theme.fow.colors.common.white};
                     background-color: ${(props) =>
                         props.theme.fow.colors[color].darker};
+                    color: ${(props) => props.theme.fow.colors.common.white};
                 }
 
                 &:disabled {
-                    color: ${(props) =>
-                        props.theme.fow.colors.grey.transparent48} !important;
                     background-color: ${(props) =>
                         props.theme.fow.colors.grey.transparent24} !important;
+                    color: ${(props) =>
+                        props.theme.fow.colors.grey.transparent48} !important;
                     box-shadow: none !important;
                 }
             `;
