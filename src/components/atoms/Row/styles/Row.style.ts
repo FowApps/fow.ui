@@ -12,6 +12,13 @@ export const StyledRow = styled.div<RowProps>`
     flex-wrap: wrap;
     box-sizing: border-box;
 
+    ${({ debug }) =>
+        debug &&
+        css`
+            background-color: #5901ad40;
+            outline: #fff solid 1px;
+        `}
+
     ${({ theme, noGutter }) =>
         !noGutter &&
         css`
@@ -28,11 +35,4 @@ export const StyledRow = styled.div<RowProps>`
     + .row {
         margin-top: ${(props) => props.theme.fow.spacing.small};
     }
-
-    ${({ debug }) =>
-        debug &&
-        css`
-            background-color: #5901ad40;
-            outline: #fff solid 1px;
-        `}
 `;
