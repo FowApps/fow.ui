@@ -4,12 +4,17 @@ import Subtitle from '../../atoms/Typography/Subtitle';
 import { MenuWrapper, ItemWrapper } from './styles';
 
 export interface MenuProps {
-    defaultIndex?: string;
+    /**
+     * click function of items
+     */
     onClick?: (itemKey: any) => void;
     children: React.ReactNode;
 }
 
 export interface MenuItemProps {
+    /**
+     * index of item
+     */
     index: number;
     handleClick?: (itemKey: any) => void;
     children: React.ReactNode;
