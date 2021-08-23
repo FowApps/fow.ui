@@ -38,10 +38,14 @@ export interface DropdownProps {
      * dropdown menu content
      */
     content: React.ReactNode;
-    children: React.ReactNode;
+    children: React.DetailedReactHTMLElement<any, HTMLElement>;
 }
 
-const Dropdown = ({ trigger = 'click', content, children }) => {
+const Dropdown = ({
+    trigger = 'click',
+    content,
+    children,
+}: DropdownProps): JSX.Element => {
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [triggerHeight, setRef] = useStateRef(
         (node: HTMLElement) => node?.clientHeight || 0,
@@ -50,30 +54,19 @@ const Dropdown = ({ trigger = 'click', content, children }) => {
     const { isOpen, close, toggle, open } = useDisclosure();
     useOnClickOutside(wrapperRef, close);
 
-    const handleMouseEnter = () => {
-        if (trigger === 'hover') {
-            open();
-        }
-    };
-
-    const handleMouseExit = () => {
-        if (trigger === 'hover') {
-            close();
-        }
-    };
-
     return (
         <Wrapper ref={wrapperRef}>
             {React.cloneElement(children, {
-                onClick: trigger === 'click' && toggle,
-                onMouseEnter: handleMouseEnter,
-                onMouseLeave: handleMouseExit,
+                onClick: trigger === 'click' ? toggle : undefined,
+                onMouseEnter: trigger === 'hover' ? open : undefined,
+                onMouseLeave: trigger === 'hover' ? close : undefined,
                 ref: setRef,
                 ...children.props,
             })}
             <Content
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseExit}
+                onClick={toggle}
+                onMouseEnter={trigger === 'hover' ? open : undefined}
+                onMouseLeave={trigger === 'hover' ? close : undefined}
                 topOffset={triggerHeight}
                 initial="exit"
                 animate={isOpen ? 'enter' : 'exit'}

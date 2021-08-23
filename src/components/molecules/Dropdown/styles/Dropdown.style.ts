@@ -12,5 +12,4 @@ export const Wrapper = styled(motion.div)`
 export const Content = styled(motion.div)<ContentProps>`
     position: absolute;
     top: ${(props) => props.topOffset + props.theme.fow.spacing.small}px;
-    transform-origin: 50% -${(props) => props.topOffset + props.theme.fow.spacing.small}px;
 `;
