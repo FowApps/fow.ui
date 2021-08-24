@@ -24,9 +24,9 @@ export const ToastWrapper = styled.div<ToastWrapperType>`
     min-width: 28.5rem;
     max-width: 28.5rem;
     padding: ${(props) => props.theme.fow.spacing.small};
-    word-break: break-word;
     border-radius: 8px;
     box-shadow: ${(props) => props.theme.fow.shadows.z8};
+    word-break: break-word;
     ${(props) => setAppearance(props.appearance)}
 `;
 

@@ -7,10 +7,10 @@ type ContainerProps = {
 };
 
 export const StyledContainer = styled.div<ContainerProps>`
-    box-sizing: border-box;
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+    box-sizing: border-box;
 
     ${({ theme }) => css`
         ${DIMENSIONS.map(

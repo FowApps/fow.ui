@@ -12,9 +12,9 @@ const vertical = css`
     position: relative;
     top: -0.084rem;
     display: inline-block;
+    vertical-align: middle;
     height: 1.25em;
     margin: 0 ${(props) => props.theme.fow.spacing.xsmall};
-    vertical-align: middle;
     border-top: 0;
     border-left: 1px solid ${(props) => props.theme.fow.colors.divider};
 `;

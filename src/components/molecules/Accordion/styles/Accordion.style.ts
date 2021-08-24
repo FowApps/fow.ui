@@ -24,12 +24,12 @@ export const Trigger = styled.div<TriggerProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: ${(props) => props.theme.fow.spacing.xxlarge};
-    padding-block: ${(props) => props.theme.fow.spacing.medium};
-    background-color: ${(props) => props.theme.fow.colors.common.white};
     border-bottom: 1px solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
+    background-color: ${(props) => props.theme.fow.colors.common.white};
     cursor: pointer;
+    padding-inline: ${(props) => props.theme.fow.spacing.xxlarge};
+    padding-block: ${(props) => props.theme.fow.spacing.medium};
     transition: color 0.4s ease;
 
     &:last-of-type {
@@ -41,8 +41,8 @@ export const Trigger = styled.div<TriggerProps>`
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
-    background-color: transparent;
     border: ${(props) => (props.bordered ? '1px' : '0')} solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
+    background-color: transparent;
 `;
