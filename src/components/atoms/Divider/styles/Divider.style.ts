@@ -9,19 +9,19 @@ type DividerProps = {
 };
 
 export const StyledDivider = styled.div<DividerProps>`
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: ${(props) => props.theme.fow.colors.divider};
-    font-size: 1.4rem;
-    font-variant: tabular-nums;
-    line-height: 1.5715;
-    list-style: none;
-    font-feature-settings: 'tnum';
     border-top: ${(props) =>
         props.hasTitle
             ? 'none'
             : `1px solid ${props.theme.fow.colors.divider}`};
+    color: ${(props) => props.theme.fow.colors.divider};
+    list-style: none;
+    font-variant: tabular-nums;
+    font-size: 1.4rem;
+    line-height: 1.5715;
+    box-sizing: border-box;
+    font-feature-settings: 'tnum';
 
     ${(props) => type[props.type]}
     ${(props) => props.hasTitle && setOriantation(props.orientation)};

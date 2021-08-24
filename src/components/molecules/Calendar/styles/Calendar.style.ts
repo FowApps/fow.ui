@@ -23,18 +23,18 @@ export const Wrapper = styled.div`
 
     .fc-button {
         color: ${(props) => props.theme.fow.colors.common.white} !important;
-        font-weight: 700;
-        font-size: 1.2rem;
-        font-style: normal;
-        line-height: 1.8rem;
         box-shadow: none !important;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
         transition: all 0.3s ease;
     }
 
     .fc-prev-button,
     .fc-next-button {
-        color: ${(props) => props.theme.fow.colors.text.primary} !important;
         background-color: transparent !important;
+        color: ${(props) => props.theme.fow.colors.text.primary} !important;
     }
 
     .fc-today-button:disabled {
@@ -54,8 +54,8 @@ export const Wrapper = styled.div`
         margin: 0;
         color: ${(props) => props.theme.fow.colors.text.primary} !important;
         font-weight: 600;
-        font-size: 2.4rem;
         font-style: normal;
+        font-size: 2.4rem;
         line-height: 3.6rem;
     }
 
@@ -92,13 +92,13 @@ export const Wrapper = styled.div`
         top: 1.6rem;
         left: 1.6rem;
         width: 14rem;
-        padding-block: ${(props) => props.theme.fow.spacing.xxsmall};
-        padding-inline: ${(props) => props.theme.fow.spacing.medium};
         margin-bottom: 1.6rem;
+        border-radius: 6px;
         font-weight: 500;
         font-size: 1.2rem;
+        padding-block: ${(props) => props.theme.fow.spacing.xxsmall};
+        padding-inline: ${(props) => props.theme.fow.spacing.medium};
         background: #e1e1e1;
-        border-radius: 6px;
     }
 
     .fc-event-main {
@@ -131,9 +131,9 @@ export const EventWrapper = styled.div<EventWrapperProps>`
 
     h3 {
         display: inline-block;
-        width: 100%;
         overflow: hidden !important;
-        white-space: nowrap;
+        width: 100%;
         text-overflow: ellipsis;
+        white-space: nowrap;
     }
 `;

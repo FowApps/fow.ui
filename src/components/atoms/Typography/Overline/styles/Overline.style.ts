@@ -16,8 +16,8 @@ type OverlineProps = {
 export const StyledOverline = styled.p<OverlineProps>`
     margin: 0;
     font-weight: 700;
-    font-size: 1.2rem;
     font-style: normal;
+    font-size: 1.2rem;
     line-height: 1.8rem;
     letter-spacing: 1.2;
 

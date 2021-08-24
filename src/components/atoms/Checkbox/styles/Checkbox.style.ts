@@ -35,11 +35,11 @@ export const MarkBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: 2rem;
     height: 2rem;
     border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
     border-radius: 4px;
+    box-sizing: border-box;
     transition: background-color 0.4s ease;
 `;
 
@@ -55,15 +55,15 @@ export const StyledInput = styled.input<InputProps>`
     opacity: 0;
 
     &:checked ~ ${MarkBox} {
-        background-color: ${(props) =>
-            props.color === 'primary'
-                ? props.theme.fow.colors.primary.main
-                : props.theme.fow.colors.grey.main};
         border: 2px solid
             ${(props) =>
                 props.color === 'primary'
                     ? props.theme.fow.colors.primary.main
                     : props.theme.fow.colors.grey.main};
+        background-color: ${(props) =>
+            props.color === 'primary'
+                ? props.theme.fow.colors.primary.main
+                : props.theme.fow.colors.grey.main};
         ${Mark} {
             display: block;
         }

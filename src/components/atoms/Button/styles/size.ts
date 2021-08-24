@@ -8,8 +8,8 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
                 height: 4.8rem;
                 padding: 0 2.2rem;
                 font-weight: 600;
-                font-size: 1.5rem;
                 font-style: normal;
+                font-size: 1.5rem;
                 line-height: 2.6rem;
                 letter-spacing: 0.2px;
             `;
@@ -19,8 +19,8 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
                 height: ${isFab ? 4 : 3.6}rem;
                 padding: 0 1.6rem;
                 font-weight: 600;
-                font-size: 1.4rem;
                 font-style: normal;
+                font-size: 1.4rem;
                 line-height: 2.6rem;
                 letter-spacing: 0.2px;
             `;
@@ -30,8 +30,8 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
                 height: ${isFab ? 3.4 : 3.6}rem;
                 padding: 0 1rem;
                 font-weight: 600;
-                font-size: 1.3rem;
                 font-style: normal;
+                font-size: 1.3rem;
                 line-height: 2.2rem;
                 letter-spacing: 0.2px;
             `;
