@@ -29,6 +29,7 @@ export const StyledAvatar = styled.div<AvatarProps>`
         margin: 0;
         padding: 0;
         font-weight: 600;
+        font-style: normal;
         font-size: ${(props) => {
             switch (props.size) {
                 case 'xsmall':
@@ -43,7 +44,6 @@ export const StyledAvatar = styled.div<AvatarProps>`
                     return '';
             }
         }};
-        font-style: normal;
         line-height: 16px;
         letter-spacing: 0.2px;
         ${(props) => props.src && `display:none;`}

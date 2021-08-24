@@ -17,8 +17,8 @@ export const StyledCol = styled.div<ColProps>`
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    box-sizing: border-box;
     max-width: 100%;
+    box-sizing: border-box;
 
     ${({ theme, ...rest }) => css`
         ${DIMENSIONS.map(

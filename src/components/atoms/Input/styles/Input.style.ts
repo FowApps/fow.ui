@@ -53,16 +53,16 @@ export const StyledInput = styled.input<InputProps>`
         props.hasPrefixIcon
             ? props.theme.fow.spacing.xxxlarge
             : props.theme.fow.spacing.small};
-    color: ${(props) => props.theme.fow.colors.text.primary};
-    font-size: 1.4rem;
-    line-height: 2.4rem;
     border: 1px solid
         ${(props) =>
             props.hasError
                 ? props.theme.fow.colors.error.main
                 : props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
+    color: ${(props) => props.theme.fow.colors.text.primary};
     outline: none;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     transition: all 0.3s ease;
 
     ~ ${IconWrapper} {
@@ -98,9 +98,9 @@ export const StyledInput = styled.input<InputProps>`
     }
 
     :disabled {
-        color: ${(props) => props.theme.fow.colors.text.disabled};
         border: 1px solid
             ${(props) => props.theme.fow.colors.grey.transparent24};
+        color: ${(props) => props.theme.fow.colors.text.disabled};
         cursor: not-allowed;
     }
 `;
@@ -134,9 +134,9 @@ export const Label = styled.label<LabelProps>`
     line-height: 1.8rem;
 
     :after {
+        content: '*';
         display: ${(props) => (props.required ? 'block' : 'none')};
         margin-left: ${(props) => props.theme.fow.spacing.xxsmall};
         color: ${(props) => props.theme.fow.colors.error.main};
-        content: '*';
     }
 `;

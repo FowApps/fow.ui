@@ -25,13 +25,13 @@ export const Content = styled.div<ContentProps>`
     position: relative;
 
     &:before {
+        content: ' ';
         position: absolute;
         top: ${(props) => (props.hasIcon ? '4.8' : '2.4')}rem;
         width: 1px;
         height: ${(props) =>
             props.hasIcon ? 'calc(100% - 3.6rem)' : 'calc(100% - 1.2rem)'};
         background-color: ${(props) => props.theme.fow.colors.divider};
-        content: ' ';
     }
 `;
 

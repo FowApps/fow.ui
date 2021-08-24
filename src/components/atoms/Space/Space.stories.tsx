@@ -42,9 +42,9 @@ const Box = styled.div`
     justify-content: center;
     width: 30px;
     height: 30px;
-    color: #fff;
-    background-color: ${(props) => props.theme.fow.colors.primary.light};
     border-radius: 6px;
+    background-color: ${(props) => props.theme.fow.colors.primary.light};
+    color: #fff;
 `;
 
 const Template: Story<SpaceProps> = (args) => (
