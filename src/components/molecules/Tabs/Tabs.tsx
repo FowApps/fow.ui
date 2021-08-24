@@ -94,7 +94,7 @@ const Tabs = ({
     };
 
     const items = React.Children.map(children, (child: any) =>
-        child.type.displayName === 'Item' ? child : null,
+        child?.type?.displayName === 'TabItem' ? child : null,
     );
 
     return (
@@ -174,6 +174,7 @@ const Item = ({ icon, label, index, disabled }: TabItemProps) => (
     <Wrapper icon={icon} label={label} index={index} disabled={disabled} />
 );
 
+Item.displayName = 'TabItem';
 Tabs.Item = Item;
 
 export default Tabs;
