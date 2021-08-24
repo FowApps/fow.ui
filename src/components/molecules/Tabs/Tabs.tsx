@@ -97,6 +97,18 @@ const Tabs = ({
         child?.type?.displayName === 'TabItem' ? child : null,
     );
 
+    const renderTabContent = (props) => (
+        <TabContent
+            {...props}
+            isActive={bindIndex === props.index}
+            key={`tab-content-${props.index}`}
+            initial="inactive"
+            animate={bindIndex === props.index ? 'active' : 'inactive'}
+            transition={{ duration: 0.3 }}
+            variants={variants}
+        />
+    );
+
     return (
         <Container direction={direction}>
             <Surface direction={direction}>
@@ -133,37 +145,9 @@ const Tabs = ({
             </Surface>
             <AnimatePresence>
                 {items.map(({ props }) =>
-                    destroyInactive ? (
-                        bindIndex === props.index && (
-                            <TabContent
-                                {...props}
-                                isActive={bindIndex === props.index}
-                                key={`tab-content-${props.index}`}
-                                initial="inactive"
-                                animate={
-                                    bindIndex === props.index
-                                        ? 'active'
-                                        : 'inactive'
-                                }
-                                transition={{ duration: 0.3 }}
-                                variants={variants}
-                            />
-                        )
-                    ) : (
-                        <TabContent
-                            {...props}
-                            isActive={bindIndex === props.index}
-                            key={`tab-content-${props.index}`}
-                            initial="inactive"
-                            animate={
-                                bindIndex === props.index
-                                    ? 'active'
-                                    : 'inactive'
-                            }
-                            transition={{ duration: 0.3 }}
-                            variants={variants}
-                        />
-                    ),
+                    destroyInactive
+                        ? bindIndex === props.index && renderTabContent(props)
+                        : renderTabContent(props),
                 )}
             </AnimatePresence>
         </Container>
