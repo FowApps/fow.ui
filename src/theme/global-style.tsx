@@ -22,8 +22,8 @@ const GlobalStyle = createGlobalStyle`
         }
 
     &::-webkit-scrollbar-track {
-        background-color: #F5F5F5;
         border-radius: 1rem;
+        background-color: #F5F5F5;
         box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.05);
     }
 
@@ -34,8 +34,8 @@ const GlobalStyle = createGlobalStyle`
     }
     
     &::-webkit-scrollbar-thumb {
-        background-color: ${(props) => props.theme.fow.colors.grey.main};
         border-radius: 1rem;
+        background-color: ${(props) => props.theme.fow.colors.grey.main};
     }
 `;
 

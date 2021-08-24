@@ -30,16 +30,16 @@ export const StyledButton = styled.button<ButtonProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
     overflow: hidden;
-    white-space: nowrap;
+    width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
     border-radius: ${(props) => (props.fab ? 50 : 8)}px;
     outline: none;
+    white-space: nowrap;
     cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+    pointer-events: ${(props) => (props.loading ? 'none' : 'all')};
+    user-select: none;
     transition: all 0.3s ease;
     appearance: none;
-    user-select: none;
-    pointer-events: ${(props) => (props.loading ? 'none' : 'all')};
 
     ${(props) => setVariant(props.color, props.variant)}
     ${(props) => setSize(props.size, props.fab, props.hasChildren)}
