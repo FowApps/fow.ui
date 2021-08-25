@@ -54,6 +54,9 @@ export { default as Calendar } from './components/molecules/Calendar';
 export { default as Dropdown } from './components/molecules/Dropdown';
 export { default as Menu } from './components/molecules/Menu';
 
+// Molecules > Extras
+export { default as StatusChanger } from './components/molecules/extras/StatusChanger';
+
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
 

@@ -9,7 +9,8 @@
         "noImplicitAny": false,
         "esModuleInterop": true,
         "typeRoots": ["./node-modules/@types/", "./src/index.ts"],
-        "types": ["jest", "node", "@types/jest"]
+        "types": ["jest", "node", "@types/jest"],
+        "strictNullChecks": false
     },
     "include": ["src"],
     "exclude": ["**/*.stories.tsx", "**/*.test.ts"]
