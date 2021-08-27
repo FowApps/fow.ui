@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'rc-slider';
+import { StyledSlider } from './styles';
 import 'rc-slider/assets/index.css';
 
 export interface StatusChangerProps {
@@ -28,9 +29,9 @@ const StatusChanger = ({
     step = null,
     ...rest
 }: StatusChangerProps): JSX.Element => (
-    <div>
+    <StyledSlider>
         <Slider min={min} max={max} marks={marks} step={step} {...rest} />
-    </div>
+    </StyledSlider>
 );
 
 export default StatusChanger;
