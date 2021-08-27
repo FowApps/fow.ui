@@ -97,7 +97,7 @@ const Tabs = ({
         child?.type?.displayName === 'TabItem' ? child : null,
     );
 
-    const renderTabContent = (props) => (
+    const renderTabContent = (props, directionProp) => (
         <TabContent
             {...props}
             isActive={bindIndex === props.index}
@@ -106,6 +106,7 @@ const Tabs = ({
             animate={bindIndex === props.index ? 'active' : 'inactive'}
             transition={{ duration: 0.3 }}
             variants={variants}
+            direction={directionProp}
         />
     );
 
@@ -146,8 +147,9 @@ const Tabs = ({
             <AnimatePresence>
                 {items.map(({ props }) =>
                     destroyInactive
-                        ? bindIndex === props.index && renderTabContent(props)
-                        : renderTabContent(props),
+                        ? bindIndex === props.index &&
+                          renderTabContent(props, direction)
+                        : renderTabContent(props, direction),
                 )}
             </AnimatePresence>
         </Container>
