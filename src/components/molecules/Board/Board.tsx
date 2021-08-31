@@ -5,7 +5,7 @@ import BoardColumn from './BoardColumn';
 import BoardItem from './BoardItem';
 
 export interface BoardProps {
-    children: React.ReactNode;
+    children: any;
     columns: any;
     itemsKey?: any;
 }
