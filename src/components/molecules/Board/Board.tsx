@@ -40,8 +40,6 @@ const Board = ({
         }
     };
 
-    console.log('ss');
-
     return (
         <BoardEl>
             <DragDropContext onDragEnd={onDragEnd} {...rest}>
