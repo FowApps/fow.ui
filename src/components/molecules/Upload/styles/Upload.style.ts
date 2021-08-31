@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-type LabelProps = {
+type FileUploadContainerProps = {
     disabled: boolean;
+};
+
+type LabelProps = {
     hasError: boolean;
     required: boolean;
 };
 
-export const FileUploadContainer = styled.section`
+export const FileUploadContainer = styled.section<FileUploadContainerProps>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,6 +19,7 @@ export const FileUploadContainer = styled.section`
     border: 1px dashed ${(props) => props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
     background-color: ${(props) => props.theme.fow.colors.background.neutral};
+    opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
 
 export const FormField = styled.input`
@@ -28,6 +32,9 @@ export const FormField = styled.input`
     opacity: 0;
     &:focus {
         outline: none;
+    }
+    &:disabled {
+        cursor: not-allowed;
     }
 `;
 

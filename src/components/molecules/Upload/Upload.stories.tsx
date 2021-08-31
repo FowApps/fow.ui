@@ -16,8 +16,11 @@ Default.args = {
     label: 'Upload Manifest File',
     onChange: updateUploadedFiles,
     multiple: false,
+    disabled: true,
     localization: {
         placeholder: 'Select Files',
         description: 'Drop files here or click browse thorough your machine',
+        sizeInfo: 'Maximum allowed upload file size',
+        sizeError: 'File is too big.',
     },
 };
