@@ -1,38 +1,25 @@
 import * as React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import {
-    BoardColumnWrapper,
-    BoardColumnTitle,
-    BoardColumnContent,
-} from './styles';
-
-import BoardItem from './BoardItem';
+import { BoardColumnWrapper, BoardColumnContent } from './styles';
 
 type BoardColumnProps = {
     key: string;
     column: any;
     items: any;
+    droppableId: any;
+    children: React.ReactNode;
 };
 
 const BoardColumn = (props: BoardColumnProps): JSX.Element => {
-    console.log(props);
     return (
         <BoardColumnWrapper>
-            <BoardColumnTitle>{props.column.title}</BoardColumnTitle>
-
-            <Droppable droppableId={props.column.id}>
+            <Droppable droppableId={props.droppableId} key={props.droppableId}>
                 {(provided, snapshot) => (
                     <BoardColumnContent
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                         isDraggingOver={snapshot.isDraggingOver}>
-                        {props.items.map((item: any, index: number) => (
-                            <BoardItem
-                                key={item.id}
-                                item={item}
-                                index={index}
-                            />
-                        ))}
+                        {props.children}
                         {provided.placeholder}
                     </BoardColumnContent>
                 )}

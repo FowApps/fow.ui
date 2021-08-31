@@ -1,11 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Board from './Board';
-import { initialBoardData } from './mock/data';
-// import mocks from './mock/board.json';
-
-// console.log('mocks => ', mocks);
-console.log('initialBoardData => ', initialBoardData);
+// @ts-ignore
+import mocks from './mock/board.json';
 
 export default {
     title: 'Molecules/Board',
@@ -14,7 +11,22 @@ export default {
 
 const Template: Story = (args) => (
     <div>
-        <Board columns={initialBoardData} {...args} />
+        <Board columns={mocks} itemsKey="items" {...args}>
+            {(columns) =>
+                columns.map((item) => (
+                    <Board.BoardColumn droppableId={item.id}>
+                        <div>{item.title}</div>
+                        {item.items.map((subitem, index) => (
+                            <Board.BoardItem
+                                draggableId={subitem.id}
+                                index={index}>
+                                {subitem.content}
+                            </Board.BoardItem>
+                        ))}
+                    </Board.BoardColumn>
+                ))
+            }
+        </Board>
     </div>
 );
 

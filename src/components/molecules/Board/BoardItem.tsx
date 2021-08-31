@@ -4,21 +4,24 @@ import { BoardItemEl } from './styles';
 
 type BoardItemProps = {
     index: number;
-    item: any;
+    draggableId: any;
+    children: React.ReactNode;
 };
 
 const BoardItem = (props: BoardItemProps) => {
-    console.log('props => ', props);
     return (
-        <Draggable draggableId={props.item.id} index={props.index}>
-            {(provided, snapshot) => (
-                <BoardItemEl
+        <Draggable draggableId={props.draggableId} index={props.index}>
+            {(provided) => (
+                <div
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
-                    isDragging={snapshot.isDragging}>
-                    {props.item.content}
-                </BoardItemEl>
+                    style={{
+                        userSelect: 'none',
+                        ...provided.draggableProps.style,
+                    }}>
+                    {props.children}
+                </div>
             )}
         </Draggable>
     );
