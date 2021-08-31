@@ -10,22 +10,20 @@ type BoardColumnProps = {
     children: React.ReactNode;
 };
 
-const BoardColumn = (props: BoardColumnProps): JSX.Element => {
-    return (
-        <BoardColumnWrapper>
-            <Droppable droppableId={props.droppableId} key={props.droppableId}>
-                {(provided, snapshot) => (
-                    <BoardColumnContent
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        isDraggingOver={snapshot.isDraggingOver}>
-                        {props.children}
-                        {provided.placeholder}
-                    </BoardColumnContent>
-                )}
-            </Droppable>
-        </BoardColumnWrapper>
-    );
-};
+const BoardColumn = (props: BoardColumnProps): JSX.Element => (
+    <BoardColumnWrapper>
+        <Droppable droppableId={props.droppableId} key={props.droppableId}>
+            {(provided, snapshot) => (
+                <BoardColumnContent
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    isDraggingOver={snapshot.isDraggingOver}>
+                    {props.children}
+                    {provided.placeholder}
+                </BoardColumnContent>
+            )}
+        </Droppable>
+    </BoardColumnWrapper>
+);
 
 export default BoardColumn;

@@ -5,7 +5,7 @@ import BoardColumn from './BoardColumn';
 import BoardItem from './BoardItem';
 
 export interface BoardProps {
-    children: React.ReactNode | React.ReactNode[];
+    children: React.ReactNode;
     columns: any;
     itemsKey?: any;
 }
@@ -39,6 +39,8 @@ const Board = ({
             setData([...data]);
         }
     };
+
+    console.log('ss');
 
     return (
         <BoardEl>
