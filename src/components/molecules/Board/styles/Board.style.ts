@@ -1,52 +1,29 @@
-/* stylelint-disable */
 import styled from 'styled-components';
-
-type BoardItemStylesProps = {
-    isDragging: boolean;
-};
 
 type BoardColumnContentStylesProps = {
     isDraggingOver: boolean;
 };
 
-export const BoardItemEl = styled.div<BoardItemStylesProps>`
-    padding: 8px;
-    background-color: ${(props) => (props.isDragging ? '#d3e4ee' : '#fff')};
-    border-radius: 4px;
-    transition: background-color 0.25s ease-out;
-
-    &:hover {
-        background-color: #f7fafc;
-    }
-
-    & + & {
-        margin-top: 4px;
-    }
-`;
-
-// Create styles for BoardColumnWrapper element
 export const BoardColumnWrapper = styled.div`
     flex: 1;
-    padding: 8px;
-    background-color: #e5eff5;
-    border-radius: 4px;
+    padding: ${(props) => props.theme.fow.spacing.xsmall};
+    border-radius: ${(props) => props.theme.fow.spacing.xxsmall};
+    background-color: ${(props) => props.theme.fow.colors.grey.main};
 
     & + & {
-        margin-left: 12px;
+        margin-left: ${(props) => props.theme.fow.spacing.small};
     }
 `;
 
-// Create styles for BoardColumnTitle element
 export const BoardColumnTitle = styled.h2`
-    font: 14px sans-serif;
-    margin-bottom: 12px;
+    margin-bottom: ${(props) => props.theme.fow.spacing.small};
+    font: 1.4rem sans-serif;
 `;
 
-// Create styles for BoardColumnContent element
 export const BoardColumnContent = styled.div<BoardColumnContentStylesProps>`
-    min-height: 20px;
+    min-height: ${(props) => props.theme.fow.spacing.large};
+    border-radius: ${(props) => props.theme.fow.spacing.xxsmall};
     background-color: ${(props) => (props.isDraggingOver ? '#aecde0' : null)};
-    border-radius: 4px;
 `;
 
 export const BoardEl = styled.div`
