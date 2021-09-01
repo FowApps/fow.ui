@@ -18,6 +18,7 @@ export const StyledAlert = styled(motion.div)<AlertProps>`
     align-items: flex-start;
     justify-content: space-between;
     overflow: hidden;
+    width: 100%;
     border: 1px solid ${(props) => props.theme.fow.colors[props.type].light};
     border-radius: 8px;
     background-color: ${(props) => props.theme.fow.colors[props.type].lighter};

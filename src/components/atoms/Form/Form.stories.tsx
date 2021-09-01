@@ -9,6 +9,7 @@ import StaticSelect from '../Select/StaticSelect';
 import AsyncSelect from '../Select/AsyncSelect';
 import Checkbox from '../Checkbox';
 import Input from '../Input';
+import Upload from '../../molecules/Upload';
 
 export default {
     title: 'Atoms/Form',
@@ -105,7 +106,22 @@ const Template: Story<FormProps> = () => {
                                 message: 'Required Field',
                             },
                         }}>
-                        <Input placeholder="Name" prefixIcon="paper-plane"/>
+                        <Input placeholder="Name" prefixIcon="paper-plane" />
+                    </Form.Field>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs={6}>
+                    <Form.Field
+                        label="File"
+                        name="file"
+                        rules={{
+                            required: {
+                                value: true,
+                                message: 'Required Field',
+                            },
+                        }}>
+                        <Upload />
                     </Form.Field>
                 </Col>
             </Row>
