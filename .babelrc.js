@@ -33,6 +33,7 @@ module.exports = (api) => {
         plugins: [
             ['import', { libraryName: 'antd', style: 'css' }],
             ['@babel/plugin-transform-runtime'],
+            ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
         ],
     };
 };

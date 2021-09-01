@@ -12,7 +12,7 @@ import Heading from '../../atoms/Typography/Heading';
 import Overline from '../../atoms/Typography/Overline';
 import Subtitle from '../../atoms/Typography/Subtitle';
 
-import { FileUploadContainer, FormField, Label } from './styles';
+import { Wrapper, FileUploadContainer, FormField, Label } from './styles';
 import useToast from '../Toast/useToast';
 
 const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
@@ -94,7 +94,7 @@ const Upload = ({
     label,
     onChange,
     accept,
-    multiple = true,
+    multiple = false,
     maxFileSizeInBytes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
     error,
     disabled = false,
@@ -201,7 +201,7 @@ const Upload = ({
         });
 
     return (
-        <>
+        <Wrapper>
             {label && (
                 <Label required={required} hasError={!!error}>
                     {label}
@@ -244,7 +244,7 @@ const Upload = ({
                     </AnimatePresence>
                 </Space>
             </motion.div>
-        </>
+        </Wrapper>
     );
 };
 

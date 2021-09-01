@@ -9,6 +9,10 @@ type LabelProps = {
     required: boolean;
 };
 
+export const Wrapper = styled.div`
+    width: 100%;
+`;
+
 export const FileUploadContainer = styled.section<FileUploadContainerProps>`
     position: relative;
     display: flex;

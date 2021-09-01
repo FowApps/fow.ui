@@ -16,7 +16,7 @@ Default.args = {
     label: 'Upload Manifest File',
     onChange: updateUploadedFiles,
     multiple: false,
-    disabled: true,
+    disabled: false,
     localization: {
         placeholder: 'Select Files',
         description: 'Drop files here or click browse thorough your machine',
