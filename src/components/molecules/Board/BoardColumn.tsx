@@ -4,9 +4,9 @@ import { BoardColumnWrapper, BoardColumnContent } from './styles';
 
 type BoardColumnProps = {
     key: string;
-    column: any;
-    items: any;
-    droppableId: any;
+    column?: any;
+    items?: any;
+    droppableId?: any;
     children: React.ReactNode;
 };
 

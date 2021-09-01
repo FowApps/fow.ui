@@ -8,18 +8,20 @@ export interface BoardProps {
     children: any;
     columns: any;
     itemsKey?: any;
+    onDragEnd?: (result: any, data: unknown) => void;
 }
 
 const Board = ({
     columns,
     children,
     itemsKey,
+    onDragEnd,
     ...rest
 }: BoardProps): JSX.Element => {
     const [data, setData] = useState(columns);
 
     // Handle drag & drop
-    const onDragEnd = (result: any) => {
+    const onDragEndBoard = (result: any) => {
         const { source, destination } = result;
 
         const columnStart = data.find(
@@ -37,19 +39,22 @@ const Board = ({
             columnStart[itemsKey] = sourceItems;
             columnFinish[itemsKey] = destItems;
             setData([...data]);
+            if (onDragEnd) {
+                onDragEnd(result, data);
+            }
         }
     };
 
     return (
         <BoardEl>
-            <DragDropContext onDragEnd={onDragEnd} {...rest}>
+            <DragDropContext onDragEnd={onDragEndBoard} {...rest}>
                 {children(data)}
             </DragDropContext>
         </BoardEl>
     );
 };
 
-Board.BoardItem = BoardItem;
-Board.BoardColumn = BoardColumn;
+Board.Item = BoardItem;
+Board.Column = BoardColumn;
 
 export default Board;
