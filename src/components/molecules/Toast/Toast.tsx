@@ -39,7 +39,7 @@ export interface ToastProps {
 const Toast = ({
     appearance,
     closable,
-    duration,
+    duration = 2000,
     remove,
     content,
 }: ToastProps): JSX.Element => {
@@ -68,7 +68,7 @@ const Toast = ({
 
     return (
         <ToastWrapper appearance={appearance}>
-            <Space>
+            <Space align="start">
                 {renderBoxIcon()}
                 <Subtitle
                     color={appearance === 'default' ? 'white' : 'black'}
