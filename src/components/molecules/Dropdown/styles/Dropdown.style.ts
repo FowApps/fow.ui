@@ -12,4 +12,5 @@ export const Wrapper = styled(motion.div)`
 export const Content = styled(motion.div)<ContentProps>`
     position: absolute;
     top: ${(props) => props.topOffset + props.theme.fow.spacing.small}px;
+    right: 0;
 `;

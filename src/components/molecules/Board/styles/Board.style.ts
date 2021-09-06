@@ -6,7 +6,6 @@ type BoardColumnContentStylesProps = {
 
 export const BoardColumnWrapper = styled.div`
     flex: 1;
-    padding: ${(props) => props.theme.fow.spacing.xsmall};
 
     & + & {
         margin-left: ${(props) => props.theme.fow.spacing.small};
