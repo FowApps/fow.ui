@@ -11,11 +11,10 @@ type BoardColumnProps = {
 const BoardColumn = (props: BoardColumnProps): JSX.Element => (
     <BoardColumnWrapper>
         <Droppable droppableId={props.droppableId} key={props.droppableId}>
-            {(provided, snapshot) => (
+            {(provided) => (
                 <BoardColumnContent
                     {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    isDraggingOver={snapshot.isDraggingOver}>
+                    ref={provided.innerRef}>
                     {props.children}
                     {provided.placeholder}
                 </BoardColumnContent>
