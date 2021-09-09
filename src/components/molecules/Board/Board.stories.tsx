@@ -14,16 +14,16 @@ const Template: Story = (args) => (
         <Board columns={mocks} itemsKey="items" {...args}>
             {(columns) =>
                 columns.map((item) => (
-                    <Board.BoardColumn droppableId={item.id}>
+                    <Board.Column droppableId={item.id} key={item.id}>
                         <div>{item.title}</div>
                         {item.items.map((subitem, index) => (
-                            <Board.BoardItem
+                            <Board.Item
                                 draggableId={subitem.id}
                                 index={index}>
                                 {subitem.content}
-                            </Board.BoardItem>
+                            </Board.Item>
                         ))}
-                    </Board.BoardColumn>
+                    </Board.Column>
                 ))
             }
         </Board>
