@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-type BoardColumnContentStylesProps = {
-    isDraggingOver: boolean;
-};
-
 export const BoardColumnWrapper = styled.div`
     flex: 1;
 
@@ -16,7 +12,7 @@ export const BoardColumnTitle = styled.h2`
     margin-bottom: ${(props) => props.theme.fow.spacing.small};
 `;
 
-export const BoardColumnContent = styled.div<BoardColumnContentStylesProps>`
+export const BoardColumnContent = styled.div`
     min-height: ${(props) => props.theme.fow.spacing.large};
 `;
 
