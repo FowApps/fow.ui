@@ -3,8 +3,17 @@ import Space from '../Space';
 import { Line } from './styles';
 
 export interface SkeletonProps {
+    /**
+     * width of line (default value 100%)
+     */
     width?: number;
+    /**
+     * height of line
+     */
     height: number;
+    /**
+     * count of lines
+     */
     lines?: number;
 }
 
