@@ -18,11 +18,11 @@ export const ToastContainer = styled.div`
 
 export const ToastWrapper = styled.div<ToastWrapperType>`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    width: 28.5rem;
-    min-width: 28.5rem;
-    max-width: 28.5rem;
+    width: 35rem;
+    min-width: 35rem;
+    max-width: 35rem;
     padding: ${(props) => props.theme.fow.spacing.small};
     border-radius: 8px;
     box-shadow: ${(props) => props.theme.fow.shadows.z8};

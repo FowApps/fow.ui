@@ -29,12 +29,12 @@ export interface AlertProps {
     /**
      * closable flag
      */
-    closable: boolean;
+    closable?: boolean;
     /**
      * invoke when closing alert
      */
-    onClose: () => void;
-    theme: DefaultTheme;
+    onClose?: () => void;
+    theme?: DefaultTheme;
 }
 
 const Alert = ({
@@ -57,7 +57,7 @@ const Alert = ({
                     <Icon
                         size="lg"
                         icon="info-circle"
-                        color={theme.fow.colors.info.main}
+                        color={theme?.fow.colors.info.main}
                     />
                 );
             case 'error':
@@ -65,7 +65,7 @@ const Alert = ({
                     <Icon
                         size="lg"
                         icon="exclamation-circle"
-                        color={theme.fow.colors.error.main}
+                        color={theme?.fow.colors.error.main}
                     />
                 );
             case 'warning':
@@ -73,7 +73,7 @@ const Alert = ({
                     <Icon
                         size="lg"
                         icon="exclamation-triangle"
-                        color={theme.fow.colors.warning.main}
+                        color={theme?.fow.colors.warning.main}
                     />
                 );
             case 'success':
@@ -81,7 +81,7 @@ const Alert = ({
                     <Icon
                         size="lg"
                         icon="check-circle"
-                        color={theme.fow.colors.success.main}
+                        color={theme?.fow.colors.success.main}
                     />
                 );
             default:
@@ -106,7 +106,7 @@ const Alert = ({
                     </Space>
                     {closable && (
                         <StyledCloseIcon
-                            color={theme.fow.colors[type].darker}
+                            color={theme?.fow.colors[type].darker}
                             icon="times"
                             onClick={handleClose}
                         />
