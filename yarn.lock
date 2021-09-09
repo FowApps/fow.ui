@@ -9598,8 +9598,9 @@ react-helmet-async@^1.0.7:
     shallowequal "^1.1.0"
 
 react-hook-form@^7.11.1:
-  version "7.15.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.15.0.tgz#f6eb3a18ca797d39a5407114db07719d5c55e7fb"
+  version "7.15.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.15.2.tgz#c4d4fa44a5df755648ab19034062ae37087536b0"
+  integrity sha512-tPcLlsTXaOtZkyc1IGGaJfQ6amo2sJiM6DDufE7WG+S4N8s5Wr60HGtnKS7gPnnZL93pFPQYrSj7WDB5An2VVw==
 
 react-input-autosize@^3.0.0:
   version "3.0.0"
