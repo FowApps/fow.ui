@@ -8,7 +8,10 @@ type BoardItemProps = {
 };
 
 const BoardItem = (props: BoardItemProps) => (
-    <Draggable draggableId={props.draggableId} index={props.index}>
+    <Draggable
+        draggableId={props.draggableId}
+        index={props.index}
+        key={props.draggableId}>
         {(provided) => (
             <div
                 {...provided.draggableProps}
