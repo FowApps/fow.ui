@@ -15,5 +15,7 @@ export const Default = Template.bind({});
 Default.args = {
     width: 500,
     height: 100,
-    lines: 5
+    lines: 5,
+    radius: 10,
+    circleRadius: false,
 };

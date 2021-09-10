@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 type LineProps = {
     width?: number;
     height: number;
+    radius?: number;
+    circleRadius?: boolean;
 };
 
 const loading = keyframes`
@@ -16,7 +18,8 @@ export const Line = styled.div<LineProps>`
     overflow: hidden;
     width: ${(props) => (props.width ? `${props.width}px` : '100%')};
     height: ${(props) => props.height}px;
-    border-radius: 8px;
+    border-radius: ${(props) =>
+        props.circleRadius ? `${props.radius}%` : `${props.radius}px`};
     background-color: ${(props) => props.theme.fow.colors.grey.transparent12};
 
     &::after {
