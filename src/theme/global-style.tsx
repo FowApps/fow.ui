@@ -13,13 +13,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-size: 1.6rem;
         font-family: 'Montserrat', sans-serif;
+        line-height: unset!important;
     }
 
-        a {
-            text-decoration: none;
-        }
+    a {
+        text-decoration: none;
+    }
 
     &::-webkit-scrollbar-track {
         border-radius: 1rem;
