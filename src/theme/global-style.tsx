@@ -13,8 +13,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        font-size: 1.4rem;
         font-family: 'Montserrat', sans-serif;
-        line-height: unset!important;
+        line-height: unset;
+        letter-spacing: unset !important;
     }
 
     a {
