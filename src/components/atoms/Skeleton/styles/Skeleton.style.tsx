@@ -1,8 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 
+import setVariant from './variant';
+
 type LineProps = {
     width?: number;
     height: number;
+    variant: 'flat' | 'pill' | 'circle';
 };
 
 const loading = keyframes`
@@ -16,8 +19,9 @@ export const Line = styled.div<LineProps>`
     overflow: hidden;
     width: ${(props) => (props.width ? `${props.width}px` : '100%')};
     height: ${(props) => props.height}px;
-    border-radius: 8px;
     background-color: ${(props) => props.theme.fow.colors.grey.transparent12};
+
+    ${(props) => setVariant(props.variant)}
 
     &::after {
         content: '';
