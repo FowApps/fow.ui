@@ -15,6 +15,6 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
-    versioning-strategy: increase-if-necessary
+    versioning-strategy: increase
     commit-message:
       prefix: "⬆️ "
