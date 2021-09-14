@@ -1,4 +1,6 @@
 import React from 'react';
+import Body from '../Typography/Body';
+import Caption from '../Typography/Caption';
 import { StyledChip } from './styles';
 
 export interface ChipProps {
@@ -20,6 +22,17 @@ export interface ChipProps {
     text: React.ReactNode | 'string';
 }
 
+const renderText = (size: ChipProps['size'], text: ChipProps['text']) => {
+    switch (size) {
+        case 'small':
+            return <Caption>{text}</Caption>;
+        case 'medium':
+            return <Body level={2}>{text}</Body>;
+        default:
+            return '';
+    }
+};
+
 const Chip = ({
     size = 'medium',
     type = 'filled',
@@ -28,7 +41,7 @@ const Chip = ({
     ...rest
 }: ChipProps): JSX.Element => (
     <StyledChip size={size} type={type} color={color} {...rest}>
-        {text}
+        {renderText(size, text)}
     </StyledChip>
 );
 

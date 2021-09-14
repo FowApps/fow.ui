@@ -26,6 +26,6 @@ const Template: Story<FontAwesomeIconProps> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    icon: 'coffee',
+    icon: ['far','comment'],
     color: 'black',
 };

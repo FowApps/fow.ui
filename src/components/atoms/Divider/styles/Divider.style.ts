@@ -19,7 +19,7 @@ export const StyledDivider = styled.div<DividerProps>`
     list-style: none;
     font-variant: tabular-nums;
     font-size: 1.4rem;
-    line-height: 1.5715;
+    line-height: 2.2rem;
     box-sizing: border-box;
     font-feature-settings: 'tnum';
 

@@ -5,13 +5,10 @@ import {
 } from '@fortawesome/react-fontawesome';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import * as Icons from '@fortawesome/free-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
-const iconList = Object.keys(Icons)
-    .filter((key) => key !== 'fas' && key !== 'prefix')
-    .map((icon) => Icons[icon]);
-
-library.add(...iconList);
+library.add(far, fas);
 
 const Icon = ({ icon, ...rest }: FontAwesomeIconProps): JSX.Element => (
     <FontAwesomeIcon icon={icon} {...rest} />
