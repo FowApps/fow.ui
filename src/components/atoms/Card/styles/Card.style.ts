@@ -6,7 +6,7 @@ type CardProps = {
 
 export const StyledCard = styled.div<CardProps>`
     width: 100%;
-    padding: ${(props) => props.theme.fow.spacing.medium};
+    padding: ${(props) => props.theme.fow.spacing.small};
     border: 1px solid
         ${(props) =>
             props.isActive

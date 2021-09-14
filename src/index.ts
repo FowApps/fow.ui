@@ -29,6 +29,7 @@ export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
 export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
 export { default as Form } from './components/atoms/Form';
 export { default as Input } from './components/atoms/Input';
+export { default as Skeleton } from './components/atoms/Skeleton';
 
 export const Typography = {
     Heading,

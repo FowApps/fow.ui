@@ -15,9 +15,9 @@ type CaptionProps = {
 
 export const StyledCaption = styled.p<CaptionProps>`
     margin: 0;
-    font-weight: 500;
+    font-weight: normal;
     font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.8rem;
 
     ${(props) => color[props.color]}
