@@ -44,6 +44,7 @@ const Loader = ({
     children,
 }: LoaderProps): JSX.Element => (
     <StyledLoader
+        hasChildren={!!children}
         classNamePrefix="fow-loader-overlay_"
         fadeSpeed={200}
         active={isLoading}
