@@ -28,8 +28,8 @@ export const Trigger = styled.div<TriggerProps>`
         ${(props) => props.theme.fow.colors.grey.transparent32};
     background-color: ${(props) => props.theme.fow.colors.common.white};
     cursor: pointer;
-    padding-inline: ${(props) => props.theme.fow.spacing.xxlarge};
-    padding-block: ${(props) => props.theme.fow.spacing.medium};
+    padding-inline: ${(props) => props.theme.fow.spacing.small};
+    padding-block: ${(props) => props.theme.fow.spacing.small};
     transition: color 0.4s ease;
 
     &:last-of-type {
