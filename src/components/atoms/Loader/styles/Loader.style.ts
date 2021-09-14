@@ -3,6 +3,7 @@ import LoadingOverlay, { LoadingOverlayProps } from 'react-loading-overlay';
 
 interface OverlayProps extends LoadingOverlayProps {
     fullPage?: boolean;
+    hasChildren: boolean;
 }
 
 interface StaticPlaceholderProps {
@@ -16,7 +17,8 @@ export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
     }
     .fow-loader-overlay_overlay {
         position: ${(props) => (props.fullPage ? 'fixed' : 'absolute')};
-        background: rgba(255, 255, 255, 0.75);
+        background: ${(props) =>
+            props.hasChildren ? 'rgba(255, 255, 255, 0.75)' : 'transparent'};
     }
     .fow-loader-overlay_content {
         color: ${(props) => props.theme.fow.colors.primary.dark} !important;
