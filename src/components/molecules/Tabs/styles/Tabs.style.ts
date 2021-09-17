@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 type ContainerProps = {
@@ -25,30 +25,30 @@ type IconProps = {
 
 export const Container = styled.div<ContainerProps>`
     display: flex;
-    flex-direction: ${(props) =>
-        props.direction === 'vertical' ? 'row' : 'column'};
+    overflow: hidden;
+    ${(props) =>
+        props.direction === 'horizontal' &&
+        css`
+            flex-direction: column;
+        `}
 `;
 
 export const Surface = styled.ul<ContainerProps>`
     position: relative;
     display: flex;
-    flex-direction: ${(props) =>
-        props.direction === 'vertical' ? 'column' : 'row'};
-    align-items: ${(props) =>
-        props.direction === 'vertical' ? 'flex-end' : 'center'};
-    justify-content: flex-start;
-    width: ${(props) => (props.direction === 'vertical' ? '20rem' : '100%')};
-    min-width: ${(props) =>
-        props.direction === 'vertical' ? '20rem' : '100%'};
-    max-width: ${(props) =>
-        props.direction === 'vertical' ? '20rem' : '100%'};
+    flex: none;
+    align-items: center;
     margin: 0;
     padding: 0;
-    border-right: ${(props) =>
-        props.direction === 'vertical'
-            ? `1px solid ${props.theme.fow.colors.divider}`
-            : 'center'};
     list-style: none;
+
+    ${(props) =>
+        props.direction === 'vertical' &&
+        css`
+            flex-direction: column;
+            min-width: 50px;
+            max-width: 200px;
+        `}
 `;
 
 export const Item = styled.li<ItemProps>`
@@ -92,17 +92,22 @@ export const Item = styled.li<ItemProps>`
     }
 `;
 
-export const TabContent = styled(motion.div)<ItemProps>`
-    width: ${(props) =>
-        props.direction === 'vertical' ? 'calc(100% - 20rem)' : '100%'};
-    min-width: ${(props) =>
-        props.direction === 'vertical' ? 'calc(100% - 20rem)' : '100%'};
-    max-width: ${(props) =>
-        props.direction === 'vertical' ? 'calc(100% - 20rem)' : '100%'};
-    padding-top: ${(props) =>
-        props.direction === 'vertical' ? '0' : props.theme.fow.spacing.medium};
-    padding-left: ${(props) =>
-        props.direction === 'vertical' ? props.theme.fow.spacing.medium : '0'};
+export const TabContentHolder = styled.div<ContainerProps>`
+    flex: auto;
+    min-width: 0;
+    min-height: 0;
+
+    ${(props) =>
+        props.direction === 'vertical' &&
+        css`
+            margin-left: -1px;
+            border-left: 1px solid ${props.theme.fow.colors.divider};
+        `}
+`;
+
+export const TabContent = styled(motion.div)<ContainerProps>`
+    display: flex;
+    width: 100%;
 `;
 
 export const IconWrapper = styled.div<IconProps>`
@@ -110,6 +115,21 @@ export const IconWrapper = styled.div<IconProps>`
         props.isActive
             ? props.theme.fow.colors.primary.main
             : props.theme.fow.colors.grey.main};
+`;
+
+export const TabPane = styled(motion.div)<ItemProps>`
+    flex: none;
+    width: 100%;
+    outline: none;
+
+    ${(props) =>
+        props.direction === 'vertical'
+            ? css`
+                  padding-left: ${props.theme.fow.spacing.medium};
+              `
+            : css`
+                  padding-top: ${props.theme.fow.spacing.medium};
+              `}
 `;
 
 export const Wrapper = styled.div<TabItemProps>``;
