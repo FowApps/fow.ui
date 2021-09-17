@@ -18,6 +18,8 @@ import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
 import Heading from '../../atoms/Typography/Heading';
 
+import getDrawerStyles from './utils/getDrawerStyles';
+
 import { Container, Header, Body, Footer } from './styles';
 
 type DrawerRef = {
@@ -31,7 +33,7 @@ export interface PushState {
     distance: string | number;
 }
 
-type PlacementTypes = 'left' | 'top' | 'right' | 'bottom';
+export type PlacementTypes = 'left' | 'top' | 'right' | 'bottom';
 
 export interface DrawerProps {
     /**
@@ -199,38 +201,6 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
 
         useImperativeHandle(ref, () => operations, [operations]);
 
-        const getRcDrawerStyle = () => {
-            const getPushTransform = (_placement?: PlacementTypes) => {
-                let distance: number | string;
-                if (typeof push === 'boolean') {
-                    distance = push ? defaultPushState.distance : 0;
-                } else {
-                    distance = push!.distance;
-                }
-                distance = parseFloat(String(distance || 0));
-
-                if (_placement === 'left' || _placement === 'right') {
-                    return `translateX(${
-                        _placement === 'left' ? distance : -distance
-                    }px)`;
-                }
-                if (_placement === 'top' || _placement === 'bottom') {
-                    return `translateY(${
-                        _placement === 'top' ? distance : -distance
-                    }px)`;
-                }
-                return '';
-            };
-
-            return {
-                zIndex,
-                transform: internalPush
-                    ? getPushTransform(placement)
-                    : undefined,
-                ...style,
-            };
-        };
-
         const closeIconNode = isClosable && (
             <Button
                 size="small"
@@ -300,7 +270,14 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                     open={isOpen}
                     handler={false}
                     level={null}
-                    style={getRcDrawerStyle()}
+                    style={getDrawerStyles({
+                        zIndex,
+                        internalPush,
+                        placement,
+                        style,
+                        push,
+                        defaultPushState,
+                    })}
                     {...rest}>
                     {renderBody()}
                 </RcDrawer>
