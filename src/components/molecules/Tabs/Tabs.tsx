@@ -8,7 +8,9 @@ import {
     Container,
     Surface,
     Item as TabItem,
+    TabContentHolder,
     TabContent,
+    TabPane,
     IconWrapper,
     Wrapper,
 } from './styles';
@@ -98,7 +100,7 @@ const Tabs = ({
     );
 
     const renderTabContent = (props, directionProp) => (
-        <TabContent
+        <TabPane
             {...props}
             isActive={bindIndex === props.index}
             key={`tab-content-${props.index}`}
@@ -144,14 +146,18 @@ const Tabs = ({
                         </TabItem>
                     ))}
             </Surface>
-            <AnimatePresence>
-                {items.map(({ props }) =>
-                    destroyInactive
-                        ? bindIndex === props.index &&
-                          renderTabContent(props, direction)
-                        : renderTabContent(props, direction),
-                )}
-            </AnimatePresence>
+            <TabContentHolder direction={direction}>
+                <TabContent direction={direction}>
+                    <AnimatePresence>
+                        {items.map(({ props }) =>
+                            destroyInactive
+                                ? bindIndex === props.index &&
+                                  renderTabContent(props, direction)
+                                : renderTabContent(props, direction),
+                        )}
+                    </AnimatePresence>
+                </TabContent>
+            </TabContentHolder>
         </Container>
     );
 };
