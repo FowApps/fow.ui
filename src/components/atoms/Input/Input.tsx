@@ -1,85 +1,45 @@
-import React, { InputHTMLAttributes, useState, ChangeEvent } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
 
-import {
-    Wrapper,
-    StyledInput,
-    InputWrapper,
-    Message,
-    Label,
-    IconWrapper,
-} from './styles';
+import { Wrapper, StyledInput, InputWrapper, IconWrapper } from './styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    name?: string;
-    label?: string;
-    required?: boolean;
     prefixIcon?: FontAwesomeIconProps['icon'];
     suffixIcon?: FontAwesomeIconProps['icon'];
     allowClear?: boolean;
     disabled?: boolean;
-    error?: any;
-    value?: string;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    hasValidationError?: boolean;
 }
 
-export type Ref = HTMLInputElement;
-
 const Input = ({
-    name,
-    label = undefined,
     prefixIcon = undefined,
     suffixIcon = undefined,
     disabled = false,
-    required,
-    error,
-    value = '',
-    onChange,
+    hasValidationError = false,
     ...rest
-}: InputProps): JSX.Element => {
-    const [controlledValue, setControlledValue] = useState<string>(value);
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setControlledValue(event.target.value);
-        if (typeof onChange === 'function') onChange(event);
-    };
-    return (
-        <Wrapper>
-            {label && (
-                <Label
-                    disabled={disabled}
-                    hasError={!!error}
-                    htmlFor={name}
-                    required={!!required}>
-                    {label}
-                </Label>
+}: InputProps): JSX.Element => (
+    <Wrapper>
+        <InputWrapper>
+            <StyledInput
+                hasValidationError={hasValidationError}
+                hasPrefixIcon={!!prefixIcon}
+                hasSuffixIcon={!!suffixIcon}
+                disabled={disabled}
+                {...rest}
+            />
+            {prefixIcon && (
+                <IconWrapper position="prefix">
+                    <Icon icon={prefixIcon} />
+                </IconWrapper>
             )}
-            <InputWrapper>
-                <StyledInput
-                    id={name}
-                    name={name}
-                    hasError={!!error}
-                    hasPrefixIcon={!!prefixIcon}
-                    hasSuffixIcon={!!suffixIcon}
-                    disabled={disabled}
-                    value={controlledValue}
-                    onChange={handleChange}
-                    {...rest}
-                />
-                {prefixIcon && (
-                    <IconWrapper position="prefix">
-                        <Icon icon={prefixIcon} />
-                    </IconWrapper>
-                )}
-                {suffixIcon && (
-                    <IconWrapper position="suffix">
-                        <Icon icon={suffixIcon} />
-                    </IconWrapper>
-                )}
-                {!!error && <Message>{error?.message}</Message>}
-            </InputWrapper>
-        </Wrapper>
-    );
-};
+            {suffixIcon && (
+                <IconWrapper position="suffix">
+                    <Icon icon={suffixIcon} />
+                </IconWrapper>
+            )}
+        </InputWrapper>
+    </Wrapper>
+);
 
 export default Input;
