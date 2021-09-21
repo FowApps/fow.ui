@@ -4,7 +4,7 @@ import Caption from '../../Typography/Caption';
 type InputProps = {
     hasPrefixIcon: boolean;
     hasSuffixIcon: boolean;
-    hasError: boolean;
+    hasValidationError: boolean;
 };
 
 type LabelProps = {
@@ -55,7 +55,7 @@ export const StyledInput = styled.input<InputProps>`
             : props.theme.fow.spacing.small};
     border: 1px solid
         ${(props) =>
-            props.hasError
+            props.hasValidationError
                 ? props.theme.fow.colors.error.main
                 : props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
@@ -76,7 +76,7 @@ export const StyledInput = styled.input<InputProps>`
     :hover:not(:disabled) {
         border: 1px solid
             ${(props) =>
-                props.hasError
+                props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.grey.darker};
 
@@ -88,7 +88,7 @@ export const StyledInput = styled.input<InputProps>`
     :focus-visible:not(:disabled) {
         border: 1px solid
             ${(props) =>
-                props.hasError
+                props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.primary.main};
 
