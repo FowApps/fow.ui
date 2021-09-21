@@ -39,7 +39,7 @@
         "polished": "4.1.3",
         "rc-drawer": "^4.4.2",
         "react-beautiful-dnd": "^13.1.0",
-        "react-hook-form": "^7.11.1",
+        "react-hook-form": "^7.15.4",
         "react-loading-overlay": "^1.0.1",
         "react-lottie": "^1.2.3",
         "react-select": "^4.3.1",
