@@ -1,5 +1,8 @@
 import React from 'react';
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { StyledLink } from './styles';
+import Icon from '../Icon';
+import Space from '../Space';
 
 export interface LinkProps {
     /**
@@ -34,6 +37,14 @@ export interface LinkProps {
      * size
      */
     size?: 'small' | 'medium' | 'large';
+    /**
+     * prefix icon name
+     */
+    leftIcon?: FontAwesomeIconProps['icon'] | null;
+    /**
+     * suffix icon name
+     */
+    rightIcon?: FontAwesomeIconProps['icon'] | null;
     text: React.ReactNode | 'string';
     href: 'string';
 }
@@ -43,6 +54,8 @@ const Label = ({
     textTransfrom = 'capitalize',
     color = 'black',
     hoverColor = 'primary',
+    leftIcon = null,
+    rightIcon = null,
     text,
     href,
     ...rest
@@ -54,7 +67,13 @@ const Label = ({
         hoverColor={hoverColor}
         color={color}
         {...rest}>
-        {text}
+        <span>
+            <Space justify="center" inline={false}>
+                {leftIcon && <Icon icon={leftIcon} />}
+                {text && <span>{text}</span>}
+                {rightIcon && <Icon icon={rightIcon} />}
+            </Space>
+        </span>
     </StyledLink>
 );
 

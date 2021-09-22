@@ -1,6 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Link, { LinkProps } from './Link';
+import * as Icons from '@fortawesome/free-solid-svg-icons';
+
+const iconList = Object.keys(Icons)
+    .filter((key) => key !== 'fas' && key !== 'prefix')
+    .map((icon) => Icons[icon]);
 
 export default {
     title: 'Atoms/Link',
@@ -39,6 +44,18 @@ export default {
                 'warning',
                 'error',
             ],
+        },
+        leftIcon: {
+            control: {
+                type: 'select',
+            },
+            options: iconList.map((icon) => icon.iconName),
+        },
+        rightIcon: {
+            control: {
+                type: 'select',
+            },
+            options: iconList.map((icon) => icon.iconName),
         },
     },
 } as Meta;
