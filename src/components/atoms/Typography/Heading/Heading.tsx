@@ -7,19 +7,27 @@ export interface HeadingProps {
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-     * switch color light to dark
+     * color
      */
-    invert?: boolean;
+    color?:
+        | 'primary'
+        | 'secondary'
+        | 'disabled'
+        | 'white'
+        | 'black'
+        | 'success'
+        | 'warning'
+        | 'error';
     children: React.ReactNode;
 }
 
 const Heading = ({
     as = 'h4',
-    invert = false,
+    color = 'black',
     children,
     ...rest
 }: HeadingProps): JSX.Element => (
-    <StyledHeading as={as} invert={invert} {...rest}>
+    <StyledHeading as={as} color={color} {...rest}>
         {children}
     </StyledHeading>
 );
