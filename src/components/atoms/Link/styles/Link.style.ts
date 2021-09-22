@@ -30,7 +30,6 @@ type LinkProps = {
 export const StyledLink = styled.a<LinkProps>`
     display: inline-flex;
     align-items: center;
-    color: black;
     font-style: normal;
     ${(props) => hoverColor[props.hoverColor]}
     ${(props) => color[props.color]}
