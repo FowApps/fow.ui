@@ -2872,10 +2872,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.22":
-  version "17.0.22"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.22.tgz#c80d1d0e87fe953bae3ab273bef451dea1a6291b"
-  integrity sha512-kq/BMeaAVLJM6Pynh8C2rnr/drCK+/5ksH0ch9asz+8FW3DscYCIEFtCeYTFeIx/ubvOsMXmRfy7qEJ76gM96A==
+"@types/react@*", "@types/react@^17.0.24":
+  version "17.0.24"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.24.tgz#7e1b3f78d0fc53782543f9bce6d949959a5880bd"
+  integrity sha512-eIpyco99gTH+FTI3J7Oi/OH8MZoFMJuztNRimDOJwH4iGIsKV2qkGnk4M9VzlaVWeEEWLWSQRy0FEA0Kz218cg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3527,10 +3527,6 @@ ast-types@^0.14.2:
 astral-regex@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
-
-async-each@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
 
 async-validator@^4.0.2:
   version "4.0.3"
@@ -9625,7 +9621,7 @@ rc-field-form@^1.21.2:
     async-validator "^4.0.2"
     rc-util "^5.8.0"
 
-rc-util@^5.14.0, rc-util@^5.7.0, rc-util@^5.8.0:
+rc-util@^5.7.0, rc-util@^5.8.0:
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
   integrity sha512-2vy6/Z1BJUcwLjm/UEJb/htjUTQPigITUIemCcFEo1fQevAumc9sA32x2z5qyWoa9uhrXbiAjSDpPIUqyg65sA==
