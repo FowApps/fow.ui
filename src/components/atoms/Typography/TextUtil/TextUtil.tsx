@@ -33,7 +33,7 @@ export interface TextProps {
     /**
      * text decoration
      */
-    textDecoration:
+    textDecoration?:
         | 'underline'
         | 'overline'
         | 'none'

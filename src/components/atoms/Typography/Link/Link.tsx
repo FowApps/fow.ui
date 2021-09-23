@@ -41,7 +41,7 @@ export interface LinkProps {
     /**
      * text decoration
      */
-    textDecoration:
+    textDecoration?:
         | 'underline'
         | 'overline'
         | 'none'

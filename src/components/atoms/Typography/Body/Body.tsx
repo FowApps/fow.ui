@@ -26,7 +26,7 @@ export interface BodyProps {
     /**
      * text decoration
      */
-    textDecoration:
+    textDecoration?:
         | 'underline'
         | 'overline'
         | 'none'

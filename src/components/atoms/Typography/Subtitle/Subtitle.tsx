@@ -26,7 +26,7 @@ export interface SubtitleProps {
     /**
      * text decoration
      */
-    textDecoration:
+    textDecoration?:
         | 'underline'
         | 'overline'
         | 'none'

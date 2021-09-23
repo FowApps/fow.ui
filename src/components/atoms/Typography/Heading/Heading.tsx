@@ -26,7 +26,7 @@ export interface HeadingProps {
     /**
      * text decoration
      */
-    textDecoration:
+    textDecoration?:
         | 'underline'
         | 'overline'
         | 'none'
