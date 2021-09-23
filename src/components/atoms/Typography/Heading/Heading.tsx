@@ -44,15 +44,15 @@ const Heading = ({
     textDecoration = 'none',
     ...rest
 }: HeadingProps): JSX.Element => (
-    <TextUtil
-        textDecoration={textDecoration}
-        textTransfrom={textTransfrom}
-        hoverColor={color}
-        color={color}>
-        <StyledHeading as={as} {...rest}>
+    <StyledHeading as={as} {...rest}>
+        <TextUtil
+            textDecoration={textDecoration}
+            textTransfrom={textTransfrom}
+            hoverColor={color}
+            color={color}>
             {children}
-        </StyledHeading>
-    </TextUtil>
+        </TextUtil>
+    </StyledHeading>
 );
 
 export default Heading;

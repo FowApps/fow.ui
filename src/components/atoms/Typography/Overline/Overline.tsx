@@ -39,13 +39,15 @@ const Overline = ({
     children,
     ...rest
 }: OverlineProps): JSX.Element => (
-    <TextUtil
-        color={color}
-        hoverColor={color}
-        textDecoration={textDecoration}
-        textTransfrom={textTransfrom}>
-        <StyledOverline {...rest}>{children}</StyledOverline>
-    </TextUtil>
+    <StyledOverline {...rest}>
+        <TextUtil
+            color={color}
+            hoverColor={color}
+            textDecoration={textDecoration}
+            textTransfrom={textTransfrom}>
+            {children}
+        </TextUtil>
+    </StyledOverline>
 );
 
 export default Overline;

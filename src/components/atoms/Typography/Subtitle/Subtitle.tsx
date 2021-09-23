@@ -44,15 +44,15 @@ const Subtitle = ({
     children,
     ...rest
 }: SubtitleProps): JSX.Element => (
-    <TextUtil
-        color={color}
-        hoverColor={color}
-        textDecoration={textDecoration}
-        textTransfrom={textTransfrom}>
-        <StyledSubtitle level={level} {...rest}>
+    <StyledSubtitle level={level} {...rest}>
+        <TextUtil
+            color={color}
+            hoverColor={color}
+            textDecoration={textDecoration}
+            textTransfrom={textTransfrom}>
             {children}
-        </StyledSubtitle>
-    </TextUtil>
+        </TextUtil>
+    </StyledSubtitle>
 );
 
 export default Subtitle;

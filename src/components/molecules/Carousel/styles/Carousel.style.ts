@@ -13,9 +13,27 @@ export const StyledSlider = styled(Slider)`
     }
 
     .slick-prev:before {
-        display: none;
+        margin-left: 20px;
+        color: ${(props) => props.theme.fow.colors.grey.main};
+        font-weight: 900;
     }
     .slick-next:before {
-        display: none;
+        margin-right: 20px;
+        color: ${(props) => props.theme.fow.colors.grey.main};
+        font-weight: 900;
+    }
+
+    .slick-next {
+        right: 0px;
+        margin-right: 20px;
+    }
+
+    .slick-prev {
+        left: 0px;
+    }
+
+    .slick-prev,
+    .slick-next {
+        top: 83%;
     }
 `;

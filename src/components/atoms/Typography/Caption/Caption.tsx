@@ -36,13 +36,15 @@ const Caption = ({
     children,
     ...rest
 }: CaptionProps): JSX.Element => (
-    <TextUtil
-        hoverColor={color}
-        textDecoration={textDecoration}
-        textTransfrom={textTransfrom}
-        color={color}>
-        <StyledCaption {...rest}>{children}</StyledCaption>
-    </TextUtil>
+    <StyledCaption {...rest}>
+        <TextUtil
+            hoverColor={color}
+            textDecoration={textDecoration}
+            textTransfrom={textTransfrom}
+            color={color}>
+            {children}{' '}
+        </TextUtil>
+    </StyledCaption>
 );
 
 export default Caption;
