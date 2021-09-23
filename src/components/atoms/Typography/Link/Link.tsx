@@ -1,10 +1,15 @@
 import React from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { StyledLink } from './styles';
-import Icon from '../Icon';
-import Space from '../Space';
+import Icon from '../../Icon';
+import Space from '../../Space';
+import TextUtil from '../TextUtil';
 
 export interface LinkProps {
+    /**
+     * size level
+     */
+    level?: 1 | 2 | 3;
     /**
      * color
      */
@@ -34,9 +39,15 @@ export interface LinkProps {
      */
     textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
     /**
-     * size
+     * text decoration
      */
-    size?: 'small' | 'medium' | 'large';
+    textDecoration:
+        | 'underline'
+        | 'overline'
+        | 'none'
+        | 'underlineOverline'
+        | 'lineThrough'
+        | 'none';
     /**
      * prefix icon name
      */
@@ -49,32 +60,33 @@ export interface LinkProps {
     href: 'string';
 }
 
-const Label = ({
-    size = 'medium',
+const Link = ({
+    level = 2,
     textTransfrom = 'capitalize',
     color = 'black',
     hoverColor = 'primary',
+    textDecoration = 'none',
     leftIcon = null,
     rightIcon = null,
     text,
     href,
     ...rest
 }: LinkProps): JSX.Element => (
-    <StyledLink
-        href={href}
-        size={size}
-        textTransfrom={textTransfrom}
-        hoverColor={hoverColor}
-        color={color}
-        {...rest}>
+    <StyledLink level={level} hoverColor={hoverColor} href={href} {...rest}>
         <span>
-            <Space justify="center" inline={false}>
-                {leftIcon && <Icon icon={leftIcon} />}
-                {text && <span>{text}</span>}
-                {rightIcon && <Icon icon={rightIcon} />}
-            </Space>
+            <TextUtil
+                textDecoration={textDecoration}
+                hoverColor={hoverColor}
+                color={color}
+                textTransfrom={textTransfrom}>
+                <Space justify="center" inline={false}>
+                    {leftIcon && <Icon icon={leftIcon} fixedWidth />}
+                    {text && <span>{text}</span>}
+                    {rightIcon && <Icon icon={rightIcon} fixedWidth />}
+                </Space>
+            </TextUtil>
         </span>
     </StyledLink>
 );
 
-export default Label;
+export default Link;

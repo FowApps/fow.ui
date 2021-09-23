@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyledHeading } from './styles';
+import TextUtil from '../TextUtil';
 
 export interface HeadingProps {
     /**
@@ -18,18 +19,40 @@ export interface HeadingProps {
         | 'success'
         | 'warning'
         | 'error';
+    /**
+     * text transform
+     */
+    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    /**
+     * text decoration
+     */
+    textDecoration:
+        | 'underline'
+        | 'overline'
+        | 'none'
+        | 'underlineOverline'
+        | 'lineThrough'
+        | 'none';
     children: React.ReactNode;
 }
 
 const Heading = ({
     as = 'h4',
     color = 'black',
+    textTransfrom = 'capitalize',
     children,
+    textDecoration = 'none',
     ...rest
 }: HeadingProps): JSX.Element => (
-    <StyledHeading as={as} color={color} {...rest}>
-        {children}
-    </StyledHeading>
+    <TextUtil
+        textDecoration={textDecoration}
+        textTransfrom={textTransfrom}
+        hoverColor={color}
+        color={color}>
+        <StyledHeading as={as} {...rest}>
+            {children}
+        </StyledHeading>
+    </TextUtil>
 );
 
 export default Heading;

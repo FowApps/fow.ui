@@ -8,28 +8,14 @@ const iconList = Object.keys(Icons)
     .map((icon) => Icons[icon]);
 
 export default {
-    title: 'Atoms/Link',
+    title: 'Atoms/Typography/Link',
     component: Link,
     argTypes: {
-        size: {
+        level: {
             control: {
                 type: 'select',
             },
-            options: ['small', 'medium', 'large'],
-        },
-        hoverColor: {
-            control: {
-                type: 'select',
-            },
-            options: [
-                'primary',
-                'secondary',
-                'disabled',
-                'black',
-                'success',
-                'warning',
-                'error',
-            ],
+            options: [1, 2, 3],
         },
         color: {
             control: {
@@ -64,9 +50,9 @@ const Template: Story<LinkProps> = (args) => <Link {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+    level: 1,
     color: 'black',
     hoverColor: 'primary',
-    size: 'medium',
     href: '#',
     text: 'Lorem',
 };

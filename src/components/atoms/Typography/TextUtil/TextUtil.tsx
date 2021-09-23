@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyledCaption } from './styles';
-import TextUtil from '../TextUtil';
+import { StyledText } from './styles';
 
-export interface CaptionProps {
-    color?:
+export interface TextProps {
+    /**
+     * color
+     */
+    color:
         | 'primary'
         | 'secondary'
         | 'disabled'
@@ -13,7 +15,19 @@ export interface CaptionProps {
         | 'warning'
         | 'error';
     /**
-     * text transform
+     * hovercolor
+     */
+    hoverColor:
+        | 'primary'
+        | 'secondary'
+        | 'disabled'
+        | 'white'
+        | 'black'
+        | 'success'
+        | 'warning'
+        | 'error';
+    /**
+     * text transfrom
      */
     textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
     /**
@@ -29,20 +43,22 @@ export interface CaptionProps {
     children: React.ReactNode;
 }
 
-const Caption = ({
-    color = 'black',
-    textDecoration = 'none',
+const TextUtil = ({
     textTransfrom = 'capitalize',
+    color = 'black',
+    hoverColor = color,
+    textDecoration = 'none',
     children,
     ...rest
-}: CaptionProps): JSX.Element => (
-    <TextUtil
-        hoverColor={color}
+}: TextProps): JSX.Element => (
+    <StyledText
         textDecoration={textDecoration}
+        hoverColor={hoverColor}
         textTransfrom={textTransfrom}
-        color={color}>
-        <StyledCaption {...rest}>{children}</StyledCaption>
-    </TextUtil>
+        color={color}
+        {...rest}>
+        {children}
+    </StyledText>
 );
 
-export default Caption;
+export default TextUtil;

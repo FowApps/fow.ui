@@ -1,4 +1,5 @@
 import React from 'react';
+import TextUtil from '../TextUtil';
 import { StyledSubtitle } from './styles';
 
 export interface SubtitleProps {
@@ -7,7 +8,7 @@ export interface SubtitleProps {
      */
     level?: 1 | 2;
     /**
-     * color
+     * color of text
      */
     color?:
         | 'primary'
@@ -18,18 +19,40 @@ export interface SubtitleProps {
         | 'success'
         | 'warning'
         | 'error';
+    /**
+     * text transform
+     */
+    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    /**
+     * text decoration
+     */
+    textDecoration:
+        | 'underline'
+        | 'overline'
+        | 'none'
+        | 'underlineOverline'
+        | 'lineThrough'
+        | 'none';
     children: React.ReactNode;
 }
 
 const Subtitle = ({
     level = 1,
     color = 'black',
+    textDecoration = 'none',
+    textTransfrom = 'capitalize',
     children,
     ...rest
 }: SubtitleProps): JSX.Element => (
-    <StyledSubtitle level={level} color={color} {...rest}>
-        {children}
-    </StyledSubtitle>
+    <TextUtil
+        color={color}
+        hoverColor={color}
+        textDecoration={textDecoration}
+        textTransfrom={textTransfrom}>
+        <StyledSubtitle level={level} {...rest}>
+            {children}
+        </StyledSubtitle>
+    </TextUtil>
 );
 
 export default Subtitle;

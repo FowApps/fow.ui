@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { setSize } from './size';
-import setTextTransform from '../../../../utils/setTextTransform';
-import hoverColor from './hoverColor';
+import setTextTransform from '../../../../../utils/setTextTransform';
+// import hoverColor from './hoverColor';
 import color from './color';
+import hoverColor from './hoverColor';
+import textDecoration from './textDecoration';
 
-type LinkProps = {
+type TextProps = {
     color:
         | 'primary'
         | 'secondary'
@@ -23,16 +24,22 @@ type LinkProps = {
         | 'success'
         | 'warning'
         | 'error';
+    textDecoration:
+        | 'underline'
+        | 'overline'
+        | 'none'
+        | 'underlineOverline'
+        | 'lineThrough'
+        | 'none';
     textTransfrom: 'lowercase' | 'capitalize' | 'uppercase';
-    size: 'small' | 'medium' | 'large';
 };
 
-export const StyledLink = styled.a<LinkProps>`
+export const StyledText = styled.span<TextProps>`
     display: inline-flex;
     align-items: center;
     font-style: normal;
-    ${(props) => hoverColor[props.hoverColor]}
     ${(props) => color[props.color]}
-    ${(props) => setSize(props.size)}
+    ${(props) => hoverColor[props.hoverColor]}
+    ${(props) => textDecoration[props.textDecoration]}
     ${(props) => setTextTransform(props.textTransfrom)}
 `;

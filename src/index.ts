@@ -14,6 +14,8 @@ import Subtitle from './components/atoms/Typography/Subtitle';
 import Body from './components/atoms/Typography/Body';
 import Overline from './components/atoms/Typography/Overline';
 import Caption from './components/atoms/Typography/Caption';
+import Link from './components/atoms/Typography/Link';
+import TextUtil from './components/atoms/Typography/TextUtil';
 
 // Form
 import FormField from './components/atoms/Form/FormField';
@@ -35,7 +37,6 @@ export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
 export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
 export { default as Input } from './components/atoms/Input';
 export { default as Skeleton } from './components/atoms/Skeleton';
-export { default as Link } from './components/atoms/Link';
 
 export const Typography = {
     Heading,
@@ -43,6 +44,8 @@ export const Typography = {
     Body,
     Overline,
     Caption,
+    Link,
+    TextUtil,
 };
 
 export const Grid = {
