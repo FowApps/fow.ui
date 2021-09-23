@@ -2851,9 +2851,10 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
-"@types/react-select@^4.0.17":
-  version "4.0.17"
-  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-4.0.17.tgz#2e5ab4042c09c988bfc2711550329b0c3c9f8513"
+"@types/react-select@^4.0.18":
+  version "4.0.18"
+  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-4.0.18.tgz#f907f406411afa862217a9d86c54a301367a35c1"
+  integrity sha512-uCPRMPshd96BwHuT7oCrFduiv5d6km3VwmtW7rVl9g4XetS3VoJ9nZo540LiwtQgaFcW96POwaxQDZDAyYaepg==
   dependencies:
     "@emotion/serialize" "^1.0.0"
     "@types/react" "*"
@@ -3527,10 +3528,6 @@ ast-types@^0.14.2:
 astral-regex@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
-
-async-each@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
 
 async-validator@^4.0.2:
   version "4.0.3"
@@ -9625,7 +9622,7 @@ rc-field-form@^1.21.2:
     async-validator "^4.0.2"
     rc-util "^5.8.0"
 
-rc-util@^5.14.0, rc-util@^5.7.0, rc-util@^5.8.0:
+rc-util@^5.7.0, rc-util@^5.8.0:
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
   integrity sha512-2vy6/Z1BJUcwLjm/UEJb/htjUTQPigITUIemCcFEo1fQevAumc9sA32x2z5qyWoa9uhrXbiAjSDpPIUqyg65sA==
