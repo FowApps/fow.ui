@@ -1,5 +1,123 @@
 # Changelog
 
+<a name="0.0.20"></a>
+## 0.0.20 (2021-09-24)
+
+### Changed
+
+- ⬆️ Bump @types/react-select from 4.0.17 to 4.0.18 [[855e5c7](https://github.com/FowApps/fow.ui.v2/commit/855e5c7b03e707ee91fcadc2bc3a6dc6c05d8736)]
+- ⬆️ Bump style-loader from 3.2.1 to 3.3.0 [[abc2fab](https://github.com/FowApps/fow.ui.v2/commit/abc2fabd4a5f4d5909881876c7509b924cad7c71)]
+- ⬆️ Bump @types/react from 17.0.22 to 17.0.24 [[554f72b](https://github.com/FowApps/fow.ui.v2/commit/554f72b48e82fbd4b746869e645fa0129d2a2305)]
+- ⬆️ Bump @types/jest from 27.0.1 to 27.0.2 [[0da1e7f](https://github.com/FowApps/fow.ui.v2/commit/0da1e7fbeb29239edb8634f4117cbbd749bf9107)]
+- ⬆️ Bump eslint-plugin-react from 7.25.3 to 7.26.0 [[714f26f](https://github.com/FowApps/fow.ui.v2/commit/714f26f47273e1c59f3dcdab9152e299b27cbfec)]
+
+### Fixed
+
+- 💚 d.ts files excluded from codeclimate [[129e534](https://github.com/FowApps/fow.ui.v2/commit/129e534d6f929fbc7522b59e306d8d6047dfe1e9)]
+
+### Miscellaneous
+
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/types/react-select-4.0.18&#x27; [[f370d69](https://github.com/FowApps/fow.ui.v2/commit/f370d69829ee2d2355c2c536aef50ca9a2cbac72)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/style-loader-3.3.0&#x27; [[e85b810](https://github.com/FowApps/fow.ui.v2/commit/e85b810a20dbff1ff00aea18573394bdde4ae681)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/types/react-17.0.24&#x27; [[ed7372e](https://github.com/FowApps/fow.ui.v2/commit/ed7372ef4d1b1c519d2323e0868853984e793ef2)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/types/jest-27.0.2&#x27; [[a7cddcc](https://github.com/FowApps/fow.ui.v2/commit/a7cddcc29a7de0698eeea56d36508851e1456554)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/eslint-plugin-react-7.26.0&#x27; [[e622427](https://github.com/FowApps/fow.ui.v2/commit/e6224276ddf70744a26db869da97fb4c683053f7)]
+- 🔀 Merge remote-tracking branch &#x27;origin/improvement/custom-icon&#x27; [[c5e692d](https://github.com/FowApps/fow.ui.v2/commit/c5e692dfc395742868b66211a11ab26e6a7d16ac)]
+- 🔀 Merge remote-tracking branch &#x27;origin/feature/onboarding&#x27; [[adebf1b](https://github.com/FowApps/fow.ui.v2/commit/adebf1b6ad6dc04f085ccc050f1e776eab19a5aa)]
+- 🔀 Merge remote-tracking branch &#x27;origin/feature/onboarding&#x27; [[ca56fed](https://github.com/FowApps/fow.ui.v2/commit/ca56fed75c4c8a649b46045249be112f79fcaafd)]
+- 🔀 Merge remote-tracking branch &#x27;origin/feature/onboarding&#x27; [[baa598d](https://github.com/FowApps/fow.ui.v2/commit/baa598d2f003547e8809482ea1a57993dc7cf824)]
+- 🔀 Merge remote-tracking branch &#x27;origin/improvement/upload-form-field&#x27; [[4044286](https://github.com/FowApps/fow.ui.v2/commit/40442860f9e8a2d8d0fe642280964090bda4c0b0)]
+-  add fontStyle prop TextUtil [[b590c8b](https://github.com/FowApps/fow.ui.v2/commit/b590c8b0379920cf10104cd6c7cb83d42963263c)]
+-  fix Typography color &amp; fix carousel [[d559852](https://github.com/FowApps/fow.ui.v2/commit/d5598521237271698aa60a1a3233c890386e7a27)]
+-  carousel dots trying [[d0ed30e](https://github.com/FowApps/fow.ui.v2/commit/d0ed30e774e6a7cf81538a21b182fb43feefcc96)]
+-  fix build problem [[5bca90d](https://github.com/FowApps/fow.ui.v2/commit/5bca90df69a2848ff8e1a3c7ffa5cbbc05e9f694)]
+-  add TextUtil component [[38eba4b](https://github.com/FowApps/fow.ui.v2/commit/38eba4b98c760c03dd2994ef3fb84fbd7da8cba8)]
+-  add custom icon ability [[25f020a](https://github.com/FowApps/fow.ui.v2/commit/25f020ad2a70cceeb04d4a706d912d6619ed6c24)]
+-  fix color prop Link [[e64ad52](https://github.com/FowApps/fow.ui.v2/commit/e64ad52faf4dbba5ad15efad7343acfcab02dc73)]
+-  add Icons to Link [[21785de](https://github.com/FowApps/fow.ui.v2/commit/21785dea7d71d5e4d07501ae777d534c4209e048)]
+-  add Link component [[d9ad840](https://github.com/FowApps/fow.ui.v2/commit/d9ad840f7b78b92a1cf9190fef6f11b155745d09)]
+-  add color to Heading [[33bcaa7](https://github.com/FowApps/fow.ui.v2/commit/33bcaa707e072a1bf16e186e64b6fab332caba4d)]
+-  Merge branch &#x27;master&#x27; into improvement/upload-form-field [[0d6da1d](https://github.com/FowApps/fow.ui.v2/commit/0d6da1d941714b2ae3e908f61342801fe8403680)]
+
+
+<a name="0.0.19"></a>
+## 0.0.19 (2021-09-21)
+
+### Changed
+
+- ⬆️ Bump @types/react from 17.0.21 to 17.0.22 [[1b3933b](https://github.com/FowApps/fow.ui.v2/commit/1b3933b410cc213a836b75a3311dd8722139befb)]
+- ⬆️ Bump @typescript-eslint/parser from 4.31.1 to 4.31.2 [[e4f0234](https://github.com/FowApps/fow.ui.v2/commit/e4f0234752a088cd517d55512c75f06eb75d896d)]
+- ⬆️ Bump babel-jest from 27.2.0 to 27.2.1 [[268eb23](https://github.com/FowApps/fow.ui.v2/commit/268eb230d5869d2b0f7c4485400084600f0eaa06)]
+- ⬆️ Bump tmpl from 1.0.4 to 1.0.5 [[63e3c34](https://github.com/FowApps/fow.ui.v2/commit/63e3c34a222b4c25f59fd5fcb6e96c370390c673)]
+- ⬆️ Bump nth-check from 2.0.0 to 2.0.1 [[dffc200](https://github.com/FowApps/fow.ui.v2/commit/dffc20014fe808516884559def762813c342a1b2)]
+- ⬆️ Bump react-hook-form from 7.15.3 to 7.15.4 [[9b7073e](https://github.com/FowApps/fow.ui.v2/commit/9b7073e156af883f21637832eca6e19d128bfd08)]
+- ⬆️ Bump css-loader from 6.2.0 to 6.3.0 [[c2db5b3](https://github.com/FowApps/fow.ui.v2/commit/c2db5b3312c71af925c933161436fd6ced193722)]
+- ⬆️ Bump @typescript-eslint/eslint-plugin from 4.31.1 to 4.31.2 [[cbc2e75](https://github.com/FowApps/fow.ui.v2/commit/cbc2e75cb9d2febc7a5a839c01224a1d9f7852d8)]
+- ⬆️ Bump jest from 27.2.0 to 27.2.1 [[5849546](https://github.com/FowApps/fow.ui.v2/commit/58495460fc8acd7cd7c5addda1416600ca6b377a)]
+- ⬆️ Bump eslint-plugin-react from 7.25.2 to 7.25.3 [[bb6dc48](https://github.com/FowApps/fow.ui.v2/commit/bb6dc4811b0986f477d46fc8f14f8c9d74627450)]
+- ⬆️ Bump @babel/cli from 7.15.4 to 7.15.7 [[c5b3cf9](https://github.com/FowApps/fow.ui.v2/commit/c5b3cf99291cb9850922a0fb2b9cf38327fdbf22)]
+- ⬆️ Bump eslint-config-4catalyzer-typescript from 3.1.0 to 3.1.1 [[a254001](https://github.com/FowApps/fow.ui.v2/commit/a254001346cd9b868587e6ff111b0b24f81d1308)]
+- ⬆️ Bump eslint-plugin-react from 7.25.1 to 7.25.2 [[b519561](https://github.com/FowApps/fow.ui.v2/commit/b51956159dc0292ba95bc45c600a7dc79a0ef549)]
+- ⬆️ Bump webpack from 5.52.1 to 5.53.0 [[4c25d14](https://github.com/FowApps/fow.ui.v2/commit/4c25d14bc6d0fa9edd464ca64d095567422b5c48)]
+- ⬆️ Bump prettier from 2.4.0 to 2.4.1 [[1037e7d](https://github.com/FowApps/fow.ui.v2/commit/1037e7d31612f4d0148d24de676b60bc18050384)]
+- ⬆️ Bump @types/react from 17.0.20 to 17.0.21 [[40f727c](https://github.com/FowApps/fow.ui.v2/commit/40f727c1d3aeeebe109a4de806584f32a907a85d)]
+
+### Security
+
+- 🔒 Change Dependabot versioning-strategy [[d893c81](https://github.com/FowApps/fow.ui.v2/commit/d893c81fab34f0ec38f33b80ca17d06583cd8af5)]
+
+### Miscellaneous
+
+-  refactor upload component for form-field [[b207dbd](https://github.com/FowApps/fow.ui.v2/commit/b207dbd534290f14d1a805a0b87172d488bee014)]
+-  Merge pull request [#186](https://github.com/FowApps/fow.ui.v2/issues/186) from FowApps/feature/field-form [[dd5db01](https://github.com/FowApps/fow.ui.v2/commit/dd5db01bb243f04e0a901e9d69496fa3b8caf072)]
+-  Merge branch &#x27;master&#x27; into feature/field-form [[3d2de4f](https://github.com/FowApps/fow.ui.v2/commit/3d2de4ffaf5086f8661662354c4715dc633b5233)]
+-  Merge pull request [#185](https://github.com/FowApps/fow.ui.v2/issues/185) from FowApps/dependabot/npm_and_yarn/tmpl-1.0.5 [[38a58e5](https://github.com/FowApps/fow.ui.v2/commit/38a58e57fbb7676b567a6a5fee7b41d4b58de1af)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/tmpl-1.0.5 [[44fae62](https://github.com/FowApps/fow.ui.v2/commit/44fae62eecf617486062eee6daff6a3199faeb74)]
+-  Merge pull request [#184](https://github.com/FowApps/fow.ui.v2/issues/184) from FowApps/dependabot/npm_and_yarn/nth-check-2.0.1 [[ea1fe15](https://github.com/FowApps/fow.ui.v2/commit/ea1fe15a06f1cd4a69aedb3183961dd51b70c164)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/nth-check-2.0.1 [[851ce64](https://github.com/FowApps/fow.ui.v2/commit/851ce64a5c653009f804bc87f214054c8d4595d6)]
+-  Merge pull request [#183](https://github.com/FowApps/fow.ui.v2/issues/183) from FowApps/dependabot/npm_and_yarn/types/react-17.0.22 [[fb72fe6](https://github.com/FowApps/fow.ui.v2/commit/fb72fe67c62adf4760eeee291e92e3d07078b02e)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/types/react-17.0.22 [[5d801d1](https://github.com/FowApps/fow.ui.v2/commit/5d801d1c8e1768fc3ad8193b1933d1289d8ea765)]
+-  Merge pull request [#182](https://github.com/FowApps/fow.ui.v2/issues/182) from FowApps/dependabot/npm_and_yarn/typescript-eslint/parser-4.31.2 [[89041ea](https://github.com/FowApps/fow.ui.v2/commit/89041eaec74768c5c6afe86c51ed616ee9edf5aa)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/typescript-eslint/parser-4.31.2 [[58c99fb](https://github.com/FowApps/fow.ui.v2/commit/58c99fbf015be36e96e2b5e87599d7e26cf94790)]
+-  Merge pull request [#181](https://github.com/FowApps/fow.ui.v2/issues/181) from FowApps/dependabot/npm_and_yarn/react-hook-form-7.15.4 [[a103e95](https://github.com/FowApps/fow.ui.v2/commit/a103e95744b0c6e159c331cfe92462b5125250fc)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/react-hook-form-7.15.4 [[b5b1511](https://github.com/FowApps/fow.ui.v2/commit/b5b1511cd711bb82e3cd0729e898b916ac051f2a)]
+-  Merge pull request [#180](https://github.com/FowApps/fow.ui.v2/issues/180) from FowApps/dependabot/npm_and_yarn/babel-jest-27.2.1 [[d41744b](https://github.com/FowApps/fow.ui.v2/commit/d41744b6269d8f6deca453e4af60bcf1ae6262da)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/babel-jest-27.2.1 [[ed019c2](https://github.com/FowApps/fow.ui.v2/commit/ed019c2d4035b3d7935d68c964b877a1c641daa0)]
+-  Merge pull request [#179](https://github.com/FowApps/fow.ui.v2/issues/179) from FowApps/dependabot/npm_and_yarn/css-loader-6.3.0 [[f0eb085](https://github.com/FowApps/fow.ui.v2/commit/f0eb08549939799ac72a8cf7ce04e146515f92fd)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/css-loader-6.3.0 [[e430d6f](https://github.com/FowApps/fow.ui.v2/commit/e430d6f4c3f1e482ca1e080456848a20bba905c9)]
+-  Merge pull request [#178](https://github.com/FowApps/fow.ui.v2/issues/178) from FowApps/dependabot/npm_and_yarn/typescript-eslint/eslint-plugin-4.31.2 [[be97042](https://github.com/FowApps/fow.ui.v2/commit/be97042ceb4a03904d59542e188e864fb3561d3c)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/typescript-eslint/eslint-plugin-4.31.2 [[c5d6bca](https://github.com/FowApps/fow.ui.v2/commit/c5d6bca994214bf980848e10f035f0ed3e0cce35)]
+-  Merge pull request [#177](https://github.com/FowApps/fow.ui.v2/issues/177) from FowApps/dependabot/npm_and_yarn/jest-27.2.1 [[97abec3](https://github.com/FowApps/fow.ui.v2/commit/97abec3c32151fc2504d7f2e15343634caee11f6)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/jest-27.2.1 [[002be30](https://github.com/FowApps/fow.ui.v2/commit/002be30b8559d6710a3cc1d467ed9a17abe18748)]
+-  Merge pull request [#176](https://github.com/FowApps/fow.ui.v2/issues/176) from FowApps/dependabot/npm_and_yarn/eslint-plugin-react-7.25.3 [[7190b0f](https://github.com/FowApps/fow.ui.v2/commit/7190b0f4a0eed40c7b3b0ae1f493a5f305142b7a)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/eslint-plugin-react-7.25.3 [[8b45a8b](https://github.com/FowApps/fow.ui.v2/commit/8b45a8b70ee396f6e828d44813d88866bb596452)]
+-  Merge pull request [#175](https://github.com/FowApps/fow.ui.v2/issues/175) from FowApps/dependabot/npm_and_yarn/babel/cli-7.15.7 [[aac523c](https://github.com/FowApps/fow.ui.v2/commit/aac523cfca2a99e2131610dbfa4507eeaea4b637)]
+-  add rc-field-form and refactor text input component [[7f1ab85](https://github.com/FowApps/fow.ui.v2/commit/7f1ab851033512c067031ab786f6273f58be87a8)]
+-  Merge pull request [#172](https://github.com/FowApps/fow.ui.v2/issues/172) from FowApps/feature/drawer [[60eba22](https://github.com/FowApps/fow.ui.v2/commit/60eba229afc460d4ac387952c83eefea7f7f81c8)]
+-  Merge branch &#x27;master&#x27; into feature/drawer [[f7d6ca0](https://github.com/FowApps/fow.ui.v2/commit/f7d6ca07b838cfba7506030e6c8d980026c49b0d)]
+-  Merge pull request [#171](https://github.com/FowApps/fow.ui.v2/issues/171) from FowApps/improvement/tab [[e5f9994](https://github.com/FowApps/fow.ui.v2/commit/e5f9994e047db39145a4637b6a8bea7c7f3a4499)]
+-  Merge branch &#x27;master&#x27; into improvement/tab [[2e5f497](https://github.com/FowApps/fow.ui.v2/commit/2e5f4975c3a315afa8fd9926427037c75705abb6)]
+-  Merge branch &#x27;master&#x27; into feature/drawer [[a39b48f](https://github.com/FowApps/fow.ui.v2/commit/a39b48f81d3fd04b3b72c4381a02693274f5e497)]
+-  Merge pull request [#174](https://github.com/FowApps/fow.ui.v2/issues/174) from FowApps/dependabot/npm_and_yarn/eslint-config-4catalyzer-typescript-3.1.1 [[ae7eb4d](https://github.com/FowApps/fow.ui.v2/commit/ae7eb4db15aeff1056cbeea348deecdcddc01211)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/eslint-config-4catalyzer-typescript-3.1.1 [[3912227](https://github.com/FowApps/fow.ui.v2/commit/39122277475b603041d80ad28156e3a2e1c75612)]
+-  Merge pull request [#173](https://github.com/FowApps/fow.ui.v2/issues/173) from FowApps/dependabot/npm_and_yarn/eslint-plugin-react-7.25.2 [[de4ec2d](https://github.com/FowApps/fow.ui.v2/commit/de4ec2d4c86d54b1fb3183f8c41faa84343cab80)]
+-  move getDrawerStyles methods to utils folder [[a06a2e4](https://github.com/FowApps/fow.ui.v2/commit/a06a2e4b869c071d8128be1a930dce320926efed)]
+-  add story for drawer component [[060cf09](https://github.com/FowApps/fow.ui.v2/commit/060cf09b10b189a37c66e1897c8b4f73a7e9a7d2)]
+-  add drawer component [[ebfd7ba](https://github.com/FowApps/fow.ui.v2/commit/ebfd7ba46d45b985be749292f247ed2b7cd0ae8f)]
+-  add drawer core styles [[017fd2f](https://github.com/FowApps/fow.ui.v2/commit/017fd2f3195245f6cfb641d9c99bb08975eb9289)]
+-  export force update hook [[2bff169](https://github.com/FowApps/fow.ui.v2/commit/2bff169fe02e0ecd2255e1e06edb94ec79f8f3cd)]
+-  add rc-drawer package [[3f6ab09](https://github.com/FowApps/fow.ui.v2/commit/3f6ab09a9215d4a1ac2b639ee320b33ace01791e)]
+-  add force update hook [[63b8746](https://github.com/FowApps/fow.ui.v2/commit/63b87461c47fcd0af3f4f3c6dc3d095178067792)]
+-  Merge branch &#x27;master&#x27; into improvement/tab [[d7cdc65](https://github.com/FowApps/fow.ui.v2/commit/d7cdc651ae31b2329c4b57ae7bb7333c6a7849ea)]
+-  Merge pull request [#170](https://github.com/FowApps/fow.ui.v2/issues/170) from FowApps/dependabot/npm_and_yarn/webpack-5.53.0 [[813d1e4](https://github.com/FowApps/fow.ui.v2/commit/813d1e4e1e81c7f3390b194cc52da24b8e9d5767)]
+-  Merge branch &#x27;master&#x27; into dependabot/npm_and_yarn/webpack-5.53.0 [[4a01523](https://github.com/FowApps/fow.ui.v2/commit/4a015235dfbfbece8752284275d503c4510a048c)]
+-  Merge pull request [#169](https://github.com/FowApps/fow.ui.v2/issues/169) from FowApps/dependabot/npm_and_yarn/prettier-2.4.1 [[dea00e9](https://github.com/FowApps/fow.ui.v2/commit/dea00e93c4998cbc73091639b7347568ac456dee)]
+-  Merge branch &#x27;master&#x27; into improvement/tab [[e6dcd2c](https://github.com/FowApps/fow.ui.v2/commit/e6dcd2c08b933d496e51c3c111721093e8969449)]
+-  improve tab content css [[b6abbf5](https://github.com/FowApps/fow.ui.v2/commit/b6abbf55fde015015d0240a53a083f224fb77934)]
+-  Merge pull request [#168](https://github.com/FowApps/fow.ui.v2/issues/168) from FowApps/dependabot/npm_and_yarn/types/react-17.0.21 [[6fe18af](https://github.com/FowApps/fow.ui.v2/commit/6fe18af584a5b8a69386c44e1872bb4d0e85f8a4)]
+- 📝 Update CHANGELOG.md [[9db247f](https://github.com/FowApps/fow.ui.v2/commit/9db247f306b03438790ddc4a7be6708a8993f7a7)]
+
+
 <a name="0.0.18"></a>
 ## 0.0.18 (2021-09-14)
 
