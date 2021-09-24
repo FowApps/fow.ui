@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyledOverline } from './styles';
-import TextUtil from '../TextUtil';
+import { StyledText } from './styles';
 
-export interface OverlineProps {
+export interface TextProps {
     /**
-     * color of text
+     * color
      */
-    color?:
+    color:
         | 'primary'
         | 'secondary'
         | 'disabled'
@@ -16,7 +15,19 @@ export interface OverlineProps {
         | 'warning'
         | 'error';
     /**
-     * text transform
+     * hovercolor
+     */
+    hoverColor:
+        | 'primary'
+        | 'secondary'
+        | 'disabled'
+        | 'white'
+        | 'black'
+        | 'success'
+        | 'warning'
+        | 'error';
+    /**
+     * text transfrom
      */
     textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
     /**
@@ -36,24 +47,24 @@ export interface OverlineProps {
     children: React.ReactNode;
 }
 
-const Overline = ({
-    color = 'black',
-    textDecoration = 'none',
+const TextUtil = ({
     textTransfrom = 'capitalize',
+    color = 'black',
+    hoverColor = color,
+    textDecoration = 'none',
     fontStyle = 'normal',
     children,
     ...rest
-}: OverlineProps): JSX.Element => (
-    <StyledOverline {...rest}>
-        <TextUtil
-            fontStyle={fontStyle}
-            color={color}
-            hoverColor={color}
-            textDecoration={textDecoration}
-            textTransfrom={textTransfrom}>
-            {children}
-        </TextUtil>
-    </StyledOverline>
+}: TextProps): JSX.Element => (
+    <StyledText
+        fontStyle={fontStyle}
+        textDecoration={textDecoration}
+        hoverColor={hoverColor}
+        textTransfrom={textTransfrom}
+        color={color}
+        {...rest}>
+        {children}
+    </StyledText>
 );
 
-export default Overline;
+export default TextUtil;

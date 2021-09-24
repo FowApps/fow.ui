@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { StyledSlider } from './styles';
 
 export interface CarouselProps {
     /**
@@ -37,7 +37,7 @@ const Carousel = ({
     children,
     ...rest
 }: CarouselProps): JSX.Element => (
-    <Slider
+    <StyledSlider
         dots={dots}
         infinite={infinite}
         speed={speed}
@@ -45,7 +45,7 @@ const Carousel = ({
         slidesToScroll={slidesToScroll}
         {...rest}>
         {children}
-    </Slider>
+    </StyledSlider>
 );
 
 export default Carousel;

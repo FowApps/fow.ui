@@ -5,7 +5,6 @@ type AsProps = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type HeadingProps = {
     as: AsProps;
-    invert?: boolean;
 };
 
 const getElementType = (as: AsProps) => {
@@ -29,11 +28,5 @@ const getElementType = (as: AsProps) => {
 
 export const StyledHeading = styled.h1<HeadingProps>`
     margin: 0;
-    color: ${(props) =>
-        props.invert
-            ? props.theme.fow.colors.common.white
-            : props.theme.fow.colors.text.primary};
-    font-style: normal;
-
     ${(props) => getElementType(props.as)}
 `;

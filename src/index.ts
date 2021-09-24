@@ -14,6 +14,8 @@ import Subtitle from './components/atoms/Typography/Subtitle';
 import Body from './components/atoms/Typography/Body';
 import Overline from './components/atoms/Typography/Overline';
 import Caption from './components/atoms/Typography/Caption';
+import Link from './components/atoms/Typography/Link';
+import TextUtil from './components/atoms/Typography/TextUtil';
 
 // Form
 import FormField from './components/atoms/Form/FormField';
@@ -42,6 +44,8 @@ export const Typography = {
     Body,
     Overline,
     Caption,
+    Link,
+    TextUtil,
 };
 
 export const Grid = {
