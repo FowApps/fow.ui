@@ -33,12 +33,17 @@ export interface BodyProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
 const Subtitle = ({
     level = 1,
     color = 'black',
+    fontStyle = 'normal',
     textDecoration = 'none',
     textTransfrom = 'capitalize',
     children,
@@ -46,6 +51,7 @@ const Subtitle = ({
 }: BodyProps): JSX.Element => (
     <StyledSubtitle level={level} color={color} {...rest}>
         <TextUtil
+            fontStyle={fontStyle}
             color={color}
             hoverColor={color}
             textDecoration={textDecoration}

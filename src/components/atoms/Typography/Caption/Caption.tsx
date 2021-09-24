@@ -26,6 +26,10 @@ export interface CaptionProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
@@ -33,11 +37,13 @@ const Caption = ({
     color = 'black',
     textDecoration = 'none',
     textTransfrom = 'capitalize',
+    fontStyle = 'normal',
     children,
     ...rest
 }: CaptionProps): JSX.Element => (
     <StyledCaption {...rest}>
         <TextUtil
+            fontStyle={fontStyle}
             hoverColor={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}

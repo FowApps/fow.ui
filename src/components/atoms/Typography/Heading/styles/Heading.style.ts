@@ -28,6 +28,5 @@ const getElementType = (as: AsProps) => {
 
 export const StyledHeading = styled.h1<HeadingProps>`
     margin: 0;
-    font-style: normal;
     ${(props) => getElementType(props.as)}
 `;

@@ -49,6 +49,10 @@ export interface LinkProps {
         | 'lineThrough'
         | 'none';
     /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
+    /**
      * prefix icon name
      */
     leftIcon?: FontAwesomeIconProps['icon'] | null;
@@ -66,6 +70,7 @@ const Link = ({
     color = 'black',
     hoverColor = 'primary',
     textDecoration = 'none',
+    fontStyle = 'normal',
     leftIcon = null,
     rightIcon = null,
     text,
@@ -76,6 +81,7 @@ const Link = ({
         <span>
             <TextUtil
                 textDecoration={textDecoration}
+                fontStyle={fontStyle}
                 hoverColor={hoverColor}
                 color={color}
                 textTransfrom={textTransfrom}>

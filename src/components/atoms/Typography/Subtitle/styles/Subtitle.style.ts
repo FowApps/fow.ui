@@ -7,7 +7,5 @@ type SubtitleProps = {
 
 export const StyledSubtitle = styled.h3<SubtitleProps>`
     margin: 0;
-    font-style: normal;
-
     ${(props) => setLevel(props.level)}
 `;

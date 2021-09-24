@@ -17,6 +17,5 @@ type LinkProps = {
 export const StyledLink = styled.a<LinkProps>`
     display: inline-flex;
     align-items: center;
-    font-style: normal;
     ${(props) => setLevel(props.level)}
 `;

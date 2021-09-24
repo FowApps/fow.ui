@@ -33,6 +33,10 @@ export interface HeadingProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
@@ -42,10 +46,12 @@ const Heading = ({
     textTransfrom = 'capitalize',
     children,
     textDecoration = 'none',
+    fontStyle = 'normal',
     ...rest
 }: HeadingProps): JSX.Element => (
     <StyledHeading as={as} {...rest}>
         <TextUtil
+            fontStyle={fontStyle}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}
             hoverColor={color}

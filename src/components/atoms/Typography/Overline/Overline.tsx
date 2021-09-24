@@ -29,6 +29,10 @@ export interface OverlineProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
@@ -36,11 +40,13 @@ const Overline = ({
     color = 'black',
     textDecoration = 'none',
     textTransfrom = 'capitalize',
+    fontStyle = 'normal',
     children,
     ...rest
 }: OverlineProps): JSX.Element => (
     <StyledOverline {...rest}>
         <TextUtil
+            fontStyle={fontStyle}
             color={color}
             hoverColor={color}
             textDecoration={textDecoration}

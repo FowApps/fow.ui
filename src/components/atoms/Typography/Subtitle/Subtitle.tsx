@@ -33,6 +33,10 @@ export interface SubtitleProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
@@ -41,12 +45,14 @@ const Subtitle = ({
     color = 'black',
     textDecoration = 'none',
     textTransfrom = 'capitalize',
+    fontStyle = 'normal',
     children,
     ...rest
 }: SubtitleProps): JSX.Element => (
     <StyledSubtitle level={level} {...rest}>
         <TextUtil
             color={color}
+            fontStyle={fontStyle}
             hoverColor={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}>

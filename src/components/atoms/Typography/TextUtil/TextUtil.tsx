@@ -40,6 +40,10 @@ export interface TextProps {
         | 'underlineOverline'
         | 'lineThrough'
         | 'none';
+    /**
+     * font-style
+     */
+    fontStyle?: 'normal' | 'italic' | 'oblique';
     children: React.ReactNode;
 }
 
@@ -48,10 +52,12 @@ const TextUtil = ({
     color = 'black',
     hoverColor = color,
     textDecoration = 'none',
+    fontStyle = 'normal',
     children,
     ...rest
 }: TextProps): JSX.Element => (
     <StyledText
+        fontStyle={fontStyle}
         textDecoration={textDecoration}
         hoverColor={hoverColor}
         textTransfrom={textTransfrom}
