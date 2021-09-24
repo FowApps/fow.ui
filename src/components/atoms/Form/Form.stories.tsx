@@ -7,6 +7,7 @@ import Row from '../Row';
 import Col from '../Col';
 
 import Input from '../Input';
+import Upload from '../../molecules/Upload';
 
 export default {
     title: 'Atoms/Form',
@@ -41,6 +42,17 @@ const Template: Story = () => {
                             <Input placeholder="sname" />
                         </FormField>
                     </Col>
+                    <Col xs={12}>
+                        <FormField
+                            name="file"
+                            label="File"
+                            valuePropName="files"
+                            rules={[
+                                { required: true, message: 'Zorunlu alan' },
+                            ]}>
+                            <Upload multiple={false} accept=".zip" />
+                        </FormField>
+                    </Col>
                 </Row>
             </Form>
             <button
@@ -49,6 +61,13 @@ const Template: Story = () => {
                 }}
                 type="submit">
                 Submit
+            </button>
+            <button
+                onClick={() => {
+                    form.resetFields();
+                }}
+                type="reset">
+                Reset
             </button>
         </div>
     );

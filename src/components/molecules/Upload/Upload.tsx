@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, FormEvent } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useRef, useState, FormEvent, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DefaultTheme, withTheme } from 'styled-components';
 
@@ -14,6 +15,7 @@ import Subtitle from '../../atoms/Typography/Subtitle';
 
 import { Wrapper, FileUploadContainer, FormField, Label } from './styles';
 import useToast from '../Toast/useToast';
+import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
 
@@ -32,7 +34,7 @@ export interface UploadProps {
     /**
      * change event
      */
-    onChange?: (files: File[] | File) => void;
+    onChange?: (files: File | File[] | null) => void;
     /**
      * file types accepted
      */
@@ -110,6 +112,7 @@ const Upload = ({
     const fileInputField = useRef<HTMLInputElement>(null);
     const [files, setFiles] = useState<File[]>([]);
     const toast = useToast();
+    const isMountFirstTime = useIsMountFirstTime();
 
     const addNewFiles = (newFiles: FileList) =>
         Array.from(newFiles).forEach((newFile: File) => {
@@ -147,14 +150,6 @@ const Upload = ({
         );
         if (fileInputField.current) fileInputField.current.value = '';
     };
-
-    useEffect(() => {
-        if (multiple) {
-            onChange?.(files);
-        } else {
-            onChange?.(files[0]);
-        }
-    }, [files, multiple, onChange]);
 
     const renderFiles = () =>
         files.map((file) => {
@@ -199,6 +194,12 @@ const Upload = ({
                 </motion.div>
             );
         });
+
+    useEffect(() => {
+        if (!isMountFirstTime) {
+            onChange?.(files);
+        }
+    }, [files]);
 
     return (
         <Wrapper>
