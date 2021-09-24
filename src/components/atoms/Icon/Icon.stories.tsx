@@ -2,12 +2,15 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
+import FowIcons from './FowIcons';
 
 import Icon from './Icon';
 
-const iconList = Object.keys(Icons)
+const AllIcons = { ...Icons, ...FowIcons };
+
+const iconList = Object.keys(AllIcons)
     .filter((key) => key !== 'fas' && key !== 'prefix')
-    .map((icon) => Icons[icon]);
+    .map((icon) => AllIcons[icon]);
 
 export default {
     title: 'Atoms/Icon',
@@ -26,6 +29,7 @@ const Template: Story<FontAwesomeIconProps> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    icon: ['far','comment'],
+    icon: 'fow-logo',
     color: 'black',
+    size: '1x',
 };
