@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledText } from './styles';
 
-export interface TextProps {
+export interface TextWrapperProps {
     /**
      * color
      */
@@ -15,21 +15,9 @@ export interface TextProps {
         | 'warning'
         | 'error';
     /**
-     * hovercolor
-     */
-    hoverColor:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
-    /**
      * text transfrom
      */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase' | 'none';
     /**
      * text decoration
      */
@@ -47,19 +35,17 @@ export interface TextProps {
     children: React.ReactNode;
 }
 
-const TextUtil = ({
-    textTransfrom = 'capitalize',
+const TextWrapper = ({
+    textTransfrom = 'none',
     color = 'black',
-    hoverColor = color,
     textDecoration = 'none',
     fontStyle = 'normal',
     children,
     ...rest
-}: TextProps): JSX.Element => (
+}: TextWrapperProps): JSX.Element => (
     <StyledText
         fontStyle={fontStyle}
         textDecoration={textDecoration}
-        hoverColor={hoverColor}
         textTransfrom={textTransfrom}
         color={color}
         {...rest}>
@@ -67,4 +53,4 @@ const TextUtil = ({
     </StyledText>
 );
 
-export default TextUtil;
+export default TextWrapper;

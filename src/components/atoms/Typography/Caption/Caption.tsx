@@ -1,35 +1,25 @@
 import React from 'react';
 import { StyledCaption } from './styles';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
 export interface CaptionProps {
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
+    /**
+     * color of text
+     */
+    color?: TextWrapperProps['color'];
     /**
      * text transform
      */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    textTransfrom?: TextWrapperProps['textTransfrom'];
     /**
      * text decoration
      */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
+    textDecoration?: TextWrapperProps['textDecoration'];
+
     /**
      * font-style
      */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
+    fontStyle?: TextWrapperProps['fontStyle'];
     children: React.ReactNode;
 }
 
@@ -42,14 +32,13 @@ const Caption = ({
     ...rest
 }: CaptionProps): JSX.Element => (
     <StyledCaption {...rest}>
-        <TextUtil
+        <TextWrapper
             fontStyle={fontStyle}
-            hoverColor={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}
             color={color}>
             {children}{' '}
-        </TextUtil>
+        </TextWrapper>
     </StyledCaption>
 );
 

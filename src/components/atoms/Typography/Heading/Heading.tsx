@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledHeading } from './styles';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
 export interface HeadingProps {
     /**
@@ -8,35 +8,22 @@ export interface HeadingProps {
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     /**
-     * color
+     * color of text
      */
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
+    color?: TextWrapperProps['color'];
     /**
      * text transform
      */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    textTransfrom?: TextWrapperProps['textTransfrom'];
     /**
      * text decoration
      */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
+    textDecoration?: TextWrapperProps['textDecoration'];
+
     /**
      * font-style
      */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
+    fontStyle?: TextWrapperProps['fontStyle'];
     children: React.ReactNode;
 }
 
@@ -50,14 +37,13 @@ const Heading = ({
     ...rest
 }: HeadingProps): JSX.Element => (
     <StyledHeading as={as} {...rest}>
-        <TextUtil
+        <TextWrapper
             fontStyle={fontStyle}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}
-            hoverColor={color}
             color={color}>
             {children}
-        </TextUtil>
+        </TextWrapper>
     </StyledHeading>
 );
 

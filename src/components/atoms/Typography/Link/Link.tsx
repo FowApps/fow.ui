@@ -3,7 +3,7 @@ import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { StyledLink } from './styles';
 import Icon from '../../Icon';
 import Space from '../../Space';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
 export interface LinkProps {
     /**
@@ -11,47 +11,22 @@ export interface LinkProps {
      */
     level?: 1 | 2 | 3;
     /**
-     * color
+     * color of text
      */
-    color:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
+    color?: TextWrapperProps['color'];
     /**
-     * hoverColor
+     * text transform
      */
-    hoverColor:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
-    /**
-     * text transfrom
-     */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
+    textTransfrom?: TextWrapperProps['textTransfrom'];
     /**
      * text decoration
      */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
+    textDecoration?: TextWrapperProps['textDecoration'];
+
     /**
      * font-style
      */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
+    fontStyle?: TextWrapperProps['fontStyle'];
     /**
      * prefix icon name
      */
@@ -68,7 +43,6 @@ const Link = ({
     level = 2,
     textTransfrom = 'capitalize',
     color = 'black',
-    hoverColor = 'primary',
     textDecoration = 'none',
     fontStyle = 'normal',
     leftIcon = null,
@@ -77,21 +51,18 @@ const Link = ({
     href,
     ...rest
 }: LinkProps): JSX.Element => (
-    <StyledLink level={level} hoverColor={hoverColor} href={href} {...rest}>
-        <span>
-            <TextUtil
-                textDecoration={textDecoration}
-                fontStyle={fontStyle}
-                hoverColor={hoverColor}
-                color={color}
-                textTransfrom={textTransfrom}>
-                <Space justify="center" inline={false}>
-                    {leftIcon && <Icon icon={leftIcon} fixedWidth />}
-                    {text && <span>{text}</span>}
-                    {rightIcon && <Icon icon={rightIcon} fixedWidth />}
-                </Space>
-            </TextUtil>
-        </span>
+    <StyledLink level={level} href={href} {...rest}>
+        <TextWrapper
+            textDecoration={textDecoration}
+            fontStyle={fontStyle}
+            color={color}
+            textTransfrom={textTransfrom}>
+            <Space justify="center" inline={false}>
+                {leftIcon && <Icon icon={leftIcon} fixedWidth />}
+                {text && <span>{text}</span>}
+                {rightIcon && <Icon icon={rightIcon} fixedWidth />}
+            </Space>
+        </TextWrapper>
     </StyledLink>
 );
 
