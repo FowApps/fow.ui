@@ -9,10 +9,10 @@ export const Wrapper = styled.span<BoxIconProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4.8rem;
-    min-width: 4.8rem;
-    height: 4.8rem;
-    min-height: 4.8rem;
+    width: 4.2rem;
+    min-width: 4.2rem;
+    height: 4.2rem;
+    min-height: 4.2rem;
     border-radius: 12px;
 
     ${(props) => color[props.color]}
