@@ -15,10 +15,6 @@ export interface LabelProps {
      */
     shape?: 'flat' | 'rounded';
     /**
-     * label shape
-     */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
-    /**
      * label size
      */
     size?: 'small' | 'medium' | 'large';
@@ -28,7 +24,6 @@ export interface LabelProps {
 const Label = ({
     shape = 'rounded',
     size = 'medium',
-    textTransfrom = 'capitalize',
     variant = 'filled',
     color = 'grey',
     text,
@@ -37,7 +32,6 @@ const Label = ({
     <StyledLabel
         shape={shape}
         size={size}
-        textTransfrom={textTransfrom}
         variant={variant}
         color={color}
         {...rest}>
