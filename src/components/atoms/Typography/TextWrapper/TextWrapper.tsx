@@ -5,7 +5,7 @@ export interface TextWrapperProps {
     /**
      * color
      */
-    color:
+    color?:
         | 'primary'
         | 'secondary'
         | 'disabled'
