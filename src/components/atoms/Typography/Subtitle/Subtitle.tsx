@@ -2,29 +2,11 @@ import React from 'react';
 import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 import { StyledSubtitle } from './styles';
 
-export interface SubtitleProps {
+export interface SubtitleProps extends TextWrapperProps {
     /**
      * size level
      */
     level?: 1 | 2;
-    /**
-     * color of text
-     */
-    color?: TextWrapperProps['color'];
-    /**
-     * text transform
-     */
-    textTransfrom?: TextWrapperProps['textTransfrom'];
-    /**
-     * text decoration
-     */
-    textDecoration?: TextWrapperProps['textDecoration'];
-
-    /**
-     * font-style
-     */
-    fontStyle?: TextWrapperProps['fontStyle'];
-    children: React.ReactNode;
 }
 
 const Subtitle = ({

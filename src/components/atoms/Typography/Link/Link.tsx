@@ -5,31 +5,11 @@ import Icon from '../../Icon';
 import Space from '../../Space';
 import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
-export interface LinkProps {
+export interface LinkProps extends TextWrapperProps {
     /**
      * size level
      */
     level?: 1 | 2 | 3;
-    /**
-     * color of text
-     */
-    color?: TextWrapperProps['color'];
-    /**
-     * text transform
-     */
-    textTransfrom?: TextWrapperProps['textTransfrom'];
-    /**
-     * text decoration
-     */
-    textDecoration?: TextWrapperProps['textDecoration'];
-
-    /**
-     * font-style
-     */
-    fontStyle?: TextWrapperProps['fontStyle'];
-    /**
-     * prefix icon name
-     */
     leftIcon?: FontAwesomeIconProps['icon'] | null;
     /**
      * suffix icon name

@@ -2,26 +2,7 @@ import React from 'react';
 import { StyledCaption } from './styles';
 import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
-export interface CaptionProps {
-    /**
-     * color of text
-     */
-    color?: TextWrapperProps['color'];
-    /**
-     * text transform
-     */
-    textTransfrom?: TextWrapperProps['textTransfrom'];
-    /**
-     * text decoration
-     */
-    textDecoration?: TextWrapperProps['textDecoration'];
-
-    /**
-     * font-style
-     */
-    fontStyle?: TextWrapperProps['fontStyle'];
-    children: React.ReactNode;
-}
+export type CaptionProps = TextWrapperProps;
 
 const Caption = ({
     color = 'black',

@@ -2,29 +2,11 @@ import React from 'react';
 import { StyledHeading } from './styles';
 import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
-export interface HeadingProps {
+export interface HeadingProps extends TextWrapperProps {
     /**
      * Element type
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    /**
-     * color of text
-     */
-    color?: TextWrapperProps['color'];
-    /**
-     * text transform
-     */
-    textTransfrom?: TextWrapperProps['textTransfrom'];
-    /**
-     * text decoration
-     */
-    textDecoration?: TextWrapperProps['textDecoration'];
-
-    /**
-     * font-style
-     */
-    fontStyle?: TextWrapperProps['fontStyle'];
-    children: React.ReactNode;
 }
 
 const Heading = ({
