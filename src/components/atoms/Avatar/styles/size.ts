@@ -8,6 +8,10 @@ const setSize = (size: string): any => {
                 min-width: 4.8rem;
                 height: 4.8rem;
                 min-height: 4.8rem;
+                h3 {
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+                }
             `;
         case 'medium':
             return css`
@@ -15,6 +19,10 @@ const setSize = (size: string): any => {
                 min-width: 4rem;
                 height: 4rem;
                 min-height: 4rem;
+                h3 {
+                    font-size: 1.3rem;
+                    line-height: 2.1rem;
+                }
             `;
         case 'small':
             return css`
@@ -22,6 +30,10 @@ const setSize = (size: string): any => {
                 min-width: 3.2rem;
                 height: 3.2rem;
                 min-height: 3.2rem;
+                h3 {
+                    font-size: 1rem;
+                    line-height: 1.8rem;
+                }
             `;
         case 'xsmall':
             return css`
@@ -29,6 +41,10 @@ const setSize = (size: string): any => {
                 min-width: 2.4rem;
                 height: 2.4rem;
                 min-height: 2.4rem;
+                h3 {
+                    font-size: 0.9rem;
+                    line-height: 1.7rem;
+                }
             `;
         default:
             return '';

@@ -25,26 +25,11 @@ export const StyledAvatar = styled.div<AvatarProps>`
         background-image: url('${props.src}');
     `}
 
-  h3 {
+    h3 {
         margin: 0;
         padding: 0;
         font-weight: 600;
         font-style: normal;
-        font-size: ${(props) => {
-            switch (props.size) {
-                case 'xsmall':
-                    return '0.9rem';
-                case 'small':
-                    return '1rem';
-                case 'medium':
-                    return '1.3rem';
-                case 'large':
-                    return '1.6rem';
-                default:
-                    return '';
-            }
-        }};
-        line-height: 16px;
         letter-spacing: 0.2px;
         ${(props) => props.src && `display:none;`}
     }
