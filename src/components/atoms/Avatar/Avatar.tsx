@@ -35,7 +35,9 @@ const Avatar = ({
 }: AvatarProps): JSX.Element => (
     <StyledAvatar src={src} color={color} size={size} {...rest}>
         {text ? (
-            <Subtitle level={2}>{getFirstLetters(text)}</Subtitle>
+            <Subtitle color={color === 'grey' ? 'black' : 'white'} level={2}>
+                {getFirstLetters(text)}
+            </Subtitle>
         ) : (
             <Icon icon="user" color="white" />
         )}

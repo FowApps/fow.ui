@@ -1,58 +1,25 @@
 import React from 'react';
 import { StyledOverline } from './styles';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
-export interface OverlineProps {
-    /**
-     * color of text
-     */
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
-    /**
-     * text transform
-     */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
-    /**
-     * text decoration
-     */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
-    /**
-     * font-style
-     */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
-    children: React.ReactNode;
-}
+export type OverlineProps = TextWrapperProps;
 
 const Overline = ({
     color = 'black',
     textDecoration = 'none',
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
     fontStyle = 'normal',
     children,
     ...rest
 }: OverlineProps): JSX.Element => (
     <StyledOverline {...rest}>
-        <TextUtil
+        <TextWrapper
             fontStyle={fontStyle}
             color={color}
-            hoverColor={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}>
             {children}
-        </TextUtil>
+        </TextWrapper>
     </StyledOverline>
 );
 

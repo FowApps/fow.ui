@@ -1,63 +1,31 @@
 import React from 'react';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 import { StyledSubtitle } from './styles';
 
-export interface SubtitleProps {
+export interface SubtitleProps extends TextWrapperProps {
     /**
      * size level
      */
     level?: 1 | 2;
-    /**
-     * color of text
-     */
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
-    /**
-     * text transform
-     */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
-    /**
-     * text decoration
-     */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
-    /**
-     * font-style
-     */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
-    children: React.ReactNode;
 }
 
 const Subtitle = ({
     level = 1,
     color = 'black',
     textDecoration = 'none',
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
     fontStyle = 'normal',
     children,
     ...rest
 }: SubtitleProps): JSX.Element => (
     <StyledSubtitle level={level} {...rest}>
-        <TextUtil
+        <TextWrapper
             color={color}
             fontStyle={fontStyle}
-            hoverColor={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}>
             {children}
-        </TextUtil>
+        </TextWrapper>
     </StyledSubtitle>
 );
 

@@ -52,7 +52,6 @@ export const Default = Template.bind({});
 Default.args = {
     level: 1,
     color: 'black',
-    hoverColor: 'primary',
     href: '#',
     text: 'Lorem',
 };

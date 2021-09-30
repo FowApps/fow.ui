@@ -1,43 +1,12 @@
 import React from 'react';
 import { StyledHeading } from './styles';
-import TextUtil from '../TextUtil';
+import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
-export interface HeadingProps {
+export interface HeadingProps extends TextWrapperProps {
     /**
      * Element type
      */
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-    /**
-     * color
-     */
-    color?:
-        | 'primary'
-        | 'secondary'
-        | 'disabled'
-        | 'white'
-        | 'black'
-        | 'success'
-        | 'warning'
-        | 'error';
-    /**
-     * text transform
-     */
-    textTransfrom?: 'uppercase' | 'capitalize' | 'lowercase';
-    /**
-     * text decoration
-     */
-    textDecoration?:
-        | 'underline'
-        | 'overline'
-        | 'none'
-        | 'underlineOverline'
-        | 'lineThrough'
-        | 'none';
-    /**
-     * font-style
-     */
-    fontStyle?: 'normal' | 'italic' | 'oblique';
-    children: React.ReactNode;
 }
 
 const Heading = ({
@@ -50,14 +19,13 @@ const Heading = ({
     ...rest
 }: HeadingProps): JSX.Element => (
     <StyledHeading as={as} {...rest}>
-        <TextUtil
+        <TextWrapper
             fontStyle={fontStyle}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}
-            hoverColor={color}
             color={color}>
             {children}
-        </TextUtil>
+        </TextWrapper>
     </StyledHeading>
 );
 
