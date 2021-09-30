@@ -18,6 +18,10 @@ export const StyledChip = styled.span<ChipProps>`
     font-size: 1.4rem;
     line-height: 2.2rem;
 
+    h3 span {
+        color: inherit;
+    }
+
     ${(props) => setType(props.color, props.type)}
     ${(props) => setSize(props.size)}
 `;
