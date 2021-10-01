@@ -36,6 +36,7 @@ export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
 export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
 export { default as Input } from './components/atoms/Input';
 export { default as Skeleton } from './components/atoms/Skeleton';
+export { default as Tooltip } from './components/atoms/Tooltip';
 
 export const Typography = {
     Heading,
