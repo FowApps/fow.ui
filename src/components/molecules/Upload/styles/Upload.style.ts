@@ -18,7 +18,6 @@ export const FileUploadContainer = styled.section<FileUploadContainerProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: ${(props) => props.theme.fow.spacing.medium};
     padding: ${(props) => props.theme.fow.spacing.xxxlarge};
     border: 1px dashed ${(props) => props.theme.fow.colors.grey.transparent32};
     border-radius: 8px;
@@ -58,4 +57,9 @@ export const Label = styled.label<LabelProps>`
         margin-left: ${(props) => props.theme.fow.spacing.xxsmall};
         color: ${(props) => props.theme.fow.colors.error.main};
     }
+`;
+
+export const FileListContainer = styled.div`
+    width: 100%;
+    margin-top: ${(props) => props.theme.fow.spacing.medium};
 `;

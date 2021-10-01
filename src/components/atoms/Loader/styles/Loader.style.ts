@@ -18,7 +18,9 @@ export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
     .fow-loader-overlay_overlay {
         position: ${(props) => (props.fullPage ? 'fixed' : 'absolute')};
         background: ${(props) =>
-            props.hasChildren ? 'rgba(255, 255, 255, 0.75)' : 'transparent'};
+            props.hasChildren || props.fullPage
+                ? 'rgba(255, 255, 255, 0.75)'
+                : 'transparent'};
     }
     .fow-loader-overlay_content {
         color: ${(props) => props.theme.fow.colors.primary.dark} !important;

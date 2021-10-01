@@ -13,7 +13,13 @@ import Heading from '../../atoms/Typography/Heading';
 import Overline from '../../atoms/Typography/Overline';
 import Subtitle from '../../atoms/Typography/Subtitle';
 
-import { Wrapper, FileUploadContainer, FormField, Label } from './styles';
+import {
+    Wrapper,
+    FileUploadContainer,
+    FormField,
+    Label,
+    FileListContainer,
+} from './styles';
 import useToast from '../Toast/useToast';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
@@ -241,7 +247,11 @@ const Upload = ({
                 animate="show">
                 <Space direction="vertical" inline={false} align="start">
                     <AnimatePresence>
-                        {files.length > 0 && renderFiles()}
+                        {files.length > 0 && (
+                            <FileListContainer>
+                                {renderFiles()}
+                            </FileListContainer>
+                        )}
                     </AnimatePresence>
                 </Space>
             </motion.div>

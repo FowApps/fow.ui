@@ -32,5 +32,4 @@ export const Static = Template.bind({});
 Static.args = {
     isLoading: false,
     text: 'Loading',
-    height: 300,
 };
