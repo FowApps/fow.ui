@@ -35,7 +35,7 @@
         "@fullcalendar/interaction": "^5.9.0",
         "@fullcalendar/react": "^5.9.0",
         "@fullcalendar/timegrid": "^5.9.0",
-        "@types/react": "^17.0.25",
+        "@types/react": "^17.0.26",
         "polished": "4.1.3",
         "rc-drawer": "^4.4.2",
         "rc-field-form": "^1.21.2",
