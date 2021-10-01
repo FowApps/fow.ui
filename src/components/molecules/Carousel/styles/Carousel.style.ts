@@ -1,39 +1,38 @@
 import styled from 'styled-components';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+import { Icon } from '../../../..';
+
+export const Dot = styled.div`
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.fow.colors.grey.lighter};
+    transition: background-color 0.3s ease;
+`;
 
 export const StyledSlider = styled(Slider)`
-    .slick-dots {
-        position: initial;
-    }
+    .slick-dots li {
+        width: 12px;
+        height: 12px;
 
-    .slick-dots li button:before {
-        font-size: 30px;
+        &.slick-active ${Dot} {
+            background-color: ${(props) => props.theme.fow.colors.grey.main};
+        }
     }
+`;
 
-    .slick-prev:before {
-        margin-left: 20px;
-        color: ${(props) => props.theme.fow.colors.grey.main};
-        font-weight: 900;
-    }
-    .slick-next:before {
-        margin-right: 20px;
-        color: ${(props) => props.theme.fow.colors.grey.main};
-        font-weight: 900;
-    }
+export const Arrow = styled(Icon)`
+    color: ${(props) => props.theme.fow.colors.text.disabled};
+    cursor: pointer;
+`;
 
-    .slick-next {
-        right: 0px;
-        margin-right: 20px;
-    }
-
-    .slick-prev {
-        left: 0px;
-    }
-
-    .slick-prev,
-    .slick-next {
-        top: 83%;
-    }
+export const Pagination = styled.ul`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    padding-top: ${(props) => props.theme.fow.spacing.small};
+    background: transparent;
 `;
