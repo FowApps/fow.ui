@@ -12,12 +12,18 @@ export const Dot = styled.div`
 `;
 
 export const StyledSlider = styled(Slider)`
-    .slick-dots li {
-        width: 12px;
-        height: 12px;
+    .slick-dots {
+        position: relative;
+        bottom: 0;
 
-        &.slick-active ${Dot} {
-            background-color: ${(props) => props.theme.fow.colors.grey.main};
+        li {
+            width: 12px;
+            height: 12px;
+
+            &.slick-active ${Dot} {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.grey.main};
+            }
         }
     }
 `;
