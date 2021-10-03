@@ -2185,10 +2185,10 @@
     webpack-hot-middleware "^2.25.0"
     webpack-virtual-modules "^0.2.2"
 
-"@storybook/builder-webpack5@6.3.8":
-  version "6.3.8"
-  resolved "https://registry.yarnpkg.com/@storybook/builder-webpack5/-/builder-webpack5-6.3.8.tgz#553673340c2e8cc818a686f63f47e132d0f6f202"
-  integrity sha512-OAIGPgEXH9vqYthZ/UyNyOyC0kEoDPV0aafCfa6ha8rY06fbF8qqPgNSJMQWLMmUoTDq2Vmd9KYBb7LsrIG5BA==
+"@storybook/builder-webpack5@6.3.9":
+  version "6.3.9"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-webpack5/-/builder-webpack5-6.3.9.tgz#69cae40278971104394ba1b38a11dace9702c319"
+  integrity sha512-qtEv3+/4mO8kc4wmz5hRnDAxKBMAHSOGWSDrS2AD7x9DUEDWQqRFxKch6NEPWhrZLKTsfcf62xK2Pb9cHeUZVg==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
@@ -2210,19 +2210,19 @@
     "@babel/preset-env" "^7.12.11"
     "@babel/preset-react" "^7.12.10"
     "@babel/preset-typescript" "^7.12.7"
-    "@storybook/addons" "6.3.8"
-    "@storybook/api" "6.3.8"
-    "@storybook/channel-postmessage" "6.3.8"
-    "@storybook/channels" "6.3.8"
-    "@storybook/client-api" "6.3.8"
-    "@storybook/client-logger" "6.3.8"
-    "@storybook/components" "6.3.8"
-    "@storybook/core-common" "6.3.8"
-    "@storybook/core-events" "6.3.8"
-    "@storybook/node-logger" "6.3.8"
-    "@storybook/router" "6.3.8"
+    "@storybook/addons" "6.3.9"
+    "@storybook/api" "6.3.9"
+    "@storybook/channel-postmessage" "6.3.9"
+    "@storybook/channels" "6.3.9"
+    "@storybook/client-api" "6.3.9"
+    "@storybook/client-logger" "6.3.9"
+    "@storybook/components" "6.3.9"
+    "@storybook/core-common" "6.3.9"
+    "@storybook/core-events" "6.3.9"
+    "@storybook/node-logger" "6.3.9"
+    "@storybook/router" "6.3.9"
     "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.3.8"
+    "@storybook/theming" "6.3.9"
     "@types/node" "^14.0.10"
     babel-loader "^8.2.2"
     babel-plugin-macros "^3.0.1"
@@ -2351,7 +2351,7 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.3.8", "@storybook/components@^6.3.0":
+"@storybook/components@6.3.8":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.8.tgz#cb84b0245d8784d41e7e6be25a0d5774363e5b87"
   dependencies:
@@ -2380,7 +2380,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@6.3.9":
+"@storybook/components@6.3.9", "@storybook/components@^6.3.0":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.9.tgz#3f3c56f0311e757e78705e3b495489da071d6891"
   integrity sha512-bArMbnzK9esdrgYHG/WAHC+NIMmEzgypvaTs0oEG4lK3q1LiBdrCrLRSCd31oR3RT5a8e06QXZ1rla3OhuZrfg==
