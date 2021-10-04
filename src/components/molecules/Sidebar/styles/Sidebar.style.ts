@@ -12,12 +12,14 @@ export const SidebarVariants = {
     expanded: () => ({
         width: EXPANDED_WIDTH,
         transition: {
+            duration: 0.2,
             when: 'beforeChildren',
         },
     }),
     collapsed: () => ({
         width: COLLAPSED_WIDTH,
         transition: {
+            duration: 0.2,
             when: 'afterChildren',
         },
     }),
@@ -27,9 +29,15 @@ export const ContentVariants = {
     expanded: {
         opacity: 1,
         display: 'flex',
+        transition: {
+            duration: 0.1,
+        },
     },
     collapsed: {
         opacity: 0,
+        transition: {
+            duration: 0.1,
+        },
         transitionEnd: {
             display: 'none',
         },
@@ -53,7 +61,7 @@ export const Sider = styled(motion.div)<SiderProps>`
 `;
 export const Trigger = styled.button`
     position: absolute;
-    top: 12px;
+    top: 20px;
     right: -12px;
     display: flex;
     align-items: center;
@@ -70,4 +78,8 @@ export const Trigger = styled.button`
     transition: opacity 0.3s ease;
 `;
 
-export const Content = styled(motion.div)``;
+export const Content = styled(motion.div)`
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+`;

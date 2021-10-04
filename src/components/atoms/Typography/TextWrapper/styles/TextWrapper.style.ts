@@ -28,8 +28,8 @@ type TextWrapperProps = {
 export const StyledText = styled.span<TextWrapperProps>`
     position: inherit;
     display: inherit;
-    margin: inherit;
-    padding: inherit;
+    margin: 0;
+    padding: 0;
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
