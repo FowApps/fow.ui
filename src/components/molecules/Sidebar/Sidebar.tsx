@@ -15,7 +15,7 @@ export interface SidebarProps {
     children: React.ReactNode;
 }
 
-const Sidebar = ({ noGutter, children }: SidebarProps): JSX.Element => {
+const Sidebar = ({ noGutter = false, children }: SidebarProps): JSX.Element => {
     const { isOpen, toggle } = useDisclosure(true);
 
     return (
