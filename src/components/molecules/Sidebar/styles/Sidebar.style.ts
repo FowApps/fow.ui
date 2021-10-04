@@ -61,7 +61,7 @@ export const Sider = styled(motion.div)<SiderProps>`
 `;
 export const Trigger = styled.button`
     position: absolute;
-    top: 12px;
+    top: 20px;
     right: -12px;
     display: flex;
     align-items: center;
@@ -79,6 +79,7 @@ export const Trigger = styled.button`
 `;
 
 export const Content = styled(motion.div)`
+    flex-direction: column;
     width: 100%;
     height: 100%;
 `;

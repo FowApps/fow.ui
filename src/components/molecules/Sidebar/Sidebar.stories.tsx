@@ -6,6 +6,11 @@ import { Story, Meta } from '@storybook/react';
 import Sidebar from './Sidebar';
 
 import Navigtion from '../Navigation';
+import Divider from '../../atoms/Divider';
+import Heading from '../../atoms/Typography/Heading';
+import Link from '../../atoms/Typography/Link';
+
+import Space from '../../atoms/Space';
 
 const { Menu, SubMenu, Item } = Navigtion;
 
@@ -29,9 +34,23 @@ const Content = styled.div`
     background-color: #f9fafb;
 `;
 
+const HeadingWrapper = styled.div`
+    padding: 16px;
+    padding-bottom: 0;
+`;
+
 const Template: Story = (args) => (
     <Container>
         <Sidebar noGutter>
+            <HeadingWrapper>
+                <Space direction="vertical" align="start" size="xxsmall">
+                    <Heading as="h4">My Screen</Heading>
+                    <Link level={3} href="#" leftIcon="long-arrow-alt-left">
+                        Go Back
+                    </Link>
+                </Space>
+            </HeadingWrapper>
+            <Divider />
             <Menu>
                 <Item key="level-1" icon="user">
                     Level 1
@@ -45,6 +64,7 @@ const Template: Story = (args) => (
                     <Item key="level-5">Level 5</Item>
                 </SubMenu>
             </Menu>
+            <Divider />
         </Sidebar>
         <Content>Page Content Goes here</Content>
     </Container>
