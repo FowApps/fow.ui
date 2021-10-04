@@ -3,7 +3,6 @@
 import Form, { useForm } from 'rc-field-form';
 
 // Grid
-
 import Col from './components/atoms/Col';
 import Row from './components/atoms/Row';
 import Container from './components/atoms/Container';
@@ -75,6 +74,7 @@ export { default as Drawer } from './components/molecules/Drawer';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
+export { default as Sidebar } from './components/molecules/Sidebar';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
