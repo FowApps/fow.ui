@@ -73,6 +73,9 @@ export { default as Board } from './components/molecules/Board';
 export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
 
+// Extras
+export { default as Navigation } from './components/molecules/Navigation';
+
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
 
