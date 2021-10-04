@@ -37,9 +37,17 @@ const Link = ({
             color={color}
             textTransfrom={textTransfrom}>
             <Space justify="center" inline={false}>
-                {leftIcon && <Icon icon={leftIcon} fixedWidth />}
+                {leftIcon && (
+                    <span>
+                        <Icon icon={leftIcon} fixedWidth />
+                    </span>
+                )}
                 {children && <span>{children}</span>}
-                {rightIcon && <Icon icon={rightIcon} fixedWidth />}
+                {rightIcon && (
+                    <span>
+                        <Icon icon={rightIcon} fixedWidth />
+                    </span>
+                )}
             </Space>
         </TextWrapper>
     </StyledLink>
