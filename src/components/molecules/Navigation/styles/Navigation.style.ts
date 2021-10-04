@@ -12,6 +12,7 @@ export const IconWrapper = styled.div`
 `;
 
 export const StyledMenu = styled(RcMenu)`
+    width: 100%;
     margin: 0;
     padding: 0;
     border: unset;
@@ -77,6 +78,8 @@ export const StyledMenu = styled(RcMenu)`
             }
 
             .rc-menu-sub {
+                position: relative;
+                left: -1px;
                 transition: all 0.3s ease-in-out;
             }
 

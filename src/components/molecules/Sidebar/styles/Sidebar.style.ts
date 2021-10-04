@@ -12,12 +12,14 @@ export const SidebarVariants = {
     expanded: () => ({
         width: EXPANDED_WIDTH,
         transition: {
+            duration: 0.2,
             when: 'beforeChildren',
         },
     }),
     collapsed: () => ({
         width: COLLAPSED_WIDTH,
         transition: {
+            duration: 0.2,
             when: 'afterChildren',
         },
     }),
@@ -27,9 +29,15 @@ export const ContentVariants = {
     expanded: {
         opacity: 1,
         display: 'flex',
+        transition: {
+            duration: 0.1,
+        },
     },
     collapsed: {
         opacity: 0,
+        transition: {
+            duration: 0.1,
+        },
         transitionEnd: {
             display: 'none',
         },
@@ -70,4 +78,7 @@ export const Trigger = styled.button`
     transition: opacity 0.3s ease;
 `;
 
-export const Content = styled(motion.div)``;
+export const Content = styled(motion.div)`
+    width: 100%;
+    height: 100%;
+`;
