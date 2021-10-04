@@ -75,6 +75,7 @@ declare module 'styled-components' {
                     main: string;
                     light: string;
                     lighter: string;
+                    lightest: string;
                     transparent8: string;
                     transparent12: string;
                     transparent16: string;
