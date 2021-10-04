@@ -73,6 +73,7 @@ export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
 
 // Extras
+export { default as Navigation } from './components/molecules/Navigation';
 export { default as Sidebar } from './components/molecules/Sidebar';
 
 // Hooks

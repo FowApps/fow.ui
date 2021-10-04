@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 1rem;
         background-color: ${(props) => props.theme.fow.colors.grey.main};
     }
+
+    .rc-menu-submenu-hidden {
+        display: none;
+    }
 `;
 
 export default GlobalStyle;

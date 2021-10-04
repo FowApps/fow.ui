@@ -32,7 +32,7 @@ export interface TextWrapperProps {
      * font-style
      */
     fontStyle?: 'normal' | 'italic' | 'oblique';
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const TextWrapper = ({
