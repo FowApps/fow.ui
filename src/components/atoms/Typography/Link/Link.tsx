@@ -15,8 +15,7 @@ export interface LinkProps extends TextWrapperProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    text: React.ReactNode | 'string';
-    href: 'string';
+    href: string;
 }
 
 const Link = ({
@@ -27,8 +26,8 @@ const Link = ({
     fontStyle = 'normal',
     leftIcon = null,
     rightIcon = null,
-    text,
     href,
+    children,
     ...rest
 }: LinkProps): JSX.Element => (
     <StyledLink level={level} href={href} {...rest}>
@@ -39,7 +38,7 @@ const Link = ({
             textTransfrom={textTransfrom}>
             <Space justify="center" inline={false}>
                 {leftIcon && <Icon icon={leftIcon} fixedWidth />}
-                {text && <span>{text}</span>}
+                {children && <span>{children}</span>}
                 {rightIcon && <Icon icon={rightIcon} fixedWidth />}
             </Space>
         </TextWrapper>

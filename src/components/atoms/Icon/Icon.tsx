@@ -20,7 +20,7 @@ export interface IconProps extends FontAwesomeIconProps {
 
 const Icon = ({ icon, ...rest }: IconProps): JSX.Element => (
     // @ts-ignore
-    <FontAwesomeIcon icon={icon} fixedWidth {...rest} />
+    <FontAwesomeIcon icon={icon} {...rest} />
 );
 
 export default Icon;
