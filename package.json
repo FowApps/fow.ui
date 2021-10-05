@@ -42,7 +42,7 @@
         "rc-menu": "^9.0.12",
         "rc-tooltip": "^5.1.1",
         "react-beautiful-dnd": "^13.1.0",
-        "react-hook-form": "^7.16.1",
+        "react-hook-form": "^7.17.1",
         "react-loading-overlay": "^1.0.1",
         "react-lottie": "^1.2.3",
         "react-select": "^4.3.1",
