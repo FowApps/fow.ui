@@ -15,13 +15,14 @@ export const DropdownStyles = createGlobalStyle`
     .rc-menu-submenu-popup {
         .rc-menu-sub {
             overflow: overlay;
+            padding: 8px 0;
             border: none;
             border-radius: 8px;
             box-shadow: 0px 20px 40px -4px rgba(145, 158, 171, 0.24);
             filter: drop-shadow(0px 0px 2px rgba(145, 158, 171, 0.24));
 
             .rc-menu-item {
-                padding: 16px;
+                padding: 8px 16px;
 
                 ${IconWrapper} {
                     font-size: 6px;
@@ -214,6 +215,7 @@ export const StyledMenu = styled(RcMenu)`
         }
 
         h3 span {
+            line-height: 1;
             transition: all 0.3s ease;
         }
 
@@ -228,6 +230,7 @@ export const StyledMenu = styled(RcMenu)`
             }
             h3 span {
                 color: ${(props) => props.theme.fow.colors.primary.main};
+                line-height: 1;
             }
         }
 
@@ -238,6 +241,7 @@ export const StyledMenu = styled(RcMenu)`
 
             h3 span {
                 color: ${(props) => props.theme.fow.colors.primary.main};
+                line-height: 1;
             }
 
             ${IconWrapper} {
@@ -248,8 +252,8 @@ export const StyledMenu = styled(RcMenu)`
         > .rc-menu-item-selected:before {
             content: ' ';
             position: absolute;
-            top: 24px;
-            left: 8px;
+            top: 20px;
+            left: 0;
             width: 4px;
             height: 4px;
             border-radius: 50%;
