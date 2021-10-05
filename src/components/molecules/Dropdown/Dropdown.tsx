@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import { AnimatePresence } from 'framer-motion';
 import React, { useRef } from 'react';
 
 import useDisclosure from '../../../hooks/useDisclosure';
-import useStateRef from '../../../hooks/useStateRef';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
 import { Wrapper, Content } from './styles';
@@ -38,18 +38,27 @@ export interface DropdownProps {
      * dropdown menu content
      */
     content: React.ReactNode;
+    /**
+     * flag for close dropdown after click content
+     */
+    closeAfterClickContent?: boolean;
+    /**
+     * flag for inline or fluid content
+     */
+    fullWidth?: boolean;
+    width?: number | string;
     children: React.DetailedReactHTMLElement<any, HTMLElement>;
 }
 
 const Dropdown = ({
     trigger = 'click',
+    closeAfterClickContent = false,
+    fullWidth = false,
+    width = 400,
     content,
     children,
 }: DropdownProps): JSX.Element => {
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const [triggerHeight, setRef] = useStateRef(
-        (node: HTMLElement) => node?.clientHeight || 0,
-    );
 
     const { isOpen, close, toggle, open } = useDisclosure();
     useOnClickOutside(wrapperRef, close);
@@ -57,22 +66,30 @@ const Dropdown = ({
     return (
         <Wrapper ref={wrapperRef}>
             {React.cloneElement(children, {
-                onClick: trigger === 'click' ? toggle : undefined,
+                onClick: trigger === 'click' ? open : undefined,
                 onMouseEnter: trigger === 'hover' ? open : undefined,
                 onMouseLeave: trigger === 'hover' ? close : undefined,
-                ref: setRef,
+                style: {
+                    cursor: 'pointer',
+                },
                 ...children.props,
             })}
-            <Content
-                onClick={toggle}
-                onMouseEnter={trigger === 'hover' ? open : undefined}
-                onMouseLeave={trigger === 'hover' ? close : undefined}
-                topOffset={triggerHeight}
-                initial="exit"
-                animate={isOpen ? 'enter' : 'exit'}
-                variants={contentVariants}>
-                {content}
-            </Content>
+            <AnimatePresence>
+                {isOpen && (
+                    <Content
+                        onClick={closeAfterClickContent ? toggle : open}
+                        onMouseEnter={trigger === 'hover' ? open : undefined}
+                        onMouseLeave={trigger === 'hover' ? close : undefined}
+                        fullWidth={fullWidth}
+                        width={width}
+                        initial="exit"
+                        exit="exit"
+                        animate={isOpen ? 'enter' : 'exit'}
+                        variants={contentVariants}>
+                        {content}
+                    </Content>
+                )}
+            </AnimatePresence>
         </Wrapper>
     );
 };

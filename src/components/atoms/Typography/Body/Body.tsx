@@ -14,7 +14,7 @@ const Subtitle = ({
     color = 'black',
     fontStyle = 'normal',
     textDecoration = 'none',
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
     children,
     ...rest
 }: BodyProps): JSX.Element => (
