@@ -7,7 +7,13 @@ import {
 } from 'rc-menu';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
-import { StyledMenu, StyledSubMenu, StyledItem, IconWrapper } from './styles';
+import {
+    DropdownStyles,
+    StyledMenu,
+    StyledSubMenu,
+    StyledItem,
+    IconWrapper,
+} from './styles';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
 import Subtitle from '../../atoms/Typography/Subtitle';
@@ -53,21 +59,28 @@ const collapseMotion = {
     motionDeadline: 500,
 };
 
-const Menu = ({ children, ...rest }: RcMenuProps) => (
-    <StyledMenu
-        mode="inline"
-        motion={collapseMotion}
-        expandIcon={(props) => (
-            <Icon
-                style={{ transition: 'all 0.3s ease' }}
-                size="1x"
-                rotation={props.isOpen ? 90 : undefined}
-                icon="chevron-right"
-            />
-        )}
-        {...rest}>
-        {children}
-    </StyledMenu>
+const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
+    <>
+        <DropdownStyles />
+        <StyledMenu
+            mode={mode}
+            motion={
+                mode === 'inline'
+                    ? collapseMotion
+                    : { motionName: 'rc-menu-open-slide-up' }
+            }
+            expandIcon={(props) => (
+                <Icon
+                    style={{ transition: 'all 0.3s ease' }}
+                    size="1x"
+                    rotation={props.isOpen ? 90 : undefined}
+                    icon="chevron-right"
+                />
+            )}
+            {...rest}>
+            {children}
+        </StyledMenu>
+    </>
 );
 const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
     let titleNode: React.ReactNode;
@@ -89,13 +102,16 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
         </StyledSubMenu>
     );
 };
+
 const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
     <StyledItem {...rest}>
         <Space inline={false} align="center" justify="space-between">
             <Space>
-                <IconWrapper>
-                    {icon ? <Icon icon={icon} /> : <Icon icon="circle" />}
-                </IconWrapper>
+                {icon && (
+                    <IconWrapper>
+                        <Icon icon={icon} />
+                    </IconWrapper>
+                )}
                 <Subtitle>{children}</Subtitle>
             </Space>
             <div>{extra}</div>
