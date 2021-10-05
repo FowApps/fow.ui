@@ -28,7 +28,6 @@ type SpaceProps = {
 export const StyledSpace = styled.div<SpaceProps>`
     display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
     justify-content: ${(props) => props.justify};
-    overflow: hidden;
     width: ${(props) => (props.inline ? 'auto' : '100%')};
     ${(props) => setAlign(props.align)}
     ${(props) =>
