@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Navigation from './Navigation';
 import Label from '../../atoms/Label';
+import Icon from '../../atoms/Icon';
 
 const { Menu, SubMenu, Item } = Navigation;
 
@@ -9,7 +10,7 @@ export default {
     title: 'Extras/Navigation',
 } as Meta;
 
-const Template: Story = (args) => (
+const InlineTemplate: Story = (args) => (
     <Menu {...args}>
         <Item key="level-1">Level 1</Item>
         <SubMenu key="sub-level-1" title="Sub Menu">
@@ -31,7 +32,37 @@ const Template: Story = (args) => (
     </Menu>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const Inline = InlineTemplate.bind({});
+Inline.args = {
+    mode: 'inline',
+};
+
+const HorizontalTemplate: Story = (args) => (
+    <Menu {...args}>
+        <Item icon="circle" key="level-1">
+            Level 1
+        </Item>
+        <Item icon="circle" key="level-2">
+            Level 2
+        </Item>
+        <Item icon="circle" key="level-3">
+            Level 3
+        </Item>
+        <Item icon="circle" key="level-4">
+            Level 4
+        </Item>
+        <Item icon="circle" key="level-5">
+            Level 5
+        </Item>
+        <SubMenu key="sub-level-2" title={<Icon size="lg" icon="ellipsis-v" />}>
+            <Item key="level-6">Level 1</Item>
+            <Item key="level-7">Level 2</Item>
+            <Item key="level-8">Level 3</Item>
+        </SubMenu>
+    </Menu>
+);
+
+export const Horizontal = HorizontalTemplate.bind({});
+Horizontal.args = {
     mode: 'horizontal',
 };

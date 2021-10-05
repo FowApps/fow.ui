@@ -90,11 +90,11 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
                 <IconWrapper style={{ width: 14, height: 14 }}>
                     <Icon icon={icon} />
                 </IconWrapper>
-                <Subtitle>{title}</Subtitle>
+                <Subtitle color="secondary">{title}</Subtitle>
             </Space>
         );
     } else {
-        titleNode = <Subtitle>{title}</Subtitle>;
+        titleNode = <Subtitle color="secondary">{title}</Subtitle>;
     }
     return (
         <StyledSubMenu title={titleNode} {...rest}>
@@ -112,7 +112,7 @@ const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
                         <Icon icon={icon} />
                     </IconWrapper>
                 )}
-                <Subtitle>{children}</Subtitle>
+                <Subtitle color="secondary">{children}</Subtitle>
             </Space>
             <div>{extra}</div>
         </Space>
