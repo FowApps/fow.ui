@@ -63,6 +63,7 @@ const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
     <>
         <DropdownStyles />
         <StyledMenu
+            overflowedIndicator={<Icon icon="ellipsis-v" />}
             mode={mode}
             motion={
                 mode === 'inline'
@@ -114,7 +115,7 @@ const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
                 )}
                 <Subtitle color="secondary">{children}</Subtitle>
             </Space>
-            <div>{extra}</div>
+            {extra && <div>{extra}</div>}
         </Space>
     </StyledItem>
 );

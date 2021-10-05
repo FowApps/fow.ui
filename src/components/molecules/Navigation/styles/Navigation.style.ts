@@ -197,11 +197,19 @@ export const StyledMenu = styled(RcMenu)`
 
         .rc-menu-submenu,
         .rc-menu-item {
+            padding: 16px;
             border: none;
 
             ${IconWrapper} {
                 font-size: 6px;
                 opacity: 0;
+            }
+        }
+
+        .rc-menu-overflow-item-rest {
+            padding: 0;
+            .rc-menu-submenu-title {
+                padding: 16px;
             }
         }
 
@@ -235,6 +243,17 @@ export const StyledMenu = styled(RcMenu)`
             ${IconWrapper} {
                 opacity: 1;
             }
+        }
+
+        > .rc-menu-item-selected:before {
+            content: ' ';
+            position: absolute;
+            top: 24px;
+            left: 8px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: ${(props) => props.theme.fow.colors.primary.main};
         }
     }
 `;
