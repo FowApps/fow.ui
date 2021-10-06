@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import RcMenu, { SubMenu as RcSubMenu, Item as RcItem } from 'rc-menu';
 import 'rc-menu/assets/index.css';
 
@@ -9,6 +9,38 @@ export const IconWrapper = styled.div`
     width: 14px;
     height: 14px;
     transition: all 0.3s ease;
+`;
+
+export const DropdownStyles = createGlobalStyle`
+    .rc-menu-submenu-popup {
+        .rc-menu-sub {
+            overflow: overlay;
+            padding: 8px 0;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 20px 40px -4px rgba(145, 158, 171, 0.24);
+            filter: drop-shadow(0px 0px 2px rgba(145, 158, 171, 0.24));
+
+            .rc-menu-item {
+                padding: 8px 16px;
+
+                ${IconWrapper} {
+                    font-size: 6px;
+                }
+            }
+
+            .rc-menu-item-active, .rc-menu-item-selected {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.common.white};
+                color: ${(props) => props.theme.fow.colors.primary.main};
+                cursor: pointer;
+
+                h3 span {
+                    color: ${(props) => props.theme.fow.colors.primary.main};
+                }
+            }
+        }
+    }
 `;
 
 export const StyledMenu = styled(RcMenu)`
@@ -158,6 +190,74 @@ export const StyledMenu = styled(RcMenu)`
                     text-overflow: ellipsis;
                 }
             }
+        }
+    }
+
+    &.rc-menu-horizontal {
+        background-color: ${(props) => props.theme.fow.colors.common.white};
+
+        .rc-menu-submenu,
+        .rc-menu-item {
+            padding: 16px;
+            border: none;
+
+            ${IconWrapper} {
+                font-size: 6px;
+                opacity: 0;
+            }
+        }
+
+        .rc-menu-overflow-item-rest {
+            padding: 0;
+            .rc-menu-submenu-title {
+                padding: 16px;
+            }
+        }
+
+        h3 span {
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        > .rc-menu-item-active,
+        > .rc-menu-submenu-active {
+            border-bottom: none !important;
+            background-color: ${(props) => props.theme.fow.colors.common.white};
+            color: ${(props) => props.theme.fow.colors.primary.main};
+            .rc-menu-submenu-title {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.common.white};
+            }
+            h3 span {
+                color: ${(props) => props.theme.fow.colors.primary.main};
+                line-height: 1;
+            }
+        }
+
+        > .rc-menu-item-selected,
+        > .rc-menu-submenu-selected {
+            background-color: ${(props) => props.theme.fow.colors.common.white};
+            color: ${(props) => props.theme.fow.colors.primary.main};
+
+            h3 span {
+                color: ${(props) => props.theme.fow.colors.primary.main};
+                line-height: 1;
+            }
+
+            ${IconWrapper} {
+                opacity: 1;
+            }
+        }
+
+        > .rc-menu-item-selected:before {
+            content: ' ';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: ${(props) => props.theme.fow.colors.primary.main};
         }
     }
 `;
