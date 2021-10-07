@@ -16,18 +16,21 @@ export interface MenuItemProps {
      * index of item
      */
     index: number;
-    handleClick?: (itemKey: any) => void;
+    onClick?: () => void;
+    handleChange?: (itemKey: any) => void;
     children: React.ReactNode;
 }
 
 const MenuItem = ({
     index,
-    handleClick,
+    onClick,
+    handleChange,
     children,
 }: MenuItemProps): JSX.Element => (
     <ItemWrapper
         onClick={() => {
-            if (typeof handleClick === 'function') handleClick(index);
+            if (typeof handleChange === 'function') handleChange(index);
+            if (typeof onClick === 'function') onClick();
         }}>
         {typeof children === 'string' ? (
             <Subtitle level={2} color="secondary">
@@ -40,7 +43,7 @@ const MenuItem = ({
 );
 
 const Menu = ({ onClick, children }: MenuProps): JSX.Element => {
-    const handleClick = (itemIndex: string) => {
+    const handleChange = (itemIndex: string) => {
         if (typeof onClick === 'function') onClick(itemIndex);
     };
 
@@ -51,7 +54,10 @@ const Menu = ({ onClick, children }: MenuProps): JSX.Element => {
     return (
         <MenuWrapper>
             {items.map(({ props }) => (
-                <MenuItem index={props.index} handleClick={handleClick}>
+                <MenuItem
+                    index={props.index}
+                    onClick={props.onClick}
+                    handleChange={handleChange}>
                     {props.children}
                 </MenuItem>
             ))}
