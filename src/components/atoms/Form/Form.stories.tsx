@@ -7,6 +7,7 @@ import Row from '../Row';
 import Col from '../Col';
 
 import Input from '../Input';
+import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 
 export default {
@@ -42,14 +43,19 @@ const Template: Story = () => {
                             <Input placeholder="sname" />
                         </FormField>
                     </Col>
+                    <Col xs={6}>
+                        <FormField
+                            valuePropName="checked"
+                            name="sw"
+                            label="Switch">
+                            <Switch />
+                        </FormField>
+                    </Col>
                     <Col xs={12}>
                         <FormField
                             name="file"
                             label="File"
-                            valuePropName="files"
-                            rules={[
-                                { required: true, message: 'Zorunlu alan' },
-                            ]}>
+                            valuePropName="files">
                             <Upload multiple={false} accept=".zip" />
                         </FormField>
                     </Col>
