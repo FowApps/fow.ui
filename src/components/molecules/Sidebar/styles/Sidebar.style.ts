@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const COLLAPSED_WIDTH = '24px';
-export const EXPANDED_WIDTH = '200px';
+export const EXPANDED_WIDTH = '240px';
 
 type SiderProps = {
     noGutter: boolean;
