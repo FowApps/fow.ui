@@ -1095,7 +1095,7 @@
     core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.14.6", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.14.6", "@babel/runtime@^7.15.4", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   dependencies:
@@ -1738,9 +1738,10 @@
     eslint-config-prettier "^8.1.0"
     eslint-plugin-react-hooks "^4.2.0"
 
-"@seznam/compose-react-refs@^1.0.5":
+"@seznam/compose-react-refs@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@seznam/compose-react-refs/-/compose-react-refs-1.0.6.tgz#6ec4e70bdd6e32f8e70b4100f27267cf306bd8df"
+  integrity sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -10071,9 +10072,10 @@ react-inspector@^5.1.0:
     is-dom "^1.0.0"
     prop-types "^15.0.0"
 
-react-is-mounted-hook@^1.0.3:
+react-is-mounted-hook@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-is-mounted-hook/-/react-is-mounted-hook-1.1.2.tgz#0e57d237c0ed60f6a8dc0520634608a80ae864ff"
+  integrity sha512-yjq3Tj34CiFcdVOS/h6JerWLOLdJqEGKMNpTHc4kWebzz2YtIpgqMRrqxdmQhewM1KJREojdAV2tsNvBsUWyhA==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.13.1"
@@ -10133,13 +10135,14 @@ react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
 
-react-select-async-paginate@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.5.3.tgz#c5e6e27ee887078c52653d3214214c81f7e62cc8"
+react-select-async-paginate@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.6.0.tgz#48e8e20345fa4df2432d8b9d1fb2498edd5aa440"
+  integrity sha512-20k3NAy2C90j0gw7KDTPhMg2/U4Pe68HiHiGxxKdsyPUR0jGO/1O8WftpTlI7LFP5Ym9lJQ/DSeiJsOTSIuUeA==
   dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@seznam/compose-react-refs" "^1.0.5"
-    react-is-mounted-hook "^1.0.3"
+    "@babel/runtime" "^7.15.4"
+    "@seznam/compose-react-refs" "^1.0.6"
+    react-is-mounted-hook "^1.1.2"
     sleep-promise "^9.1.0"
 
 react-select@*:
