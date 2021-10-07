@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../../atoms/Icon';
 import useDisclosure from '../../../hooks/useDisclosure';
+import { theme } from '../../../theme/theme';
 
 import {
     Sider,
@@ -27,9 +28,12 @@ const Sidebar = ({ noGutter = false, children }: SidebarProps): JSX.Element => {
             <Content variants={ContentVariants}>{children}</Content>
             <Trigger onClick={toggle}>
                 {isOpen ? (
-                    <Icon icon="angle-left" />
+                    <Icon icon="angle-double-left" />
                 ) : (
-                    <Icon icon="angle-right" />
+                    <Icon
+                        icon="angle-double-right"
+                        color={theme.fow.colors.primary.main}
+                    />
                 )}
             </Trigger>
         </Sider>

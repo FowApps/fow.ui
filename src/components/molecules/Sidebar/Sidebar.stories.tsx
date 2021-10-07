@@ -51,7 +51,7 @@ const Template: Story = (args) => (
                 </Space>
             </HeadingWrapper>
             <Divider />
-            <Menu>
+            <Menu mode="inline">
                 <Item key="level-1" icon="user">
                     Level 1
                 </Item>
