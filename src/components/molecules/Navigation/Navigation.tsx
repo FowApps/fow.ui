@@ -25,6 +25,10 @@ export interface SubMenuProps extends RcSubMenuProps {
 export interface MenuItemProps extends RcMenuItemProps {
     icon?: FontAwesomeIconProps['icon'];
     extra?: React.ReactNode;
+    children: React.ReactElement<
+        any,
+        string | React.JSXElementConstructor<any> | string
+    >;
 }
 
 const getCollapsedHeight = () => ({
@@ -59,6 +63,33 @@ const collapseMotion = {
     motionDeadline: 500,
 };
 
+const renderGhostChildren = (children) => {
+    if (typeof children === 'string') return null;
+    if (children?.type?.displayName === 'Item') return null;
+
+    if (Array.isArray(children))
+        return children.map((child) => {
+            if (typeof child === 'string') return null;
+            if (child?.type?.displayName === 'Item') return null;
+
+            return React.cloneElement(child, {
+                style: {
+                    position: 'absolute',
+                    inset: 0,
+                    opacity: 0,
+                },
+            });
+        });
+
+    return React.cloneElement(children, {
+        style: {
+            position: 'absolute',
+            inset: 0,
+            opacity: 0,
+        },
+    });
+};
+
 const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
     <>
         <DropdownStyles />
@@ -83,6 +114,7 @@ const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
         </StyledMenu>
     </>
 );
+
 const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
     let titleNode: React.ReactNode;
     if (icon) {
@@ -100,6 +132,7 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
     return (
         <StyledSubMenu title={titleNode} {...rest}>
             {children}
+            {renderGhostChildren(children)}
         </StyledSubMenu>
     );
 };
@@ -113,12 +146,19 @@ const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
                         <Icon icon={icon} />
                     </IconWrapper>
                 )}
-                <Subtitle color="secondary">{children}</Subtitle>
+                <Subtitle color="secondary">
+                    {children}
+                    {renderGhostChildren(children)}
+                </Subtitle>
             </Space>
             {extra && <div>{extra}</div>}
         </Space>
     </StyledItem>
 );
+
+Menu.displayName = 'Menu';
+SubMenu.displayName = 'SubMenu';
+Item.displayName = 'Item';
 
 const Navigation = {
     Menu,

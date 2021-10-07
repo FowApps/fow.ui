@@ -12,10 +12,12 @@ export default {
 
 const InlineTemplate: Story = (args) => (
     <Menu {...args}>
-        <Item key="level-1">Level 1</Item>
+        <Item key="level-1" icon="car">
+            <a>Level 1</a>
+        </Item>
         <SubMenu key="sub-level-1" title="Sub Menu">
             <Item icon="circle" key="level-2">
-                Level 2
+                <a>Test</a>
             </Item>
         </SubMenu>
         <SubMenu key="sub-level-2" title="Sub Menu">
@@ -39,7 +41,9 @@ Inline.args = {
 
 const HorizontalTemplate: Story = (args) => (
     <Menu {...args}>
-        <Item key="level-1">Level 1</Item>
+        <Item key="level-1">
+            <a>Test</a>
+        </Item>
         <Item key="level-2">Level 2</Item>
         <Item key="level-3">Level 3</Item>
         <Item key="level-4">Level 4</Item>

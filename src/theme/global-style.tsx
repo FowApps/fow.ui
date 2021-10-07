@@ -20,7 +20,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
     a {
+        color: unset !important;
         text-decoration: none;
+        transition: none !important;
     }
 
     &::-webkit-scrollbar-track {
