@@ -13,6 +13,7 @@ export const IconWrapper = styled.div`
 
 export const DropdownStyles = createGlobalStyle`
     .rc-menu-submenu-popup {
+        z-index: 999;
         .rc-menu-sub {
             overflow: overlay;
             padding: 8px 0;
@@ -72,8 +73,8 @@ export const StyledMenu = styled(RcMenu)`
                 content: ' ';
                 position: absolute;
                 top: 0;
-                right: 0;
                 bottom: 0;
+                left: 0;
                 width: 3px;
                 height: 100%;
                 background-color: ${(props) =>
@@ -127,8 +128,8 @@ export const StyledMenu = styled(RcMenu)`
                     content: ' ';
                     position: absolute;
                     top: 0;
-                    right: 0;
                     bottom: 0;
+                    left: 0;
                     width: 3px;
                     height: 100%;
                     background-color: ${(props) =>
