@@ -3780,7 +3780,7 @@ babel-plugin-polyfill-corejs3@^0.1.0:
     "@babel/helper-define-polyfill-provider" "^0.1.5"
     core-js-compat "^3.8.1"
 
-babel-plugin-polyfill-corejs3@^0.2.2, babel-plugin-polyfill-corejs3@^0.2.5:
+babel-plugin-polyfill-corejs3@^0.2.5:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.2.5.tgz#2779846a16a1652244ae268b1e906ada107faf92"
   integrity sha512-ninF5MQNwAX9Z7c9ED+H2pGt1mXdP4TqzlHKyPIYmJIYz0N+++uwdM7RnJukklhzJ54Q84vA4ZJkgs7lu5vqcw==
@@ -4576,14 +4576,6 @@ copy-to-clipboard@^3.3.1:
     toggle-selection "^1.0.6"
 
 core-js-compat@^3.16.0, core-js-compat@^3.16.2, core-js-compat@^3.8.1:
-  version "3.18.2"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.18.2.tgz#e40c266fbd613948dd8d2d2156345da8ac03c142"
-  integrity sha512-25VJYCJtGjZwLguj7d66oiHfmnVw3TMOZ0zV8DyMJp/aeQ3OjR519iOOeck08HMyVVRAqXxafc2Hl+5QstJrsQ==
-  dependencies:
-    browserslist "^4.17.3"
-    semver "7.0.0"
-
-core-js-compat@^3.16.2:
   version "3.18.2"
   resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.18.2.tgz#e40c266fbd613948dd8d2d2156345da8ac03c142"
   integrity sha512-25VJYCJtGjZwLguj7d66oiHfmnVw3TMOZ0zV8DyMJp/aeQ3OjR519iOOeck08HMyVVRAqXxafc2Hl+5QstJrsQ==
@@ -9914,11 +9906,6 @@ react-helmet-async@^1.0.7:
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
 
-react-hook-form@^7.16.1:
-  version "7.16.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.16.1.tgz#669046df378a71949e5cf8a2398cbe20d5cb27bc"
-  integrity sha512-kcLDmSmlyLUFx2UU5bG/o4+3NeK753fhKodJa8gkplXohGkpAq0/p+TR24OWjZmkEc3ES7ppC5v5d6KUk+fJTA==
-
 react-input-autosize@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-3.0.0.tgz#6b5898c790d4478d69420b55441fcc31d5c50a85"
@@ -9995,9 +9982,10 @@ react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
 
-react-select-async-paginate@^0.5.3:
+react-select-async-paginate@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.5.3.tgz#c5e6e27ee887078c52653d3214214c81f7e62cc8"
+  integrity sha512-SWX1twi/jzViDpQa1nS+xyjrFtn9RBezbL4aIjcJXCABKMY+8JhH4iAKqAW3pryZbm439/DaMtQeZADH17v7bQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@seznam/compose-react-refs" "^1.0.5"
@@ -10017,9 +10005,10 @@ react-select@*:
     prop-types "^15.6.0"
     react-transition-group "^4.3.0"
 
-react-select@^4.3.1:
+react-select@4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-4.3.1.tgz#389fc07c9bc7cf7d3c377b7a05ea18cd7399cb81"
+  integrity sha512-HBBd0dYwkF5aZk1zP81Wx5UsLIIT2lSvAY2JiJo199LjoLHoivjn9//KsmvQMEFGNhe58xyuOITjfxKCcGc62Q==
   dependencies:
     "@babel/runtime" "^7.12.0"
     "@emotion/cache" "^11.4.0"

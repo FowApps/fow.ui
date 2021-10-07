@@ -14,6 +14,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "react-select"
+      - dependency-name: "react-select-async-paginate"
     open-pull-requests-limit: 10
     versioning-strategy: increase
     commit-message:
