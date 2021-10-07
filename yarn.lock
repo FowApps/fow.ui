@@ -1880,16 +1880,16 @@
     storybook-addon-outline "^1.4.1"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@6.3.9":
-  version "6.3.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.9.tgz#a7342d80c26f81bc8d5fdab4906521786bc99343"
-  integrity sha512-n5Ox9x70gUSHZebbCYRUMMAXddmf1WW5raDP424dtdUzfKDnES+/v/dgyp3pnJshWO/muTEB1ytP4QV0J1+jVA==
+"@storybook/addon-links@6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.10.tgz#0c4c95def9655a299f3e29aa6e1fe6cde8326ecf"
+  integrity sha512-/gp5+4+niwK7U+28trwvFAgbZat9m4v9xFd5W8jXo8HmPlyDUK5w9Zu14xH6PrAfufFMb+No9b8eZjzOgB5aOQ==
   dependencies:
-    "@storybook/addons" "6.3.9"
-    "@storybook/client-logger" "6.3.9"
-    "@storybook/core-events" "6.3.9"
+    "@storybook/addons" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/core-events" "6.3.10"
     "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.3.9"
+    "@storybook/router" "6.3.10"
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
@@ -2166,10 +2166,10 @@
     webpack-hot-middleware "^2.25.0"
     webpack-virtual-modules "^0.2.2"
 
-"@storybook/builder-webpack5@6.3.9":
-  version "6.3.9"
-  resolved "https://registry.yarnpkg.com/@storybook/builder-webpack5/-/builder-webpack5-6.3.9.tgz#69cae40278971104394ba1b38a11dace9702c319"
-  integrity sha512-qtEv3+/4mO8kc4wmz5hRnDAxKBMAHSOGWSDrS2AD7x9DUEDWQqRFxKch6NEPWhrZLKTsfcf62xK2Pb9cHeUZVg==
+"@storybook/builder-webpack5@6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-webpack5/-/builder-webpack5-6.3.10.tgz#888f5f9bd2c801e444e3b477fd88eacfcd6ff0cc"
+  integrity sha512-fnDFS25dVaAapp5ECsnTPVQU0ws5Tpj/x8Lfa/wCqSmq5ia79O9pNFt5vQ+tumhjezYxSUeitI0vF1hHlQrJrg==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
@@ -2191,19 +2191,19 @@
     "@babel/preset-env" "^7.12.11"
     "@babel/preset-react" "^7.12.10"
     "@babel/preset-typescript" "^7.12.7"
-    "@storybook/addons" "6.3.9"
-    "@storybook/api" "6.3.9"
-    "@storybook/channel-postmessage" "6.3.9"
-    "@storybook/channels" "6.3.9"
-    "@storybook/client-api" "6.3.9"
-    "@storybook/client-logger" "6.3.9"
-    "@storybook/components" "6.3.9"
-    "@storybook/core-common" "6.3.9"
-    "@storybook/core-events" "6.3.9"
-    "@storybook/node-logger" "6.3.9"
-    "@storybook/router" "6.3.9"
+    "@storybook/addons" "6.3.10"
+    "@storybook/api" "6.3.10"
+    "@storybook/channel-postmessage" "6.3.10"
+    "@storybook/channels" "6.3.10"
+    "@storybook/client-api" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/components" "6.3.10"
+    "@storybook/core-common" "6.3.10"
+    "@storybook/core-events" "6.3.10"
+    "@storybook/node-logger" "6.3.10"
+    "@storybook/router" "6.3.10"
     "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.3.9"
+    "@storybook/theming" "6.3.10"
     "@types/node" "^14.0.10"
     babel-loader "^8.2.2"
     babel-plugin-macros "^3.0.1"
@@ -2874,18 +2874,18 @@
     react-docgen-typescript "^2.0.0"
     tslib "^2.0.0"
 
-"@storybook/react@6.3.9":
-  version "6.3.9"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.9.tgz#3d93a3606a6a9ae1ece8d0d56f382a9c15df5254"
-  integrity sha512-LYlAURnKvFsf3CZG2CDvQwvlF/vy5VsKuNiNmyTk6zggmkbitXrwkuT7KoElYrz4REkyhd/HA6Uw6lfkPsyuHA==
+"@storybook/react@6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.10.tgz#af065ea32a051244065920df4e86029f65dba2c3"
+  integrity sha512-UNznbvkpxrBd3yVcptcednjhdoEWSz9wLE6yuTbrW5/E9lv4wuHmxFA42GHKVTNy8Pa7qqPgW5t1XfWivNwOOg==
   dependencies:
     "@babel/preset-flow" "^7.12.1"
     "@babel/preset-react" "^7.12.10"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.4.3"
-    "@storybook/addons" "6.3.9"
-    "@storybook/core" "6.3.9"
-    "@storybook/core-common" "6.3.9"
-    "@storybook/node-logger" "6.3.9"
+    "@storybook/addons" "6.3.10"
+    "@storybook/core" "6.3.10"
+    "@storybook/core-common" "6.3.10"
+    "@storybook/node-logger" "6.3.10"
     "@storybook/react-docgen-typescript-plugin" "1.0.2-canary.253f8c1.0"
     "@storybook/semver" "^7.3.2"
     "@types/webpack-env" "^1.16.0"
