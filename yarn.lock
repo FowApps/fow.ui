@@ -5440,10 +5440,10 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-4catalyzer-typescript@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-typescript/-/eslint-config-4catalyzer-typescript-3.1.1.tgz#34e9cf6c2ac6d66552c72392a7720ba0165810be"
-  integrity sha512-pWs4DP7wcctnlxO0PKqiIlZSNs0h67gjqjh+f+3hQCAsaEtu0QYtR2fYlnPfb3z7BX1NxbMKEkO1RDumFTdVOg==
+eslint-config-4catalyzer-typescript@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-typescript/-/eslint-config-4catalyzer-typescript-3.1.2.tgz#9a7483de1bed72cc1ff0d14ae85b4aabd6a25677"
+  integrity sha512-0lJxXERBH4/p2OnlH3RMVkjgoag/x/LCLIrUaPza/q9+LbSwUjhxBFBYoZ12Gb/pWZAqsCLE83xGcyLppisFzw==
   dependencies:
     babel-eslint "^10.0.3"
     eslint-import-resolver-typescript "^2.5.0"
