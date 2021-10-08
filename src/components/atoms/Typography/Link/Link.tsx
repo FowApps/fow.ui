@@ -36,7 +36,7 @@ const Link = ({
             fontStyle={fontStyle}
             color={color}
             textTransfrom={textTransfrom}>
-            <Space justify="center" inline={false}>
+            <Space justify="center" inline={false} size="xsmall">
                 {leftIcon && (
                     <span>
                         <Icon icon={leftIcon} fixedWidth />

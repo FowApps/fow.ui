@@ -6,7 +6,7 @@ export interface SubtitleProps extends TextWrapperProps {
     /**
      * size level
      */
-    level?: 1 | 2;
+    level?: 1 | 2 | 3;
 }
 
 const Subtitle = ({

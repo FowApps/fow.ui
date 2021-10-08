@@ -33,6 +33,6 @@ export const StyledRow = styled.div<RowProps>`
         `}
 
     + .row {
-        margin-top: ${(props) => props.theme.fow.spacing.small};
+        margin-top: ${(props) => props.theme.fow.spacing.medium};
     }
 `;

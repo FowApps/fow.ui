@@ -37,6 +37,7 @@ export { default as Input } from './components/atoms/Input';
 export { default as Skeleton } from './components/atoms/Skeleton';
 export { default as Tooltip } from './components/atoms/Tooltip';
 export { default as PulseDot } from './components/atoms/PulseDot';
+export { default as Switch } from './components/atoms/Switch';
 
 export const Typography = {
     Heading,
