@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledText } from './styles';
 
 export interface TextWrapperProps {
+    lineClamp?: number | undefined;
     /**
      * color
      */
@@ -40,10 +41,12 @@ const TextWrapper = ({
     color = 'black',
     textDecoration = 'none',
     fontStyle = 'normal',
+    lineClamp = undefined,
     children,
     ...rest
 }: TextWrapperProps): JSX.Element => (
     <StyledText
+        lineClamp={lineClamp}
         fontStyle={fontStyle}
         textDecoration={textDecoration}
         textTransfrom={textTransfrom}

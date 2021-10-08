@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
         transition: none !important;
     }
 
+    label {
+        margin-bottom: 0;
+    }
+
     &::-webkit-scrollbar-track {
         border-radius: 1rem;
         background-color: transparent;

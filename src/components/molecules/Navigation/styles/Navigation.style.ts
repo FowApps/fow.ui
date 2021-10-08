@@ -25,6 +25,11 @@ export const DropdownStyles = createGlobalStyle`
             .rc-menu-item {
                 padding: 8px 16px;
 
+                h3 {
+                    font-weight: 500;
+                    font-size: 1.2rem;
+                }
+                
                 ${IconWrapper} {
                     font-size: 6px;
                 }
@@ -89,6 +94,7 @@ export const StyledMenu = styled(RcMenu)`
             h3 {
                 overflow: hidden;
                 font-weight: 500;
+                font-size: 1.2rem;
 
                 span {
                     overflow: hidden;
@@ -107,6 +113,7 @@ export const StyledMenu = styled(RcMenu)`
 
                 h3 {
                     font-weight: 500;
+                    font-size: 1.2rem;
                 }
             }
 
@@ -151,6 +158,7 @@ export const StyledMenu = styled(RcMenu)`
 
                 h3 {
                     font-weight: 500;
+                    font-size: 1.2rem;
                 }
 
                 ${IconWrapper} {
@@ -205,6 +213,11 @@ export const StyledMenu = styled(RcMenu)`
             ${IconWrapper} {
                 font-size: 6px;
                 opacity: 0;
+            }
+
+            h3 {
+                font-weight: 500;
+                font-size: 1.2rem;
             }
         }
 
