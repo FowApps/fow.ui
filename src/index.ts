@@ -77,6 +77,7 @@ export { default as Drawer } from './components/molecules/Drawer';
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
 export { default as Sidebar } from './components/molecules/Sidebar';
+export { default as GridLayout } from './components/molecules/GridLayout';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';

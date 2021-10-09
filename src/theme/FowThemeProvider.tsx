@@ -1,5 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { DndProvider } from 'react-dnd';
+import MultiBackend from 'react-dnd-multi-backend';
+
+import HTML5toTouch from '../config/dndConfig';
 import { theme } from './theme';
 import GlobalStyle from './global-style';
 import ToastContextProvider from '../components/molecules/Toast/ToastProvider';
@@ -43,7 +47,11 @@ const FowTheme = ({
             },
         }}>
         <GlobalStyle />
-        <ToastContextProvider>{children}</ToastContextProvider>
+        <ToastContextProvider>
+            <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+                {children}
+            </DndProvider>
+        </ToastContextProvider>
     </ThemeProvider>
 );
 
