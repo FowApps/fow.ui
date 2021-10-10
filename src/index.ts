@@ -85,6 +85,7 @@ export { default as useDisclosure } from './hooks/useDisclosure';
 export { default as useForm } from './hooks/useForm';
 export { default as useDrawer } from './hooks/useDrawer';
 export { default as useDrawerForm } from './hooks/useDrawerForm';
+export { default as useConfirm } from './hooks/useConfirm';
 
 // Providers
 export { FowThemeProvider } from './theme';

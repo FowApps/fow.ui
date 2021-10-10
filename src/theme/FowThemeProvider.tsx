@@ -7,6 +7,7 @@ import HTML5toTouch from '../config/dndConfig';
 import { theme } from './theme';
 import GlobalStyle from './global-style';
 import ToastContextProvider from '../components/molecules/Toast/ToastProvider';
+import { ConfirmProvider } from '../components/molecules/Confirm/ConfirmContext';
 
 export interface PrimaryColorTypes {
     darker: string;
@@ -49,7 +50,7 @@ const FowTheme = ({
         <GlobalStyle />
         <ToastContextProvider>
             <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-                {children}
+                <ConfirmProvider>{children}</ConfirmProvider>
             </DndProvider>
         </ToastContextProvider>
     </ThemeProvider>
