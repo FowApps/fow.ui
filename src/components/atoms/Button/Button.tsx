@@ -39,7 +39,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const loadingVariants = {
