@@ -15,8 +15,8 @@ export interface ConfirmProps {
     scrimMode?: 'dark' | 'light';
     cancelable?: boolean;
     okButtonProps?: ButtonProps;
-    okButtonText?: string;
-    cancelButtonText?: string;
+    okText?: string;
+    cancelText?: string;
     onCancel?: () => void;
     onOk?: () => Promise<any | void> | void;
     close?: () => void;
@@ -98,8 +98,8 @@ const Confirm = ({
     onCancel,
     onOk,
     okButtonProps,
-    okButtonText = 'Confirm',
-    cancelButtonText = 'Cancel',
+    okText = 'Confirm',
+    cancelText = 'Cancel',
     close,
     theme,
 }: ConfirmProps): JSX.Element => {
@@ -144,7 +144,7 @@ const Confirm = ({
                                 color="error"
                                 variant="outlined"
                                 onClick={handleCancel}>
-                                {cancelButtonText}
+                                {cancelText}
                             </Button>
                         )}
                         <Button
@@ -153,7 +153,7 @@ const Confirm = ({
                             onClick={handleOk}
                             loading={loading}
                             {...okButtonProps}>
-                            {okButtonText}
+                            {okText}
                         </Button>
                     </Space>
                 </Footer>

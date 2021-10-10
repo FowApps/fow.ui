@@ -32,6 +32,7 @@ export const StyledButton = styled.button<ButtonProps>`
     justify-content: center;
     overflow: hidden;
     width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
+    min-width: ${(props) => (props.fab ? 'unset' : '80px')} !important;
     border-radius: ${(props) => (props.fab ? 50 : 8)}px;
     outline: none;
     white-space: nowrap;

@@ -5,8 +5,9 @@ export const Overlay = styled(motion.div)`
     position: fixed;
     z-index: 999;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 10rem;
     background: rgba(0, 0, 0, 0.3);
     opacity: 0.4;
     inset: 0;

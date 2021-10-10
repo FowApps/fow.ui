@@ -55,8 +55,8 @@ export const ConfirmProvider = ({ children }) => {
                             okButtonProps={options.okButtonProps}
                             cancelable={options.cancelable}
                             close={close}
-                            okButtonText={options.okButtonText}
-                            cancelButtonText={options.cancelButtonText}
+                            okText={options.okText}
+                            cancelText={options.cancelText}
                         />
                     )}
                 </AnimatePresence>,
