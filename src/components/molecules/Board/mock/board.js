@@ -7,6 +7,14 @@ export const mockBoard = [
                 id: '11',
                 content: 'First Task',
             },
+            {
+                id: '12',
+                content: 'Second Task',
+            },
+            {
+                id: '13',
+                content: 'Third Task',
+            },
         ],
     },
     {
