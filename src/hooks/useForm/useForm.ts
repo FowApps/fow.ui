@@ -61,13 +61,20 @@ const useForm = (config: UseFormConfig) => {
     useEffect(() => {
         let isUnMounted = false;
 
-        if (!initialValues) {
-            return;
-        }
-
         if (isOpen) {
-            let value: Store | Promise<Store>;
+            const formNode = document?.getElementsByTagName(
+                'FORM',
+            )[0] as HTMLFormElement;
 
+            const firstFieldNode = formNode.elements[0] as HTMLElement;
+            setTimeout(() => {
+                firstFieldNode.focus();
+            }, 300);
+
+            if (!initialValues) {
+                return;
+            }
+            let value: Store | Promise<Store>;
             if (typeof initialValues === 'function') {
                 setDefaultFormValuesLoading(true);
                 value = initialValues();
