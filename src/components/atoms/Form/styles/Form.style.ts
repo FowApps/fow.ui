@@ -23,3 +23,7 @@ export const Label = styled.label<LabelProps>`
         color: ${(props) => props.theme.fow.colors.error.main};
     }
 `;
+
+export const Wrapper = styled.div`
+    margin-bottom: ${(props) => props.theme.fow.spacing.small};
+`;

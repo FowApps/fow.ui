@@ -32,7 +32,10 @@ export const Body = styled.div`
 `;
 
 export const Footer = styled.footer`
+    display: flex;
     flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
     padding: ${(props) => props.theme.fow.spacing.small};
     border-top: 1px solid ${(props) => props.theme.fow.colors.divider};
 `;

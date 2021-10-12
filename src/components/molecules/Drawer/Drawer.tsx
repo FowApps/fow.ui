@@ -13,7 +13,7 @@ import RcDrawer from 'rc-drawer';
 import 'rc-drawer/assets/index.css';
 
 import useForceUpdate from '../../../hooks/useForceUpdate';
-import Button from '../../atoms/Button';
+import Button, { ButtonProps } from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
 import Heading from '../../atoms/Typography/Heading';
@@ -39,7 +39,7 @@ export interface DrawerProps {
     /**
      * open/close state
      */
-    isOpen: boolean;
+    isOpen?: boolean;
     /**
      * show close icon
      */
@@ -103,8 +103,10 @@ export interface DrawerProps {
     /**
      * close click function
      */
-    onClose: (
-        e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>,
+    onClose?: (
+        e?:
+            | React.MouseEvent<Element, MouseEvent>
+            | React.KeyboardEvent<Element>,
     ) => void;
     /**
      * Whether support press esc to close
@@ -114,7 +116,13 @@ export interface DrawerProps {
      * Whether to unmount child components on closing drawer or not
      */
     destroyOnClose?: boolean;
-    children: React.ReactNode;
+    onOk?: () => void;
+    okText?: string;
+    okButtonProps?: ButtonProps;
+    onCancel?: () => void;
+    cancelText?: string;
+    cancelButtonProps?: ButtonProps;
+    children?: React.ReactNode;
 }
 
 const defaultPushState: PushState = { distance: 180 };
@@ -140,6 +148,12 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
             onChange,
             afterVisibleChange,
             onClose,
+            onOk,
+            okText = 'Submit',
+            okButtonProps,
+            onCancel,
+            cancelText = 'Cancel',
+            cancelButtonProps,
             children,
             ...rest
         },
@@ -232,11 +246,40 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
         };
 
         const renderFooter = () => {
-            if (!footer) {
+            if (!footer && !onOk && !onClose) {
                 return null;
             }
 
-            return <Footer style={footerStyles}>{footer}</Footer>;
+            return (
+                <Footer style={footerStyles}>
+                    <div>{footer}</div>
+                    <Space>
+                        {onCancel && (
+                            <Button
+                                variant="outlined"
+                                color="error"
+                                size="small"
+                                onClick={() => {
+                                    onClose?.();
+                                    onCancel?.();
+                                }}
+                                {...cancelButtonProps}>
+                                {cancelText}
+                            </Button>
+                        )}
+                        {onOk && (
+                            <Button
+                                size="small"
+                                onClick={() => {
+                                    onOk?.();
+                                }}
+                                {...okButtonProps}>
+                                {okText}
+                            </Button>
+                        )}
+                    </Space>
+                </Footer>
+            );
         };
 
         const renderBody = () => {
