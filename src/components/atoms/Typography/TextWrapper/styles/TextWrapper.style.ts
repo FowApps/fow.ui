@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import color from './color';
 import textDecoration from './textDecoration';
 import fontStyle from './fontStyle';
 import textTransform from './textTransform';
 
 type TextWrapperProps = {
+    lineClamp?: number | undefined;
     color:
         | 'primary'
         | 'secondary'
@@ -28,13 +29,21 @@ type TextWrapperProps = {
 export const StyledText = styled.span<TextWrapperProps>`
     position: inherit;
     display: inherit;
-    margin: inherit;
-    padding: inherit;
+    margin: 0;
+    padding: 0;
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
     letter-spacing: inherit;
 
+    ${(props) =>
+        props.lineClamp &&
+        css`
+            display: -webkit-box;
+            -webkit-line-clamp: ${props.lineClamp};
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        `}
     ${(props) => color[props.color]}
     ${(props) => fontStyle[props.fontStyle]}
     ${(props) => textDecoration[props.textDecoration]}

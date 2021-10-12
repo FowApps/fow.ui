@@ -53,17 +53,11 @@ export interface UploadProps {
      * allowed max file size in byte
      */
     maxFileSizeInBytes?: number;
-    /**
-     * error of react-hook-form
-     */
     error?: any;
     /**
      * disabled flag
      */
     disabled?: any;
-    /**
-     * required flag for react-hook-form
-     */
     required?: any;
     localization?: LocalizationType;
     theme?: DefaultTheme;

@@ -13,7 +13,7 @@ export const ToastContainer = styled.div`
     position: absolute;
     top: 2rem;
     right: 2rem;
-    z-index: 1001;
+    z-index: 10000;
 `;
 
 export const ToastWrapper = styled.div<ToastWrapperType>`

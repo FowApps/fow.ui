@@ -1,32 +1,34 @@
 import React from 'react';
-import { StyledSubtitle } from './styles';
+import { StyledBody } from './styles';
 import TextWrapper, { TextWrapperProps } from '../TextWrapper';
 
 export interface BodyProps extends TextWrapperProps {
     /**
      * size level
      */
-    level?: 1 | 2;
+    level?: 1 | 2 | 3;
 }
 
-const Subtitle = ({
+const Body = ({
     level = 1,
     color = 'black',
     fontStyle = 'normal',
     textDecoration = 'none',
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
+    lineClamp = 0,
     children,
     ...rest
 }: BodyProps): JSX.Element => (
-    <StyledSubtitle level={level} color={color} {...rest}>
+    <StyledBody level={level} color={color} {...rest}>
         <TextWrapper
+            lineClamp={lineClamp}
             fontStyle={fontStyle}
             color={color}
             textDecoration={textDecoration}
             textTransfrom={textTransfrom}>
             {children}
         </TextWrapper>
-    </StyledSubtitle>
+    </StyledBody>
 );
 
-export default Subtitle;
+export default Body;

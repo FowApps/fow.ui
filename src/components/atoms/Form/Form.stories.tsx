@@ -5,9 +5,15 @@ import FormField from './FormField';
 
 import Row from '../Row';
 import Col from '../Col';
+import Loader from '../Loader';
 
 import Input from '../Input';
+import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
+import useForm from '../../../hooks/useForm';
+
+import Button from '../Button';
+import Space from '../Space';
 
 export default {
     title: 'Atoms/Form',
@@ -42,14 +48,19 @@ const Template: Story = () => {
                             <Input placeholder="sname" />
                         </FormField>
                     </Col>
+                    <Col xs={6}>
+                        <FormField
+                            valuePropName="checked"
+                            name="sw"
+                            label="Switch">
+                            <Switch />
+                        </FormField>
+                    </Col>
                     <Col xs={12}>
                         <FormField
                             name="file"
                             label="File"
-                            valuePropName="files"
-                            rules={[
-                                { required: true, message: 'Zorunlu alan' },
-                            ]}>
+                            valuePropName="files">
                             <Upload multiple={false} accept=".zip" />
                         </FormField>
                     </Col>
@@ -74,4 +85,56 @@ const Template: Story = () => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+
+const UseFormTemplate: Story = () => {
+    const [form] = Form.useForm();
+    const {
+        formProps,
+        formValues,
+        formResult,
+        formLoading,
+        defaultFormValuesLoading,
+    } = useForm({
+        form,
+        async submit(values) {
+            console.log('submit', values);
+            await new Promise((r) => setTimeout(r, 1000));
+            console.log('fewfew', values);
+            return 'ok'; // formResult
+        },
+        async initialValues() {
+            await new Promise((r) => setTimeout(r, 3000));
+            return {
+                hook: 'Fow UI Form Hook',
+            };
+        },
+    });
+
+    console.log({ formValues, formResult });
+
+    return (
+        <Loader isLoading={defaultFormValuesLoading || formLoading}>
+            <Form {...formProps}>
+                <FormField
+                    label="Hook Name"
+                    name="hook"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Input placeholder="Hook Name" />
+                </FormField>
+                <Space>
+                    <Button
+                        type="button"
+                        onClick={() => {
+                            form.resetFields();
+                        }}>
+                        Reset
+                    </Button>
+                    <Button type="submit">Submit</Button>
+                </Space>
+            </Form>
+        </Loader>
+    );
+};
+
+export const UseForm = UseFormTemplate.bind({});
+UseForm.args = {};

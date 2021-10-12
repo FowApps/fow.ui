@@ -20,24 +20,33 @@ const GlobalStyle = createGlobalStyle`
     }
 
     a {
+        color: unset !important;
         text-decoration: none;
+        transition: none !important;
+    }
+
+    label {
+        margin-bottom: 0;
     }
 
     &::-webkit-scrollbar-track {
         border-radius: 1rem;
-        background-color: #F5F5F5;
-        box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.05);
+        background-color: transparent;
     }
 
     &::-webkit-scrollbar {
-        width: 1rem;
-        height: 1rem;
-        background-color: #FFF;
+        width: 0.4rem;
+        height: 0.4rem;
+        background-color: transparent;
     }
     
     &::-webkit-scrollbar-thumb {
         border-radius: 1rem;
-        background-color: ${(props) => props.theme.fow.colors.grey.main};
+        background-color: ${(props) => props.theme.fow.colors.grey.light};
+    }
+
+    .rc-menu-submenu-hidden {
+        display: none;
     }
 `;
 

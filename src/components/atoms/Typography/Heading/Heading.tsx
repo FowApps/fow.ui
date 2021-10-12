@@ -12,7 +12,7 @@ export interface HeadingProps extends TextWrapperProps {
 const Heading = ({
     as = 'h4',
     color = 'black',
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
     children,
     textDecoration = 'none',
     fontStyle = 'normal',

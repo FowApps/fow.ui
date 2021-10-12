@@ -3,7 +3,6 @@
 import Form, { useForm } from 'rc-field-form';
 
 // Grid
-
 import Col from './components/atoms/Col';
 import Row from './components/atoms/Row';
 import Container from './components/atoms/Container';
@@ -37,6 +36,8 @@ export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncP
 export { default as Input } from './components/atoms/Input';
 export { default as Skeleton } from './components/atoms/Skeleton';
 export { default as Tooltip } from './components/atoms/Tooltip';
+export { default as PulseDot } from './components/atoms/PulseDot';
+export { default as Switch } from './components/atoms/Switch';
 
 export const Typography = {
     Heading,
@@ -73,8 +74,18 @@ export { default as Board } from './components/molecules/Board';
 export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
 
+// Extras
+export { default as Navigation } from './components/molecules/Navigation';
+export { default as Sidebar } from './components/molecules/Sidebar';
+export { default as GridLayout } from './components/molecules/GridLayout';
+
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
+export { default as useDisclosure } from './hooks/useDisclosure';
+export { default as useForm } from './hooks/useForm';
+export { default as useDrawer } from './hooks/useDrawer';
+export { default as useDrawerForm } from './hooks/useDrawerForm';
+export { default as useConfirm } from './hooks/useConfirm';
 
 // Providers
 export { FowThemeProvider } from './theme';

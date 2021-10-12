@@ -53,5 +53,5 @@ Default.args = {
     level: 1,
     color: 'black',
     href: '#',
-    text: 'Lorem',
+    children: 'Lorem',
 };
