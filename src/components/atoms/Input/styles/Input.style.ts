@@ -78,7 +78,7 @@ export const StyledInput = styled.input<InputProps>`
             ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.grey.darker};
+                    : props.theme.fow.colors.grey.main};
 
         ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.text.primary};

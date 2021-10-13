@@ -65,11 +65,12 @@ const useForm = (config: UseFormConfig) => {
             const formNode = document?.getElementsByTagName(
                 'FORM',
             )[0] as HTMLFormElement;
-
-            const firstFieldNode = formNode.elements[0] as HTMLElement;
-            setTimeout(() => {
-                firstFieldNode.focus();
-            }, 300);
+            if (formNode) {
+                const firstFieldNode = formNode.elements[0] as HTMLElement;
+                setTimeout(() => {
+                    firstFieldNode?.focus();
+                }, 300);
+            }
 
             if (!initialValues) {
                 return;

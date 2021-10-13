@@ -38,6 +38,7 @@ export { default as Skeleton } from './components/atoms/Skeleton';
 export { default as Tooltip } from './components/atoms/Tooltip';
 export { default as PulseDot } from './components/atoms/PulseDot';
 export { default as Switch } from './components/atoms/Switch';
+export { default as Popover } from './components/atoms/Popover';
 
 export const Typography = {
     Heading,
@@ -73,6 +74,7 @@ export { default as Tabs } from './components/molecules/Tabs';
 export { default as Board } from './components/molecules/Board';
 export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
+export { default as Table } from './components/molecules/Table';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
