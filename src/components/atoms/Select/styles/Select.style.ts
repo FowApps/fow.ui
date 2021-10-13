@@ -18,22 +18,25 @@ export const renderControlStyles = (
 ) => {
     const commonStyles = {
         transition: 'all 0.3s ease',
-        minHeight: '4rem',
-        fontSize: '1.6rem',
+        minHeight: '4.2rem',
+        fontSize: '1.4rem',
         lineHeight: '2.4rem',
+        '&:hover': {
+            borderColor: theme.fow.colors.grey.main,
+        },
     };
     if (hasError) {
         return {
             ...commonStyles,
             borderColor: theme.fow.colors.error.main,
-            boxShadow: `0 0 0 1px ${theme.fow.colors.error.main}`,
+            boxShadow: `0 0 0 0px ${theme.fow.colors.error.main}`,
         };
     }
     if (isFocused) {
         return {
             ...commonStyles,
             borderColor: theme.fow.colors.primary.main,
-            boxShadow: `0 0 0 1px ${theme.fow.colors.primary.main}`,
+            boxShadow: `0 0 0 0px ${theme.fow.colors.primary.main}`,
         };
     }
     return commonStyles;

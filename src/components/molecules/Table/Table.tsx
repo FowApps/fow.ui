@@ -1,5 +1,12 @@
+// @ts-nocheck
 import React, { useEffect } from 'react';
-import { useTable, useSortBy, useAsyncDebounce } from 'react-table';
+import {
+    useTable,
+    useSortBy,
+    useAsyncDebounce,
+    useFlexLayout,
+} from 'react-table';
+import { withTheme } from 'styled-components';
 
 import Subtitle from '../../atoms/Typography/Subtitle';
 import Loader from '../../atoms/Loader';
@@ -14,19 +21,86 @@ import {
     Tr,
     EmptyPlaceholder,
     Sorters,
+    ActionHeader,
+    ActionTrigger,
 } from './styles';
-import { Space } from '../../..';
-import { theme } from '../../../theme/theme';
+import { Popover, Space, Tooltip } from '../../..';
 
 export interface TableProps {
     data: any[];
     columns: any[];
 }
 
-const Table = ({ data = [], columns = [], isLoading = false, onChange }) => {
+const Table = ({
+    data = [],
+    columns = [],
+    isLoading = false,
+    onChange,
+    theme,
+    renderAction,
+}) => {
+    const defaultColumn = React.useMemo(
+        () => ({
+            minWidth: 32,
+            width: 150,
+            maxWidth: 200,
+        }),
+        [],
+    );
     const tableInstance = useTable(
-        { columns, data, manualSortBy: true },
+        { columns, data, defaultColumn, manualSortBy: true },
         useSortBy,
+        useFlexLayout,
+        (hooks) => {
+            hooks.allColumns.push((currColumns) => {
+                if (typeof renderAction === 'function') {
+                    return [
+                        {
+                            id: 'selection',
+                            disableResizing: true,
+                            minWidth: 32,
+                            width: 32,
+                            maxWidth: 32,
+                            actionCell: true,
+                            Header: () => (
+                                <ActionHeader>
+                                    <Icon icon="ellipsis-v" />
+                                </ActionHeader>
+                            ),
+                            Cell: ({ row }) => (
+                                <Popover
+                                    trigger="click"
+                                    placement="bottomLeft"
+                                    content={renderAction(row.original)}
+                                    onVisibleChange={(visiblity) => {
+                                        const cellNode =
+                                            document.getElementById(
+                                                row.original?.id,
+                                            );
+                                        if (visiblity) {
+                                            cellNode.style.backgroundColor =
+                                                theme.fow.colors.primary.main;
+                                            cellNode.style.opacity = 1;
+                                        } else {
+                                            cellNode.style.backgroundColor =
+                                                theme.fow.colors.common.white;
+                                            cellNode.style.opacity = 0;
+                                        }
+                                    }}>
+                                    <ActionTrigger
+                                        className="action"
+                                        id={row.original?.id}>
+                                        <Icon icon="ellipsis-v" color="white" />
+                                    </ActionTrigger>
+                                </Popover>
+                            ),
+                        },
+                        ...currColumns,
+                    ];
+                }
+                return [...currColumns];
+            });
+        },
     );
 
     const {
@@ -52,12 +126,20 @@ const Table = ({ data = [], columns = [], isLoading = false, onChange }) => {
                     <Icon
                         icon="caret-up"
                         size="lg"
-                        color={isSortedDesc ? theme.fow.colors.grey.light : ''}
+                        color={
+                            isSortedDesc
+                                ? theme.fow.colors.grey.light
+                                : theme.fow.colors.primary.main
+                        }
                     />
                     <Icon
                         icon="caret-down"
                         size="lg"
-                        color={isSortedDesc ? '' : theme.fow.colors.grey.light}
+                        color={
+                            isSortedDesc
+                                ? theme.fow.colors.primary.main
+                                : theme.fow.colors.grey.light
+                        }
                     />
                 </Sorters>
             );
@@ -86,19 +168,31 @@ const Table = ({ data = [], columns = [], isLoading = false, onChange }) => {
                         <thead>
                             {headerGroups.map((headerGroup) => (
                                 <Tr {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map((column) => (
-                                        <Th
-                                            canSort={column.canSort}
-                                            {...column.getHeaderProps(
-                                                column.getSortByToggleProps(),
-                                            )}>
-                                            <Subtitle level={1} color="black">
+                                    {headerGroup.headers.map((column) =>
+                                        column.canSort ? (
+                                            <Tooltip
+                                                placement="top"
+                                                overlay="Click to sort">
+                                                <Th
+                                                    canSort={column.canSort}
+                                                    {...column.getHeaderProps(
+                                                        column.getSortByToggleProps(),
+                                                    )}>
+                                                    {column.render('Header')}
+                                                    {column.canSort &&
+                                                        handleSorter(column)}
+                                                </Th>
+                                            </Tooltip>
+                                        ) : (
+                                            <Th
+                                                isActionCell={column.actionCell}
+                                                {...column.getHeaderProps(
+                                                    column.getSortByToggleProps(),
+                                                )}>
                                                 {column.render('Header')}
-                                                {column.canSort &&
-                                                    handleSorter(column)}
-                                            </Subtitle>
-                                        </Th>
-                                    ))}
+                                            </Th>
+                                        ),
+                                    )}
                                 </Tr>
                             ))}
                         </thead>
@@ -127,12 +221,17 @@ const Table = ({ data = [], columns = [], isLoading = false, onChange }) => {
                                     return (
                                         <Tr {...row.getRowProps()}>
                                             {row.cells.map((cell) => (
-                                                <Td {...cell.getCellProps()}>
-                                                    <Subtitle
-                                                        level={2}
-                                                        color="black">
-                                                        {cell.render('Cell')}
-                                                    </Subtitle>
+                                                <Td
+                                                    isActionCell={
+                                                        cell.column?.actionCell
+                                                    }
+                                                    className={
+                                                        cell.column
+                                                            ?.clickable &&
+                                                        'clickable'
+                                                    }
+                                                    {...cell.getCellProps()}>
+                                                    {cell.render('Cell')}
                                                 </Td>
                                             ))}
                                         </Tr>
@@ -147,4 +246,4 @@ const Table = ({ data = [], columns = [], isLoading = false, onChange }) => {
     );
 };
 
-export default Table;
+export default withTheme(Table);

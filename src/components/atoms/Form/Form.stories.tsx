@@ -14,6 +14,8 @@ import useForm from '../../../hooks/useForm';
 
 import Button from '../Button';
 import Space from '../Space';
+import AsyncSelect from '../Select/AsyncSelect';
+import Checkbox from '../Checkbox';
 
 export default {
     title: 'Atoms/Form',
@@ -110,7 +112,15 @@ const UseFormTemplate: Story = () => {
         },
     });
 
-    console.log({ formValues, formResult });
+    const formatOptionLabel = (option) => {
+        return <div>{option.name}</div>;
+    };
+
+    const options = [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+    ];
 
     return (
         <Loader isLoading={defaultFormValuesLoading || formLoading}>
@@ -120,6 +130,31 @@ const UseFormTemplate: Story = () => {
                     name="hook"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
+                </FormField>
+                <FormField valuePropName="checked" label="Hooks" name="hookies">
+                    <Checkbox.Group direction="vertical">
+                        <Checkbox value="Test" label="Test" checked />
+                        <Checkbox value="Test 2" label="Test 2" />
+                    </Checkbox.Group>
+                </FormField>
+                <FormField
+                    label="Hooks"
+                    name="hooks"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <AsyncSelect
+                        placeholder="Please Select"
+                        valueKey="name"
+                        formatOptionLabel={formatOptionLabel}
+                        labelKey="name"
+                        loadOptions={async () => {
+                            const response = await fetch(
+                                `https://www.anapioficeandfire.com/api/houses?page=1&pageSize=10`,
+                            );
+                            const responseJSON = await response.json();
+
+                            return responseJSON;
+                        }}
+                    />
                 </FormField>
                 <Space>
                     <Button

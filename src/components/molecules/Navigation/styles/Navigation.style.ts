@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import RcMenu, { SubMenu as RcSubMenu, Item as RcItem } from 'rc-menu';
 import 'rc-menu/assets/index.css';
+import { Space } from '../../../..';
 
 export const IconWrapper = styled.div`
     display: flex;
@@ -277,3 +278,8 @@ export const StyledMenu = styled(RcMenu)`
 `;
 export const StyledSubMenu = styled(RcSubMenu)``;
 export const StyledItem = styled(RcItem)``;
+export const ItemWrapper = styled(Space)`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;

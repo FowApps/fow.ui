@@ -10,7 +10,6 @@ export default {
 const Template: Story<TableProps> = (args) => {
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     const columns = useMemo(
         () => [
@@ -23,6 +22,7 @@ const Template: Story<TableProps> = (args) => {
                 Header: 'Email',
                 accessor: 'email', // accessor is the "key" in the data
                 Cell: ({ value }) => <a href={`mailto:${value}`}>{value}</a>,
+                clickable: true, // hover state for clickable cells
             },
             {
                 Header: 'First Name',
@@ -59,12 +59,17 @@ const Template: Story<TableProps> = (args) => {
         });
     }, []);
 
+    const renderAction = (row) => {
+        return <div>{row.email}</div>;
+    };
+
     return (
         <Table
             onChange={handleChange}
             data={users}
             columns={columns}
             isLoading={isLoading}
+            renderAction={renderAction}
         />
     );
 };

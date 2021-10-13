@@ -74,7 +74,6 @@ export const theme: DefaultTheme = {
                 main: '#919EAB', // 500
                 light: '#C4CDD5', // 400
                 lighter: '#DFE3E8', // 300
-                lightest: '#F4F6F8', // 200
                 transparent8: 'rgba(145, 158, 171, 0.08)',
                 transparent12: 'rgba(145, 158, 171, 0.12)',
                 transparent16: 'rgba(145, 158, 171, 0.16)',
