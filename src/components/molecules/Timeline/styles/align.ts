@@ -10,7 +10,7 @@ export const setAlignment = (
             return css`
                 justify-content: flex-start;
                 width: 100%;
-                padding-left: ${hasIcon ? 0 : 1.8}rem;
+                padding-left: ${hasIcon ? 0 : 1.2}rem;
                 ${component} {
                     &:before {
                         left: ${hasIcon ? -4 : -2.2}rem;
@@ -21,7 +21,7 @@ export const setAlignment = (
             return css`
                 justify-content: flex-end;
                 width: 100%;
-                padding-right: ${hasIcon ? 0 : 1.8}rem;
+                padding-right: ${hasIcon ? 0 : 1.2}rem;
                 ${component} {
                     &:before {
                         right: ${hasIcon ? -4 : -2.2}rem;
