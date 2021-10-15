@@ -1359,6 +1359,13 @@
   dependencies:
     prop-types "^15.7.2"
 
+"@fullcalendar/common@~5.10.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.10.0.tgz#8b30f3e77691eb70befb25a0edf3d9abec3a853e"
+  integrity sha512-se2N8QlV07igYrJpzn4sB1C53U2NkVwdbrZ9gca15iZWjq5EyKMryghxxfLIIt6nDuKEnL5IN/EN8JX5aU45VA==
+  dependencies:
+    tslib "^2.1.0"
+
 "@fullcalendar/common@~5.9.0":
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.9.0.tgz#e920ebddb5a144b0ec1e3f184dbbbf442ba46d65"
@@ -1379,11 +1386,12 @@
     "@fullcalendar/common" "~5.9.0"
     tslib "^2.1.0"
 
-"@fullcalendar/react@^5.9.0":
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.9.0.tgz#2948d28185517ddab65ad4c06dbab56e11f24ea7"
+"@fullcalendar/react@^5.10.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-5.10.0.tgz#c7a0fa4d531a2231400e00eddc0b16cd4b2d413d"
+  integrity sha512-AayWCkt31ertFa+MLM4z1HFNQ1zHg1iUNjvaE2AgzN8YUjZGVo6QA3rhaUEI8JoA8ZNWpQ33pLYBt3yuLA9rfQ==
   dependencies:
-    "@fullcalendar/common" "~5.9.0"
+    "@fullcalendar/common" "~5.10.0"
     tslib "^2.1.0"
 
 "@fullcalendar/timegrid@^5.9.0":
@@ -2922,10 +2930,10 @@
   dependencies:
     react-select "*"
 
-"@types/react-slick@^0.23.5":
-  version "0.23.5"
-  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.5.tgz#e55fdc79bf19022ef77a6f22e9d64fd0f7463cc4"
-  integrity sha512-dQ/HwsLpnWXD5d+52WwXIQTfNCRpgd+0CKb+aA8g2CaIpA9T9COdjVYb9KI40Osb4rIgqR7u2AqtL2/HGbBMpg==
+"@types/react-slick@^0.23.6":
+  version "0.23.6"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.6.tgz#d9e7e2cfc6f250da3db2d74c54dc7f1e8bb7ceb4"
+  integrity sha512-dSsiEWatKtI5HvmCmE3g5chAaMMosR9krZwtMryXeDuKSgFxzgtH1wh4+QqXT9Eq87HJ948w6vFKD0loc9X26Q==
   dependencies:
     "@types/react" "*"
 
