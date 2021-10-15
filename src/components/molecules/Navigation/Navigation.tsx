@@ -13,6 +13,7 @@ import {
     StyledSubMenu,
     StyledItem,
     IconWrapper,
+    ItemWrapper,
 } from './styles';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
@@ -140,7 +141,7 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
 const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
     <StyledItem {...rest}>
         <Space inline={false} align="center" justify="space-between">
-            <Space>
+            <ItemWrapper>
                 {icon && (
                     <IconWrapper>
                         <Icon icon={icon} />
@@ -150,7 +151,7 @@ const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
                     {children}
                     {renderGhostChildren(children)}
                 </Subtitle>
-            </Space>
+            </ItemWrapper>
             {extra && <div>{extra}</div>}
         </Space>
     </StyledItem>
