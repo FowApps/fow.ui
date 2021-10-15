@@ -38,6 +38,7 @@ export { default as Skeleton } from './components/atoms/Skeleton';
 export { default as Tooltip } from './components/atoms/Tooltip';
 export { default as PulseDot } from './components/atoms/PulseDot';
 export { default as Switch } from './components/atoms/Switch';
+export { default as Popover } from './components/atoms/Popover';
 
 export const Typography = {
     Heading,
@@ -73,13 +74,20 @@ export { default as Tabs } from './components/molecules/Tabs';
 export { default as Board } from './components/molecules/Board';
 export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
+export { default as Table } from './components/molecules/Table';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
 export { default as Sidebar } from './components/molecules/Sidebar';
+export { default as GridLayout } from './components/molecules/GridLayout';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
+export { default as useDisclosure } from './hooks/useDisclosure';
+export { default as useForm } from './hooks/useForm';
+export { default as useDrawer } from './hooks/useDrawer';
+export { default as useDrawerForm } from './hooks/useDrawerForm';
+export { default as useConfirm } from './hooks/useConfirm';
 
 // Providers
 export { FowThemeProvider } from './theme';
