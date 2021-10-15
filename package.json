@@ -92,7 +92,7 @@
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
         "all-contributors-cli": "^6.20.0",
         "babel-eslint": "^10.1.0",
-        "babel-jest": "^27.2.4",
+        "babel-jest": "^27.2.5",
         "babel-loader": "^8.2.2",
         "babel-plugin-import": "^1.13.3",
         "chalk": "^4.1.1",
