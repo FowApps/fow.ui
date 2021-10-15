@@ -14,5 +14,6 @@ export const Content = styled(motion.div)<ContentProps>`
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
+    z-index: 9;
     width: ${(props) => (props.fullWidth ? '100%' : `${props.width}px`)};
 `;

@@ -5,7 +5,7 @@ import { FieldProps } from 'rc-field-form/lib/Field';
 import Space from '../Space';
 import Overline from '../Typography/Overline';
 
-import { Label } from './styles';
+import { Label, Wrapper } from './styles';
 
 type RcFieldProps<Values = any> = Omit<FieldProps<Values>, 'children'>;
 
@@ -29,7 +29,7 @@ function FormField({ label, children, ...restProps }: FormFieldProps) {
     return (
         <Field {...restProps}>
             {(control, meta) => (
-                <div>
+                <Wrapper>
                     {label && (
                         <Label
                             required={restProps?.rules?.some(
@@ -49,7 +49,7 @@ function FormField({ label, children, ...restProps }: FormFieldProps) {
                     <Space inline={false} justify="flex-end">
                         <Overline color="error">{meta.errors[0]}</Overline>
                     </Space>
-                </div>
+                </Wrapper>
             )}
         </Field>
     );

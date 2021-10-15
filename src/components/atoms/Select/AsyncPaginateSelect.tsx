@@ -2,19 +2,10 @@ import React, { forwardRef, RefObject, useState } from 'react';
 import { withTheme } from 'styled-components';
 import { AsyncPaginate } from 'react-select-async-paginate';
 
-import Space from '../Space';
-import Caption from '../Typography/Caption';
-
 import { BaseSelectProps } from './StaticSelect';
 import Loader from '../Loader';
 
-import {
-    renderControlStyles,
-    themeColors,
-    Wrapper,
-    Label,
-    ValidationMessage,
-} from './styles';
+import { renderControlStyles, themeColors } from './styles';
 
 type Additional = {
     page: number;
@@ -69,27 +60,15 @@ const AsyncPaginateSelect = (
         debounceTime = 500,
         loadingMessage = 'Loading',
         loadOptions,
-        onChange,
-        error,
-        label,
-        required,
+        formatOptionLabel,
+        hasValidationError,
         initialPage = 0,
         theme,
         ...rest
     }: AsyncPaginateSelectProps,
     ref: RefObject<any>,
 ): JSX.Element => {
-    const [controlledValue, setControlledValue] = useState<any[] | any>();
     const [options, setOptions] = useState<any[]>([]);
-
-    const handleChange = (data: any) => {
-        setControlledValue(data);
-        let values = data?.[valueKey] || null;
-        if (Array.isArray(data) && isMulti) {
-            values = data.map((option) => option[valueKey]);
-        }
-        if (typeof onChange === 'function') onChange(values);
-    };
 
     const paginatedLoadedOptions = async (
         inputValue: string,
@@ -116,64 +95,54 @@ const AsyncPaginateSelect = (
     );
 
     return (
-        <Wrapper>
-            {label && (
-                <Space size="xxsmall">
-                    {required && <Caption color="error">*</Caption>}
-                    <Label>{label}</Label>
-                </Space>
-            )}
-            <AsyncPaginate
-                {...rest}
-                ref={ref}
-                theme={(defaultTheme) => ({
-                    ...defaultTheme,
-                    borderRadius: 8,
-                    colors: {
-                        ...defaultTheme.colors,
-                        ...themeColors(theme),
+        <AsyncPaginate
+            {...rest}
+            ref={ref}
+            theme={(defaultTheme) => ({
+                ...defaultTheme,
+                borderRadius: 8,
+                colors: {
+                    ...defaultTheme.colors,
+                    ...themeColors(theme),
+                },
+            })}
+            styles={{
+                control: (styles, { isFocused }) => ({
+                    ...styles,
+                    ...{
+                        ...renderControlStyles(
+                            isFocused,
+                            !!hasValidationError,
+                            theme,
+                        ),
                     },
-                })}
-                styles={{
-                    control: (styles, { isFocused }) => ({
-                        ...styles,
-                        ...{
-                            ...renderControlStyles(isFocused, !!error, theme),
-                        },
-                    }),
-                    option: (styles) => ({
-                        ...styles,
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                    }),
-                }}
-                options={options}
-                debounceTimeout={debounceTime}
-                cacheOptions={cacheOptions}
-                defaultOptions={defaultOptions}
-                loadOptions={paginatedLoadedOptions}
-                getOptionValue={(option) => option[valueKey]}
-                getOptionLabel={(option) => option[labelKey]}
-                onChange={handleChange}
-                isMulti={isMulti}
-                isClearable={isClearable}
-                isDisabled={isDisabled}
-                isSearchable={isSearchable}
-                placeholder={placeholder}
-                closeMenuOnSelect={closeMenuOnSelect}
-                components={{ LoadingMessage }}
-                value={controlledValue}
-                additional={{
-                    page: initialPage,
-                }}
-            />
-            {error && (
-                <ValidationMessage color="error">
-                    {error.message}
-                </ValidationMessage>
-            )}
-        </Wrapper>
+                }),
+                option: (styles) => ({
+                    ...styles,
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                }),
+            }}
+            options={options}
+            debounceTimeout={debounceTime}
+            cacheOptions={cacheOptions}
+            defaultOptions={defaultOptions}
+            formatOptionLabel={formatOptionLabel}
+            loadOptions={paginatedLoadedOptions}
+            getOptionValue={(option) => option[valueKey]}
+            getOptionLabel={(option) => option[labelKey]}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            isDisabled={isDisabled}
+            isSearchable={isSearchable}
+            placeholder={placeholder}
+            closeMenuOnSelect={closeMenuOnSelect}
+            components={{ LoadingMessage }}
+            additional={{
+                page: initialPage,
+            }}
+        />
     );
 };
 
