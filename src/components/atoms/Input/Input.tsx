@@ -12,6 +12,13 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     hasValidationError?: boolean;
 }
 
+function fixControlledValue<T>(value: T) {
+    if (typeof value === 'undefined' || value === null) {
+        return '';
+    }
+    return value;
+}
+
 const Input = ({
     prefixIcon = undefined,
     suffixIcon = undefined,
@@ -26,6 +33,7 @@ const Input = ({
                 hasPrefixIcon={!!prefixIcon}
                 hasSuffixIcon={!!suffixIcon}
                 disabled={disabled}
+                value={fixControlledValue(rest.value)}
                 {...rest}
             />
             {prefixIcon && (
