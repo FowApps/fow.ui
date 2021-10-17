@@ -3,7 +3,7 @@ import useForm, { UseFormConfig } from '../useForm';
 
 export interface UseStepsFormConfig extends UseFormConfig {
     defaultCurrent?: number;
-    total?: number;
+    total: number;
     isBackValidate?: boolean;
 }
 
