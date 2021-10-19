@@ -64,7 +64,7 @@
         "@babel/register": "^7.14.5",
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
-        "@fortawesome/react-fontawesome": "^0.1.14",
+        "@fortawesome/react-fontawesome": "^0.1.16",
         "@react-bootstrap/babel-preset": "^2.1.0",
         "@react-bootstrap/eslint-config": "^2.0.0",
         "@storybook/addon-actions": "6.3.12",
@@ -136,7 +136,7 @@
     "peerDependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
-        "@fortawesome/react-fontawesome": "^0.1.14",
+        "@fortawesome/react-fontawesome": "^0.1.16",
         "framer-motion": "^4.1.17",
         "process": "^0.11.10",
         "react": "17.0.2",
