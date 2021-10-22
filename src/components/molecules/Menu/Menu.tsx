@@ -42,7 +42,7 @@ const MenuItem = ({
     </ItemWrapper>
 );
 
-const Menu = ({ onClick, children }: MenuProps): JSX.Element => {
+const Menu = ({ onClick, children, ...rest }: MenuProps): JSX.Element => {
     const handleChange = (itemIndex: string) => {
         if (typeof onClick === 'function') onClick(itemIndex);
     };
@@ -52,7 +52,7 @@ const Menu = ({ onClick, children }: MenuProps): JSX.Element => {
     );
 
     return (
-        <MenuWrapper>
+        <MenuWrapper {...rest}>
             {items.map(({ props }) => (
                 <MenuItem
                     index={props.index}

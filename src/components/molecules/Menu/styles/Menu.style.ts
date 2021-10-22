@@ -4,7 +4,7 @@ export const MenuWrapper = styled.div`
     display: inline-flex;
     flex-direction: column;
     overflow: hidden;
-    min-width: 150px;
+    min-width: 100px;
     border-radius: 16px;
     background-color: ${(props) => props.theme.fow.colors.common.white};
     box-shadow: ${(props) => props.theme.fow.shadows.z12};
