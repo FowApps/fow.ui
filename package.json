@@ -30,6 +30,7 @@
     "sideEffects": false,
     "dependencies": {
         "@babel/runtime": "^7.14.0",
+        "@codastic/react-positioning-portal": "^0.4.0",
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fullcalendar/daygrid": "^5.9.0",
         "@fullcalendar/interaction": "^5.9.0",
@@ -39,6 +40,7 @@
         "rc-drawer": "^4.4.2",
         "rc-field-form": "^1.21.2",
         "rc-menu": "^9.0.14",
+        "rc-pagination": "^3.1.9",
         "rc-tooltip": "^5.1.1",
         "react-beautiful-dnd": "^13.1.0",
         "react-dnd": "10.0.2",
@@ -51,6 +53,7 @@
         "react-select-async-paginate": "0.5.3",
         "react-slick": "^0.28.1",
         "react-table": "^7.7.0",
+        "react-transition-group": "^4.4.2",
         "slick-carousel": "^1.8.1",
         "uuid": "^8.3.2"
     },
@@ -69,7 +72,6 @@
         "@react-bootstrap/eslint-config": "^2.0.0",
         "@storybook/addon-actions": "6.3.12",
         "@storybook/addon-essentials": "6.3.12",
-        "@storybook/builder-webpack5": "6.3.10",
         "@storybook/builder-webpack5": "6.3.12",
         "@storybook/manager-webpack5": "^6.3.12",
         "@storybook/react": "6.3.12",
