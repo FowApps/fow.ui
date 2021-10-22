@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
     max-width: 100%;
+    height: ${(props) => props.isLoading && '440px'};
 `;
 
 export const StyledTable = styled.table`
@@ -89,6 +90,7 @@ export const Th = styled.th<CellProps>`
 
 export const Td = styled.td<CellProps>`
     position: relative;
+    overflow: hidden;
     width: 1%;
     margin: 0;
     padding: 0.8rem;
@@ -99,6 +101,9 @@ export const Td = styled.td<CellProps>`
     font-weight: normal;
     font-size: 12px;
     line-height: 22px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    white-space: nowrap;
     transition: all 0.3s ease;
 
     ${(props) =>
@@ -112,8 +117,12 @@ export const Td = styled.td<CellProps>`
     }
 `;
 
-export const EmptyPlaceholder = styled.td`
-    height: 400px;
+export const EmptyPlaceholder = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 390px;
+    background-color: #fff;
     text-align: center;
 `;
 
@@ -154,4 +163,59 @@ export const ActionTrigger = styled.div`
     opacity: 0;
     transition: all 0.3s ease;
     inset: 0px;
+`;
+
+export const PaginationWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: ${(props) => props.theme.fow.spacing.medium};
+`;
+
+export const SizePicker = styled.div`
+    margin-right: ${(props) => props.theme.fow.spacing.medium};
+    border: 1px solid
+        ${(props) => props.theme.fow.colors.greyLight.transparent48};
+    border-radius: 4px;
+    background-color: ${(props) => props.theme.fow.colors.greyLight.main};
+    color: ${(props) => props.theme.fow.colors.greyDark.light};
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-block: ${(props) => props.theme.fow.spacing.xxsmall};
+    padding-inline: ${(props) => props.theme.fow.spacing.xsmall};
+
+    &:hover {
+        border: 1px solid
+            ${(props) => props.theme.fow.colors.primary.transparent48};
+    }
+`;
+
+export const ColumnList = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 450px;
+    height: 400px;
+    padding: ${(props) => props.theme.fow.spacing.medium};
+    border-radius: 8px;
+    background-color: ${(props) => props.theme.fow.colors.common.white};
+    box-shadow: ${(props) => props.theme.fow.shadows.z12};
+
+    > div {
+        flex: 1;
+    }
+`;
+
+export const OrderDots = styled.div`
+    padding: 5px 7px;
+    border-radius: 4px;
+    color: ${(props) => props.theme.fow.colors.greyLight.darker};
+    cursor: grab;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: ${(props) =>
+            props.theme.fow.colors.greyLight.transparent32};
+        color: ${(props) => props.theme.fow.colors.greyDark.light};
+    }
 `;
