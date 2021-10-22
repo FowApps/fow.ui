@@ -11,7 +11,6 @@ type WrapperProps = {
 };
 
 export const Content = styled(motion.div)`
-    overflow: hidden;
     border-bottom: 1px solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
 
