@@ -1,7 +1,14 @@
 import React from 'react';
 import Space from '../Space';
 
-import { StyledLabel, StyledInput, MarkBox, Mark, LabelText } from './styles';
+import {
+    StyledLabel,
+    StyledInput,
+    MarkBox,
+    Mark,
+    LabelText,
+    HoverCircle,
+} from './styles';
 
 export type CheckboxValueType = string | number | boolean;
 export interface CheckboxProps {
@@ -77,7 +84,7 @@ const Checkbox = ({
 
     React.useEffect(() => {
         checkboxGroup?.registerValue(rest.value);
-    }, []);
+    }, [rest.value]);
 
     React.useEffect(() => {
         if (rest.value !== prevValue.current) {
@@ -120,6 +127,7 @@ const Checkbox = ({
                 color={color}
             />
             <MarkBox>
+                <HoverCircle />
                 <Mark icon="check" color="white" size="xs" />
             </MarkBox>
         </StyledLabel>
@@ -230,6 +238,6 @@ const CheckboxGroup = React.forwardRef<HTMLDivElement, CheckboxGroupProps>(
     Group,
 );
 
-Checkbox.Group = CheckboxGroup;
+Checkbox.Group = React.memo(CheckboxGroup);
 
 export default Checkbox;
