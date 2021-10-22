@@ -69,7 +69,33 @@ declare module 'styled-components' {
                     transparent32: string;
                     transparent48: string;
                 };
+                greyDark: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
                 grey: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                greyLight: {
                     darker: string;
                     dark: string;
                     main: string;
