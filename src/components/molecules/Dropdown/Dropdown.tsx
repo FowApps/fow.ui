@@ -1,33 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { AnimatePresence } from 'framer-motion';
-import React, { useRef } from 'react';
+import React from 'react';
+import { PositioningPortal } from '@codastic/react-positioning-portal';
+import { Transition } from 'react-transition-group';
 
 import useDisclosure from '../../../hooks/useDisclosure';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
-import { Wrapper, Content } from './styles';
-
-const contentVariants = {
-    enter: {
-        opacity: 1,
-        rotateX: 0,
-        transition: {
-            duration: 0.3,
-        },
-        display: 'block',
-    },
-    exit: {
-        opacity: 0,
-        rotateX: -15,
-        transition: {
-            duration: 0.3,
-            delay: 0.3,
-        },
-        transitionEnd: {
-            display: 'none',
-        },
-    },
-};
+import { Content } from './styles';
 
 export interface DropdownProps {
     /**
@@ -53,44 +31,55 @@ export interface DropdownProps {
 const Dropdown = ({
     trigger = 'click',
     closeAfterClickContent = false,
-    fullWidth = false,
-    width = 400,
     content,
     children,
 }: DropdownProps): JSX.Element => {
-    const wrapperRef = useRef<HTMLDivElement>(null);
-
     const { isOpen, close, toggle, open } = useDisclosure();
-    useOnClickOutside(wrapperRef, close);
 
     return (
-        <Wrapper ref={wrapperRef}>
+        <PositioningPortal
+            portalElement={<div style={{ zIndex: 9999 }} />}
+            isOpen={isOpen}
+            onOpen={open}
+            onShouldClose={close}
+            onClose={close}
+            portalContent={({
+                isOpen: isPortalOpen,
+                isPositioned,
+                transitionStarted,
+                transitionEnded,
+            }) => (
+                <Transition
+                    addEndListener={(node, done) => {
+                        node.addEventListener('transitionend', done, false);
+                    }}
+                    in={isPortalOpen && isPositioned}
+                    onEnter={transitionStarted}
+                    onExited={transitionEnded}>
+                    {(state) => (
+                        <Content
+                            state={state}
+                            onClick={closeAfterClickContent ? toggle : open}
+                            onMouseEnter={
+                                trigger === 'hover' ? open : undefined
+                            }
+                            onMouseLeave={
+                                trigger === 'hover' ? close : undefined
+                            }>
+                            {content}
+                        </Content>
+                    )}
+                </Transition>
+            )}>
             {React.cloneElement(children, {
-                onClick: trigger === 'click' ? open : undefined,
+                onClick: trigger === 'click' ? toggle : undefined,
                 onMouseEnter: trigger === 'hover' ? open : undefined,
-                onMouseLeave: trigger === 'hover' ? close : undefined,
                 style: {
                     cursor: 'pointer',
                 },
                 ...children.props,
             })}
-            <AnimatePresence>
-                {isOpen && (
-                    <Content
-                        onClick={closeAfterClickContent ? toggle : open}
-                        onMouseEnter={trigger === 'hover' ? open : undefined}
-                        onMouseLeave={trigger === 'hover' ? close : undefined}
-                        fullWidth={fullWidth}
-                        width={width}
-                        initial="exit"
-                        exit="exit"
-                        animate={isOpen ? 'enter' : 'exit'}
-                        variants={contentVariants}>
-                        {content}
-                    </Content>
-                )}
-            </AnimatePresence>
-        </Wrapper>
+        </PositioningPortal>
     );
 };
 
