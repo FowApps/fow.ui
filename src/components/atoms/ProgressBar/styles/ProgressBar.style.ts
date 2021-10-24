@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import setColor from './color';
 
 type ProgressBarProps = {
-    progress?: number | undefined;
-    color?: string;
+    progress?: number | 0;
 };
 
 export const StyledProgressBar = styled.div<ProgressBarProps>`
