@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
 
@@ -25,29 +25,39 @@ const Input = ({
     disabled = false,
     hasValidationError = false,
     ...rest
-}: InputProps): JSX.Element => (
-    <Wrapper>
-        <InputWrapper>
-            <StyledInput
-                hasValidationError={hasValidationError}
-                hasPrefixIcon={!!prefixIcon}
-                hasSuffixIcon={!!suffixIcon}
-                disabled={disabled}
-                value={fixControlledValue(rest.value)}
-                {...rest}
-            />
-            {prefixIcon && (
-                <IconWrapper position="prefix">
-                    <Icon icon={prefixIcon} />
-                </IconWrapper>
-            )}
-            {suffixIcon && (
-                <IconWrapper position="suffix">
-                    <Icon icon={suffixIcon} />
-                </IconWrapper>
-            )}
-        </InputWrapper>
-    </Wrapper>
-);
+}: InputProps): JSX.Element => {
+    const [val, setVal] = useState(fixControlledValue(rest.value));
+
+    const handleChange = (e) => {
+        setVal(e.target.value);
+        rest.onChange?.(e.target.value);
+    };
+
+    return (
+        <Wrapper>
+            <InputWrapper>
+                <StyledInput
+                    {...rest}
+                    hasValidationError={hasValidationError}
+                    hasPrefixIcon={!!prefixIcon}
+                    hasSuffixIcon={!!suffixIcon}
+                    disabled={disabled}
+                    value={val}
+                    onChange={handleChange}
+                />
+                {prefixIcon && (
+                    <IconWrapper position="prefix">
+                        <Icon icon={prefixIcon} />
+                    </IconWrapper>
+                )}
+                {suffixIcon && (
+                    <IconWrapper position="suffix">
+                        <Icon icon={suffixIcon} />
+                    </IconWrapper>
+                )}
+            </InputWrapper>
+        </Wrapper>
+    );
+};
 
 export default Input;
