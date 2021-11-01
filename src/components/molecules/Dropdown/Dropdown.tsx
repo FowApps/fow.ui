@@ -7,6 +7,12 @@ import useDisclosure from '../../../hooks/useDisclosure';
 
 import { Content } from './styles';
 
+interface RenderProps {
+    isOpen: boolean;
+    close: () => void;
+    open: () => void;
+}
+
 export interface DropdownProps {
     /**
      * trigger event
@@ -17,32 +23,43 @@ export interface DropdownProps {
      */
     content: React.ReactNode;
     /**
-     * flag for close dropdown after click content
-     */
-    closeAfterClickContent?: boolean;
-    /**
      * flag for inline or fluid content
      */
     fullWidth?: boolean;
-    width?: number | string;
-    children: React.DetailedReactHTMLElement<any, HTMLElement>;
+    onClose?: () => void;
+    onOpen?: () => void;
+    initialOpen?: boolean;
+    children:
+        | React.DetailedReactHTMLElement<any, HTMLElement>
+        | ((api: RenderProps) => React.ReactNode);
 }
 
-const Dropdown = ({
-    trigger = 'click',
-    closeAfterClickContent = false,
-    content,
-    children,
-}: DropdownProps): JSX.Element => {
-    const { isOpen, close, toggle, open } = useDisclosure();
+const Dropdown = (
+    {
+        trigger = 'click',
+        content,
+        onOpen,
+        onClose,
+        children,
+        initialOpen = false,
+    }: DropdownProps,
+    ref: any,
+): JSX.Element => {
+    const { isOpen, close, toggle, open } = useDisclosure(initialOpen);
 
     return (
         <PositioningPortal
             portalElement={<div style={{ zIndex: 9999 }} />}
             isOpen={isOpen}
-            onOpen={open}
+            onOpen={() => {
+                open();
+                onOpen?.();
+            }}
             onShouldClose={close}
-            onClose={close}
+            onClose={() => {
+                close();
+                onClose?.();
+            }}
             portalContent={({
                 isOpen: isPortalOpen,
                 isPositioned,
@@ -59,28 +76,36 @@ const Dropdown = ({
                     {(state) => (
                         <Content
                             state={state}
-                            onClick={closeAfterClickContent ? toggle : open}
                             onMouseEnter={
                                 trigger === 'hover' ? open : undefined
                             }
                             onMouseLeave={
                                 trigger === 'hover' ? close : undefined
                             }>
-                            {content}
+                            {typeof content === 'function'
+                                ? content(close)
+                                : content}
                         </Content>
                     )}
                 </Transition>
             )}>
-            {React.cloneElement(children, {
-                onClick: trigger === 'click' ? toggle : undefined,
-                onMouseEnter: trigger === 'hover' ? open : undefined,
-                style: {
+            <div
+                ref={ref}
+                onClick={() => {
+                    if (trigger === 'click') toggle();
+                }}
+                onMouseEnter={() => {
+                    if (trigger === 'hover') open();
+                }}
+                style={{
                     cursor: 'pointer',
-                },
-                ...children.props,
-            })}
+                }}>
+                {typeof children === 'function'
+                    ? children({ isOpen, close, open })
+                    : children}
+            </div>
         </PositioningPortal>
     );
 };
 
-export default Dropdown;
+export default React.forwardRef(Dropdown);

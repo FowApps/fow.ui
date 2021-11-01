@@ -27,6 +27,9 @@ const getElementType = (as: AsProps) => {
 };
 
 export const StyledHeading = styled.h1<HeadingProps>`
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin: 0;
+
     ${(props) => getElementType(props.as)}
 `;

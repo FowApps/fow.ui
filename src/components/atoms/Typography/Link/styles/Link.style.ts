@@ -6,7 +6,8 @@ type LinkProps = {
 };
 
 export const StyledLink = styled.a<LinkProps>`
-    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
 
     ${(props) => setLevel(props.level)};

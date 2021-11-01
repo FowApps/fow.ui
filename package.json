@@ -1,6 +1,6 @@
 {
     "name": "@fowapps/fow-ui",
-    "version": "0.0.28-dev.1",
+    "version": "0.0.28-dev.2",
     "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",
@@ -8,7 +8,7 @@
         "storybook": "start-storybook -p 6006 --no-manager-cache",
         "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages",
-        "pre-commit-lint": "eslint src/** && stylelint src/** && jest --config jest.config.js",
+        "pre-commit-lint": "eslint src/** && jest --config jest.config.js",
         "lint:css": "stylelint src/**",
         "prepare": "husky install && chmod ug+x .husky/* && chmod ug+x .git/hooks/*",
         "prepublishOnly": "yarn && yarn run build && yarn run deploy-storybook",

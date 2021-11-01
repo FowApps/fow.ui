@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useState } from 'react';
+import React, { InputHTMLAttributes, useState, RefObject } from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
 
@@ -19,13 +19,16 @@ function fixControlledValue<T>(value: T) {
     return value;
 }
 
-const Input = ({
-    prefixIcon = undefined,
-    suffixIcon = undefined,
-    disabled = false,
-    hasValidationError = false,
-    ...rest
-}: InputProps): JSX.Element => {
+const Input = (
+    {
+        prefixIcon = undefined,
+        suffixIcon = undefined,
+        disabled = false,
+        hasValidationError = false,
+        ...rest
+    }: InputProps,
+    ref: RefObject<HTMLInputElement>,
+): JSX.Element => {
     const [val, setVal] = useState(fixControlledValue(rest.value));
 
     const handleChange = (e) => {
@@ -44,6 +47,7 @@ const Input = ({
                     disabled={disabled}
                     value={val}
                     onChange={handleChange}
+                    ref={ref}
                 />
                 {prefixIcon && (
                     <IconWrapper position="prefix">
@@ -60,4 +64,4 @@ const Input = ({
     );
 };
 
-export default Input;
+export default React.forwardRef(Input);

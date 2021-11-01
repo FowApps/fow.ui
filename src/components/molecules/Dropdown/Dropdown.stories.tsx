@@ -23,9 +23,11 @@ Default.args = {
             </Button>
         </div>
     ),
-    content: (
+    content: (toggle) => (
         <Menu>
-            <Menu.Item index={1}>12</Menu.Item>
+            <Menu.Item onClick={toggle} index={1}>
+                12
+            </Menu.Item>
             <Menu.Item index={2}>12</Menu.Item>
             <Menu.Item index={3}>12</Menu.Item>
             <Menu.Item index={4}>12</Menu.Item>
