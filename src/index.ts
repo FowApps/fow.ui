@@ -40,6 +40,7 @@ export { default as PulseDot } from './components/atoms/PulseDot';
 export { default as Switch } from './components/atoms/Switch';
 export { default as Popover } from './components/atoms/Popover';
 export { default as Radio } from './components/atoms/Radio';
+export { default as InputNumber } from './components/atoms/InputNumber';
 
 export const Typography = {
     Heading,

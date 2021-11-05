@@ -79,7 +79,11 @@ const Radio = ({ label = '', ...rest }: RadioProps): JSX.Element => {
 
     return (
         <StyledLabel>
-            {label && <LabelText disabled={rest.disabled}>{label}</LabelText>}
+            {label && (
+                <LabelText level={2} disabled={rest.disabled}>
+                    {label}
+                </LabelText>
+            )}
             <StyledInput
                 type="radio"
                 disabled={rest.disabled}

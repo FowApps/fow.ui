@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 const wrapperStyles = {
-    padding: 16,
+    padding: '16px 24px',
     height: 300,
     backgroundColor: '#F4F6F8',
 };

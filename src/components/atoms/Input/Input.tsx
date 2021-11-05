@@ -1,4 +1,9 @@
-import React, { InputHTMLAttributes, useState, RefObject } from 'react';
+import React, {
+    InputHTMLAttributes,
+    useState,
+    RefObject,
+    useEffect,
+} from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
 
@@ -29,12 +34,16 @@ const Input = (
     }: InputProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
-    const [val, setVal] = useState(fixControlledValue(rest.value));
+    const [val, setVal] = useState(rest.value);
 
     const handleChange = (e) => {
         setVal(e.target.value);
         rest.onChange?.(e.target.value);
     };
+
+    useEffect(() => {
+        setVal(fixControlledValue(rest.value));
+    }, [rest.value]);
 
     return (
         <Wrapper>

@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
     max-width: 100%;
-    height: ${(props) => props.isLoading && '440px'};
+    height: ${(props) => props.isLoading && '460px'};
 `;
 
 export const StyledTable = styled.table`
@@ -218,4 +218,24 @@ export const OrderDots = styled.div`
             props.theme.fow.colors.greyLight.transparent32};
         color: ${(props) => props.theme.fow.colors.greyDark.light};
     }
+`;
+
+export const LeftShadow = styled.div`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 10px 0 8px -8px #00000026;
+    width: 20px;
+    z-index: 99;
+`;
+
+export const RightShadow = styled.div`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: inset -10px 0 8px -8px #00000026;
+    width: 20px;
+    z-index: 99;
 `;

@@ -49,7 +49,7 @@ const Dropdown = (
 
     return (
         <PositioningPortal
-            portalElement={<div style={{ zIndex: 9999 }} />}
+            portalElement={<div style={{ zIndex: 1049 }} />}
             isOpen={isOpen}
             onOpen={() => {
                 open();

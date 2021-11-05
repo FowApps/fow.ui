@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // @ts-nocheck
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 
@@ -15,6 +15,7 @@ import {
 import { withTheme } from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
+import Body from '../../atoms/Typography/Body';
 import Subtitle from '../../atoms/Typography/Subtitle';
 import Loader from '../../atoms/Loader';
 import Icon from '../../atoms/Icon';
@@ -34,19 +35,12 @@ import {
     PaginationWrapper,
     ColumnList,
     OrderDots,
+    LeftShadow,
+    RightShadow,
 } from './styles';
 
-import {
-    Checkbox,
-    Divider,
-    Input,
-    Menu,
-    Popover,
-    Space,
-    Tooltip,
-} from '../../..';
-import Link from '../../atoms/Typography/Link';
-import Body from '../../atoms/Typography/Body';
+import { Checkbox, Divider, Input, Menu, Popover, Space } from '../../..';
+
 import Dropdown from '../Dropdown';
 import Message from '../Message';
 
@@ -65,6 +59,7 @@ export interface TableProps {
     manualSortBy?: boolean;
     manualPagination?: boolean;
     sortBy?: any[];
+    initialPage?: number;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -90,10 +85,15 @@ const Table = ({
     showPagination = false,
     manualSortBy = false,
     sortBy: controlledSortBy = [],
+    initialPage = 1,
 }: TableProps): JSX.Element => {
     const [pageSize, setPageSize] = useState(controlledPageSize);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(initialPage);
     const [columnQuery, setColumnQuery] = useState('');
+    const [isShowLeftShadow, setIsShowLeftShadow] = useState(false);
+    const [isShowRightShadow, setIsShowRightShadow] = useState(false);
+
+    const scrollRef = useRef(null);
 
     const tableInstance = useTable(
         {
@@ -190,10 +190,24 @@ const Table = ({
     useEffect(() => {
         setHiddenColumns(
             columns
-                .filter((column) => !column.isVisible)
+                .filter((column) =>
+                    Object.getOwnPropertyDescriptor(column, 'isVisible')
+                        ? !column.isVisible
+                        : false,
+                )
                 .map((column) => column.accessor),
         );
     }, [setHiddenColumns, columns]);
+
+    useLayoutEffect(() => {
+        if (scrollRef.current?.scrollWidth > 0) {
+            setIsShowRightShadow(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        setCurrentPage(initialPage);
+    }, [initialPage]);
 
     const handleSorter = (column) => {
         const { isSorted, isSortedDesc } = column;
@@ -242,9 +256,7 @@ const Table = ({
     };
 
     const handleChangeSize = (size) => {
-        if (size > totalCount) {
-            setCurrentPage(1);
-        }
+        setCurrentPage(1);
         setPageSize(size);
     };
 
@@ -279,6 +291,14 @@ const Table = ({
         }
 
         setColumnOrder(orderedColumns.map((col) => col.id));
+    };
+
+    const handleScrollTable = (e) => {
+        const left = e.target.scrollLeft === 0;
+        const right =
+            e.target.scrollWidth - e.target.scrollLeft === e.target.clientWidth;
+        setIsShowRightShadow(!right);
+        setIsShowLeftShadow(!left);
     };
 
     return (
@@ -446,32 +466,37 @@ const Table = ({
                                     </div>
                                 </ColumnList>
                             }>
-                            <Link leftIcon="columns">Columns</Link>
+                            <Subtitle level={1} color="secondary">
+                                <Space>
+                                    <Icon icon="columns" />
+                                    <span>Columns</span>
+                                </Space>
+                            </Subtitle>
                         </Dropdown>
                     )}
                 </div>
             </Space>
             <Loader isLoading={isLoading} text="Loading..">
-                <Wrapper isLoading={isLoading && data.length === 0}>
+                {isShowLeftShadow && <LeftShadow />}
+                <Wrapper
+                    isLoading={isLoading && data.length === 0}
+                    onScroll={handleScrollTable}
+                    ref={scrollRef}>
                     <StyledTable {...getTableProps()}>
                         <thead>
                             {headerGroups.map((headerGroup) => (
                                 <Tr {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map((column) =>
                                         column.canSort ? (
-                                            <Tooltip
-                                                placement="top"
-                                                overlay="Click to sort">
-                                                <Th
-                                                    canSort={column.canSort}
-                                                    {...column.getHeaderProps(
-                                                        column.getSortByToggleProps(),
-                                                    )}>
-                                                    {column.render('Header')}
-                                                    {column.canSort &&
-                                                        handleSorter(column)}
-                                                </Th>
-                                            </Tooltip>
+                                            <Th
+                                                canSort={column.canSort}
+                                                {...column.getHeaderProps(
+                                                    column.getSortByToggleProps(),
+                                                )}>
+                                                {column.render('Header')}
+                                                {column.canSort &&
+                                                    handleSorter(column)}
+                                            </Th>
                                         ) : (
                                             <Th
                                                 isActionCell={column.actionCell}
@@ -512,6 +537,7 @@ const Table = ({
                         )}
                     </StyledTable>
                 </Wrapper>
+                {isShowRightShadow && <RightShadow />}
             </Loader>
             {data.length === 0 && !isLoading && (
                 <EmptyPlaceholder>

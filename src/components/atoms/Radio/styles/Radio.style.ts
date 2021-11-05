@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
+import Body, { BodyProps } from '../../Typography/Body';
 
-type LabelTextProps = {
+interface LabelTextProps extends BodyProps {
     disabled?: boolean;
-};
+}
 
 export const StyledLabel = styled.label`
     position: relative;
@@ -14,7 +15,7 @@ export const StyledLabel = styled.label`
     user-select: none;
 `;
 
-export const LabelText = styled.span<LabelTextProps>`
+export const LabelText = styled(Body)<LabelTextProps>`
     margin-left: ${(props) => props.theme.fow.spacing.xsmall};
     color: ${(props) => props.theme.fow.colors.text.primary};
     font-weight: normal;

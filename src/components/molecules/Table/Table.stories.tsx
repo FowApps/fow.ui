@@ -20,7 +20,6 @@ const Template: Story<TableProps> = (args) => {
                 accessor: 'fullName',
                 fieldName: 'FullName',
                 disableSortBy: true,
-                isVisible: true,
             },
             {
                 key: 'OwnerId',
@@ -131,6 +130,7 @@ const Template: Story<TableProps> = (args) => {
 
     return (
         <Table
+            sortBy={[{ id: 'phone', desc: true }]}
             data={[
                 {
                     fullName: 'Leyla Dingilov',
