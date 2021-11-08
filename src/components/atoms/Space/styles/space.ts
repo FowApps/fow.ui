@@ -24,11 +24,11 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-left: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `
                         : css`
                               margin-right: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `};
                 }
             `;
@@ -39,11 +39,11 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-top: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `
                         : css`
                               margin-bottom: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `};
                 }
             `;
@@ -54,11 +54,11 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-left: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `
                         : css`
                               margin-right: ${(props) =>
-                                  props.theme.fow.spacing[size]};
+                                  props.theme.fow.spacing[size]} !important;
                           `};
                 }
             `;

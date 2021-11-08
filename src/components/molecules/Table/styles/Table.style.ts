@@ -34,6 +34,11 @@ export const Tr = styled.tr`
         }
     }
 
+    .clickable {
+        padding-right: 24px;
+        cursor: pointer;
+    }
+
     &:hover {
         .action {
             background-color: ${(props) =>
@@ -49,7 +54,8 @@ export const Tr = styled.tr`
                 content: '➜';
                 position: absolute;
                 right: 7px;
-                color: #fd725f;
+                top: 10px;
+                color: ${(props) => props.theme.fow.colors.primary.main};
                 font-size: 14px;
             }
         }

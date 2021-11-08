@@ -6,9 +6,7 @@ type SubtitleProps = {
 };
 
 export const StyledSubtitle = styled.h3<SubtitleProps>`
-    overflow: hidden;
     margin: 0;
-    text-overflow: ellipsis;
 
     ${(props) => setLevel(props.level)}
 `;

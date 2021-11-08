@@ -6,9 +6,7 @@ type BodyProps = {
 };
 
 export const StyledBody = styled.h3<BodyProps>`
-    overflow: hidden;
     margin: 0;
-    text-overflow: ellipsis;
 
     ${(props) => setLevel(props.level)}
 `;

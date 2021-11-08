@@ -44,6 +44,15 @@ import { Checkbox, Divider, Input, Menu, Popover, Space } from '../../..';
 import Dropdown from '../Dropdown';
 import Message from '../Message';
 
+interface Localization {
+    selectedColumns: string;
+    allColumnSelected: string;
+    columns: string;
+    noData: string;
+    page: string;
+    results: string;
+}
+
 export interface TableProps {
     data: any[];
     columns: any[];
@@ -60,6 +69,7 @@ export interface TableProps {
     manualPagination?: boolean;
     sortBy?: any[];
     initialPage?: number;
+    localization?: Localization;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -86,12 +96,21 @@ const Table = ({
     manualSortBy = false,
     sortBy: controlledSortBy = [],
     initialPage = 1,
+    localization = {
+        allColumnSelected: 'All columns are selected.',
+        columns: 'Columns',
+        noData: 'No data found',
+        page: 'Page',
+        results: 'Results',
+        selectedColumns: 'Selected Columns',
+    },
 }: TableProps): JSX.Element => {
+    const leftShadowRef = useRef();
+    const rightShadowRef = useRef();
+
     const [pageSize, setPageSize] = useState(controlledPageSize);
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [columnQuery, setColumnQuery] = useState('');
-    const [isShowLeftShadow, setIsShowLeftShadow] = useState(false);
-    const [isShowRightShadow, setIsShowRightShadow] = useState(false);
 
     const scrollRef = useRef(null);
 
@@ -200,8 +219,9 @@ const Table = ({
     }, [setHiddenColumns, columns]);
 
     useLayoutEffect(() => {
+        leftShadowRef.current.style.display = 'none';
         if (scrollRef.current?.scrollWidth > 0) {
-            setIsShowRightShadow(true);
+            rightShadowRef.current.style.display = 'block';
         }
     }, []);
 
@@ -297,8 +317,16 @@ const Table = ({
         const left = e.target.scrollLeft === 0;
         const right =
             e.target.scrollWidth - e.target.scrollLeft === e.target.clientWidth;
-        setIsShowRightShadow(!right);
-        setIsShowLeftShadow(!left);
+        if (left) {
+            leftShadowRef.current.style.display = 'none';
+        } else {
+            leftShadowRef.current.style.display = 'block';
+        }
+        if (right) {
+            rightShadowRef.current.style.display = 'none';
+        } else {
+            rightShadowRef.current.style.display = 'block';
+        }
     };
 
     return (
@@ -323,7 +351,7 @@ const Table = ({
                                             align="start"
                                             size="xsmall">
                                             <Subtitle level={1}>
-                                                Table Of Contents
+                                                {localization.selectedColumns}
                                             </Subtitle>
                                             <DragDropContext
                                                 onDragEnd={handleColumnDragEnd}>
@@ -416,10 +444,8 @@ const Table = ({
                                             <Input
                                                 placeholder="Search"
                                                 suffixIcon="search"
-                                                onChange={(e) =>
-                                                    setColumnQuery(
-                                                        e.target.value,
-                                                    )
+                                                onChange={(value) =>
+                                                    setColumnQuery(value)
                                                 }
                                                 value={columnQuery}
                                             />
@@ -437,7 +463,9 @@ const Table = ({
                                                         ) > -1,
                                                 ).length === 0 && (
                                                 <Message
-                                                    message="All columns are selected."
+                                                    message={
+                                                        localization.allColumnSelected
+                                                    }
                                                     type="empty"
                                                     width="100"
                                                 />
@@ -469,7 +497,7 @@ const Table = ({
                             <Subtitle level={1} color="secondary">
                                 <Space>
                                     <Icon icon="columns" />
-                                    <span>Columns</span>
+                                    <span>{localization.columns}</span>
                                 </Space>
                             </Subtitle>
                         </Dropdown>
@@ -477,7 +505,7 @@ const Table = ({
                 </div>
             </Space>
             <Loader isLoading={isLoading} text="Loading..">
-                {isShowLeftShadow && <LeftShadow />}
+                <LeftShadow ref={leftShadowRef} />
                 <Wrapper
                     isLoading={isLoading && data.length === 0}
                     onScroll={handleScrollTable}
@@ -537,7 +565,7 @@ const Table = ({
                         )}
                     </StyledTable>
                 </Wrapper>
-                {isShowRightShadow && <RightShadow />}
+                <RightShadow ref={rightShadowRef} />
             </Loader>
             {data.length === 0 && !isLoading && (
                 <EmptyPlaceholder>
@@ -547,7 +575,9 @@ const Table = ({
                             size="4x"
                             color={theme.fow.colors.text.disabled}
                         />
-                        <Subtitle color="disabled">No data</Subtitle>
+                        <Subtitle color="disabled">
+                            {localization.noData}
+                        </Subtitle>
                     </Space>
                 </EmptyPlaceholder>
             )}
@@ -576,7 +606,7 @@ const Table = ({
                                         onClick={() => {
                                             handleChangeSize(size);
                                         }}>
-                                        {size} / page
+                                        {size} / {localization.page}
                                     </Menu.Item>
                                 ))}
                             </Menu>
@@ -584,14 +614,16 @@ const Table = ({
                         <SizePicker>
                             <Subtitle level={3}>
                                 <Space>
-                                    <span>{pageSize} / page</span>
+                                    <span>
+                                        {pageSize} / {localization.page}
+                                    </span>
                                     <Icon icon="chevron-down" />
                                 </Space>
                             </Subtitle>
                         </SizePicker>
                     </Dropdown>
                     <Body level={2}>
-                        Results: {(currentPage - 1) * pageSize} -
+                        {localization.results}: {(currentPage - 1) * pageSize} -
                         {currentPage * pageSize > totalCount
                             ? totalCount
                             : currentPage * pageSize}{' '}
