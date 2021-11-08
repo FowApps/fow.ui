@@ -19,8 +19,8 @@ type IconWrapperProps = {
 
 export const IconWrapper = styled.div<IconWrapperProps>`
     position: absolute;
-    top: ${(props) => props.theme.fow.spacing.small};
-    font-size: 1.4rem;
+    top: 0.8rem;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
 
     ${(props) => {
@@ -43,16 +43,16 @@ export const IconWrapper = styled.div<IconWrapperProps>`
 
 export const StyledInput = styled.input<InputProps>`
     width: 100%;
-    padding-top: ${(props) => props.theme.fow.spacing.xsmall};
+    padding-top: ${(props) => props.theme.fow.spacing.xxsmall};
     padding-right: ${(props) =>
         props.hasSuffixIcon
             ? props.theme.fow.spacing.xxxlarge
-            : props.theme.fow.spacing.small};
-    padding-bottom: ${(props) => props.theme.fow.spacing.xsmall};
+            : props.theme.fow.spacing.xsmall};
+    padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
     padding-left: ${(props) =>
         props.hasPrefixIcon
             ? props.theme.fow.spacing.xxxlarge
-            : props.theme.fow.spacing.small};
+            : props.theme.fow.spacing.xsmall};
     border: 1px solid
         ${(props) =>
             props.hasValidationError
@@ -61,8 +61,8 @@ export const StyledInput = styled.input<InputProps>`
     border-radius: 8px;
     color: ${(props) => props.theme.fow.colors.text.primary};
     outline: none;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
     transition: all 0.3s ease;
 
     ~ ${IconWrapper} {
@@ -90,10 +90,11 @@ export const StyledInput = styled.input<InputProps>`
             ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.primary.main};
+                    : props.theme.fow.colors.primary.transparent48};
+        box-shadow: 0px 0px 0px 4px rgba(253, 114, 95, 0.12);
 
         ~ ${IconWrapper} {
-            color: ${(props) => props.theme.fow.colors.primary.main};
+            color: ${(props) => props.theme.fow.colors.text.secondary};
         }
     }
 

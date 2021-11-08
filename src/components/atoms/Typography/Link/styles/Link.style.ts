@@ -6,9 +6,9 @@ type LinkProps = {
 };
 
 export const StyledLink = styled.a<LinkProps>`
-    display: inline-block;
+    cursor: pointer;
 
-    ${(props) => setLevel(props.level)}
+    ${(props) => setLevel(props.level)};
 
     span {
         transition: color 0.3s ease;

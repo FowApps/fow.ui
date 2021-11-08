@@ -10,55 +10,53 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
             return css`
                 border: none !important;
                 background-color: transparent;
-                color: ${theme.fow.colors[color].main};
+                color: ${theme.fow.colors[color].dark};
 
                 &:hover {
-                    background-color: ${theme.fow.colors[color].transparent8};
+                    color: ${theme.fow.colors[color].darker};
                 }
 
                 &:active {
-                    background-color: ${theme.fow.colors[color].transparent16};
+                    color: ${theme.fow.colors[color].darker};
                 }
 
                 &:disabled {
-                    background-color: transparent !important;
-                    color: ${theme.fow.colors.grey.transparent48} !important;
+                    color: ${theme.fow.colors.greyDark.lighter} !important;
                 }
             `;
         case 'outlined':
             return css`
-                border: 1px solid ${theme.fow.colors[color].transparent48};
-                background-color: ${theme.fow.colors.common.white};
-                color: ${theme.fow.colors[color].main};
+                border: 1px solid ${theme.fow.colors[color].dark};
+                background-color: transparent !important;
+                color: ${theme.fow.colors[color].dark};
 
                 &:hover {
-                    border-color: ${theme.fow.colors[color].main} !important;
-                    background-color: ${theme.fow.colors[color].transparent8};
+                    border-color: ${theme.fow.colors[color].darker} !important;
+                    color: ${theme.fow.colors[color].darker};
+                    background-color: transparent !important;
                 }
 
                 &:active {
-                    background-color: ${theme.fow.colors[color].transparent16};
+                    background-color: ${theme.fow.colors[color].darker};
                 }
 
                 &:disabled {
-                    border-color: ${theme.fow.colors.grey
-                        .transparent24} !important;
+                    border-color: ${theme.fow.colors.greyDark
+                        .lighter} !important;
                     background-color: transparent !important;
-                    color: ${theme.fow.colors.grey.transparent48} !important;
+                    color: ${theme.fow.colors.greyDark.lighter} !important;
                 }
             `;
         case 'contained':
             return css`
                 border: none;
-                background-color: ${theme.fow.colors[color].main};
-                color: ${color === 'success' || color === 'warning'
-                    ? theme.fow.colors.grey.darker
-                    : theme.fow.colors.common.white};
+                background-color: ${theme.fow.colors[color].dark};
+                color: ${theme.fow.colors.common.white};
                 box-shadow: 0px 8px 16px
                     ${theme.fow.colors[color].transparent24};
 
                 &:hover {
-                    background-color: ${theme.fow.colors[color].dark};
+                    background-color: ${theme.fow.colors[color].darker};
                     color: ${theme.fow.colors.common.white};
                 }
 
@@ -68,9 +66,9 @@ const setVariant = (color: ColorTypes, variant: VariantTypes): any => {
                 }
 
                 &:disabled {
-                    background-color: ${theme.fow.colors.grey
-                        .transparent24} !important;
-                    color: ${theme.fow.colors.grey.transparent48} !important;
+                    background-color: ${theme.fow.colors.greyLight
+                        .main} !important;
+                    color: ${theme.fow.colors.greyDark.lighter} !important;
                     box-shadow: none !important;
                 }
             `;

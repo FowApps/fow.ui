@@ -29,23 +29,27 @@ type TextWrapperProps = {
 export const StyledText = styled.span<TextWrapperProps>`
     position: inherit;
     display: inherit;
+    overflow: hidden;
     margin: 0;
     padding: 0;
     font-weight: inherit;
     font-size: inherit;
+    text-overflow: ellipsis;
     line-height: inherit;
     letter-spacing: inherit;
 
-    ${(props) =>
+    transition: all 0.3s ease;
+
+    ${(props) => color[props.color]}
+    ${(props) => fontStyle[props.fontStyle]}
+        ${(props) => textDecoration[props.textDecoration]}
+        ${(props) => textTransform[props.textTransfrom]}
+        ${(props) =>
         props.lineClamp &&
         css`
             display: -webkit-box;
             -webkit-line-clamp: ${props.lineClamp};
             -webkit-box-orient: vertical;
             overflow: hidden;
-        `}
-    ${(props) => color[props.color]}
-    ${(props) => fontStyle[props.fontStyle]}
-    ${(props) => textDecoration[props.textDecoration]}
-    ${(props) => textTransform[props.textTransfrom]}
+        `};
 `;
