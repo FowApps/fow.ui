@@ -41,6 +41,7 @@ export { default as Switch } from './components/atoms/Switch';
 export { default as Popover } from './components/atoms/Popover';
 export { default as Radio } from './components/atoms/Radio';
 export { default as InputNumber } from './components/atoms/InputNumber';
+export { default as ProgressBar } from './components/atoms/ProgressBar';
 
 export const Typography = {
     Heading,
