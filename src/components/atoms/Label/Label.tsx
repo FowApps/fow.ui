@@ -12,7 +12,13 @@ export interface LabelProps {
         | 'success'
         | 'warning'
         | 'error'
-        | 'purple';
+        | 'pink'
+        | 'orange'
+        | 'green'
+        | 'greenDark'
+        | 'blue'
+        | 'purple'
+        | 'darkPurple';
     /**
      * variant of button
      */

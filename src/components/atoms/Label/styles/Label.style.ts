@@ -10,7 +10,13 @@ type LabelProps = {
         | 'success'
         | 'warning'
         | 'error'
-        | 'purple';
+        | 'pink'
+        | 'orange'
+        | 'green'
+        | 'greenDark'
+        | 'blue'
+        | 'purple'
+        | 'darkPurple';
     variant: 'outlined' | 'filled' | 'ghost';
     shape: 'rounded' | 'flat';
     size: 'small' | 'medium' | 'large';

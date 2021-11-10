@@ -82,19 +82,7 @@ declare module 'styled-components' {
                     transparent32: string;
                     transparent48: string;
                 };
-                grey: {
-                    darker: string;
-                    dark: string;
-                    main: string;
-                    light: string;
-                    lighter: string;
-                    transparent8: string;
-                    transparent12: string;
-                    transparent16: string;
-                    transparent24: string;
-                    transparent32: string;
-                    transparent48: string;
-                };
+
                 greyLight: {
                     darker: string;
                     dark: string;
@@ -108,7 +96,98 @@ declare module 'styled-components' {
                     transparent32: string;
                     transparent48: string;
                 };
+                grey: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                pink: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                orange: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                green: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                greenDark: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                blue: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
                 purple: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
+                darkPurple: {
                     darker: string;
                     dark: string;
                     main: string;
