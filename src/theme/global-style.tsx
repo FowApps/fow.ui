@@ -78,6 +78,10 @@ const GlobalStyle = createGlobalStyle`
             line-height: 20px;
         }
     }
+    
+    .drawer {
+        z-index: 1069 !important;
+    }
 `;
 
 export default GlobalStyle;
