@@ -5,7 +5,14 @@ export interface LabelProps {
     /**
      * color
      */
-    color?: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+    color?:
+        | 'grey'
+        | 'primary'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'error'
+        | 'purple';
     /**
      * variant of button
      */

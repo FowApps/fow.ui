@@ -17,7 +17,7 @@
         "test": "jest --config jest.config.js"
     },
     "keywords": [],
-    "author": "",
+    "author": "<betulkyaa19@gmail.com>",
     "license": "MIT",
     "files": [
         "lib",
@@ -148,5 +148,6 @@
     },
     "resolutions": {
         "webpack": "5.58.2"
-    }
+    },
+    "repository": "https://github.com/FowApps/fow.ui.v2.git"
 }

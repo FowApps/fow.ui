@@ -108,6 +108,19 @@ declare module 'styled-components' {
                     transparent32: string;
                     transparent48: string;
                 };
+                purple: {
+                    darker: string;
+                    dark: string;
+                    main: string;
+                    light: string;
+                    lighter: string;
+                    transparent8: string;
+                    transparent12: string;
+                    transparent16: string;
+                    transparent24: string;
+                    transparent32: string;
+                    transparent48: string;
+                };
                 text: {
                     primary: string;
                     secondary: string;

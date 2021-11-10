@@ -10,7 +10,7 @@ export default {
             control: {
                 type: 'select',
             },
-            options: ['grey', 'primary', 'info', 'success', 'warning', 'error'],
+            options: ['grey', 'primary', 'info', 'success', 'warning', 'error', 'purple'],
         },
         variant: {
             control: {

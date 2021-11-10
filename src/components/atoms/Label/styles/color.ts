@@ -1,6 +1,13 @@
 import { css } from 'styled-components';
 
-type ColorTypes = 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+type ColorTypes =
+    | 'grey'
+    | 'primary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'purple';
 
 export const setColor = (color: ColorTypes) => {
     switch (color) {
@@ -36,6 +43,11 @@ export const setColor = (color: ColorTypes) => {
             return css`
                 background-color: ${(props) =>
                     props.theme.fow.colors.error.main};
+            `;
+        case 'purple':
+            return css`
+                background-color: ${(props) =>
+                    props.theme.fow.colors.purple.main};
             `;
         default:
             return ``;

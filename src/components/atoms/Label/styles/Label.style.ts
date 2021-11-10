@@ -3,7 +3,14 @@ import setVariant from './variant';
 import { setSize } from './size';
 
 type LabelProps = {
-    color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+    color:
+        | 'grey'
+        | 'primary'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'error'
+        | 'purple';
     variant: 'outlined' | 'filled' | 'ghost';
     shape: 'rounded' | 'flat';
     size: 'small' | 'medium' | 'large';
