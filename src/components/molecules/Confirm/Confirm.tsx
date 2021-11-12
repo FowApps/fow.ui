@@ -140,7 +140,7 @@ const Confirm = ({
                     <Space>
                         {cancelable && (
                             <Button
-                                size="small"
+                                size="medium"
                                 color="error"
                                 variant="outlined"
                                 onClick={handleCancel}>
@@ -149,7 +149,7 @@ const Confirm = ({
                         )}
                         <Button
                             color={type}
-                            size="small"
+                            size="medium"
                             onClick={handleOk}
                             loading={loading}
                             {...okButtonProps}>

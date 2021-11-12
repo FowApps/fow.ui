@@ -61,7 +61,7 @@ export const StyledMenu = styled(RcMenu)`
 
     &.rc-menu-inline {
         > .rc-menu-item {
-            padding: 16px !important;
+            padding: 16px 24px !important;
 
             &.rc-menu-item-active,
             &.rc-menu-item-selected {
@@ -110,7 +110,7 @@ export const StyledMenu = styled(RcMenu)`
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 16px !important;
+                padding: 16px 24px !important;
 
                 h3 {
                     font-weight: 500;
@@ -155,7 +155,7 @@ export const StyledMenu = styled(RcMenu)`
             }
 
             .rc-menu-sub > .rc-menu-item {
-                padding: 16px !important;
+                padding: 16px 24px !important;
 
                 h3 {
                     font-weight: 500;

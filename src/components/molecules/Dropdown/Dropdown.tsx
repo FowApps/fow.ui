@@ -1,33 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { AnimatePresence } from 'framer-motion';
-import React, { useRef } from 'react';
+import React from 'react';
+import { PositioningPortal } from '@codastic/react-positioning-portal';
+import { Transition } from 'react-transition-group';
 
 import useDisclosure from '../../../hooks/useDisclosure';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
-import { Wrapper, Content } from './styles';
+import { Content } from './styles';
 
-const contentVariants = {
-    enter: {
-        opacity: 1,
-        rotateX: 0,
-        transition: {
-            duration: 0.3,
-        },
-        display: 'block',
-    },
-    exit: {
-        opacity: 0,
-        rotateX: -15,
-        transition: {
-            duration: 0.3,
-            delay: 0.3,
-        },
-        transitionEnd: {
-            display: 'none',
-        },
-    },
-};
+interface RenderProps {
+    isOpen: boolean;
+    close: () => void;
+    open: () => void;
+}
 
 export interface DropdownProps {
     /**
@@ -39,59 +23,89 @@ export interface DropdownProps {
      */
     content: React.ReactNode;
     /**
-     * flag for close dropdown after click content
-     */
-    closeAfterClickContent?: boolean;
-    /**
      * flag for inline or fluid content
      */
     fullWidth?: boolean;
-    width?: number | string;
-    children: React.DetailedReactHTMLElement<any, HTMLElement>;
+    onClose?: () => void;
+    onOpen?: () => void;
+    initialOpen?: boolean;
+    children:
+        | React.DetailedReactHTMLElement<any, HTMLElement>
+        | ((api: RenderProps) => React.ReactNode);
 }
 
-const Dropdown = ({
-    trigger = 'click',
-    closeAfterClickContent = false,
-    fullWidth = false,
-    width = 400,
-    content,
-    children,
-}: DropdownProps): JSX.Element => {
-    const wrapperRef = useRef<HTMLDivElement>(null);
-
-    const { isOpen, close, toggle, open } = useDisclosure();
-    useOnClickOutside(wrapperRef, close);
+const Dropdown = (
+    {
+        trigger = 'click',
+        content,
+        onOpen,
+        onClose,
+        children,
+        initialOpen = false,
+    }: DropdownProps,
+    ref: any,
+): JSX.Element => {
+    const { isOpen, close, toggle, open } = useDisclosure(initialOpen);
 
     return (
-        <Wrapper ref={wrapperRef}>
-            {React.cloneElement(children, {
-                onClick: trigger === 'click' ? open : undefined,
-                onMouseEnter: trigger === 'hover' ? open : undefined,
-                onMouseLeave: trigger === 'hover' ? close : undefined,
-                style: {
+        <PositioningPortal
+            portalElement={<div style={{ zIndex: 1049 }} />}
+            isOpen={isOpen}
+            onOpen={() => {
+                open();
+                onOpen?.();
+            }}
+            onShouldClose={close}
+            onClose={() => {
+                close();
+                onClose?.();
+            }}
+            portalContent={({
+                isOpen: isPortalOpen,
+                isPositioned,
+                transitionStarted,
+                transitionEnded,
+            }) => (
+                <Transition
+                    addEndListener={(node, done) => {
+                        node.addEventListener('transitionend', done, false);
+                    }}
+                    in={isPortalOpen && isPositioned}
+                    onEnter={transitionStarted}
+                    onExited={transitionEnded}>
+                    {(state) => (
+                        <Content
+                            state={state}
+                            onMouseEnter={
+                                trigger === 'hover' ? open : undefined
+                            }
+                            onMouseLeave={
+                                trigger === 'hover' ? close : undefined
+                            }>
+                            {typeof content === 'function'
+                                ? content(close)
+                                : content}
+                        </Content>
+                    )}
+                </Transition>
+            )}>
+            <div
+                ref={ref}
+                onClick={() => {
+                    if (trigger === 'click') toggle();
+                }}
+                onMouseEnter={() => {
+                    if (trigger === 'hover') open();
+                }}
+                style={{
                     cursor: 'pointer',
-                },
-                ...children.props,
-            })}
-            <AnimatePresence>
-                {isOpen && (
-                    <Content
-                        onClick={closeAfterClickContent ? toggle : open}
-                        onMouseEnter={trigger === 'hover' ? open : undefined}
-                        onMouseLeave={trigger === 'hover' ? close : undefined}
-                        fullWidth={fullWidth}
-                        width={width}
-                        initial="exit"
-                        exit="exit"
-                        animate={isOpen ? 'enter' : 'exit'}
-                        variants={contentVariants}>
-                        {content}
-                    </Content>
-                )}
-            </AnimatePresence>
-        </Wrapper>
+                }}>
+                {typeof children === 'function'
+                    ? children({ isOpen, close, open })
+                    : children}
+            </div>
+        </PositioningPortal>
     );
 };
 
-export default Dropdown;
+export default React.forwardRef(Dropdown);

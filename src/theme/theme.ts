@@ -68,6 +68,19 @@ export const theme: DefaultTheme = {
                 transparent32: 'rgba(253, 114, 95, 0.32)',
                 transparent48: 'rgba(253, 114, 95, 0.48)',
             },
+            greyDark: {
+                darker: '#161C24', // 800
+                dark: '#212B36', // 600
+                main: '#454F5B', // 500
+                light: '#637381', // 400
+                lighter: '#919EAB', // 300
+                transparent8: 'rgba(145, 158, 171, 0.08)',
+                transparent12: 'rgba(145, 158, 171, 0.12)',
+                transparent16: 'rgba(145, 158, 171, 0.16)',
+                transparent24: 'rgba(145, 158, 171, 0.24)',
+                transparent32: 'rgba(145, 158, 171, 0.32)',
+                transparent48: 'rgba(145, 158, 171, 0.48)',
+            },
             grey: {
                 darker: '#212B36', // 800
                 dark: '#637381', // 600
@@ -80,6 +93,19 @@ export const theme: DefaultTheme = {
                 transparent24: 'rgba(145, 158, 171, 0.24)',
                 transparent32: 'rgba(145, 158, 171, 0.32)',
                 transparent48: 'rgba(145, 158, 171, 0.48)',
+            },
+            greyLight: {
+                darker: '#C4CDD5', // 800
+                dark: '#DFE3E8', // 600
+                main: '#E8EBEF', // 500
+                light: '#F4F6F8', // 400
+                lighter: '#F9FAFB', // 300
+                transparent8: 'rgba(196, 205, 213, 0.08)',
+                transparent12: 'rgba(196, 205, 213, 0.12)',
+                transparent16: 'rgba(196, 205, 213, 0.16)',
+                transparent24: 'rgba(196, 205, 213, 0.24)',
+                transparent32: 'rgba(196, 205, 213, 0.32)',
+                transparent48: 'rgba(196, 205, 213, 0.48)',
             },
             text: {
                 primary: '#212B36',

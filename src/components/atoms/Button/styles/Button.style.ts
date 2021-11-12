@@ -34,7 +34,7 @@ export const StyledButton = styled.button<ButtonProps>`
     width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
     min-width: ${(props) =>
         props.fab || !props.hasChildren ? 'unset' : '80px'} !important;
-    border-radius: ${(props) => (props.fab ? 50 : 8)}px;
+    border-radius: ${(props) => (props.fab ? 50 : 4)}px;
     outline: none;
     white-space: nowrap;
     cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};

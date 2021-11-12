@@ -21,7 +21,10 @@ export const StyledLabel = styled.label`
 `;
 
 export const LabelText = styled(Body)<LabelTextProps>`
-    margin-left: ${(props) => props.theme.fow.spacing.small};
+    margin-left: ${(props) => props.theme.fow.spacing.xsmall};
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
 
     ${(props) =>
         props.disabled &&
@@ -32,15 +35,26 @@ export const LabelText = styled(Body)<LabelTextProps>`
 `;
 
 export const MarkBox = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
     border-radius: 4px;
     box-sizing: border-box;
     transition: background-color 0.4s ease;
+`;
+
+export const HoverCircle = styled.span`
+    position: absolute;
+    top: -1.1rem;
+    left: -1.1rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 `;
 
 export const Mark = styled(Icon)`
@@ -67,6 +81,11 @@ export const StyledInput = styled.input<InputProps>`
         ${Mark} {
             display: block;
         }
+
+        &:hover ${HoverCircle} {
+            background-color: ${(props) =>
+                props.theme.fow.colors.primary.transparent8};
+        }
     }
 
     &:checked ~ ${MarkBox} {
@@ -91,5 +110,10 @@ export const StyledInput = styled.input<InputProps>`
                 border-color: ${props.theme.fow.colors.text.disabled};
                 cursor: not-allowed;
             `}
+
+        &:hover ${HoverCircle} {
+            background-color: ${(props) =>
+                props.theme.fow.colors.grey.transparent8};
+        }
     }
 `;
