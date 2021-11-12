@@ -16,6 +16,7 @@ import Button from '../Button';
 import Space from '../Space';
 import AsyncSelect from '../Select/AsyncSelect';
 import Checkbox from '../Checkbox';
+import Radio from '../Radio';
 
 export default {
     title: 'Atoms/Form',
@@ -136,6 +137,12 @@ const UseFormTemplate: Story = () => {
                         <Checkbox value="Test" label="Test" checked />
                         <Checkbox value="Test 2" label="Test 2" />
                     </Checkbox.Group>
+                </FormField>
+                <FormField label="Select One" name="hookiesbookie">
+                    <Radio.Group direction="vertical">
+                        <Radio value="Test" label="Test" checked />
+                        <Radio value="Test 2" label="Test 2" />
+                    </Radio.Group>
                 </FormField>
                 <FormField
                     label="Hooks"

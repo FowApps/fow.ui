@@ -258,7 +258,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                             <Button
                                 variant="outlined"
                                 color="error"
-                                size="small"
+                                size="medium"
                                 onClick={() => {
                                     onClose?.();
                                     onCancel?.();
@@ -269,7 +269,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                         )}
                         {onOk && (
                             <Button
-                                size="small"
+                                size="medium"
                                 onClick={() => {
                                     onOk?.();
                                 }}

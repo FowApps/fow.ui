@@ -59,6 +59,7 @@ export const HoverCircle = styled.span<MarkProps>`
     width: ${(props) => (props._size === 'medium' ? '3.2rem' : '1.8rem')};
     height: ${(props) => (props._size === 'medium' ? '3.2rem' : '1.8rem')};
     border-radius: 50%;
+    transition: all 0.3s ease;
 `;
 
 export const StyledInput = styled.input<MarkProps>`

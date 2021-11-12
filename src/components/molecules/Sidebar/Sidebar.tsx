@@ -16,7 +16,11 @@ export interface SidebarProps {
     children: React.ReactNode;
 }
 
-const Sidebar = ({ noGutter = false, children }: SidebarProps): JSX.Element => {
+const Sidebar = ({
+    noGutter = false,
+    children,
+    ...rest
+}: SidebarProps): JSX.Element => {
     const { isOpen, toggle } = useDisclosure(true);
 
     return (
@@ -24,7 +28,8 @@ const Sidebar = ({ noGutter = false, children }: SidebarProps): JSX.Element => {
             noGutter={noGutter}
             initial={isOpen ? 'expanded' : 'collapsed'}
             animate={isOpen ? 'expanded' : 'collapsed'}
-            variants={SidebarVariants}>
+            variants={SidebarVariants}
+            {...rest}>
             <Content variants={ContentVariants}>{children}</Content>
             <Trigger onClick={toggle}>
                 {isOpen ? (

@@ -48,6 +48,40 @@ const GlobalStyle = createGlobalStyle`
     .rc-menu-submenu-hidden {
         display: none;
     }
+
+    .rc-pagination-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border:none;
+        background-color: transparent !important;
+        font-family: inherit;
+        line-height: inherit;
+    }
+
+    .rc-pagination-disabled {
+        color: ${(props) => props.theme.fow.colors.greyDark.lighter};
+    }
+
+    .rc-pagination-prev svg, .rc-pagination-next svg {
+        font-size: 12px;
+    }
+
+    .rc-pagination-item-active {
+        border-radius: 100px;
+        background-color: ${(props) =>
+            props.theme.fow.colors.greyDark.main} !important;
+
+        span {
+            color: ${(props) => props.theme.fow.colors.common.white};
+            font-size: 12px;
+            line-height: 20px;
+        }
+    }
+    
+    .drawer {
+        z-index: 1069 !important;
+    }
 `;
 
 export default GlobalStyle;

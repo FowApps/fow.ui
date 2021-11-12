@@ -10,22 +10,33 @@ export interface DividerProps {
     /**
      * profile username or fullname
      */
-    type?: 'horizontal' | 'vertical';
+    direction?: 'horizontal' | 'vertical';
+    size?:
+        | 'xxsmall'
+        | 'xsmall'
+        | 'small'
+        | 'medium'
+        | 'large'
+        | 'xlarge'
+        | 'xxlarge'
+        | 'xxxlarge';
     children?: React.ReactNode;
 }
 
 const Divider = ({
     orientation = 'center',
-    type = 'horizontal',
+    direction = 'horizontal',
+    size = 'medium',
     children,
     ...rest
 }: DividerProps): JSX.Element => (
     <StyledDivider
         hasTitle={!!children}
         orientation={orientation}
-        type={type}
+        direction={direction}
+        size={size}
         {...rest}>
-        {children && type !== 'vertical' && <Title>{children}</Title>}
+        {children && direction !== 'vertical' && <Title>{children}</Title>}
     </StyledDivider>
 );
 

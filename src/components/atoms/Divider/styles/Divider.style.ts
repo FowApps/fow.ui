@@ -1,10 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import setOriantation from './oriantation';
-import type from './type';
+import direction from './direction';
 
 type DividerProps = {
     orientation: 'left' | 'right' | 'center';
-    type: 'horizontal' | 'vertical';
+    direction: 'horizontal' | 'vertical';
+    size:
+        | 'xxsmall'
+        | 'xsmall'
+        | 'small'
+        | 'medium'
+        | 'large'
+        | 'xlarge'
+        | 'xxlarge'
+        | 'xxxlarge';
     hasTitle: boolean;
 };
 
@@ -22,8 +31,18 @@ export const StyledDivider = styled.div<DividerProps>`
     line-height: 2.2rem;
     box-sizing: border-box;
     font-feature-settings: 'tnum';
+    ${(props) =>
+        props.direction === 'horizontal' &&
+        css`
+            margin: ${props.theme.fow.spacing[props.size]} 0;
+        `};
+    ${(props) =>
+        props.direction === 'vertical' &&
+        css`
+            margin: 0 ${props.theme.fow.spacing[props.size]};
+        `};
 
-    ${(props) => type[props.type]}
+    ${(props) => direction[props.direction]}
     ${(props) => props.hasTitle && setOriantation(props.orientation)};
 `;
 

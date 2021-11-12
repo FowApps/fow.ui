@@ -33,7 +33,7 @@ export interface TextWrapperProps {
      * font-style
      */
     fontStyle?: 'normal' | 'italic' | 'oblique';
-    children?: React.ReactNode;
+    children: React.ReactNode | string;
 }
 
 const TextWrapper = ({
@@ -51,6 +51,7 @@ const TextWrapper = ({
         textDecoration={textDecoration}
         textTransfrom={textTransfrom}
         color={color}
+        title={typeof children === 'string' ? children : undefined}
         {...rest}>
         {children}
     </StyledText>

@@ -1,19 +1,17 @@
 import styled from 'styled-components';
-import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface ContentProps extends HTMLMotionProps<'div'> {
-    fullWidth: boolean;
-    width: number | string;
+interface ContentProps {
+    state: any;
 }
 
-export const Wrapper = styled(motion.div)`
-    position: relative;
-`;
-
-export const Content = styled(motion.div)<ContentProps>`
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    z-index: 9;
-    width: ${(props) => (props.fullWidth ? '100%' : `${props.width}px`)};
+export const Content = styled.div<ContentProps>`
+    width: 100%;
+    min-width: fit-content;
+    margin: 12px 0;
+    opacity: 1;
+    transition: opacity 0.2s linear;
+    ${(props) =>
+        props.state === 'exiting' || props.state === 'exited'
+            ? 'opacity: 0;'
+            : ''}
 `;

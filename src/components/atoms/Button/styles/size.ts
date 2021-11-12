@@ -5,8 +5,8 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
         case 'large':
             return css`
                 width: ${!hasChildren && isFab ? '4.8rem' : 'auto'};
-                height: 4.8rem;
-                padding: 0 2.2rem;
+                height: 4.2rem;
+                padding: 0.8rem;
                 font-weight: 600;
                 font-style: normal;
                 font-size: 1.5rem;
@@ -16,23 +16,23 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
         case 'medium':
             return css`
                 width: ${!hasChildren && isFab ? '4rem' : 'auto'};
-                height: ${isFab ? 4 : 3.6}rem;
-                padding: 0 1.6rem;
+                height: ${isFab ? 4 : 3.2}rem;
+                padding: 0.4rem 0.8rem;
                 font-weight: 600;
                 font-style: normal;
-                font-size: 1.4rem;
+                font-size: 1.5rem;
                 line-height: 2.6rem;
                 letter-spacing: 0.2px;
             `;
         case 'small':
             return css`
                 width: ${!hasChildren && isFab ? '3.4rem' : 'auto'};
-                height: ${isFab ? 3.4 : 3.6}rem;
-                padding: 0 1rem;
+                height: ${isFab ? 3.4 : 2.5}rem;
+                padding: 0.4rem 0.8rem;
                 font-weight: 600;
                 font-style: normal;
-                font-size: 1.3rem;
-                line-height: 2.2rem;
+                font-size: 1rem;
+                line-height: 1.7rem;
                 letter-spacing: 0.2px;
             `;
         default:
