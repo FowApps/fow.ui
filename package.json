@@ -108,7 +108,7 @@
         "eslint": "^7.28.0",
         "eslint-config-4catalyzer-typescript": "^3.1.2",
         "eslint-import-resolver-node": "^0.3.4",
-        "eslint-import-resolver-webpack": "^0.13.1",
+        "eslint-import-resolver-webpack": "^0.13.2",
         "eslint-plugin-import": "^2.25.2",
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-prettier": "^4.0.0",
@@ -125,7 +125,7 @@
         "react-dom": "17.0.2",
         "react-test-renderer": "^17.0.2",
         "style-loader": "^3.3.0",
-        "styled-components": "5.3.1",
+        "styled-components": "5.3.3",
         "stylelint": "^13.13.1",
         "stylelint-config-recommended": "^5.0.0",
         "stylelint-config-standard": "^22.0.0",
@@ -144,7 +144,7 @@
         "process": "^0.11.10",
         "react": "17.0.2",
         "react-dom": "17.0.2",
-        "styled-components": "5.3.1"
+        "styled-components": "5.3.3"
     },
     "resolutions": {
         "webpack": "5.58.2"
