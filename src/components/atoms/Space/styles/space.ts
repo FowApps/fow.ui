@@ -24,11 +24,13 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-left: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  0} !important;
                           `
                         : css`
                               margin-right: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  0} !important;
                           `};
                 }
             `;
@@ -39,11 +41,13 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-top: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  '1.2rem'} !important;
                           `
                         : css`
                               margin-bottom: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  '1.2rem'} !important;
                           `};
                 }
             `;
@@ -54,11 +58,13 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-left: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  0} !important;
                           `
                         : css`
                               margin-right: ${(props) =>
-                                  props.theme.fow.spacing[size]} !important;
+                                  props.theme.fow.spacing[size] ||
+                                  0} !important;
                           `};
                 }
             `;
