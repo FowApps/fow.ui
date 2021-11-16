@@ -20,8 +20,8 @@ const setSize = (size: string, isFab: boolean, hasChildren: boolean): any => {
                 padding: 0.4rem 0.8rem;
                 font-weight: 600;
                 font-style: normal;
-                font-size: 1.5rem;
-                line-height: 2.6rem;
+                font-size: 1.4rem;
+                line-height: 2.4rem;
                 letter-spacing: 0.2px;
             `;
         case 'small':
