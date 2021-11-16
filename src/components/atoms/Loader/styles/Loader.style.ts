@@ -4,6 +4,7 @@ import LoadingOverlay, { LoadingOverlayProps } from 'react-loading-overlay';
 interface OverlayProps extends LoadingOverlayProps {
     fullPage?: boolean;
     hasChildren: boolean;
+    size?: 'small' | 'medium';
 }
 
 interface StaticPlaceholderProps {
@@ -26,7 +27,7 @@ export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
         color: ${(props) => props.theme.fow.colors.primary.dark} !important;
     }
     .fow-loader-overlay_spinner {
-        width: 2.5rem;
+        width: ${(props) => (props.size === 'medium' ? '2.5rem' : '1.5rem')};
         margin-bottom: ${(props) =>
             props.text ? props.theme.fow.spacing.small : 0};
         svg circle {
