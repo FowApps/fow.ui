@@ -14,9 +14,9 @@ import useForm from '../../../hooks/useForm';
 
 import Button from '../Button';
 import Space from '../Space';
-import AsyncSelect from '../Select/AsyncSelect';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
+import Select from '../Select';
 
 export default {
     title: 'Atoms/Form',
@@ -148,20 +148,9 @@ const UseFormTemplate: Story = () => {
                     label="Hooks"
                     name="hooks"
                     rules={[{ required: true, message: 'Required..' }]}>
-                    <AsyncSelect
-                        placeholder="Please Select"
-                        valueKey="name"
-                        formatOptionLabel={formatOptionLabel}
-                        labelKey="name"
-                        loadOptions={async () => {
-                            const response = await fetch(
-                                `https://www.anapioficeandfire.com/api/houses?page=1&pageSize=10`,
-                            );
-                            const responseJSON = await response.json();
-
-                            return responseJSON;
-                        }}
-                    />
+                    <Select>
+                        <Select.Option value="Test">Test</Select.Option>
+                    </Select>
                 </FormField>
                 <Space>
                     <Button

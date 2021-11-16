@@ -30,9 +30,6 @@ export { default as Divider } from './components/atoms/Divider';
 export { default as Card } from './components/atoms/Card';
 export { default as Loader } from './components/atoms/Loader';
 export { default as Button } from './components/atoms/Button';
-export { default as Select } from './components/atoms/Select/StaticSelect';
-export { default as AsyncSelect } from './components/atoms/Select/AsyncSelect';
-export { default as AsyncPaginateSelect } from './components/atoms/Select/AsyncPaginateSelect';
 export { default as Input } from './components/atoms/Input';
 export { default as Skeleton } from './components/atoms/Skeleton';
 export { default as Tooltip } from './components/atoms/Tooltip';
@@ -42,7 +39,7 @@ export { default as Popover } from './components/atoms/Popover';
 export { default as Radio } from './components/atoms/Radio';
 export { default as InputNumber } from './components/atoms/InputNumber';
 export { default as ProgressBar } from './components/atoms/ProgressBar';
-export { default as SelectV2 } from './components/atoms/SelectV2';
+export { default as Select } from './components/atoms/Select';
 
 export const Typography = {
     Heading,
