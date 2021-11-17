@@ -8,20 +8,7 @@ export interface LabelProps {
     /**
      * color
      */
-    color?:
-        | 'grey'
-        | 'primary'
-        | 'info'
-        | 'success'
-        | 'warning'
-        | 'error'
-        | 'pink'
-        | 'orange'
-        | 'green'
-        | 'greenDark'
-        | 'blue'
-        | 'purple'
-        | 'darkPurple';
+    color?: 'pink' | 'orange' | 'green' | 'blue' | 'purple' | 'darkPurple';
     /**
      * variant of button
      */
@@ -42,15 +29,17 @@ export interface LabelProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
+    timesIcon?: FontAwesomeIconProps['icon'] | null;
     text?: React.ReactNode | 'string';
 }
 
+const dataDismiss = () => alert('you click times icon');
 const Label = ({
     shape = 'rounded',
     size = 'medium',
     variant = 'filled',
-    color = 'grey',
-
+    color = 'pink',
+    timesIcon = null,
     leftIcon = null,
     rightIcon = null,
     text,
@@ -64,10 +53,11 @@ const Label = ({
         hasText={!!text}
         {...rest}>
         <span>
-            <Space>
+            <Space size="xsmall">
                 {leftIcon && <Icon icon={leftIcon} />}
                 {text && <span>{text}</span>}
                 {rightIcon && <Icon icon={rightIcon} />}
+                {timesIcon && <Icon icon="times" onClick={dataDismiss} />}
             </Space>
         </span>
     </StyledLabel>

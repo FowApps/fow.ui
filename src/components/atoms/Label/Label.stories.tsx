@@ -15,16 +15,9 @@ export default {
                 type: 'select',
             },
             options: [
-                'grey',
-                'primary',
-                'info',
-                'success',
-                'warning',
-                'error',
                 'pink',
                 'orange',
                 'green',
-                'greenDark',
                 'blue',
                 'purple',
                 'darkPurple',
@@ -48,9 +41,7 @@ export default {
             },
             options: ['small', 'medium', 'large'],
         },
-        fab: {
-            control: 'boolean',
-        },
+
         leftIcon: {
             control: {
                 type: 'select',
@@ -63,6 +54,9 @@ export default {
             },
             options: iconList.map((icon) => icon.iconName),
         },
+        timesIcon: {
+            control: 'boolean',
+        },
     },
 } as Meta;
 
@@ -73,6 +67,6 @@ Default.args = {
     variant: 'filled',
     size: 'medium',
     shape: 'rounded',
-    color: 'grey',
+    color: 'pink',
     text: 'Label',
 };
