@@ -29,7 +29,7 @@ export interface LabelProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    timesIcon?: FontAwesomeIconProps['icon'] | null;
+    isClosable?: FontAwesomeIconProps['icon'] | null;
     text?: React.ReactNode | 'string';
 }
 
@@ -39,7 +39,7 @@ const Label = ({
     size = 'medium',
     variant = 'filled',
     color = 'pink',
-    timesIcon = null,
+    isClosable = null,
     leftIcon = null,
     rightIcon = null,
     text,
@@ -53,11 +53,16 @@ const Label = ({
         hasText={!!text}
         {...rest}>
         <span>
-            <Space size="xsmall">
-                {leftIcon && <Icon icon={leftIcon} />}
-                {text && <span>{text}</span>}
-                {rightIcon && <Icon icon={rightIcon} />}
-                {timesIcon && <Icon icon="times" onClick={dataDismiss} />}
+            <Space size="small">
+                <Space size="xxsmall">
+                    {leftIcon && <Icon size="sm" icon={leftIcon} />}
+                    {text && <span>{text}</span>}
+                    {rightIcon && <Icon size="sm" icon={rightIcon} />}
+                </Space>
+
+                {isClosable && (
+                    <Icon size="xs" icon="times" onClick={dataDismiss} />
+                )}
             </Space>
         </span>
     </StyledLabel>

@@ -54,7 +54,7 @@ export default {
             },
             options: iconList.map((icon) => icon.iconName),
         },
-        timesIcon: {
+        isClosable: {
             control: 'boolean',
         },
     },

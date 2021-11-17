@@ -23,7 +23,7 @@ export const StyledLabel = styled.div<LabelProps>`
     font-weight: 500;
     font-style: normal;
     font-size: 1.2rem;
-    line-height: 1.2rem;
+    line-height: 2rem;
     ${(props) => setVariant(props.color, props.variant)}
     ${(props) => setSize(props.size)}
 `;
