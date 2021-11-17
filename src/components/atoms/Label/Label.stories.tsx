@@ -1,7 +1,11 @@
 import React from 'react';
+import * as Icons from '@fortawesome/free-solid-svg-icons';
 import { Story, Meta } from '@storybook/react';
 import Label, { LabelProps } from './Label';
 
+const iconList = Object.keys(Icons)
+    .filter((key) => key !== 'fas' && key !== 'prefix')
+    .map((icon) => Icons[icon]);
 export default {
     title: 'Atoms/Label',
     component: Label,
@@ -44,6 +48,21 @@ export default {
             },
             options: ['small', 'medium', 'large'],
         },
+        fab: {
+            control: 'boolean',
+        },
+        leftIcon: {
+            control: {
+                type: 'select',
+            },
+            options: iconList.map((icon) => icon.iconName),
+        },
+        rightIcon: {
+            control: {
+                type: 'select',
+            },
+            options: iconList.map((icon) => icon.iconName),
+        },
     },
 } as Meta;
 
@@ -55,5 +74,5 @@ Default.args = {
     size: 'medium',
     shape: 'rounded',
     color: 'grey',
-    text: 'Lorem Ipsum Dolor',
+    text: 'Label',
 };

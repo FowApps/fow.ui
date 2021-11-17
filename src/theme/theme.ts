@@ -203,7 +203,7 @@ export const theme: DefaultTheme = {
                 secondary: '#637381',
                 disabled: '#919EAB',
             },
-            divider: 'rgba(145, 158, 171, 0.24)',
+            divider: 'rgba(196, 205, 213, 0.48)',
             background: {
                 paper: '#FFFFFF',
                 default: '#FFFFFF',

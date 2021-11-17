@@ -1,4 +1,7 @@
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import Icon from '../Icon';
+import Space from '../Space';
 import { StyledLabel } from './styles';
 
 export interface LabelProps {
@@ -31,7 +34,15 @@ export interface LabelProps {
      * label size
      */
     size?: 'small' | 'medium' | 'large';
-    text: React.ReactNode | 'string';
+    /**
+     * prefix icon name
+     */
+    leftIcon?: FontAwesomeIconProps['icon'] | null;
+    /**
+     * suffix icon name
+     */
+    rightIcon?: FontAwesomeIconProps['icon'] | null;
+    text?: React.ReactNode | 'string';
 }
 
 const Label = ({
@@ -39,6 +50,9 @@ const Label = ({
     size = 'medium',
     variant = 'filled',
     color = 'grey',
+
+    leftIcon = null,
+    rightIcon = null,
     text,
     ...rest
 }: LabelProps): JSX.Element => (
@@ -47,8 +61,15 @@ const Label = ({
         size={size}
         variant={variant}
         color={color}
+        hasText={!!text}
         {...rest}>
-        {text}
+        <span>
+            <Space>
+                {leftIcon && <Icon icon={leftIcon} />}
+                {text && <span>{text}</span>}
+                {rightIcon && <Icon icon={rightIcon} />}
+            </Space>
+        </span>
     </StyledLabel>
 );
 

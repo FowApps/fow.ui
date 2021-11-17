@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     
     &::-webkit-scrollbar-thumb {
         border-radius: 1rem;
-        background-color: ${(props) => props.theme.fow.colors.grey.light};
+        background-color: ${(props) => props.theme.fow.colors.greyDark.lighter};
     }
 
     .rc-menu-submenu-hidden {

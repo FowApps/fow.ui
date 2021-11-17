@@ -20,19 +20,22 @@ type LabelProps = {
     variant: 'outlined' | 'filled' | 'ghost';
     shape: 'rounded' | 'flat';
     size: 'small' | 'medium' | 'large';
+    hasText: boolean;
 };
 
 export const StyledLabel = styled.div<LabelProps>`
     display: inline-flex;
     align-items: center;
-    padding-right: ${(props) => props.theme.fow.spacing.small};
-    padding-left: ${(props) => props.theme.fow.spacing.small};
-    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.6)}rem;
+    justify-content: center;
+    //text-align: center;
+    padding-right: ${(props) => props.theme.fow.spacing.xsmall};
+    padding-left: ${(props) => props.theme.fow.spacing.xsmall};
+    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.1)}rem;
     color: white;
-    font-weight: 700;
+    font-weight: 500;
     font-style: normal;
-    font-size: 1.2rem;
-    line-height: 2rem;
+    font-size: 1rem;
+    line-height: 1rem;
     ${(props) => setVariant(props.color, props.variant)}
     ${(props) => setSize(props.size)}
 `;
