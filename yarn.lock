@@ -9717,10 +9717,10 @@ rc-align@^4.0.0:
     rc-util "^5.3.0"
     resize-observer-polyfill "^1.5.1"
 
-rc-drawer@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.4.2.tgz#08d34efe590fc62acc8d9f607933a95974aaf34d"
-  integrity sha512-H1IibpT8sf4PaPjoiRmrVruBWzCg2T5dB06wWH+SicHtdIEcVj5HDzhYXWzrk0n/yygyBS7t1uX/E5NiRmZAXQ==
+rc-drawer@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.4.3.tgz#2094937a844e55dc9644236a2d9fba79c344e321"
+  integrity sha512-FYztwRs3uXnFOIf1hLvFxIQP9MiZJA+0w+Os8dfDh/90X7z/HqP/Yg+noLCIeHEbKln1Tqelv8ymCAN24zPcfQ==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.6"
