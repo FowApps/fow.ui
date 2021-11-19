@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+type WrapperProps = {
+    size: 'medium' | 'large';
+};
+
+export const Wrapper = styled.div<WrapperProps>`
     .rc-select {
         display: inline-block;
         font-style: normal;
@@ -64,7 +68,7 @@ export const Wrapper = styled.div`
         border: 1px solid
             ${(props) => props.theme.fow.colors.greyDark.transparent32} !important;
         border-radius: 4px;
-        height: 32px;
+        height: ${(props) => (props.size === 'large' ? '42px' : '32px')};
         transition: all 0.3s ease;
 
         &:hover {
@@ -81,7 +85,7 @@ export const Wrapper = styled.div`
     .rc-select-single .rc-select-selector .rc-select-selection-item,
     .rc-select-single .rc-select-selector .rc-select-selection-placeholder {
         position: absolute;
-        top: 3px;
+        top: ${(props) => (props.size === 'large' ? '8px' : '3px')};
         left: 8px;
         pointer-events: none;
         transition: all 0.3s ease;
@@ -120,14 +124,14 @@ export const Wrapper = styled.div`
         border: 1px solid
             ${(props) => props.theme.fow.colors.greyDark.transparent32} !important;
         border-radius: 4px;
-        min-height: 32px;
+        height: ${(props) => (props.size === 'large' ? '42px' : '32px')};
         align-items: center;
         transition: all 0.3s ease;
 
         .rc-select-selection-placeholder {
             position: absolute;
             left: 8px;
-            top: 4px;
+            top: ${(props) => (props.size === 'large' ? '9px' : '4px')};
         }
     }
     .rc-select-multiple .rc-select-selector .rc-select-selection-item {
@@ -135,7 +139,7 @@ export const Wrapper = styled.div`
         background: ${(props) => props.theme.fow.colors.greyDark.transparent16};
         border-radius: 4px;
         margin-right: 2px;
-        padding: 2px 8px;
+        padding: ${(props) => (props.size === 'large' ? '8px' : '2px 8px')};
 
         .rc-select-selection-item-content {
             margin-right: 8px;
@@ -185,7 +189,7 @@ export const Wrapper = styled.div`
     .rc-select-allow-clear .rc-select-clear {
         position: absolute;
         right: 28px;
-        top: 4px;
+        top: ${(props) => (props.size === 'large' ? '9px' : '4px')};
         color: ${(props) => props.theme.fow.colors.greyDark.lighter} !important;
         cursor: pointer;
     }
@@ -196,7 +200,7 @@ export const Wrapper = styled.div`
         pointer-events: none;
         position: absolute;
         right: 8px;
-        top: 4px;
+        top: ${(props) => (props.size === 'large' ? '9px' : '4px')};
         color: ${(props) => props.theme.fow.colors.greyDark.lighter};
         transition: all 0.3s ease;
     }

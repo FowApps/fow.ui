@@ -8,7 +8,15 @@ import Space from '../Space';
 import Button from '../Button';
 
 export default {
-    title: 'Atoms/SelectV2',
+    title: 'Atoms/Select',
+    argTypes: {
+        size: {
+            control: {
+                type: 'select',
+            },
+            options: ['large', 'medium'],
+        },
+    },
 } as Meta;
 
 const Default: Story<SelectProps> = (args) => <Select {...args} />;

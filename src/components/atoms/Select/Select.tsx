@@ -12,6 +12,7 @@ import { Wrapper, LoaderWrapper } from './styles';
 
 export interface Props extends SelectProps {
     loadOptions?: any;
+    size?: 'medium' | 'large';
 }
 
 export type OptionType = {
@@ -27,6 +28,7 @@ const Select = ({
     maxTagTextLength = 30,
     maxTagCount = 3,
     showArrow = true,
+    size = 'medium',
     ...rest
 }: Props) => {
     const [options, setOptions] = useState<OptionType[]>([]);
@@ -59,7 +61,7 @@ const Select = ({
     };
 
     return (
-        <Wrapper title={rest.value?.toString()}>
+        <Wrapper title={rest.value?.toString()} size={size}>
             <RcSelect
                 virtual={false}
                 notFoundContent={
