@@ -3,7 +3,6 @@ import React from 'react';
 import { StyledAvatar } from './styles';
 
 import Icon from '../Icon';
-import Subtitle from '../Typography/Subtitle';
 import Tooltip from '../Tooltip';
 
 import getFirstLetters from '../../../utils/getFirstLetters';
@@ -20,32 +19,43 @@ export interface AvatarProps {
     /**
      * color variant
      */
-    color?: 'primary' | 'grey';
+    color?: 'primary' | 'secondary';
     /**
      * size variant
      */
     size?: 'xsmall' | 'small' | 'medium' | 'large';
+    /**
+     * shape of avatar
+     */
+    shape?: 'rounded' | 'circle' | 'flat';
 }
 
 const Avatar = ({
     src,
     text,
-    color = 'grey',
+    color = 'secondary',
     size = 'medium',
+    shape = 'circle',
     ...rest
 }: AvatarProps): JSX.Element =>
     text ? (
         <Tooltip placement="top" overlay={<span>{text}</span>}>
-            <StyledAvatar src={src} color={color} size={size} {...rest}>
-                <Subtitle
-                    color={color === 'grey' ? 'black' : 'white'}
-                    level={2}>
-                    {getFirstLetters(text)}
-                </Subtitle>
+            <StyledAvatar
+                src={src}
+                color={color}
+                size={size}
+                shape={shape}
+                {...rest}>
+                <h3>{getFirstLetters(text)}</h3>
             </StyledAvatar>
         </Tooltip>
     ) : (
-        <StyledAvatar src={src} color={color} size={size} {...rest}>
+        <StyledAvatar
+            src={src}
+            color={color}
+            size={size}
+            shape={shape}
+            {...rest}>
             <Icon icon="user" color="white" />
         </StyledAvatar>
     );
