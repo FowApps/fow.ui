@@ -41,7 +41,7 @@
         "rc-field-form": "^1.22.0",
         "rc-input-number": "^7.3.3",
         "rc-menu": "^9.0.14",
-        "rc-pagination": "^3.1.11",
+        "rc-pagination": "^3.1.13",
         "rc-select": "^13.1.0",
         "rc-tooltip": "^5.1.1",
         "react-beautiful-dnd": "^13.1.0",
