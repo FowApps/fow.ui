@@ -10,13 +10,13 @@ export default {
             control: {
                 type: 'select',
             },
-            options: ['grey', 'primary'],
+            options: ['primary', 'secondary', 'grey'],
         },
         size: {
             control: {
                 type: 'select',
             },
-            options: ['xsmall', 'small', 'medium', 'large'],
+            options: ['small', 'medium', 'large'],
         },
     },
 } as Meta;
@@ -26,5 +26,5 @@ const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     size: 'medium',
-    color: 'grey',
+    color: 'primary',
 };

@@ -21,6 +21,10 @@ export interface LoaderProps {
      * static loader placeholder height(not work if children valid)
      */
     height?: number;
+    /**
+     * size of spinner
+     */
+    size?: 'small' | 'medium';
     children?: React.ReactNode;
 }
 
@@ -41,6 +45,7 @@ const Loader = ({
     text,
     isLoading = false,
     fullPage = false,
+    size = 'medium',
     children,
 }: LoaderProps): JSX.Element => (
     <StyledLoader
@@ -50,7 +55,8 @@ const Loader = ({
         active={isLoading}
         fullPage={fullPage}
         spinner
-        text={renderText(text)}>
+        text={renderText(text)}
+        size={size}>
         {renderChildren(children, height)}
     </StyledLoader>
 );

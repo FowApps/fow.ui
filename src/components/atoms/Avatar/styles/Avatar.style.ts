@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import setColor from './color';
 import setSize from './size';
+import setShape from './shape';
 
 type AvatarProps = {
-    color: 'primary' | 'grey';
+    color: 'primary' | 'secondary';
     src?: string;
     size: 'xsmall' | 'small' | 'medium' | 'large';
+    shape: 'rounded' | 'circle' | 'flat';
 };
 
 export const StyledAvatar = styled.div<AvatarProps>`
@@ -18,6 +20,8 @@ export const StyledAvatar = styled.div<AvatarProps>`
 
     ${(props) => setColor(props.color)}
     ${(props) => setSize(props.size)}
+    ${(props) => setShape(props.shape)}
+
 
     ${(props) =>
         props.src &&

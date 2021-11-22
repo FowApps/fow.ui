@@ -61,9 +61,10 @@ export const StyledInput = styled.input<InputProps>`
     border-radius: 8px;
     color: ${(props) => props.theme.fow.colors.text.primary};
     outline: none;
-    font-size: 1.2rem;
-    line-height: 2.2rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     transition: all 0.3s ease;
+    height: 32px;
 
     ~ ${IconWrapper} {
         color: ${(props) => props.theme.fow.colors.text.disabled};
@@ -78,7 +79,7 @@ export const StyledInput = styled.input<InputProps>`
             ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.grey.main};
+                    : props.theme.fow.colors.error.transparent48};
 
         ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.text.primary};

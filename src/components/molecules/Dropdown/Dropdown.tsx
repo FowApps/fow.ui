@@ -33,6 +33,7 @@ export interface DropdownProps {
         | React.DetailedReactHTMLElement<any, HTMLElement>
         | ((api: RenderProps) => React.ReactNode);
 }
+let interval;
 
 const Dropdown = (
     {
@@ -76,9 +77,12 @@ const Dropdown = (
                     {(state) => (
                         <Content
                             state={state}
-                            onMouseEnter={
-                                trigger === 'hover' ? open : undefined
-                            }
+                            onMouseEnter={() => {
+                                if (trigger === 'hover') {
+                                    clearInterval(interval);
+                                    open();
+                                }
+                            }}
                             onMouseLeave={
                                 trigger === 'hover' ? close : undefined
                             }>
@@ -96,6 +100,13 @@ const Dropdown = (
                 }}
                 onMouseEnter={() => {
                     if (trigger === 'hover') open();
+                }}
+                onMouseLeave={() => {
+                    if (trigger === 'hover') {
+                        interval = setTimeout(() => {
+                            close();
+                        }, 500);
+                    }
                 }}
                 style={{
                     cursor: 'pointer',
