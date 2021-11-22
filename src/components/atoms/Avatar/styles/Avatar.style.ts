@@ -4,9 +4,9 @@ import setSize from './size';
 import setShape from './shape';
 
 type AvatarProps = {
-    color: 'primary' | 'secondary';
+    color: 'primary' | 'secondary' | 'grey';
     src?: string;
-    size: 'xsmall' | 'small' | 'medium' | 'large';
+    size: 'small' | 'medium' | 'large';
     shape: 'rounded' | 'circle' | 'flat';
 };
 

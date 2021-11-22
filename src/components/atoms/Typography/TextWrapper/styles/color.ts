@@ -21,15 +21,15 @@ const disabled = css`
 `;
 
 const warning = css`
-    color: ${(props) => props.theme.fow.colors.warning.main};
+    color: ${(props) => props.theme.fow.colors.warning.dark};
 `;
 
 const success = css`
-    color: ${(props) => props.theme.fow.colors.success.main};
+    color: ${(props) => props.theme.fow.colors.success.dark};
 `;
 
 const error = css`
-    color: ${(props) => props.theme.fow.colors.error.main};
+    color: ${(props) => props.theme.fow.colors.error.dark};
 `;
 
 const color = {

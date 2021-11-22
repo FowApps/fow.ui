@@ -59,6 +59,19 @@ const loadingVariants = {
     },
 };
 
+const setSpaceSize = (size: ButtonProps['size']) => {
+    switch (size) {
+        case 'small':
+            return 'xxsmall';
+        case 'medium':
+            return 'small';
+        case 'large':
+            return 'xsmall';
+        default:
+            return 'small';
+    }
+};
+
 const Button = (
     {
         color = 'primary',
@@ -94,7 +107,7 @@ const Button = (
             />
         )}
         <span>
-            <Space inline={false}>
+            <Space size={setSpaceSize(size)} inline={false}>
                 {leftIcon && <Icon icon={leftIcon} />}
                 {children && <span>{children}</span>}
                 {rightIcon && !fab && <Icon icon={rightIcon} />}
