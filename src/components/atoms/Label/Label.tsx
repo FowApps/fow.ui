@@ -29,17 +29,16 @@ export interface LabelProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    isClosable?: FontAwesomeIconProps['icon'] | null;
+    isClosable?: FontAwesomeIconProps['icon'] | boolean;
     text?: React.ReactNode | 'string';
 }
 
-const dataDismiss = () => alert('you click times icon');
 const Label = ({
     shape = 'rounded',
     size = 'medium',
     variant = 'filled',
     color = 'pink',
-    isClosable = null,
+    isClosable = false,
     leftIcon = null,
     rightIcon = null,
     text,
@@ -59,15 +58,7 @@ const Label = ({
                     {text && <span>{text}</span>}
                     {rightIcon && <Icon size="sm" icon={rightIcon} />}
                 </Space>
-
-                {isClosable && (
-                    <Icon
-                        size="xs"
-                        icon="times"
-                        style={{ cursor: 'pointer' }}
-                        onClick={dataDismiss}
-                    />
-                )}
+                {isClosable && <Icon size="xs" icon="times" cursor="pointer" />}
             </Space>
         </span>
     </StyledLabel>

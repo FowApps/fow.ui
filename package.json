@@ -17,7 +17,7 @@
         "test": "jest --config jest.config.js"
     },
     "keywords": [],
-    "author": "<betulkyaa19@gmail.com>",
+    "author": "",
     "license": "MIT",
     "files": [
         "lib",
