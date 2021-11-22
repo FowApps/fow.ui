@@ -29,8 +29,9 @@ export interface LabelProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    isClosable?: FontAwesomeIconProps['icon'] | boolean;
+    isClosable?: boolean;
     text?: React.ReactNode | 'string';
+    onClose?: () => void;
 }
 
 const Label = ({
@@ -42,6 +43,7 @@ const Label = ({
     leftIcon = null,
     rightIcon = null,
     text,
+    onClose,
     ...rest
 }: LabelProps): JSX.Element => (
     <StyledLabel
@@ -58,7 +60,14 @@ const Label = ({
                     {text && <span>{text}</span>}
                     {rightIcon && <Icon size="sm" icon={rightIcon} />}
                 </Space>
-                {isClosable && <Icon size="xs" icon="times" cursor="pointer" />}
+                {isClosable && (
+                    <Icon
+                        size="xs"
+                        icon="times"
+                        cursor="pointer"
+                        onClick={onClose}
+                    />
+                )}
             </Space>
         </span>
     </StyledLabel>
