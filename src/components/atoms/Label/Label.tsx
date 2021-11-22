@@ -61,7 +61,12 @@ const Label = ({
                 </Space>
 
                 {isClosable && (
-                    <Icon size="xs" icon="times" onClick={dataDismiss} />
+                    <Icon
+                        size="xs"
+                        icon="times"
+                        style={{ cursor: 'pointer' }}
+                        onClick={dataDismiss}
+                    />
                 )}
             </Space>
         </span>

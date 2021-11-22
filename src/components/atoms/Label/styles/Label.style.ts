@@ -13,11 +13,8 @@ type LabelProps = {
 export const StyledLabel = styled.div<LabelProps>`
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    //text-align: center;
-    padding-right: ${(props) => props.theme.fow.spacing.xsmall};
-    padding-left: ${(props) => props.theme.fow.spacing.xsmall};
-    //padding-top: 0.1rem;
+    padding-right: ${(props) => props.theme.fow.spacing.small};
+    padding-left: ${(props) => props.theme.fow.spacing.small};
     border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.2)}rem;
     color: white;
     font-weight: 500;
