@@ -15,7 +15,7 @@ export const StyledLabel = styled.div<LabelProps>`
     align-items: center;
     padding-right: ${(props) => props.theme.fow.spacing.small};
     padding-left: ${(props) => props.theme.fow.spacing.small};
-    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.2)}rem;
+    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.4)}rem;
     color: white;
     font-weight: 700;
     font-style: normal;
