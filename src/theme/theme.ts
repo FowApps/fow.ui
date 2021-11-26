@@ -199,7 +199,7 @@ export const theme: DefaultTheme = {
                 transparent48: 'rgba(159, 152, 241, 0.48)',
             },
             text: {
-                primary: '#212B36',
+                primary: '#454F5B',
                 secondary: '#637381',
                 disabled: '#919EAB',
             },
