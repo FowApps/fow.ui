@@ -1,4 +1,4 @@
-export const langEN = {
+export const en = {
     buttonText: {
         day: 'Day',
         month: 'Month',

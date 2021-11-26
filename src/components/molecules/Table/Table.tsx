@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // @ts-nocheck
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+    useContext,
+} from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 
@@ -21,8 +27,8 @@ import Loader from '../../atoms/Loader';
 import Icon from '../../atoms/Icon';
 
 // language files
-import { langTR } from './locales/tr';
-import { langEN } from './locales/en';
+import { tr } from './locales/tr';
+import { en } from './locales/en';
 
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 
@@ -87,8 +93,8 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const localization = {
-    tr: langTR,
-    en: langEN,
+    tr,
+    en,
 };
 
 const Table = ({
@@ -108,6 +114,7 @@ const Table = ({
     sortBy: controlledSortBy = [],
     initialPage = 1,
 }: TableProps): JSX.Element => {
+    const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
     const rightShadowRef = useRef();
 
@@ -331,7 +338,6 @@ const Table = ({
             rightShadowRef.current.style.display = 'block';
         }
     };
-    const configLanguage = React.useContext(ConfigContext).config;
     return (
         <Container>
             <Space
@@ -355,7 +361,7 @@ const Table = ({
                                             size="xsmall">
                                             <Subtitle level={1}>
                                                 {
-                                                    localization[configLanguage]
+                                                    localization[language]
                                                         .selectedColumns
                                                 }
                                             </Subtitle>
@@ -449,7 +455,7 @@ const Table = ({
                                             size="xsmall">
                                             <Input
                                                 placeholder={
-                                                    localization[configLanguage]
+                                                    localization[language]
                                                         .search
                                                 }
                                                 suffixIcon="search"
@@ -473,9 +479,8 @@ const Table = ({
                                                 ).length === 0 && (
                                                 <Message
                                                     message={
-                                                        localization[
-                                                            configLanguage
-                                                        ].allColumnSelected
+                                                        localization[language]
+                                                            .allColumnSelected
                                                     }
                                                     type="empty"
                                                     width="100"
@@ -509,7 +514,7 @@ const Table = ({
                                 <Space>
                                     <Icon icon="columns" />
                                     <span>
-                                        {localization[configLanguage].columns}
+                                        {localization[language].columns}
                                     </span>
                                 </Space>
                             </Subtitle>
@@ -589,7 +594,7 @@ const Table = ({
                             color={theme.fow.colors.text.disabled}
                         />
                         <Subtitle color="disabled">
-                            {localization[configLanguage].noData}
+                            {localization[language].noData}
                         </Subtitle>
                     </Space>
                 </EmptyPlaceholder>
@@ -619,8 +624,7 @@ const Table = ({
                                         onClick={() => {
                                             handleChangeSize(size);
                                         }}>
-                                        {size} /{' '}
-                                        {localization[configLanguage].page}
+                                        {size} / {localization[language].page}
                                     </Menu.Item>
                                 ))}
                             </Menu>
@@ -630,7 +634,7 @@ const Table = ({
                                 <Space>
                                     <span>
                                         {pageSize} /{' '}
-                                        {localization[configLanguage].page}
+                                        {localization[language].page}
                                     </span>
                                     <Icon icon="chevron-down" />
                                 </Space>
@@ -638,7 +642,7 @@ const Table = ({
                         </SizePicker>
                     </Dropdown>
                     <Body level={2}>
-                        {localization[configLanguage].results}:{' '}
+                        {localization[language].results}:{' '}
                         {(currentPage - 1) * pageSize} -
                         {currentPage * pageSize > totalCount
                             ? totalCount

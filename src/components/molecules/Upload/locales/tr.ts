@@ -1,4 +1,4 @@
-export const langTR = {
+export const tr = {
     label: 'Manifest Dosyasını Yükle',
     placeholder: 'Dosyaları Seç',
     description: 'Dosyaları buraya bırakın veya bilgisayarınıza göz atın',

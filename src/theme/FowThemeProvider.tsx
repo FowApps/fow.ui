@@ -22,23 +22,27 @@ export interface PrimaryColorTypes {
     transparent32: string;
     transparent48: string;
 }
+
+export type IConfig = {
+    language: 'tr' | 'en';
+};
 export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
     oldUITheme?: any;
     children: React.ReactNode;
-    config?: any;
+    config: IConfig;
 }
 
-export const ConfigContext = React.createContext<any | null>(null);
+export const ConfigContext = React.createContext<IConfig>({ language: 'en' });
 export const ConfigContextProvider = ConfigContext.Provider;
 
 const FowTheme = ({
     appPrimaryColors,
     oldUITheme, // temporary old ui theme variables
     children,
-    config,
+    config = { language: 'en' },
 }: FowThemeProps): JSX.Element => (
-    <ConfigContextProvider value={{ config: config.lang || 'en' }}>
+    <ConfigContextProvider value={{ language: config.language }}>
         <ThemeProvider
             theme={{
                 ...theme,

@@ -1,4 +1,4 @@
-export const langEN = {
+export const en = {
     sortByallColumnSelected: 'All columns are selected.',
     columns: 'Columns',
     noData: 'No data found.',

@@ -1,5 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useState, FormEvent, useEffect } from 'react';
+import React, {
+    useRef,
+    useState,
+    FormEvent,
+    useEffect,
+    useContext,
+} from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DefaultTheme, withTheme } from 'styled-components';
 
@@ -23,8 +29,8 @@ import {
 import useToast from '../Toast/useToast';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 // language files
-import { langTR } from './locales/tr';
-import { langEN } from './locales/en';
+import { tr } from './locales/tr';
+import { en } from './locales/en';
 
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 
@@ -98,8 +104,8 @@ const wrapperVariants = {
 };
 
 const localization = {
-    tr: langTR,
-    en: langEN,
+    tr,
+    en,
 };
 
 const Upload = ({
@@ -113,7 +119,7 @@ const Upload = ({
     required = false,
     theme,
 }: UploadProps): JSX.Element => {
-    const configLanguage = React.useContext(ConfigContext)?.config;
+    const { language } = useContext(ConfigContext);
     const fileInputField = useRef<HTMLInputElement>(null);
     const [files, setFiles] = useState<File[]>([]);
     const toast = useToast();
@@ -136,7 +142,7 @@ const Upload = ({
                 }
             } else {
                 toast.add(
-                    `${localization[configLanguage].sizeError}(${newFile.name})` ||
+                    `${localization[language].sizeError}(${newFile.name})` ||
                         '',
                     {
                         appearance: 'error',
@@ -214,7 +220,7 @@ const Upload = ({
         <Wrapper>
             {label && (
                 <Label required={required} hasError={!!error}>
-                    {localization[configLanguage].label}
+                    {localization[language].label}
                 </Label>
             )}
             <FileUploadContainer disabled={disabled}>
@@ -226,13 +232,13 @@ const Upload = ({
                     />
                     <Space direction="vertical" align="start" size="xsmall">
                         <Heading as="h5">
-                            {localization[configLanguage].placeholder}
+                            {localization[language].placeholder}
                         </Heading>
                         <Subtitle level={2}>
-                            {localization[configLanguage].description}
+                            {localization[language].description}
                         </Subtitle>
                         <Caption>
-                            {localization[configLanguage].sizeInfo}:{' '}
+                            {localization[language].sizeInfo}:{' '}
                             {convertBytesToKB(maxFileSizeInBytes)} Kb
                         </Caption>
                     </Space>

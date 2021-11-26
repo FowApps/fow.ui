@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, { useContext } from 'react';
 import Space from '../Space';
 
 import {
@@ -80,7 +80,7 @@ const Checkbox = ({
     children,
     ...rest
 }: CheckboxProps): JSX.Element => {
-    const checkboxGroup = React.useContext(GroupContext);
+    const checkboxGroup = useContext(GroupContext);
     const prevValue = React.useRef(rest.value);
 
     React.useEffect(() => {

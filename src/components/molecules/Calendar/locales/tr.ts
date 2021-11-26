@@ -1,4 +1,4 @@
-export const langTR = {
+export const tr = {
     buttonText: {
         day: 'Gün',
         month: 'Ay',

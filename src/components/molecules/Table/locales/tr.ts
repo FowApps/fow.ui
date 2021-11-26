@@ -1,4 +1,4 @@
-export const langTR = {
+export const tr = {
     sortByallColumnSelected: 'Tüm sütunlar seçildi.',
     columns: 'Sütunlar',
     noData: 'Data bulunamadı.',
