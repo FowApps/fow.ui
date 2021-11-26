@@ -12,7 +12,7 @@ import FowIcons from './FowIcons';
 library.add(far, fas);
 library.add(FowIcons);
 
-type FowIconsType = 'fow-logo' | 'fow-order-dots';
+type FowIconsType = 'fow-logo' | 'fow-order-dots' | 'fow-pipeline';
 // @ts-ignore
 export interface IconProps extends FontAwesomeIconProps {
     icon: FontAwesomeIconProps['icon'] | FowIconsType;
