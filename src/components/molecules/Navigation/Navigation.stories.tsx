@@ -42,15 +42,36 @@ Inline.args = {
 const HorizontalTemplate: Story = (args) => (
     <Menu {...args}>
         <Item key="level-1">
-            <a>Test</a>
+            <Icon icon="user-circle" />
         </Item>
-        <Item key="level-2">Level 2</Item>
-        <Item key="level-3">Level 3</Item>
-        <Item key="level-4">Level 4</Item>
-        <Item key="level-5">Level 5</Item>
-        <Item key="level-6">Level 6</Item>
-        <Item key="level-7">Level 7</Item>
-        <Item key="level-8">Level 8</Item>
+        <Item key="level-2">
+            <Icon icon="chart-line" />
+        </Item>
+        <Item key="level-3">
+            <Icon icon="database" />
+        </Item>
+        <SubMenu key="sub-level-1" title="Customer">
+            <Item key="level-4">
+                <a>Contact</a>
+            </Item>
+            <Item key="level-5">
+                <a>Account</a>
+            </Item>
+        </SubMenu>
+        <SubMenu key="sub-level-2" title="Sales">
+            <Item key="level-6">
+                <a>Lead</a>
+            </Item>
+            <Item key="level-7">
+                <a>Opportunity</a>
+            </Item>
+            <Item key="level-8">
+                <a>Qoute</a>
+            </Item>
+        </SubMenu>
+        <Item key="level-8">
+            <a>Single Item</a>
+        </Item>
     </Menu>
 );
 

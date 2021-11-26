@@ -46,6 +46,13 @@ export const DropdownStyles = createGlobalStyle`
                     color: ${(props) => props.theme.fow.colors.primary.main};
                 }
             }
+
+            &.rc-menu-vertical {
+                h3 {
+                    font-weight: 500;
+                    font-size: 1.4rem;
+                }
+            }
         }
     }
 `;
@@ -208,7 +215,7 @@ export const StyledMenu = styled(RcMenu)`
 
         .rc-menu-submenu,
         .rc-menu-item {
-            padding: 16px;
+            padding: 16px 8px;
             border: none;
 
             ${IconWrapper} {
@@ -218,20 +225,21 @@ export const StyledMenu = styled(RcMenu)`
 
             h3 {
                 font-weight: 500;
-                font-size: 1.2rem;
+                display: initial;
             }
         }
 
         .rc-menu-overflow-item-rest {
             padding: 0;
             .rc-menu-submenu-title {
-                padding: 16px;
+                padding: 16px 8px;
             }
         }
 
         h3 span {
             line-height: 1;
             transition: all 0.3s ease;
+            display: initial;
         }
 
         > .rc-menu-item-active,
@@ -246,6 +254,7 @@ export const StyledMenu = styled(RcMenu)`
             h3 span {
                 color: ${(props) => props.theme.fow.colors.primary.main};
                 line-height: 1;
+                display: initial;
             }
         }
 
@@ -257,6 +266,7 @@ export const StyledMenu = styled(RcMenu)`
             h3 span {
                 color: ${(props) => props.theme.fow.colors.primary.main};
                 line-height: 1;
+                display: initial;
             }
 
             ${IconWrapper} {
@@ -264,15 +274,8 @@ export const StyledMenu = styled(RcMenu)`
             }
         }
 
-        > .rc-menu-item-selected:before {
-            content: ' ';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: ${(props) => props.theme.fow.colors.primary.main};
+        > .rc-menu-submenu > .rc-menu-submenu-title {
+            padding: 0;
         }
     }
 `;
