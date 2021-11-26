@@ -22,6 +22,11 @@ import {
 } from './styles';
 import useToast from '../Toast/useToast';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
+// language files
+import { langTR } from './locales/tr';
+import { langEN } from './locales/en';
+
+import { ConfigContext } from '../../../theme/FowThemeProvider';
 
 const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
 
@@ -92,6 +97,11 @@ const wrapperVariants = {
     },
 };
 
+const localization = {
+    tr: langTR,
+    en: langEN,
+};
+
 const Upload = ({
     label,
     onChange,
@@ -101,14 +111,9 @@ const Upload = ({
     error,
     disabled = false,
     required = false,
-    localization = {
-        placeholder: 'Select Files',
-        description: 'Drop files here or click browse thorough your machine',
-        sizeError: 'File is too big.',
-        sizeInfo: 'Maximum allowed upload file size',
-    },
     theme,
 }: UploadProps): JSX.Element => {
+    const configLanguage = React.useContext(ConfigContext)?.config;
     const fileInputField = useRef<HTMLInputElement>(null);
     const [files, setFiles] = useState<File[]>([]);
     const toast = useToast();
@@ -130,10 +135,14 @@ const Upload = ({
                     setFiles([newFile]);
                 }
             } else {
-                toast.add(`${localization.sizeError}(${newFile.name})` || '', {
-                    appearance: 'error',
-                    duration: 3000,
-                });
+                toast.add(
+                    `${localization[configLanguage].sizeError}(${newFile.name})` ||
+                        '',
+                    {
+                        appearance: 'error',
+                        duration: 3000,
+                    },
+                );
             }
         });
 
@@ -205,7 +214,7 @@ const Upload = ({
         <Wrapper>
             {label && (
                 <Label required={required} hasError={!!error}>
-                    {label}
+                    {localization[configLanguage].label}
                 </Label>
             )}
             <FileUploadContainer disabled={disabled}>
@@ -216,12 +225,14 @@ const Upload = ({
                         color={theme?.fow.colors.grey.lighter}
                     />
                     <Space direction="vertical" align="start" size="xsmall">
-                        <Heading as="h5">{localization.placeholder}</Heading>
+                        <Heading as="h5">
+                            {localization[configLanguage].placeholder}
+                        </Heading>
                         <Subtitle level={2}>
-                            {localization.description}
+                            {localization[configLanguage].description}
                         </Subtitle>
                         <Caption>
-                            {localization.sizeInfo}:{' '}
+                            {localization[configLanguage].sizeInfo}:{' '}
                             {convertBytesToKB(maxFileSizeInBytes)} Kb
                         </Caption>
                     </Space>

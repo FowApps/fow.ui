@@ -20,6 +20,12 @@ import Subtitle from '../../atoms/Typography/Subtitle';
 import Loader from '../../atoms/Loader';
 import Icon from '../../atoms/Icon';
 
+// language files
+import { langTR } from './locales/tr';
+import { langEN } from './locales/en';
+
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+
 import {
     Container,
     Wrapper,
@@ -80,6 +86,11 @@ const reorder = (list, startIndex, endIndex) => {
     return result;
 };
 
+const localization = {
+    tr: langTR,
+    en: langEN,
+};
+
 const Table = ({
     data = [],
     columns = [],
@@ -96,14 +107,6 @@ const Table = ({
     manualSortBy = false,
     sortBy: controlledSortBy = [],
     initialPage = 1,
-    localization = {
-        allColumnSelected: 'All columns are selected.',
-        columns: 'Columns',
-        noData: 'No data found',
-        page: 'Page',
-        results: 'Results',
-        selectedColumns: 'Selected Columns',
-    },
 }: TableProps): JSX.Element => {
     const leftShadowRef = useRef();
     const rightShadowRef = useRef();
@@ -328,7 +331,7 @@ const Table = ({
             rightShadowRef.current.style.display = 'block';
         }
     };
-
+    const configLanguage = React.useContext(ConfigContext).config;
     return (
         <Container>
             <Space
@@ -351,7 +354,10 @@ const Table = ({
                                             align="start"
                                             size="xsmall">
                                             <Subtitle level={1}>
-                                                {localization.selectedColumns}
+                                                {
+                                                    localization[configLanguage]
+                                                        .selectedColumns
+                                                }
                                             </Subtitle>
                                             <DragDropContext
                                                 onDragEnd={handleColumnDragEnd}>
@@ -442,7 +448,10 @@ const Table = ({
                                             align="start"
                                             size="xsmall">
                                             <Input
-                                                placeholder="Search"
+                                                placeholder={
+                                                    localization[configLanguage]
+                                                        .search
+                                                }
                                                 suffixIcon="search"
                                                 onChange={(value) =>
                                                     setColumnQuery(value)
@@ -464,7 +473,9 @@ const Table = ({
                                                 ).length === 0 && (
                                                 <Message
                                                     message={
-                                                        localization.allColumnSelected
+                                                        localization[
+                                                            configLanguage
+                                                        ].allColumnSelected
                                                     }
                                                     type="empty"
                                                     width="100"
@@ -497,7 +508,9 @@ const Table = ({
                             <Subtitle level={1} color="secondary">
                                 <Space>
                                     <Icon icon="columns" />
-                                    <span>{localization.columns}</span>
+                                    <span>
+                                        {localization[configLanguage].columns}
+                                    </span>
                                 </Space>
                             </Subtitle>
                         </Dropdown>
@@ -576,7 +589,7 @@ const Table = ({
                             color={theme.fow.colors.text.disabled}
                         />
                         <Subtitle color="disabled">
-                            {localization.noData}
+                            {localization[configLanguage].noData}
                         </Subtitle>
                     </Space>
                 </EmptyPlaceholder>
@@ -606,7 +619,8 @@ const Table = ({
                                         onClick={() => {
                                             handleChangeSize(size);
                                         }}>
-                                        {size} / {localization.page}
+                                        {size} /{' '}
+                                        {localization[configLanguage].page}
                                     </Menu.Item>
                                 ))}
                             </Menu>
@@ -615,7 +629,8 @@ const Table = ({
                             <Subtitle level={3}>
                                 <Space>
                                     <span>
-                                        {pageSize} / {localization.page}
+                                        {pageSize} /{' '}
+                                        {localization[configLanguage].page}
                                     </span>
                                     <Icon icon="chevron-down" />
                                 </Space>
@@ -623,7 +638,8 @@ const Table = ({
                         </SizePicker>
                     </Dropdown>
                     <Body level={2}>
-                        {localization.results}: {(currentPage - 1) * pageSize} -
+                        {localization[configLanguage].results}:{' '}
+                        {(currentPage - 1) * pageSize} -
                         {currentPage * pageSize > totalCount
                             ? totalCount
                             : currentPage * pageSize}{' '}

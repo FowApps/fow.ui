@@ -26,34 +26,41 @@ export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
     oldUITheme?: any;
     children: React.ReactNode;
+    config?: any;
 }
+
+export const ConfigContext = React.createContext<any | null>(null);
+export const ConfigContextProvider = ConfigContext.Provider;
 
 const FowTheme = ({
     appPrimaryColors,
     oldUITheme, // temporary old ui theme variables
     children,
+    config,
 }: FowThemeProps): JSX.Element => (
-    <ThemeProvider
-        theme={{
-            ...theme,
-            ...oldUITheme,
-            fow: {
-                ...theme.fow,
-                colors: {
-                    ...theme.fow.colors,
-                    primary: {
-                        ...(appPrimaryColors || theme.fow.colors.primary),
+    <ConfigContextProvider value={{ config: config.lang || 'en' }}>
+        <ThemeProvider
+            theme={{
+                ...theme,
+                ...oldUITheme,
+                fow: {
+                    ...theme.fow,
+                    colors: {
+                        ...theme.fow.colors,
+                        primary: {
+                            ...(appPrimaryColors || theme.fow.colors.primary),
+                        },
                     },
                 },
-            },
-        }}>
-        <GlobalStyle />
-        <ToastContextProvider>
-            <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-                <ConfirmProvider>{children}</ConfirmProvider>
-            </DndProvider>
-        </ToastContextProvider>
-    </ThemeProvider>
+            }}>
+            <GlobalStyle />
+            <ToastContextProvider>
+                <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+                    <ConfirmProvider>{children}</ConfirmProvider>
+                </DndProvider>
+            </ToastContextProvider>
+        </ThemeProvider>
+    </ConfigContextProvider>
 );
 
 export default FowTheme;
