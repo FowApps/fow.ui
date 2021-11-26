@@ -20,7 +20,7 @@ export interface LinkProps extends TextWrapperProps {
 
 const Link = ({
     level = 2,
-    textTransfrom = 'capitalize',
+    textTransfrom = 'none',
     color = 'black',
     textDecoration = 'none',
     fontStyle = 'normal',

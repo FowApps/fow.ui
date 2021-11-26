@@ -11,7 +11,7 @@ export interface TextWrapperProps {
         | 'secondary'
         | 'disabled'
         | 'white'
-        | 'black'
+        | 'black' // corresponds to the primary text color.
         | 'success'
         | 'warning'
         | 'error';
