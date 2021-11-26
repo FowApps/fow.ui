@@ -3,10 +3,11 @@ import setVariant from './variant';
 import { setSize } from './size';
 
 type LabelProps = {
-    color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+    color: 'pink' | 'orange' | 'green' | 'blue' | 'purple' | 'darkPurple';
     variant: 'outlined' | 'filled' | 'ghost';
     shape: 'rounded' | 'flat';
     size: 'small' | 'medium' | 'large';
+    hasText: boolean;
 };
 
 export const StyledLabel = styled.div<LabelProps>`
@@ -14,7 +15,7 @@ export const StyledLabel = styled.div<LabelProps>`
     align-items: center;
     padding-right: ${(props) => props.theme.fow.spacing.small};
     padding-left: ${(props) => props.theme.fow.spacing.small};
-    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.6)}rem;
+    border-radius: ${(props) => (props.shape === 'flat' ? 0 : 0.4)}rem;
     color: white;
     font-weight: 700;
     font-style: normal;
