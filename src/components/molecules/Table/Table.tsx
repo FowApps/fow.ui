@@ -331,179 +331,187 @@ const Table = ({
 
     return (
         <Container>
-            <Space
-                inline={false}
-                align="center"
-                justify="space-between"
-                style={{ marginBottom: 16 }}>
-                <div>
-                    {typeof renderFilters === 'function' && renderFilters()}
-                </div>
-                <div>
-                    {showColumnControls && (
-                        <Dropdown
-                            trigger="click"
-                            content={
-                                <ColumnList>
-                                    <div>
-                                        <Space
-                                            direction="vertical"
-                                            align="start"
-                                            size="xsmall">
-                                            <Subtitle level={1}>
-                                                {localization.selectedColumns}
-                                            </Subtitle>
-                                            <DragDropContext
-                                                onDragEnd={handleColumnDragEnd}>
-                                                <Droppable droppableId="droppable">
-                                                    {(dropProvided) => (
-                                                        <div
-                                                            {...dropProvided.droppableProps}
-                                                            ref={
-                                                                dropProvided.innerRef
-                                                            }>
-                                                            <Space
-                                                                direction="vertical"
-                                                                align="start"
-                                                                size="xsmall">
-                                                                {allColumns
-                                                                    .filter(
-                                                                        (
-                                                                            column,
-                                                                        ) =>
-                                                                            column.id !==
-                                                                                'selection' &&
-                                                                            column.isVisible,
-                                                                    )
-                                                                    .map(
-                                                                        (
-                                                                            column,
-                                                                            idx,
-                                                                        ) => (
-                                                                            <Draggable
-                                                                                key={
-                                                                                    column.id
-                                                                                }
-                                                                                draggableId={
-                                                                                    column.id
-                                                                                }
-                                                                                index={
-                                                                                    idx
-                                                                                }>
-                                                                                {(
-                                                                                    dragProvided,
-                                                                                ) => (
-                                                                                    <div
-                                                                                        ref={
-                                                                                            dragProvided.innerRef
-                                                                                        }
-                                                                                        {...dragProvided.draggableProps}
-                                                                                        {...dragProvided.dragHandleProps}>
-                                                                                        <Space>
-                                                                                            <OrderDots>
-                                                                                                <Icon icon="fow-order-dots" />
-                                                                                            </OrderDots>
-                                                                                            <Checkbox
-                                                                                                label={
-                                                                                                    column.Header
-                                                                                                }
-                                                                                                key={
-                                                                                                    column.id
-                                                                                                }
-                                                                                                {...column.getToggleHiddenProps()}
-                                                                                            />
-                                                                                        </Space>
-                                                                                        {
-                                                                                            dragProvided.placeholder
-                                                                                        }
-                                                                                    </div>
-                                                                                )}
-                                                                            </Draggable>
-                                                                        ),
-                                                                    )}
-                                                            </Space>
-                                                        </div>
-                                                    )}
-                                                </Droppable>
-                                            </DragDropContext>
-                                        </Space>
-                                    </div>
-                                    <Divider
-                                        direction="vertical"
-                                        size="small"
-                                        style={{
-                                            flex: 'unset',
-                                            height: '100%',
-                                        }}
-                                    />
-                                    <div>
-                                        <Space
-                                            direction="vertical"
-                                            align="start"
-                                            size="xsmall">
-                                            <Input
-                                                placeholder="Search"
-                                                suffixIcon="search"
-                                                onChange={(value) =>
-                                                    setColumnQuery(value)
-                                                }
-                                                value={columnQuery}
-                                            />
-                                            {allColumns
-                                                .filter(
-                                                    (column) =>
-                                                        column.id !==
-                                                            'selection' &&
-                                                        !column.isVisible,
-                                                )
-                                                .filter(
-                                                    (column) =>
-                                                        column.Header.toLowerCase().indexOf(
-                                                            columnQuery.toLocaleLowerCase(),
-                                                        ) > -1,
-                                                ).length === 0 && (
-                                                <Message
-                                                    message={
-                                                        localization.allColumnSelected
+            {(typeof renderFilters === 'function' || showColumnControls) && (
+                <Space
+                    inline={false}
+                    align="center"
+                    justify="space-between"
+                    style={{ marginBottom: 16 }}>
+                    <div>
+                        {typeof renderFilters === 'function' && renderFilters()}
+                    </div>
+                    <div>
+                        {showColumnControls && (
+                            <Dropdown
+                                trigger="click"
+                                content={
+                                    <ColumnList>
+                                        <div>
+                                            <Space
+                                                direction="vertical"
+                                                align="start"
+                                                size="xsmall">
+                                                <Subtitle level={1}>
+                                                    {
+                                                        localization.selectedColumns
                                                     }
-                                                    type="empty"
-                                                    width="100"
+                                                </Subtitle>
+                                                <DragDropContext
+                                                    onDragEnd={
+                                                        handleColumnDragEnd
+                                                    }>
+                                                    <Droppable droppableId="droppable">
+                                                        {(dropProvided) => (
+                                                            <div
+                                                                {...dropProvided.droppableProps}
+                                                                ref={
+                                                                    dropProvided.innerRef
+                                                                }>
+                                                                <Space
+                                                                    direction="vertical"
+                                                                    align="start"
+                                                                    size="xsmall">
+                                                                    {allColumns
+                                                                        .filter(
+                                                                            (
+                                                                                column,
+                                                                            ) =>
+                                                                                column.id !==
+                                                                                    'selection' &&
+                                                                                column.isVisible,
+                                                                        )
+                                                                        .map(
+                                                                            (
+                                                                                column,
+                                                                                idx,
+                                                                            ) => (
+                                                                                <Draggable
+                                                                                    key={
+                                                                                        column.id
+                                                                                    }
+                                                                                    draggableId={
+                                                                                        column.id
+                                                                                    }
+                                                                                    index={
+                                                                                        idx
+                                                                                    }>
+                                                                                    {(
+                                                                                        dragProvided,
+                                                                                    ) => (
+                                                                                        <div
+                                                                                            ref={
+                                                                                                dragProvided.innerRef
+                                                                                            }
+                                                                                            {...dragProvided.draggableProps}
+                                                                                            {...dragProvided.dragHandleProps}>
+                                                                                            <Space>
+                                                                                                <OrderDots>
+                                                                                                    <Icon icon="fow-order-dots" />
+                                                                                                </OrderDots>
+                                                                                                <Checkbox
+                                                                                                    label={
+                                                                                                        column.Header
+                                                                                                    }
+                                                                                                    key={
+                                                                                                        column.id
+                                                                                                    }
+                                                                                                    {...column.getToggleHiddenProps()}
+                                                                                                />
+                                                                                            </Space>
+                                                                                            {
+                                                                                                dragProvided.placeholder
+                                                                                            }
+                                                                                        </div>
+                                                                                    )}
+                                                                                </Draggable>
+                                                                            ),
+                                                                        )}
+                                                                </Space>
+                                                            </div>
+                                                        )}
+                                                    </Droppable>
+                                                </DragDropContext>
+                                            </Space>
+                                        </div>
+                                        <Divider
+                                            direction="vertical"
+                                            size="small"
+                                            style={{
+                                                flex: 'unset',
+                                                height: '100%',
+                                            }}
+                                        />
+                                        <div>
+                                            <Space
+                                                direction="vertical"
+                                                align="start"
+                                                size="xsmall">
+                                                <Input
+                                                    placeholder="Search"
+                                                    suffixIcon="search"
+                                                    onChange={(value) =>
+                                                        setColumnQuery(value)
+                                                    }
+                                                    value={columnQuery}
                                                 />
-                                            )}
-                                            {allColumns
-                                                .filter(
-                                                    (column) =>
-                                                        column.id !==
-                                                            'selection' &&
-                                                        !column.isVisible,
-                                                )
-                                                .filter(
-                                                    (column) =>
-                                                        column.Header.toLowerCase().indexOf(
-                                                            columnQuery.toLocaleLowerCase(),
-                                                        ) > -1,
-                                                )
-                                                .map((column) => (
-                                                    <Checkbox
-                                                        label={column.Header}
-                                                        key={column.id}
-                                                        {...column.getToggleHiddenProps()}
+                                                {allColumns
+                                                    .filter(
+                                                        (column) =>
+                                                            column.id !==
+                                                                'selection' &&
+                                                            !column.isVisible,
+                                                    )
+                                                    .filter(
+                                                        (column) =>
+                                                            column.Header.toLowerCase().indexOf(
+                                                                columnQuery.toLocaleLowerCase(),
+                                                            ) > -1,
+                                                    ).length === 0 && (
+                                                    <Message
+                                                        message={
+                                                            localization.allColumnSelected
+                                                        }
+                                                        type="empty"
+                                                        width="100"
                                                     />
-                                                ))}
-                                        </Space>
-                                    </div>
-                                </ColumnList>
-                            }>
-                            <Subtitle level={1} color="secondary">
-                                <Space>
-                                    <Icon icon="columns" />
-                                    <span>{localization.columns}</span>
-                                </Space>
-                            </Subtitle>
-                        </Dropdown>
-                    )}
-                </div>
-            </Space>
+                                                )}
+                                                {allColumns
+                                                    .filter(
+                                                        (column) =>
+                                                            column.id !==
+                                                                'selection' &&
+                                                            !column.isVisible,
+                                                    )
+                                                    .filter(
+                                                        (column) =>
+                                                            column.Header.toLowerCase().indexOf(
+                                                                columnQuery.toLocaleLowerCase(),
+                                                            ) > -1,
+                                                    )
+                                                    .map((column) => (
+                                                        <Checkbox
+                                                            label={
+                                                                column.Header
+                                                            }
+                                                            key={column.id}
+                                                            {...column.getToggleHiddenProps()}
+                                                        />
+                                                    ))}
+                                            </Space>
+                                        </div>
+                                    </ColumnList>
+                                }>
+                                <Subtitle level={1} color="secondary">
+                                    <Space>
+                                        <Icon icon="columns" />
+                                        <span>{localization.columns}</span>
+                                    </Space>
+                                </Subtitle>
+                            </Dropdown>
+                        )}
+                    </div>
+                </Space>
+            )}
             <Loader isLoading={isLoading} text="Loading..">
                 <LeftShadow ref={leftShadowRef} />
                 <Wrapper
