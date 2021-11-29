@@ -36,7 +36,7 @@ export const DropdownStyles = createGlobalStyle`
                 }
             }
 
-            .rc-menu-item-active, .rc-menu-item-selected {
+            .rc-menu-item-selected {
                 background-color: ${(props) =>
                     props.theme.fow.colors.common.white};
                 color: ${(props) => props.theme.fow.colors.primary.main};
@@ -51,6 +51,28 @@ export const DropdownStyles = createGlobalStyle`
                 h3 {
                     font-weight: 500;
                     font-size: 1.4rem;
+                }
+            }
+        }
+
+        .rc-menu-sub.rc-menu-vertical {
+            .rc-menu-item-active {
+                cursor: pointer;
+                background-color: ${(props) =>
+                    props.theme.fow.colors.primary.transparent8};
+            }
+
+            .rc-menu-item-selected {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.primary.transparent8} !important;
+                color: ${(props) =>
+                    props.theme.fow.colors.text.primary}!important;
+                cursor: pointer;
+
+                h3 span {
+                    color: ${(props) =>
+                        props.theme.fow.colors.text.primary}!important;
+
                 }
             }
         }
