@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // @ts-nocheck
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, {
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+    useContext,
+} from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 
@@ -19,6 +25,12 @@ import Body from '../../atoms/Typography/Body';
 import Subtitle from '../../atoms/Typography/Subtitle';
 import Loader from '../../atoms/Loader';
 import Icon from '../../atoms/Icon';
+
+// language files
+import { tr } from './locales/tr';
+import { en } from './locales/en';
+
+import { ConfigContext } from '../../../theme/FowThemeProvider';
 
 import {
     Container,
@@ -80,6 +92,11 @@ const reorder = (list, startIndex, endIndex) => {
     return result;
 };
 
+const localization = {
+    tr,
+    en,
+};
+
 const Table = ({
     data = [],
     columns = [],
@@ -96,15 +113,8 @@ const Table = ({
     manualSortBy = false,
     sortBy: controlledSortBy = [],
     initialPage = 1,
-    localization = {
-        allColumnSelected: 'All columns are selected.',
-        columns: 'Columns',
-        noData: 'No data found',
-        page: 'Page',
-        results: 'Results',
-        selectedColumns: 'Selected Columns',
-    },
 }: TableProps): JSX.Element => {
+    const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
     const rightShadowRef = useRef();
 
@@ -328,7 +338,6 @@ const Table = ({
             rightShadowRef.current.style.display = 'block';
         }
     };
-
     return (
         <Container>
             <Space
@@ -351,7 +360,10 @@ const Table = ({
                                             align="start"
                                             size="xsmall">
                                             <Subtitle level={1}>
-                                                {localization.selectedColumns}
+                                                {
+                                                    localization[language]
+                                                        .selectedColumns
+                                                }
                                             </Subtitle>
                                             <DragDropContext
                                                 onDragEnd={handleColumnDragEnd}>
@@ -442,7 +454,10 @@ const Table = ({
                                             align="start"
                                             size="xsmall">
                                             <Input
-                                                placeholder="Search"
+                                                placeholder={
+                                                    localization[language]
+                                                        .search
+                                                }
                                                 suffixIcon="search"
                                                 onChange={(value) =>
                                                     setColumnQuery(value)
@@ -464,7 +479,8 @@ const Table = ({
                                                 ).length === 0 && (
                                                 <Message
                                                     message={
-                                                        localization.allColumnSelected
+                                                        localization[language]
+                                                            .allColumnSelected
                                                     }
                                                     type="empty"
                                                     width="100"
@@ -497,7 +513,9 @@ const Table = ({
                             <Subtitle level={1} color="secondary">
                                 <Space>
                                     <Icon icon="columns" />
-                                    <span>{localization.columns}</span>
+                                    <span>
+                                        {localization[language].columns}
+                                    </span>
                                 </Space>
                             </Subtitle>
                         </Dropdown>
@@ -576,7 +594,7 @@ const Table = ({
                             color={theme.fow.colors.text.disabled}
                         />
                         <Subtitle color="disabled">
-                            {localization.noData}
+                            {localization[language].noData}
                         </Subtitle>
                     </Space>
                 </EmptyPlaceholder>
@@ -606,7 +624,7 @@ const Table = ({
                                         onClick={() => {
                                             handleChangeSize(size);
                                         }}>
-                                        {size} / {localization.page}
+                                        {size} / {localization[language].page}
                                     </Menu.Item>
                                 ))}
                             </Menu>
@@ -615,7 +633,8 @@ const Table = ({
                             <Subtitle level={3}>
                                 <Space>
                                     <span>
-                                        {pageSize} / {localization.page}
+                                        {pageSize} /{' '}
+                                        {localization[language].page}
                                     </span>
                                     <Icon icon="chevron-down" />
                                 </Space>
@@ -623,7 +642,8 @@ const Table = ({
                         </SizePicker>
                     </Dropdown>
                     <Body level={2}>
-                        {localization.results}: {(currentPage - 1) * pageSize} -
+                        {localization[language].results}:{' '}
+                        {(currentPage - 1) * pageSize} -
                         {currentPage * pageSize > totalCount
                             ? totalCount
                             : currentPage * pageSize}{' '}

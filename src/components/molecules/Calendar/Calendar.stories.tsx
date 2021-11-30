@@ -17,14 +17,6 @@ const Template: Story<CalendarProps> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    buttonText: {
-        day: 'Gün',
-        month: 'Ay',
-        week: 'Hafta',
-        today: 'Bugün',
-        allDay: 'Tüm Gün',
-    },
-    allDayText: 'Tüm Gün',
     events: [
         {
             title: 'Event 1',
