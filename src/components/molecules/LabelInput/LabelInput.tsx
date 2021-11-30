@@ -2,9 +2,9 @@ import * as React from 'react';
 import { ColorPicker, ContainerMenu } from './styles';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
-import Heading from '../../atoms/Typography/Heading';
 import Dropdown from '../Dropdown';
 import { Button, Divider, Input, Label } from '../../..';
+import Subtitle from '../../atoms/Typography/Subtitle';
 
 export type Colors =
     | 'pink'
@@ -78,7 +78,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
     return (
         <Space>
             <Space>
-                {labelValue.map((label: ILabel) => (
+                {labelValue?.map((label: ILabel) => (
                     <Label
                         key={label.id}
                         text={label.text}
@@ -99,10 +99,13 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                             key="menuItem"
                             direction="vertical"
                             align="start"
-                            size="small">
+                            size="xsmall">
                             <div style={{ width: '100%' }}>
-                                <Space justify="space-between" inline={false}>
-                                    <Heading as="h5">Add Label</Heading>
+                                <Space
+                                    justify="space-between"
+                                    inline={false}
+                                    style={{ marginBottom: '0.8rem' }}>
+                                    <Subtitle level={1}>Add Label</Subtitle>
                                     <Icon
                                         size="xs"
                                         icon="times"
@@ -118,13 +121,13 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                 />
                                 {console.log(labelText)}
                             </div>
-                            <br />
                             <div>
                                 <Space
                                     direction="vertical"
-                                    size="small"
+                                    size="xxsmall"
                                     align="start">
-                                    <Heading as="h5">Select Color</Heading>
+                                    <Subtitle level={1}>Select Color</Subtitle>
+
                                     <Space size="xsmall">
                                         {colors.map((color: Colors) => (
                                             <ColorPicker
@@ -147,7 +150,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
 
                             <Divider size="medium" />
                             <div style={{ width: '100%' }}>
-                                <Space justify="flex-end">
+                                <Space justify="flex-end" inline={false}>
                                     <Button
                                         onClick={onClickDone}
                                         color="success"
