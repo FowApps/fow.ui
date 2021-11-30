@@ -11,9 +11,5 @@ export default {
 
   export const Default = Template.bind({});
   Default.args = {
-    variant: 'filled',
-    size: 'medium',
-    shape: 'rounded',
-    color: 'pink',
-    text: 'Label',
+   text:'important'
 };
