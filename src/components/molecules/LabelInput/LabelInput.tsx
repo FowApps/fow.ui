@@ -5,6 +5,9 @@ import Space from '../../atoms/Space';
 import Dropdown from '../Dropdown';
 import { Button, Divider, Input, Label } from '../../..';
 import Subtitle from '../../atoms/Typography/Subtitle';
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+import { en } from '../Upload/locales/en';
+import { tr } from '../Upload/locales/tr';
 
 export type Colors =
     | 'pink'
@@ -13,6 +16,11 @@ export type Colors =
     | 'blue'
     | 'purple'
     | 'darkPurple';
+
+const localization = {
+    en,
+    tr,
+};
 
 export interface LabelInputProps {
     text?: string;
@@ -34,6 +42,8 @@ export interface ILabelValue {
 const colors = ['pink', 'orange', 'green', 'blue', 'purple', 'darkPurple'];
 
 const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
+    const { language } = React.useContext(ConfigContext);
+
     const [selectedColor, setSelectedColor] = React.useState<Colors>('pink');
 
     const [labelText, setLabelText] = React.useState<string>('');
@@ -105,7 +115,9 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                     justify="space-between"
                                     inline={false}
                                     style={{ marginBottom: '0.8rem' }}>
-                                    <Subtitle level={1}>Add Label</Subtitle>
+                                    <Subtitle level={1}>
+                                        {localization[language].addLabel}
+                                    </Subtitle>
                                     <Icon
                                         size="xs"
                                         icon="times"
@@ -126,7 +138,9 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                     direction="vertical"
                                     size="xxsmall"
                                     align="start">
-                                    <Subtitle level={1}>Select Color</Subtitle>
+                                    <Subtitle level={1}>
+                                        {localization[language].selectColor}
+                                    </Subtitle>
 
                                     <Space size="xsmall">
                                         {colors.map((color: Colors) => (
@@ -156,7 +170,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                         color="success"
                                         size="small"
                                         disabled={!selectedColor || !labelText}>
-                                        Done
+                                        {localization[language].done}
                                     </Button>
                                 </Space>
                             </div>
@@ -164,7 +178,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                     </ContainerMenu>
                 }>
                 <Button variant="text" leftIcon="plus" color="success">
-                    Add Label
+                    {localization[language].addLabel}
                 </Button>
             </Dropdown>
         </Space>
