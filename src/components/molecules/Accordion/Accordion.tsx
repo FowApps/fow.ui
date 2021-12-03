@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Space from '../../atoms/Space';
-import Heading from '../../atoms/Typography/Heading';
+import Subtitle from '../../atoms/Typography/Subtitle';
 import Icon from '../../atoms/Icon';
 
-import { Wrapper, Trigger, Content } from './styles';
+import {
+    Wrapper,
+    Trigger,
+    Content,
+    IconWrapper,
+    HeaderWrapper,
+} from './styles';
+import { theme } from '../../../theme/theme';
+import Body from '../../atoms/Typography/Body';
 
 export interface AccordionProps {
     /**
@@ -23,19 +31,20 @@ export interface AccordionProps {
     children: React.ReactNode | React.ReactNode[];
 }
 
+export interface ItemTitleActionProps {
+    id: number;
+    message: string;
+}
+export interface ItemTitleProps {
+    label?: string;
+    action?: ItemTitleActionProps[];
+}
+
 export interface AccordionItemProps {
     /**
      * label of trigger
      */
-    label: string;
-    /**
-     * extra content for end of trigger
-     */
-    extra?: string | React.ReactNode | React.ReactNode[];
-    /**
-     * icon of trigger
-     */
-    icon?: React.ReactNode;
+    label?: string;
     isCollapsed?: boolean;
     handleClick?: () => void;
     /**
@@ -43,30 +52,50 @@ export interface AccordionItemProps {
      */
     index: number;
     children: React.ReactNode;
+    data: ItemTitleProps;
 }
 
+const TitleDescription = ({ action }: ItemTitleProps) => (
+    <HeaderWrapper>
+        <Body level={1} color="secondary">
+            {action && (
+                <ul>
+                    {action.map((item) => (
+                        <li>{item.message}</li>
+                    ))}
+                </ul>
+            )}
+        </Body>
+    </HeaderWrapper>
+);
+
 const Item = ({
-    icon,
-    label,
-    extra,
     isCollapsed,
     handleClick,
+    data,
     children,
 }: AccordionItemProps) => (
     <>
         <Trigger isCollapsed={isCollapsed} role="button" onClick={handleClick}>
-            <Space>
-                {icon}
-                <Heading as="h6">{label}</Heading>
-            </Space>
-            <Space>
-                <div>{extra}</div>
+            <Space inline={false} align="center" direction="horizontal">
                 {isCollapsed ? (
-                    <Icon icon="chevron-down" />
+                    <IconWrapper>
+                        <Icon
+                            icon="chevron-down"
+                            color={theme.fow.colors.greyDark.light}
+                        />
+                    </IconWrapper>
                 ) : (
-                    <Icon icon="chevron-up" />
+                    <IconWrapper>
+                        <Icon
+                            icon="chevron-up"
+                            color={theme.fow.colors.greyDark.light}
+                        />
+                    </IconWrapper>
                 )}
+                <Subtitle level={1}>{data.label}</Subtitle>
             </Space>
+            {data.action && <TitleDescription action={data.action} />}
         </Trigger>
         <AnimatePresence>
             {!isCollapsed && (
@@ -115,13 +144,12 @@ const Accordion = ({
         <Wrapper bordered={bordered}>
             {items.map(({ props }) => (
                 <Item
-                    icon={props.icon}
                     key={`accordion-item-${props.index}`}
                     isCollapsed={bindIndex !== props.index}
                     label={props.label}
-                    extra={props.extra}
                     handleClick={() => changeItem(props.index)}
-                    index={props.index}>
+                    index={props.index}
+                    data={props.data}>
                     {props.children}
                 </Item>
             ))}

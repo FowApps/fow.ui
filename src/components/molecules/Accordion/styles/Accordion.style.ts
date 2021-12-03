@@ -21,8 +21,9 @@ export const Content = styled(motion.div)`
 
 export const Trigger = styled.div<TriggerProps>`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    flex-direction: column;
     border-bottom: 1px solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
     background-color: ${(props) => props.theme.fow.colors.common.white};
@@ -30,7 +31,7 @@ export const Trigger = styled.div<TriggerProps>`
     padding-inline: ${(props) => props.theme.fow.spacing.xlarge};
     padding-block: ${(props) => props.theme.fow.spacing.small};
     transition: color 0.4s ease;
-
+    padding: 8px 16px;
     &:last-of-type {
         border-bottom: ${(props) =>
             props.bordered
@@ -42,6 +43,22 @@ export const Trigger = styled.div<TriggerProps>`
 export const Wrapper = styled.div<WrapperProps>`
     border: ${(props) => (props.bordered ? '1px' : '0')} solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
-    border-radius: 8px;
+    border-radius: 0;
     background-color: transparent;
+`;
+
+export const IconWrapper = styled.div`
+    margin-right: 12px;
+    svg {
+        width: 12px !important;
+    }
+`;
+export const HeaderWrapper = styled.div`
+    margin-left: 24px;
+    ul,
+    p {
+        padding: 0;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
 `;
