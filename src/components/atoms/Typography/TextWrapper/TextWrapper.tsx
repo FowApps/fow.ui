@@ -14,7 +14,8 @@ export interface TextWrapperProps {
         | 'black' // corresponds to the primary text color.
         | 'success'
         | 'warning'
-        | 'error';
+        | 'error'
+        | 'info';
     /**
      * text transfrom
      */

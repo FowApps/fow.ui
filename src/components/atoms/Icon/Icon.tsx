@@ -12,7 +12,19 @@ import FowIcons from './FowIcons';
 library.add(far, fas);
 library.add(FowIcons);
 
-type FowIconsType = 'fow-logo' | 'fow-order-dots' | 'fow-pipeline';
+type FowIconsType =
+    | 'fow-logo'
+    | 'fow-order-dots'
+    | 'fow-pipeline'
+    | 'fow-person-star'
+    | 'fow-qoute'
+    | 'fow-person-plus'
+    | 'fow-activity-list'
+    | 'fow-lock'
+    | 'fow-academy'
+    | 'fow-book'
+    | 'fow-info'
+    | 'fow-cog';
 // @ts-ignore
 export interface IconProps extends FontAwesomeIconProps {
     icon: FontAwesomeIconProps['icon'] | FowIconsType;
