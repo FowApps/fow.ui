@@ -1,16 +1,33 @@
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { ColorPicker, ContainerMenu } from './styles';
-import Icon from '../../atoms/Icon';
-import Space from '../../atoms/Space';
-import Dropdown from '../Dropdown';
-import { Button, Divider, Input, Label } from '../../..';
-import Subtitle from '../../atoms/Typography/Subtitle';
-import { ConfigContext } from '../../../theme/FowThemeProvider';
-import { en } from '../Upload/locales/en';
-import { tr } from '../Upload/locales/tr';
 
-export type Colors =
+import {
+    Button,
+    Divider,
+    Input,
+    Label,
+    Dropdown,
+    Space,
+    Icon,
+    Typography,
+} from '../../..';
+
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
+
+import {
+    ColorPicker,
+    ContainerMenu,
+    TopWrapper,
+    BottomWrapper,
+} from './styles';
+
+import { en } from './locales/en';
+import { tr } from './locales/tr';
+
+const { Link, Subtitle } = Typography;
+
+export type ColorTypes =
     | 'pink'
     | 'orange'
     | 'green'
@@ -24,69 +41,85 @@ const localization = {
 };
 
 export interface LabelInputProps {
-    text?: string;
-    labelColor?: string;
-    onChange: (value: ILabelValue[]) => void;
-    value: ILabelValue[];
+    defaultValue?: ILabelValue[];
+    onChange?: (value: ILabelValue[]) => void;
 }
 export interface ILabel {
     id: string;
-    color: Colors;
+    color: ColorTypes;
     text: string;
 }
 
 export interface ILabelValue {
-    color: Colors;
+    color: ColorTypes;
     text: string;
     id: string;
 }
 
-const colors = ['pink', 'orange', 'green', 'blue', 'purple', 'darkPurple'];
+const colors: ColorTypes[] = [
+    'pink',
+    'orange',
+    'green',
+    'blue',
+    'purple',
+    'darkPurple',
+];
 
-const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
+const LabelInput = ({
+    onChange,
+    defaultValue = [],
+}: LabelInputProps): JSX.Element => {
     const { language } = React.useContext(ConfigContext);
+    const isMountFirstTime = useIsMountFirstTime();
 
-    const [selectedColor, setSelectedColor] = React.useState<Colors>('pink');
+    const [selectedColor, setSelectedColor] =
+        React.useState<ColorTypes>('pink');
 
-    const [labelText, setLabelText] = React.useState<string>('');
+    const [text, setText] = React.useState<string>('');
 
-    const [labelValue, setLabelValue] = React.useState<typeof value>([]);
+    const [value, setValue] = React.useState<ILabelValue[]>(
+        defaultValue.map((label) => ({
+            color: label.color,
+            text: label.text,
+            id: uuidv4(),
+        })),
+    );
 
-    const handleSelectColor = (color: Colors) => {
+    const handleSelectColor = (color: ColorTypes) => {
         setSelectedColor(color);
     };
 
     const handleChangeInput = (inputValue: string) => {
-        setLabelText(inputValue);
+        setText(inputValue);
     };
 
-    React.useEffect(() => {
-        onChange(labelValue);
-    }, [labelValue, onChange]);
-    const onClickDone = () => {
-        /* State'e item ekleme işlemleri */
-
-        setLabelValue((prevLabelValue) => [
-            ...prevLabelValue,
+    const handleDone = () => {
+        setValue((prevValue) => [
+            ...prevValue,
             {
                 color: selectedColor,
-                text: labelText,
+                text,
                 id: uuidv4(),
             },
         ]);
 
-        setLabelText('');
+        setText('');
     };
 
     const onDeleteLabel = (id: string) => {
-        /* Stateden ıtem silem işlemleri */
-        setLabelValue(labelValue.filter((label) => label.id !== id));
+        setValue((preValue) => preValue.filter((label) => label.id !== id));
     };
+
+    React.useEffect(() => {
+        if (!isMountFirstTime) {
+            onChange?.(value);
+        }
+    }, [value]);
 
     return (
         <Space>
             <Space>
-                {labelValue?.map((label: ILabel) => (
+                {value?.map((label: ILabel) => (
                     <Label
                         key={label.id}
                         text={label.text}
@@ -101,32 +134,29 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
             </Space>
             <Dropdown
                 trigger="click"
-                content={
+                content={(close) => (
                     <ContainerMenu>
-                        <Space direction="vertical" align="start" size="xsmall">
-                            <div style={{ width: '100%' }}>
-                                <Space
-                                    justify="space-between"
-                                    inline={false}
-                                    style={{ marginBottom: '0.8rem' }}>
+                        <TopWrapper>
+                            <Space
+                                direction="vertical"
+                                align="start"
+                                size="xsmall">
+                                <Space justify="space-between" inline={false}>
                                     <Subtitle level={1}>
                                         {localization[language].addLabel}
                                     </Subtitle>
                                     <Icon
-                                        size="xs"
+                                        cursor="pointer"
+                                        onClick={close}
                                         icon="times"
-                                        style={{ color: 'gray' }}
                                     />
                                 </Space>
-
                                 <Input
-                                    value={labelText}
+                                    value={text}
                                     onChange={(inputValue) =>
                                         handleChangeInput(inputValue)
                                     }
                                 />
-                            </div>
-                            <div>
                                 <Space
                                     direction="vertical"
                                     size="xxsmall"
@@ -134,9 +164,8 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                     <Subtitle level={1}>
                                         {localization[language].selectColor}
                                     </Subtitle>
-
                                     <Space size="xsmall">
-                                        {colors?.map((color: Colors) => (
+                                        {colors?.map((color: ColorTypes) => (
                                             <ColorPicker
                                                 key={color}
                                                 onClick={() => {
@@ -153,26 +182,25 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                         ))}
                                     </Space>
                                 </Space>
-                            </div>
-
-                            <Divider size="medium" />
-                            <div style={{ width: '100%' }}>
-                                <Space justify="flex-end" inline={false}>
-                                    <Button
-                                        onClick={onClickDone}
-                                        color="success"
-                                        size="small"
-                                        disabled={!selectedColor || !labelText}>
-                                        {localization[language].done}
-                                    </Button>
-                                </Space>
-                            </div>
-                        </Space>
+                            </Space>
+                        </TopWrapper>
+                        <Divider />
+                        <BottomWrapper>
+                            <Space justify="flex-end" inline={false}>
+                                <Button
+                                    onClick={handleDone}
+                                    color="success"
+                                    size="small"
+                                    disabled={!selectedColor || !text}>
+                                    {localization[language].done}
+                                </Button>
+                            </Space>
+                        </BottomWrapper>
                     </ContainerMenu>
-                }>
-                <Button variant="text" leftIcon="plus" color="success">
+                )}>
+                <Link level={3} leftIcon="plus" color="success">
                     {localization[language].addLabel}
-                </Button>
+                </Link>
             </Dropdown>
         </Space>
     );
