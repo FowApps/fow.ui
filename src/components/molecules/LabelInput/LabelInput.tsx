@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { ColorPicker, ContainerMenu } from './styles';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
@@ -37,6 +38,7 @@ export interface ILabel {
 export interface ILabelValue {
     color: Colors;
     text: string;
+    id: string;
 }
 
 const colors = ['pink', 'orange', 'green', 'blue', 'purple', 'darkPurple'];
@@ -48,42 +50,38 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
 
     const [labelText, setLabelText] = React.useState<string>('');
 
-    const [labelValue, setLabelValue] = React.useState(value);
+    const [labelValue, setLabelValue] = React.useState<typeof value>([]);
 
     const handleSelectColor = (color: Colors) => {
         setSelectedColor(color);
     };
 
     const handleChangeInput = (inputValue: string) => {
-        console.log('inputValue', inputValue);
         setLabelText(inputValue);
-    };
-
-    /*     const handleClickDone = () => {
-        onchange({
-            text: labelText,
-            labelColor: selectedColor,
-        });
-    };
- */
-
-    const onClickDone = () => {
-        console.log('labelText', labelText);
-        console.log('selectedColor', selectedColor);
-
-        /* State'e item ekleme işlemleri */
-
-        setLabelValue(labelValue);
-    };
-
-    const onDeleteLabel = (id: string) => {
-        /* Stateden ıtem silem işlemleri */
-        console.log('label deleted:', id);
     };
 
     React.useEffect(() => {
         onChange(labelValue);
     }, [labelValue, onChange]);
+    const onClickDone = () => {
+        /* State'e item ekleme işlemleri */
+
+        setLabelValue((prevLabelValue) => [
+            ...prevLabelValue,
+            {
+                color: selectedColor,
+                text: labelText,
+                id: uuidv4(),
+            },
+        ]);
+
+        setLabelText('');
+    };
+
+    const onDeleteLabel = (id: string) => {
+        /* Stateden ıtem silem işlemleri */
+        setLabelValue(labelValue.filter((label) => label.id !== id));
+    };
 
     return (
         <Space>
@@ -105,11 +103,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                 trigger="click"
                 content={
                     <ContainerMenu>
-                        <Space
-                            key="menuItem"
-                            direction="vertical"
-                            align="start"
-                            size="xsmall">
+                        <Space direction="vertical" align="start" size="xsmall">
                             <div style={{ width: '100%' }}>
                                 <Space
                                     justify="space-between"
@@ -131,7 +125,6 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                         handleChangeInput(inputValue)
                                     }
                                 />
-                                {console.log(labelText)}
                             </div>
                             <div>
                                 <Space
@@ -143,7 +136,7 @@ const LabelInput = ({ onChange, value }: LabelInputProps): JSX.Element => {
                                     </Subtitle>
 
                                     <Space size="xsmall">
-                                        {colors.map((color: Colors) => (
+                                        {colors?.map((color: Colors) => (
                                             <ColorPicker
                                                 key={color}
                                                 onClick={() => {
