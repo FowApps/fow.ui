@@ -35,7 +35,10 @@ const Template: Story<AccordionProps> = (args) => (
     <div>
         <Accordion {...args}>
             {accordionTitle.map((item, index) => (
-                <Accordion.Item index={index} data={item}>
+                <Accordion.Item
+                    index={index}
+                    label={item.label}
+                    action={item.action}>
                     <div style={wrapperStyles}>Test</div>
                 </Accordion.Item>
             ))}

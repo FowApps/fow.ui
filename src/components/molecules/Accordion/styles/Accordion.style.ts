@@ -48,17 +48,17 @@ export const Wrapper = styled.div<WrapperProps>`
 `;
 
 export const IconWrapper = styled.div`
-    margin-right: 12px;
+    margin-right: ${(props) => props.theme.fow.spacing.small};
     svg {
         width: 12px !important;
     }
 `;
 export const HeaderWrapper = styled.div`
-    margin-left: 24px;
+    margin-left: ${(props) => props.theme.fow.spacing.xlarge};
     ul,
     p {
         padding: 0;
-        margin-top: 8px;
+        margin-top: ${(props) => props.theme.fow.spacing.xsmall};
         margin-bottom: 0;
     }
 `;

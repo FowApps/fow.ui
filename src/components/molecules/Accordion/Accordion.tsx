@@ -36,10 +36,8 @@ export interface ItemTitleActionProps {
     message: string;
 }
 export interface ItemTitleProps {
-    label?: string;
     action?: ItemTitleActionProps[];
 }
-
 export interface AccordionItemProps {
     /**
      * label of trigger
@@ -52,7 +50,7 @@ export interface AccordionItemProps {
      */
     index: number;
     children: React.ReactNode;
-    data: ItemTitleProps;
+    action?: ItemTitleActionProps[];
 }
 
 const TitleDescription = ({ action }: ItemTitleProps) => (
@@ -60,8 +58,8 @@ const TitleDescription = ({ action }: ItemTitleProps) => (
         <Body level={1} color="secondary">
             {action && (
                 <ul>
-                    {action.map((item) => (
-                        <li>{item.message}</li>
+                    {action.map((item, index) => (
+                        <li key={index}>{item.message}</li>
                     ))}
                 </ul>
             )}
@@ -72,7 +70,8 @@ const TitleDescription = ({ action }: ItemTitleProps) => (
 const Item = ({
     isCollapsed,
     handleClick,
-    data,
+    label,
+    action,
     children,
 }: AccordionItemProps) => (
     <>
@@ -93,9 +92,9 @@ const Item = ({
                         />
                     </IconWrapper>
                 )}
-                <Subtitle level={1}>{data.label}</Subtitle>
+                <Subtitle level={1}>{label}</Subtitle>
             </Space>
-            {data.action && <TitleDescription action={data.action} />}
+            {action && <TitleDescription action={action} />}
         </Trigger>
         <AnimatePresence>
             {!isCollapsed && (
@@ -149,7 +148,7 @@ const Accordion = ({
                     label={props.label}
                     handleClick={() => changeItem(props.index)}
                     index={props.index}
-                    data={props.data}>
+                    action={props.action}>
                     {props.children}
                 </Item>
             ))}
