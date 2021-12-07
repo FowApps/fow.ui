@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Summary from './Summary';
-import { Wrapper } from './styles';
+import Summary, { SummaryProps } from './Summary';
 
 export default {
     title: 'Molecules/Summary',
@@ -69,20 +68,22 @@ const tempData = [
     },
 ];
 
-const Template: Story = (args) => {
+const Template: Story<SummaryProps> = (args) => {
     return (
-        <Wrapper column={2}>
+        <Summary.List column={args.column}>
             {tempData.map((item, index) => (
-                <Summary
-                    {...args}
+                <Summary.Item
                     title={item.label}
                     field={item.field}
                     description={item.description}
                     key={index}
                 />
             ))}
-        </Wrapper>
+        </Summary.List>
     );
 };
 
 export const Default = Template.bind({});
+Default.args = {
+    column: 2,
+};
