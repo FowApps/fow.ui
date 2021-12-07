@@ -28,41 +28,31 @@ export interface AccordionProps {
      * click event on trigger
      */
     onItemClick: (index: number) => void;
+    /**
+     * set accordion arrow position
+     */
+    arrowPosition?: 'left' | 'right';
     children: React.ReactNode | React.ReactNode[];
 }
 
-export interface ItemTitleActionProps {
-    id: number;
-    message: string;
-}
 export interface ItemTitleProps {
-    action?: ItemTitleActionProps[];
+    subtitle?: React.ReactNode;
+    arrowPosition?: 'left' | 'right';
 }
 export interface AccordionItemProps {
-    /**
-     * label of trigger
-     */
-    label?: string;
+    title?: string;
+    subtitle?: React.ReactNode;
     isCollapsed?: boolean;
     handleClick?: () => void;
-    /**
-     * index of trigger(must uniq like key)
-     */
     index: number;
+    arrowPosition?: 'left' | 'right';
     children: React.ReactNode;
-    action?: ItemTitleActionProps[];
 }
 
-const TitleDescription = ({ action }: ItemTitleProps) => (
-    <HeaderWrapper>
+const TitleDescription = ({ subtitle, arrowPosition }: ItemTitleProps) => (
+    <HeaderWrapper arrowPosition={arrowPosition}>
         <Body level={1} color="secondary">
-            {action && (
-                <ul>
-                    {action.map((item, index) => (
-                        <li key={index}>{item.message}</li>
-                    ))}
-                </ul>
-            )}
+            {subtitle}
         </Body>
     </HeaderWrapper>
 );
@@ -70,31 +60,44 @@ const TitleDescription = ({ action }: ItemTitleProps) => (
 const Item = ({
     isCollapsed,
     handleClick,
-    label,
-    action,
+    title,
+    subtitle,
+    arrowPosition,
     children,
 }: AccordionItemProps) => (
     <>
         <Trigger isCollapsed={isCollapsed} role="button" onClick={handleClick}>
-            <Space inline={false} align="center" direction="horizontal">
+            <Space
+                inline={false}
+                align="center"
+                direction="horizontal"
+                justify={
+                    arrowPosition === 'right' ? 'space-between' : 'flex-start'
+                }
+                reverse={arrowPosition === 'right'}>
                 {isCollapsed ? (
-                    <IconWrapper>
+                    <IconWrapper arrowPosition={arrowPosition}>
                         <Icon
                             icon="chevron-down"
                             color={theme.fow.colors.greyDark.light}
                         />
                     </IconWrapper>
                 ) : (
-                    <IconWrapper>
+                    <IconWrapper arrowPosition={arrowPosition}>
                         <Icon
                             icon="chevron-up"
                             color={theme.fow.colors.greyDark.light}
                         />
                     </IconWrapper>
                 )}
-                <Subtitle level={1}>{label}</Subtitle>
+                <Subtitle level={1}>{title}</Subtitle>
             </Space>
-            {action && <TitleDescription action={action} />}
+            {subtitle && (
+                <TitleDescription
+                    subtitle={subtitle}
+                    arrowPosition={arrowPosition}
+                />
+            )}
         </Trigger>
         <AnimatePresence>
             {!isCollapsed && (
@@ -122,6 +125,7 @@ const Accordion = ({
     defaultIndex,
     bordered = true,
     onItemClick,
+    arrowPosition = 'right',
     children,
 }: AccordionProps): JSX.Element => {
     const [bindIndex, setBindIndex] = useState(defaultIndex);
@@ -145,10 +149,11 @@ const Accordion = ({
                 <Item
                     key={`accordion-item-${props.index}`}
                     isCollapsed={bindIndex !== props.index}
-                    label={props.label}
+                    title={props.title}
                     handleClick={() => changeItem(props.index)}
                     index={props.index}
-                    action={props.action}>
+                    arrowPosition={arrowPosition}
+                    subtitle={props.subtitle}>
                     {props.children}
                 </Item>
             ))}

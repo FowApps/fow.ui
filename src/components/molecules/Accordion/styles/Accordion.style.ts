@@ -9,6 +9,9 @@ type TriggerProps = {
 type WrapperProps = {
     bordered: boolean;
 };
+type IconPositionProps = {
+    arrowPosition?: string;
+};
 
 export const Content = styled(motion.div)`
     border-bottom: 1px solid
@@ -47,18 +50,14 @@ export const Wrapper = styled.div<WrapperProps>`
     background-color: transparent;
 `;
 
-export const IconWrapper = styled.div`
-    margin-right: ${(props) => props.theme.fow.spacing.small};
+export const IconWrapper = styled.div<IconPositionProps>`
+    margin-right: ${(props) =>
+        props.arrowPosition === 'right' ? 0 : props.theme.fow.spacing.small};
     svg {
         width: 12px !important;
     }
 `;
-export const HeaderWrapper = styled.div`
-    margin-left: ${(props) => props.theme.fow.spacing.xlarge};
-    ul,
-    p {
-        padding: 0;
-        margin-top: ${(props) => props.theme.fow.spacing.xsmall};
-        margin-bottom: 0;
-    }
+export const HeaderWrapper = styled.div<IconPositionProps>`
+    margin-left: ${(props) =>
+        props.arrowPosition === 'right' ? 0 : props.theme.fow.spacing.xlarge};
 `;

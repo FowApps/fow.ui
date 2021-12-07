@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Icon from '../../atoms/Icon';
 import Accordion, { AccordionProps } from './Accordion';
 
 export default {
@@ -16,19 +15,18 @@ const wrapperStyles = {
 
 const accordionTitle = [
     {
-        label: 'Item 1',
-        action: [
-            {
-                id: 1,
-                message: 'Item 1 Contents',
-            },
-            { id: 1, message: 'Item 1 Contents' },
-            { id: 1, message: 'Item 1 Contents' },
-        ],
+        title: 'Item 1',
+        subTitle:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen...',
     },
-    { label: 'Item 2', action: [{ id: 1, message: 'Item 2 Contents' }] },
-    { label: 'Item 3', action: [{ id: 1, message: 'Item 3 Contents' }] },
-    { label: 'Item 4', action: [{ id: 1, message: 'Item 4 Contents' }] },
+    {
+        title: 'Item 2',
+        subTitle:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy...',
+    },
+    {
+        title: 'Item 3',
+    },
 ];
 
 const Template: Story<AccordionProps> = (args) => (
@@ -37,8 +35,8 @@ const Template: Story<AccordionProps> = (args) => (
             {accordionTitle.map((item, index) => (
                 <Accordion.Item
                     index={index}
-                    label={item.label}
-                    action={item.action}>
+                    title={item.title}
+                    subtitle={item.subTitle}>
                     <div style={wrapperStyles}>Test</div>
                 </Accordion.Item>
             ))}
@@ -49,6 +47,7 @@ const Template: Story<AccordionProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     defaultIndex: 0,
+    arrowPosition: 'right',
     onItemClick: (item: number) => {
         console.log(item);
     },
