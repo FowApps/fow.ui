@@ -112,6 +112,7 @@ declare module 'styled-components' {
                     primary: string;
                     secondary: string;
                     disabled: string;
+                    tertiary: string;
                 };
                 divider: string;
                 background: {
