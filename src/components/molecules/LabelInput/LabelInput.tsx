@@ -1,16 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import {
-    Button,
-    Divider,
-    Input,
-    Label,
-    Dropdown,
-    Space,
-    Icon,
-    Typography,
-} from '../../..';
+import Space from '../../atoms/Space';
+import Label from '../../atoms/Label';
+import Input from '../../atoms/Input';
+import Subtitle from '../../atoms/Typography/Subtitle';
+import Icon from '../../atoms/Icon';
+import Divider from '../../atoms/Divider';
+import Button from '../../atoms/Button';
+import Popover from '../../atoms/Popover';
+
+import Dropdown from '../Dropdown';
 
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
@@ -24,8 +25,6 @@ import {
 
 import { en } from './locales/en';
 import { tr } from './locales/tr';
-
-const { Link, Subtitle } = Typography;
 
 export type ColorTypes =
     | 'pink'
@@ -43,6 +42,7 @@ const localization = {
 export interface LabelInputProps {
     defaultValue?: ILabelValue[];
     onChange?: (value: ILabelValue[]) => void;
+    maxCount?: number;
 }
 export interface ILabel {
     id: string;
@@ -68,6 +68,7 @@ const colors: ColorTypes[] = [
 const LabelInput = ({
     onChange,
     defaultValue = [],
+    maxCount = 3,
 }: LabelInputProps): JSX.Element => {
     const { language } = React.useContext(ConfigContext);
     const isMountFirstTime = useIsMountFirstTime();
@@ -110,6 +111,68 @@ const LabelInput = ({
         setValue((preValue) => preValue.filter((label) => label.id !== id));
     };
 
+    const renderLabels = () => {
+        if (value.length > maxCount) {
+            return (
+                <>
+                    {value.slice(0, maxCount).map((label) => (
+                        <Label
+                            key={label.id}
+                            text={label.text}
+                            color={label.color}
+                            size="small"
+                            isClosable
+                            onClose={() => {
+                                onDeleteLabel(label.id);
+                            }}
+                        />
+                    ))}
+                    <Popover
+                        placement="bottom"
+                        content={
+                            <Space style={{ padding: 8 }} size="xxsmall">
+                                {value
+                                    .slice(maxCount, value.length)
+                                    .map((extraLabel) => (
+                                        <Label
+                                            key={extraLabel.id}
+                                            text={extraLabel.text}
+                                            color={extraLabel.color}
+                                            size="small"
+                                            isClosable
+                                            onClose={() => {
+                                                onDeleteLabel(extraLabel.id);
+                                            }}
+                                        />
+                                    ))}
+                            </Space>
+                        }>
+                        <Label
+                            key="more"
+                            text={`+${
+                                value.length - value.slice(0, maxCount).length
+                            }`}
+                            color="blue"
+                            size="small"
+                        />
+                    </Popover>
+                </>
+            );
+        }
+        return value?.map((label: ILabel) => (
+            <Label
+                key={label.id}
+                text={label.text}
+                color={label.color}
+                size="small"
+                isClosable
+                onClose={() => {
+                    onDeleteLabel(label.id);
+                }}
+            />
+        ));
+    };
+
     React.useEffect(() => {
         if (!isMountFirstTime) {
             onChange?.(value);
@@ -117,21 +180,8 @@ const LabelInput = ({
     }, [value]);
 
     return (
-        <Space>
-            <Space>
-                {value?.map((label: ILabel) => (
-                    <Label
-                        key={label.id}
-                        text={label.text}
-                        color={label.color}
-                        size="small"
-                        isClosable
-                        onClose={() => {
-                            onDeleteLabel(label.id);
-                        }}
-                    />
-                ))}
-            </Space>
+        <Space size="xxsmall">
+            {value.length > 0 && <Space size="xxsmall">{renderLabels()}</Space>}
             <Dropdown
                 trigger="click"
                 content={(close) => (
@@ -198,9 +248,13 @@ const LabelInput = ({
                         </BottomWrapper>
                     </ContainerMenu>
                 )}>
-                <Link level={3} leftIcon="plus" color="success">
+                <Button
+                    size="small"
+                    variant="text"
+                    leftIcon="plus"
+                    color="success">
                     {localization[language].addLabel}
-                </Link>
+                </Button>
             </Dropdown>
         </Space>
     );

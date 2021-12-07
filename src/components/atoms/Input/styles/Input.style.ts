@@ -58,7 +58,7 @@ export const StyledInput = styled.input<InputProps>`
             props.hasValidationError
                 ? props.theme.fow.colors.error.main
                 : props.theme.fow.colors.grey.transparent32};
-    border-radius: 8px;
+    border-radius: 4px;
     color: ${(props) => props.theme.fow.colors.text.primary};
     outline: none;
     font-size: 1.4rem;

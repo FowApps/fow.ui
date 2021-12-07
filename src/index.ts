@@ -76,6 +76,7 @@ export { default as Board } from './components/molecules/Board';
 export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
 export { default as Table } from './components/molecules/Table';
+export { default as LabelInput } from './components/molecules/LabelInput';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
