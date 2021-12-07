@@ -201,6 +201,7 @@ export const theme: DefaultTheme = {
             text: {
                 primary: '#454F5B',
                 secondary: '#637381',
+                tertiary: '#212B36',
                 disabled: '#919EAB',
             },
             divider: 'rgba(196, 205, 213, 0.48)',
