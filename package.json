@@ -1,6 +1,6 @@
 {
     "name": "@fowapps/fow-ui",
-    "version": "0.0.34-dev.01",
+    "version": "0.0.34-dev.02",
     "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",
@@ -51,8 +51,6 @@
         "react-dnd-touch-backend": "10.0.2",
         "react-loading-overlay": "^1.0.1",
         "react-lottie": "^1.2.3",
-        "react-select": "4.3.1",
-        "react-select-async-paginate": "0.5.3",
         "react-slick": "^0.28.1",
         "react-table": "^7.7.0",
         "react-transition-group": "^4.4.2",
