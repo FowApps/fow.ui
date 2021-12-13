@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createRef } from 'react';
 import { DefaultTheme, withTheme } from 'styled-components';
 import FullCalendar, {
@@ -16,6 +17,12 @@ import Space from '../../atoms/Space';
 import Body from '../../atoms/Typography/Body';
 
 import { Wrapper, EventWrapper } from './styles';
+
+// language files
+import { tr } from './locales/tr';
+import { en } from './locales/en';
+
+import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
 
 export interface CalendarProps {
     /**
@@ -71,6 +78,11 @@ export interface CalendarState {
     changedEventId: string;
 }
 
+const localization = {
+    tr,
+    en,
+};
+
 const CALENDAR_HEIGHT = {
     STATIC: 650,
     AUTO: 'auto',
@@ -82,51 +94,13 @@ const CALENDAR_VIEW_TYPES = {
 };
 
 class Calendar extends React.Component<CalendarProps, CalendarState> {
+    static contextType: IConfig = ConfigContext;
+
     static defaultProps = {
         extendedPropKey: 'event',
-        locale: 'en',
-        moreLinkText: 'More',
-        loadingText: 'Loading',
-        allDayText: 'All Day',
-        buttonText: {
-            day: 'Day',
-            month: 'Month',
-            week: 'Week',
-            today: 'Today',
-            allDay: 'All Day',
-        },
     };
 
     calendarRef = createRef<FullCalendar>();
-
-    customButtons: { [key: string]: CustomButtonInput } = {
-        today: {
-            text: 'Today',
-            click: () => {
-                if (!this.props.isLoading) {
-                    this.handleToday();
-                }
-            },
-        },
-        prev: {
-            // @ts-ignore
-            text: <Icon icon="arrow-left" />,
-            click: () => {
-                if (!this.props.isLoading) {
-                    this.handlePrev();
-                }
-            },
-        },
-        next: {
-            // @ts-ignore
-            text: <Icon icon="arrow-right" />,
-            click: () => {
-                if (!this.props.isLoading) {
-                    this.handleNext();
-                }
-            },
-        },
-    };
 
     constructor(props: CalendarProps) {
         super(props);
@@ -236,10 +210,40 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         );
 
     render() {
+        const language = this.context.language;
+
+        const customButtons: { [key: string]: CustomButtonInput } = {
+            today: {
+                text: `${localization[language].buttonText.today}`,
+                click: () => {
+                    if (!this.props.isLoading) {
+                        this.handleToday();
+                    }
+                },
+            },
+            prev: {
+                // @ts-ignore
+                text: <Icon icon="arrow-left" />,
+                click: () => {
+                    if (!this.props.isLoading) {
+                        this.handlePrev();
+                    }
+                },
+            },
+            next: {
+                // @ts-ignore
+                text: <Icon icon="arrow-right" />,
+                click: () => {
+                    if (!this.props.isLoading) {
+                        this.handleNext();
+                    }
+                },
+            },
+        };
         return (
             <Loader
                 isLoading={!!this.props.isLoading}
-                text={this.props.loadingText || ''}>
+                text={localization[language].loadingText || ''}>
                 <Wrapper>
                     <FullCalendar
                         ref={this.calendarRef}
@@ -249,10 +253,10 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                             interactionPlugin,
                         ]}
                         initialView={CALENDAR_VIEW_TYPES.WEEK}
-                        buttonText={this.props.buttonText}
-                        customButtons={this.customButtons}
-                        allDayText={this.props.allDayText}
-                        locale={this.props.locale || 'tr'}
+                        buttonText={localization[language].buttonText}
+                        customButtons={customButtons}
+                        allDayText={localization[language].allDayText}
+                        locale={language}
                         events={this.props.events}
                         eventClick={this.handleEventClick}
                         eventChange={this.handleEventChange}
@@ -261,7 +265,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                         eventColor={this.props.theme.fow.colors.primary.main}
                         displayEventTime
                         viewDidMount={this.handleChangeView}
-                        moreLinkText={this.props.moreLinkText}
+                        moreLinkText={localization[language].moreLinkText}
                         eventTimeFormat={{
                             hour: 'numeric',
                             minute: '2-digit',
