@@ -17,6 +17,7 @@ import Space from '../Space';
 import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 import Select from '../Select';
+import LabelInput from '../../molecules/LabelInput';
 
 export default {
     title: 'Atoms/Form',
@@ -65,6 +66,16 @@ const Template: Story = () => {
                             label="File"
                             valuePropName="files">
                             <Upload multiple={false} accept=".zip" />
+                        </FormField>
+                    </Col>
+                    <Col xs={12}>
+                        <FormField
+                            name="labels"
+                            label="Labels"
+                            rules={[
+                                { required: true, message: 'Zorunlu alan' },
+                            ]}>
+                            <LabelInput />
                         </FormField>
                     </Col>
                 </Row>
