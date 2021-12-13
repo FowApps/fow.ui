@@ -199,8 +199,9 @@ export const theme: DefaultTheme = {
                 transparent48: 'rgba(159, 152, 241, 0.48)',
             },
             text: {
-                primary: '#212B36',
+                primary: '#454F5B',
                 secondary: '#637381',
+                tertiary: '#212B36',
                 disabled: '#919EAB',
             },
             divider: 'rgba(196, 205, 213, 0.48)',
