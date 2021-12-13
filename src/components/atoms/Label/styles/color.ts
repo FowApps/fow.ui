@@ -1,41 +1,44 @@
 import { css } from 'styled-components';
 
-type ColorTypes = 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+type ColorTypes =
+    | 'pink'
+    | 'orange'
+    | 'green'
+    | 'blue'
+    | 'purple'
+    | 'darkPurple';
 
 export const setColor = (color: ColorTypes) => {
     switch (color) {
-        case 'grey':
+        case 'pink':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.grey.transparent16};
-                color: ${(props) => props.theme.fow.colors.grey.darker};
+                    props.theme.fow.colors.pink.main};
             `;
-        case 'primary':
+        case 'orange':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.primary.main};
+                    props.theme.fow.colors.orange.main};
             `;
-        case 'info':
+        case 'green':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.info.main};
+                    props.theme.fow.colors.green.main};
             `;
-        case 'success':
+        case 'blue':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.success.main};
-                color: ${(props) => props.theme.fow.colors.grey.darker};
+                    props.theme.fow.colors.blue.main};
             `;
-        case 'warning':
+        case 'purple':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.warning.main};
-                color: ${(props) => props.theme.fow.colors.grey.darker};
+                    props.theme.fow.colors.purple.main};
             `;
-        case 'error':
+        case 'darkPurple':
             return css`
                 background-color: ${(props) =>
-                    props.theme.fow.colors.error.main};
+                    props.theme.fow.colors.darkPurple.main};
             `;
         default:
             return ``;

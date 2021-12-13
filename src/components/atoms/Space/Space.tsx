@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { StyledSpace } from './styles';
 
-export interface SpaceProps {
+export interface SpaceProps extends ComponentPropsWithoutRef<'div'> {
     /**
      * size of between items
      */

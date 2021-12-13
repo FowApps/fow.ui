@@ -22,38 +22,49 @@ export interface PrimaryColorTypes {
     transparent32: string;
     transparent48: string;
 }
+
+export type IConfig = {
+    language: 'tr' | 'en';
+};
 export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
     oldUITheme?: any;
     children: React.ReactNode;
+    config: IConfig;
 }
+
+export const ConfigContext = React.createContext<IConfig>({ language: 'en' });
+export const ConfigContextProvider = ConfigContext.Provider;
 
 const FowTheme = ({
     appPrimaryColors,
     oldUITheme, // temporary old ui theme variables
     children,
+    config = { language: 'en' },
 }: FowThemeProps): JSX.Element => (
-    <ThemeProvider
-        theme={{
-            ...theme,
-            ...oldUITheme,
-            fow: {
-                ...theme.fow,
-                colors: {
-                    ...theme.fow.colors,
-                    primary: {
-                        ...(appPrimaryColors || theme.fow.colors.primary),
+    <ConfigContextProvider value={{ language: config.language }}>
+        <ThemeProvider
+            theme={{
+                ...theme,
+                ...oldUITheme,
+                fow: {
+                    ...theme.fow,
+                    colors: {
+                        ...theme.fow.colors,
+                        primary: {
+                            ...(appPrimaryColors || theme.fow.colors.primary),
+                        },
                     },
                 },
-            },
-        }}>
-        <GlobalStyle />
-        <ToastContextProvider>
-            <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-                <ConfirmProvider>{children}</ConfirmProvider>
-            </DndProvider>
-        </ToastContextProvider>
-    </ThemeProvider>
+            }}>
+            <GlobalStyle />
+            <ToastContextProvider>
+                <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+                    <ConfirmProvider>{children}</ConfirmProvider>
+                </DndProvider>
+            </ToastContextProvider>
+        </ThemeProvider>
+    </ConfigContextProvider>
 );
 
 export default FowTheme;

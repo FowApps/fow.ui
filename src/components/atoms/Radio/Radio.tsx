@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
     StyledLabel,
@@ -61,7 +61,7 @@ const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(
 const RadioGroupContextProvider = RadioGroupContext.Provider;
 
 const Radio = ({ label = '', ...rest }: RadioProps): JSX.Element => {
-    const context = React.useContext(RadioGroupContext);
+    const context = useContext(RadioGroupContext);
 
     const onChange = (e: RadioChangeEvent) => {
         rest.onChange?.(e);
