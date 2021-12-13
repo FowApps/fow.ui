@@ -15,7 +15,7 @@ export interface LinkProps extends TextWrapperProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
-    href: string;
+    href?: string;
 }
 
 const Link = ({
@@ -36,7 +36,7 @@ const Link = ({
             fontStyle={fontStyle}
             color={color}
             textTransfrom={textTransfrom}>
-            <Space justify="flex-start" inline={false} size="xsmall">
+            <Space justify="flex-start" inline={false} size="xxsmall">
                 {leftIcon && (
                     <span>
                         <Icon icon={leftIcon} fixedWidth />
