@@ -29,9 +29,7 @@ export interface DropdownProps {
     onClose?: () => void;
     onOpen?: () => void;
     initialOpen?: boolean;
-    children:
-        | React.DetailedReactHTMLElement<any, HTMLElement>
-        | ((api: RenderProps) => React.ReactNode);
+    children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
 }
 let interval;
 
