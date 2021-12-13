@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Space from '../../atoms/Space';
-import Heading from '../../atoms/Typography/Heading';
+import Subtitle from '../../atoms/Typography/Subtitle';
 import Icon from '../../atoms/Icon';
 
-import { Wrapper, Trigger, Content } from './styles';
+import {
+    Wrapper,
+    Trigger,
+    Content,
+    IconWrapper,
+    HeaderWrapper,
+} from './styles';
+import { theme } from '../../../theme/theme';
+import Body from '../../atoms/Typography/Body';
 
 export interface AccordionProps {
     /**
@@ -20,53 +28,76 @@ export interface AccordionProps {
      * click event on trigger
      */
     onItemClick: (index: number) => void;
+    /**
+     * set accordion arrow position
+     */
+    arrowPosition?: 'left' | 'right';
     children: React.ReactNode | React.ReactNode[];
 }
 
+export interface ItemTitleProps {
+    subtitle?: React.ReactNode;
+    arrowPosition?: 'left' | 'right';
+}
 export interface AccordionItemProps {
-    /**
-     * label of trigger
-     */
-    label: string;
-    /**
-     * extra content for end of trigger
-     */
-    extra?: string | React.ReactNode | React.ReactNode[];
-    /**
-     * icon of trigger
-     */
-    icon?: React.ReactNode;
+    title?: string;
+    subtitle?: React.ReactNode;
     isCollapsed?: boolean;
     handleClick?: () => void;
-    /**
-     * index of trigger(must uniq like key)
-     */
     index: number;
+    arrowPosition?: 'left' | 'right';
     children: React.ReactNode;
 }
 
+const TitleDescription = ({ subtitle, arrowPosition }: ItemTitleProps) => (
+    <HeaderWrapper arrowPosition={arrowPosition}>
+        <Body level={1} color="secondary">
+            {subtitle}
+        </Body>
+    </HeaderWrapper>
+);
+
 const Item = ({
-    icon,
-    label,
-    extra,
     isCollapsed,
     handleClick,
+    title,
+    subtitle,
+    arrowPosition,
     children,
 }: AccordionItemProps) => (
     <>
         <Trigger isCollapsed={isCollapsed} role="button" onClick={handleClick}>
-            <Space>
-                {icon}
-                <Heading as="h6">{label}</Heading>
-            </Space>
-            <Space>
-                <div>{extra}</div>
+            <Space
+                inline={false}
+                align="center"
+                direction="horizontal"
+                justify={
+                    arrowPosition === 'right' ? 'space-between' : 'flex-start'
+                }
+                reverse={arrowPosition === 'right'}>
                 {isCollapsed ? (
-                    <Icon icon="chevron-down" />
+                    <IconWrapper arrowPosition={arrowPosition}>
+                        <Icon
+                            icon="chevron-down"
+                            color={theme.fow.colors.greyDark.light}
+                        />
+                    </IconWrapper>
                 ) : (
-                    <Icon icon="chevron-up" />
+                    <IconWrapper arrowPosition={arrowPosition}>
+                        <Icon
+                            icon="chevron-up"
+                            color={theme.fow.colors.greyDark.light}
+                        />
+                    </IconWrapper>
                 )}
+                <Subtitle level={1}>{title}</Subtitle>
             </Space>
+            {subtitle && (
+                <TitleDescription
+                    subtitle={subtitle}
+                    arrowPosition={arrowPosition}
+                />
+            )}
         </Trigger>
         <AnimatePresence>
             {!isCollapsed && (
@@ -94,6 +125,7 @@ const Accordion = ({
     defaultIndex,
     bordered = true,
     onItemClick,
+    arrowPosition = 'right',
     children,
 }: AccordionProps): JSX.Element => {
     const [bindIndex, setBindIndex] = useState(defaultIndex);
@@ -115,13 +147,13 @@ const Accordion = ({
         <Wrapper bordered={bordered}>
             {items.map(({ props }) => (
                 <Item
-                    icon={props.icon}
                     key={`accordion-item-${props.index}`}
                     isCollapsed={bindIndex !== props.index}
-                    label={props.label}
-                    extra={props.extra}
+                    title={props.title}
                     handleClick={() => changeItem(props.index)}
-                    index={props.index}>
+                    index={props.index}
+                    arrowPosition={arrowPosition}
+                    subtitle={props.subtitle}>
                     {props.children}
                 </Item>
             ))}

@@ -1,20 +1,22 @@
 import React, {
-    InputHTMLAttributes,
     useState,
     RefObject,
     useEffect,
+    ComponentPropsWithRef,
 } from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import Icon from '../Icon';
 
 import { Wrapper, StyledInput, InputWrapper, IconWrapper } from './styles';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+    extends Omit<ComponentPropsWithRef<'input'>, 'onChange'> {
     prefixIcon?: FontAwesomeIconProps['icon'];
     suffixIcon?: FontAwesomeIconProps['icon'];
     allowClear?: boolean;
     disabled?: boolean;
     hasValidationError?: boolean;
+    onChange?: (value: string) => void;
 }
 
 function fixControlledValue<T>(value: T) {
