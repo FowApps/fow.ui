@@ -13,14 +13,7 @@ const Template: Story<UploadProps> = (args) => <Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    label: 'Upload Manifest File',
     onChange: updateUploadedFiles,
     multiple: false,
     disabled: false,
-    localization: {
-        placeholder: 'Select Files',
-        description: 'Drop files here or click browse thorough your machine',
-        sizeInfo: 'Maximum allowed upload file size',
-        sizeError: 'File is too big.',
-    },
 };
