@@ -40,9 +40,17 @@ const useDrawerForm = (config: UseDrawerFormConfig) => {
 
     const drawerFormProps = {
         ...drawerProps,
+        maskClosable: !formLoading,
+        onClose: () => {
+            if (!formLoading) {
+                close();
+            }
+        },
         onCancel: () => {
-            formInstance.resetFields();
-            close();
+            if (!formLoading) {
+                formInstance.resetFields();
+                close();
+            }
         },
         cancelButtonProps: {
             disabled: !!formLoading || !!defaultFormValuesLoading,
