@@ -49,7 +49,7 @@ const Link = ({
             fontStyle={fontStyle}
             color={color}
             textTransfrom={textTransfrom}>
-            <Space justify="flex-start" inline={false} size="xxsmall">
+            <Space justify="flex-start" inline={false} size="xsmall">
                 {leftIcon && (
                     <span>
                         <Icon {...leftIconProps} icon={leftIcon} fixedWidth />
