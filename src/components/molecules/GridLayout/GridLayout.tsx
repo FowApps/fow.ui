@@ -1,4 +1,8 @@
 import React, { useRef, useEffect } from 'react';
+import { DndProvider } from 'react-dnd';
+import MultiBackend from 'react-dnd-multi-backend';
+
+import HTML5toTouch from '../../../config/dndConfig';
 import { useDragAndDrop } from '../../../hooks/useDragAndDrop/useDragAndDrop';
 import { GridItemWrapper, GridWrapper } from './styles';
 
@@ -70,7 +74,11 @@ const Grid = ({ children }) => {
         adjustGridItemsHeight(grid);
     });
 
-    return <GridWrapper ref={gridRef}>{children}</GridWrapper>;
+    return (
+        <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+            <GridWrapper ref={gridRef}>{children}</GridWrapper>;
+        </DndProvider>
+    );
 };
 
 const GridItem = ({ children }) => (

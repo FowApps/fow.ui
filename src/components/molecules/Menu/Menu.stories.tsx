@@ -12,9 +12,10 @@ export default {
 } as Meta;
 
 const Template: Story<MenuProps> = (args) => (
-    <Menu onClick={(key) => console.log(key)}>
+    <Menu onClick={(key) => console.log(key)} title="Add New Items">
         <Menu.Item index={1}>Item 1</Menu.Item>
         <Menu.Item index={2}>Item 2</Menu.Item>
+        <Menu.Divider />
         <Menu.Item index={3}>
             <Subtitle level={2} color="secondary">
                 <Space>

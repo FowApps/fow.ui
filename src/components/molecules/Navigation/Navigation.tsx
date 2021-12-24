@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import {
     Divider,
     MenuProps as RcMenuProps,
@@ -31,6 +31,11 @@ export interface MenuItemProps extends RcMenuItemProps {
         string | React.JSXElementConstructor<any> | string
     >;
 }
+interface IMenuContext {
+    mode?: RcMenuProps['mode'];
+}
+
+const MenuContext = createContext<IMenuContext>({ mode: 'inline' });
 
 const getCollapsedHeight = () => ({
     height: 0,
@@ -92,7 +97,7 @@ const renderGhostChildren = (children) => {
 };
 
 const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
-    <>
+    <MenuContext.Provider value={{ mode }}>
         <DropdownStyles />
         <StyledMenu
             overflowedIndicator={<Icon icon="ellipsis-v" />}
@@ -113,10 +118,11 @@ const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
             {...rest}>
             {children}
         </StyledMenu>
-    </>
+    </MenuContext.Provider>
 );
 
 const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
+    const { mode } = useContext(MenuContext);
     let titleNode: React.ReactNode;
     if (icon) {
         titleNode = (
@@ -124,11 +130,27 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
                 <IconWrapper style={{ width: 14, height: 14 }}>
                     <Icon icon={icon} />
                 </IconWrapper>
-                <Subtitle color="secondary">{title}</Subtitle>
+                <Subtitle color="black">
+                    <Space size="xsmall">
+                        <span>{title}</span>
+                        {mode === 'horizontal' && (
+                            <Icon size="xs" icon="chevron-down" />
+                        )}
+                    </Space>
+                </Subtitle>
             </Space>
         );
     } else {
-        titleNode = <Subtitle color="secondary">{title}</Subtitle>;
+        titleNode = (
+            <Subtitle color="black">
+                <Space size="xsmall">
+                    <span>{title}</span>
+                    {mode === 'horizontal' && (
+                        <Icon size="xs" icon="chevron-down" />
+                    )}
+                </Space>
+            </Subtitle>
+        );
     }
     return (
         <StyledSubMenu title={titleNode} {...rest}>
@@ -147,7 +169,7 @@ const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
                         <Icon icon={icon} />
                     </IconWrapper>
                 )}
-                <Subtitle color="secondary">
+                <Subtitle color="black">
                     {children}
                     {renderGhostChildren(children)}
                 </Subtitle>

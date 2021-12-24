@@ -108,6 +108,7 @@ const Dropdown = (
                 }}
                 style={{
                     cursor: 'pointer',
+                    height: '100%',
                 }}>
                 {typeof children === 'function'
                     ? children({ isOpen, close, open })

@@ -1,8 +1,20 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
+import { TextWrapperProps } from '../../TextWrapper';
 import { setLevel } from './level';
 
 type LinkProps = {
     level: 1 | 2 | 3;
+    color: TextWrapperProps['color'];
+};
+
+const setHoverColor = (
+    theme: DefaultTheme,
+    color: TextWrapperProps['color'] = 'primary',
+) => {
+    if (theme.fow.colors?.[color]?.dark) {
+        return theme.fow.colors[color].darker;
+    }
+    return theme.fow.colors.primary.main;
 };
 
 export const StyledLink = styled.a<LinkProps>`
@@ -15,6 +27,6 @@ export const StyledLink = styled.a<LinkProps>`
     }
 
     &:hover span {
-        color: ${(props) => props.theme.fow.colors.primary.main};
+        color: ${(props) => setHoverColor(props.theme, props.color)};
     }
 `;
