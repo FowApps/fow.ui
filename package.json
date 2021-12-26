@@ -93,7 +93,7 @@
         "@types/uuid": "^8.3.3",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
-        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
         "all-contributors-cli": "^6.20.0",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^27.3.1",
