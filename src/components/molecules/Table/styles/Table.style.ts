@@ -9,6 +9,7 @@ type CellProps = {
 export const Container = styled.div`
     display: block;
     max-width: 100%;
+    width: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -116,6 +117,7 @@ export const Td = styled.td<CellProps>`
         props.isActionCell &&
         css`
             max-width: 32px;
+            padding: 0;
         `}
 
     :last-child {
@@ -168,7 +170,20 @@ export const ActionTrigger = styled.div`
     cursor: pointer;
     opacity: 0;
     transition: all 0.3s ease;
-    inset: 0px;
+    inset: 0;
+
+    &.open {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+        opacity: 1;
+    }
+`;
+
+export const ActionCard = styled.div`
+    box-shadow: 0px 20px 40px -4px rgb(145 158 171 / 24%);
+    -webkit-filter: drop-shadow(0px 0px 2px rgba(145, 158, 171, 0.24));
+    filter: drop-shadow(0px 0px 2px rgba(145, 158, 171, 0.24));
+    border-radius: 8px;
+    background-color: #fff;
 `;
 
 export const PaginationWrapper = styled.div`
@@ -228,8 +243,8 @@ export const OrderDots = styled.div`
 
 export const LeftShadow = styled.div`
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: ${(props) => (props.hasHeader ? '48px' : 0)};
+    bottom: ${(props) => (props.hasPagination ? '44px' : 0)};
     left: 0;
     box-shadow: inset 10px 0 8px -8px #00000026;
     width: 20px;
@@ -238,8 +253,8 @@ export const LeftShadow = styled.div`
 
 export const RightShadow = styled.div`
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: ${(props) => (props.hasHeader ? '48px' : 0)};
+    bottom: ${(props) => (props.hasPagination ? '44px' : 0)};
     right: 0;
     box-shadow: inset -10px 0 8px -8px #00000026;
     width: 20px;

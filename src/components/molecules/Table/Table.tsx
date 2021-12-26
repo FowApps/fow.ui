@@ -7,6 +7,7 @@ import React, {
     useRef,
     useState,
     useContext,
+    useCallback,
 } from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
@@ -23,7 +24,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import Body from '../../atoms/Typography/Body';
 import Subtitle from '../../atoms/Typography/Subtitle';
-import Loader from '../../atoms/Loader';
+import Loader, { LoaderProps } from '../../atoms/Loader';
 import Icon from '../../atoms/Icon';
 
 // language files
@@ -49,21 +50,14 @@ import {
     OrderDots,
     LeftShadow,
     RightShadow,
+    ActionCard,
 } from './styles';
 
-import { Checkbox, Divider, Input, Menu, Popover, Space } from '../../..';
+import { Checkbox, Divider, Input, Menu, Space } from '../../..';
 
 import Dropdown from '../Dropdown';
 import Message from '../Message';
-
-interface Localization {
-    selectedColumns: string;
-    allColumnSelected: string;
-    columns: string;
-    noData: string;
-    page: string;
-    results: string;
-}
+import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 export interface TableProps {
     data: any[];
@@ -81,7 +75,7 @@ export interface TableProps {
     manualPagination?: boolean;
     sortBy?: any[];
     initialPage?: number;
-    localization?: Localization;
+    loaderProps?: LoaderProps;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -113,6 +107,7 @@ const Table = ({
     manualSortBy = false,
     sortBy: controlledSortBy = [],
     initialPage = 1,
+    loaderProps = {},
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -121,6 +116,8 @@ const Table = ({
     const [pageSize, setPageSize] = useState(controlledPageSize);
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [columnQuery, setColumnQuery] = useState('');
+
+    const isMountFirstTime = useIsMountFirstTime();
 
     const scrollRef = useRef(null);
 
@@ -151,31 +148,26 @@ const Table = ({
                                 </ActionHeader>
                             ),
                             Cell: ({ row }) => (
-                                <Popover
-                                    trigger="click"
-                                    placement="bottomLeft"
-                                    content={renderAction(row.original)}
-                                    onVisibleChange={(visiblity) => {
-                                        const cellNode =
-                                            document.getElementById(
-                                                row.original?.id,
-                                            );
-                                        if (visiblity) {
-                                            cellNode.style.backgroundColor =
-                                                theme.fow.colors.primary.main;
-                                            cellNode.style.opacity = 1;
-                                        } else {
-                                            cellNode.style.backgroundColor =
-                                                theme.fow.colors.common.white;
-                                            cellNode.style.opacity = 0;
-                                        }
-                                    }}>
-                                    <ActionTrigger
-                                        className="action"
-                                        id={row.original?.id}>
-                                        <Icon icon="ellipsis-v" color="white" />
-                                    </ActionTrigger>
-                                </Popover>
+                                <Dropdown
+                                    trigger="hover"
+                                    content={
+                                        <ActionCard>
+                                            {renderAction(row.original)}
+                                        </ActionCard>
+                                    }>
+                                    {({ isOpen }) => (
+                                        <ActionTrigger
+                                            className={`action ${
+                                                isOpen ? 'open' : ''
+                                            }`}
+                                            id={row.original?.id}>
+                                            <Icon
+                                                icon="ellipsis-v"
+                                                color="white"
+                                            />
+                                        </ActionTrigger>
+                                    )}
+                                </Dropdown>
                             ),
                         },
                         ...currColumns,
@@ -199,15 +191,28 @@ const Table = ({
         state: { sortBy },
     } = tableInstance;
 
-    const onChangeDebounced = useAsyncDebounce(onChange, 300);
+    const onChangeDebounced = useAsyncDebounce(onChange, 100);
+
+    const handleChangeTableState = useCallback(
+        ({ currPage, currPageSize, currSortBy }) => {
+            onChangeDebounced({
+                sortBy: currSortBy,
+                page: currPage,
+                pageSize: currPageSize,
+            });
+        },
+        [onChangeDebounced],
+    );
 
     useEffect(() => {
-        onChangeDebounced({
-            sortBy,
-            page: currentPage,
-            pageSize,
-        });
-    }, [onChangeDebounced, sortBy, currentPage, pageSize]);
+        if (!isMountFirstTime) {
+            handleChangeTableState({
+                currPage: currentPage,
+                currPageSize: pageSize,
+                currSortBy: sortBy,
+            });
+        }
+    }, [sortBy]);
 
     useEffect(() => {
         const filteredColumns = visibleColumns.filter(
@@ -230,7 +235,9 @@ const Table = ({
 
     useLayoutEffect(() => {
         leftShadowRef.current.style.display = 'none';
-        if (scrollRef.current?.scrollWidth > 0) {
+        rightShadowRef.current.style.display = 'none';
+
+        if (scrollRef.current?.scrollWidth > scrollRef.current?.clientWidth) {
             rightShadowRef.current.style.display = 'block';
         }
     }, []);
@@ -281,13 +288,19 @@ const Table = ({
         );
     };
 
-    const handleChangePagination = (current) => {
-        setCurrentPage(current);
+    const handleChangePagination = (currPage: number, currPageSize: number) => {
+        handleChangeTableState({ currPage, currPageSize, currSortBy: sortBy });
+        setCurrentPage(currPage);
     };
 
-    const handleChangeSize = (size) => {
+    const handleChangeSize = (currPageSize) => {
+        handleChangeTableState({
+            currPage: 1,
+            currPageSize,
+            currSortBy: sortBy,
+        });
         setCurrentPage(1);
-        setPageSize(size);
+        setPageSize(currPageSize);
     };
 
     const paginationRenderer = (current, type, element) => {
@@ -338,196 +351,211 @@ const Table = ({
             rightShadowRef.current.style.display = 'block';
         }
     };
+
     return (
-        <Container>
-            <Space
-                inline={false}
-                align="center"
-                justify="space-between"
-                style={{ marginBottom: 16 }}>
-                <div>
-                    {typeof renderFilters === 'function' && renderFilters()}
-                </div>
-                <div>
-                    {showColumnControls && (
-                        <Dropdown
-                            trigger="click"
-                            content={
-                                <ColumnList>
-                                    <div>
-                                        <Space
-                                            direction="vertical"
-                                            align="start"
-                                            size="xsmall">
-                                            <Subtitle level={1}>
-                                                {
-                                                    localization[language]
-                                                        .selectedColumns
-                                                }
-                                            </Subtitle>
-                                            <DragDropContext
-                                                onDragEnd={handleColumnDragEnd}>
-                                                <Droppable droppableId="droppable">
-                                                    {(dropProvided) => (
-                                                        <div
-                                                            {...dropProvided.droppableProps}
-                                                            ref={
-                                                                dropProvided.innerRef
-                                                            }>
-                                                            <Space
-                                                                direction="vertical"
-                                                                align="start"
-                                                                size="xsmall">
-                                                                {allColumns
-                                                                    .filter(
-                                                                        (
-                                                                            column,
-                                                                        ) =>
-                                                                            column.id !==
-                                                                                'selection' &&
-                                                                            column.isVisible,
-                                                                    )
-                                                                    .map(
-                                                                        (
-                                                                            column,
-                                                                            idx,
-                                                                        ) => (
-                                                                            <Draggable
-                                                                                key={
-                                                                                    column.id
-                                                                                }
-                                                                                draggableId={
-                                                                                    column.id
-                                                                                }
-                                                                                index={
-                                                                                    idx
-                                                                                }>
-                                                                                {(
-                                                                                    dragProvided,
+        <Loader isLoading={isLoading} text="Loading.." {...loaderProps}>
+            <Container>
+                {(typeof renderFilters === 'function' ||
+                    showColumnControls) && (
+                    <Space
+                        inline={false}
+                        align="center"
+                        justify="space-between"
+                        style={{ marginBottom: 16 }}>
+                        <div>
+                            {typeof renderFilters === 'function' &&
+                                renderFilters()}
+                        </div>
+                        <div>
+                            {showColumnControls && (
+                                <Dropdown
+                                    trigger="click"
+                                    content={
+                                        <ColumnList>
+                                            <div>
+                                                <Space
+                                                    direction="vertical"
+                                                    align="start"
+                                                    size="xsmall">
+                                                    <Subtitle level={1}>
+                                                        {
+                                                            localization[
+                                                                language
+                                                            ].selectedColumns
+                                                        }
+                                                    </Subtitle>
+                                                    <DragDropContext
+                                                        onDragEnd={
+                                                            handleColumnDragEnd
+                                                        }>
+                                                        <Droppable droppableId="droppable">
+                                                            {(dropProvided) => (
+                                                                <div
+                                                                    {...dropProvided.droppableProps}
+                                                                    ref={
+                                                                        dropProvided.innerRef
+                                                                    }>
+                                                                    <Space
+                                                                        direction="vertical"
+                                                                        align="start"
+                                                                        size="xsmall">
+                                                                        {allColumns
+                                                                            .filter(
+                                                                                (
+                                                                                    column,
+                                                                                ) =>
+                                                                                    column.id !==
+                                                                                        'selection' &&
+                                                                                    column.isVisible,
+                                                                            )
+                                                                            .map(
+                                                                                (
+                                                                                    column,
+                                                                                    idx,
                                                                                 ) => (
-                                                                                    <div
-                                                                                        ref={
-                                                                                            dragProvided.innerRef
+                                                                                    <Draggable
+                                                                                        key={
+                                                                                            column.id
                                                                                         }
-                                                                                        {...dragProvided.draggableProps}
-                                                                                        {...dragProvided.dragHandleProps}>
-                                                                                        <Space>
-                                                                                            <OrderDots>
-                                                                                                <Icon icon="fow-order-dots" />
-                                                                                            </OrderDots>
-                                                                                            <Checkbox
-                                                                                                label={
-                                                                                                    column.Header
-                                                                                                }
-                                                                                                key={
-                                                                                                    column.id
-                                                                                                }
-                                                                                                {...column.getToggleHiddenProps()}
-                                                                                            />
-                                                                                        </Space>
-                                                                                        {
-                                                                                            dragProvided.placeholder
+                                                                                        draggableId={
+                                                                                            column.id
                                                                                         }
-                                                                                    </div>
-                                                                                )}
-                                                                            </Draggable>
-                                                                        ),
-                                                                    )}
-                                                            </Space>
-                                                        </div>
-                                                    )}
-                                                </Droppable>
-                                            </DragDropContext>
-                                        </Space>
-                                    </div>
-                                    <Divider
-                                        direction="vertical"
-                                        size="small"
-                                        style={{
-                                            flex: 'unset',
-                                            height: '100%',
-                                        }}
-                                    />
-                                    <div>
-                                        <Space
-                                            direction="vertical"
-                                            align="start"
-                                            size="xsmall">
-                                            <Input
-                                                placeholder={
-                                                    localization[language]
-                                                        .search
-                                                }
-                                                suffixIcon="search"
-                                                onChange={(value) =>
-                                                    setColumnQuery(value)
-                                                }
-                                                value={columnQuery}
+                                                                                        index={
+                                                                                            idx
+                                                                                        }>
+                                                                                        {(
+                                                                                            dragProvided,
+                                                                                        ) => (
+                                                                                            <div
+                                                                                                ref={
+                                                                                                    dragProvided.innerRef
+                                                                                                }
+                                                                                                {...dragProvided.draggableProps}
+                                                                                                {...dragProvided.dragHandleProps}>
+                                                                                                <Space>
+                                                                                                    <OrderDots>
+                                                                                                        <Icon icon="fow-order-dots" />
+                                                                                                    </OrderDots>
+                                                                                                    <Checkbox
+                                                                                                        label={
+                                                                                                            column.Header
+                                                                                                        }
+                                                                                                        key={
+                                                                                                            column.id
+                                                                                                        }
+                                                                                                        {...column.getToggleHiddenProps()}
+                                                                                                    />
+                                                                                                </Space>
+                                                                                                {
+                                                                                                    dragProvided.placeholder
+                                                                                                }
+                                                                                            </div>
+                                                                                        )}
+                                                                                    </Draggable>
+                                                                                ),
+                                                                            )}
+                                                                    </Space>
+                                                                </div>
+                                                            )}
+                                                        </Droppable>
+                                                    </DragDropContext>
+                                                </Space>
+                                            </div>
+                                            <Divider
+                                                direction="vertical"
+                                                size="small"
+                                                style={{
+                                                    flex: 'unset',
+                                                    height: '100%',
+                                                }}
                                             />
-                                            {allColumns
-                                                .filter(
-                                                    (column) =>
-                                                        column.id !==
-                                                            'selection' &&
-                                                        !column.isVisible,
-                                                )
-                                                .filter(
-                                                    (column) =>
-                                                        column.Header.toLowerCase().indexOf(
-                                                            columnQuery.toLocaleLowerCase(),
-                                                        ) > -1,
-                                                ).length === 0 && (
-                                                <Message
-                                                    message={
-                                                        localization[language]
-                                                            .allColumnSelected
-                                                    }
-                                                    type="empty"
-                                                    width="100"
-                                                />
-                                            )}
-                                            {allColumns
-                                                .filter(
-                                                    (column) =>
-                                                        column.id !==
-                                                            'selection' &&
-                                                        !column.isVisible,
-                                                )
-                                                .filter(
-                                                    (column) =>
-                                                        column.Header.toLowerCase().indexOf(
-                                                            columnQuery.toLocaleLowerCase(),
-                                                        ) > -1,
-                                                )
-                                                .map((column) => (
-                                                    <Checkbox
-                                                        label={column.Header}
-                                                        key={column.id}
-                                                        {...column.getToggleHiddenProps()}
+                                            <div>
+                                                <Space
+                                                    direction="vertical"
+                                                    align="start"
+                                                    size="xsmall">
+                                                    <Input
+                                                        placeholder="Search"
+                                                        suffixIcon="search"
+                                                        onChange={(value) =>
+                                                            setColumnQuery(
+                                                                value,
+                                                            )
+                                                        }
+                                                        value={columnQuery}
                                                     />
-                                                ))}
+                                                    {allColumns
+                                                        .filter(
+                                                            (column) =>
+                                                                column.id !==
+                                                                    'selection' &&
+                                                                !column.isVisible,
+                                                        )
+                                                        .filter(
+                                                            (column) =>
+                                                                column.Header.toLowerCase().indexOf(
+                                                                    columnQuery.toLocaleLowerCase(),
+                                                                ) > -1,
+                                                        ).length === 0 && (
+                                                        <Message
+                                                            message={
+                                                                localization[
+                                                                    language
+                                                                ]
+                                                                    .allColumnSelected
+                                                            }
+                                                            type="empty"
+                                                            width="100"
+                                                        />
+                                                    )}
+                                                    {allColumns
+                                                        .filter(
+                                                            (column) =>
+                                                                column.id !==
+                                                                    'selection' &&
+                                                                !column.isVisible,
+                                                        )
+                                                        .filter(
+                                                            (column) =>
+                                                                column.Header.toLowerCase().indexOf(
+                                                                    columnQuery.toLocaleLowerCase(),
+                                                                ) > -1,
+                                                        )
+                                                        .map((column) => (
+                                                            <Checkbox
+                                                                label={
+                                                                    column.Header
+                                                                }
+                                                                key={column.id}
+                                                                {...column.getToggleHiddenProps()}
+                                                            />
+                                                        ))}
+                                                </Space>
+                                            </div>
+                                        </ColumnList>
+                                    }>
+                                    <Subtitle level={1} color="secondary">
+                                        <Space>
+                                            <Icon icon="columns" />
+                                            <span>
+                                                {localization[language].columns}
+                                            </span>
                                         </Space>
-                                    </div>
-                                </ColumnList>
-                            }>
-                            <Subtitle level={1} color="secondary">
-                                <Space>
-                                    <Icon icon="columns" />
-                                    <span>
-                                        {localization[language].columns}
-                                    </span>
-                                </Space>
-                            </Subtitle>
-                        </Dropdown>
-                    )}
-                </div>
-            </Space>
-            <Loader isLoading={isLoading} text="Loading..">
-                <LeftShadow ref={leftShadowRef} />
+                                    </Subtitle>
+                                </Dropdown>
+                            )}
+                        </div>
+                    </Space>
+                )}
                 <Wrapper
                     isLoading={isLoading && data.length === 0}
                     onScroll={handleScrollTable}
                     ref={scrollRef}>
+                    <LeftShadow
+                        ref={leftShadowRef}
+                        hasPagination={showPagination}
+                        hasHeader={showColumnControls || !!renderFilters}
+                    />
                     <StyledTable {...getTableProps()}>
                         <thead>
                             {headerGroups.map((headerGroup) => (
@@ -582,76 +610,82 @@ const Table = ({
                             </tbody>
                         )}
                     </StyledTable>
-                </Wrapper>
-                <RightShadow ref={rightShadowRef} />
-            </Loader>
-            {data.length === 0 && !isLoading && (
-                <EmptyPlaceholder>
-                    <Space direction="vertical">
-                        <Icon
-                            icon="inbox"
-                            size="4x"
-                            color={theme.fow.colors.text.disabled}
-                        />
-                        <Subtitle color="disabled">
-                            {localization[language].noData}
-                        </Subtitle>
-                    </Space>
-                </EmptyPlaceholder>
-            )}
-            {showPagination && (
-                <PaginationWrapper>
-                    <Pagination
-                        defaultPageSize={controlledPageSize}
-                        pageSize={pageSize}
-                        current={currentPage}
-                        defaultCurrent={1}
-                        onChange={handleChangePagination}
-                        total={totalCount}
-                        showSizeChanger
-                        itemRender={paginationRenderer}
-                        showTitle={false}
+                    <RightShadow
+                        ref={rightShadowRef}
+                        hasPagination={showPagination}
+                        hasHeader={showColumnControls || !!renderFilters}
                     />
-                    <Dropdown
-                        trigger="click"
-                        closeAfterClickContent
-                        content={
-                            <Menu>
-                                {[10, 20, 30, 40, 50].map((size) => (
-                                    <Menu.Item
-                                        index={size}
-                                        key={size}
-                                        onClick={() => {
-                                            handleChangeSize(size);
-                                        }}>
-                                        {size} / {localization[language].page}
-                                    </Menu.Item>
-                                ))}
-                            </Menu>
-                        }>
-                        <SizePicker>
-                            <Subtitle level={3}>
-                                <Space>
-                                    <span>
-                                        {pageSize} /{' '}
-                                        {localization[language].page}
-                                    </span>
-                                    <Icon icon="chevron-down" />
-                                </Space>
+                </Wrapper>
+                {data.length === 0 && !isLoading && (
+                    <EmptyPlaceholder>
+                        <Space direction="vertical">
+                            <Icon
+                                icon="inbox"
+                                size="4x"
+                                color={theme.fow.colors.text.disabled}
+                            />
+                            <Subtitle color="disabled">
+                                {localization[language].noData}
                             </Subtitle>
-                        </SizePicker>
-                    </Dropdown>
-                    <Body level={2}>
-                        {localization[language].results}:{' '}
-                        {(currentPage - 1) * pageSize} -
-                        {currentPage * pageSize > totalCount
-                            ? totalCount
-                            : currentPage * pageSize}{' '}
-                        / {totalCount}
-                    </Body>
-                </PaginationWrapper>
-            )}
-        </Container>
+                        </Space>
+                    </EmptyPlaceholder>
+                )}
+                {showPagination && (
+                    <PaginationWrapper>
+                        <Pagination
+                            defaultPageSize={controlledPageSize}
+                            pageSize={pageSize}
+                            current={currentPage}
+                            defaultCurrent={1}
+                            onChange={handleChangePagination}
+                            total={totalCount}
+                            showSizeChanger
+                            itemRender={paginationRenderer}
+                            showTitle={false}
+                        />
+                        <Dropdown
+                            trigger="click"
+                            closeAfterClickContent
+                            content={(close) => (
+                                <Menu>
+                                    {[10, 20, 30, 40, 50].map((size) => (
+                                        <Menu.Item
+                                            index={size}
+                                            key={size}
+                                            onClick={() => {
+                                                handleChangeSize(size);
+                                                close();
+                                            }}>
+                                            {size} /{' '}
+                                            {localization[language].page}
+                                        </Menu.Item>
+                                    ))}
+                                </Menu>
+                            )}>
+                            <SizePicker>
+                                <Subtitle level={3}>
+                                    <Space>
+                                        <span>
+                                            {pageSize} /{' '}
+                                            {localization[language].page}
+                                        </span>
+                                        <Icon icon="chevron-down" />
+                                    </Space>
+                                </Subtitle>
+                            </SizePicker>
+                        </Dropdown>
+                        <Body level={2}>
+                            {localization[language].results}:{' '}
+                            {(currentPage - 1) * pageSize} -
+                            {currentPage * pageSize > totalCount
+                                ? totalCount
+                                : currentPage * pageSize}{' '}
+                            / {totalCount}
+                        </Body>
+                    </PaginationWrapper>
+                )}
+            </Container>
+        </Loader>
     );
 };
 

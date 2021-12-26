@@ -33,7 +33,7 @@ export const StyledButton = styled.button<ButtonProps>`
     overflow: hidden;
     width: ${(props) => (props.fluid ? '100%' : 'auto')} !important;
     min-width: ${(props) =>
-        props.fab || !props.hasChildren ? 'unset' : '80px'} !important;
+        props.fab || !props.hasChildren ? 'unset' : 'auto'} !important;
     border-radius: ${(props) => (props.fab ? 50 : 4)}px;
     outline: none;
     white-space: nowrap;

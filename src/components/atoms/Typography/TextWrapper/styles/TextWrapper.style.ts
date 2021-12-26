@@ -14,7 +14,8 @@ type TextWrapperProps = {
         | 'black'
         | 'success'
         | 'warning'
-        | 'error';
+        | 'error'
+        | 'info';
     textDecoration:
         | 'underline'
         | 'overline'
