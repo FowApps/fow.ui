@@ -14,7 +14,7 @@ const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    trigger: 'click',
+    trigger: 'hover',
     closeAfterClickContent: true,
     children: (
         <div>
