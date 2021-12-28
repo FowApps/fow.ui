@@ -9,6 +9,13 @@ const setVariant = (color: string, variant: string): any => {
                 background-color: ${(props) =>
                     props.theme.fow.colors.common.white};
                 color: ${(props) => props.theme.fow.colors[color].dark};
+
+                ${color === 'grey' &&
+                css`
+                    border: 1px solid
+                        ${(props) => props.theme.fow.colors.greyLight.main};
+                    color: ${(props) => props.theme.fow.colors.text.disabled};
+                `}
             `;
         case 'filled':
             return css`
@@ -17,9 +24,13 @@ const setVariant = (color: string, variant: string): any => {
                 background-color: ${(props) =>
                     props.theme.fow.colors[color].dark};
                 color: ${(props) => props.theme.fow.colors.common.white};
-                /* box-shadow: 0px 8px 16px
-                    ${(props) =>
-                    props.theme.fow.colors[color].transparent24}; */
+
+                ${color === 'grey' &&
+                css`
+                    background-color: ${(props) =>
+                        props.theme.fow.colors.greyLight.main};
+                    color: ${(props) => props.theme.fow.colors.text.disabled};
+                `}
             `;
         case 'ghost':
             return css`
