@@ -104,7 +104,7 @@ const Dropdown = (
                         }
                         openInterval = setTimeout(() => {
                             open();
-                        }, 500);
+                        }, 250);
                     }
                 }}
                 onMouseLeave={() => {
