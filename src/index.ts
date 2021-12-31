@@ -77,6 +77,8 @@ export { default as Upload } from './components/molecules/Upload';
 export { default as Drawer } from './components/molecules/Drawer';
 export { default as Table } from './components/molecules/Table';
 export { default as Summary } from './components/molecules/Summary';
+export { default as DatePicker } from './components/molecules/DatePicker';
+export { default as DateRangePicker } from './components/molecules/DateRangePicker';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
