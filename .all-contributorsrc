@@ -1,8 +1,8 @@
 {
-  "projectName": "@fowapps/fow-ui",
-  "projectOwner": "fowapps",
+  "projectName": "fow.ui.v2",
+  "projectOwner": "FowApps",
   "repoType": "github",
-  "repoHost": "https://github.com/FowApps/fow.ui.v2",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
@@ -48,6 +48,16 @@
       "name": "Cagatay",
       "avatar_url": "https://avatars.githubusercontent.com/u/52887078?v=4",
       "profile": "https://github.com/mcagataykaban",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "alikaraarslan",
+      "name": "Ali Karaarslan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70697091?v=4",
+      "profile": "https://github.com/alikaraarslan",
       "contributions": [
         "code",
         "bug"

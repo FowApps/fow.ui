@@ -25,6 +25,10 @@ export interface LoaderProps {
      * size of spinner
      */
     size?: 'small' | 'medium';
+    /**
+     * color of overlay background
+     */
+    overlayColor?: 'white' | 'grey';
     children?: React.ReactNode;
 }
 
@@ -46,9 +50,11 @@ const Loader = ({
     isLoading = false,
     fullPage = false,
     size = 'medium',
+    overlayColor = 'white',
     children,
 }: LoaderProps): JSX.Element => (
     <StyledLoader
+        overlayColor={overlayColor}
         hasChildren={!!children}
         classNamePrefix="fow-loader-overlay_"
         fadeSpeed={200}

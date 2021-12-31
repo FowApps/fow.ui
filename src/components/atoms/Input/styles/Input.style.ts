@@ -19,7 +19,7 @@ type IconWrapperProps = {
 
 export const IconWrapper = styled.div<IconWrapperProps>`
     position: absolute;
-    top: 0.8rem;
+    top: 1rem;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 
@@ -58,7 +58,7 @@ export const StyledInput = styled.input<InputProps>`
             props.hasValidationError
                 ? props.theme.fow.colors.error.main
                 : props.theme.fow.colors.grey.transparent32};
-    border-radius: 8px;
+    border-radius: 4px;
     color: ${(props) => props.theme.fow.colors.text.primary};
     outline: none;
     font-size: 1.4rem;
