@@ -18,6 +18,8 @@ import Checkbox from '../Checkbox';
 import Radio from '../Radio';
 import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
+import DatePicker from '../../molecules/DatePicker/DatePicker';
+import DateRangePicker from '../../molecules/DateRangePicker';
 
 export default {
     title: 'Atoms/Form',
@@ -120,6 +122,8 @@ const UseFormTemplate: Story = () => {
             await new Promise((r) => setTimeout(r, 3000));
             return {
                 hook: 'Fow UI Form Hook',
+                date: new Date().toISOString(),
+                daterange: [new Date(new Date().setDate(22)).toISOString(), new Date().toISOString()]
             };
         },
     });
@@ -162,6 +166,18 @@ const UseFormTemplate: Story = () => {
                     <Select>
                         <Select.Option value="Test">Test</Select.Option>
                     </Select>
+                </FormField>
+                <FormField
+                    label="Date"
+                    name="date"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <DatePicker />
+                </FormField>
+                <FormField
+                    label="Date Range"
+                    name="daterange"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <DateRangePicker />
                 </FormField>
                 <Space>
                     <Button

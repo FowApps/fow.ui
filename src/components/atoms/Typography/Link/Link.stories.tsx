@@ -29,6 +29,7 @@ export default {
                 'success',
                 'warning',
                 'error',
+                'info'
             ],
         },
         leftIcon: {

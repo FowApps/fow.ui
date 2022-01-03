@@ -5,11 +5,17 @@ interface OverlayProps extends LoadingOverlayProps {
     fullPage?: boolean;
     hasChildren: boolean;
     size?: 'small' | 'medium';
+    overlayColor: 'white' | 'grey';
 }
 
 interface StaticPlaceholderProps {
     height?: number;
 }
+
+const overlayColor = {
+    white: 'rgba(255, 255, 255, 0.75)',
+    grey: ' rgba(249, 250, 251, 0.75)',
+};
 
 export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
     &.fow-loader-overlay_wrapper {
@@ -20,7 +26,7 @@ export const StyledLoader = styled(LoadingOverlay)<OverlayProps>`
         position: ${(props) => (props.fullPage ? 'fixed' : 'absolute')};
         background: ${(props) =>
             props.hasChildren || props.fullPage
-                ? 'rgba(255, 255, 255, 0.75)'
+                ? overlayColor[props.overlayColor]
                 : 'transparent'};
     }
     .fow-loader-overlay_content {
