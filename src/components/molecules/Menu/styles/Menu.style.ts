@@ -25,3 +25,10 @@ export const ItemWrapper = styled.div`
             props.theme.fow.colors.primary.transparent8};
     }
 `;
+
+export const Title = styled.div`
+    width: 100%;
+    background-color: ${(props) => props.theme.fow.colors.common.white};
+    padding-inline: ${(props) => props.theme.fow.spacing.medium};
+    padding-block: ${(props) => props.theme.fow.spacing.xxsmall};
+`;

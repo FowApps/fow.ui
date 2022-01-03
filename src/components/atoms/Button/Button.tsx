@@ -94,10 +94,22 @@ const Button = (
             />
         )}
         <span>
-            <Space inline={false}>
-                {leftIcon && <Icon icon={leftIcon} />}
+            <Space
+                inline={false}
+                size={size === 'small' ? 'xxsmall' : 'xsmall'}>
+                {leftIcon && (
+                    <Icon
+                        icon={leftIcon}
+                        size={size === 'small' ? 'xs' : 'sm'}
+                    />
+                )}
                 {children && <span>{children}</span>}
-                {rightIcon && !fab && <Icon icon={rightIcon} />}
+                {rightIcon && !fab && (
+                    <Icon
+                        icon={rightIcon}
+                        size={size === 'small' ? 'xs' : 'sm'}
+                    />
+                )}
             </Space>
         </span>
     </StyledButton>

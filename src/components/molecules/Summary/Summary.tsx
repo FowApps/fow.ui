@@ -9,11 +9,12 @@ import Body from '../../atoms/Typography/Body';
 export interface StyledSummaryCardProps {
     column?: number;
 }
-export interface SummaryProps {
+export interface SummaryItemProps {
     title: string;
     field: string;
     description?: string;
     column?: number;
+    hidden?: boolean;
 }
 
 const SummaryItemIcon = ({ description }): JSX.Element => (
@@ -30,8 +31,13 @@ const SummaryItemBody = ({ field }): JSX.Element => (
     </Body>
 );
 
-const Item = ({ title, field, description }: SummaryProps): JSX.Element => (
-    <SummaryCardItem>
+const Item = ({
+    title,
+    field,
+    description,
+    hidden = false,
+}: SummaryItemProps): JSX.Element => (
+    <SummaryCardItem hidden={hidden}>
         <Space align="center" size="xsmall">
             <Subtitle level={2}>{title}</Subtitle>
             {description && <SummaryItemIcon description={description} />}
@@ -40,16 +46,12 @@ const Item = ({ title, field, description }: SummaryProps): JSX.Element => (
     </SummaryCardItem>
 );
 
-const Summary = ({ title, field, description }: SummaryProps): JSX.Element => (
-    <SummaryWrapper>
-        <Item title={title} field={field} description={description} />
-    </SummaryWrapper>
-);
-
-Summary.displayName = 'Summary';
+SummaryWrapper.displayName = 'List';
 Item.displayName = 'Item';
 
-Summary.Item = Item;
-Summary.List = SummaryWrapper;
+const Summary = {
+    Item,
+    List: SummaryWrapper,
+};
 
 export default Summary;

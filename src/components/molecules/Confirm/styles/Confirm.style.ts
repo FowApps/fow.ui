@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Overlay = styled(motion.div)`
     position: fixed;
-    z-index: 999;
+    z-index: 1069;
     display: flex;
     align-items: flex-start;
     justify-content: center;

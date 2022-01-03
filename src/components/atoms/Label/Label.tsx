@@ -8,7 +8,14 @@ export interface LabelProps {
     /**
      * color
      */
-    color?: 'pink' | 'orange' | 'green' | 'blue' | 'purple' | 'darkPurple';
+    color?:
+        | 'pink'
+        | 'orange'
+        | 'green'
+        | 'blue'
+        | 'purple'
+        | 'darkPurple'
+        | 'grey';
     /**
      * variant of button
      */
@@ -32,6 +39,7 @@ export interface LabelProps {
     isClosable?: boolean;
     text?: React.ReactNode | 'string';
     onClose?: () => void;
+    noGutter?: boolean;
 }
 
 const Label = ({
@@ -43,6 +51,7 @@ const Label = ({
     leftIcon = null,
     rightIcon = null,
     text,
+    noGutter = false,
     onClose,
     ...rest
 }: LabelProps): JSX.Element => (
@@ -52,6 +61,7 @@ const Label = ({
         variant={variant}
         color={color}
         hasText={!!text}
+        noGutter={noGutter}
         {...rest}>
         <span>
             <Space size="small">
