@@ -6,15 +6,20 @@ export const setSize = (size: SizeTypes) => {
     switch (size) {
         case 'small':
             return css`
-                height: 2.2rem;
+                font-weight: 500;
+                font-size: 1rem;
+                line-height: 1.8rem;
             `;
         case 'medium':
             return css`
-                height: 3rem;
+                font-weight: 500;
+                font-size: 1.2rem;
+                line-height: 2rem;
             `;
         case 'large':
             return css`
-                height: 3.6rem;
+                font-size: 1.4rem;
+                line-height: 2.2rem;
             `;
         default:
             return ``;

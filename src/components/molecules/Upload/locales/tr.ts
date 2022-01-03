@@ -4,4 +4,5 @@ export const tr = {
     description: 'Dosyaları buraya bırakın veya bilgisayarınıza göz atın',
     sizeError: 'Dosya çok büyük',
     sizeInfo: 'İzin verilen maksimum yükleme dosyası boyutu',
+    upload: 'Yükle',
 };
