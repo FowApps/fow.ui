@@ -149,12 +149,12 @@ const Table = ({
                             ),
                             Cell: ({ row }) => (
                                 <Dropdown
-                                    trigger="hover"
-                                    content={
-                                        <ActionCard>
+                                    trigger="click"
+                                    content={(close) => (
+                                        <ActionCard onClick={close}>
                                             {renderAction(row.original)}
                                         </ActionCard>
-                                    }>
+                                    )}>
                                     {({ isOpen }) => (
                                         <ActionTrigger
                                             className={`action ${

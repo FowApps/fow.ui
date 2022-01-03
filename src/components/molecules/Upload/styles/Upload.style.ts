@@ -33,6 +33,8 @@ export const FormField = styled.input`
     text-transform: none;
     inset: 0;
     opacity: 0;
+    cursor: pointer;
+
     &:focus {
         outline: none;
     }
