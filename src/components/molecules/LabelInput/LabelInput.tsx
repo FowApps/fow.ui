@@ -120,7 +120,7 @@ const LabelInput = ({
                             key={label.id}
                             text={label.text}
                             color={label.color}
-                            size="small"
+                            size="medium"
                             isClosable
                             onClose={() => {
                                 onDeleteLabel(label.id);
@@ -138,7 +138,7 @@ const LabelInput = ({
                                             key={extraLabel.id}
                                             text={extraLabel.text}
                                             color={extraLabel.color}
-                                            size="small"
+                                            size="medium"
                                             isClosable
                                             onClose={() => {
                                                 onDeleteLabel(extraLabel.id);
@@ -153,7 +153,7 @@ const LabelInput = ({
                                 value.length - value.slice(0, maxCount).length
                             }`}
                             color="blue"
-                            size="small"
+                            size="medium"
                         />
                     </Popover>
                 </>
@@ -164,7 +164,7 @@ const LabelInput = ({
                 key={label.id}
                 text={label.text}
                 color={label.color}
-                size="small"
+                size="medium"
                 isClosable
                 onClose={() => {
                     onDeleteLabel(label.id);
