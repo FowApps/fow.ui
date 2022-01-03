@@ -6,6 +6,7 @@ export interface SpaceProps extends ComponentPropsWithoutRef<'div'> {
      * size of between items
      */
     size?:
+        | 'none'
         | 'xxsmall'
         | 'xsmall'
         | 'small'

@@ -4,6 +4,7 @@ import { setSpaceAndDirection } from './space';
 
 type SpaceProps = {
     size:
+        | 'none'
         | 'xxsmall'
         | 'xsmall'
         | 'small'
