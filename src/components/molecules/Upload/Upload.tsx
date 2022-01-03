@@ -18,6 +18,7 @@ import Caption from '../../atoms/Typography/Caption';
 import Heading from '../../atoms/Typography/Heading';
 import Overline from '../../atoms/Typography/Overline';
 import Subtitle from '../../atoms/Typography/Subtitle';
+import Button, { ButtonProps } from '../../atoms/Button';
 
 import {
     Wrapper,
@@ -72,6 +73,9 @@ export interface UploadProps {
     required?: any;
     localization?: LocalizationType;
     theme?: DefaultTheme;
+    uploadButtonProps?: ButtonProps;
+    showFileList?: boolean;
+    type?: 'dragger' | 'button';
 }
 
 const itemVariants = {
@@ -117,6 +121,9 @@ const Upload = ({
     error,
     disabled = false,
     required = false,
+    uploadButtonProps = {},
+    showFileList = true,
+    type = 'dragger',
     theme,
 }: UploadProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
@@ -223,49 +230,66 @@ const Upload = ({
                     {localization[language].label}
                 </Label>
             )}
-            <FileUploadContainer disabled={disabled}>
-                <Space size="xxlarge">
-                    <Icon
-                        icon="cloud"
-                        size="10x"
-                        color={theme?.fow.colors.grey.lighter}
+            {type === 'button' && (
+                <Button {...uploadButtonProps} disabled={disabled}>
+                    <FormField
+                        type="file"
+                        ref={fileInputField}
+                        onChange={handleChange}
+                        accept={accept}
+                        multiple={multiple}
+                        disabled={disabled}
                     />
-                    <Space direction="vertical" align="start" size="xsmall">
-                        <Heading as="h5">
-                            {localization[language].placeholder}
-                        </Heading>
-                        <Subtitle level={2}>
-                            {localization[language].description}
-                        </Subtitle>
-                        <Caption>
-                            {localization[language].sizeInfo}:{' '}
-                            {convertBytesToKB(maxFileSizeInBytes)} Kb
-                        </Caption>
+                    {localization[language].upload}
+                </Button>
+            )}
+            {type === 'dragger' && (
+                <FileUploadContainer disabled={disabled}>
+                    <Space size="xxlarge">
+                        <Icon
+                            icon="cloud"
+                            size="10x"
+                            color={theme?.fow.colors.grey.lighter}
+                        />
+                        <Space direction="vertical" align="start" size="xsmall">
+                            <Heading as="h5">
+                                {localization[language].placeholder}
+                            </Heading>
+                            <Subtitle level={2}>
+                                {localization[language].description}
+                            </Subtitle>
+                            <Caption>
+                                {localization[language].sizeInfo}:{' '}
+                                {convertBytesToKB(maxFileSizeInBytes)} Kb
+                            </Caption>
+                        </Space>
                     </Space>
-                </Space>
-                <FormField
-                    type="file"
-                    ref={fileInputField}
-                    onChange={handleChange}
-                    accept={accept}
-                    multiple={multiple}
-                    disabled={disabled}
-                />
-            </FileUploadContainer>
-            <motion.div
-                variants={wrapperVariants}
-                initial="hidden"
-                animate="show">
-                <Space direction="vertical" inline={false} align="start">
-                    <AnimatePresence>
-                        {files.length > 0 && (
-                            <FileListContainer>
-                                {renderFiles()}
-                            </FileListContainer>
-                        )}
-                    </AnimatePresence>
-                </Space>
-            </motion.div>
+                    <FormField
+                        type="file"
+                        ref={fileInputField}
+                        onChange={handleChange}
+                        accept={accept}
+                        multiple={multiple}
+                        disabled={disabled}
+                    />
+                </FileUploadContainer>
+            )}
+            {showFileList && (
+                <motion.div
+                    variants={wrapperVariants}
+                    initial="hidden"
+                    animate="show">
+                    <Space direction="vertical" inline={false} align="start">
+                        <AnimatePresence>
+                            {files.length > 0 && (
+                                <FileListContainer>
+                                    {renderFiles()}
+                                </FileListContainer>
+                            )}
+                        </AnimatePresence>
+                    </Space>
+                </motion.div>
+            )}
         </Wrapper>
     );
 };

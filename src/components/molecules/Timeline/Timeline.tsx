@@ -129,6 +129,7 @@ const Timeline = ({
                 {items.map(
                     ({ props: { icon, isActive, ...rest } }, idx: number) => (
                         <Item
+                            key={idx}
                             dotType={dotType}
                             index={idx}
                             align={align}

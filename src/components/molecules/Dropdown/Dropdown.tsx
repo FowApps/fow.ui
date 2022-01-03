@@ -31,7 +31,8 @@ export interface DropdownProps {
     initialOpen?: boolean;
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
 }
-let interval;
+let closeInterval;
+let openInterval;
 
 const Dropdown = (
     {
@@ -77,7 +78,7 @@ const Dropdown = (
                             state={state}
                             onMouseEnter={() => {
                                 if (trigger === 'hover') {
-                                    clearInterval(interval);
+                                    clearInterval(closeInterval);
                                     open();
                                 }
                             }}
@@ -97,11 +98,19 @@ const Dropdown = (
                     if (trigger === 'click') toggle();
                 }}
                 onMouseEnter={() => {
-                    if (trigger === 'hover') open();
+                    if (trigger === 'hover') {
+                        if (openInterval) {
+                            clearInterval(openInterval);
+                        }
+                        openInterval = setTimeout(() => {
+                            open();
+                        }, 250);
+                    }
                 }}
                 onMouseLeave={() => {
                     if (trigger === 'hover') {
-                        interval = setTimeout(() => {
+                        clearInterval(openInterval);
+                        closeInterval = setTimeout(() => {
                             close();
                         }, 500);
                     }
