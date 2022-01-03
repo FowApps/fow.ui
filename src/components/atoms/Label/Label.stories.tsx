@@ -21,6 +21,7 @@ export default {
                 'blue',
                 'purple',
                 'darkPurple',
+                'grey'
             ],
         },
         variant: {

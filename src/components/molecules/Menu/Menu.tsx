@@ -89,6 +89,7 @@ const Menu = ({
                     case 'MenuItem':
                         return (
                             <MenuItem
+                                key={props.index}
                                 index={props.index}
                                 onClick={props.onClick}
                                 handleChange={handleChange}>

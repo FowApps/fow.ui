@@ -49,10 +49,14 @@ const Select = ({
         handleLoadOptions();
     }, []);
 
+    useEffect(() => {
+        setLoading(!!initialLoading);
+    }, [initialLoading]);
+
     const renderOptions = () => {
         if (typeof loadOptions === 'function') {
             return options.map((option) => (
-                <Select.Option value={option.value}>
+                <Select.Option value={option.value} key={option.value}>
                     {option.text}
                 </Select.Option>
             ));
