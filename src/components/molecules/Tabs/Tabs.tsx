@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Subtitle from '../../atoms/Typography/Body/Body';
@@ -86,7 +86,11 @@ const Tabs = ({
     destroyInactive = false,
     children,
 }: TabsProps): JSX.Element => {
-    const [bindIndex, setBindIndex] = useState(defaultIndex);
+    const [bindIndex, setBindIndex] = useState(() => defaultIndex);
+
+    useEffect(() => {
+        setBindIndex(defaultIndex);
+    }, [defaultIndex]);
 
     const changeTab = (newIndex: number) => {
         if (bindIndex !== newIndex) {

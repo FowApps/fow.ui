@@ -80,6 +80,7 @@ export { default as LabelInput } from './components/molecules/LabelInput';
 export { default as Summary } from './components/molecules/Summary';
 export { default as DatePicker } from './components/molecules/DatePicker';
 export { default as DateRangePicker } from './components/molecules/DateRangePicker';
+export { default as OverviewCard } from './components/molecules/OverviewCard';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
