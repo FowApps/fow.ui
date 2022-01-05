@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .drawer {
-        z-index: 1065 !important;
+        z-index: 150 !important;
     }
     
     .drawer-mask, .drawer-content-wrapper {
