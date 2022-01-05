@@ -121,9 +121,13 @@ const UseFormTemplate: Story = () => {
         async initialValues() {
             await new Promise((r) => setTimeout(r, 3000));
             return {
+                hooks: 'Test',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
-                daterange: [new Date(new Date().setDate(22)).toISOString(), new Date().toISOString()]
+                daterange: [
+                    new Date(new Date().setDate(22)).toISOString(),
+                    new Date().toISOString(),
+                ],
             };
         },
     });
@@ -165,6 +169,7 @@ const UseFormTemplate: Story = () => {
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Select>
                         <Select.Option value="Test">Test</Select.Option>
+                        <Select.Option value="Test2">Test 2</Select.Option>
                     </Select>
                 </FormField>
                 <FormField

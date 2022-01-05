@@ -52,6 +52,10 @@ const Select = ({
     }, []);
 
     useEffect(() => {
+        setVal(rest.value);
+    }, [rest.value]);
+
+    useEffect(() => {
         if (typeof loadOptions !== 'function') {
             setLoading(!!initialLoading);
         }
@@ -113,7 +117,7 @@ const Select = ({
                 }
                 {...rest}
                 onChange={handleChange}
-                value={options.length === 0 ? undefined : val}>
+                value={options.length === 0 && !!loadOptions ? undefined : val}>
                 {renderOptions()}
             </RcSelect>
         </Wrapper>
