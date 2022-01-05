@@ -36,6 +36,7 @@ const Select = ({
     const [loading, setLoading] = useState<boolean>(
         loadOptions ? true : !!initialLoading,
     );
+    const [val, setVal] = useState(rest.value);
 
     const handleLoadOptions = async () => {
         if (typeof loadOptions === 'function') {
@@ -67,7 +68,10 @@ const Select = ({
         return children;
     };
 
-    console.log(loading);
+    const handleChange = (value, option) => {
+        setVal(value);
+        rest?.onChange?.(value, option);
+    };
 
     return (
         <Wrapper title={rest.value?.toString()} size={size}>
@@ -108,7 +112,8 @@ const Select = ({
                     )
                 }
                 {...rest}
-                value={options.length === 0 ? null : rest.value}>
+                onChange={handleChange}
+                value={options.length === 0 ? undefined : val}>
                 {renderOptions()}
             </RcSelect>
         </Wrapper>
