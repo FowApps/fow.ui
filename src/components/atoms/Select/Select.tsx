@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React, { useEffect, useState } from 'react';
 import RcSelect, {
     Option as RcOption,
@@ -50,8 +51,10 @@ const Select = ({
     }, []);
 
     useEffect(() => {
-        setLoading(!!initialLoading);
-    }, [initialLoading]);
+        if (typeof loadOptions !== 'function') {
+            setLoading(!!initialLoading);
+        }
+    }, [initialLoading, loadOptions]);
 
     const renderOptions = () => {
         if (typeof loadOptions === 'function') {
@@ -63,6 +66,8 @@ const Select = ({
         }
         return children;
     };
+
+    console.log(loading);
 
     return (
         <Wrapper title={rest.value?.toString()} size={size}>
@@ -102,7 +107,8 @@ const Select = ({
                         />
                     )
                 }
-                {...rest}>
+                {...rest}
+                value={options.length === 0 ? null : rest.value}>
                 {renderOptions()}
             </RcSelect>
         </Wrapper>

@@ -105,6 +105,8 @@ Async.args = {
     },
     defaultValue: 1,
     placeholder: 'Please select',
+    value: 1,
+
     loadOptions: async () => {
         const response = await fetch('https://reqres.in/api/users');
         const json = await response.json();
