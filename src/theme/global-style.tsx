@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
         }
     }
     
-    .drawer {
+    .drawer-mask, .drawer-content-wrapper {
         z-index: 1068 !important;
     }
 

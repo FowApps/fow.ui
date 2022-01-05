@@ -46,7 +46,6 @@ export const ContentVariants = {
 
 export const Sider = styled(motion.div)<SiderProps>`
     position: relative;
-    z-index: 99;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
