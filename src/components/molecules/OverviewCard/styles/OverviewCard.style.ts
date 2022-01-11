@@ -13,4 +13,5 @@ export const Card = styled.div`
     border-radius: 4px;
     padding-inline: ${(props) => props.theme.fow.spacing.xsmall};
     padding-block: ${(props) => props.theme.fow.spacing.xxsmall};
+    min-height: 36px;
 `;

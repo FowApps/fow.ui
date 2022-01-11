@@ -14,6 +14,7 @@ import { Wrapper, LoaderWrapper } from './styles';
 export interface Props extends SelectProps {
     loadOptions?: any;
     size?: 'medium' | 'large';
+    dependencies?: any;
 }
 
 export type OptionType = {
@@ -30,6 +31,7 @@ const Select = ({
     maxTagCount = 3,
     showArrow = true,
     size = 'medium',
+    dependencies,
     ...rest
 }: Props) => {
     const [options, setOptions] = useState<OptionType[]>([]);
@@ -49,7 +51,7 @@ const Select = ({
 
     useEffect(() => {
         handleLoadOptions();
-    }, []);
+    }, [dependencies]);
 
     useEffect(() => {
         setVal(rest.value);
