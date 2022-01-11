@@ -60,6 +60,7 @@ export const Trigger = styled.button`
     position: absolute;
     top: 16px;
     right: -16px;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
