@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Space from '../../atoms/Space';
@@ -128,7 +128,11 @@ const Accordion = ({
     arrowPosition = 'right',
     children,
 }: AccordionProps): JSX.Element => {
-    const [bindIndex, setBindIndex] = useState(defaultIndex);
+    const [bindIndex, setBindIndex] = useState(() => defaultIndex);
+
+    useEffect(() => {
+        setBindIndex(defaultIndex);
+    }, [defaultIndex]);
 
     const changeItem = (itemIndex: number) => {
         if (typeof onItemClick === 'function') onItemClick(itemIndex);
