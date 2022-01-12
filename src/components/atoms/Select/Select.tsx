@@ -94,7 +94,6 @@ const Select = ({
                 loading={loading}
                 maxTagCount={maxTagCount}
                 maxTagTextLength={maxTagTextLength}
-                animation="slide-up"
                 menuItemSelectedIcon={<Icon icon="check" />}
                 clearIcon={<Icon icon="times-circle" />}
                 removeIcon={
