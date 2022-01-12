@@ -30,21 +30,7 @@ Single.args = {
         console.log({ value, option });
     },
     placeholder: 'Please select',
-    children: [
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-    ],
+    children: [],
 };
 
 export const Multiple = Default.bind({});
