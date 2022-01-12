@@ -102,7 +102,6 @@ const Select = ({
     return (
         <Wrapper title={rest.value?.toString()} size={size}>
             <RcSelect
-                open
                 virtual={false}
                 notFoundContent={
                     loading ? (
