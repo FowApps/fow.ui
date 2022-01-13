@@ -21,6 +21,16 @@ import Heading from '../../atoms/Typography/Heading';
 import getDrawerStyles from './utils/getDrawerStyles';
 
 import { Container, Header, Body, Footer } from './styles';
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+
+// language files
+import { tr } from './locales/tr';
+import { en } from './locales/en';
+
+const localization = {
+    tr,
+    en,
+};
 
 type DrawerRef = {
     push(): void;
@@ -149,16 +159,17 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
             afterVisibleChange,
             onClose,
             onOk,
-            okText = 'Submit',
+            okText,
             okButtonProps,
             onCancel,
-            cancelText = 'Cancel',
+            cancelText,
             cancelButtonProps,
             children,
             ...rest
         },
         ref,
     ) => {
+        const { language } = useContext(ConfigContext);
         const [internalPush, setPush] = useState(false);
         const parentDrawer = useContext(DrawerContext);
         const forceUpdate = useForceUpdate();
@@ -264,7 +275,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                                     onCancel?.();
                                 }}
                                 {...cancelButtonProps}>
-                                {cancelText}
+                                {cancelText || localization[language].cancel}
                             </Button>
                         )}
                         {onOk && (
@@ -274,7 +285,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                                     onOk?.();
                                 }}
                                 {...okButtonProps}>
-                                {okText}
+                                {okText || localization[language].submit}
                             </Button>
                         )}
                     </Space>

@@ -59,9 +59,9 @@ const DiscountInput = ({
 
     const triggerChange = (changedValue: {
         number?: number;
-        discountType?: DiscountType['value'];
+        type?: DiscountType['value'];
     }) => {
-        onChange?.({ number, discountType, ...value, ...changedValue });
+        onChange?.({ number, type: discountType, ...value, ...changedValue });
     };
 
     const onNumberChange = (val: any) => {
@@ -80,7 +80,7 @@ const DiscountInput = ({
             setDiscountType(newType);
         }
         setNumber(undefined);
-        triggerChange({ discountType: newType });
+        triggerChange({ type: newType });
     };
 
     return (
