@@ -80,6 +80,10 @@ const DrawerFormTemplate: Story = () => {
         defaultOpen: false,
         autoSubmitClose: true,
         autoResetForm: true,
+        initialValues: async () => {
+            await new Promise((r) => setTimeout(r, 3000));
+            return {};
+        },
         async submit({ username, email }) {
             console.log('beforeSubmit');
             await new Promise((r) => setTimeout(r, 1000));

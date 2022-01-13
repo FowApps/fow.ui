@@ -107,8 +107,6 @@ const UseFormTemplate: Story = () => {
     const [form] = Form.useForm();
     const {
         formProps,
-        formValues,
-        formResult,
         formLoading,
         defaultFormValuesLoading,
     } = useForm({
@@ -136,16 +134,6 @@ const UseFormTemplate: Story = () => {
             };
         },
     });
-
-    const formatOptionLabel = (option) => {
-        return <div>{option.name}</div>;
-    };
-
-    const options = [
-        { label: 'Apple', value: 'Apple' },
-        { label: 'Pear', value: 'Pear' },
-        { label: 'Orange', value: 'Orange' },
-    ];
 
     return (
         <Loader isLoading={defaultFormValuesLoading || formLoading}>

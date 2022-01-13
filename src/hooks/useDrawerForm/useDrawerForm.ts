@@ -69,7 +69,7 @@ const useDrawerForm = (config: UseDrawerFormConfig) => {
                 }
             });
         },
-        isLoading: formLoading,
+        isLoading: formLoading || defaultFormValuesLoading,
     };
 
     return {
