@@ -20,6 +20,7 @@ import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
+import PriceInput from '../PriceInput';
 
 export default {
     title: 'Atoms/Form',
@@ -121,6 +122,10 @@ const UseFormTemplate: Story = () => {
         async initialValues() {
             await new Promise((r) => setTimeout(r, 3000));
             return {
+                finalAmount: {
+                    currency: '2',
+                    number: 23,
+                },
                 hooks: 'Test',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
@@ -162,6 +167,23 @@ const UseFormTemplate: Story = () => {
                         <Radio value="Test" label="Test" checked />
                         <Radio value="Test 2" label="Test 2" />
                     </Radio.Group>
+                </FormField>
+                <FormField
+                    label="Final Amount"
+                    name="finalAmount"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <PriceInput
+                        currencies={[
+                            {
+                                name: 'TRY',
+                                value: '1',
+                            },
+                            {
+                                name: 'USD',
+                                value: '2',
+                            },
+                        ]}
+                    />
                 </FormField>
                 <FormField
                     label="Hooks"

@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 1.4rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
         line-height: unset;
         letter-spacing: unset !important;
     }

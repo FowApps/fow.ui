@@ -7,7 +7,7 @@ type InputProps = {
 export const Wrapper = styled.div<InputProps>`
     .rc-input-number {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 4px;
         height: 32px;
 
         border-color: ${(props) =>
