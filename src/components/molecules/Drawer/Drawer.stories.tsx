@@ -102,22 +102,20 @@ const DrawerFormTemplate: Story = () => {
                         Reset
                     </Button>
                 }>
-                <Loader isLoading={formLoading}>
-                    <Form {...formProps}>
-                        <FormField
-                            label="Username"
-                            name="username"
-                            rules={[{ required: true, message: 'Required..' }]}>
-                            <Input placeholder="Username" suffixIcon="user" />
-                        </FormField>
-                        <FormField
-                            label="Email"
-                            name="email"
-                            rules={[{ required: true, message: 'Required..' }]}>
-                            <Input placeholder="Email" suffixIcon="envelope" />
-                        </FormField>
-                    </Form>
-                </Loader>
+                <Form {...formProps}>
+                    <FormField
+                        label="Username"
+                        name="username"
+                        rules={[{ required: true, message: 'Required..' }]}>
+                        <Input placeholder="Username" suffixIcon="user" />
+                    </FormField>
+                    <FormField
+                        label="Email"
+                        name="email"
+                        rules={[{ required: true, message: 'Required..' }]}>
+                        <Input placeholder="Email" suffixIcon="envelope" />
+                    </FormField>
+                </Form>
             </Drawer>
             <Button onClick={open}>Open Drawer Form</Button>
         </div>

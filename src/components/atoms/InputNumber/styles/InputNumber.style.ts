@@ -19,14 +19,14 @@ export const Wrapper = styled.div<InputProps>`
             border-color: ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.grey.main};
+                    : props.theme.fow.colors.error.transparent48};
 
             .rc-input-number-handler-up,
             .rc-input-number-handler-wrap {
                 border-color: ${(props) =>
                     props.hasValidationError
                         ? props.theme.fow.colors.error.main
-                        : props.theme.fow.colors.grey.main};
+                        : props.theme.fow.colors.error.transparent48};
             }
 
             .rc-input-number-handler-wrap {

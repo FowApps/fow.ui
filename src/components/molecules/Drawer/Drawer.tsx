@@ -26,6 +26,7 @@ import { ConfigContext } from '../../../theme/FowThemeProvider';
 // language files
 import { tr } from './locales/tr';
 import { en } from './locales/en';
+import { Loader } from '../../..';
 
 const localization = {
     tr,
@@ -132,6 +133,7 @@ export interface DrawerProps {
     onCancel?: () => void;
     cancelText?: string;
     cancelButtonProps?: ButtonProps;
+    isLoading?: boolean;
     children?: React.ReactNode;
 }
 
@@ -164,6 +166,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
             onCancel,
             cancelText,
             cancelButtonProps,
+            isLoading = false,
             children,
             ...rest
         },
@@ -299,13 +302,17 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
             }
             destroyClose.current = false;
             return (
-                <Container
-                    isDestroyOnClose={isDestroyOnClose}
-                    onTransitionEnd={onDestroyTransitionEnd}>
-                    {renderHeader()}
-                    <Body style={bodyStyles}>{children}</Body>
-                    {renderFooter()}
-                </Container>
+                <Loader
+                    isLoading={isLoading}
+                    text={localization[language].loading}>
+                    <Container
+                        isDestroyOnClose={isDestroyOnClose}
+                        onTransitionEnd={onDestroyTransitionEnd}>
+                        {renderHeader()}
+                        <Body style={bodyStyles}>{children}</Body>
+                        {renderFooter()}
+                    </Container>
+                </Loader>
             );
         };
 
