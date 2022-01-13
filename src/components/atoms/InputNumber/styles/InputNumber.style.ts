@@ -56,7 +56,9 @@ export const Wrapper = styled.div<InputProps>`
             padding-right: ${(props) => props.theme.fow.spacing.xsmall};
             padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
             padding-left: ${(props) => props.theme.fow.spacing.xsmall};
-            border-radius: 8px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
         }
 
         .rc-input-number-handler-wrap {

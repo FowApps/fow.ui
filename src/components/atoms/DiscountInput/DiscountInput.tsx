@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
 import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+
+// language files
+import { tr } from './locales/tr';
+import { en } from './locales/en';
 
 const { Option } = Select;
 
@@ -35,12 +40,18 @@ const discountTypes: DiscountType[] = [
     },
 ];
 
+const localization = {
+    tr,
+    en,
+};
+
 const DiscountInput = ({
     value = {},
     onChange,
     inputProps = {},
     selectProps = {},
 }: DiscountInputProps): JSX.Element => {
+    const { language } = useContext(ConfigContext);
     const [number, setNumber] = useState<number | undefined>();
     const [discountType, setDiscountType] = useState<DiscountType['value']>(
         discountTypes[0].value,
@@ -68,6 +79,7 @@ const DiscountInput = ({
         if (!('type' in value)) {
             setDiscountType(newType);
         }
+        setNumber(undefined);
         triggerChange({ discountType: newType });
     };
 
@@ -78,9 +90,15 @@ const DiscountInput = ({
                     type="text"
                     value={value.number || number}
                     onChange={onNumberChange}
-                    formatter={(val) =>
-                        `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                    }
+                    formatter={(val) => {
+                        if (discountType === 'amount') {
+                            return `${val}`.replace(
+                                /\B(?=(\d{3})+(?!\d))/g,
+                                ',',
+                            );
+                        }
+                        return `${val}`;
+                    }}
                     {...inputProps}
                 />
             </InputWrapper>
@@ -91,7 +109,9 @@ const DiscountInput = ({
                     onChange={onTypeChange}
                     {...selectProps}>
                     {discountTypes.map((type) => (
-                        <Option value={type.value}>{type.name}</Option>
+                        <Option value={type.value}>
+                            {localization[language][type.name]}
+                        </Option>
                     ))}
                 </Select>
             </SelectWrapper>
