@@ -40,6 +40,8 @@ export { default as Radio } from './components/atoms/Radio';
 export { default as InputNumber } from './components/atoms/InputNumber';
 export { default as ProgressBar } from './components/atoms/ProgressBar';
 export { default as Select } from './components/atoms/Select';
+export { default as DiscountInput } from './components/atoms/DiscountInput';
+export { default as PriceInput } from './components/atoms/PriceInput';
 
 export const Typography = {
     Heading,
