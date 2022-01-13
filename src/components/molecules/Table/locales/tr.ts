@@ -1,7 +1,7 @@
 export const tr = {
     sortByallColumnSelected: 'Tüm sütunlar seçildi.',
     columns: 'Sütunlar',
-    noData: 'KAyıt bulunamadı.',
+    noData: 'Kayıt bulunamadı.',
     page: 'Sayfa',
     results: 'Sonuçlar',
     selectedColumns: 'Seçili Sütunlar',
