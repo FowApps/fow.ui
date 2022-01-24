@@ -42,6 +42,7 @@ export interface ItemTitleProps {
 export interface AccordionItemProps {
     title?: string;
     subtitle?: React.ReactNode;
+    extra?: React.ReactNode;
     isCollapsed?: boolean;
     handleClick?: () => void;
     index: number;
@@ -64,6 +65,7 @@ const Item = ({
     subtitle,
     arrowPosition,
     children,
+    extra,
 }: AccordionItemProps) => (
     <>
         <Trigger isCollapsed={isCollapsed} role="button" onClick={handleClick}>
@@ -90,7 +92,16 @@ const Item = ({
                         />
                     </IconWrapper>
                 )}
-                <Subtitle level={1}>{title}</Subtitle>
+                <Space
+                    inline={false}
+                    align="center"
+                    direction="horizontal"
+                    justify="space-between">
+                    <>
+                        <Subtitle level={1}>{title}</Subtitle>
+                        {extra && <>{extra}</>}
+                    </>
+                </Space>
             </Space>
             {subtitle && (
                 <TitleDescription
@@ -154,6 +165,7 @@ const Accordion = ({
                     key={`accordion-item-${props.index}`}
                     isCollapsed={bindIndex !== props.index}
                     title={props.title}
+                    extra={props.extra}
                     handleClick={() => changeItem(props.index)}
                     index={props.index}
                     arrowPosition={arrowPosition}
