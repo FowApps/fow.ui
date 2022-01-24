@@ -21,6 +21,7 @@ import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
+import Editor from '../../molecules/Editor/Editor';
 
 export default {
     title: 'Atoms/Form',
@@ -105,11 +106,7 @@ export const Default = Template.bind({});
 
 const UseFormTemplate: Story = () => {
     const [form] = Form.useForm();
-    const {
-        formProps,
-        formLoading,
-        defaultFormValuesLoading,
-    } = useForm({
+    const { formProps, formLoading, defaultFormValuesLoading } = useForm({
         form,
         async submit(values) {
             console.log('submit', values);
@@ -131,6 +128,7 @@ const UseFormTemplate: Story = () => {
                     new Date(new Date().setDate(22)).toISOString(),
                     new Date().toISOString(),
                 ],
+                description: '<p>Hello Editor! Edit Me!</p>',
             };
         },
     });
@@ -173,26 +171,23 @@ const UseFormTemplate: Story = () => {
                         ]}
                     />
                 </FormField>
-                <FormField
-                    label="Hooks"
-                    name="hooks"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                <FormField label="Hooks" name="hooks">
                     <Select>
                         <Select.Option value="Test">Test</Select.Option>
                         <Select.Option value="Test2">Test 2</Select.Option>
                     </Select>
                 </FormField>
-                <FormField
-                    label="Date"
-                    name="date"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                <FormField label="Date" name="date">
                     <DatePicker />
                 </FormField>
-                <FormField
-                    label="Date Range"
-                    name="daterange"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
+                </FormField>
+                <FormField
+                    label="Description"
+                    name="description"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Editor />
                 </FormField>
                 <Space>
                     <Button
