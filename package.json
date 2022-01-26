@@ -38,6 +38,7 @@
         "@fullcalendar/timegrid": "^5.9.0",
         "moment": "^2.29.1",
         "polished": "4.1.3",
+        "quill-image-uploader": "^1.2.2",
         "rc-drawer": "^4.4.3",
         "rc-field-form": "^1.22.0",
         "rc-input-number": "^7.3.4",

@@ -115,7 +115,6 @@ const UseFormTemplate: Story = () => {
             return 'ok'; // formResult
         },
         async initialValues() {
-            await new Promise((r) => setTimeout(r, 3000));
             return {
                 finalAmount: {
                     currency: '2',
@@ -124,11 +123,12 @@ const UseFormTemplate: Story = () => {
                 hooks: 'Test',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
+                description: '<p>Description</p>',
+                summary: '<p>Summary</p>',
                 daterange: [
                     new Date(new Date().setDate(22)).toISOString(),
                     new Date().toISOString(),
                 ],
-                description: '<p>Hello Editor! Edit Me!</p>',
             };
         },
     });
@@ -187,7 +187,13 @@ const UseFormTemplate: Story = () => {
                     label="Description"
                     name="description"
                     rules={[{ required: true, message: 'Required..' }]}>
-                    <Editor />
+                    <Editor id="description" />
+                </FormField>
+                <FormField
+                    label="Summary"
+                    name="summary"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Editor id="summary" />
                 </FormField>
                 <Space>
                     <Button
