@@ -45,10 +45,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.fow.colors.greyDark.lighter};
     }
 
-    .rc-menu-submenu-hidden {
-        display: none;
-    }
-
     .rc-pagination-item {
         display: inline-flex;
         align-items: center;
@@ -80,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .drawer {
-        z-index: 150 !important;
+        z-index: 802 !important;
     }
     
     .drawer-mask, .drawer-content-wrapper {

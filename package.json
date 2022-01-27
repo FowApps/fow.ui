@@ -1,6 +1,6 @@
 {
     "name": "@fowapps/fow-ui",
-    "version": "0.0.59",
+    "version": "0.0.61",
     "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",
@@ -41,7 +41,6 @@
         "rc-drawer": "^4.4.3",
         "rc-field-form": "^1.22.0",
         "rc-input-number": "^7.3.4",
-        "rc-menu": "^9.0.14",
         "rc-pagination": "^3.1.14",
         "rc-picker": "^2.5.19",
         "rc-select": "^13.2.1",
