@@ -66,6 +66,7 @@ export interface EditorProps {
     hasValidationError?: boolean;
     value?: string;
     extraTools?: CustomToolOptionType[];
+    compact?: boolean;
 }
 
 interface CustomToolbarProps {
@@ -73,6 +74,7 @@ interface CustomToolbarProps {
     editorId: string;
     toolbarId: string;
     extraTools?: CustomToolOptionType[];
+    compact?: boolean;
 }
 
 const localization = {
@@ -108,6 +110,7 @@ const CustomToolbar = ({
     extraTools,
     editorId,
     toolbarId,
+    compact,
 }: CustomToolbarProps) => (
     <div id={toolbarId}>
         <div className="ql-formats">
@@ -151,19 +154,21 @@ const CustomToolbar = ({
                     <option selected />
                 </select>
             </Tooltip>
-            <Tooltip
-                overlay={localization[language].background}
-                placement="bottom">
-                <select className="ql-background">
-                    <option value="red" />
-                    <option value="green" />
-                    <option value="blue" />
-                    <option value="orange" />
-                    <option value="violet" />
-                    <option value="#d0d1d2" />
-                    <option selected />
-                </select>
-            </Tooltip>
+            {!compact && (
+                <Tooltip
+                    overlay={localization[language].background}
+                    placement="bottom">
+                    <select className="ql-background">
+                        <option value="red" />
+                        <option value="green" />
+                        <option value="blue" />
+                        <option value="orange" />
+                        <option value="violet" />
+                        <option value="#d0d1d2" />
+                        <option selected />
+                    </select>
+                </Tooltip>
+            )}
         </div>
         <div className="ql-formats">
             <Tooltip
@@ -177,32 +182,54 @@ const CustomToolbar = ({
                 <button type="button" className="ql-list" value="bullet" />
             </Tooltip>
         </div>
-        <div className="ql-formats">
-            <Tooltip overlay={localization[language].indent} placement="bottom">
-                <button type="button" className="ql-indent" value="-1" />
-            </Tooltip>
-            <Tooltip overlay={localization[language].indent} placement="bottom">
-                <button type="button" className="ql-indent" value="+1" />
-            </Tooltip>
-        </div>
-        <Tooltip overlay={localization[language].align} placement="bottom">
-            <div className="ql-formats">
-                <select className="ql-align">
-                    <option value="right" />
-                    <option value="center" />
-                    <option value="justify" />
-                    <option selected />
-                </select>
-            </div>
-        </Tooltip>
-        <div className="ql-formats">
-            <Tooltip overlay={localization[language].image} placement="bottom">
-                <button type="button" className="ql-image" />
-            </Tooltip>
-            <Tooltip overlay={localization[language].video} placement="bottom">
-                <button type="button" className="ql-video" />
-            </Tooltip>
-        </div>
+        {!compact && (
+            <>
+                <div className="ql-formats">
+                    <Tooltip
+                        overlay={localization[language].indent}
+                        placement="bottom">
+                        <button
+                            type="button"
+                            className="ql-indent"
+                            value="-1"
+                        />
+                    </Tooltip>
+                    <Tooltip
+                        overlay={localization[language].indent}
+                        placement="bottom">
+                        <button
+                            type="button"
+                            className="ql-indent"
+                            value="+1"
+                        />
+                    </Tooltip>
+                </div>
+                <Tooltip
+                    overlay={localization[language].align}
+                    placement="bottom">
+                    <div className="ql-formats">
+                        <select className="ql-align">
+                            <option value="right" />
+                            <option value="center" />
+                            <option value="justify" />
+                            <option selected />
+                        </select>
+                    </div>
+                </Tooltip>
+                <div className="ql-formats">
+                    <Tooltip
+                        overlay={localization[language].image}
+                        placement="bottom">
+                        <button type="button" className="ql-image" />
+                    </Tooltip>
+                    <Tooltip
+                        overlay={localization[language].video}
+                        placement="bottom">
+                        <button type="button" className="ql-video" />
+                    </Tooltip>
+                </div>
+            </>
+        )}
         <Tooltip overlay={localization[language].fullscreen} placement="bottom">
             <div className="ql-formats">
                 <button
@@ -262,6 +289,7 @@ const Editor = ({
     defaultValue,
     extraTools,
     id = 'fow',
+    compact = true,
     ...rest
 }: EditorProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
@@ -309,6 +337,7 @@ const Editor = ({
                 extraTools={extraTools}
                 toolbarId={`toolbar-${id}`}
                 editorId={`fow-editor-${id}`}
+                compact={compact}
             />
             <ReactQuill
                 {...rest}
