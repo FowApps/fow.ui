@@ -2,6 +2,9 @@ import React from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 import EmptyOwl from '../../../assets/svg/EmptyOwl';
+import CheckOwl from '../../../assets/svg/CheckOwl';
+import ErrorOwl from '../../../assets/svg/ErrorOwl';
+import PlusOwl from '../../../assets/svg/PlusOwl';
 
 import Space from '../../atoms/Space';
 import Subtitle from '../../atoms/Typography/Subtitle';
@@ -45,6 +48,12 @@ const renderImage = (type: MessageProps['type'], width: number | string) => {
     switch (type) {
         case 'empty':
             return <EmptyOwl />;
+        case 'error':
+            return <ErrorOwl />;
+        case 'plus':
+            return <PlusOwl />;
+        case 'success':
+            return <CheckOwl />;
         default:
             return null;
     }
