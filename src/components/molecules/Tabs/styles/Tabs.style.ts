@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 type ContainerProps = {
     direction: 'vertical' | 'horizontal';
+    isFloat?: boolean;
 };
 
 type ItemProps = {
@@ -10,6 +11,7 @@ type ItemProps = {
     fluid: boolean;
     isActive: boolean;
     disabled?: boolean;
+    isFloat?: boolean;
 };
 
 type TabItemProps = {
@@ -46,8 +48,18 @@ export const Surface = styled.ul<ContainerProps>`
         props.direction === 'vertical' &&
         css`
             flex-direction: column;
-            min-width: 50px;
+            min-width: 150px;
             max-width: 200px;
+        `}
+
+    ${(props) =>
+        props.direction === 'vertical' &&
+        props.isFloat &&
+        css`
+            background-color: ${props.theme.fow.colors.common.white};
+            border: 1px solid ${props.theme.fow.colors.greyLight.transparent48};
+            border-radius: 4px;
+            height: max-content;
         `}
 `;
 
@@ -72,8 +84,9 @@ export const Item = styled.li<ItemProps>`
 
     &:hover {
         h3,
-        div {
-            color: ${(props) => props.theme.fow.colors.primary.main};
+        div,
+        span {
+            color: ${(props) => props.theme.fow.colors.primary.main} !important;
         }
     }
 
@@ -90,6 +103,22 @@ export const Item = styled.li<ItemProps>`
             props.isActive && props.theme.fow.colors.primary.main};
         transition: all 0.3s ease;
     }
+
+    ${(props) =>
+        props.isFloat &&
+        props.direction === 'vertical' &&
+        css`
+            justify-content: center;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid
+                    ${props.theme.fow.colors.greyLight.transparent48};
+            }
+
+            &:after {
+                display: none;
+            }
+        `}
 `;
 
 export const TabContentHolder = styled.div<ContainerProps>`
@@ -99,6 +128,7 @@ export const TabContentHolder = styled.div<ContainerProps>`
 
     ${(props) =>
         props.direction === 'vertical' &&
+        !props.isFloat &&
         css`
             margin-left: -1px;
             border-left: 1px solid ${props.theme.fow.colors.divider};
