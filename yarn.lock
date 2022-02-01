@@ -11001,10 +11001,10 @@ rc-overflow@^1.0.0:
     rc-resize-observer "^1.0.0"
     rc-util "^5.5.1"
 
-rc-pagination@^3.1.14:
-  version "3.1.14"
-  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-3.1.14.tgz#1f7d0342edb80dca0989e4ddbe937b1d4657d88d"
-  integrity sha512-tcugvxrtPiVU00Uh0IwC8NIUlxa4KtA9pXcaMNJdSHeO2uQqVkHEwllsULTAWRF3zRV2ozo2weP/DRKIUrX+Zg==
+rc-pagination@^3.1.15:
+  version "3.1.15"
+  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-3.1.15.tgz#e05eddf4c15717a5858290bed0857e27e2f957ff"
+  integrity sha512-4L3fot8g4E+PjWEgoVGX0noFCg+8ZFZmeLH4vsnZpB3O2T2zThtakjNxG+YvSaYtyMVT4B+GLayjKrKbXQpdAg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
