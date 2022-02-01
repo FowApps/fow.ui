@@ -30,21 +30,7 @@ Single.args = {
         console.log({ value, option });
     },
     placeholder: 'Please select',
-    children: [
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-        <Select.Option value="Test">Test</Select.Option>,
-    ],
+    children: [],
 };
 
 export const Multiple = Default.bind({});
@@ -105,6 +91,8 @@ Async.args = {
     },
     defaultValue: 1,
     placeholder: 'Please select',
+    value: 1,
+
     loadOptions: async () => {
         const response = await fetch('https://reqres.in/api/users');
         const json = await response.json();

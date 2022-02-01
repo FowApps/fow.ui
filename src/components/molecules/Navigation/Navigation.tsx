@@ -1,183 +1,201 @@
-import React, { createContext, useContext } from 'react';
-import {
-    Divider,
-    MenuProps as RcMenuProps,
-    SubMenuProps as RcSubMenuProps,
-    MenuItemProps as RcMenuItemProps,
-} from 'rc-menu';
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useRef,
+} from 'react';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { AnimatePresence } from 'framer-motion';
 
-import {
-    DropdownStyles,
-    StyledMenu,
-    StyledSubMenu,
-    StyledItem,
-    IconWrapper,
-    ItemWrapper,
-} from './styles';
 import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
-import Subtitle from '../../atoms/Typography/Subtitle';
+// import Subtitle from '../../atoms/Typography/Subtitle';
+import {
+    MenuWrapper,
+    MenuItem,
+    Link,
+    SubMenuWrapper,
+    SubMenuItem,
+} from './styles';
+import { ConfigContext } from '../../../theme/FowThemeProvider';
+import { useDisclosure } from '../../..';
 
-export interface SubMenuProps extends RcSubMenuProps {
+export interface SubMenuProps {
+    title: string;
     icon?: FontAwesomeIconProps['icon'];
+    children: React.ReactNode;
 }
 
-export interface MenuItemProps extends RcMenuItemProps {
+export interface MenuItemProps {
     icon?: FontAwesomeIconProps['icon'];
     extra?: React.ReactNode;
-    children: React.ReactElement<
-        any,
-        string | React.JSXElementConstructor<any> | string
-    >;
+    as?: any;
+    active?: boolean;
+    isSub?: boolean;
+    activePathRegex?: string;
+    children: React.ReactNode;
+}
+
+export interface MenuProps {
+    bordered?: boolean;
+    location?: string;
+    mode?: 'vertical' | 'horizontal';
+    children: React.ReactNode;
 }
 interface IMenuContext {
-    mode?: RcMenuProps['mode'];
+    mode?: 'vertical' | 'horizontal';
+    location?: any;
 }
 
-const MenuContext = createContext<IMenuContext>({ mode: 'inline' });
+const MenuContext = createContext<IMenuContext>({ mode: 'horizontal' });
 
-const getCollapsedHeight = () => ({
-    height: 0,
-    opacity: 0,
-});
+const Menu = ({ mode, bordered = false, children, ...rest }: MenuProps) => {
+    const { location } = useContext(ConfigContext);
 
-const getRealHeight = (node) => {
-    const { scrollHeight } = node;
-    return { height: scrollHeight, opacity: 1 };
-};
-
-const getCurrentHeight = (node) => ({
-    height: node ? node.offsetHeight : 0,
-});
-
-const skipOpacityTransition = (_, event) =>
-    event?.deadline === true ||
-    (event as TransitionEvent).propertyName === 'height';
-
-const collapseMotion = {
-    motionName: 'motion-collapse',
-    onAppearStart: getCollapsedHeight,
-    onEnterStart: getCollapsedHeight,
-    onAppearActive: getRealHeight,
-    onEnterActive: getRealHeight,
-    onLeaveStart: getCurrentHeight,
-    onLeaveActive: getCollapsedHeight,
-    onAppearEnd: skipOpacityTransition,
-    onEnterEnd: skipOpacityTransition,
-    onLeaveEnd: skipOpacityTransition,
-    motionDeadline: 500,
-};
-
-const renderGhostChildren = (children) => {
-    if (typeof children === 'string') return null;
-    if (children?.type?.displayName === 'Item') return null;
-
-    if (Array.isArray(children))
-        return children.map((child) => {
-            if (typeof child === 'string') return null;
-            if (child?.type?.displayName === 'Item') return null;
-
-            return React.cloneElement(child, {
-                style: {
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: 0,
-                },
-            });
-        });
-
-    return React.cloneElement(children, {
-        style: {
-            position: 'absolute',
-            inset: 0,
-            opacity: 0,
-        },
-    });
-};
-
-const Menu = ({ mode, children, ...rest }: RcMenuProps) => (
-    <MenuContext.Provider value={{ mode }}>
-        <DropdownStyles />
-        <StyledMenu
-            overflowedIndicator={<Icon icon="ellipsis-v" />}
-            mode={mode}
-            motion={
-                mode === 'inline'
-                    ? collapseMotion
-                    : { motionName: 'rc-menu-open-slide-up' }
-            }
-            expandIcon={(props) => (
-                <Icon
-                    style={{ transition: 'all 0.3s ease' }}
-                    size="1x"
-                    rotation={props.isOpen ? 90 : undefined}
-                    icon="chevron-right"
-                />
-            )}
-            {...rest}>
-            {children}
-        </StyledMenu>
-    </MenuContext.Provider>
-);
-
-const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
-    const { mode } = useContext(MenuContext);
-    let titleNode: React.ReactNode;
-    if (icon) {
-        titleNode = (
-            <Space>
-                <IconWrapper style={{ width: 14, height: 14 }}>
-                    <Icon icon={icon} />
-                </IconWrapper>
-                <Subtitle color="black">
-                    <Space size="xsmall">
-                        <span>{title}</span>
-                        {mode === 'horizontal' && (
-                            <Icon size="xs" icon="chevron-down" />
-                        )}
-                    </Space>
-                </Subtitle>
-            </Space>
-        );
-    } else {
-        titleNode = (
-            <Subtitle color="black">
-                <Space size="xsmall">
-                    <span>{title}</span>
-                    {mode === 'horizontal' && (
-                        <Icon size="xs" icon="chevron-down" />
-                    )}
-                </Space>
-            </Subtitle>
-        );
-    }
     return (
-        <StyledSubMenu title={titleNode} {...rest}>
-            {children}
-            {renderGhostChildren(children)}
-        </StyledSubMenu>
+        <MenuContext.Provider value={{ mode, location }}>
+            <MenuWrapper mode={mode} bordered={bordered} {...rest}>
+                <ul>{children}</ul>
+            </MenuWrapper>
+        </MenuContext.Provider>
     );
 };
 
-const Item = ({ extra, icon, children, ...rest }: MenuItemProps) => (
-    <StyledItem {...rest}>
-        <Space inline={false} align="center" justify="space-between">
-            <ItemWrapper>
-                {icon && (
-                    <IconWrapper>
-                        <Icon icon={icon} />
-                    </IconWrapper>
-                )}
-                <Subtitle color="black">
-                    {children}
-                    {renderGhostChildren(children)}
-                </Subtitle>
-            </ItemWrapper>
-            {extra && <div>{extra}</div>}
-        </Space>
-    </StyledItem>
-);
+const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
+    const itemRef = useRef<HTMLDivElement>();
+    const { location, mode } = useContext(MenuContext);
+    const { isOpen, toggle, open } = useDisclosure(false);
+
+    const isActivePath = useMemo(() => {
+        if (location) {
+            const activePathRegexes = React.Children.map(
+                children,
+                (child: React.ReactElement) => child.props.activePathRegex,
+            );
+
+            const isActive = activePathRegexes?.some(
+                (regex) =>
+                    location.pathname.match(regex) &&
+                    location.pathname.match(regex)?.index === 0,
+            );
+
+            return isActive;
+        }
+        return false;
+    }, [children, location]);
+
+    useEffect(() => {
+        if (isActivePath) {
+            open();
+        }
+    }, [isActivePath, open]);
+
+    return (
+        <SubMenuItem
+            mode={mode}
+            ref={itemRef as any}
+            active={isActivePath}
+            {...rest}>
+            <a
+                className={isActivePath ? 'active' : ''}
+                role="button"
+                onClick={() => {
+                    if (mode === 'vertical') toggle();
+                }}>
+                <Space size="small" inline={false} justify="space-between">
+                    <Space size="small">
+                        {icon && <Icon icon={icon} />}
+                        <span>{title}</span>
+                    </Space>
+                    <Icon
+                        style={{
+                            transition: 'transform 0.3s ease',
+                            transform: `rotate(${
+                                isOpen && mode === 'vertical' ? 90 : 0
+                            }deg)`,
+                        }}
+                        icon={
+                            mode === 'horizontal'
+                                ? 'chevron-down'
+                                : 'chevron-right'
+                        }
+                        size={mode === 'horizontal' ? 'xs' : '1x'}
+                    />
+                </Space>
+            </a>
+            {mode === 'vertical' ? (
+                <AnimatePresence>
+                    {isOpen && (
+                        <SubMenuWrapper
+                            key={title}
+                            initial="collapsed"
+                            animate="open"
+                            exit="collapsed"
+                            variants={{
+                                open: { opacity: 1, height: 'auto' },
+                                collapsed: { opacity: 0, height: 0 },
+                            }}>
+                            {React.Children.map(children, (child) =>
+                                React.cloneElement(child as any, {
+                                    isSub: true,
+                                }),
+                            )}
+                        </SubMenuWrapper>
+                    )}
+                </AnimatePresence>
+            ) : (
+                <SubMenuWrapper>
+                    {React.Children.map(children, (child) =>
+                        React.cloneElement(child as any, {
+                            isSub: true,
+                        }),
+                    )}
+                </SubMenuWrapper>
+            )}
+        </SubMenuItem>
+    );
+};
+
+const Item = ({
+    extra,
+    icon,
+    children,
+    as = 'a',
+    active,
+    isSub,
+    activePathRegex,
+    ...rest
+}: MenuItemProps) => {
+    const { location, mode } = useContext(MenuContext);
+    const isActive = useMemo(() => {
+        if (location) {
+            const isActivePath =
+                location.pathname.match(activePathRegex) &&
+                location.pathname.match(activePathRegex)?.index === 0;
+            return isActivePath;
+        }
+        return false;
+    }, [activePathRegex, location]);
+    return (
+        <MenuItem active={active || isActive} isSub={isSub} mode={mode}>
+            <Link as={as} {...rest}>
+                <Space
+                    size="small"
+                    inline={false}
+                    align="center"
+                    justify="space-between">
+                    <Space size="small">
+                        {icon && <Icon icon={icon} />}
+                        <span>{children}</span>
+                    </Space>
+                    {extra && <div>{extra}</div>}
+                </Space>
+            </Link>
+        </MenuItem>
+    );
+};
 
 Menu.displayName = 'Menu';
 SubMenu.displayName = 'SubMenu';
@@ -187,7 +205,7 @@ const Navigation = {
     Menu,
     SubMenu,
     Item,
-    Divider,
+    // Divider,
 };
 
 export default Navigation;

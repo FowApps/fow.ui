@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 type Direction = 'vertical' | 'horizontal';
 type Size =
+    | 'none'
     | 'xxsmall'
     | 'xsmall'
     | 'small'
@@ -41,13 +42,11 @@ export const setSpaceAndDirection = (
                     ${reverse
                         ? css`
                               margin-top: ${(props) =>
-                                  props.theme.fow.spacing[size] ||
-                                  '1.2rem'} !important;
+                                  props.theme.fow.spacing[size]} !important;
                           `
                         : css`
                               margin-bottom: ${(props) =>
-                                  props.theme.fow.spacing[size] ||
-                                  '1.2rem'} !important;
+                                  props.theme.fow.spacing[size]} !important;
                           `};
                 }
             `;
