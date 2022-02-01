@@ -7,6 +7,9 @@ import {
     MarkBox,
     Mark,
     HoverCircle,
+    StyledRadioButton,
+    Button,
+    ButtonText,
 } from './styles';
 
 import type { CheckboxOptionType } from '../Checkbox';
@@ -23,6 +26,7 @@ export interface RadioProps {
     id?: string;
     defaultChecked?: boolean;
     checked?: boolean;
+    optionType?: 'button' | 'radio';
 }
 
 export interface RadioGroupProps extends RadioProps {
@@ -34,6 +38,7 @@ export interface RadioGroupProps extends RadioProps {
     options?: Array<CheckboxOptionType | string>;
     id?: string;
     direction?: 'vertical' | 'horizontal';
+    optionType?: 'button' | 'radio';
 }
 
 export interface RadioChangeEventTarget extends RadioProps {
@@ -60,7 +65,11 @@ const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(
 
 const RadioGroupContextProvider = RadioGroupContext.Provider;
 
-const Radio = ({ label = '', ...rest }: RadioProps): JSX.Element => {
+const Radio = ({
+    label = '',
+    optionType = 'radio',
+    ...rest
+}: RadioProps): JSX.Element => {
     const context = useContext(RadioGroupContext);
 
     const onChange = (e: RadioChangeEvent) => {
@@ -77,7 +86,7 @@ const Radio = ({ label = '', ...rest }: RadioProps): JSX.Element => {
         radioProps.disabled = rest.disabled || context.disabled;
     }
 
-    return (
+    return optionType === 'radio' ? (
         <StyledLabel>
             {label && (
                 <LabelText level={2} disabled={rest.disabled}>
@@ -94,6 +103,17 @@ const Radio = ({ label = '', ...rest }: RadioProps): JSX.Element => {
                 <HoverCircle />
             </MarkBox>
         </StyledLabel>
+    ) : (
+        <StyledRadioButton>
+            <StyledInput
+                type="radio"
+                disabled={rest.disabled}
+                {...radioProps}
+            />
+            <Button disabled={rest.disabled}>
+                <ButtonText level={2}>{label}</ButtonText>
+            </Button>
+        </StyledRadioButton>
     );
 };
 
@@ -116,8 +136,16 @@ const Group = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         };
 
         const renderRadioGroup = () => {
-            const { children, options, disabled, value: valueProp } = props;
-            let childrenToRender = children;
+            const {
+                children,
+                options,
+                disabled,
+                value: valueProp,
+                optionType,
+            } = props;
+            let childrenToRender = React.Children.map(children, (child: any) =>
+                React.cloneElement(child, { optionType, ...child?.props }),
+            );
             if (options && options.length > 0) {
                 childrenToRender = options.map((option) => {
                     if (typeof option === 'string') {
@@ -128,6 +156,7 @@ const Group = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                                 value={option}
                                 checked={valueProp === option}
                                 label={option}
+                                optionType={optionType}
                             />
                         );
                     }
@@ -138,13 +167,17 @@ const Group = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                             value={option.value}
                             checked={valueProp === option.value}
                             label={option.label}
+                            optionType={optionType}
                         />
                     );
                 });
             }
             return (
                 <div ref={ref}>
-                    <Space direction={props.direction} align="start">
+                    <Space
+                        direction={props.direction}
+                        align="start"
+                        size={optionType === 'button' ? 'none' : 'small'}>
                         {childrenToRender}
                     </Space>
                 </div>

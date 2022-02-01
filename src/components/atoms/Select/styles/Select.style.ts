@@ -216,7 +216,8 @@ export const Wrapper = styled.div<WrapperProps>`
     .rc-select-focused .rc-select-selector {
         border-color: ${(props) =>
             props.theme.fow.colors.error.transparent48} !important;
-        box-shadow: 0px 0px 0px 4px rgba(253, 114, 95, 0.12);
+        box-shadow: 0px 0px 0px 4px
+            ${(props) => props.theme.fow.colors.primary.transparent12};
     }
 
     .rc-select-focused .rc-select-arrow {

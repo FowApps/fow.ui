@@ -65,6 +65,35 @@ export const HoverCircle = styled.span`
     transition: all 0.3s ease;
 `;
 
+export const Button = styled.div<LabelTextProps>`
+    background-color: ${(props) => props.theme.fow.colors.greyLight.light};
+    border: 1px solid
+        ${(props) => props.theme.fow.colors.greyDark.transparent32};
+    color: ${(props) => props.theme.fow.colors.text.secondary};
+    cursor: pointer;
+    height: 28px;
+    padding: 0 ${(props) => props.theme.fow.spacing.xsmall};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: ${(props) => props.theme.fow.colors.greyLight.main};
+    }
+
+    ${(props) =>
+        props.disabled &&
+        css`
+            cursor: not-allowed;
+            opacity: 0.8;
+        `}
+`;
+
+export const ButtonText = styled(Body)<LabelTextProps>`
+    line-heigth: 12px;
+`;
+
 export const StyledInput = styled.input`
     position: absolute;
     width: 0;
@@ -110,6 +139,35 @@ export const StyledInput = styled.input`
         &:hover ${HoverCircle} {
             background-color: ${(props) =>
                 props.theme.fow.colors.grey.transparent8};
+        }
+    }
+
+    &:checked ~ ${Button} {
+        background-color: ${(props) =>
+            props.theme.fow.colors.greyDark.transparent48};
+        color: ${(props) => props.theme.fow.colors.text.primary};
+    }
+
+    &:checked ~ ${Button} {
+        ${(props) =>
+            props.disabled &&
+            css`
+                cursor: not-allowed;
+                opacity: 0.8;
+            `}
+    }
+`;
+
+export const StyledRadioButton = styled.label`
+    &:first-child {
+        ${Button} {
+            border-radius: 4px 0px 0px 4px;
+        }
+    }
+
+    &:last-child {
+        ${Button} {
+            border-radius: 0px 4px 4px 0px;
         }
     }
 `;

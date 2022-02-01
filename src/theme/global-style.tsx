@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 1.4rem;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
         line-height: unset;
         letter-spacing: unset !important;
     }
@@ -43,10 +43,6 @@ const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar-thumb {
         border-radius: 1rem;
         background-color: ${(props) => props.theme.fow.colors.greyDark.lighter};
-    }
-
-    .rc-menu-submenu-hidden {
-        display: none;
     }
 
     .rc-pagination-item {
@@ -78,8 +74,12 @@ const GlobalStyle = createGlobalStyle`
             line-height: 20px;
         }
     }
-    
+
     .drawer {
+        z-index: 802 !important;
+    }
+    
+    .drawer-mask, .drawer-content-wrapper {
         z-index: 1068 !important;
     }
 
