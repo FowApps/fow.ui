@@ -174,7 +174,11 @@ const UseFormTemplate: Story = () => {
                     label="Hooks"
                     name="hooks"
                     rules={[{ required: true, message: 'Required..' }]}>
-                    <Select>
+                    <Select
+                        mode="tags"
+                        onChange={(value, option) =>
+                            console.log(value, option)
+                        }>
                         <Select.Option value="Test">Test</Select.Option>
                         <Select.Option value="Test2">Test 2</Select.Option>
                     </Select>
