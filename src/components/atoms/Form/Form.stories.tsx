@@ -20,6 +20,8 @@ import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
+import PriceInput from '../PriceInput';
+import Editor from '../../molecules/Editor/Editor';
 
 export default {
     title: 'Atoms/Form',
@@ -104,13 +106,7 @@ export const Default = Template.bind({});
 
 const UseFormTemplate: Story = () => {
     const [form] = Form.useForm();
-    const {
-        formProps,
-        formValues,
-        formResult,
-        formLoading,
-        defaultFormValuesLoading,
-    } = useForm({
+    const { formProps, formLoading, defaultFormValuesLoading } = useForm({
         form,
         async submit(values) {
             console.log('submit', values);
@@ -119,24 +115,23 @@ const UseFormTemplate: Story = () => {
             return 'ok'; // formResult
         },
         async initialValues() {
-            await new Promise((r) => setTimeout(r, 3000));
             return {
+                finalAmount: {
+                    currency: '2',
+                    number: 23,
+                },
+                hooks: 'Test',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
-                daterange: [new Date(new Date().setDate(22)).toISOString(), new Date().toISOString()]
+                description: '<p>Description</p>',
+                summary: '<p>Summary</p>',
+                daterange: [
+                    new Date(new Date().setDate(22)).toISOString(),
+                    new Date().toISOString(),
+                ],
             };
         },
     });
-
-    const formatOptionLabel = (option) => {
-        return <div>{option.name}</div>;
-    };
-
-    const options = [
-        { label: 'Apple', value: 'Apple' },
-        { label: 'Pear', value: 'Pear' },
-        { label: 'Orange', value: 'Orange' },
-    ];
 
     return (
         <Loader isLoading={defaultFormValuesLoading || formLoading}>
@@ -160,24 +155,45 @@ const UseFormTemplate: Story = () => {
                     </Radio.Group>
                 </FormField>
                 <FormField
-                    label="Hooks"
-                    name="hooks"
+                    label="Final Amount"
+                    name="finalAmount"
                     rules={[{ required: true, message: 'Required..' }]}>
+                    <PriceInput
+                        currencies={[
+                            {
+                                name: 'TRY',
+                                value: '1',
+                            },
+                            {
+                                name: 'USD',
+                                value: '2',
+                            },
+                        ]}
+                    />
+                </FormField>
+                <FormField label="Hooks" name="hooks">
                     <Select>
                         <Select.Option value="Test">Test</Select.Option>
+                        <Select.Option value="Test2">Test 2</Select.Option>
                     </Select>
                 </FormField>
-                <FormField
-                    label="Date"
-                    name="date"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                <FormField label="Date" name="date">
                     <DatePicker />
                 </FormField>
-                <FormField
-                    label="Date Range"
-                    name="daterange"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
+                </FormField>
+                <FormField
+                    label="Description"
+                    name="description"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Editor id="description" />
+                </FormField>
+                <FormField
+                    label="Summary"
+                    name="summary"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Editor id="summary" />
                 </FormField>
                 <Space>
                     <Button

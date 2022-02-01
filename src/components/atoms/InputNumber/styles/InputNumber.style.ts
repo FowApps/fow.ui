@@ -7,7 +7,7 @@ type InputProps = {
 export const Wrapper = styled.div<InputProps>`
     .rc-input-number {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 4px;
         height: 32px;
 
         border-color: ${(props) =>
@@ -19,14 +19,14 @@ export const Wrapper = styled.div<InputProps>`
             border-color: ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.grey.main};
+                    : props.theme.fow.colors.error.transparent48};
 
             .rc-input-number-handler-up,
             .rc-input-number-handler-wrap {
                 border-color: ${(props) =>
                     props.hasValidationError
                         ? props.theme.fow.colors.error.main
-                        : props.theme.fow.colors.grey.main};
+                        : props.theme.fow.colors.error.transparent48};
             }
 
             .rc-input-number-handler-wrap {
@@ -39,7 +39,8 @@ export const Wrapper = styled.div<InputProps>`
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.primary.transparent48};
-            box-shadow: 0px 0px 0px 4px rgba(253, 114, 95, 0.12);
+            box-shadow: 0px 0px 0px 4px
+                ${(props) => props.theme.fow.colors.primary.transparent12};
 
             .rc-input-number-handler-up,
             .rc-input-number-handler-wrap {
@@ -56,7 +57,9 @@ export const Wrapper = styled.div<InputProps>`
             padding-right: ${(props) => props.theme.fow.spacing.xsmall};
             padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
             padding-left: ${(props) => props.theme.fow.spacing.xsmall};
-            border-radius: 8px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
         }
 
         .rc-input-number-handler-wrap {

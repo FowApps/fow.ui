@@ -16,6 +16,10 @@ const secondary = css`
     color: ${(props) => props.theme.fow.colors.text.secondary};
 `;
 
+const tertiary = css`
+    color: ${(props) => props.theme.fow.colors.text.tertiary};
+`;
+
 const disabled = css`
     color: ${(props) => props.theme.fow.colors.text.disabled};
 `;
@@ -39,6 +43,7 @@ const info = css`
 const color = {
     primary,
     secondary,
+    tertiary,
     disabled,
     black,
     white,

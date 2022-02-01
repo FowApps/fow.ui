@@ -46,7 +46,6 @@ export const ContentVariants = {
 
 export const Sider = styled(motion.div)<SiderProps>`
     position: relative;
-    z-index: 99;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,11 +55,13 @@ export const Sider = styled(motion.div)<SiderProps>`
     padding: ${(props) => (props.noGutter ? 0 : props.theme.fow.spacing.small)};
     background-color: ${(props) => props.theme.fow.colors.common.white};
     box-shadow: inset -1px 0px 0px rgba(145, 158, 171, 0.24);
+    padding-right: 1px;
 `;
 export const Trigger = styled.button`
     position: absolute;
     top: 16px;
     right: -16px;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;

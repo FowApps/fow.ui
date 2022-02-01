@@ -6,4 +6,5 @@ export const en = {
     results: 'Results',
     selectedColumns: 'Selected Columns',
     search: 'Search',
+    loading: 'Loading',
 };

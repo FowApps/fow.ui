@@ -353,7 +353,10 @@ const Table = ({
     };
 
     return (
-        <Loader isLoading={isLoading} text="Loading.." {...loaderProps}>
+        <Loader
+            isLoading={isLoading}
+            text={localization[language].loading}
+            {...loaderProps}>
             <Container>
                 {(typeof renderFilters === 'function' ||
                     showColumnControls) && (
