@@ -23,6 +23,7 @@ export interface PrimaryColorTypes {
 export type IConfig = {
     language: 'tr' | 'en';
     timezone: string;
+    location?: any;
 };
 export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
@@ -33,7 +34,7 @@ export interface FowThemeProps {
 
 export const ConfigContext = React.createContext<IConfig>({
     language: 'en',
-    timezone: '+02:00',
+    timezone: '+03:00',
 });
 export const ConfigContextProvider = ConfigContext.Provider;
 
@@ -44,7 +45,11 @@ const FowTheme = ({
     config = { language: 'tr', timezone: '+03:00' },
 }: FowThemeProps): JSX.Element => (
     <ConfigContextProvider
-        value={{ language: config.language, timezone: config.timezone }}>
+        value={{
+            language: config.language,
+            timezone: config.timezone,
+            location: config.location,
+        }}>
         <ThemeProvider
             theme={{
                 ...theme,
