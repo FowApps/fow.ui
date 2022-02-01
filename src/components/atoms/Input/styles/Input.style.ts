@@ -92,7 +92,8 @@ export const StyledInput = styled.input<InputProps>`
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.primary.transparent48};
-        box-shadow: 0px 0px 0px 4px rgba(253, 114, 95, 0.12);
+        box-shadow: 0px 0px 0px 4px
+            ${(props) => props.theme.fow.colors.primary.transparent12};
 
         ~ ${IconWrapper} {
             color: ${(props) => props.theme.fow.colors.text.secondary};
