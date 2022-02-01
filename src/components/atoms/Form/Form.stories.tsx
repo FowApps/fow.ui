@@ -120,7 +120,6 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
-                hooks: 'Test',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
@@ -171,7 +170,10 @@ const UseFormTemplate: Story = () => {
                         ]}
                     />
                 </FormField>
-                <FormField label="Hooks" name="hooks">
+                <FormField
+                    label="Hooks"
+                    name="hooks"
+                    rules={[{ required: true, message: 'Required..' }]}>
                     <Select>
                         <Select.Option value="Test">Test</Select.Option>
                         <Select.Option value="Test2">Test 2</Select.Option>
