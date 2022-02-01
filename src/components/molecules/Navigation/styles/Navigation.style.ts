@@ -303,6 +303,12 @@ export const MenuItem = styled.li<MenuItemProps>`
             css`
                 > a {
                     color: ${props.theme.fow.colors.primary.main} !important;
+
+                    &:before {
+                        transform: scale(2);
+                        background-color: ${props.theme.fow.colors.primary
+                            .main};
+                    }
                 }
             `};
 
@@ -321,11 +327,10 @@ export const MenuItem = styled.li<MenuItemProps>`
             ${!props.isSub &&
             css`
                 > a.active {
-                    border-color: ${props.theme.fow.colors.primary
-                        .main} !important;
-                    background-color: ${props.theme.fow.colors.primary
-                        .transparent8}!important;
+                    border-color: ${props.theme.fow.colors.primary.main} !important;
+                    background-color: ${props.theme.fow.colors.primary.transparent8}!important;
                     color: ${props.theme.fow.colors.primary.main} !important;
+                    }
                 }
             `};
 
@@ -333,6 +338,12 @@ export const MenuItem = styled.li<MenuItemProps>`
             css`
                 > a.active {
                     color: ${props.theme.fow.colors.primary.main} !important;
+
+                    &:before {
+                        transform: scale(2);
+                        background-color: ${props.theme.fow.colors.primary
+                            .main};
+                    }
                 }
             `};
         `}
