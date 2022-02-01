@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Subtitle from '../../atoms/Typography/Body/Body';
@@ -36,6 +36,10 @@ export interface TabsProps {
      * flag for unmount inactive tabs from tree
      */
     destroyInactive?: boolean;
+    /**
+     * flag for floating tab menu
+     */
+    isFloat?: boolean;
     children: React.ReactNode[] | React.ReactNode;
 }
 
@@ -84,9 +88,14 @@ const Tabs = ({
     onTabClick,
     direction = 'horizontal',
     destroyInactive = false,
+    isFloat = true,
     children,
 }: TabsProps): JSX.Element => {
-    const [bindIndex, setBindIndex] = useState(defaultIndex);
+    const [bindIndex, setBindIndex] = useState(() => defaultIndex);
+
+    useEffect(() => {
+        setBindIndex(defaultIndex);
+    }, [defaultIndex]);
 
     const changeTab = (newIndex: number) => {
         if (bindIndex !== newIndex) {
@@ -114,7 +123,7 @@ const Tabs = ({
 
     return (
         <Container direction={direction}>
-            <Surface direction={direction}>
+            <Surface direction={direction} isFloat={isFloat}>
                 {items
                     .filter(Boolean)
                     .map(({ props: { index, label, icon, disabled } }) => (
@@ -124,7 +133,8 @@ const Tabs = ({
                             isActive={bindIndex === index}
                             key={`tab-btn-${index}`}
                             onClick={() => !disabled && changeTab(index)}
-                            disabled={disabled}>
+                            disabled={disabled}
+                            isFloat={isFloat}>
                             <Space>
                                 {icon && (
                                     <IconWrapper isActive={bindIndex === index}>
@@ -146,7 +156,7 @@ const Tabs = ({
                         </TabItem>
                     ))}
             </Surface>
-            <TabContentHolder direction={direction}>
+            <TabContentHolder direction={direction} isFloat={isFloat}>
                 <TabContent direction={direction}>
                     <AnimatePresence>
                         {items.map(({ props }) =>
