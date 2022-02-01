@@ -23,6 +23,7 @@ const accordionTitle = [
         title: 'Item 2',
         subTitle:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy...',
+        extra: 'Extra Content',
     },
     {
         title: 'Item 3',
@@ -36,6 +37,7 @@ const Template: Story<AccordionProps> = (args) => (
                 <Accordion.Item
                     index={index}
                     title={item.title}
+                    extra={item.extra}
                     subtitle={item.subTitle}>
                     <div style={wrapperStyles}>Test</div>
                 </Accordion.Item>

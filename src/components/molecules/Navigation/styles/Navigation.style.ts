@@ -1,310 +1,352 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import RcMenu, { SubMenu as RcSubMenu, Item as RcItem } from 'rc-menu';
-import 'rc-menu/assets/index.css';
-import { Space } from '../../../..';
+import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const IconWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 14px;
-    height: 14px;
-    transition: all 0.3s ease;
-`;
+interface MenuProps {
+    mode?: 'vertical' | 'horizontal';
+    bordered?: boolean;
+}
 
-export const DropdownStyles = createGlobalStyle`
-    .rc-menu-submenu-popup {
-        z-index: 999;
-        .rc-menu-sub {
-            overflow: overlay;
-            padding: 8px 0;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0px 20px 40px -4px rgba(145, 158, 171, 0.24);
-            filter: drop-shadow(0px 0px 2px rgba(145, 158, 171, 0.24));
+interface MenuItemProps {
+    active?: boolean;
+    isSub?: boolean;
+    mode?: 'vertical' | 'horizontal';
+}
 
-            .rc-menu-item {
-                padding: 8px 16px;
+export const MenuWrapper = styled.nav<MenuProps>`
+    ${(props) =>
+        props.mode === 'horizontal' &&
+        css`
+            width: 100%;
 
-                h3 {
-                    font-weight: 500;
-                    font-size: 1.2rem;
-                }
-                
-                ${IconWrapper} {
-                    font-size: 6px;
-                }
-            }
+            ul {
+                transition: all 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
 
-            .rc-menu-item-selected {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.common.white};
-                color: ${(props) => props.theme.fow.colors.primary.main};
-                cursor: pointer;
-
-                h3 span {
-                    color: ${(props) => props.theme.fow.colors.primary.main};
-                }
-            }
-
-            &.rc-menu-vertical {
-                h3 {
-                    font-weight: 500;
-                    font-size: 1.4rem;
-                }
-            }
-        }
-
-        .rc-menu-sub.rc-menu-vertical {
-            .rc-menu-item-active {
-                cursor: pointer;
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.transparent8};
-            }
-
-            .rc-menu-item-selected {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.transparent8} !important;
-                color: ${(props) =>
-                    props.theme.fow.colors.text.primary}!important;
-                cursor: pointer;
-
-                h3 span {
-                    color: ${(props) =>
-                        props.theme.fow.colors.text.primary}!important;
-
-                }
-            }
-        }
-    }
-`;
-
-export const StyledMenu = styled(RcMenu)`
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: unset;
-    border-radius: unset;
-    box-shadow: unset;
-    cursor: pointer;
-
-    &.rc-menu-inline {
-        > .rc-menu-item {
-            padding: 16px 24px !important;
-
-            &.rc-menu-item-active,
-            &.rc-menu-item-selected {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.transparent8};
-            }
-
-            &.rc-menu-item-selected {
-                h3 {
-                    font-weight: 600;
-                }
-            }
-
-            &.rc-menu-item-selected:after {
-                content: ' ';
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                width: 3px;
-                height: 100%;
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.main};
-            }
-
-            &.rc-menu-item-selected h3 span,
-            &.rc-menu-item-selected svg {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-            }
-
-            h3 {
-                overflow: hidden;
-                font-weight: 500;
-                font-size: 1.2rem;
-
-                span {
+                li {
+                    transition: all 0.3s ease;
                     overflow: hidden;
-                    padding-right: 12px;
-                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: left;
+                    background-color: #fff;
+                    cursor: pointer;
+
+                    &:hover {
+                        overflow: visible;
+
+                        > a {
+                            color: ${props.theme.fow.colors.primary
+                                .main} !important;
+                        }
+
+                        > ul {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+
+                    a {
+                        transition: color 0.3s ease !important;
+                        display: flex;
+                        align-items: center;
+                        transition: all 0.3s ease;
+                        padding: 16px 10px;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 22px;
+                    }
                 }
-            }
-        }
 
-        > .rc-menu-submenu {
-            .rc-menu-submenu-title {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 16px 24px !important;
-
-                h3 {
-                    font-weight: 500;
-                    font-size: 1.2rem;
-                }
-            }
-
-            .rc-menu-sub {
-                position: relative;
-                left: -1px;
-                transition: all 0.3s ease-in-out;
-            }
-
-            &.rc-menu-submenu-selected {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.transparent8};
-
-                h3 {
-                    font-weight: 600;
+                > li {
+                    position: relative;
                 }
 
-                .rc-menu-submenu-title:after {
-                    content: ' ';
+                ul {
+                    visibility: hidden;
+                    opacity: 0;
                     position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    width: 3px;
-                    height: 100%;
-                    background-color: ${(props) =>
-                        props.theme.fow.colors.primary.main};
-                }
-            }
+                    z-index: 1072;
+                    display: block;
 
-            &.rc-menu-submenu-active .rc-menu-submenu-title {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.primary.transparent8};
-            }
-
-            &.rc-menu-submenu-selected .rc-menu-submenu-title * {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-            }
-
-            .rc-menu-sub > .rc-menu-item {
-                padding: 16px 24px !important;
-
-                h3 {
-                    font-weight: 500;
-                    font-size: 1.2rem;
-                }
-
-                ${IconWrapper} {
-                    font-size: 6px;
-                }
-
-                &.rc-menu-item-active {
-                    background-color: transparent;
-
-                    ${IconWrapper} {
-                        color: ${(props) =>
-                            props.theme.fow.colors.primary.main};
-                        font-size: 10px;
-                    }
-                }
-
-                &.rc-menu-item-selected {
-                    background-color: transparent;
-
-                    h3 {
-                        font-weight: 600;
-                    }
-
-                    ${IconWrapper} {
-                        color: ${(props) =>
-                            props.theme.fow.colors.primary.main};
-                        font-size: 10px;
-                    }
-                }
-            }
-
-            h3 {
-                overflow: hidden;
-
-                span {
+                    background: #ffffff;
+                    box-shadow: 0px 0px 2px rgb(145 158 171 / 24%),
+                        0px 16px 32px -4px rgb(145 158 171 / 24%);
+                    border-radius: 4px;
+                    min-width: 150px;
                     overflow: hidden;
-                    padding-right: 12px;
-                    text-overflow: ellipsis;
+                    padding: 8px 0;
+
+                    li a {
+                        transition: all 0.3s ease !important;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 24px;
+                        padding: 12px 20px;
+                    }
+
+                    li:hover {
+                        > a {
+                            background-color: ${props.theme.fow.colors.primary
+                                .transparent8};
+                            color: ${props.theme.fow.colors.text
+                                .primary} !important;
+                        }
+                    }
                 }
             }
-        }
-    }
 
-    &.rc-menu-horizontal {
-        background-color: ${(props) => props.theme.fow.colors.common.white};
-
-        .rc-menu-submenu,
-        .rc-menu-item {
-            padding: 16px 8px;
-            border: none;
-
-            ${IconWrapper} {
-                font-size: 6px;
-                opacity: 0;
+            li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
             }
 
-            h3 {
-                font-weight: 500;
-                display: initial;
+            > ul {
+                transition: all 0.3s ease;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+                padding: 0;
+                list-style: none;
             }
-        }
+        `};
 
-        .rc-menu-overflow-item-rest {
-            padding: 0;
-            .rc-menu-submenu-title {
-                padding: 16px 8px;
-            }
-        }
+    ${(props) =>
+        props.mode === 'vertical' &&
+        css`
+            width: 100%;
 
-        h3 span {
-            line-height: 1;
-            transition: all 0.3s ease;
-            display: initial;
-        }
-
-        > .rc-menu-item-active,
-        > .rc-menu-submenu-active {
-            border-bottom: none !important;
-            background-color: ${(props) => props.theme.fow.colors.common.white};
-            color: ${(props) => props.theme.fow.colors.primary.main};
-            .rc-menu-submenu-title {
-                background-color: ${(props) =>
-                    props.theme.fow.colors.common.white};
-            }
-            h3 span {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-                line-height: 1;
-                display: initial;
-            }
-        }
-
-        > .rc-menu-item-selected,
-        > .rc-menu-submenu-selected {
-            background-color: ${(props) => props.theme.fow.colors.common.white};
-            color: ${(props) => props.theme.fow.colors.primary.main};
-
-            h3 span {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-                line-height: 1;
-                display: initial;
+            > ul > li {
+                ${props.bordered &&
+                css`
+                    &:first-child {
+                        border-top: 1px solid ${props.theme.fow.colors.divider};
+                    }
+                    padding: 8px 0;
+                    border-bottom: 1px solid ${props.theme.fow.colors.divider};
+                `}
             }
 
-            ${IconWrapper} {
-                opacity: 1;
-            }
-        }
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
 
-        > .rc-menu-submenu > .rc-menu-submenu-title {
-            padding: 0;
-        }
-    }
+                li {
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-align: left;
+                    background-color: #fff;
+                    cursor: pointer;
+
+                    > a {
+                        border-left: 2px solid;
+                        border-color: transparent;
+                    }
+
+                    &:hover {
+                        > a {
+                            border-color: ${props.theme.fow.colors.primary
+                                .main};
+                            background-color: ${props.theme.fow.colors.primary
+                                .transparent8};
+                            color: ${props.theme.fow.colors.primary
+                                .main} !important;
+                        }
+                    }
+
+                    a {
+                        position: relative;
+                        transition: all 0.3s ease !important;
+                        display: flex;
+                        align-items: center;
+                        transition: all 0.3s ease;
+                        padding: 8px 16px 8px 24px;
+                        font-style: normal;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 22px;
+                        color: ${props.theme.fow.colors.text
+                            .secondary} !important;
+                    }
+
+                    ul {
+                        li {
+                            > a {
+                                padding-top: 12px;
+                                padding-bottom: 12px;
+                                padding-left: 36px;
+
+                                &:before {
+                                    content: ' ';
+                                    width: 2px;
+                                    height: 2px;
+                                    position: absolute;
+                                    background-color: ${props.theme.fow.colors
+                                        .text.secondary};
+                                    border-radius: 50%;
+                                    left: 24px;
+                                }
+                            }
+                        }
+
+                        li:hover {
+                            > a {
+                                background-color: ${props.theme.fow.colors
+                                    .common.white};
+                                color: ${props.theme.fow.colors.primary
+                                    .main} !important;
+                                border-color: transparent;
+
+                                &:before {
+                                    transform: scale(2);
+                                    background-color: ${props.theme.fow.colors
+                                        .primary.main};
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `}
 `;
-export const StyledSubMenu = styled(RcSubMenu)``;
-export const StyledItem = styled(RcItem)``;
-export const ItemWrapper = styled(Space)`
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+export const Link = styled.a``;
+
+export const SubMenuItem = styled.li<MenuItemProps>`
+    ${(props) =>
+        props.mode === 'horizontal' &&
+        css`
+            ${props.active &&
+            css`
+                > a {
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                }
+            `};
+
+            > a.active {
+                color: ${props.theme.fow.colors.primary.main} !important;
+            }
+        `}
+
+    ${(props) =>
+        props.mode === 'vertical' &&
+        css`
+            ${props.active &&
+            css`
+                > a {
+                    border-color: ${props.theme.fow.colors.primary
+                        .main} !important;
+                    background-color: ${props.theme.fow.colors.primary
+                        .transparent8} !important;
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                }
+            `};
+
+            > a.active {
+                border-color: ${props.theme.fow.colors.primary.main} !important;
+                background-color: ${props.theme.fow.colors.primary
+                    .transparent8}!important;
+                color: ${props.theme.fow.colors.primary.main} !important;
+            }
+        `}
 `;
+
+export const MenuItem = styled.li<MenuItemProps>`
+    ${(props) =>
+        props.mode === 'horizontal' &&
+        css`
+            ${props.active &&
+            props.isSub &&
+            css`
+                > a {
+                    color: ${props.theme.fow.colors.text.primary} !important;
+                    background-color: ${props.theme.fow.colors.primary
+                        .transparent8} !important;
+                }
+            `};
+
+            ${props.active &&
+            !props.isSub &&
+            css`
+                > a {
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                }
+            `};
+
+            ${!props.isSub &&
+            css`
+                > a.active {
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                }
+            `};
+
+            ${props.isSub &&
+            css`
+                > a.active {
+                    color: ${props.theme.fow.colors.text.primary} !important;
+                    background-color: ${props.theme.fow.colors.primary
+                        .transparent8} !important;
+                }
+            `};
+        `}
+
+    ${(props) =>
+        props.mode === 'vertical' &&
+        css`
+            ${props.active &&
+            props.isSub &&
+            css`
+                > a {
+                    color: ${props.theme.fow.colors.primary.main} !important;
+
+                    &:before {
+                        transform: scale(2);
+                        background-color: ${props.theme.fow.colors.primary
+                            .main};
+                    }
+                }
+            `};
+
+            ${props.active &&
+            !props.isSub &&
+            css`
+                > a {
+                    border-color: ${props.theme.fow.colors.primary
+                        .main} !important;
+                    background-color: ${props.theme.fow.colors.primary
+                        .transparent8}!important;
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                }
+            `};
+
+            ${!props.isSub &&
+            css`
+                > a.active {
+                    border-color: ${props.theme.fow.colors.primary.main} !important;
+                    background-color: ${props.theme.fow.colors.primary.transparent8}!important;
+                    color: ${props.theme.fow.colors.primary.main} !important;
+                    }
+                }
+            `};
+
+            ${props.isSub &&
+            css`
+                > a.active {
+                    color: ${props.theme.fow.colors.primary.main} !important;
+
+                    &:before {
+                        transform: scale(2);
+                        background-color: ${props.theme.fow.colors.primary
+                            .main};
+                    }
+                }
+            `};
+        `}
+`;
+
+export const SubMenuWrapper = styled(motion.ul)``;

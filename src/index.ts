@@ -83,6 +83,7 @@ export { default as Summary } from './components/molecules/Summary';
 export { default as DatePicker } from './components/molecules/DatePicker';
 export { default as DateRangePicker } from './components/molecules/DateRangePicker';
 export { default as OverviewCard } from './components/molecules/OverviewCard';
+export { default as Editor } from './components/molecules/Editor';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';

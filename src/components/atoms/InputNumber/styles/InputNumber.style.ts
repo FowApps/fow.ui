@@ -39,7 +39,8 @@ export const Wrapper = styled.div<InputProps>`
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.primary.transparent48};
-            box-shadow: 0px 0px 0px 4px rgba(253, 114, 95, 0.12);
+            box-shadow: 0px 0px 0px 4px
+                ${(props) => props.theme.fow.colors.primary.transparent12};
 
             .rc-input-number-handler-up,
             .rc-input-number-handler-wrap {

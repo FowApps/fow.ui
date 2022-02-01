@@ -12,7 +12,7 @@ export default {
 const Template: Story<TabsProps> = (args) => (
     <div>
         <Tabs {...args}>
-            <Tabs.Item icon={<Icon icon="user" />} index={1}>
+            <Tabs.Item label="Users" icon={<Icon icon="user" />} index={1}>
                 Lorem ipsum 1
             </Tabs.Item>
             <Tabs.Item index={2} label="Leads">
