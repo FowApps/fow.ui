@@ -16,160 +16,15 @@ export const Wrapper = styled.div<WrapperProps>`
                 ${props.theme.fow.colors.primary.transparent12};
         `}
 
-    :not(:root):fullscreen::backdrop {
-        background: white;
-    }
-
-    .ql-toolbar.ql-snow {
+    .fow-editor-toolbar {
+        margin-bottom: 0;
         border-radius: 4px 4px 0 0;
-        font-family: 'Inter';
-        padding: 0 4px;
-
-        ${(props) =>
-            props.isFocused &&
-            css`
-                border: 1px solid
-                    ${props.hasValidationError
-                        ? props.theme.fow.colors.error.main
-                        : props.theme.fow.colors.primary.transparent48};
-            `}
-
-        .ql-picker-options {
-            border-radius: 4px;
-            border-color: ${(props) =>
-                props.theme.fow.colors.grey.transparent32};
-            box-shadow: ${(props) => props.theme.fow.shadows.z12};
-        }
-
-        .ql-picker.ql-expanded:not(.ql-color, .ql-background, .ql-align, .ql-header, .ql-size, .ql-font) {
-            .ql-picker-label {
-                border-radius: 4px;
-                border-color: transparent;
-            }
-            .ql-picker-options {
-                border-radius: 4px;
-                border-color: ${(props) =>
-                    props.theme.fow.colors.grey.transparent32};
-                box-shadow: ${(props) => props.theme.fow.shadows.z12};
-
-                .ql-picker-item:before {
-                    content: attr(data-label);
-                }
-            }
-        }
-
-        .ql-picker-label,
-        .ql-picker-item {
-            transition: color 0.3s ease;
-            &:hover,
-            &.ql-active,
-            &.ql-selected {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-                transition: color 0.3s ease;
-
-                .ql-stroke,
-                .ql-fill {
-                    transition: stroke 0.3s ease;
-                    stroke: ${(props) => props.theme.fow.colors.primary.main};
-                }
-            }
-        }
-
-        .ql-formats {
-            background: ${(props) => props.theme.fow.colors.grey.transparent16};
-            border-radius: 4px;
-            margin-right: 2px;
-            padding: 2px 4px;
-            height: 31px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 8px 4px;
-        }
-
-        button {
-            transition: color 0.3s ease;
-            width: auto;
-
-            .ql-stroke,
-            .ql-fill {
-                transition: color 0.3s ease;
-            }
-
-            &.ql-active {
-                color: ${(props) => props.theme.fow.colors.primary.main};
-                transition: color 0.3s ease;
-
-                .ql-stroke {
-                    stroke: currentColor;
-                }
-
-                .ql-fill {
-                    fill: currentColor;
-                }
-            }
-        }
-
-        button:hover {
-            color: ${(props) => props.theme.fow.colors.primary.main};
-
-            .ql-stroke {
-                stroke: currentColor;
-            }
-
-            .ql-fill {
-                fill: currentColor;
-            }
-        }
-
-        button:focus {
-            color: ${(props) => props.theme.fow.colors.primary.main};
-
-            .ql-stroke {
-                stroke: currentColor;
-            }
-
-            .ql-fill {
-                fill: currentColor;
-            }
-        }
-
-        .custom-tool {
-            display: flex;
-            align-items: center;
-
-            .ql-picker-label {
-                position: absolute;
-                right: -4px;
-            }
-        }
-
-        .custom-tool:before {
-            transition: color 0.3s ease;
-            white-space: nowrap;
-            margin-right: 24px;
-            content: attr(placeholder);
-        }
-
-        .custom-tool:hover:before {
-            color: ${(props) => props.theme.fow.colors.primary.main};
-        }
-    }
-
-    .ql-container.ql-snow {
-        border-radius: 0 0 4px 4px;
-        min-height: 250px;
-        border-top: 0 !important;
-        font-family: 'Inter';
-    }
-
-    .ql-toolbar.ql-snow,
-    .ql-container.ql-snow {
         border: 1px solid
             ${(props) =>
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.grey.transparent32};
+        color: ${(props) => props.theme.fow.colors.text.primary};
 
         ${(props) =>
             props.isFocused &&
@@ -181,18 +36,265 @@ export const Wrapper = styled.div<WrapperProps>`
             `}
     }
 
-    &:hover {
-        .ql-toolbar.ql-snow,
-        .ql-container.ql-snow {
-            border: 1px solid
-                ${(props) =>
-                    props.hasValidationError
+    .fow-editor {
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        padding: 0 12px;
+        min-height: 300px;
+        border: 1px solid
+            ${(props) =>
+                props.hasValidationError
+                    ? props.theme.fow.colors.error.main
+                    : props.theme.fow.colors.grey.transparent32};
+        color: ${(props) => props.theme.fow.colors.text.primary};
+        border-top: none;
+
+        ${(props) =>
+            props.isFocused &&
+            css`
+                border: 1px solid
+                    ${props.hasValidationError
                         ? props.theme.fow.colors.error.main
-                        : props.theme.fow.colors.error.transparent48};
+                        : props.theme.fow.colors.primary.transparent48};
+                border-top: none;
+            `}
+    }
+
+    .rc-select-selector {
+        height: 30px !important;
+    }
+
+    .rdw-image-alignment-options-popup {
+        background-color: ${(props) =>
+            props.theme.fow.colors.grey.transparent16};
+        border-radius: 4px;
+
+        .rdw-option-wrapper {
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            box-shadow: none;
+
+            &:hover {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.grey.transparent48};
+            }
+
+            &.rdw-option-disabled {
+                cursor: not-allowed;
+            }
+
+            &:active {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.grey.transparent48};
+            }
+        }
+    }
+
+    .rdw-colorpicker-modal-style-label,
+    .rdw-embedded-modal-header-option,
+    .rdw-image-modal-header-option {
+        font-size: 12px;
+    }
+
+    .rdw-colorpicker-modal-style-label-active,
+    .rdw-embedded-modal-header-label,
+    .rdw-image-modal-header-label-highlighted {
+        border-bottom: 2px solid
+            ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .rdw-link-modal-btn,
+    .rdw-embedded-modal-btn,
+    .rdw-image-modal-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 4px;
+        outline: none;
+        white-space: nowrap;
+        user-select: none;
+        transition: all 0.3s ease;
+        appearance: none;
+        margin-left: 0;
+        border: none;
+        box-shadow: none !important;
+
+        &:first-child:not(:disabled) {
+            background-color: ${(props) => props.theme.fow.colors.primary.main};
+            color: #fff;
         }
 
-        .ql-container.ql-snow {
-            border-top: 0 !important;
+        &:disabled {
+            cursor: not-allowed;
         }
+    }
+
+    .rdw-link-modal-input,
+    .rdw-embedded-modal-link-input,
+    .rdw-embedded-modal-size-input,
+    .rdw-image-modal-url-input,
+    .rdw-image-modal-size-input {
+        width: 100%;
+        padding-top: ${(props) => props.theme.fow.spacing.xxsmall};
+        padding-right: ${(props) => props.theme.fow.spacing.xsmall};
+        padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
+        padding-left: ${(props) => props.theme.fow.spacing.xsmall};
+        border: 1px solid
+            ${(props) =>
+                props.hasValidationError
+                    ? props.theme.fow.colors.error.main
+                    : props.theme.fow.colors.grey.transparent32};
+        border-radius: 4px;
+        color: ${(props) => props.theme.fow.colors.text.primary};
+        outline: none;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        transition: all 0.3s ease;
+        height: 32px;
+    }
+
+    .rdw-embedded-modal-size-input {
+        width: 80%;
+    }
+
+    .rdw-inline-wrapper,
+    .rdw-list-wrapper,
+    .rdw-text-align-wrapper,
+    .rdw-colorpicker-wrapper,
+    .rdw-link-wrapper,
+    .rdw-embedded-wrapper,
+    .rdw-emoji-wrapper,
+    .rdw-image-wrapper,
+    .rdw-remove-wrapper,
+    .rdw-history-wrapper,
+    .rdw-block-wrapper {
+        background-color: ${(props) =>
+            props.theme.fow.colors.grey.transparent16};
+        border-radius: 4px;
+        height: 30px;
+        margin-right: 4px;
+
+        .rdw-option-wrapper {
+            transition: background-color 0.3s ease;
+            height: 24px;
+            background-color: transparent;
+            box-shadow: none;
+
+            &:hover {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.grey.transparent48};
+            }
+
+            &.rdw-option-disabled {
+                cursor: not-allowed;
+            }
+
+            &.rdw-option-active {
+                background-color: ${(props) =>
+                    props.theme.fow.colors.grey.transparent48};
+            }
+        }
+
+        .rdw-dropdown-wrapper {
+            background: transparent;
+
+            &:hover {
+                box-shadow: none;
+            }
+
+            .rdw-dropdown-optionwrapper {
+                border-radius: 4px;
+                border-color: ${(props) =>
+                    props.theme.fow.colors.grey.transparent32};
+                box-shadow: ${(props) => props.theme.fow.shadows.z12};
+                overflow-y: auto;
+                top: 6px;
+                margin: 0;
+                padding: 0;
+
+                .rdw-dropdownoption-default {
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+    }
+
+    .rdw-fontsize-wrapper,
+    .rdw-fontfamily-wrapper {
+        display: none;
+    }
+
+    .rdw-colorpicker-wrapper {
+        .rdw-colorpicker-modal {
+            border-radius: 4px;
+            border-color: ${(props) =>
+                props.theme.fow.colors.grey.transparent32};
+            box-shadow: ${(props) => props.theme.fow.shadows.z12};
+            border: none;
+        }
+    }
+
+    .rdw-link-wrapper {
+        .rdw-link-modal {
+            border-radius: 4px;
+            border-color: ${(props) =>
+                props.theme.fow.colors.grey.transparent32};
+            box-shadow: ${(props) => props.theme.fow.shadows.z12};
+            height: 232px;
+            border: none;
+
+            .rdw-link-modal-label {
+                font-size: 12px;
+            }
+
+            .rdw-link-modal-target-option {
+                display: flex;
+                align-items: center;
+
+                span {
+                    font-size: 12px;
+                }
+
+                input {
+                    accent-color: ${(props) =>
+                        props.theme.fow.colors.primary.main};
+                }
+            }
+        }
+    }
+
+    .rdw-embedded-wrapper {
+        .rdw-embedded-modal {
+            border-radius: 4px;
+            border-color: ${(props) =>
+                props.theme.fow.colors.grey.transparent32};
+            box-shadow: ${(props) => props.theme.fow.shadows.z12};
+            border: none;
+        }
+    }
+
+    .rdw-image-wrapper {
+        .rdw-image-modal {
+            border-radius: 4px;
+            border-color: ${(props) =>
+                props.theme.fow.colors.grey.transparent32};
+            box-shadow: ${(props) => props.theme.fow.shadows.z12};
+            border: none;
+
+            .rdw-image-modal-header {
+                margin: 0;
+
+                .rdw-image-modal-header-option {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    :not(:root):fullscreen::backdrop {
+        background: white;
     }
 `;
