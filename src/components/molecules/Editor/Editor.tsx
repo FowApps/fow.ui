@@ -36,7 +36,7 @@ const toggleFulllscreen = (id: string) => {
     }
 };
 
-const SelectTool = (props) => {
+const SelectTool = (props: any) => {
     const { editorState, onChange, tool } = props;
 
     const handleSelect = (val: string) => {
@@ -74,7 +74,7 @@ const Editor = ({
     hasValidationError = false,
 }) => {
     const { language } = useContext(ConfigContext);
-    const [state, setState] = useState(EditorState.createEmpty());
+    const [state, setState] = useState<EditorState>(EditorState.createEmpty());
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -99,7 +99,7 @@ const Editor = ({
     };
 
     useEffect(() => {
-        if (value && !isDefaultValueSetted) {
+        if (value && !isDefaultValueSetted && !isFocused) {
             const html = value;
             const contentBlock = htmlToDraft(html);
             if (contentBlock) {
@@ -111,7 +111,7 @@ const Editor = ({
             }
             setIsDefaultValueSetted(true);
         }
-    }, [value, isDefaultValueSetted]);
+    }, [value, isDefaultValueSetted, isFocused]);
 
     return (
         <Wrapper

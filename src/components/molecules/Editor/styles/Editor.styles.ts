@@ -9,6 +9,10 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: 4px;
     transition: box-shadow 0.3s ease;
 
+    .public-DraftStyleDefault-block {
+        min-height: 300px;
+    }
+
     ${(props) =>
         props.isFocused &&
         css`
@@ -41,7 +45,6 @@ export const Wrapper = styled.div<WrapperProps>`
         border-top: none;
         border-radius: 0 0 4px 4px;
         padding: 0 12px;
-        min-height: 300px;
         border: 1px solid
             ${(props) =>
                 props.hasValidationError
