@@ -47,6 +47,11 @@ const HorizontalTemplate: Story = (args) => {
                 Home
             </Item>
             <Item>Contacts</Item>
+            <Item>Contacts</Item>
+            <Item>Contacts</Item>
+            <Item>Contacts</Item>
+            <Item>Contacts</Item>
+            <Item>Contacts</Item>
             <SubMenu title="Sub Menu" icon="bed">
                 <Item as={NavLink}>Sub 1</Item>
                 <Item>Sub 2</Item>
