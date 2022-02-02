@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Story, Meta } from '@storybook/react';
 import Form from 'rc-field-form';
 
@@ -7,11 +7,12 @@ import FormField from '../../atoms/Form/FormField';
 
 import Button from '../../atoms/Button';
 import Space from '../../atoms/Space';
-import Loader from '../../atoms/Loader';
 
 import useDrawer from '../../../hooks/useDrawer';
 import useDrawerForm from '../../../hooks/useDrawerForm';
+
 import Input from '../../atoms/Input';
+import Select from '../../atoms/Select';
 
 export default {
     title: 'Molecules/Drawer',
@@ -82,7 +83,9 @@ const DrawerFormTemplate: Story = () => {
         autoResetForm: true,
         initialValues: async () => {
             await new Promise((r) => setTimeout(r, 3000));
-            return {};
+            return {
+                select: 1,
+            };
         },
         async submit({ username, email }) {
             console.log('beforeSubmit');
@@ -92,6 +95,15 @@ const DrawerFormTemplate: Story = () => {
         },
         form,
     });
+
+    const load = useCallback(async () => {
+        const response = await fetch('https://reqres.in/api/users');
+        const json = await response.json();
+        return json.data.map((item) => ({
+            value: item.id,
+            text: item.first_name,
+        }));
+    }, []);
 
     return (
         <div>
@@ -118,6 +130,12 @@ const DrawerFormTemplate: Story = () => {
                         name="email"
                         rules={[{ required: true, message: 'Required..' }]}>
                         <Input placeholder="Email" suffixIcon="envelope" />
+                    </FormField>
+                    <FormField
+                        label="Select"
+                        name="select"
+                        rules={[{ required: true, message: 'Required..' }]}>
+                        <Select loadOptions={load} />
                     </FormField>
                 </Form>
             </Drawer>

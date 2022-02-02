@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import RcSelect, {
     Option as RcOption,
     OptGroup as RcOptGroup,
@@ -22,6 +22,7 @@ export interface Props extends SelectProps {
     loadOptions?: any;
     size?: 'medium' | 'large';
     dependencies?: any;
+    hasValidationError?: boolean;
 }
 
 export type OptionType = {
@@ -51,6 +52,7 @@ const Select = ({
     showArrow = true,
     size = 'medium',
     dependencies,
+    hasValidationError,
     ...rest
 }: Props) => {
     const { language } = useContext(ConfigContext);
@@ -60,18 +62,24 @@ const Select = ({
     );
     const [val, setVal] = useState(rest.value);
 
-    const handleLoadOptions = async () => {
+    const handleLoadOptions = useCallback(async () => {
         if (typeof loadOptions === 'function') {
             setLoading(true);
             const loadedOptions = await loadOptions();
             setOptions(loadedOptions);
             setLoading(false);
         }
-    };
+    }, [loadOptions]);
+
+    useEffect(() => {
+        if (dependencies?.length > 0) {
+            handleLoadOptions();
+        }
+    }, [dependencies, handleLoadOptions]);
 
     useEffect(() => {
         handleLoadOptions();
-    }, [dependencies]);
+    }, [handleLoadOptions]);
 
     useEffect(() => {
         setVal(rest.value);
@@ -94,13 +102,16 @@ const Select = ({
         return children;
     };
 
-    const handleChange = (value, option) => {
+    const handleChange = useCallback((value, option) => {
         setVal(value);
         rest?.onChange?.(value, option);
-    };
+    }, []);
 
     return (
-        <Wrapper title={rest.value?.toString()} size={size}>
+        <Wrapper
+            title={rest.value?.toString()}
+            size={size}
+            hasValidationError={hasValidationError}>
             <RcSelect
                 virtual={false}
                 notFoundContent={

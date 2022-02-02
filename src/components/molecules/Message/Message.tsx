@@ -18,10 +18,6 @@ export interface MessageProps {
      */
     type: 'error' | 'success' | 'plus' | 'empty';
     /**
-     * width of image
-     */
-    width?: number | string;
-    /**
      * lottie flag
      */
     isAnimated?: boolean;
@@ -43,8 +39,7 @@ export interface MessageProps {
     onClickAction?: () => void;
 }
 
-const renderImage = (type: MessageProps['type'], width: number | string) => {
-    console.log(width);
+const renderImage = (type: MessageProps['type']) => {
     switch (type) {
         case 'empty':
             return <EmptyOwl />;
@@ -61,7 +56,6 @@ const renderImage = (type: MessageProps['type'], width: number | string) => {
 
 const Message = ({
     message,
-    width = 400,
     actionText,
     actionIcon,
     onClickAction,
@@ -69,7 +63,7 @@ const Message = ({
 }: MessageProps): JSX.Element => (
     <Wrapper>
         <Space direction="vertical" size="large" align="center">
-            {renderImage(type, width)}
+            {renderImage(type)}
             <Subtitle color="disabled">{message}</Subtitle>
             {actionText && (
                 <Button

@@ -44,6 +44,10 @@ function FormField({ label, children, ...restProps }: FormFieldProps) {
                         {React.cloneElement(children, {
                             hasValidationError: meta.errors.length > 0,
                             ...control,
+                            onChange: (...args: any) => {
+                                control?.onChange(...args);
+                                children.props?.onChange?.(...args);
+                            },
                         })}
                     </div>
                     <Space inline={false} justify="flex-end">
