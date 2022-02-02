@@ -123,7 +123,6 @@ const UseFormTemplate: Story = () => {
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
-                summary: '<p>Summary</p>',
                 daterange: [
                     new Date(new Date().setDate(22)).toISOString(),
                     new Date().toISOString(),
