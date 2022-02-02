@@ -128,7 +128,7 @@
         "fs-extra": "^10.0.0",
         "husky": "^7.0.4",
         "jest": "^27.4.7",
-        "lint-staged": "^12.1.2",
+        "lint-staged": "^12.3.3",
         "prettier": "^2.4.1",
         "process": "^0.11.10",
         "react": "17.0.2",
