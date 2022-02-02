@@ -70,7 +70,7 @@
         "@babel/plugin-transform-runtime": "^7.16.10",
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-typescript": "^7.16.7",
-        "@babel/register": "^7.16.0",
+        "@babel/register": "^7.16.9",
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/react-fontawesome": "^0.1.16",
