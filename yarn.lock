@@ -158,7 +158,7 @@
     "@babel/helper-explode-assignable-expression" "^7.16.7"
     "@babel/types" "^7.16.7"
 
-"@babel/helper-compilation-targets@^7.13.0", "@babel/helper-compilation-targets@^7.16.0", "@babel/helper-compilation-targets@^7.16.7":
+"@babel/helper-compilation-targets@^7.13.0", "@babel/helper-compilation-targets@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/helper-compilation-targets/-/helper-compilation-targets-7.16.7.tgz#06e66c5f299601e6c7da350049315e83209d551b"
   integrity sha512-mGojBwIWcwGD6rfqgRXVlVYmPAv7eOpIemUG3dGnDdCY4Pae70ROij3XmfrH6Fa1h1aiDylpglbZyktfzyo/hA==
@@ -356,7 +356,7 @@
   dependencies:
     "@babel/types" "^7.16.7"
 
-"@babel/helper-module-transforms@^7.12.1", "@babel/helper-module-transforms@^7.16.0":
+"@babel/helper-module-transforms@^7.12.1":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.16.0.tgz#1c82a8dd4cb34577502ebd2909699b194c3e9bb5"
   integrity sha512-My4cr9ATcaBbmaEa8M0dZNA74cfI6gitvUAskgDtAFmAqyFKDSHQo5YstxPbN+lzHl2D9l/YOEFqb2mtUh4gfA==
@@ -2268,16 +2268,16 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@6.4.9":
-  version "6.4.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.4.9.tgz#2d0a7f813dcef160feb357f6548bb1a7ba425d7d"
-  integrity sha512-xXFz/bmw67u4+zPVqJdiJkCtGrO2wAhcsLc4QSTc2+Xgkvkk7ulcRguiujAy5bfinhPa6U1vpJrrg5GFGV+trA==
+"@storybook/addon-links@6.4.17":
+  version "6.4.17"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.4.17.tgz#83675642669c239c8d3ddaacd75348366e280426"
+  integrity sha512-ytGEe7sfOW10wwc0NIWSGtNgGM8ql8EOg7ZhrgXiRgQE0vD5NXRJi8FWzBdb06/G3cURYwveKR4Ea9mABZEaUw==
   dependencies:
-    "@storybook/addons" "6.4.9"
-    "@storybook/client-logger" "6.4.9"
-    "@storybook/core-events" "6.4.9"
+    "@storybook/addons" "6.4.17"
+    "@storybook/client-logger" "6.4.17"
+    "@storybook/core-events" "6.4.17"
     "@storybook/csf" "0.0.2--canary.87bc651.0"
-    "@storybook/router" "6.4.9"
+    "@storybook/router" "6.4.17"
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
@@ -5687,12 +5687,7 @@ core-js@^2.4.0:
   resolved "https://registry.npmjs.org/core-js/-/core-js-2.6.12.tgz"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.0.4, core-js@^3.6.5, core-js@^3.8.2:
-  version "3.15.2"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.15.2.tgz"
-  integrity sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==
-
-core-js@^3.6.4:
+core-js@^3.0.4, core-js@^3.6.4, core-js@^3.6.5, core-js@^3.8.2:
   version "3.20.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.3.tgz#c710d0a676e684522f3db4ee84e5e18a9d11d69a"
   integrity sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==
