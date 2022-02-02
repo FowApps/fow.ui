@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type WrapperProps = {
     size: 'medium' | 'large';
+    hasValidationError?: boolean;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -75,6 +76,16 @@ export const Wrapper = styled.div<WrapperProps>`
             border: 1px solid
                 ${(props) => props.theme.fow.colors.error.transparent48} !important;
         }
+
+        ${(props) =>
+            props.hasValidationError &&
+            css`
+                border: 1px solid ${props.theme.fow.colors.error.main} !important;
+
+                &:hover {
+                    border: 1px solid ${props.theme.fow.colors.error.main} !important;
+                }
+            `};
     }
     .rc-select-single .rc-select-selector .rc-select-selection-search {
         width: 100%;
