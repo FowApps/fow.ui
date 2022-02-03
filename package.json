@@ -87,7 +87,7 @@
         "@types/enzyme": "^3.10.11",
         "@types/html-to-draftjs": "^1.4.0",
         "@types/jest": "^27.4.0",
-        "@types/react": "^17.0.38",
+        "@types/react": "^17.0.39",
         "@types/react-beautiful-dnd": "^13.1.2",
         "@types/react-dnd-multi-backend": "^6.0.1",
         "@types/react-dom": "^17.0.11",
