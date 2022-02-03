@@ -4,7 +4,7 @@
 
 -   Use the present tense ("Add feature" not "Added feature"). Think always "this commit will fix/add smt".
 -   Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
--   Limit the first line to 72 characters or less
+-   Limit the first line to 108 characters or less
 
 ### JS Styleguide
 
