@@ -76,7 +76,7 @@ const Grid = ({ children }) => {
 
     return (
         <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-            <GridWrapper ref={gridRef}>{children}</GridWrapper>;
+            <GridWrapper ref={gridRef}>{children}</GridWrapper>
         </DndProvider>
     );
 };
