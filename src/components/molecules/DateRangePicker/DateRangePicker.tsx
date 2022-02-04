@@ -9,6 +9,7 @@ import en_US from 'rc-picker/lib/locale/en_US';
 import { DateRangePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
+import { Button } from '../../..';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
@@ -60,14 +61,18 @@ const DateRangePicker = ({
     const [val, setVal] = useState<Moment[]>();
 
     const handleChange = (values: any) => {
-        const startTime = moment(new Date(values[0]))
-            .utcOffset(timezone, true)
-            .toISOString();
-        const endTime = moment(new Date(values[1]))
-            .utcOffset(timezone, true)
-            .toISOString();
-        onChange?.([startTime, endTime]);
-        setVal(values);
+        if (values) {
+            const startTime = moment(new Date(values[0]))
+                .utcOffset(timezone, true)
+                .toISOString();
+            const endTime = moment(new Date(values[1]))
+                .utcOffset(timezone, true)
+                .toISOString();
+            onChange?.([startTime, endTime]);
+            setVal(values);
+        } else {
+            setVal([]);
+        }
     };
 
     useEffect(() => {
@@ -102,6 +107,15 @@ const DateRangePicker = ({
                 }
                 locale={locales[language]}
                 allowClear
+                clearIcon={
+                    <Button
+                        color="primary"
+                        size="small"
+                        variant="text"
+                        onClick={() => setVal(undefined)}>
+                        <Icon color="primary" icon="times" />
+                    </Button>
+                }
                 separator={seperator || '-'}
                 format={dateFormat}
                 defaultValue={val ? [moment(val[0]), moment(val[1])] : null}
