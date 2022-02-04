@@ -42,6 +42,7 @@ export { default as ProgressBar } from './components/atoms/ProgressBar';
 export { default as Select } from './components/atoms/Select';
 export { default as DiscountInput } from './components/atoms/DiscountInput';
 export { default as PriceInput } from './components/atoms/PriceInput';
+export { default as Textarea } from './components/atoms/TextArea';
 
 export const Typography = {
     Heading,
