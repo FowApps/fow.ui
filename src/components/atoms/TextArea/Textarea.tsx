@@ -4,18 +4,35 @@ import React, {
     useEffect,
     ComponentPropsWithRef,
 } from 'react';
-import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import Icon from '../Icon';
 
-import { Wrapper, StyledTextArea, InputWrapper, IconWrapper } from './styles';
+import { Wrapper, StyledTextArea, TextareaWrapper } from './styles';
 
 export interface TextAreaProps
-    extends Omit<ComponentPropsWithRef<'input'>, 'onChange'> {
-    prefixIcon?: FontAwesomeIconProps['icon'];
-    suffixIcon?: FontAwesomeIconProps['icon'];
+    extends Omit<ComponentPropsWithRef<'textarea'>, 'onChange'> {
+    /**
+     * Clear
+     */
     allowClear?: boolean;
+    /**
+     * Disabled
+     */
     disabled?: boolean;
+    /**
+     * ValidationError
+     */
     hasValidationError?: boolean;
+    /**
+     * Max rows
+     */
+    maxRows?: number;
+    /**
+     * Min rows
+     */
+    minRows?: number;
+    /**
+     * autosize
+     */
+    autosize?: boolean;
     onChange?: (value: string) => void;
 }
 
@@ -28,13 +45,14 @@ function fixControlledValue<T>(value: T) {
 
 const TextArea = (
     {
-        prefixIcon = undefined,
-        suffixIcon = undefined,
+        autosize = false,
+        maxRows = undefined,
+        minRows = undefined,
         disabled = false,
         hasValidationError = false,
         ...rest
     }: TextAreaProps,
-    ref: RefObject<HTMLInputElement>,
+    ref: RefObject<HTMLTextAreaElement>,
 ): JSX.Element => {
     const [val, setVal] = useState(rest.value);
 
@@ -49,28 +67,18 @@ const TextArea = (
 
     return (
         <Wrapper>
-            <InputWrapper>
+            <TextareaWrapper>
                 <StyledTextArea
-                    {...rest}
+                    ref={ref}
                     hasValidationError={hasValidationError}
-                    hasPrefixIcon={!!prefixIcon}
-                    hasSuffixIcon={!!suffixIcon}
                     disabled={disabled}
                     value={val}
                     onChange={handleChange}
-                    ref={ref}
+                    minRows={minRows}
+                    maxRows={maxRows}
+                    autosize={autosize}
                 />
-                {prefixIcon && (
-                    <IconWrapper position="prefix">
-                        <Icon icon={prefixIcon} />
-                    </IconWrapper>
-                )}
-                {suffixIcon && (
-                    <IconWrapper position="suffix">
-                        <Icon icon={suffixIcon} />
-                    </IconWrapper>
-                )}
-            </InputWrapper>
+            </TextareaWrapper>
         </Wrapper>
     );
 };

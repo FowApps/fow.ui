@@ -1,12 +1,14 @@
-import styled, { css } from 'styled-components';
-import TextareaAutosize from 'react-textarea-autosize';
+import styled from 'styled-components';
+import TextareaAutosize, {
+    TextareaAutosizeProps,
+} from 'react-textarea-autosize';
 import Caption from '../../Typography/Caption';
 
-type TextProps = {
-    hasPrefixIcon: boolean;
-    hasSuffixIcon: boolean;
+interface TextProps extends TextareaAutosizeProps {
     hasValidationError: boolean;
-};
+    autosize: boolean;
+    disabled: boolean;
+}
 
 type LabelProps = {
     disabled: boolean;
@@ -14,46 +16,13 @@ type LabelProps = {
     required: boolean;
 };
 
-type IconWrapperProps = {
-    position: 'prefix' | 'suffix';
-};
-
-export const IconWrapper = styled.div<IconWrapperProps>`
-    position: absolute;
-    top: 1rem;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-
-    ${(props) => {
-        switch (props.position) {
-            case 'prefix':
-                return css`
-                    left: ${props.theme.fow.spacing.small};
-                    margin-right: ${props.theme.fow.spacing.small};
-                `;
-            case 'suffix':
-                return css`
-                    right: ${props.theme.fow.spacing.small};
-                    margin-left: ${props.theme.fow.spacing.small};
-                `;
-            default:
-                return '';
-        }
-    }}
-`;
-
 export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
     width: 100%;
+    margin-bottom: ${(props) => props.theme.fow.spacing.xsmall};
     padding-top: ${(props) => props.theme.fow.spacing.xxsmall};
-    padding-right: ${(props) =>
-        props.hasSuffixIcon
-            ? props.theme.fow.spacing.xxxlarge
-            : props.theme.fow.spacing.xsmall};
+    padding-right: ${(props) => props.theme.fow.spacing.xsmall};
     padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
-    padding-left: ${(props) =>
-        props.hasPrefixIcon
-            ? props.theme.fow.spacing.xxxlarge
-            : props.theme.fow.spacing.xsmall};
+    padding-left: ${(props) => props.theme.fow.spacing.xsmall};
     border: 1px solid
         ${(props) =>
             props.hasValidationError
@@ -66,10 +35,8 @@ export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
     line-height: 2.4rem;
     transition: all 0.3s ease;
     height: 32px;
-
-    ~ ${IconWrapper} {
-        color: ${(props) => props.theme.fow.colors.text.disabled};
-    }
+    resize: ${(props) => (props.autosize ? 'auto' : 'none')} !important;
+    disabled: ${(props) => (props.disabled ? 'true' : 'false')};
 
     ::placeholder {
         color: ${(props) => props.theme.fow.colors.text.disabled};
@@ -81,10 +48,6 @@ export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
                 props.hasValidationError
                     ? props.theme.fow.colors.error.main
                     : props.theme.fow.colors.error.transparent48};
-
-        ~ ${IconWrapper} {
-            color: ${(props) => props.theme.fow.colors.text.primary};
-        }
     }
 
     :focus-visible:not(:disabled) {
@@ -95,10 +58,6 @@ export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
                     : props.theme.fow.colors.primary.transparent48};
         box-shadow: 0px 0px 0px 4px
             ${(props) => props.theme.fow.colors.primary.transparent12};
-
-        ~ ${IconWrapper} {
-            color: ${(props) => props.theme.fow.colors.text.secondary};
-        }
     }
 
     :disabled {
@@ -114,7 +73,7 @@ export const Wrapper = styled.div`
     width: 100%;
 `;
 
-export const InputWrapper = styled.div`
+export const TextareaWrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;

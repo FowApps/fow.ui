@@ -98,6 +98,7 @@
         "@types/react-select": "^5.0.1",
         "@types/react-slick": "^0.23.8",
         "@types/react-table": "^7.7.9",
+        "@types/react-textarea-autosize": "^4.3.6",
         "@types/react-transition-group": "^4.4.4",
         "@types/styled-components": "^5.1.21",
         "@types/uuid": "^8.3.3",

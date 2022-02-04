@@ -6,18 +6,19 @@ import TextArea, { TextAreaProps } from './Textarea';
 export default {
     title: 'Atoms/Textarea',
     component: TextArea,
+    argTypes: {
+        autosize: {
+            control: 'boolean'
+        },
+        disabled: {
+            control: 'boolean'
+        }
+    }
 } as Meta;
 
 const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    minRows: '3',
-    maxRows: '5',
-    prefixIcon: 'paper-plane',
-    suffixIcon: 'paper-plane'
-};
-
-export const Textarea = Template.bind({});
-Textarea.args = {
+    minRows: 1,
 };

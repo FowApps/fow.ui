@@ -11,6 +11,7 @@ import Input from '../Input';
 import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 import useForm from '../../../hooks/useForm';
+import Textarea from '../TextArea/Textarea';
 
 import Button from '../Button';
 import Space from '../Space';
@@ -200,6 +201,12 @@ const UseFormTemplate: Story = () => {
                     name="summary"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Editor id="summary" />
+                </FormField>
+                <FormField 
+                    label="Textarea"
+                    name="textarea"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <Textarea />
                 </FormField>
                 <Space>
                     <Button
