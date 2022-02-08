@@ -17,15 +17,45 @@ import Space from '../Space';
 import useMergedState from '../../../hooks/useMergedState';
 
 export interface RadioProps {
+    /**
+     * default value
+     */
     defaultValue?: any;
+    /**
+     * value
+     */
     value?: any;
+    /**
+     * handle change event
+     */
     onChange?: (e: any) => void;
+    /**
+     * name
+     */
     name?: string;
+    /**
+     * label
+     */
     label?: React.ReactNode;
+    /**
+     * disabled
+     */
     disabled?: boolean;
+    /**
+     * radio name id
+     */
     id?: string;
+    /**
+     * default check
+     */
     defaultChecked?: boolean;
+    /**
+     * check
+     */
     checked?: boolean;
+    /**
+     * radio button option type
+     */
     optionType?: 'button' | 'radio';
 }
 

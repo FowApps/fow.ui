@@ -32,6 +32,9 @@ export interface RangePickerProps {
      * 12 hours preview
      */
     use12Hours?: boolean;
+    /**
+     * handle change dates
+     */
     onChange?: (dates: [string, string]) => void;
     /**
      * format of date
@@ -41,6 +44,9 @@ export interface RangePickerProps {
      * type of input's seperator
      */
     seperator?: string;
+    /**
+     * value
+     */
     value?: string;
     placeholder?: [string, string];
 }

@@ -8,20 +8,47 @@ import { InputWrapper, SelectWrapper } from './styles';
 const { Option } = Select;
 
 interface Currency {
+    /**
+     * value
+     */
     value: string;
+    /**
+     * name
+     */
     name: string;
 }
 
 interface PriceValue {
+    /**
+     * price number
+     */
     number?: number;
+    /**
+     * price currency
+     */
     currency?: Currency['value'];
 }
 
 export interface PriceInputProps {
+    /**
+     * price currencies
+     */
     currencies: Currency[];
+    /**
+     * price value
+     */
     value?: PriceValue;
+    /**
+     * handle change value
+     */
     onChange?: (value: PriceValue) => void;
+    /**
+     * props of input
+     */
     inputProps?: IInputNumber;
+    /**
+     * select props
+     */
     selectProps?: SelectProps;
 }
 

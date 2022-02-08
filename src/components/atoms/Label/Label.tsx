@@ -36,9 +36,18 @@ export interface LabelProps {
      * suffix icon name
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
+    /**
+     * closable
+     */
     isClosable?: boolean;
     text?: React.ReactNode | 'string';
+    /**
+     * handle change close
+     */
     onClose?: () => void;
+    /**
+     * resize component
+     */
     noGutter?: boolean;
 }
 

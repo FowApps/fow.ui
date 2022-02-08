@@ -21,11 +21,26 @@ export interface CheckboxProps {
      * invoke after each
      */
     onChange?: (e: any) => void;
+    /**
+     * value
+     */
     value?: any;
     children?: React.ReactNode;
+    /**
+     * check
+     */
     checked?: boolean;
+    /**
+     * name
+     */
     name?: string;
+    /**
+     * disabled
+     */
     disabled?: boolean;
+    /**
+     * color
+     */
     color?: 'primary' | 'grey';
 }
 

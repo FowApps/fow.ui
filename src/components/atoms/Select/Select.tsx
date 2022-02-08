@@ -20,13 +20,25 @@ import { en } from './locales/en';
 
 export interface Props extends SelectProps {
     loadOptions?: any;
+    /**
+     * size
+     */
     size?: 'medium' | 'large';
+    /**
+     * dependencies
+     */
     dependencies?: any;
     hasValidationError?: boolean;
 }
 
 export type OptionType = {
+    /**
+     * select value
+     */
     value: string | number;
+    /**
+     * select text
+     */
     text: string;
 };
 

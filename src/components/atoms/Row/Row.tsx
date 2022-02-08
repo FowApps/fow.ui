@@ -2,7 +2,13 @@ import React from 'react';
 import { StyledRow } from './styles';
 
 export interface RowProps {
+    /**
+     * resize component
+     */
     noGutter?: boolean;
+    /**
+     * debug
+     */
     debug?: boolean;
     children: React.ReactNode;
 }

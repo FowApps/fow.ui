@@ -13,19 +13,43 @@ import { en } from './locales/en';
 const { Option } = Select;
 
 interface DiscountType {
+    /**
+     * value
+     */
     value: string;
+    /**
+     * name
+     */
     name: string;
 }
 
 interface DiscountValue {
+    /**
+     * number
+     */
     number?: number;
+    /**
+     * type of discount
+     */
     type?: DiscountType['value'];
 }
 
 export interface DiscountInputProps {
+    /**
+     * value
+     */
     value?: DiscountValue;
+    /**
+     * handle change value
+     */
     onChange?: (value: DiscountValue) => void;
+    /**
+     * props of input
+     */
     inputProps?: IInputNumber;
+    /**
+     * select props
+     */
     selectProps?: SelectProps;
 }
 

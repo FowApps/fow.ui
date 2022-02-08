@@ -40,19 +40,46 @@ const localization = {
 };
 
 export interface LabelInputProps {
+    /**
+     * default value
+     */
     defaultValue?: ILabelValue[];
+    /**
+     * handle change value
+     */
     onChange?: (value: ILabelValue[]) => void;
+    /**
+     * count of max labels
+     */
     maxCount?: number;
 }
 export interface ILabel {
+    /**
+     * label id
+     */
     id: string;
+    /**
+     * label color
+     */
     color: ColorTypes;
+    /**
+     * label text
+     */
     text: string;
 }
 
 export interface ILabelValue {
+    /**
+     * label color
+     */
     color: ColorTypes;
+    /**
+     * label text
+     */
     text: string;
+    /**
+     * label id
+     */
     id: string;
 }
 

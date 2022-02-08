@@ -2,7 +2,13 @@ import React from 'react';
 import { StyledContainer } from './styles';
 
 export interface ContainerProps {
+    /**
+     * fluid
+     */
     fluid?: boolean;
+    /**
+     * debug
+     */
     debug?: boolean;
     children: React.ReactNode;
 }

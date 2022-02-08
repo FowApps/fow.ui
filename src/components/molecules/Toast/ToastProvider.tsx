@@ -10,13 +10,28 @@ import { ToastContainer } from './styles';
 import Space from '../../atoms/Space';
 
 type OptionsType = {
+    /**
+     * toast type
+     */
     appearance?: 'default' | 'success' | 'info' | 'warning' | 'error';
+    /**
+     * time of toast
+     */
     duration?: number;
+    /**
+     * closable
+     */
     closable?: boolean;
 };
 
 type ToastProps = {
+    /**
+     * id of toast
+     */
     id: string;
+    /**
+     * toast type
+     */
     options: OptionsType;
     content: string | React.ReactElement;
 };

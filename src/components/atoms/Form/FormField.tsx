@@ -14,10 +14,25 @@ export interface FormFieldProps<Values = any> extends RcFieldProps<Values> {
         any,
         string | React.JSXElementConstructor<any>
     >;
+    /**
+     * form name
+     */
     id?: string;
+    /**
+     * required
+     */
     required?: boolean;
+    /**
+     * hiddem
+     */
     hidden?: boolean;
+    /**
+     * initial value
+     */
     initialValue?: any;
+    /**
+     * form label
+     */
     label?: string;
     /** Auto passed by List render props. User should not use this. */
     fieldKey?: React.Key | React.Key[];

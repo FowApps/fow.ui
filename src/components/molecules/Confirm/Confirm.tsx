@@ -9,16 +9,49 @@ import Heading from '../../atoms/Typography/Heading';
 import Body from '../../atoms/Typography/Body';
 
 export interface ConfirmProps {
+    /**
+     * title of confirm heading
+     */
     title: string;
+    /**
+     * type
+     */
     type?: 'info' | 'success' | 'warning' | 'error';
+    /**
+     * description
+     */
     description?: string;
+    /**
+     * Mode
+     */
     scrimMode?: 'dark' | 'light';
+    /**
+     * cancel of confirm
+     */
     cancelable?: boolean;
+    /**
+     * props of button
+     */
     okButtonProps?: ButtonProps;
+    /**
+     * confirm button text
+     */
     okText?: string;
+    /**
+     * cancel button text
+     */
     cancelText?: string;
+    /**
+     * handle change cancel
+     */
     onCancel?: () => void;
+    /**
+     * handle change ok
+     */
     onOk?: () => Promise<any | void> | void;
+    /**
+     * handle change close --> onClose olmalı mı?
+     */
     close?: () => void;
     theme?: DefaultTheme;
 }

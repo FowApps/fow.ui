@@ -40,7 +40,13 @@ export interface DatePickerProps {
      * format of date
      */
     dateFormat?: string;
+    /**
+     * handle change date
+     */
     onChange?: (date: string) => void;
+    /**
+     * value
+     */
     value?: string;
     placeholder?: string;
 }
