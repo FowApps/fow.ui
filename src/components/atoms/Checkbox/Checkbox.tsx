@@ -27,19 +27,19 @@ export interface CheckboxProps {
     value?: any;
     children?: React.ReactNode;
     /**
-     * check
+     * decides if the checkbox is checked or not
      */
     checked?: boolean;
     /**
-     * name
+     * name of checkbox
      */
     name?: string;
     /**
-     * disabled
+     * change the availability of the component
      */
     disabled?: boolean;
     /**
-     * color
+     * color sheme of checkbox
      */
     color?: 'primary' | 'grey';
 }

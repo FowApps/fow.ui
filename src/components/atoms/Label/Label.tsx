@@ -6,7 +6,7 @@ import { StyledLabel } from './styles';
 
 export interface LabelProps {
     /**
-     * color
+     * color scheme of label
      */
     color?:
         | 'pink'
@@ -17,15 +17,15 @@ export interface LabelProps {
         | 'darkPurple'
         | 'grey';
     /**
-     * variant of button
+     * variant of label
      */
     variant?: 'outlined' | 'filled' | 'ghost';
     /**
-     * label shape
+     * shape scheme of label
      */
     shape?: 'flat' | 'rounded';
     /**
-     * label size
+     * size of label
      */
     size?: 'small' | 'medium' | 'large';
     /**
@@ -37,7 +37,7 @@ export interface LabelProps {
      */
     rightIcon?: FontAwesomeIconProps['icon'] | null;
     /**
-     * closable
+     * place a cross button on the right side of the component
      */
     isClosable?: boolean;
     text?: React.ReactNode | 'string';

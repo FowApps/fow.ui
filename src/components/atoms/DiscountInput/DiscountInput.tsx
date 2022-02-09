@@ -14,29 +14,29 @@ const { Option } = Select;
 
 interface DiscountType {
     /**
-     * value
+     * value of discounttype
      */
     value: string;
     /**
-     * name
+     * name of discounttype
      */
     name: string;
 }
 
 interface DiscountValue {
     /**
-     * number
+     * the primitive type of the input
      */
     number?: number;
     /**
-     * type of discount
+     * inheritence of discountvalue value
      */
     type?: DiscountType['value'];
 }
 
 export interface DiscountInputProps {
     /**
-     * value
+     * inheritence of discountvalue
      */
     value?: DiscountValue;
     /**

@@ -15,11 +15,11 @@ export interface SwitchProps
     prefixLabel?: string;
     suffixLabel?: string;
     /**
-     * size
+     * size of switch component
      */
     size?: 'small' | 'medium';
     /**
-     * disabled
+     * hange the availability of the component
      */
     disabled?: boolean;
 }

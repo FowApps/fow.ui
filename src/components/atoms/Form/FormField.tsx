@@ -23,7 +23,7 @@ export interface FormFieldProps<Values = any> extends RcFieldProps<Values> {
      */
     required?: boolean;
     /**
-     * hiddem
+     * hidden
      */
     hidden?: boolean;
     /**

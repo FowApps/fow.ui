@@ -8,7 +8,7 @@ import Body from '../../atoms/Typography/Body';
 
 export interface StyledSummaryCardProps {
     /**
-     * increase/decrease column amount --> burada kullanılmıyor
+     * increase/decrease column amount
      */
     column?: number;
 }

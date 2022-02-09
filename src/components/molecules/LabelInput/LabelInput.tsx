@@ -41,7 +41,7 @@ const localization = {
 
 export interface LabelInputProps {
     /**
-     * default value
+     * inheritence of ILabelValue
      */
     defaultValue?: ILabelValue[];
     /**
@@ -49,7 +49,7 @@ export interface LabelInputProps {
      */
     onChange?: (value: ILabelValue[]) => void;
     /**
-     * count of max labels
+     * decides how many labels to be displayed at the same time
      */
     maxCount?: number;
 }
@@ -59,7 +59,7 @@ export interface ILabel {
      */
     id: string;
     /**
-     * label color
+     * inheritence of colortype (decides the background color of the labels seperately)
      */
     color: ColorTypes;
     /**
@@ -70,7 +70,7 @@ export interface ILabel {
 
 export interface ILabelValue {
     /**
-     * label color
+     * inheritence of colortype (decides the background color of the labels seperately)
      */
     color: ColorTypes;
     /**

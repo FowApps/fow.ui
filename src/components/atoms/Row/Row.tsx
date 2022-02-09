@@ -7,7 +7,7 @@ export interface RowProps {
      */
     noGutter?: boolean;
     /**
-     * debug
+     * highligth the content in the container
      */
     debug?: boolean;
     children: React.ReactNode;

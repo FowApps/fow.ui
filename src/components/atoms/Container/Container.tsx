@@ -3,11 +3,11 @@ import { StyledContainer } from './styles';
 
 export interface ContainerProps {
     /**
-     * fluid
+     * Widen the component through it's block
      */
     fluid?: boolean;
     /**
-     * debug
+     * highligth the content in the container
      */
     debug?: boolean;
     children: React.ReactNode;

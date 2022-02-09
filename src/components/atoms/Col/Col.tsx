@@ -12,14 +12,14 @@ export interface ColProps {
      */
     sm?: number;
     /**
-     * column size of less then 1024px
+     * column size of less then 1024px?
      */
     md?: number;
     /**
-     * column size of less then 1024px
+     * column size of less then 1024px?
      */
     lg?: number;
-    /**
+    /*
      * column size of less then 1440px
      */
     xl?: number;
@@ -32,7 +32,7 @@ export interface ColProps {
      */
     offset?: object | number;
     /**
-     * debug
+     * highligth the content in the col
      */
     debug?: boolean;
     children: React.ReactNode;

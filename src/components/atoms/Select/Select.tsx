@@ -21,7 +21,7 @@ import { en } from './locales/en';
 export interface Props extends SelectProps {
     loadOptions?: any;
     /**
-     * size
+     * size of select component
      */
     size?: 'medium' | 'large';
     /**
@@ -33,7 +33,7 @@ export interface Props extends SelectProps {
 
 export type OptionType = {
     /**
-     * select value
+     * assign the value to be displayed
      */
     value: string | number;
     /**

@@ -18,7 +18,7 @@ export interface MenuProps {
 
 export interface MenuItemProps extends ComponentPropsWithoutRef<'div'> {
     /**
-     * index of item
+     * index of menu item
      */
     index: number;
     /**

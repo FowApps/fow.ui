@@ -59,10 +59,16 @@ export interface MenuItemProps {
 export interface MenuProps {
     bordered?: boolean;
     location?: string;
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     children: React.ReactNode;
 }
 interface IMenuContext {
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     location?: any;
 }

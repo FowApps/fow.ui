@@ -7,15 +7,15 @@ import BoardItem from './BoardItem';
 export interface BoardProps {
     children: any;
     /**
-     * Columns
+     * columns of board
      */
     columns: any;
     /**
-     * Key of items
+     * key of items
      */
     itemsKey?: any;
     /**
-     * handle drag end
+     * gives the desicion of event at the end of dragging
      */
     onDragEnd?: (result: any, data: unknown) => void;
 }

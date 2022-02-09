@@ -18,7 +18,7 @@ export interface InputProps
      */
     allowClear?: boolean;
     /**
-     * disabled
+     * change the availability of the component
      */
     disabled?: boolean;
     hasValidationError?: boolean;

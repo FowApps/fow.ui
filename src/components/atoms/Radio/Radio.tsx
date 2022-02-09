@@ -30,15 +30,15 @@ export interface RadioProps {
      */
     onChange?: (e: any) => void;
     /**
-     * name
+     * name of radio
      */
     name?: string;
     /**
-     * label
+     * label of radio
      */
     label?: React.ReactNode;
     /**
-     * disabled
+     * change the availability of the component
      */
     disabled?: boolean;
     /**
@@ -46,11 +46,11 @@ export interface RadioProps {
      */
     id?: string;
     /**
-     * default check
+     * decides wheter the radio is checked at the beginning or not
      */
     defaultChecked?: boolean;
     /**
-     * check
+     * decides if the radio is checked or not
      */
     checked?: boolean;
     /**

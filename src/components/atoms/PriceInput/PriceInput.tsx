@@ -9,33 +9,33 @@ const { Option } = Select;
 
 interface Currency {
     /**
-     * value
+     * value of currency
      */
     value: string;
     /**
-     * name
+     * name of currency
      */
     name: string;
 }
 
 interface PriceValue {
     /**
-     * price number
+     * the primitive type of the input
      */
     number?: number;
     /**
-     * price currency
+     * inheritence of currency value
      */
     currency?: Currency['value'];
 }
 
 export interface PriceInputProps {
     /**
-     * price currencies
+     *  inheritence of currency
      */
     currencies: Currency[];
     /**
-     * price value
+     * inheritence of pricevalue
      */
     value?: PriceValue;
     /**

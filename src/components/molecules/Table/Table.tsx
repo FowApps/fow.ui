@@ -61,7 +61,7 @@ import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 export interface TableProps {
     /**
-     * data
+     * data which is fetched from an endpoint
      */
     data: any[];
     /**
@@ -95,7 +95,7 @@ export interface TableProps {
      */
     showColumnControls?: boolean;
     /**
-     * pagination
+     * gives the ability of switching between page numbers
      */
     showPagination?: boolean;
     /**
