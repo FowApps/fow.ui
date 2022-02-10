@@ -19,7 +19,7 @@ export interface AvatarProps {
     /**
      * color variant
      */
-    color?: 'primary' | 'secondary';
+    color?: 'primary' | 'secondary' | 'grey';
     /**
      * size variant
      */

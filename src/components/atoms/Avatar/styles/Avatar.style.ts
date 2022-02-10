@@ -4,7 +4,7 @@ import setSize from './size';
 import setShape from './shape';
 
 type AvatarProps = {
-    color: 'primary' | 'secondary';
+    color: 'primary' | 'secondary' | 'grey';
     src?: string;
     size: 'small' | 'medium' | 'large';
     shape: 'rounded' | 'circle' | 'flat';
