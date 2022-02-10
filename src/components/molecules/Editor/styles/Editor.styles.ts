@@ -9,10 +9,6 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: 4px;
     transition: box-shadow 0.3s ease;
 
-    .public-DraftStyleDefault-block {
-        min-height: 300px;
-    }
-
     ${(props) =>
         props.isFocused &&
         css`
@@ -52,6 +48,7 @@ export const Wrapper = styled.div<WrapperProps>`
                     : props.theme.fow.colors.grey.transparent32};
         color: ${(props) => props.theme.fow.colors.text.primary};
         border-top: none;
+        min-height: 300px;
 
         ${(props) =>
             props.isFocused &&
