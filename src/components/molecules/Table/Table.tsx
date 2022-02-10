@@ -60,21 +60,63 @@ import Message from '../Message';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 export interface TableProps {
+    /**
+     * data which is fetched from an endpoint
+     */
     data: any[];
+    /**
+     * columns of table
+     */
     columns: any[];
+    /**
+     * global loading
+     */
     isLoading?: boolean;
+    /**
+     * handle change
+     */
     onChange?: ({ sortBy: any, page: number, pageSize: number }) => void;
+    /**
+     * handle change columns
+     */
     onChangeColumns?: (columns: any[]) => void;
+    /**
+     * total count
+     */
     totalCount?: number;
+    /**
+     * page size
+     */
     pageSize?: number;
     renderAction?: (row: any) => React.ReactNode;
     renderFilters?: () => React.ReactNode;
+    /**
+     * column controls
+     */
     showColumnControls?: boolean;
+    /**
+     * gives the ability of switching between page numbers
+     */
     showPagination?: boolean;
+    /**
+     * manuel sort by
+     */
     manualSortBy?: boolean;
+    /**
+     * manuel pagination
+     */
     manualPagination?: boolean;
+    /**
+     * sort by
+     */
     sortBy?: any[];
+    /**
+     * initial page
+     */
     initialPage?: number;
+    /**
+     * props of loader
+     */
     loaderProps?: LoaderProps;
 }
 

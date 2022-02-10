@@ -18,10 +18,16 @@ export interface MenuProps {
 
 export interface MenuItemProps extends ComponentPropsWithoutRef<'div'> {
     /**
-     * index of item
+     * index of menu item
      */
     index: number;
+    /**
+     * handle click item
+     */
     onClick?: () => void;
+    /**
+     * handle change function of items
+     */
     handleChange?: (itemKey: any) => void;
     children: React.ReactNode;
 }

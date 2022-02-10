@@ -25,6 +25,6 @@ const RadioGroupTemplate: Story<RadioProps> = (args) => (
 );
 
 export const RadioGroup = RadioGroupTemplate.bind({});
-Default.args = {
+RadioGroup.args = {
     optionType: 'button',
 };

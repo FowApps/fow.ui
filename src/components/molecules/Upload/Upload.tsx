@@ -70,11 +70,26 @@ export interface UploadProps {
      * disabled flag
      */
     disabled?: any;
+    /**
+     * required
+     */
     required?: any;
+    /**
+     * localization
+     */
     localization?: LocalizationType;
     theme?: DefaultTheme;
+    /**
+     * upload button props
+     */
     uploadButtonProps?: ButtonProps;
+    /**
+     * show file list
+     */
     showFileList?: boolean;
+    /**
+     * type of upload
+     */
     type?: 'dragger' | 'button';
 }
 

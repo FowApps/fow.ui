@@ -12,6 +12,9 @@ import {
 } from './styles';
 
 export interface SidebarProps {
+    /**
+     * display sidebar
+     */
     noGutter?: boolean;
     children: React.ReactNode;
 }

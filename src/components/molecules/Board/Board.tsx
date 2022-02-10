@@ -6,8 +6,17 @@ import BoardItem from './BoardItem';
 
 export interface BoardProps {
     children: any;
+    /**
+     * columns of board
+     */
     columns: any;
+    /**
+     * key of items
+     */
     itemsKey?: any;
+    /**
+     * gives the desicion of event at the end of dragging
+     */
     onDragEnd?: (result: any, data: unknown) => void;
 }
 

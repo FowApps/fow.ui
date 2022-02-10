@@ -8,23 +8,23 @@ import { StyledSlider, Pagination, Arrow, Dot } from './styles';
 
 export interface CarouselProps {
     /**
-     * dots
+     * shows the count of the items to be displayed
      */
     dots?: boolean;
     /**
-     * infinite
+     * decided whether the items can be passed infinitely or not
      */
     infinite?: boolean;
     /**
-     * speed
+     * speed of transition of the items
      */
     speed?: number;
     /**
-     * slides to show
+     * decides the amount of items on display at the same time
      */
     slidesToShow?: number;
     /**
-     * slides to scroll
+     * decides how many items to be passed on on scroll
      */
     slidesToScroll?: number;
     children: React.ReactNode;

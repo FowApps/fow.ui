@@ -10783,10 +10783,11 @@ rc-pagination@^3.1.15:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
 
-rc-picker@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.6.1.tgz#17188ea901cb75911427ac5a1a038f800aa84d08"
-  integrity sha512-cj4B+zyxAjGUSck4gTVXt7tjEaAOMwogOcMsYknvJjEuyHm+RPqSiYKXkCov0mxYcIZ2tvWeuTo96EhuWjysdw==
+rc-picker@^2.6.4:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.6.4.tgz#916aa5fcd8abd11106f1c2fb64bfd549439abfa0"
+  integrity sha512-Mnc1udPyGNSG7/ya5SmYltUjCUcsMH7jfJnuuXVAvEaEdx9qZxDGMWtIii//+ARC06CSHQ83s5iwiGFwM+FcDw==
+
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
