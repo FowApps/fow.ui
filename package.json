@@ -73,7 +73,7 @@
         "@babel/preset-typescript": "^7.16.7",
         "@babel/register": "^7.17.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
-        "@fortawesome/free-solid-svg-icons": "^5.15.3",
+        "@fortawesome/free-solid-svg-icons": "^6.0.0",
         "@fortawesome/react-fontawesome": "^0.1.17",
         "@react-bootstrap/babel-preset": "^2.1.0",
         "@react-bootstrap/eslint-config": "^2.0.0",
@@ -150,7 +150,7 @@
     },
     "peerDependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
-        "@fortawesome/free-solid-svg-icons": "^5.15.3",
+        "@fortawesome/free-solid-svg-icons": "^6.0.0",
         "@fortawesome/react-fontawesome": "^0.1.17",
         "framer-motion": "^6.2.3",
         "process": "^0.11.10",
