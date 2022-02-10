@@ -6,7 +6,7 @@ import setShape from './shape';
 type AvatarProps = {
     color: 'primary' | 'secondary';
     src?: string;
-    size: 'xsmall' | 'small' | 'medium' | 'large';
+    size: 'small' | 'medium' | 'large';
     shape: 'rounded' | 'circle' | 'flat';
 };
 
