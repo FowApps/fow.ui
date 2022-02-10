@@ -23,17 +23,35 @@ import { ConfigContext } from '../../../theme/FowThemeProvider';
 import { useDisclosure } from '../../..';
 
 export interface SubMenuProps {
+    /**
+     * title of sub menu
+     */
     title: string;
+    /**
+     * icon of sub menu
+     */
     icon?: FontAwesomeIconProps['icon'];
     children: React.ReactNode;
 }
 
 export interface MenuItemProps {
+    /**
+     * icon of navigation
+     */
     icon?: FontAwesomeIconProps['icon'];
     extra?: React.ReactNode;
     as?: any;
+    /**
+     * active --> isActive olmalı mı?
+     */
     active?: boolean;
+    /**
+     * navbar has sub menu
+     */
     isSub?: boolean;
+    /**
+     * active regex name
+     */
     activePathRegex?: string;
     children: React.ReactNode;
 }
@@ -41,10 +59,16 @@ export interface MenuItemProps {
 export interface MenuProps {
     bordered?: boolean;
     location?: string;
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     children: React.ReactNode;
 }
 interface IMenuContext {
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     location?: any;
 }

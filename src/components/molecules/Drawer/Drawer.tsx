@@ -127,12 +127,33 @@ export interface DrawerProps {
      * Whether to unmount child components on closing drawer or not
      */
     destroyOnClose?: boolean;
+    /**
+     * handle change ok
+     */
     onOk?: () => void;
+    /**
+     * drawer button text
+     */
     okText?: string;
+    /**
+     * props of button ok
+     */
     okButtonProps?: ButtonProps;
+    /**
+     * handle change cancel
+     */
     onCancel?: () => void;
+    /**
+     * cancel button text
+     */
     cancelText?: string;
+    /**
+     * props of button cancel
+     */
     cancelButtonProps?: ButtonProps;
+    /**
+     * global loading
+     */
     isLoading?: boolean;
     children?: React.ReactNode;
 }
