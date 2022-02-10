@@ -14,15 +14,15 @@ const Template: Story<LoaderProps> = (args) => <Loader {...args} />;
 
 export const WithCard = Template.bind({});
 WithCard.args = {
-    isLoading: false,
+    isLoading: true,
     text: 'Loading',
-    fullPage: true,
+    fullPage: false,
     children: <Card>Hello from card</Card>,
 };
 
 export const WithFullPage = Template.bind({});
 WithFullPage.args = {
-    isLoading: false,
+    isLoading: true,
     text: 'Loading',
     fullPage: true,
     children: <Card>Hello From Card</Card>,
@@ -30,6 +30,6 @@ WithFullPage.args = {
 
 export const Static = Template.bind({});
 Static.args = {
-    isLoading: false,
+    isLoading: true,
     text: 'Loading',
 };
