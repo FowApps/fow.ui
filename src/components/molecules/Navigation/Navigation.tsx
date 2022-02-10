@@ -96,7 +96,7 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
         if (location) {
             const activePathRegexes = React.Children.map(
                 children,
-                (child: React.ReactElement) => child.props.activePathRegex,
+                (child: React.ReactElement) => child?.props?.activePathRegex,
             );
 
             const isActive = activePathRegexes?.some(
@@ -161,20 +161,26 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
                                 open: { opacity: 1, height: 'auto' },
                                 collapsed: { opacity: 0, height: 0 },
                             }}>
-                            {React.Children.map(children, (child) =>
-                                React.cloneElement(child as any, {
-                                    isSub: true,
-                                }),
+                            {React.Children.map(
+                                children,
+                                (child) =>
+                                    child &&
+                                    React.cloneElement(child as any, {
+                                        isSub: true,
+                                    }),
                             )}
                         </SubMenuWrapper>
                     )}
                 </AnimatePresence>
             ) : (
                 <SubMenuWrapper>
-                    {React.Children.map(children, (child) =>
-                        React.cloneElement(child as any, {
-                            isSub: true,
-                        }),
+                    {React.Children.map(
+                        children,
+                        (child) =>
+                            child &&
+                            React.cloneElement(child as any, {
+                                isSub: true,
+                            }),
                     )}
                 </SubMenuWrapper>
             )}

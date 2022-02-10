@@ -9,6 +9,7 @@ import tr_TR from 'rc-picker/lib/locale/tr_TR';
 import { DatePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
+import { Button } from '../../..';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
@@ -67,11 +68,15 @@ const DatePicker = ({
     const [val, setVal] = useState<Moment>();
 
     const handleChange = (date: any) => {
-        const dateObj = moment(new Date(date))
-            .utcOffset(timezone, true)
-            .toISOString();
-        onChange?.(dateObj);
-        setVal(date);
+        if (date) {
+            const dateObj = moment(new Date(date))
+                .utcOffset(timezone, true)
+                .toISOString();
+            onChange?.(dateObj);
+            setVal(date);
+        } else {
+            setVal(undefined);
+        }
     };
 
     const disabledDateBeforeToday = (current: Moment) =>
@@ -122,6 +127,15 @@ const DatePicker = ({
                 use12Hours={use12Hours}
                 locale={locales[language]}
                 allowClear
+                clearIcon={
+                    <Button
+                        color="primary"
+                        size="small"
+                        variant="text"
+                        onClick={() => setVal(undefined)}>
+                        <Icon color="primary" icon="times" />
+                    </Button>
+                }
                 format={dateFormat}
                 value={val ? moment(val) : null}
             />

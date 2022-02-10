@@ -92,7 +92,15 @@ export const DateRangePickerWrapper = styled.div`
                 height: 16px;
                 &:after {
                     height: 16px;
+                    line-height: 14px;
                 }
+            }
+            svg {
+                width: 6px;
+            }
+            > button {
+                line-height: 16px;
+                height: 16px;
             }
         }
     }
@@ -101,6 +109,7 @@ export const DateRangePickerWrapper = styled.div`
 export const TimePickerStyles = createGlobalStyle`
     .rc-picker-dropdown {
         box-shadow: 0 0;
+        z-index: 2222;
         .rc-picker-range-arrow {
             top:5px;
             &:before {
