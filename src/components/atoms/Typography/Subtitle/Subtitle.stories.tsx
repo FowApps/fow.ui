@@ -10,7 +10,7 @@ export default {
             control: {
                 type: 'select',
             },
-            options: [1, 2],
+            options: [1, 2, 3],
         },
         color: {
             control: {
