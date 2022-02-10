@@ -26,8 +26,17 @@ export interface DropdownProps {
      * flag for inline or fluid content
      */
     fullWidth?: boolean;
+    /**
+     * handle change close
+     */
     onClose?: () => void;
+    /**
+     * handle change open
+     */
     onOpen?: () => void;
+    /**
+     * initial open
+     */
     initialOpen?: boolean;
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
 }

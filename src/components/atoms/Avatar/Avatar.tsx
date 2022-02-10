@@ -19,11 +19,11 @@ export interface AvatarProps {
     /**
      * color variant
      */
-    color?: 'primary' | 'secondary';
+    color?: 'primary' | 'secondary' | 'grey';
     /**
      * size variant
      */
-    size?: 'xsmall' | 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large';
     /**
      * shape of avatar
      */

@@ -11,11 +11,29 @@ export interface ColProps {
      * column size of less then 768px
      */
     sm?: number;
+    /**
+     * column size of less then 1024px?
+     */
     md?: number;
+    /**
+     * column size of less then 1024px?
+     */
     lg?: number;
+    /*
+     * column size of less then 1440px
+     */
     xl?: number;
+    /**
+     * resize component
+     */
     noGutter?: boolean;
+    /**
+     * offset
+     */
     offset?: object | number;
+    /**
+     * highligth the content in the col
+     */
     debug?: boolean;
     children: React.ReactNode;
 }

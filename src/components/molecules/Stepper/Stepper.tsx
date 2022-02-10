@@ -3,6 +3,9 @@ import Step from './Step';
 import { Wrapper } from './styles';
 
 export type StepperProps = {
+    /**
+     * ????
+     */
     current?: number;
     initial?: number;
     onChange?: (current: number) => void;

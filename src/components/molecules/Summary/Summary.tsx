@@ -7,13 +7,31 @@ import Subtitle from '../../atoms/Typography/Subtitle';
 import Body from '../../atoms/Typography/Body';
 
 export interface StyledSummaryCardProps {
+    /**
+     * increase/decrease column amount
+     */
     column?: number;
 }
 export interface SummaryItemProps {
+    /**
+     * summary title
+     */
     title: string;
+    /**
+     * field
+     */
     field: string;
+    /**
+     * description
+     */
     description?: string;
+    /**
+     * increase/decrease column amount
+     */
     column?: number;
+    /**
+     * hidden
+     */
     hidden?: boolean;
 }
 

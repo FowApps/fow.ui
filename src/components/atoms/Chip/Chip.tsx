@@ -13,7 +13,7 @@ export interface ChipProps {
      */
     type: 'filled' | 'outlined';
     /**
-     * color
+     * color sheme of chip
      */
     color: 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'error';
     /**

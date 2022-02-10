@@ -23,17 +23,35 @@ import { ConfigContext } from '../../../theme/FowThemeProvider';
 import { useDisclosure } from '../../..';
 
 export interface SubMenuProps {
+    /**
+     * title of sub menu
+     */
     title: string;
+    /**
+     * icon of sub menu
+     */
     icon?: FontAwesomeIconProps['icon'];
     children: React.ReactNode;
 }
 
 export interface MenuItemProps {
+    /**
+     * icon of navigation
+     */
     icon?: FontAwesomeIconProps['icon'];
     extra?: React.ReactNode;
     as?: any;
+    /**
+     * active --> isActive olmalı mı?
+     */
     active?: boolean;
+    /**
+     * navbar has sub menu
+     */
     isSub?: boolean;
+    /**
+     * active regex name
+     */
     activePathRegex?: string;
     children: React.ReactNode;
 }
@@ -41,10 +59,16 @@ export interface MenuItemProps {
 export interface MenuProps {
     bordered?: boolean;
     location?: string;
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     children: React.ReactNode;
 }
 interface IMenuContext {
+    /**
+     * decides wheter the navigation to be placed vertically or horizontally
+     */
     mode?: 'vertical' | 'horizontal';
     location?: any;
 }
@@ -72,7 +96,7 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
         if (location) {
             const activePathRegexes = React.Children.map(
                 children,
-                (child: React.ReactElement) => child.props.activePathRegex,
+                (child: React.ReactElement) => child?.props?.activePathRegex,
             );
 
             const isActive = activePathRegexes?.some(
@@ -137,20 +161,26 @@ const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
                                 open: { opacity: 1, height: 'auto' },
                                 collapsed: { opacity: 0, height: 0 },
                             }}>
-                            {React.Children.map(children, (child) =>
-                                React.cloneElement(child as any, {
-                                    isSub: true,
-                                }),
+                            {React.Children.map(
+                                children,
+                                (child) =>
+                                    child &&
+                                    React.cloneElement(child as any, {
+                                        isSub: true,
+                                    }),
                             )}
                         </SubMenuWrapper>
                     )}
                 </AnimatePresence>
             ) : (
                 <SubMenuWrapper>
-                    {React.Children.map(children, (child) =>
-                        React.cloneElement(child as any, {
-                            isSub: true,
-                        }),
+                    {React.Children.map(
+                        children,
+                        (child) =>
+                            child &&
+                            React.cloneElement(child as any, {
+                                isSub: true,
+                            }),
                     )}
                 </SubMenuWrapper>
             )}

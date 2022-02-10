@@ -13,9 +13,18 @@ export interface InputProps
     extends Omit<ComponentPropsWithRef<'input'>, 'onChange'> {
     prefixIcon?: FontAwesomeIconProps['icon'];
     suffixIcon?: FontAwesomeIconProps['icon'];
+    /**
+     * clear
+     */
     allowClear?: boolean;
+    /**
+     * change the availability of the component
+     */
     disabled?: boolean;
     hasValidationError?: boolean;
+    /**
+     * handle change input value
+     */
     onChange?: (value: string) => void;
 }
 

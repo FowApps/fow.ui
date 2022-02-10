@@ -24,6 +24,3 @@ Default.args = {
         },
     ],
 };
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {};
