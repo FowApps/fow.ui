@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const setColor = (variant: 'primary' | 'secondary' | 'grey'): any => {
+const setColor = (variant: 'primary' | 'secondary' | 'grey' | 'info' | 'success' | 'warning'): any => {
     switch (variant) {
         case 'primary':
             return css`
@@ -30,6 +30,33 @@ const setColor = (variant: 'primary' | 'secondary' | 'grey'): any => {
                 h3,
                 svg {
                     color: ${(props) => props.theme.fow.colors.text.secondary};
+                }
+            `;
+        case 'info':
+            return css`
+                background-color: ${(props) =>
+                    props.theme.fow.colors.info.darker};
+                h3,
+                svg {
+                    color: ${(props) => props.theme.fow.colors.common.white};
+                }
+            `;
+        case 'success':
+            return css`
+                background-color: ${(props) =>
+                    props.theme.fow.colors.success.dark};
+                h3,
+                svg {
+                    color: ${(props) => props.theme.fow.colors.common.white};
+                }
+            `;
+        case 'warning':
+            return css`
+                background-color: ${(props) =>
+                    props.theme.fow.colors.warning.dark};
+                h3,
+                svg {
+                    color: ${(props) => props.theme.fow.colors.common.white};
                 }
             `;
         default:
