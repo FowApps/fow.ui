@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 
-const setColor = (variant: 'primary' | 'secondary' | 'grey' | 'info' | 'success' | 'warning'): any => {
+const setColor = (
+    variant: 'primary' | 'secondary' | 'grey' | 'info' | 'success' | 'warning',
+): any => {
     switch (variant) {
         case 'primary':
             return css`
