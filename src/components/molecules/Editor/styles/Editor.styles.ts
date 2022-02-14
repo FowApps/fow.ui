@@ -8,6 +8,7 @@ type WrapperProps = {
 export const Wrapper = styled.div<WrapperProps>`
     border-radius: 4px;
     transition: box-shadow 0.3s ease;
+    overflow: hidden;
 
     * {
         transition: color 0.3s ease;
@@ -22,6 +23,11 @@ export const Wrapper = styled.div<WrapperProps>`
     .bf-container .public-DraftEditorPlaceholder-root {
         font-size: 14px;
         color: ${(props) => props.theme.fow.colors.text.disabled};
+    }
+
+    .DraftEditor-editorContainer,
+    .bf-container .public-DraftEditor-content {
+        min-height: 300px;
     }
 
     ${(props) =>
@@ -44,6 +50,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
     .bf-content {
         min-height: 300px;
+        height: unset;
         font-size: 14px;
         color: ${(props) => props.theme.fow.colors.text.secondary};
     }

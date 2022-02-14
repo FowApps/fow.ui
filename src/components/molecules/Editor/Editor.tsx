@@ -78,6 +78,8 @@ const controlTypes: ControlTypes = {
         'separator',
         'hr',
         'separator',
+        'fullscreen',
+        'separator',
         'clear',
     ],
     complex: [
@@ -108,6 +110,8 @@ const controlTypes: ControlTypes = {
         'separator',
         'media',
         'table',
+        'separator',
+        'fullscreen',
         'clear',
     ],
 };

@@ -1,6 +1,6 @@
 {
     "name": "@fowapps/fow-ui",
-    "version": "0.0.71",
+    "version": "0.0.72",
     "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",
@@ -59,8 +59,7 @@
         "react-table": "^7.7.0",
         "react-textarea-autosize": "^8.3.3",
         "react-transition-group": "^4.4.2",
-        "slick-carousel": "^1.8.1",
-        "uuid": "^8.3.2"
+        "slick-carousel": "^1.8.1"
     },
     "devDependencies": {
         "@4c/tsconfig": "^0.4.0",

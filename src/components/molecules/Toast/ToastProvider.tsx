@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useMemo, useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import { uuidv4 } from '../../../utils/uuid';
 import ToastContext from './context';
 import Toast from './Toast';
 
