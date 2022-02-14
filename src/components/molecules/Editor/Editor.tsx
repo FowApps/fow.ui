@@ -1,92 +1,137 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-alert */
 import React, { useContext, useEffect, useState } from 'react';
-import { EditorState, convertToRaw, ContentState, Modifier } from 'draft-js';
-import { Editor as DraftEditor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import tr from './locales/tr';
-import en from './locales/en';
+import BraftEditor, {
+    BraftEditorProps,
+    EditorState,
+    ControlType,
+} from 'braft-editor';
+import Table from 'braft-extensions/dist/table';
+import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
 
-import Icon from '../../atoms/Icon';
+import { uuidv4 } from '../../../utils/uuid';
+
+import 'braft-editor/dist/index.css';
+import 'braft-extensions/dist/table.css';
 import { Wrapper } from './styles';
-import { ConfigContext } from '../../../theme/FowThemeProvider';
 
-import Select from '../../atoms/Select';
+BraftEditor.use(
+    Table({
+        defaultColumns: 5,
+        defaultRows: 3,
+        withDropdown: false,
+    }),
+);
 
-const EMPTY_TAG = '<p></p>\n';
-
-const translations = {
-    tr,
-    en,
+export type EditorProps = BraftEditorProps & {
+    toolbarType?: 'simple' | 'complex';
+    hasValidationError?: boolean;
 };
 
-const toggleFulllscreen = (id: string) => {
-    const editor = document.getElementById(id);
-    if (!document.fullscreenElement && editor) {
-        editor.requestFullscreen().catch((err) => {
-            alert(
-                `Error attempting to enable full-screen mode: ${err.message} (${err.name})`,
-            );
-        });
-    } else {
-        document.exitFullscreen();
-    }
+type ControlTypes = {
+    simple: ControlType[];
+    complex: ControlType[];
 };
 
-const SelectTool = (props: any) => {
-    const { editorState, onChange, tool } = props;
+const EMPTY_TAG = '<p></p>';
 
-    const handleSelect = (val: string) => {
-        const contentState = Modifier.replaceText(
-            editorState.getCurrentContent(),
-            editorState.getSelection(),
-            val,
-            editorState.getCurrentInlineStyle(),
-        );
-
-        onChange(
-            EditorState.push(editorState, contentState, 'insert-characters'),
-        );
+const languageFn = (languages: any, language: IConfig['language']) => {
+    const extendedLanguageConfig = {
+        ...languages,
+        tr: {
+            ...languages.tr,
+            rows: 'Satırlar',
+            columns: 'Sütunlar',
+            cancel: 'İptal Et',
+            insertTable: 'Tablo Ekle',
+            removeTable: 'Tabloyu Sil',
+            insertColumn: 'Sütun Ekle',
+            removeColumn: 'Sütun Sil',
+            insertRow: 'Satır Ekle',
+            removeRow: 'Satır Sil',
+            mergeCells: 'Hücreleri Birleştir',
+            splitCell: 'Hücreyi Ayır',
+        },
     };
 
-    return (
-        <Select
-            value={tool.placeholder}
-            onSelect={handleSelect}
-            placeholder={tool.placeholder}
-            style={{ width: 200, marginBottom: 6, marginRight: 4 }}>
-            {tool?.options?.map((option) => (
-                <Select.Option value={option.value}>
-                    {option.label}
-                </Select.Option>
-            ))}
-        </Select>
-    );
+    return extendedLanguageConfig[language];
+};
+
+const controlTypes: ControlTypes = {
+    simple: [
+        'undo',
+        'redo',
+        'separator',
+        'headings',
+        'separator',
+        'text-color',
+        'bold',
+        'italic',
+        'underline',
+        'strike-through',
+        'separator',
+        'headings',
+        'list-ul',
+        'list-ol',
+        'blockquote',
+        'separator',
+        'link',
+        'separator',
+        'hr',
+        'separator',
+        'clear',
+    ],
+    complex: [
+        'undo',
+        'redo',
+        'separator',
+        'headings',
+        'separator',
+        'font-size',
+        'line-height',
+        'letter-spacing',
+        'separator',
+        'text-color',
+        'bold',
+        'italic',
+        'underline',
+        'strike-through',
+        'separator',
+        'text-indent',
+        'text-align',
+        'list-ul',
+        'list-ol',
+        'blockquote',
+        'separator',
+        'link',
+        'separator',
+        'hr',
+        'separator',
+        'media',
+        'table',
+        'clear',
+    ],
 };
 
 const Editor = ({
-    value,
     onChange,
-    customTools = [],
+    id = uuidv4(),
+    toolbarType = 'simple',
     hasValidationError = false,
-}) => {
+    ...rest
+}: EditorProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
-    const [state, setState] = useState<EditorState>(EditorState.createEmpty());
+
+    const [defaultValue, setDefaultValue] = useState(rest.defaultValue);
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
     const handleChange = (editorState: EditorState) => {
-        setState(editorState);
-        const rawHTML = draftToHtml(
-            convertToRaw(editorState.getCurrentContent()),
-        );
-        if (rawHTML === EMPTY_TAG) {
+        const html = editorState.toHTML();
+
+        if (html === EMPTY_TAG) {
             onChange?.(undefined);
         } else {
-            onChange(rawHTML);
+            onChange?.(html);
         }
     };
 
@@ -99,51 +144,32 @@ const Editor = ({
     };
 
     useEffect(() => {
-        if (value && !isDefaultValueSetted && !isFocused) {
-            const html = value;
-            const contentBlock = htmlToDraft(html);
-            if (contentBlock) {
-                const contentState = ContentState.createFromBlockArray(
-                    contentBlock.contentBlocks,
-                );
-                const editorState = EditorState.createWithContent(contentState);
-                setState(editorState);
-            }
+        if (
+            (rest?.value || rest?.defaultValue) &&
+            !isDefaultValueSetted &&
+            !isFocused
+        ) {
+            const html = rest?.value || rest?.defaultValue;
+            const defaultState = BraftEditor.createEditorState(html);
+            setDefaultValue(defaultState);
             setIsDefaultValueSetted(true);
         }
-    }, [value, isDefaultValueSetted, isFocused]);
+    }, [rest?.value, rest?.defaultValue, isDefaultValueSetted, isFocused]);
 
     return (
-        <Wrapper
-            hasValidationError={hasValidationError}
-            isFocused={isFocused}
-            id="editor">
-            <DraftEditor
+        <Wrapper isFocused={isFocused} hasValidationError={hasValidationError}>
+            <BraftEditor
+                {...rest}
+                id={id}
+                editorId={id}
+                defaultValue={defaultValue}
+                language={(languages) => languageFn(languages, language)}
+                imageResizable
+                imageEqualRatio
+                onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                toolbarClassName="fow-editor-toolbar"
-                wrapperClassName="fow-editor-wrapper"
-                editorClassName="fow-editor"
-                editorState={state}
-                onEditorStateChange={handleChange}
-                localization={{
-                    locale: language,
-                    translations: translations[language],
-                }}
-                toolbarCustomButtons={[
-                    <div
-                        className="rdw-remove-wrapper"
-                        aria-label="rdw-remove-control">
-                        <div
-                            className="rdw-option-wrapper"
-                            onClick={() => {
-                                toggleFulllscreen('editor');
-                            }}>
-                            <Icon icon="expand" />
-                        </div>
-                    </div>,
-                    ...customTools.map((tool) => <SelectTool tool={tool} />),
-                ]}
+                controls={controlTypes[toolbarType] || controlTypes.simple}
             />
         </Wrapper>
     );

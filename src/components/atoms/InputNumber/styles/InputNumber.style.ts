@@ -5,6 +5,10 @@ type InputProps = {
 };
 
 export const Wrapper = styled.div<InputProps>`
+    input::placeholder {
+        color: ${(props) => props.theme.fow.colors.text.disabled};
+    }
+
     .rc-input-number {
         width: 100%;
         border-radius: 4px;
