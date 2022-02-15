@@ -53,8 +53,8 @@ export const Wrapper = styled.div<WrapperProps>`
         animation: rcSelectLoadingIcon 0.5s infinite;
     }
     .rc-select .rc-select-selection-placeholder {
-        opacity: 0.4;
         pointer-events: none;
+        color: ${(props) => props.theme.fow.colors.text.disabled};
     }
     .rc-select .rc-select-selection-search-input {
         appearance: none;
@@ -233,6 +233,18 @@ export const Wrapper = styled.div<WrapperProps>`
 
     .rc-select-focused .rc-select-arrow {
         color: ${(props) => props.theme.fow.colors.greyDark.light} !important;
+    }
+
+    &:hover {
+        .rc-select-selector {
+            border-color: ${(props) =>
+                props.theme.fow.colors.error.transparent48} !important;
+        }
+
+        .rc-select-arrow {
+            color: ${(props) =>
+                props.theme.fow.colors.greyDark.light} !important;
+        }
     }
 
     @keyframes rcSelectLoadingIcon {

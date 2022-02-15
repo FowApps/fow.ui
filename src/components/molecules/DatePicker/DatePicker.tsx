@@ -44,7 +44,7 @@ export interface DatePickerProps {
     /**
      * handle change date
      */
-    onChange?: (date: string) => void;
+    onChange?: (date: string | undefined) => void;
     /**
      * value
      */
@@ -76,6 +76,7 @@ const DatePicker = ({
             setVal(date);
         } else {
             setVal(undefined);
+            onChange?.(undefined);
         }
     };
 

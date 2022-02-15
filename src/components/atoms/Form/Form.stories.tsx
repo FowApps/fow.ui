@@ -159,6 +159,9 @@ const UseFormTemplate: Story = () => {
                     name="finalAmount"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <PriceInput
+                        inputProps={{
+                            placeholder: 'Currency',
+                        }}
                         currencies={[
                             {
                                 name: 'TRY',
@@ -176,6 +179,7 @@ const UseFormTemplate: Story = () => {
                     name="hooks"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Select
+                        placeholder="Hooks"
                         mode="tags"
                         onChange={(value, option) =>
                             console.log(value, option)
@@ -185,7 +189,7 @@ const UseFormTemplate: Story = () => {
                     </Select>
                 </FormField>
                 <FormField label="Date" name="date">
-                    <DatePicker />
+                    <DatePicker placeholder="Start Date"/>
                 </FormField>
                 <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
@@ -200,9 +204,9 @@ const UseFormTemplate: Story = () => {
                     label="Summary"
                     name="summary"
                     rules={[{ required: true, message: 'Required..' }]}>
-                    <Editor id="summary" />
+                    <Editor id="summary" placeholder="Summary" />
                 </FormField>
-                <FormField 
+                <FormField
                     label="Textarea"
                     name="textarea"
                     rules={[{ required: true, message: 'Required..' }]}>
