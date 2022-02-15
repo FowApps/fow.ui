@@ -8,7 +8,6 @@ type WrapperProps = {
 export const Wrapper = styled.div<WrapperProps>`
     border-radius: 4px;
     transition: box-shadow 0.3s ease;
-    overflow: hidden;
 
     * {
         transition: color 0.3s ease;
@@ -181,5 +180,35 @@ export const Wrapper = styled.div<WrapperProps>`
 
     .bf-letter-spacings li.active {
         background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+`;
+
+export const Search = styled.div`
+    padding: 0 5px;
+`;
+
+export const Dropdown = styled.ul`
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+    max-height: 200px;
+    overflow: auto;
+`;
+
+export const Item = styled.li`
+    display: block;
+    background-color: hsla(0, 0%, 100%, 0.1);
+    border-radius: 2px;
+    margin: 5px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 32px;
+    text-align: left;
+    cursor: pointer;
+    padding: 0 5px;
+    min-width: 150px;
+
+    &:hover {
+        background-color: hsla(0, 0%, 100%, 0.2);
     }
 `;

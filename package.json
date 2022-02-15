@@ -38,6 +38,7 @@
         "@fullcalendar/timegrid": "^5.9.0",
         "braft-editor": "^2.3.9",
         "braft-extensions": "^0.1.1",
+        "braft-utils": "^3.0.12",
         "immutable": "^4.0.0",
         "moment": "^2.29.1",
         "polished": "4.1.4",

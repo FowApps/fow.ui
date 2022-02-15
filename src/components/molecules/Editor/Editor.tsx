@@ -1,18 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react';
 
 import BraftEditor, {
     BraftEditorProps,
     EditorState,
     ControlType,
+    ExtendControlType,
 } from 'braft-editor';
+import { ContentUtils } from 'braft-utils';
+
 import Table from 'braft-extensions/dist/table';
 import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
 
 import { uuidv4 } from '../../../utils/uuid';
+import Input from '../../atoms/Input';
 
 import 'braft-editor/dist/index.css';
 import 'braft-extensions/dist/table.css';
-import { Wrapper } from './styles';
+import { Dropdown, Item, Search, Wrapper } from './styles';
+
+import en from './locales/en';
+import tr from './locales/tr';
+
+const localization = {
+    tr,
+    en,
+};
 
 BraftEditor.use(
     Table({
@@ -22,12 +40,22 @@ BraftEditor.use(
     }),
 );
 
+export type CustomControlType = {
+    type: 'dropdown';
+    key: string;
+    text?: string | React.ReactNode;
+    title?: string;
+    html?: string | null;
+    component: React.ReactNode;
+};
+
 export type EditorProps = BraftEditorProps & {
     toolbarType?: 'simple' | 'complex';
     hasValidationError?: boolean;
+    extraControls?: CustomControlType[];
 };
 
-type ControlTypes = {
+type ControlTypeTypes = {
     simple: ControlType[];
     complex: ControlType[];
 };
@@ -56,7 +84,7 @@ const languageFn = (languages: any, language: IConfig['language']) => {
     return extendedLanguageConfig[language];
 };
 
-const controlTypes: ControlTypes = {
+const controlTypes: ControlTypeTypes = {
     simple: [
         'undo',
         'redo',
@@ -116,26 +144,64 @@ const controlTypes: ControlTypes = {
     ],
 };
 
+const CustomDropdownTool = ({ onClick, control }) => {
+    const [query, setQuery] = useState('');
+    const { language } = useContext(ConfigContext);
+
+    return (
+        <Dropdown>
+            <Search>
+                <Input
+                    onChange={(value) => {
+                        setQuery(value);
+                    }}
+                    prefixIcon="search"
+                    placeholder={localization[language].search}
+                />
+            </Search>
+            {control.options
+                ?.filter((option) =>
+                    option.label
+                        .toLocaleLowerCase()
+                        .includes(query.toLocaleLowerCase()),
+                )
+                ?.map((option) => (
+                    <Item
+                        onClick={() => {
+                            onClick(option.value);
+                        }}>
+                        {option.label}
+                    </Item>
+                ))}
+        </Dropdown>
+    );
+};
+
 const Editor = ({
     onChange,
     id = uuidv4(),
     toolbarType = 'simple',
     hasValidationError = false,
+    extraControls,
     ...rest
 }: EditorProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
-
+    const [editorState, setEditorState] = useState(
+        BraftEditor.createEditorState(rest?.value || rest?.defaultValue),
+    );
     const [defaultValue, setDefaultValue] = useState(rest.defaultValue);
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
-    const handleChange = (editorState: EditorState) => {
-        const html = editorState.toHTML();
+    const handleChange = (currState: EditorState) => {
+        const html = currState.toHTML();
 
         if (html === EMPTY_TAG) {
             onChange?.(undefined);
+            setEditorState(currState);
         } else {
             onChange?.(html);
+            setEditorState(currState);
         }
     };
 
@@ -147,6 +213,49 @@ const Editor = ({
         setIsFocused(false);
     };
 
+    const insertText = useCallback(
+        (text: string) => {
+            const newState = ContentUtils.insertHTML(
+                editorState,
+                `<p>${text}</p>`,
+                text,
+            );
+            setEditorState(newState);
+        },
+        [editorState],
+    );
+
+    const extendControls: ExtendControlType[] = useMemo(
+        () =>
+            extraControls
+                ?.map((control: CustomControlType): ExtendControlType => {
+                    if (control.type === 'dropdown') {
+                        return {
+                            key: control.key,
+                            type: control.type,
+                            text: control.text,
+                            title: control.title,
+                            html: control.html || null,
+                            showArrow: true,
+                            arrowActive: false,
+                            autoHide: true,
+                            component: (
+                                <CustomDropdownTool
+                                    onClick={(value: string) => {
+                                        insertText(value);
+                                    }}
+                                    control={control}
+                                />
+                            ),
+                        };
+                    }
+
+                    return 'separator';
+                })
+                .filter(Boolean) || [],
+        [extraControls, insertText],
+    );
+
     useEffect(() => {
         if (
             (rest?.value || rest?.defaultValue) &&
@@ -156,6 +265,7 @@ const Editor = ({
             const html = rest?.value || rest?.defaultValue;
             const defaultState = BraftEditor.createEditorState(html);
             setDefaultValue(defaultState);
+            setEditorState(defaultState);
             setIsDefaultValueSetted(true);
         }
     }, [rest?.value, rest?.defaultValue, isDefaultValueSetted, isFocused]);
@@ -164,6 +274,7 @@ const Editor = ({
         <Wrapper isFocused={isFocused} hasValidationError={hasValidationError}>
             <BraftEditor
                 {...rest}
+                value={editorState}
                 id={id}
                 editorId={id}
                 defaultValue={defaultValue}
@@ -174,6 +285,7 @@ const Editor = ({
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 controls={controlTypes[toolbarType] || controlTypes.simple}
+                extendControls={extendControls}
             />
         </Wrapper>
     );

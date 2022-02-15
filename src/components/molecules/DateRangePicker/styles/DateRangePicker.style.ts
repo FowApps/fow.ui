@@ -21,7 +21,7 @@ export const DateRangePickerWrapper = styled.div`
                 width: 100%;
                 border: 1px solid
                     ${(props) => props.theme.fow.colors.grey.transparent32};
-                border-radius: 8px;
+                border-radius: 4px;
                 color: ${(props) => props.theme.fow.colors.text.secondary};
                 outline: none;
                 font-size: 1.4rem;

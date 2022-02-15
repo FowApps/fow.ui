@@ -19,5 +19,22 @@ export const Default = Template.bind({});
 
 Default.args = {
     onChange: (content: string) => console.log(content),
-    defaultValue: '<p>Default Value</p>',
+    extraControls: [
+        {
+            key: 'insert-field',
+            type: 'dropdown',
+            text: 'PredifinedFields',
+            action: 'insert',
+            options: [
+                {
+                    label: 'Name',
+                    value: '{{name}}',
+                },
+                {
+                    label: 'Phone',
+                    value: '{{phone}}',
+                },
+            ],
+        },
+    ],
 };
