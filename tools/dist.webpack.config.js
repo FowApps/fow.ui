@@ -50,5 +50,21 @@ module.exports = (distRoot, optimize) => ({
         },
         { 'styled-components': 'styled-components' },
         { process: 'process' },
+        {
+            '@fortawesome/fontawesome-svg-core':
+                '@fortawesome/fontawesome-svg-core',
+        },
+        {
+            '@fortawesome/free-regular-svg-icons':
+                '@fortawesome/free-regular-svg-icons',
+        },
+        {
+            '@fortawesome/free-solid-svg-icons':
+                '@fortawesome/free-solid-svg-icons',
+        },
+        {
+            '@fortawesome/react-fontawesome': '@fortawesome/react-fontawesome',
+        },
+        { 'framer-motion': 'framer-motion' },
     ],
 });
