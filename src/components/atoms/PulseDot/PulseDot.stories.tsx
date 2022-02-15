@@ -8,7 +8,9 @@ export default {
     component: PulseDot,
 } as Meta;
 
-const Template: Story = (args) => <PulseDot />;
+const Template: Story = (args) => <PulseDot {...args}/>;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    color: 'primary'
+};
