@@ -209,6 +209,64 @@ const GlobalStyle = createGlobalStyle`
             transform: scaleY(0);
         }
     }
+
+    .bf-modal-confirm {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .bf-modal-confirm:hover {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder  * {
+        transition: color 0.3s ease;
+        transition: background-color 0.3s ease;
+
+    }
+
+    .braft-finder .bf-manager-footer .button-insert {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder .bf-switch-external-type[data-type="IMAGE"] [data-type="IMAGE"], .braft-finder .bf-switch-external-type[data-type="VIDEO"] [data-type="VIDEO"], .braft-finder .bf-switch-external-type[data-type="AUDIO"] [data-type="AUDIO"], .braft-finder .bf-switch-external-type[data-type="EMBED"] [data-type="EMBED"], .braft-finder .bf-switch-external-type[data-type="FILE"] [data-type="FILE"] {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder .bf-external-input button {
+        background-color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder .bf-toggle-external-form span:hover {
+        color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder .bf-item.active::after {
+        background-color: ${(props) =>
+            props.theme.fow.colors.primary.transparent16};
+    }
+
+    .braft-finder .bf-item.active:hover::after {
+        background-color: ${(props) =>
+            props.theme.fow.colors.primary.transparent48};
+    }
+
+    .braft-finder .bf-item:hover::after {
+        background-color: ${(props) =>
+            props.theme.fow.colors.primary.transparent32};
+    }
+
+    .braft-finder .bf-list-tools .bf-select-all:hover, .braft-finder .bf-list-tools .bf-deselect-all:hover {
+        color: ${(props) => props.theme.fow.colors.primary.main};
+    }
+
+    .braft-finder .bf-manager-footer .button-insert:hover {
+        background-color: ${(props) => props.theme.fow.colors.primary.darker};
+
+    }
+
+    .bf-container .bf-media-toolbar a {
+        color: ${(props) => props.theme.fow.colors.greyLight.main} !important;
+    }
 `;
 
 export default GlobalStyle;

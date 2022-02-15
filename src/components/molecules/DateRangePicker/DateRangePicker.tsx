@@ -36,7 +36,7 @@ export interface RangePickerProps {
     /**
      * handle change dates
      */
-    onChange?: (dates: [string, string]) => void;
+    onChange?: (dates: [string, string] | undefined) => void;
     /**
      * format of date
      */
@@ -78,6 +78,7 @@ const DateRangePicker = ({
             setVal(values);
         } else {
             setVal([]);
+            onChange?.(undefined);
         }
     };
 
