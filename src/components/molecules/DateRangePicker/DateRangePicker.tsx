@@ -9,6 +9,7 @@ import en_US from 'rc-picker/lib/locale/en_US';
 import { DateRangePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
+import { Button } from '../../..';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
@@ -32,7 +33,10 @@ export interface RangePickerProps {
      * 12 hours preview
      */
     use12Hours?: boolean;
-    onChange?: (dates: [string, string]) => void;
+    /**
+     * handle change dates
+     */
+    onChange?: (dates: [string, string] | undefined) => void;
     /**
      * format of date
      */
@@ -41,6 +45,9 @@ export interface RangePickerProps {
      * type of input's seperator
      */
     seperator?: string;
+    /**
+     * value
+     */
     value?: string;
     placeholder?: [string, string];
 }
@@ -60,14 +67,19 @@ const DateRangePicker = ({
     const [val, setVal] = useState<Moment[]>();
 
     const handleChange = (values: any) => {
-        const startTime = moment(new Date(values[0]))
-            .utcOffset(timezone, true)
-            .toISOString();
-        const endTime = moment(new Date(values[1]))
-            .utcOffset(timezone, true)
-            .toISOString();
-        onChange?.([startTime, endTime]);
-        setVal(values);
+        if (values) {
+            const startTime = moment(new Date(values[0]))
+                .utcOffset(timezone, true)
+                .toISOString();
+            const endTime = moment(new Date(values[1]))
+                .utcOffset(timezone, true)
+                .toISOString();
+            onChange?.([startTime, endTime]);
+            setVal(values);
+        } else {
+            setVal([]);
+            onChange?.(undefined);
+        }
     };
 
     useEffect(() => {
@@ -102,6 +114,15 @@ const DateRangePicker = ({
                 }
                 locale={locales[language]}
                 allowClear
+                clearIcon={
+                    <Button
+                        color="primary"
+                        size="small"
+                        variant="text"
+                        onClick={() => setVal(undefined)}>
+                        <Icon color="primary" icon="times" />
+                    </Button>
+                }
                 separator={seperator || '-'}
                 format={dateFormat}
                 defaultValue={val ? [moment(val[0]), moment(val[1])] : null}

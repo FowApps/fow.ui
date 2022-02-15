@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useMemo, useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import { uuidv4 } from '../../../utils/uuid';
 import ToastContext from './context';
 import Toast from './Toast';
 
@@ -10,13 +10,28 @@ import { ToastContainer } from './styles';
 import Space from '../../atoms/Space';
 
 type OptionsType = {
+    /**
+     * toast type
+     */
     appearance?: 'default' | 'success' | 'info' | 'warning' | 'error';
+    /**
+     * time of toast
+     */
     duration?: number;
+    /**
+     * closable
+     */
     closable?: boolean;
 };
 
 type ToastProps = {
+    /**
+     * id of toast
+     */
     id: string;
+    /**
+     * toast type
+     */
     options: OptionsType;
     content: string | React.ReactElement;
 };

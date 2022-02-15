@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import Space from '../../atoms/Space';
 import Label from '../../atoms/Label';
@@ -13,6 +12,7 @@ import Popover from '../../atoms/Popover';
 
 import Dropdown from '../Dropdown';
 
+import { uuidv4 } from '../../../utils/uuid';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
@@ -40,19 +40,46 @@ const localization = {
 };
 
 export interface LabelInputProps {
+    /**
+     * inheritence of ILabelValue
+     */
     defaultValue?: ILabelValue[];
+    /**
+     * handle change value
+     */
     onChange?: (value: ILabelValue[]) => void;
+    /**
+     * decides how many labels to be displayed at the same time
+     */
     maxCount?: number;
 }
 export interface ILabel {
+    /**
+     * label id
+     */
     id: string;
+    /**
+     * inheritence of colortype (decides the background color of the labels seperately)
+     */
     color: ColorTypes;
+    /**
+     * label text
+     */
     text: string;
 }
 
 export interface ILabelValue {
+    /**
+     * inheritence of colortype (decides the background color of the labels seperately)
+     */
     color: ColorTypes;
+    /**
+     * label text
+     */
     text: string;
+    /**
+     * label id
+     */
     id: string;
 }
 

@@ -12,7 +12,6 @@ const Template: Story<MessageProps> = (args) => <Message {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     type: 'error',
-    width: 400,
     message: 'There are no content. Add one!',
     actionText: 'Add Activity Type',
     actionIcon: 'plus',

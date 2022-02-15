@@ -3,7 +3,7 @@ import { StyledProgressBar, StyledDiv } from './styles';
 
 export interface ProgressBarProps {
     /**
-     * progress
+     * decides the height of the bar
      */
     progress?: number;
 }

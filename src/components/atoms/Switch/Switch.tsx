@@ -14,7 +14,13 @@ export interface SwitchProps
     extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
     prefixLabel?: string;
     suffixLabel?: string;
+    /**
+     * size of switch component
+     */
     size?: 'small' | 'medium';
+    /**
+     * hange the availability of the component
+     */
     disabled?: boolean;
 }
 

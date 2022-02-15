@@ -85,7 +85,15 @@ export const DatePickerWrapper = styled.div`
                 height: 16px;
                 &:after {
                     height: 16px;
+                    line-height: 14px;
                 }
+            }
+            svg {
+                width: 6px;
+            }
+            > button {
+                line-height: 16px;
+                height: 16px;
             }
         }
     }
@@ -94,6 +102,7 @@ export const DatePickerWrapper = styled.div`
 export const TimePickerStyles = createGlobalStyle`
     .rc-picker-dropdown {
         box-shadow: 0 0;
+        z-index: 2222;
         .rc-picker-range-arrow {
             &:before {
                 border-color: 
@@ -110,7 +119,7 @@ export const TimePickerStyles = createGlobalStyle`
             overflow: hidden;
             vertical-align: top;
             background: ${(props) => props.theme.fow.colors.common.white};
-            border-radius: 8px;
+            border-radius: 4px;
             box-shadow: ${(props) => props.theme.fow.shadows.z12};
             transition: margin .3s;
             .rc-picker-panel {

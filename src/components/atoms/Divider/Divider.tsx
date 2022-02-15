@@ -11,6 +11,9 @@ export interface DividerProps {
      * profile username or fullname
      */
     direction?: 'horizontal' | 'vertical';
+    /**
+     * size
+     */
     size?:
         | 'xxsmall'
         | 'xsmall'
