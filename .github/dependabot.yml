@@ -15,8 +15,7 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "react-select"
-      - dependency-name: "react-select-async-paginate"
+      - dependency-name: "react-dnd"
     open-pull-requests-limit: 10
     versioning-strategy: increase
     commit-message:
