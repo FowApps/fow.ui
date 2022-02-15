@@ -1,92 +1,207 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-alert */
-import React, { useContext, useEffect, useState } from 'react';
-import { EditorState, convertToRaw, ContentState, Modifier } from 'draft-js';
-import { Editor as DraftEditor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
+import React, {
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import tr from './locales/tr';
+import BraftEditor, {
+    BraftEditorProps,
+    EditorState,
+    ControlType,
+    ExtendControlType,
+} from 'braft-editor';
+import { ContentUtils } from 'braft-utils';
+
+import Table from 'braft-extensions/dist/table';
+import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
+
+import { uuidv4 } from '../../../utils/uuid';
+import Input from '../../atoms/Input';
+
+import 'braft-editor/dist/index.css';
+import 'braft-extensions/dist/table.css';
+import { Dropdown, Item, Search, Wrapper } from './styles';
+
 import en from './locales/en';
+import tr from './locales/tr';
 
-import Icon from '../../atoms/Icon';
-import { Wrapper } from './styles';
-import { ConfigContext } from '../../../theme/FowThemeProvider';
-
-import Select from '../../atoms/Select';
-
-const EMPTY_TAG = '<p></p>\n';
-
-const translations = {
+const localization = {
     tr,
     en,
 };
 
-const toggleFulllscreen = (id: string) => {
-    const editor = document.getElementById(id);
-    if (!document.fullscreenElement && editor) {
-        editor.requestFullscreen().catch((err) => {
-            alert(
-                `Error attempting to enable full-screen mode: ${err.message} (${err.name})`,
-            );
-        });
-    } else {
-        document.exitFullscreen();
-    }
+BraftEditor.use(
+    Table({
+        defaultColumns: 5,
+        defaultRows: 3,
+        withDropdown: false,
+    }),
+);
+
+export type CustomControlType = {
+    type: 'dropdown';
+    key: string;
+    text?: string | React.ReactNode;
+    title?: string;
+    html?: string | null;
+    component: React.ReactNode;
 };
 
-const SelectTool = (props: any) => {
-    const { editorState, onChange, tool } = props;
+export type EditorProps = BraftEditorProps & {
+    toolbarType?: 'simple' | 'complex';
+    hasValidationError?: boolean;
+    extraControls?: CustomControlType[];
+};
 
-    const handleSelect = (val: string) => {
-        const contentState = Modifier.replaceText(
-            editorState.getCurrentContent(),
-            editorState.getSelection(),
-            val,
-            editorState.getCurrentInlineStyle(),
-        );
+type ControlTypeTypes = {
+    simple: ControlType[];
+    complex: ControlType[];
+};
 
-        onChange(
-            EditorState.push(editorState, contentState, 'insert-characters'),
-        );
+const EMPTY_TAG = '<p></p>';
+
+const languageFn = (languages: any, language: IConfig['language']) => {
+    const extendedLanguageConfig = {
+        ...languages,
+        tr: {
+            ...languages.tr,
+            rows: 'Satırlar',
+            columns: 'Sütunlar',
+            cancel: 'İptal Et',
+            insertTable: 'Tablo Ekle',
+            removeTable: 'Tabloyu Sil',
+            insertColumn: 'Sütun Ekle',
+            removeColumn: 'Sütun Sil',
+            insertRow: 'Satır Ekle',
+            removeRow: 'Satır Sil',
+            mergeCells: 'Hücreleri Birleştir',
+            splitCell: 'Hücreyi Ayır',
+        },
     };
 
+    return extendedLanguageConfig[language];
+};
+
+const controlTypes: ControlTypeTypes = {
+    simple: [
+        'undo',
+        'redo',
+        'separator',
+        'headings',
+        'separator',
+        'text-color',
+        'bold',
+        'italic',
+        'underline',
+        'strike-through',
+        'separator',
+        'headings',
+        'list-ul',
+        'list-ol',
+        'blockquote',
+        'separator',
+        'link',
+        'separator',
+        'hr',
+        'separator',
+        'fullscreen',
+        'separator',
+        'clear',
+    ],
+    complex: [
+        'undo',
+        'redo',
+        'separator',
+        'headings',
+        'separator',
+        'font-size',
+        'line-height',
+        'letter-spacing',
+        'separator',
+        'text-color',
+        'bold',
+        'italic',
+        'underline',
+        'strike-through',
+        'separator',
+        'text-indent',
+        'text-align',
+        'list-ul',
+        'list-ol',
+        'blockquote',
+        'separator',
+        'link',
+        'separator',
+        'hr',
+        'separator',
+        'media',
+        'table',
+        'separator',
+        'fullscreen',
+        'clear',
+    ],
+};
+
+const CustomDropdownTool = ({ onClick, control }) => {
+    const [query, setQuery] = useState('');
+    const { language } = useContext(ConfigContext);
+
     return (
-        <Select
-            value={tool.placeholder}
-            onSelect={handleSelect}
-            placeholder={tool.placeholder}
-            style={{ width: 200, marginBottom: 6, marginRight: 4 }}>
-            {tool?.options?.map((option) => (
-                <Select.Option value={option.value}>
-                    {option.label}
-                </Select.Option>
-            ))}
-        </Select>
+        <Dropdown>
+            <Search>
+                <Input
+                    onChange={(value) => {
+                        setQuery(value);
+                    }}
+                    prefixIcon="search"
+                    placeholder={localization[language].search}
+                />
+            </Search>
+            {control.options
+                ?.filter((option) =>
+                    option.label
+                        .toLocaleLowerCase()
+                        .includes(query.toLocaleLowerCase()),
+                )
+                ?.map((option) => (
+                    <Item
+                        onClick={() => {
+                            onClick(option.value);
+                        }}>
+                        {option.label}
+                    </Item>
+                ))}
+        </Dropdown>
     );
 };
 
 const Editor = ({
-    value,
     onChange,
-    customTools = [],
+    id = uuidv4(),
+    toolbarType = 'simple',
     hasValidationError = false,
-}) => {
+    extraControls,
+    ...rest
+}: EditorProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
-    const [state, setState] = useState<EditorState>(EditorState.createEmpty());
+    const [editorState, setEditorState] = useState(
+        BraftEditor.createEditorState(rest?.value || rest?.defaultValue),
+    );
+    const [defaultValue, setDefaultValue] = useState(rest.defaultValue);
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
-    const handleChange = (editorState: EditorState) => {
-        setState(editorState);
-        const rawHTML = draftToHtml(
-            convertToRaw(editorState.getCurrentContent()),
-        );
-        if (rawHTML === EMPTY_TAG) {
+    const handleChange = (currState: EditorState) => {
+        const html = currState.toHTML();
+
+        if (html === EMPTY_TAG) {
             onChange?.(undefined);
+            setEditorState(currState);
         } else {
-            onChange(rawHTML);
+            onChange?.(html);
+            setEditorState(currState);
         }
     };
 
@@ -98,52 +213,79 @@ const Editor = ({
         setIsFocused(false);
     };
 
+    const insertText = useCallback(
+        (text: string) => {
+            const newState = ContentUtils.insertHTML(
+                editorState,
+                `<p>${text}</p>`,
+                text,
+            );
+            setEditorState(newState);
+        },
+        [editorState],
+    );
+
+    const extendControls: ExtendControlType[] = useMemo(
+        () =>
+            extraControls
+                ?.map((control: CustomControlType): ExtendControlType => {
+                    if (control.type === 'dropdown') {
+                        return {
+                            key: control.key,
+                            type: control.type,
+                            text: control.text,
+                            title: control.title,
+                            html: control.html || null,
+                            showArrow: true,
+                            arrowActive: false,
+                            autoHide: true,
+                            component: (
+                                <CustomDropdownTool
+                                    onClick={(value: string) => {
+                                        insertText(value);
+                                    }}
+                                    control={control}
+                                />
+                            ),
+                        };
+                    }
+
+                    return 'separator';
+                })
+                .filter(Boolean) || [],
+        [extraControls, insertText],
+    );
+
     useEffect(() => {
-        if (value && !isDefaultValueSetted && !isFocused) {
-            const html = value;
-            const contentBlock = htmlToDraft(html);
-            if (contentBlock) {
-                const contentState = ContentState.createFromBlockArray(
-                    contentBlock.contentBlocks,
-                );
-                const editorState = EditorState.createWithContent(contentState);
-                setState(editorState);
-            }
+        if (
+            (rest?.value || rest?.defaultValue) &&
+            !isDefaultValueSetted &&
+            !isFocused
+        ) {
+            const html = rest?.value || rest?.defaultValue;
+            const defaultState = BraftEditor.createEditorState(html);
+            setDefaultValue(defaultState);
+            setEditorState(defaultState);
             setIsDefaultValueSetted(true);
         }
-    }, [value, isDefaultValueSetted, isFocused]);
+    }, [rest?.value, rest?.defaultValue, isDefaultValueSetted, isFocused]);
 
     return (
-        <Wrapper
-            hasValidationError={hasValidationError}
-            isFocused={isFocused}
-            id="editor">
-            <DraftEditor
+        <Wrapper isFocused={isFocused} hasValidationError={hasValidationError}>
+            <BraftEditor
+                {...rest}
+                value={editorState}
+                id={id}
+                editorId={id}
+                defaultValue={defaultValue}
+                language={(languages) => languageFn(languages, language)}
+                imageResizable
+                imageEqualRatio
+                onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                toolbarClassName="fow-editor-toolbar"
-                wrapperClassName="fow-editor-wrapper"
-                editorClassName="fow-editor"
-                editorState={state}
-                onEditorStateChange={handleChange}
-                localization={{
-                    locale: language,
-                    translations: translations[language],
-                }}
-                toolbarCustomButtons={[
-                    <div
-                        className="rdw-remove-wrapper"
-                        aria-label="rdw-remove-control">
-                        <div
-                            className="rdw-option-wrapper"
-                            onClick={() => {
-                                toggleFulllscreen('editor');
-                            }}>
-                            <Icon icon="expand" />
-                        </div>
-                    </div>,
-                    ...customTools.map((tool) => <SelectTool tool={tool} />),
-                ]}
+                controls={controlTypes[toolbarType] || controlTypes.simple}
+                extendControls={extendControls}
             />
         </Wrapper>
     );

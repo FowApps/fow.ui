@@ -119,7 +119,7 @@ export const TimePickerStyles = createGlobalStyle`
             overflow: hidden;
             vertical-align: top;
             background: ${(props) => props.theme.fow.colors.common.white};
-            border-radius: 8px;
+            border-radius: 4px;
             box-shadow: ${(props) => props.theme.fow.shadows.z12};
             transition: margin .3s;
             .rc-picker-panel {
