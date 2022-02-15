@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
+type PulseDotProps = {
+    color: 'primary' | 'info' | 'warning' | 'success' | 'error' | 'grey';
+};
+
 const pulse = (primary) => keyframes`
     0% {
         box-shadow: 0 0 0 0 ${primary};
@@ -17,13 +21,15 @@ const pulse = (primary) => keyframes`
     }
 `;
 
-export const Dot = styled.div`
+export const Dot = styled.div<PulseDotProps>`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    box-shadow: 0 0 0 0 ${(props) => props.theme.fow.colors.primary.main};
     transform: scale(1);
-    animation: ${(props) => pulse(props.theme.fow.colors.primary.main)} 2s
+
+    background-color: ${(props) => props.theme.fow.colors[props.color].main};
+    animation: ${(props) => pulse(props.theme.fow.colors[props.color].main)} 2s
         infinite;
-    background: ${(props) => props.theme.fow.colors.primary.main};
+    box-shadow: 0 0 0 0 ${(props) => props.theme.fow.colors[props.color].main};
+    background: ${(props) => props.theme.fow.colors[props.color].main};
 `;
