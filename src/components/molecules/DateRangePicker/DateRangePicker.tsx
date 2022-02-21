@@ -49,6 +49,10 @@ export interface RangePickerProps {
      * value
      */
     value?: string;
+    /**
+     * disabled
+     */
+    disabled?: boolean;
     placeholder?: [string, string];
 }
 
@@ -60,6 +64,7 @@ const DateRangePicker = ({
     dateFormat = 'DD/MM/YYYY HH:mm:ss',
     seperator,
     value,
+    disabled = false,
     placeholder,
 }: RangePickerProps): JSX.Element => {
     const theme = useTheme();
@@ -98,6 +103,7 @@ const DateRangePicker = ({
                 onChange={handleChange}
                 picker={picker}
                 showTime={showTime}
+                disabled={disabled}
                 placeholder={placeholder}
                 use12Hours={use12Hours}
                 className="fow-range-picker"
