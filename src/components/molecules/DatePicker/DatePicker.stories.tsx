@@ -20,6 +20,7 @@ Default.args = {
     showTime: true,
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
+    disabled: false,
 };
 
 export const Time = Template.bind({});

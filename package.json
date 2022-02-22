@@ -1,6 +1,6 @@
 {
     "name": "@fowapps/fow-ui",
-    "version": "0.0.75",
+    "version": "0.0.76",
     "description": "Fow UI Library",
     "scripts": {
         "build": "node tools/build.js",

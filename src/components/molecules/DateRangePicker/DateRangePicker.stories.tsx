@@ -27,4 +27,5 @@ Default.args = {
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
     seperator: '-',
+    disabled: false,
 };

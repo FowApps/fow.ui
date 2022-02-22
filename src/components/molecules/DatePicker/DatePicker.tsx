@@ -49,6 +49,10 @@ export interface DatePickerProps {
      * value
      */
     value?: string;
+    /**
+     * disabled
+     */
+    disabled?: boolean;
     placeholder?: string;
 }
 
@@ -61,6 +65,7 @@ const DatePicker = ({
     onChange,
     dateFormat = 'DD/MM/YYYY HH:mm:ss',
     value,
+    disabled = false,
     placeholder,
 }: DatePickerProps): JSX.Element => {
     const theme = useTheme();
@@ -123,6 +128,7 @@ const DatePicker = ({
                     />
                 }
                 showToday={showToday}
+                disabled={disabled}
                 placeholder={placeholder}
                 showTime={showTime}
                 use12Hours={use12Hours}
