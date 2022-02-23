@@ -23,6 +23,7 @@ import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
+import URLInput from '../URLInput/URLInput';
 
 export default {
     title: 'Atoms/Form',
@@ -142,6 +143,24 @@ const UseFormTemplate: Story = () => {
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
                 </FormField>
+                <FormField
+                    label="URL Input"
+                    name="URLInput"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <URLInput
+                        protocols={[
+                            {
+                                name: 'https://',
+                                value: 'https://',
+                            },
+                            {
+                                name: 'http://',
+                                value: 'http://',
+                            },
+                        ]}
+                    />
+                </FormField>
+
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
                         <Checkbox value="Test" label="Test" checked />
@@ -189,7 +208,7 @@ const UseFormTemplate: Story = () => {
                     </Select>
                 </FormField>
                 <FormField label="Date" name="date">
-                    <DatePicker placeholder="Start Date"/>
+                    <DatePicker placeholder="Start Date" />
                 </FormField>
                 <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
