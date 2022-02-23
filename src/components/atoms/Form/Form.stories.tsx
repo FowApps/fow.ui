@@ -12,6 +12,7 @@ import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 import useForm from '../../../hooks/useForm';
 import Textarea from '../TextArea/Textarea';
+import EmailInput from '../EmailInput/EmailInput';
 
 import Button from '../Button';
 import Space from '../Space';
@@ -142,6 +143,23 @@ const UseFormTemplate: Story = () => {
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
                 </FormField>
+                <FormField
+                    label="Email Input"
+                    name="emailInput"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <EmailInput
+                        extensions={[
+                            {
+                                name: 'gmail.com',
+                                value: 'gmail.com',
+                            },
+                            {
+                                name: 'hotmail.com',
+                                value: 'hotmail.com',
+                            },
+                        ]}
+                    />
+                </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
                         <Checkbox value="Test" label="Test" checked />
@@ -189,7 +207,7 @@ const UseFormTemplate: Story = () => {
                     </Select>
                 </FormField>
                 <FormField label="Date" name="date">
-                    <DatePicker placeholder="Start Date"/>
+                    <DatePicker placeholder="Start Date" />
                 </FormField>
                 <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
