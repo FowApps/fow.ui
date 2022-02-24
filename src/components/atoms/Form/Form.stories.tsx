@@ -39,6 +39,7 @@ const Template: Story = () => {
                 <Row>
                     <Col xs={6}>
                         <FormField
+                            hint="Please type your fullname"
                             name="name"
                             label="Name"
                             rules={[
@@ -59,6 +60,7 @@ const Template: Story = () => {
                     </Col>
                     <Col xs={6}>
                         <FormField
+                            hidden
                             valuePropName="checked"
                             name="sw"
                             label="Switch">
@@ -189,7 +191,7 @@ const UseFormTemplate: Story = () => {
                     </Select>
                 </FormField>
                 <FormField label="Date" name="date">
-                    <DatePicker placeholder="Start Date"/>
+                    <DatePicker placeholder="Start Date" />
                 </FormField>
                 <FormField label="Date Range" name="daterange">
                     <DateRangePicker />

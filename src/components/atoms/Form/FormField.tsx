@@ -5,7 +5,9 @@ import { FieldProps } from 'rc-field-form/lib/Field';
 import Space from '../Space';
 import Overline from '../Typography/Overline';
 
-import { Label, Wrapper } from './styles';
+import { Label, Wrapper, Text } from './styles';
+import Tooltip from '../Tooltip';
+import Icon from '../Icon';
 
 type RcFieldProps<Values = any> = Omit<FieldProps<Values>, 'children'>;
 
@@ -34,25 +36,46 @@ export interface FormFieldProps<Values = any> extends RcFieldProps<Values> {
      * form label
      */
     label?: string;
+    /**
+     * short description about field
+     */
+    hint?: React.ReactNode;
     /** Auto passed by List render props. User should not use this. */
     fieldKey?: React.Key | React.Key[];
 }
 
 const { Field } = Form;
 
-function FormField({ label, children, ...restProps }: FormFieldProps) {
+function FormField({
+    label,
+    hidden,
+    hint,
+    children,
+    ...restProps
+}: FormFieldProps) {
     return (
         <Field {...restProps}>
             {(control, meta) => (
-                <Wrapper>
+                <Wrapper hidden={hidden}>
                     {label && (
-                        <Label
-                            required={restProps?.rules?.some(
-                                // @ts-ignore
-                                (rule) => rule?.required === true,
-                            )}
-                            hasValidationError={meta.errors.length > 0}>
-                            {label}
+                        <Label>
+                            <Space size="xsmall">
+                                <Text
+                                    required={restProps?.rules?.some(
+                                        // @ts-ignore
+                                        (rule) => rule?.required === true,
+                                    )}
+                                    hasValidationError={meta.errors.length > 0}>
+                                    {label}
+                                </Text>
+                                {hint && (
+                                    <Tooltip overlay={hint}>
+                                        <Icon
+                                            icon={['far', 'question-circle']}
+                                        />
+                                    </Tooltip>
+                                )}
+                            </Space>
                         </Label>
                     )}
                     <div>
