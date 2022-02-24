@@ -123,6 +123,7 @@ const UseFormTemplate: Story = () => {
                     number: 23,
                 },
                 hook: 'Fow UI Form Hook',
+                URLInput: 'https://www.test.com',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
                 textarea: 'Default Value',

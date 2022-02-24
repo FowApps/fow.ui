@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 import Input, { InputProps } from '../Input';
 import Select, { Props as SelectProps } from '../Select';
@@ -22,7 +23,7 @@ export interface URLInputProps {
     /**
      *  inheritence of protocol
      */
-    protocols?: Protocol[];
+    protocols: Protocol[];
     /**
      * inheritence of URLvalue
      */
@@ -42,7 +43,7 @@ export interface URLInputProps {
 }
 
 const URLInput = ({
-    value = 'http://www.google.com',
+    value,
     onChange,
     protocols,
     inputProps = {},
@@ -52,6 +53,8 @@ const URLInput = ({
     const [protocol, setProtocol] = useState<Protocol['value']>(
         protocols[0].value,
     );
+    const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
+    const isFirstTime = useIsMountFirstTime();
 
     useEffect(() => {
         if (urlName?.includes('https://') || urlName?.includes('http://')) {
@@ -63,6 +66,23 @@ const URLInput = ({
         }
     }, [urlName]);
 
+    useEffect(() => {
+        if (!isDefaultValueSetted && value) {
+            if (value.includes('https://') || value.includes('http://')) {
+                const seperatedValueIndex = value.indexOf('/') + 1;
+                setProtocol(value.slice(0, seperatedValueIndex + 1));
+                setURLname(
+                    value.substring(seperatedValueIndex + 1, value.length),
+                );
+                setIsDefaultValueSetted(true);
+            } else {
+                setProtocol(protocols[0].value);
+                setURLname(value);
+                setIsDefaultValueSetted(true);
+            }
+        }
+    }, [value]);
+
     const triggerChange = () => {
         const mergedUrl = `${protocol}${urlName}`;
         onChange?.(mergedUrl);
@@ -72,12 +92,14 @@ const URLInput = ({
         setURLname(inputValue);
     };
 
-    const onProtocolChange = (newProtocol: any) => {
+    const ProtocolChange = (newProtocol: any) => {
         setProtocol(newProtocol);
     };
 
     useEffect(() => {
-        triggerChange();
+        if (!isFirstTime) {
+            triggerChange();
+        }
     }, [urlName, protocol]);
 
     return (
@@ -86,7 +108,7 @@ const URLInput = ({
                 <Select
                     value={protocol}
                     style={{ width: 150 }}
-                    onChange={onProtocolChange}
+                    onChange={ProtocolChange}
                     {...selectProps}>
                     {protocols?.map((prot) => (
                         <Option value={prot.value}>{prot.name}</Option>
