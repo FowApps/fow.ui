@@ -22,5 +22,13 @@ Default.args = {
             name: 'hotmail.com',
             value: 'hotmail.com',
         },
+        {
+            name: 'yahoo.com',
+            value: 'yahoo.com',
+        },
+        {
+            name: 'outlook.com',
+            value: 'outlook.com',
+        },
     ],
 };

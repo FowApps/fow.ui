@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Input, { InputProps } from '../Input';
 import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
-import { InputWrapper, SelectWrapper } from './styles';
+import { InputWrapper, SelectWrapper, FixedWrapper } from './styles';
+import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 const { Option } = Select;
 
@@ -42,17 +43,16 @@ export interface EmailProps {
 }
 
 const EmailInput = ({
-    value = '',
+    value,
     onChange,
     extensions,
     inputProps = {},
     selectProps = {},
 }: EmailProps): JSX.Element => {
-    const [email, setEmail] = useState<string | undefined>(value);
-    const [extension, setExtension] = useState<Extension['value']>(
-        extensions[0].value,
-    );
-    const [isDisabled, setIsDisabled] = useState(false);
+    const [email, setEmail] = useState<string | undefined>(value || '');
+    const [extension, setExtension] = useState<Extension['value']>('');
+    const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
+    const isFirstTime = useIsMountFirstTime();
 
     const triggerChange = () => {
         const mergeEmail = `${email}@${extension}`;
@@ -68,18 +68,19 @@ const EmailInput = ({
     };
 
     useEffect(() => {
-        triggerChange();
+        if (!isFirstTime) {
+            triggerChange();
+        }
     }, [email, extension]);
 
     useEffect(() => {
-        if (email?.includes('@')) {
-            setIsDisabled(true);
-            onChange?.(email);
-        } else {
-            setIsDisabled(false);
-            triggerChange();
+        if (!isDefaultValueSetted && value) {
+            const [initialEmail, initialExtension] = value?.split('@');
+            setEmail(initialEmail);
+            setExtension(initialExtension);
+            setIsDefaultValueSetted(true);
         }
-    }, [email]);
+    }, [value]);
 
     return (
         <Space size="xxsmall" inline={false}>
@@ -91,14 +92,14 @@ const EmailInput = ({
                     {...inputProps}
                 />
             </InputWrapper>
-            <InputWrapper style={{ flexGrow: '0.05' }}>
+            <FixedWrapper>
                 <Input placeholder="@" disabled={!inputProps.disabled} />
-            </InputWrapper>
+            </FixedWrapper>
             <SelectWrapper>
                 <Select
+                    mode="combobox"
                     value={extension}
                     onChange={onExtensionChange}
-                    disabled={isDisabled}
                     {...selectProps}>
                     {extensions.map((curr) => (
                         <Option value={curr.value}>{curr.name}</Option>

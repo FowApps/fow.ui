@@ -122,6 +122,7 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
+                emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
@@ -146,7 +147,13 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Email Input"
                     name="emailInput"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[
+                        { required: true, message: 'Required..' },
+                        {
+                            type: 'email',
+                            message: 'invalid email',
+                        },
+                    ]}>
                     <EmailInput
                         extensions={[
                             {
@@ -156,6 +163,14 @@ const UseFormTemplate: Story = () => {
                             {
                                 name: 'hotmail.com',
                                 value: 'hotmail.com',
+                            },
+                            {
+                                name: 'yahoo.com',
+                                value: 'yahoo.com',
+                            },
+                            {
+                                name: 'outlook.com',
+                                value: 'outlook.com',
                             },
                         ]}
                     />
