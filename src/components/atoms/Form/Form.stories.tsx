@@ -12,6 +12,7 @@ import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 import useForm from '../../../hooks/useForm';
 import Textarea from '../TextArea/Textarea';
+import EmailInput from '../EmailInput/EmailInput';
 
 import Button from '../Button';
 import Space from '../Space';
@@ -122,6 +123,7 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
+                emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
                 URLInput: 'https://www.test.com',
                 date: new Date().toISOString(),
@@ -148,20 +150,20 @@ const UseFormTemplate: Story = () => {
                     label="URL Input"
                     name="URLInput"
                     rules={[{ required: true, message: 'Required..' }]}>
-                    <URLInput
-                        protocols={[
-                            {
-                                name: 'https://',
-                                value: 'https://',
-                            },
-                            {
-                                name: 'http://',
-                                value: 'http://',
-                            },
-                        ]}
-                    />
+                    <URLInput />
                 </FormField>
-
+                <FormField
+                    label="Email Input"
+                    name="emailInput"
+                    rules={[
+                        { required: true, message: 'Required..' },
+                        {
+                            type: 'email',
+                            message: 'invalid email',
+                        },
+                    ]}>
+                    <EmailInput />
+                </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
                         <Checkbox value="Test" label="Test" checked />
