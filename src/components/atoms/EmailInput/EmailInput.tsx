@@ -23,7 +23,7 @@ export interface EmailProps {
     /**
      *  inheritence of extension
      */
-    extensions: Extension[];
+    extensions?: Extension[];
     /**
      * inheritence of EmailValue
      */
@@ -42,10 +42,29 @@ export interface EmailProps {
     selectProps?: SelectProps;
 }
 
+const defaultExtensions: Extension[] = [
+    {
+        name: 'gmail.com',
+        value: 'gmail.com',
+    },
+    {
+        name: 'hotmail.com',
+        value: 'hotmail.com',
+    },
+    {
+        name: 'yahoo.com',
+        value: 'yahoo.com',
+    },
+    {
+        name: 'outlook.com',
+        value: 'outlook.com',
+    },
+];
+
 const EmailInput = ({
     value,
     onChange,
-    extensions,
+    extensions = defaultExtensions,
     inputProps = {},
     selectProps = {},
 }: EmailProps): JSX.Element => {

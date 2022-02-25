@@ -13,22 +13,4 @@ const Template: Story<EmailProps> = (args) => <EmailInput {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     onChange: (val) => console.log(val),
-    extensions: [
-        {
-            name: 'gmail.com',
-            value: 'gmail.com',
-        },
-        {
-            name: 'hotmail.com',
-            value: 'hotmail.com',
-        },
-        {
-            name: 'yahoo.com',
-            value: 'yahoo.com',
-        },
-        {
-            name: 'outlook.com',
-            value: 'outlook.com',
-        },
-    ],
 };
