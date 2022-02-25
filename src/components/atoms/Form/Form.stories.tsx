@@ -24,6 +24,7 @@ import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
+import URLInput from '../URLInput/URLInput';
 
 export default {
     title: 'Atoms/Form',
@@ -124,6 +125,7 @@ const UseFormTemplate: Story = () => {
                 },
                 emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
+                URLInput: 'https://www.test.com',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
                 textarea: 'Default Value',
@@ -145,6 +147,12 @@ const UseFormTemplate: Story = () => {
                     <Input placeholder="Hook Name" />
                 </FormField>
                 <FormField
+                    label="URL Input"
+                    name="URLInput"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <URLInput />
+                </FormField>
+                <FormField
                     label="Email Input"
                     name="emailInput"
                     rules={[
@@ -154,26 +162,7 @@ const UseFormTemplate: Story = () => {
                             message: 'invalid email',
                         },
                     ]}>
-                    <EmailInput
-                        extensions={[
-                            {
-                                name: 'gmail.com',
-                                value: 'gmail.com',
-                            },
-                            {
-                                name: 'hotmail.com',
-                                value: 'hotmail.com',
-                            },
-                            {
-                                name: 'yahoo.com',
-                                value: 'yahoo.com',
-                            },
-                            {
-                                name: 'outlook.com',
-                                value: 'outlook.com',
-                            },
-                        ]}
-                    />
+                    <EmailInput />
                 </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
