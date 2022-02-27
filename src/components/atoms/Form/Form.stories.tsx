@@ -12,6 +12,7 @@ import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 import useForm from '../../../hooks/useForm';
 import Textarea from '../TextArea/Textarea';
+import EmailInput from '../EmailInput/EmailInput';
 
 import Button from '../Button';
 import Space from '../Space';
@@ -23,6 +24,7 @@ import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
+import URLInput from '../URLInput/URLInput';
 
 export default {
     title: 'Atoms/Form',
@@ -121,7 +123,9 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
+                emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
+                URLInput: 'https://www.test.com',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
                 textarea: 'Default Value',
@@ -141,6 +145,24 @@ const UseFormTemplate: Story = () => {
                     name="hook"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
+                </FormField>
+                <FormField
+                    label="URL Input"
+                    name="URLInput"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <URLInput />
+                </FormField>
+                <FormField
+                    label="Email Input"
+                    name="emailInput"
+                    rules={[
+                        { required: true, message: 'Required..' },
+                        {
+                            type: 'email',
+                            message: 'invalid email',
+                        },
+                    ]}>
+                    <EmailInput />
                 </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
@@ -189,7 +211,7 @@ const UseFormTemplate: Story = () => {
                     </Select>
                 </FormField>
                 <FormField label="Date" name="date">
-                    <DatePicker placeholder="Start Date"/>
+                    <DatePicker placeholder="Start Date" />
                 </FormField>
                 <FormField label="Date Range" name="daterange">
                     <DateRangePicker />
