@@ -64,7 +64,7 @@
     },
     "devDependencies": {
         "@4c/tsconfig": "^0.4.0",
-        "@babel/cli": "^7.17.3",
+        "@babel/cli": "^7.17.6",
         "@babel/core": "^7.17.5",
         "@babel/plugin-transform-runtime": "^7.17.0",
         "@babel/preset-env": "^7.16.11",
@@ -123,7 +123,7 @@
         "eslint-plugin-react": "^7.28.0",
         "execa": "^5.1.1",
         "framer-motion": "^6.2.6",
-        "fs-extra": "^10.0.0",
+        "fs-extra": "^10.0.1",
         "husky": "^7.0.4",
         "jest": "^27.5.1",
         "lint-staged": "^12.3.4",
