@@ -17,6 +17,8 @@ import Link from './components/atoms/Typography/Link';
 
 // Form
 import FormField from './components/atoms/Form/FormField';
+import FormBuilder from './components/atoms/Form/FormBuilder';
+import { FormConfig } from './components/atoms/Form/FormBuilderConfig';
 
 // Atoms
 export { default as Avatar } from './components/atoms/Avatar';
@@ -63,6 +65,8 @@ export const FormSystem = {
     Form,
     Field: FormField,
     useForm,
+    Builder: FormBuilder,
+    BuilderConfig: FormConfig,
 };
 
 // Molecules

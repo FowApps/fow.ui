@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Story, Meta } from '@storybook/react';
 import Form from 'rc-field-form';
 import FormField from './FormField';
+import { FormConfig } from './FormBuilderConfig';
 
 import Row from '../Row';
 import Col from '../Col';
@@ -23,6 +24,8 @@ import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
+import FormBuilder from './FormBuilder';
+import { useEffect } from '@storybook/addons';
 
 export default {
     title: 'Atoms/Form',
@@ -231,3 +234,72 @@ const UseFormTemplate: Story = () => {
 
 export const UseForm = UseFormTemplate.bind({});
 UseForm.args = {};
+
+FormConfig.fields.addField([
+    {
+        type: 'custom-label',
+        field: lazy(() => import(`../../molecules/LabelInput`)),
+    },
+]);
+
+const FormBuilderTemplate: Story = () => {
+    const [formInstance] = Form.useForm();
+    const builderConfig = {
+        name: 'test',
+        fields: [
+            {
+                key: 'firstName',
+                name: 'firstName',
+                label: 'First Name',
+                required: true,
+                type: 'text',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'custom-label',
+                name: 'customLabel',
+                label: 'Pick Label',
+                required: false,
+                type: 'custom-label',
+                hint: 'Hello Africa',
+            },
+        ],
+    };
+
+    const handleSubmit = (values) => {
+        console.log(values);
+    };
+
+    const handleSaveClick = () => {
+        formInstance.submit();
+    };
+
+    const handleResetClick = () => {
+        formInstance.resetFields();
+    };
+
+    const setFirstName = (firstName) => {
+        formInstance.setFieldsValue({ firstName });
+    };
+
+    useEffect(() => {
+        setFirstName('Görkem');
+    }, []);
+
+    return (
+        <div>
+            <FormBuilder
+                config={builderConfig}
+                formInstance={formInstance}
+                onSubmit={handleSubmit}
+            />
+            <Space>
+                <Button onClick={handleSaveClick}>Save</Button>
+                <Button onClick={handleResetClick}>Reset</Button>
+            </Space>
+        </div>
+    );
+};
+
+export const Builder = FormBuilderTemplate.bind({});
+Builder.args = {};
