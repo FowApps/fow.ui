@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { Story, Meta } from '@storybook/react';
 import Form from 'rc-field-form';
+import { useEffect } from '@storybook/addons';
+
 import FormField from './FormField';
 import { FormConfig } from './FormBuilderConfig';
 
@@ -13,6 +15,7 @@ import Switch from '../Switch';
 import Upload from '../../molecules/Upload';
 import useForm from '../../../hooks/useForm';
 import Textarea from '../TextArea/Textarea';
+import EmailInput from '../EmailInput/EmailInput';
 
 import Button from '../Button';
 import Space from '../Space';
@@ -25,7 +28,7 @@ import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
 import FormBuilder from './FormBuilder';
-import { useEffect } from '@storybook/addons';
+import URLInput from '../URLInput/URLInput';
 
 export default {
     title: 'Atoms/Form',
@@ -126,7 +129,9 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
+                emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
+                URLInput: 'https://www.test.com',
                 date: new Date().toISOString(),
                 description: '<p>Description</p>',
                 textarea: 'Default Value',
@@ -146,6 +151,24 @@ const UseFormTemplate: Story = () => {
                     name="hook"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
+                </FormField>
+                <FormField
+                    label="URL Input"
+                    name="URLInput"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <URLInput />
+                </FormField>
+                <FormField
+                    label="Email Input"
+                    name="emailInput"
+                    rules={[
+                        { required: true, message: 'Required..' },
+                        {
+                            type: 'email',
+                            message: 'invalid email',
+                        },
+                    ]}>
+                    <EmailInput />
                 </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
