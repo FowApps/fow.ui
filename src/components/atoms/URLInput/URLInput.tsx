@@ -36,6 +36,7 @@ export interface URLInputProps {
      * select props
      */
     selectProps?: SelectProps;
+    hasValidationError?: boolean;
 }
 
 const protocols: Protocol[] = [
@@ -52,6 +53,7 @@ const protocols: Protocol[] = [
 const URLInput = ({
     value,
     onChange,
+    hasValidationError = false,
     inputProps = {},
     selectProps = {},
 }: URLInputProps): JSX.Element => {
@@ -115,6 +117,7 @@ const URLInput = ({
                     value={protocol}
                     style={{ width: 150 }}
                     onChange={ProtocolChange}
+                    hasValidationError={hasValidationError}
                     {...selectProps}>
                     {protocols?.map((prot) => (
                         <Option value={prot.value}>{prot.name}</Option>
@@ -126,6 +129,7 @@ const URLInput = ({
                     type="text"
                     value={urlName}
                     onChange={handleChange}
+                    hasValidationError={hasValidationError}
                     {...inputProps}
                 />
             </InputWrapper>
