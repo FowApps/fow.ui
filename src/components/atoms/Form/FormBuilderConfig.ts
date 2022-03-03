@@ -16,6 +16,7 @@ import Select from '../Select';
 import Editor from '../../molecules/Editor';
 import DatePicker from '../../molecules/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
+import PhoneInput from '../PhoneInput';
 
 type Field = {
     field: any;
@@ -82,6 +83,10 @@ const localization = { tr, en };
                     message: localization[lang].invalidEmail,
                 },
             ],
+        },
+        {
+            type: 'phone',
+            field: PhoneInput,
         },
         {
             type: 'rich-textarea',

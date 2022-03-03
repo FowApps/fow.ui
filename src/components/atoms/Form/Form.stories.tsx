@@ -285,6 +285,14 @@ const FormBuilderTemplate: Story = () => {
         id: 'storyform',
         fields: [
             {
+                key: 'phone',
+                name: 'phone',
+                label: 'Phone',
+                required: true,
+                type: 'phone',
+                hint: 'Hello Africa',
+            },
+            {
                 key: 'firstName',
                 name: 'firstName',
                 label: 'First Name',
@@ -316,6 +324,7 @@ const FormBuilderTemplate: Story = () => {
                 type: 'email',
                 hint: 'Hello Africa',
             },
+
             {
                 key: 'end-date-time-range',
                 name: 'endDateTime',
