@@ -37,7 +37,9 @@ export const MarkBox = styled.div`
     align-items: center;
     justify-content: center;
     width: 1.6rem;
+    min-width: 1.6rem;
     height: 1.6rem;
+    min-height: 1.6rem;
     border: 2px solid ${(props) => props.theme.fow.colors.text.secondary};
     border-radius: 50%;
     background: transparent;
