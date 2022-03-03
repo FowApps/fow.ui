@@ -50,6 +50,8 @@ const TextArea = (
         minRows = undefined,
         disabled = false,
         hasValidationError = false,
+        placeholder,
+        name,
         ...rest
     }: TextAreaProps,
     ref: RefObject<HTMLTextAreaElement>,
@@ -77,6 +79,8 @@ const TextArea = (
                     minRows={minRows}
                     maxRows={maxRows}
                     autosize={autosize}
+                    placeholder={placeholder}
+                    name={name}
                 />
             </TextareaWrapper>
         </Wrapper>
