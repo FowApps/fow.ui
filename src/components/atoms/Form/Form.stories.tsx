@@ -25,6 +25,7 @@ import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
 import URLInput from '../URLInput/URLInput';
+import PhoneInput from '../PhoneInput';
 
 export default {
     title: 'Atoms/Form',
@@ -145,6 +146,12 @@ const UseFormTemplate: Story = () => {
                     name="hook"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
+                </FormField>
+                <FormField
+                    label="Phone"
+                    name="phone"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <PhoneInput />
                 </FormField>
                 <FormField
                     label="URL Input"
