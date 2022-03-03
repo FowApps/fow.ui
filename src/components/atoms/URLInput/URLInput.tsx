@@ -40,6 +40,7 @@ export interface URLInputProps {
      * name of input
      */
     name?: string;
+    hasValidationError?: boolean;
 }
 
 const protocols: Protocol[] = [
@@ -54,7 +55,14 @@ const protocols: Protocol[] = [
 ];
 
 const URLInput = (
-    { value, onChange, inputProps = {}, selectProps = {}, name }: URLInputProps,
+    {
+        value,
+        onChange,
+        inputProps = {},
+        selectProps = {},
+        name,
+        hasValidationError = false,
+    }: URLInputProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
     const [urlName, setURLname] = useState<string | undefined>(value);
@@ -117,6 +125,7 @@ const URLInput = (
                     value={protocol}
                     style={{ width: 150 }}
                     onChange={ProtocolChange}
+                    hasValidationError={hasValidationError}
                     {...selectProps}>
                     {protocols?.map((prot) => (
                         <Option value={prot.value} key={prot.value}>
@@ -132,6 +141,7 @@ const URLInput = (
                     type="text"
                     value={urlName}
                     onChange={handleChange}
+                    hasValidationError={hasValidationError}
                     {...inputProps}
                 />
             </InputWrapper>

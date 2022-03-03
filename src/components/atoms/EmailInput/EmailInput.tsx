@@ -41,6 +41,7 @@ export interface EmailProps {
      */
     selectProps?: SelectProps;
     name?: string;
+    hasValidationError?: boolean;
 }
 
 const defaultExtensions: Extension[] = [
@@ -70,6 +71,7 @@ const EmailInput = (
         extensions = defaultExtensions,
         inputProps = {},
         selectProps = {},
+        hasValidationError,
     }: EmailProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
@@ -116,6 +118,7 @@ const EmailInput = (
                     value={email}
                     onChange={handleChange}
                     {...inputProps}
+                    hasValidationError={hasValidationError}
                 />
             </InputWrapper>
             <FixedWrapper>
@@ -126,6 +129,7 @@ const EmailInput = (
                     mode="combobox"
                     value={extension}
                     onChange={onExtensionChange}
+                    hasValidationError={hasValidationError}
                     {...selectProps}>
                     {extensions.map((curr) => (
                         <Option key={curr.value} value={curr.value}>

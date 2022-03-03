@@ -22,6 +22,7 @@ import { FormConfig } from './components/atoms/Form/FormBuilderConfig';
 
 // Atoms
 export { default as Avatar } from './components/atoms/Avatar';
+export { default as Badge } from './components/atoms/Badge';
 export { default as Icon } from './components/atoms/Icon';
 export { default as BoxIcon } from './components/atoms/BoxIcon';
 export { default as Checkbox } from './components/atoms/Checkbox';

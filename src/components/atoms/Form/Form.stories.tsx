@@ -154,7 +154,13 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="URL Input"
                     name="URLInput"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[
+                        { required: true, message: 'Required..' },
+                        {
+                            type: 'url',
+                            message: 'invalid url',
+                        },
+                    ]}>
                     <URLInput />
                 </FormField>
                 <FormField
