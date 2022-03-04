@@ -273,7 +273,7 @@ UseForm.args = {};
 FormConfig.fields.addField([
     {
         type: 'custom-label',
-        field: lazy(() => import(`../../molecules/LabelInput`)),
+        field: LabelInput,
     },
 ]);
 
