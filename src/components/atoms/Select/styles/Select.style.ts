@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 type WrapperProps = {
     size: 'medium' | 'large';
     hasValidationError?: boolean;
+    name?: string;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -138,6 +139,16 @@ export const Wrapper = styled.div<WrapperProps>`
         height: ${(props) => (props.size === 'large' ? '42px' : '32px')};
         align-items: center;
         transition: all 0.3s ease;
+
+        ${(props) =>
+            props.hasValidationError &&
+            css`
+                border: 1px solid ${props.theme.fow.colors.error.main} !important;
+
+                &:hover {
+                    border: 1px solid ${props.theme.fow.colors.error.main} !important;
+                }
+            `};
 
         .rc-select-selection-placeholder {
             position: absolute;
