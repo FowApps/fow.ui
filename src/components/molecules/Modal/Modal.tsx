@@ -1,4 +1,3 @@
-import { withTheme } from 'styled-components';
 import React from 'react';
 import 'rc-dialog/assets/index.css';
 import Dialog from 'rc-dialog';
@@ -217,4 +216,4 @@ const Modal: React.FC<ModalProps> = ({
         {children}
     </Dialog>
 );
-export default withTheme(Modal);
+export default Modal;
