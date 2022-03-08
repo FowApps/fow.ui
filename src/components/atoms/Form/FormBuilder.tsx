@@ -4,6 +4,8 @@ import { Rule } from 'rc-field-form/lib/interface';
 
 import { FormConfig } from './FormBuilderConfig';
 import Loader from '../Loader';
+import Row from '../Row';
+import Col from '../Col';
 import FormField from './FormField';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import { tr } from './locales/tr';
@@ -179,41 +181,44 @@ const FormBuilder = ({
         const FieldComponent = fieldComponent;
 
         return (
-            <FormField
-                key={field.key}
-                valuePropName={getValueProp(field)}
-                type={field.type}
-                name={field.name}
-                label={getLabelProp(field)}
-                rules={[
-                    {
-                        required: field.required,
-                        message:
-                            field.requiredMessage || 'This field is required',
-                    },
-                    ...predefineFieldRules,
-                    ...(field.rules ? field.rules : []),
-                ]}
-                hint={field.hint}
-                initialVisibleField={getinitialVisibleFieldProp(field)}>
-                <FieldComponent
+            <Col xs={field.props?.fluid ? 12 : 6}>
+                <FormField
                     key={field.key}
-                    placeholder={getPlaceholderProp(field)}
-                    ref={(ref: any) => {
-                        if (idx === 0 && ref) {
-                            setTimeout(() => {
-                                if (typeof ref.focus === 'function') {
-                                    ref.focus();
-                                }
-                                if (typeof ref.onFocus === 'function') {
-                                    ref.onFocus();
-                                }
-                            }, 300);
-                        }
-                    }}
-                    {...calculatedProps(field)}
-                />
-            </FormField>
+                    valuePropName={getValueProp(field)}
+                    type={field.type}
+                    name={field.name}
+                    label={getLabelProp(field)}
+                    rules={[
+                        {
+                            required: field.required,
+                            message:
+                                field.requiredMessage ||
+                                'This field is required',
+                        },
+                        ...predefineFieldRules,
+                        ...(field.rules ? field.rules : []),
+                    ]}
+                    hint={field.hint}
+                    initialVisibleField={getinitialVisibleFieldProp(field)}>
+                    <FieldComponent
+                        key={field.key}
+                        placeholder={getPlaceholderProp(field)}
+                        ref={(ref: any) => {
+                            if (idx === 0 && ref) {
+                                setTimeout(() => {
+                                    if (typeof ref.focus === 'function') {
+                                        ref.focus();
+                                    }
+                                    if (typeof ref.onFocus === 'function') {
+                                        ref.onFocus();
+                                    }
+                                }, 300);
+                            }
+                        }}
+                        {...calculatedProps(field)}
+                    />
+                </FormField>
+            </Col>
         );
     };
 
@@ -247,7 +252,9 @@ const FormBuilder = ({
                 }}
                 onFinish={onSubmit}
                 initialValues={initialValues}>
-                <Suspense fallback={<Loader isLoading />}>{fields}</Suspense>
+                <Suspense fallback={<Loader isLoading />}>
+                    <Row>{fields}</Row>
+                </Suspense>
             </Form>
         </div>
     );
