@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, {
+    forwardRef,
+    LegacyRef,
+    useCallback,
+    useContext,
+    useState,
+} from 'react';
 
 import ReactPhoneInput, { PhoneInputProps } from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -17,6 +23,7 @@ export interface Props extends PhoneInputProps {
     country?: string;
     search?: boolean;
     hasValidationError?: boolean;
+    name?: string;
 }
 
 function fixControlledValue<T>(value: T) {
@@ -26,13 +33,16 @@ function fixControlledValue<T>(value: T) {
     return value;
 }
 
-const PhoneInput = ({
-    hasValidationError = false,
-    country = 'tr',
-    search = true,
-    onChange,
-    ...rest
-}: Props): JSX.Element => {
+const PhoneInput = (
+    {
+        hasValidationError = false,
+        country = 'tr',
+        search = true,
+        onChange,
+        ...rest
+    }: Props,
+    ref: LegacyRef<HTMLInputElement>,
+): JSX.Element => {
     const [isFocused, setIsFocused] = useState(false);
     const { language } = useContext(ConfigContext);
     const [value, setValue] = useState(fixControlledValue(rest?.value));
@@ -57,6 +67,10 @@ const PhoneInput = ({
         <Wrapper hasValidationError={hasValidationError} isFocused={isFocused}>
             <ReactPhoneInput
                 {...rest}
+                inputProps={{
+                    ref: ref || { current: null },
+                    name: rest?.name,
+                }}
                 preferredCountries={['tr', 'us', 'de', 'gb']}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
@@ -72,4 +86,4 @@ const PhoneInput = ({
     );
 };
 
-export default PhoneInput;
+export default forwardRef(PhoneInput);

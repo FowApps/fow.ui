@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import Form from 'rc-field-form';
+
 import FormField from './FormField';
+import { FormConfig } from './FormBuilderConfig';
 
 import Row from '../Row';
 import Col from '../Col';
@@ -24,6 +26,7 @@ import DatePicker from '../../molecules/DatePicker/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
+import FormBuilder from './FormBuilder';
 import URLInput from '../URLInput/URLInput';
 import PhoneInput from '../PhoneInput';
 
@@ -42,6 +45,7 @@ const Template: Story = () => {
                 <Row>
                     <Col xs={6}>
                         <FormField
+                            hint="Please type your fullname"
                             name="name"
                             label="Name"
                             rules={[
@@ -62,6 +66,7 @@ const Template: Story = () => {
                     </Col>
                     <Col xs={6}>
                         <FormField
+                            hidden
                             valuePropName="checked"
                             name="sw"
                             label="Switch">
@@ -264,3 +269,238 @@ const UseFormTemplate: Story = () => {
 
 export const UseForm = UseFormTemplate.bind({});
 UseForm.args = {};
+
+FormConfig.fields.addField([
+    {
+        type: 'custom-label',
+        field: LabelInput,
+    },
+]);
+
+const FormBuilderTemplate: Story = () => {
+    const [formInstance] = Form.useForm();
+    const [onlyMandatory, setOnlyMandatory] = useState(false);
+    const builderConfig = {
+        name: 'test',
+        id: 'storyform',
+        fields: [
+            {
+                key: 'phone',
+                name: 'phone',
+                label: 'Phone',
+                required: true,
+                type: 'phone',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'firstName',
+                name: 'firstName',
+                label: 'First Name',
+                required: true,
+                type: 'text',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'start-date-time',
+                name: 'startDateTime',
+                label: 'Start Date and Time',
+                required: true,
+                type: 'date-time',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'description',
+                name: 'description',
+                label: 'Description',
+                required: true,
+                type: 'textarea',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'email',
+                name: 'email',
+                label: 'Email',
+                required: true,
+                type: 'email',
+                hint: 'Hello Africa',
+            },
+
+            {
+                key: 'end-date-time-range',
+                name: 'endDateTime',
+                label: 'Start/End Date and Time',
+                required: true,
+                type: 'date-time-range',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'start-date',
+                name: 'startDate',
+                label: 'Start Date',
+                required: true,
+                type: 'date',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'end-date',
+                name: 'endDate',
+                label: 'End Date',
+                required: true,
+                type: 'date-range',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'website',
+                name: 'website',
+                label: 'Website',
+                required: true,
+                type: 'url',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'count',
+                name: 'count',
+                label: 'Count',
+                required: false,
+                type: 'number',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'collection',
+                name: 'collection',
+                label: 'Collection',
+                required: false,
+                type: 'multiple-select',
+                options: [
+                    {
+                        label: 'Adidas',
+                        value: 2,
+                    },
+                    {
+                        label: 'Nike',
+                        value: 3,
+                    },
+                ],
+            },
+            {
+                key: 'gender',
+                name: 'gender',
+                label: 'Gender',
+                required: false,
+                type: 'single-select',
+                options: [
+                    {
+                        label: 'Male',
+                        value: 'male',
+                    },
+                    {
+                        label: 'Female',
+                        value: 'female',
+                    },
+                ],
+            },
+
+            {
+                key: 'include-tax',
+                name: 'includeTax',
+                label: 'Include Tax',
+                required: false,
+                type: 'checkbox',
+                hint: 'Hello Africa',
+            },
+            {
+                key: 'select-items',
+                name: 'selectedItemIds',
+                label: 'Select Items',
+                required: false,
+                type: 'checkbox-group',
+                options: [
+                    {
+                        label: 'Lorem',
+                        value: 1,
+                    },
+                    {
+                        label: 'Ipsum',
+                        value: 2,
+                    },
+                    {
+                        label: 'Dolor',
+                        value: 3,
+                    },
+                ],
+            },
+            {
+                key: 'select-one-items',
+                name: 'selectedItemId',
+                label: 'Select One Item',
+                required: false,
+                type: 'radio-group',
+                options: [
+                    {
+                        label: 'Male',
+                        value: '1',
+                    },
+                    {
+                        label: 'Female',
+                        value: '2',
+                    },
+                ],
+            },
+            {
+                key: 'template',
+                name: 'template',
+                label: 'Template',
+                required: true,
+                type: 'rich-textarea',
+                hint: 'Hello Africa',
+            },
+        ],
+    };
+
+    const handleSubmit = (values) => {
+        console.log(values);
+    };
+
+    const handleSaveClick = () => {
+        formInstance.submit();
+    };
+
+    const handleResetClick = () => {
+        formInstance.resetFields();
+    };
+
+    return (
+        <div>
+            <Button
+                onClick={() => {
+                    setOnlyMandatory(!onlyMandatory);
+                }}>
+                Toggle
+            </Button>
+            <FormBuilder
+                showOnlyMandatory={onlyMandatory}
+                initialValues={{
+                    firstName: 'Görkem',
+                    selectedItemIds: [3, 2],
+                    email: 'grkm@test.com',
+                    count: 12,
+                    includeTax: true,
+                    description: 'Lorem',
+                    website: 'https://www.google.com',
+                    template: '<p><strong>Hello Africa</strong></p>',
+                    selectedItemId: '2',
+                }}
+                config={builderConfig}
+                formInstance={formInstance}
+                onSubmit={handleSubmit}
+            />
+            <Space>
+                <Button onClick={handleSaveClick}>Save</Button>
+                <Button onClick={handleResetClick}>Reset</Button>
+            </Space>
+        </div>
+    );
+};
+
+export const Builder = FormBuilderTemplate.bind({});
+Builder.args = {};

@@ -17,6 +17,8 @@ import Link from './components/atoms/Typography/Link';
 
 // Form
 import FormField from './components/atoms/Form/FormField';
+import FormBuilder from './components/atoms/Form/FormBuilder';
+import { FormConfig } from './components/atoms/Form/FormBuilderConfig';
 
 // Atoms
 export { default as Avatar } from './components/atoms/Avatar';
@@ -65,6 +67,8 @@ export const FormSystem = {
     Form,
     Field: FormField,
     useForm,
+    Builder: FormBuilder,
+    BuilderConfig: FormConfig,
 };
 
 // Molecules
@@ -87,6 +91,7 @@ export { default as DatePicker } from './components/molecules/DatePicker';
 export { default as DateRangePicker } from './components/molecules/DateRangePicker';
 export { default as OverviewCard } from './components/molecules/OverviewCard';
 export { default as Editor } from './components/molecules/Editor';
+export { default as Section } from './components/molecules/Section';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
