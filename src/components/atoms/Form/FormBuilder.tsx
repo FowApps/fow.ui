@@ -164,7 +164,8 @@ const FormBuilder = ({
         }
     };
 
-    const renderField = (field: Field, idx: number) => {
+    let focused = false;
+    const renderField = (field: Field) => {
         const fieldComponent = field.component
             ? field.component
             : FormConfig.fields.getFields()[field.type]?.component;
@@ -204,7 +205,8 @@ const FormBuilder = ({
                         key={field.key}
                         placeholder={getPlaceholderProp(field)}
                         ref={(ref: any) => {
-                            if (idx === 0 && ref) {
+                            if (ref && !ref.value && !focused) {
+                                focused = true;
                                 setTimeout(() => {
                                     if (typeof ref.focus === 'function') {
                                         ref.focus();
@@ -225,8 +227,8 @@ const FormBuilder = ({
     const fields = showOnlyMandatory
         ? config.fields
               .filter((field) => field.required)
-              .map((field, idx) => renderField(field, idx))
-        : config.fields.map((field, idx) => renderField(field, idx));
+              .map((field) => renderField(field))
+        : config.fields.map((field) => renderField(field));
 
     return (
         <div>
