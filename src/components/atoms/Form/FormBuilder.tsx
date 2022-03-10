@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useMemo } from 'react';
+import React, { Suspense, useCallback, useContext, useMemo } from 'react';
 import Form, { useForm, FormInstance } from 'rc-field-form';
 import { Rule } from 'rc-field-form/lib/interface';
 
@@ -167,7 +167,7 @@ const FormBuilder = ({
     };
 
     let focused = false;
-    const renderField = (field: Field) => {
+    const renderField = useCallback((field: Field) => {
         const fieldComponent = field.component
             ? field.component
             : FormConfig.fields.getFields()[field.type]?.component;
@@ -224,7 +224,7 @@ const FormBuilder = ({
                 </FormField>
             </Col>
         );
-    };
+    }, []);
 
     const fields = showOnlyMandatory
         ? config.fields
