@@ -66,6 +66,7 @@ export interface FormBuilderProps {
     onSubmit: (values: any) => void;
     config: Config;
     showOnlyMandatory?: boolean;
+    onValuesChange?: (value: any, values: any) => void;
 }
 
 const FormBuilder = ({
@@ -73,6 +74,7 @@ const FormBuilder = ({
     formInstance,
     onSubmit,
     showOnlyMandatory = false,
+    onValuesChange,
     config = {
         fields: [],
         name: undefined,
@@ -236,6 +238,7 @@ const FormBuilder = ({
                 id={config.id || formId}
                 name={config.name}
                 form={formRef}
+                onValuesChange={onValuesChange}
                 onFinishFailed={({ errorFields }) => {
                     const name = errorFields[0].name[0];
                     const input = document.querySelector(
