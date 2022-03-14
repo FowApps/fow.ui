@@ -65,7 +65,7 @@ const Dropdown = (
                 <div
                     style={{
                         zIndex: 802,
-                        minWidth: '200px',
+                        minWidth: '250px',
                         width: `${width}px` || 'auto',
                     }}
                 />
