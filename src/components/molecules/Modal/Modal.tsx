@@ -1,6 +1,7 @@
 import React from 'react';
 import 'rc-dialog/assets/index.css';
 import Dialog from 'rc-dialog';
+import useModal from '../../../hooks/useModal';
 
 export interface ModalProps {
     /**
@@ -43,13 +44,6 @@ export interface ModalProps {
      * to unmount child compenents on onClose
      */
     destroyOnClose?: boolean;
-    /**
-     * set pageX and pageY of current mouse(it will cause transform origin to be set).
-     */
-    mousePosition?: {
-        x: number;
-        y: number;
-    } | null;
     /**
      * Title of the dialog
      */
@@ -140,11 +134,10 @@ export interface ModalProps {
     focusTriggerAfterClose?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
     title,
     visible,
     onClose,
-    mousePosition,
     closeIcon,
     style,
     footer,
@@ -175,45 +168,50 @@ const Modal: React.FC<ModalProps> = ({
     modalRender,
     forceRender,
     focusTriggerAfterClose,
-}) => (
-    <Dialog
-        visible={visible}
-        animation={animation || 'zoom'}
-        maskAnimation={maskAnimation || 'fade'}
-        onClose={onClose}
-        style={{
-            width: 600,
-            ...style,
-        }}
-        title={title || false}
-        closeIcon={closeIcon}
-        mousePosition={mousePosition}
-        focusTriggerAfterClose={focusTriggerAfterClose || false}
-        footer={footer}
-        className={className}
-        keyboard={keyboard}
-        mask={mask}
-        afterClose={afterClose}
-        closable={closable}
-        maskClosable={maskClosable}
-        destroyOnClose={destroyOnClose}
-        transitionName={transitionName}
-        maskTransitionName={maskTransitionName}
-        wrapStyle={wrapStyle}
-        bodyStyle={bodyStyle}
-        maskStyle={maskStyle}
-        prefixCls={prefixCls}
-        wrapClassName={wrapClassName}
-        width={width}
-        height={height}
-        zIndex={zIndex}
-        bodyProps={bodyProps}
-        maskProps={maskProps}
-        wrapProps={wrapProps}
-        getContainer={getContainer}
-        modalRender={modalRender}
-        forceRender={forceRender}>
-        {children}
-    </Dialog>
-);
+}) => {
+    const { mousePosition } = useModal();
+
+    return (
+        <Dialog
+            visible={visible}
+            animation={animation || 'zoom'}
+            maskAnimation={maskAnimation || 'fade'}
+            onClose={onClose}
+            style={{
+                width: 600,
+                ...style,
+            }}
+            title={title || false}
+            closeIcon={closeIcon}
+            mousePosition={mousePosition}
+            focusTriggerAfterClose={focusTriggerAfterClose || false}
+            footer={footer}
+            className={className}
+            keyboard={keyboard}
+            mask={mask}
+            afterClose={afterClose}
+            closable={closable}
+            maskClosable={maskClosable}
+            destroyOnClose={destroyOnClose}
+            transitionName={transitionName}
+            maskTransitionName={maskTransitionName}
+            wrapStyle={wrapStyle}
+            bodyStyle={bodyStyle}
+            maskStyle={maskStyle}
+            prefixCls={prefixCls}
+            wrapClassName={wrapClassName}
+            width={width}
+            height={height}
+            zIndex={zIndex}
+            bodyProps={bodyProps}
+            maskProps={maskProps}
+            wrapProps={wrapProps}
+            getContainer={getContainer}
+            modalRender={modalRender}
+            forceRender={forceRender}>
+            {children}
+        </Dialog>
+    );
+};
+
 export default Modal;
