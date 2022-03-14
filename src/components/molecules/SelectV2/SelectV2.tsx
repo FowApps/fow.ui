@@ -10,6 +10,7 @@ import {
     DropdownButtonWrapper,
     DropdownContentWrapper,
     OptionsWrapper,
+    ClearButtonWrapper,
 } from './styles';
 import PlusOwl from '../../../assets/svg/PlusOwl';
 import useStateRef from '../../../hooks/useStateRef';
@@ -51,7 +52,7 @@ export interface Props {
     /**
      * dropdown input style
      */
-    styleType?: 'light' | 'grey';
+    variant?: 'white' | 'grey';
     /**
      * dropdown and button disabled
      */
@@ -112,10 +113,10 @@ const SelectV2 = ({
     options,
     placeholder,
     noResultContent,
-    styleType = 'light',
+    variant = 'white',
     onChange,
     disabled,
-    loader = false,
+    loader: initialLoader,
     showSearch = true,
     clearAllButtonRef,
     ...rest
@@ -137,7 +138,7 @@ const SelectV2 = ({
         setChoices(options);
         setLoading(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [options, Array.isArray(options) && options.length, loader]);
+    }, [options, Array.isArray(options) && options.length, initialLoader]);
 
     const handleClearSelect = () => {
         setSelectedItem(undefined);
@@ -184,7 +185,7 @@ const SelectV2 = ({
                                 }
                             />
                         )}
-                        {loading ? (
+                        {initialLoader ? (
                             <Loader
                                 height={150}
                                 isLoading
@@ -201,8 +202,6 @@ const SelectV2 = ({
                                         align="start"
                                         style={{
                                             marginTop: showSearch ? '12px' : 0,
-                                            maxHeight: '250px',
-                                            overflowY: 'auto',
                                             padding: '0 8px',
                                         }}>
                                         {choices?.some((item) =>
@@ -228,7 +227,9 @@ const SelectV2 = ({
                                                             <Radio
                                                                 defaultChecked={
                                                                     initialVal?.value ===
-                                                                    m.value
+                                                                        m.value ||
+                                                                    selectedItem?.value ===
+                                                                        m.value
                                                                 }
                                                                 onChange={() => {
                                                                     onChange?.(
@@ -270,7 +271,7 @@ const SelectV2 = ({
                     <DropdownButtonWrapper
                         variant="text"
                         disabled={disabled}
-                        styleType={styleType}
+                        buttonType={variant}
                         isOpen={isOpen}
                         className={isOpen ? 'opened' : ''}>
                         <DropdownButtonContent
@@ -282,11 +283,15 @@ const SelectV2 = ({
                                 </Body>
 
                                 {selectedItem && (
-                                    <Space onClick={handleClearSelect}>
-                                        <Link color="error" level={3}>
-                                            {localization[language].clearAll}
-                                        </Link>
-                                    </Space>
+                                    <ClearButtonWrapper
+                                        color="primary"
+                                        size="small"
+                                        variant="contained"
+                                        onClick={() =>
+                                            !disabled && handleClearSelect()
+                                        }>
+                                        <Icon color="primary" icon="times" />
+                                    </ClearButtonWrapper>
                                 )}
                             </Space>
                             <Icon
@@ -305,7 +310,7 @@ const SelectV2 = ({
 const MultipleV2 = ({
     options,
     placeholder,
-    styleType = 'light',
+    variant = 'white',
     onChange,
     clearAllButtonRef,
     content,
@@ -446,19 +451,16 @@ const MultipleV2 = ({
                                     inline={false}
                                     size="xsmall"
                                     direction="vertical"
-                                    align="start"
-                                    style={{
-                                        marginTop:
-                                            showSearch &&
-                                            Array.isArray(formValues) &&
-                                            formValues?.length > 0
-                                                ? '12px'
-                                                : 0,
-                                    }}>
+                                    align="start">
                                     {isArrayFormVal && (
                                         <Space
                                             inline={false}
-                                            justify="space-between">
+                                            justify="space-between"
+                                            style={{
+                                                marginTop: !showSearch
+                                                    ? 0
+                                                    : '12px',
+                                            }}>
                                             <Subtitle level={1}>
                                                 {
                                                     localization[language]
@@ -466,8 +468,9 @@ const MultipleV2 = ({
                                                 }
                                             </Subtitle>
                                             <Space
-                                                onClick={
-                                                    handleClearAllSelected
+                                                onClick={() =>
+                                                    !disabled &&
+                                                    handleClearAllSelected()
                                                 }>
                                                 <Link color="error" level={3}>
                                                     {
@@ -549,132 +552,120 @@ const MultipleV2 = ({
                                 ) : (
                                     <>
                                         {choices ? (
-                                            <>
-                                                <Space
-                                                    inline={false}
-                                                    size="xsmall"
-                                                    direction="vertical"
-                                                    align="start"
-                                                    style={{
-                                                        marginTop: showSearch
+                                            <Space
+                                                inline={false}
+                                                size="xsmall"
+                                                direction="vertical"
+                                                align="start"
+                                                style={{
+                                                    marginTop:
+                                                        showSearch ||
+                                                        (Array.isArray(
+                                                            formValues,
+                                                        ) &&
+                                                            formValues.length >
+                                                                0)
                                                             ? '12px'
                                                             : 0,
-                                                    }}>
-                                                    {choices?.length > 0 && (
-                                                        <>
-                                                            {Array.isArray(
-                                                                formValues,
-                                                            ) &&
-                                                                formValues.length >
-                                                                    0 &&
-                                                                formValues.length !==
-                                                                    choices.length && (
-                                                                    <>
-                                                                        <Space
-                                                                            style={{
-                                                                                marginTop:
-                                                                                    !showSearch &&
-                                                                                    isArrayFormVal
-                                                                                        ? '12px'
-                                                                                        : 0,
-                                                                            }}>
-                                                                            <Subtitle
-                                                                                level={
-                                                                                    1
-                                                                                }>
-                                                                                {
-                                                                                    localization[
-                                                                                        language
-                                                                                    ]
-                                                                                        .otherItems
-                                                                                }
-                                                                            </Subtitle>
-                                                                        </Space>
-                                                                    </>
-                                                                )}
-                                                        </>
-                                                    )}
-                                                    {otherOptions?.some(
-                                                        (item) =>
-                                                            item?.text
-                                                                .toString()
-                                                                .toLowerCase()
-                                                                .includes(
-                                                                    searchText,
-                                                                ),
-                                                    ) ||
-                                                    otherOptions?.length < 1 ? (
-                                                        <>
-                                                            {otherOptions
-                                                                ?.filter(
-                                                                    (item) =>
-                                                                        item?.text
-                                                                            .toString()
-                                                                            .toLowerCase()
-                                                                            .includes(
-                                                                                searchText,
-                                                                            ),
-                                                                )
-                                                                .map((m) => (
-                                                                    <Space
-                                                                        inline={
-                                                                            false
-                                                                        }
-                                                                        size="small">
-                                                                        <Checkbox
-                                                                            onChange={() =>
-                                                                                handleChange(
-                                                                                    m,
-                                                                                )
+                                                }}>
+                                                {choices?.length > 0 && (
+                                                    <>
+                                                        {Array.isArray(
+                                                            formValues,
+                                                        ) &&
+                                                            formValues.length >
+                                                                0 &&
+                                                            formValues.length !==
+                                                                choices.length && (
+                                                                <>
+                                                                    <Space>
+                                                                        <Subtitle
+                                                                            level={
+                                                                                1
+                                                                            }>
+                                                                            {
+                                                                                localization[
+                                                                                    language
+                                                                                ]
+                                                                                    .otherItems
                                                                             }
-                                                                            checked={
-                                                                                Array.isArray(
-                                                                                    formValues,
-                                                                                ) &&
-                                                                                formValues?.some(
-                                                                                    (
-                                                                                        s,
-                                                                                    ) =>
-                                                                                        s?.value ===
-                                                                                        m?.value,
-                                                                                )
-                                                                            }
-                                                                            value={
-                                                                                m?.value
-                                                                            }
-                                                                            label={
-                                                                                m?.text
-                                                                            }
-                                                                        />
+                                                                        </Subtitle>
                                                                     </Space>
-                                                                ))}
-                                                        </>
-                                                    ) : (
-                                                        <Space
-                                                            inline={false}
-                                                            direction="vertical"
-                                                            justify="center"
-                                                            align="center"
-                                                            size="none">
-                                                            <PlusOwl
-                                                                width={60}
-                                                            />
-                                                            <Body
-                                                                level={2}
-                                                                color="secondary">
-                                                                {searchText}{' '}
-                                                                {
-                                                                    noResultContent
-                                                                }
-                                                                .
-                                                            </Body>
-                                                            {content && (
-                                                                <>{content}</>
+                                                                </>
                                                             )}
-                                                        </Space>
-                                                    )}
-                                                </Space>
-                                            </>
+                                                    </>
+                                                )}
+                                                {otherOptions?.some((item) =>
+                                                    item?.text
+                                                        .toString()
+                                                        .toLowerCase()
+                                                        .includes(searchText),
+                                                ) ||
+                                                otherOptions?.length < 1 ? (
+                                                    <>
+                                                        {otherOptions
+                                                            ?.filter((item) =>
+                                                                item?.text
+                                                                    .toString()
+                                                                    .toLowerCase()
+                                                                    .includes(
+                                                                        searchText,
+                                                                    ),
+                                                            )
+                                                            .map((m) => (
+                                                                <Space
+                                                                    inline={
+                                                                        false
+                                                                    }
+                                                                    size="small">
+                                                                    <Checkbox
+                                                                        onChange={() =>
+                                                                            handleChange(
+                                                                                m,
+                                                                            )
+                                                                        }
+                                                                        checked={
+                                                                            Array.isArray(
+                                                                                formValues,
+                                                                            ) &&
+                                                                            formValues?.some(
+                                                                                (
+                                                                                    s,
+                                                                                ) =>
+                                                                                    s?.value ===
+                                                                                    m?.value,
+                                                                            )
+                                                                        }
+                                                                        value={
+                                                                            m?.value
+                                                                        }
+                                                                        label={
+                                                                            m?.text
+                                                                        }
+                                                                    />
+                                                                </Space>
+                                                            ))}
+                                                    </>
+                                                ) : (
+                                                    <Space
+                                                        inline={false}
+                                                        direction="vertical"
+                                                        justify="center"
+                                                        align="center"
+                                                        size="none">
+                                                        <PlusOwl width={60} />
+                                                        <Body
+                                                            level={2}
+                                                            color="secondary">
+                                                            {searchText}{' '}
+                                                            {noResultContent}.
+                                                        </Body>
+                                                        {content && (
+                                                            <>{content}</>
+                                                        )}
+                                                    </Space>
+                                                )}
+                                            </Space>
                                         ) : (
                                             <NotFoundContent
                                                 title={
@@ -694,7 +685,7 @@ const MultipleV2 = ({
                         <DropdownButtonWrapper
                             variant="text"
                             disabled={disabled}
-                            styleType={styleType}
+                            buttonType={variant}
                             isOpen={isOpen}
                             className={isOpen ? 'opened' : ''}>
                             <DropdownButtonContent
@@ -706,17 +697,38 @@ const MultipleV2 = ({
                                             ? formValues?.[0]?.text
                                             : placeholder}
                                     </Body>
-                                    {isArrayFormVal &&
-                                        formValues?.length > 1 && (
-                                            <Badge
-                                                size="medium"
-                                                text={`+ ${
-                                                    formValues.length - 1
-                                                }`}
-                                                variant="outlined"
-                                                color="primary"
-                                            />
-                                        )}
+                                    {isArrayFormVal && (
+                                        <Space>
+                                            {formValues?.length > 1 && (
+                                                <>
+                                                    <Badge
+                                                        size="medium"
+                                                        text={`+ ${
+                                                            formValues.length -
+                                                            1
+                                                        }`}
+                                                        variant="outlined"
+                                                        color="primary"
+                                                    />
+                                                </>
+                                            )}
+                                            {formValues?.length > 0 && (
+                                                <ClearButtonWrapper
+                                                    color="primary"
+                                                    size="small"
+                                                    variant="contained"
+                                                    onClick={() =>
+                                                        !disabled &&
+                                                        handleClearAllSelected()
+                                                    }>
+                                                    <Icon
+                                                        color="primary"
+                                                        icon="times"
+                                                    />
+                                                </ClearButtonWrapper>
+                                            )}
+                                        </Space>
+                                    )}
                                 </Space>
                                 <Icon
                                     size="sm"

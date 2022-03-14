@@ -4,7 +4,7 @@ import Dropdown from '../../Dropdown';
 
 type ButtonProps = {
     isOpen: boolean;
-    styleType: string;
+    buttonType: string;
 };
 
 export const DropdownWrapper = styled(Dropdown)`
@@ -12,8 +12,8 @@ export const DropdownWrapper = styled(Dropdown)`
 `;
 
 export const OptionsWrapper = styled.div`
-    max-height: 220px;
     padding-right: 10px;
+    max-height: 300px;
     overflow-y: auto;
 `;
 
@@ -28,21 +28,34 @@ export const DropdownButtonWrapper = styled(Button)<ButtonProps>`
                 ? props.theme.fow.colors.greyDark.transparent32
                 : props.theme.fow.colors.primary.transparent48} !important;
     background: ${(props) =>
-        props.styleType === 'light'
-            ? props.theme.fow.colors.greyLight.lighter
+        props.buttonType === 'white'
+            ? props.theme.fow.colors.common.white
             : props.theme.fow.colors.greyLight.light};
-    &:focus {
-        background: ${(props) => props.theme.fow.colors.greyLight.lighter};
+    ::placeholder {
+        color: ${(props) => props.theme.fow.colors.text.disabled};
+    }
+
+    :hover:not(:disabled) {
         border: 1px solid
-            ${(props) => props.theme.fow.colors.primary.transparent48};
+            ${(props) => props.theme.fow.colors.error.transparent48} !important;
+    }
+
+    :focus:not(:disabled) {
+        border: 1px solid
+            ${(props) => props.theme.fow.colors.primary.transparent48} !important;
         box-shadow: 0px 0px 0px 4px
             ${(props) => props.theme.fow.colors.primary.transparent12};
     }
+
     :disabled {
         border: 1px solid
             ${(props) => props.theme.fow.colors.grey.transparent24} !important;
         color: ${(props) => props.theme.fow.colors.text.disabled};
+        background: rgba(239, 239, 239, 0.3);
         cursor: not-allowed;
+        button {
+            cursor: not-allowed;
+        }
     }
     > span {
         width: 100%;
@@ -72,4 +85,19 @@ export const DropdownContentWrapper = styled.div`
     padding: ${(props) => props.theme.fow.spacing.medium};
     position: relative;
     margin-top: ${(props) => props.theme.fow.spacing.xsmall};
+`;
+
+export const ClearButtonWrapper = styled(Button)`
+    width: 16px !important;
+    height: 16px;
+    background: ${(props) => props.theme.fow.colors.error.transparent16};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: ${(props) => props.theme.fow.colors.error.dark};
+    &:hover {
+        color: ${(props) => props.theme.fow.colors.error.dark};
+        background: ${(props) => props.theme.fow.colors.error.transparent32};
+    }
 `;

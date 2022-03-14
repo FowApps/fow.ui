@@ -32,7 +32,7 @@ Default.args = {
     loader: false,
     noResultContent: 'Not Found',
     placeholder: 'Filter Name',
-    styleType: 'light',
+    variant: 'white',
     options: [
         {
             text: 'Label 1',
