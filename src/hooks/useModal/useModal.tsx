@@ -10,7 +10,7 @@ type ContextTypes = {
     };
 };
 
-export const ModalContext = createContext<ContextTypes>(null);
+export const ModalContext = createContext<ContextTypes>({} as ContextTypes);
 
 export const ModalContextProvider: React.FC = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);

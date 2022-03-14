@@ -2,7 +2,6 @@ import useModal from '../useModal';
 import useForm, { UseFormConfig } from '../useForm';
 
 export interface UseModalFormConfig extends UseFormConfig {
-    defaultOpen?: boolean;
     autoSubmitClose?: boolean;
     autoResetForm?: boolean;
 }
@@ -10,7 +9,6 @@ export interface UseModalFormConfig extends UseFormConfig {
 const useModalForm = (config: UseModalFormConfig) => {
     const modalFormConfig = config || ({} as UseModalFormConfig);
     const {
-        defaultOpen = false,
         autoSubmitClose = true,
         autoResetForm = true,
         submit,
@@ -18,9 +16,7 @@ const useModalForm = (config: UseModalFormConfig) => {
         initialValues,
     } = modalFormConfig;
 
-    const { isOpen, open, close, modalProps } = useModal({
-        defaultOpen,
-    });
+    const { isOpen, open, close } = useModal();
 
     const {
         form: formInstance,
@@ -39,7 +35,6 @@ const useModalForm = (config: UseModalFormConfig) => {
     });
 
     const modalFormProps = {
-        ...modalProps,
         maskClosable: !formLoading,
         onClose: () => {
             if (!formLoading) {
