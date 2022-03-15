@@ -120,7 +120,9 @@ const DatePicker = (
         if (value) {
             const date = moment(new Date(value));
             setVal(date);
+            return;
         }
+        setVal(undefined);
     }, [value]);
 
     return (

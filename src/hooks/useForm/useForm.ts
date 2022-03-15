@@ -5,7 +5,11 @@ import { useState, useEffect } from 'react';
 import Form from 'rc-field-form';
 
 export declare type StoreBaseValue = string | number | boolean;
-export declare type StoreValue = StoreBaseValue | Store | StoreBaseValue[];
+export declare type StoreValue =
+    | StoreBaseValue
+    | Store
+    | StoreBaseValue[]
+    | Store[];
 export interface Store {
     [name: string]: StoreValue;
 }

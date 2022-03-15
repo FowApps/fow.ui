@@ -1,9 +1,13 @@
 import React from 'react';
 
-const CheckOwl = () => (
+type Props = {
+    width?: number;
+};
+
+const CheckOwl = ({ width }: Props) => (
     <svg
-        width="174"
-        height="160"
+        width={width || 174}
+        height={width ? 'auto' : 160}
         viewBox="0 0 174 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">
