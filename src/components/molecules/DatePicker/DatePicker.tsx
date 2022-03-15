@@ -1,7 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+    forwardRef,
+    LegacyRef,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 import { useTheme } from 'styled-components';
 import moment, { Moment } from 'moment';
-import Picker from 'rc-picker';
+import Picker from 'rc-picker/es/Picker';
 import momentGenerateConfig from 'rc-picker/es/generate/moment';
 import 'rc-picker/assets/index.css';
 import en_US from 'rc-picker/lib/locale/en_US';
@@ -9,7 +15,7 @@ import tr_TR from 'rc-picker/lib/locale/tr_TR';
 import { DatePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
-import { Button } from '../../..';
+import Button from '../../atoms/Button';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
@@ -54,20 +60,27 @@ export interface DatePickerProps {
      */
     disabled?: boolean;
     placeholder?: string;
+    name?: string;
+    hasValidationError?: boolean;
 }
 
-const DatePicker = ({
-    picker = 'date',
-    showToday,
-    showTime = true,
-    use12Hours,
-    disableOptions,
-    onChange,
-    dateFormat = 'DD/MM/YYYY HH:mm:ss',
-    value,
-    disabled = false,
-    placeholder,
-}: DatePickerProps): JSX.Element => {
+const DatePicker = (
+    {
+        picker = 'date',
+        showToday,
+        showTime = true,
+        use12Hours,
+        disableOptions,
+        onChange,
+        dateFormat = 'DD/MM/YYYY HH:mm:ss',
+        value,
+        disabled = false,
+        placeholder,
+        name,
+        hasValidationError = false,
+    }: DatePickerProps,
+    ref: LegacyRef<Picker<Moment>>,
+): JSX.Element => {
     const theme = useTheme();
     const { language, timezone } = useContext(ConfigContext);
     const [val, setVal] = useState<Moment>();
@@ -111,10 +124,11 @@ const DatePicker = ({
     }, [value]);
 
     return (
-        <DatePickerWrapper>
+        <DatePickerWrapper name={name} hasValidationError={hasValidationError}>
             <TimePickerStyles />
             <Picker<Moment>
                 {...config}
+                ref={ref}
                 picker={picker}
                 suffixIcon={
                     <Icon
@@ -144,9 +158,11 @@ const DatePicker = ({
                     </Button>
                 }
                 format={dateFormat}
+                defaultValue={moment(val)}
                 value={val ? moment(val) : null}
+                name={name}
             />
         </DatePickerWrapper>
     );
 };
-export default DatePicker;
+export default forwardRef(DatePicker);

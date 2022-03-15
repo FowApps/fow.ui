@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, RefObject, useEffect, useState } from 'react';
 
 import Input, { InputProps } from '../Input';
 import Select, { Props as SelectProps } from '../Select';
@@ -40,6 +40,7 @@ export interface EmailProps {
      * select props
      */
     selectProps?: SelectProps;
+    name?: string;
     hasValidationError?: boolean;
 }
 
@@ -62,14 +63,18 @@ const defaultExtensions: Extension[] = [
     },
 ];
 
-const EmailInput = ({
-    value,
-    onChange,
-    extensions = defaultExtensions,
-    hasValidationError = false,
-    inputProps = {},
-    selectProps = {},
-}: EmailProps): JSX.Element => {
+const EmailInput = (
+    {
+        name,
+        value,
+        onChange,
+        extensions = defaultExtensions,
+        inputProps = {},
+        selectProps = {},
+        hasValidationError,
+    }: EmailProps,
+    ref: RefObject<HTMLInputElement>,
+): JSX.Element => {
     const [email, setEmail] = useState<string | undefined>(value || '');
     const [extension, setExtension] = useState<Extension['value']>('');
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
@@ -107,6 +112,8 @@ const EmailInput = ({
         <Space size="xxsmall" inline={false}>
             <InputWrapper>
                 <Input
+                    ref={ref}
+                    name={name}
                     type="text"
                     value={email}
                     onChange={handleChange}
@@ -125,7 +132,9 @@ const EmailInput = ({
                     hasValidationError={hasValidationError}
                     {...selectProps}>
                     {extensions.map((curr) => (
-                        <Option value={curr.value}>{curr.name}</Option>
+                        <Option key={curr.value} value={curr.value}>
+                            {curr.name}
+                        </Option>
                     ))}
                 </Select>
             </SelectWrapper>
@@ -133,4 +142,4 @@ const EmailInput = ({
     );
 };
 
-export default EmailInput;
+export default forwardRef(EmailInput);

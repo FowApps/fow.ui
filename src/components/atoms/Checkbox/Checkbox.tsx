@@ -82,6 +82,7 @@ export interface CheckboxGroupProps extends AbstractCheckboxGroupProps {
     value?: Array<CheckboxValueType>;
     onChange?: (checkedValue: Array<CheckboxValueType>) => void;
     direction?: 'vertical' | 'horizontal';
+    checked?: any[];
     children?: React.ReactNode;
 }
 
@@ -131,9 +132,9 @@ const Checkbox = ({
 
     return (
         <StyledLabel>
-            {label && (
+            {(label || children) && (
                 <LabelText level={2} disabled={checkboxProps.disabled}>
-                    {label}
+                    {label || children}
                 </LabelText>
             )}
             <StyledInput
@@ -158,7 +159,7 @@ const Group: React.ForwardRefRenderFunction<
     ref,
 ) => {
     const [value, setValue] = React.useState<CheckboxValueType[]>(
-        restProps.value || defaultValue || [],
+        restProps.value || restProps.checked || defaultValue || [],
     );
     const [registeredValues, setRegisteredValues] = React.useState<
         CheckboxValueType[]

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 type WrapperProps = {
     hasValidationError?: boolean;
     isFocused?: boolean;
+    name?: string;
 };
 
 export const Wrapper = styled.div<WrapperProps>`

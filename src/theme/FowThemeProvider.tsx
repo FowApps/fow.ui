@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from './theme';
@@ -43,33 +43,40 @@ const FowTheme = ({
     oldUITheme, // temporary old ui theme variables
     children,
     config = { language: 'tr', timezone: '+03:00' },
-}: FowThemeProps): JSX.Element => (
-    <ConfigContextProvider
-        value={{
-            language: config.language,
-            timezone: config.timezone,
-            location: config.location,
-        }}>
-        <ThemeProvider
-            theme={{
-                ...theme,
-                ...oldUITheme,
-                fow: {
-                    ...theme.fow,
-                    colors: {
-                        ...theme.fow.colors,
-                        primary: {
-                            ...(appPrimaryColors || theme.fow.colors.primary),
+}: FowThemeProps): JSX.Element => {
+    useEffect(() => {
+        localStorage.setItem('language', config.language);
+    }, [config.language]);
+
+    return (
+        <ConfigContextProvider
+            value={{
+                language: config.language,
+                timezone: config.timezone,
+                location: config.location,
+            }}>
+            <ThemeProvider
+                theme={{
+                    ...theme,
+                    ...oldUITheme,
+                    fow: {
+                        ...theme.fow,
+                        colors: {
+                            ...theme.fow.colors,
+                            primary: {
+                                ...(appPrimaryColors ||
+                                    theme.fow.colors.primary),
+                            },
                         },
                     },
-                },
-            }}>
-            <GlobalStyle />
-            <ToastContextProvider>
-                <ConfirmProvider>{children}</ConfirmProvider>
-            </ToastContextProvider>
-        </ThemeProvider>
-    </ConfigContextProvider>
-);
+                }}>
+                <GlobalStyle />
+                <ToastContextProvider>
+                    <ConfirmProvider>{children}</ConfirmProvider>
+                </ToastContextProvider>
+            </ThemeProvider>
+        </ConfigContextProvider>
+    );
+};
 
 export default FowTheme;

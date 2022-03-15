@@ -1,6 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-export const DatePickerWrapper = styled.div`
+type Wrapper = {
+    name?: string;
+    hasValidationError?: boolean;
+};
+
+export const DatePickerWrapper = styled.div<Wrapper>`
     display: block;
     .rc-picker {
         border: 1px solid transparent;
@@ -13,8 +18,11 @@ export const DatePickerWrapper = styled.div`
                     ${(props) => props.theme.fow.spacing.xxlarge};
                 width: 100%;
                 border: 1px solid
-                    ${(props) => props.theme.fow.colors.grey.transparent32};
-                border-radius: 8px;
+                    ${(props) =>
+                        props.hasValidationError
+                            ? props.theme.fow.colors.error.main
+                            : props.theme.fow.colors.grey.transparent32};
+                border-radius: 4px;
                 color: ${(props) => props.theme.fow.colors.text.secondary};
                 outline: none;
                 font-size: 1.4rem;
@@ -22,19 +30,25 @@ export const DatePickerWrapper = styled.div`
                 line-height: 2.4rem;
                 transition: all 0.3s ease;
                 height: 32px;
+
                 ::placeholder {
                     color: ${(props) => props.theme.fow.colors.text.disabled};
                 }
+
                 :hover:not(:disabled) {
                     border: 1px solid
                         ${(props) =>
-                            props.theme.fow.colors.primary.transparent48};
+                            props.hasValidationError
+                                ? props.theme.fow.colors.error.main
+                                : props.theme.fow.colors.error.transparent48};
                 }
 
                 :focus-visible:not(:disabled) {
                     border: 1px solid
                         ${(props) =>
-                            props.theme.fow.colors.primary.transparent48};
+                            props.hasValidationError
+                                ? props.theme.fow.colors.error.main
+                                : props.theme.fow.colors.primary.transparent48};
                     box-shadow: 0px 0px 0px 4px
                         ${(props) =>
                             props.theme.fow.colors.primary.transparent12};
