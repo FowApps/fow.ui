@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 // Vendors
-import Form, { useForm } from 'rc-field-form';
+import Form, { useForm, List } from 'rc-field-form';
 
 // Grid
 import Col from './components/atoms/Col';
@@ -69,6 +69,7 @@ export const FormSystem = {
     useForm,
     Builder: FormBuilder,
     BuilderConfig: FormConfig,
+    List,
 };
 
 // Molecules

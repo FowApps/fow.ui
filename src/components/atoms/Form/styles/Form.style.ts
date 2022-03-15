@@ -17,6 +17,7 @@ export const Label = styled.label<LabelProps>`
 export const Wrapper = styled.div`
     display: ${(props) => (props.hidden ? 'none' : 'block')};
     margin-bottom: ${(props) => props.theme.fow.spacing.small};
+    width: 100%;
 `;
 
 export const Text = styled.label<LabelProps>`
