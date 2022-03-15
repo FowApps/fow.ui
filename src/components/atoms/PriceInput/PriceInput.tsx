@@ -109,7 +109,9 @@ const PriceInput = ({
                     onChange={onCurrencyChange}
                     {...selectProps}>
                     {currencies.map((curr) => (
-                        <Option value={curr.value}>{curr.name}</Option>
+                        <Option key={curr.value} value={curr.value}>
+                            {curr.name}
+                        </Option>
                     ))}
                 </Select>
             </SelectWrapper>
