@@ -683,6 +683,7 @@ const Table = ({
                                         <Tr {...row.getRowProps()}>
                                             {row.cells.map((cell) => (
                                                 <Td
+                                                    title={cell.value}
                                                     isActionCell={
                                                         cell.column?.actionCell
                                                     }
