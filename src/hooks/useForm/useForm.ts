@@ -1,7 +1,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Form from 'rc-field-form';
 
 export declare type StoreBaseValue = string | number | boolean;
@@ -30,7 +30,7 @@ const useForm = (config: UseFormConfig) => {
     let formInstance = form;
     if (!form) [formInstance] = Form['useForm']();
 
-    const onFinish = useCallback((formValue: Store) => {
+    const onFinish = (formValue: Store) => {
         setFormValues(formValue);
         setFormLoading(true);
 
@@ -56,7 +56,7 @@ const useForm = (config: UseFormConfig) => {
                     reject(validateErr);
                 });
         });
-    }, []);
+    };
 
     useEffect(() => {
         let isUnMounted = false;

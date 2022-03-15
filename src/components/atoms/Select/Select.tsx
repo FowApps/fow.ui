@@ -1,10 +1,19 @@
 /* eslint-disable no-constant-condition */
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+    forwardRef,
+    LegacyRef,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 import RcSelect, {
     Option as RcOption,
     OptGroup as RcOptGroup,
     SelectProps,
 } from 'rc-select';
+import { OptionGroupFC } from 'rc-select/lib/OptGroup';
+import { OptionFC } from 'rc-select/lib/Option';
 
 import Icon from '../Icon';
 import Loader from '../Loader';
@@ -29,6 +38,7 @@ export interface Props extends SelectProps {
      */
     dependencies?: any;
     hasValidationError?: boolean;
+    name?: string;
 }
 
 export type OptionType = {
@@ -42,6 +52,14 @@ export type OptionType = {
     text: string;
 };
 
+export interface CompoundedComponent
+    extends React.ForwardRefExoticComponent<
+        Props & React.RefAttributes<HTMLInputElement>
+    > {
+    Option: OptionFC;
+    OptionGroup: OptionGroupFC;
+}
+
 const localization = {
     tr,
     en,
@@ -54,127 +72,137 @@ const NotFoundContent = ({ title }) => (
     </Space>
 );
 
-const Select = ({
-    loadOptions,
-    children,
-    loading: initialLoading,
-    notFoundContent,
-    maxTagTextLength = 30,
-    maxTagCount = 3,
-    showArrow = true,
-    size = 'medium',
-    dependencies,
-    hasValidationError,
-    ...rest
-}: Props) => {
-    const { language } = useContext(ConfigContext);
-    const [options, setOptions] = useState<OptionType[]>([]);
-    const [loading, setLoading] = useState<boolean>(
-        loadOptions ? true : !!initialLoading,
-    );
-    const [val, setVal] = useState(rest.value);
+const Select = forwardRef(
+    (
+        {
+            loadOptions,
+            children,
+            loading: initialLoading,
+            notFoundContent,
+            maxTagTextLength = 30,
+            maxTagCount = 3,
+            showArrow = true,
+            size = 'medium',
+            dependencies,
+            hasValidationError,
+            name,
+            ...rest
+        }: Props,
+        ref: LegacyRef<RcSelect<Props>>,
+    ) => {
+        const { language } = useContext(ConfigContext);
+        const [options, setOptions] = useState<OptionType[]>([]);
+        const [loading, setLoading] = useState<boolean>(
+            loadOptions ? true : !!initialLoading,
+        );
+        const [val, setVal] = useState(rest.value);
 
-    const handleLoadOptions = useCallback(async () => {
-        if (typeof loadOptions === 'function') {
-            setLoading(true);
-            const loadedOptions = await loadOptions();
-            setOptions(loadedOptions);
-            setLoading(false);
-        }
-    }, [loadOptions]);
+        const handleLoadOptions = useCallback(async () => {
+            if (typeof loadOptions === 'function') {
+                setLoading(true);
+                const loadedOptions = await loadOptions();
+                setOptions(loadedOptions);
+                setLoading(false);
+            }
+        }, [loadOptions]);
 
-    useEffect(() => {
-        if (dependencies?.length > 0) {
+        useEffect(() => {
+            if (dependencies?.length > 0) {
+                handleLoadOptions();
+            }
+        }, [dependencies, handleLoadOptions]);
+
+        useEffect(() => {
             handleLoadOptions();
-        }
-    }, [dependencies, handleLoadOptions]);
+        }, [handleLoadOptions]);
 
-    useEffect(() => {
-        handleLoadOptions();
-    }, [handleLoadOptions]);
+        useEffect(() => {
+            setVal(rest.value);
+        }, [rest.value]);
 
-    useEffect(() => {
-        setVal(rest.value);
-    }, [rest.value]);
+        useEffect(() => {
+            if (typeof loadOptions !== 'function') {
+                setLoading(!!initialLoading);
+            }
+        }, [initialLoading, loadOptions]);
 
-    useEffect(() => {
-        if (typeof loadOptions !== 'function') {
-            setLoading(!!initialLoading);
-        }
-    }, [initialLoading, loadOptions]);
+        const renderOptions = () => {
+            if (typeof loadOptions === 'function') {
+                return options.map((option) => (
+                    <Select.Option value={option.value} key={option.value}>
+                        {option.text}
+                    </Select.Option>
+                ));
+            }
+            return children;
+        };
 
-    const renderOptions = () => {
-        if (typeof loadOptions === 'function') {
-            return options.map((option) => (
-                <Select.Option value={option.value} key={option.value}>
-                    {option.text}
-                </Select.Option>
-            ));
-        }
-        return children;
-    };
+        const handleChange = useCallback((value, option) => {
+            setVal(value);
+            rest?.onChange?.(value, option);
+        }, []);
 
-    const handleChange = useCallback((value, option) => {
-        setVal(value);
-        rest?.onChange?.(value, option);
-    }, []);
-
-    return (
-        <Wrapper
-            title={rest.value?.toString()}
-            size={size}
-            hasValidationError={hasValidationError}>
-            <RcSelect
-                virtual={false}
-                notFoundContent={
-                    loading ? (
-                        <Loader
-                            height={150}
-                            isLoading
-                            text={localization[language].loading}
-                        />
-                    ) : (
-                        notFoundContent || (
-                            <NotFoundContent
-                                title={localization[language].noData}
+        return (
+            <Wrapper
+                name={name}
+                title={rest.value?.toString()}
+                size={size}
+                hasValidationError={hasValidationError}>
+                <RcSelect
+                    ref={ref}
+                    virtual={false}
+                    notFoundContent={
+                        loading ? (
+                            <Loader
+                                height={150}
+                                isLoading
+                                text={localization[language].loading}
+                            />
+                        ) : (
+                            notFoundContent || (
+                                <NotFoundContent
+                                    title={localization[language].noData}
+                                />
+                            )
+                        )
+                    }
+                    showArrow={showArrow}
+                    loading={loading}
+                    maxTagCount={maxTagCount}
+                    maxTagTextLength={maxTagTextLength}
+                    menuItemSelectedIcon={<Icon icon="check" />}
+                    clearIcon={<Icon icon="times-circle" />}
+                    removeIcon={
+                        <Icon icon="times-circle" size="xs" cursor="pointer" />
+                    }
+                    inputIcon={({ open }) =>
+                        loading ? (
+                            <LoaderWrapper>
+                                <Loader isLoading size="small" />
+                            </LoaderWrapper>
+                        ) : (
+                            <Icon
+                                style={{
+                                    transition: 'all 0.3s ease',
+                                    transform: open
+                                        ? 'rotate(180deg)'
+                                        : 'rotate(0)',
+                                }}
+                                icon="chevron-down"
                             />
                         )
-                    )
-                }
-                showArrow={showArrow}
-                loading={loading}
-                maxTagCount={maxTagCount}
-                maxTagTextLength={maxTagTextLength}
-                menuItemSelectedIcon={<Icon icon="check" />}
-                clearIcon={<Icon icon="times-circle" />}
-                removeIcon={
-                    <Icon icon="times-circle" size="xs" cursor="pointer" />
-                }
-                inputIcon={({ open }) =>
-                    loading ? (
-                        <LoaderWrapper>
-                            <Loader isLoading size="small" />
-                        </LoaderWrapper>
-                    ) : (
-                        <Icon
-                            style={{
-                                transition: 'all 0.3s ease',
-                                transform: open
-                                    ? 'rotate(180deg)'
-                                    : 'rotate(0)',
-                            }}
-                            icon="chevron-down"
-                        />
-                    )
-                }
-                {...rest}
-                onChange={handleChange}
-                value={options.length === 0 && !!loadOptions ? undefined : val}>
-                {renderOptions()}
-            </RcSelect>
-        </Wrapper>
-    );
-};
+                    }
+                    {...rest}
+                    onChange={handleChange}
+                    value={
+                        options.length === 0 && !!loadOptions ? undefined : val
+                    }>
+                    {renderOptions()}
+                </RcSelect>
+            </Wrapper>
+        );
+    },
+) as CompoundedComponent;
 
 const Option = RcOption;
 const OptionGroup = RcOptGroup;

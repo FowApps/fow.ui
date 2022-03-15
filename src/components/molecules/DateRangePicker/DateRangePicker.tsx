@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+    forwardRef,
+    LegacyRef,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 import { useTheme } from 'styled-components';
 import moment, { Moment } from 'moment';
 import RangePicker from 'rc-picker/es/RangePicker';
@@ -9,7 +15,7 @@ import en_US from 'rc-picker/lib/locale/en_US';
 import { DateRangePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
-import { Button } from '../../..';
+import Button from '../../atoms/Button';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
@@ -54,19 +60,26 @@ export interface RangePickerProps {
      */
     disabled?: boolean;
     placeholder?: [string, string];
+    name?: string;
+    hasValidationError?: boolean;
 }
 
-const DateRangePicker = ({
-    picker = 'date',
-    showTime = true,
-    use12Hours,
-    onChange,
-    dateFormat = 'DD/MM/YYYY HH:mm:ss',
-    seperator,
-    value,
-    disabled = false,
-    placeholder,
-}: RangePickerProps): JSX.Element => {
+const DateRangePicker = (
+    {
+        picker = 'date',
+        showTime = true,
+        use12Hours,
+        onChange,
+        dateFormat = 'DD/MM/YYYY HH:mm:ss',
+        seperator,
+        value,
+        disabled = false,
+        placeholder,
+        name,
+        hasValidationError = false,
+    }: RangePickerProps,
+    ref: LegacyRef<RangePicker<Moment>>,
+): JSX.Element => {
     const theme = useTheme();
     const { language, timezone } = useContext(ConfigContext);
     const [val, setVal] = useState<Moment[]>();
@@ -96,9 +109,12 @@ const DateRangePicker = ({
     }, [value]);
 
     return (
-        <DateRangePickerWrapper>
+        <DateRangePickerWrapper
+            name={name}
+            hasValidationError={hasValidationError}>
             <TimePickerStyles />
             <RangePicker<Moment>
+                ref={ref}
                 generateConfig={momentGenerateConfig}
                 onChange={handleChange}
                 picker={picker}
@@ -137,4 +153,4 @@ const DateRangePicker = ({
         </DateRangePickerWrapper>
     );
 };
-export default DateRangePicker;
+export default forwardRef(DateRangePicker);
