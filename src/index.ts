@@ -92,6 +92,7 @@ export { default as DateRangePicker } from './components/molecules/DateRangePick
 export { default as OverviewCard } from './components/molecules/OverviewCard';
 export { default as Editor } from './components/molecules/Editor';
 export { default as Section } from './components/molecules/Section';
+export { default as SelectV2 } from './components/molecules/SelectV2';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
