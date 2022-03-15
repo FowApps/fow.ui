@@ -1,6 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-export const DateRangePickerWrapper = styled.div`
+type Wrapper = {
+    name?: string;
+    hasValidationError?: boolean;
+};
+
+export const DateRangePickerWrapper = styled.div<Wrapper>`
     display: block;
     .rc-picker {
         border: 1px solid transparent;
@@ -20,7 +25,10 @@ export const DateRangePickerWrapper = styled.div`
                     ${(props) => props.theme.fow.spacing.xxlarge};
                 width: 100%;
                 border: 1px solid
-                    ${(props) => props.theme.fow.colors.grey.transparent32};
+                    ${(props) =>
+                        props.hasValidationError
+                            ? props.theme.fow.colors.error.main
+                            : props.theme.fow.colors.grey.transparent32};
                 border-radius: 4px;
                 color: ${(props) => props.theme.fow.colors.text.secondary};
                 outline: none;
@@ -35,13 +43,17 @@ export const DateRangePickerWrapper = styled.div`
                 :hover:not(:disabled) {
                     border: 1px solid
                         ${(props) =>
-                            props.theme.fow.colors.primary.transparent48};
+                            props.hasValidationError
+                                ? props.theme.fow.colors.error.main
+                                : props.theme.fow.colors.error.transparent48};
                 }
 
                 :focus-visible:not(:disabled) {
                     border: 1px solid
                         ${(props) =>
-                            props.theme.fow.colors.primary.transparent48};
+                            props.hasValidationError
+                                ? props.theme.fow.colors.error.main
+                                : props.theme.fow.colors.primary.transparent48};
                     box-shadow: 0px 0px 0px 4px
                         ${(props) =>
                             props.theme.fow.colors.primary.transparent12};

@@ -45,7 +45,7 @@ const Input = (
     }: InputProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
-    const [val, setVal] = useState(rest.value);
+    const [val, setVal] = useState(fixControlledValue(rest.value));
 
     const handleChange = (e) => {
         setVal(e.target.value);
@@ -68,6 +68,7 @@ const Input = (
                     value={val}
                     onChange={handleChange}
                     ref={ref}
+                    type="text"
                 />
                 {prefixIcon && (
                     <IconWrapper position="prefix">

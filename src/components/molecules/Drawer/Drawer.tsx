@@ -281,7 +281,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
         };
 
         const renderFooter = () => {
-            if (!footer && !onOk && !onClose) {
+            if (!footer && !onOk && !onCancel) {
                 return null;
             }
 
@@ -305,6 +305,7 @@ const Drawer = forwardRef<DrawerRef, DrawerProps>(
                         {onOk && (
                             <Button
                                 size="medium"
+                                color="success"
                                 onClick={() => {
                                     onOk?.();
                                 }}

@@ -8,6 +8,19 @@ type LabelProps = {
 export const Label = styled.label<LabelProps>`
     display: flex;
     margin-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
+
+    svg {
+        color: ${(props) => props.theme.fow.colors.text.secondary};
+    }
+`;
+
+export const Wrapper = styled.div`
+    display: ${(props) => (props.hidden ? 'none' : 'block')};
+    margin-bottom: ${(props) => props.theme.fow.spacing.small};
+`;
+
+export const Text = styled.label<LabelProps>`
+    display: flex;
     color: ${(props) =>
         props.hasValidationError
             ? props.theme.fow.colors.error.main
@@ -22,8 +35,4 @@ export const Label = styled.label<LabelProps>`
         margin-left: ${(props) => props.theme.fow.spacing.xxsmall};
         color: ${(props) => props.theme.fow.colors.error.main};
     }
-`;
-
-export const Wrapper = styled.div`
-    margin-bottom: ${(props) => props.theme.fow.spacing.small};
 `;
