@@ -1,4 +1,6 @@
 import React, {
+    forwardRef,
+    LegacyRef,
     useCallback,
     useContext,
     useEffect,
@@ -53,6 +55,7 @@ export type EditorProps = BraftEditorProps & {
     toolbarType?: 'simple' | 'complex';
     hasValidationError?: boolean;
     extraControls?: CustomControlType[];
+    name?: string;
 };
 
 type ControlTypeTypes = {
@@ -177,16 +180,20 @@ const CustomDropdownTool = ({ onClick, control }) => {
     );
 };
 
-const Editor = ({
-    onChange,
-    id = uuidv4(),
-    toolbarType = 'simple',
-    hasValidationError = false,
-    extraControls,
-    ...rest
-}: EditorProps): JSX.Element => {
+const Editor = (
+    {
+        onChange,
+        id = uuidv4(),
+        toolbarType = 'simple',
+        hasValidationError = false,
+        extraControls,
+        name,
+        ...rest
+    }: EditorProps,
+    ref: LegacyRef<BraftEditor>,
+): JSX.Element => {
     const { language } = useContext(ConfigContext);
-    const [editorState, setEditorState] = useState(
+    const [editorState, setEditorState] = useState<EditorState>(
         BraftEditor.createEditorState(rest?.value || rest?.defaultValue),
     );
     const [defaultValue, setDefaultValue] = useState(rest.defaultValue);
@@ -271,9 +278,13 @@ const Editor = ({
     }, [rest?.value, rest?.defaultValue, isDefaultValueSetted, isFocused]);
 
     return (
-        <Wrapper isFocused={isFocused} hasValidationError={hasValidationError}>
+        <Wrapper
+            isFocused={isFocused}
+            hasValidationError={hasValidationError}
+            name={name}>
             <BraftEditor
                 {...rest}
+                ref={ref}
                 value={editorState}
                 id={id}
                 editorId={id}
@@ -291,4 +302,4 @@ const Editor = ({
     );
 };
 
-export default Editor;
+export default forwardRef(Editor);

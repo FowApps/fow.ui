@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, RefObject, useEffect, useState } from 'react';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 import Input, { InputProps } from '../Input';
@@ -36,6 +36,10 @@ export interface URLInputProps {
      * select props
      */
     selectProps?: SelectProps;
+    /**
+     * name of input
+     */
+    name?: string;
     hasValidationError?: boolean;
 }
 
@@ -50,13 +54,17 @@ const protocols: Protocol[] = [
     },
 ];
 
-const URLInput = ({
-    value,
-    onChange,
-    hasValidationError = false,
-    inputProps = {},
-    selectProps = {},
-}: URLInputProps): JSX.Element => {
+const URLInput = (
+    {
+        value,
+        onChange,
+        inputProps = {},
+        selectProps = {},
+        name,
+        hasValidationError = false,
+    }: URLInputProps,
+    ref: RefObject<HTMLInputElement>,
+): JSX.Element => {
     const [urlName, setURLname] = useState<string | undefined>(value);
     const [protocol, setProtocol] = useState<Protocol['value']>(
         protocols[0].value,
@@ -120,12 +128,16 @@ const URLInput = ({
                     hasValidationError={hasValidationError}
                     {...selectProps}>
                     {protocols?.map((prot) => (
-                        <Option value={prot.value}>{prot.name}</Option>
+                        <Option value={prot.value} key={prot.value}>
+                            {prot.name}
+                        </Option>
                     ))}
                 </Select>
             </SelectWrapper>
             <InputWrapper>
                 <Input
+                    ref={ref}
+                    name={name}
                     type="text"
                     value={urlName}
                     onChange={handleChange}
@@ -137,4 +149,4 @@ const URLInput = ({
     );
 };
 
-export default URLInput;
+export default forwardRef(URLInput);

@@ -239,8 +239,8 @@ const Table = ({
                                 <Dropdown
                                     trigger="click"
                                     content={(close) => (
-                                        <ActionCard onClick={close}>
-                                            {renderAction(row.original)}
+                                        <ActionCard>
+                                            {renderAction(row.original, close)}
                                         </ActionCard>
                                     )}>
                                     {({ isOpen }) => (
