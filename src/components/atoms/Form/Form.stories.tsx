@@ -23,6 +23,7 @@ import Radio from '../Radio';
 import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
+import SelectV2 from '../../molecules/SelectV2/SelectV2';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
@@ -114,6 +115,20 @@ const Template: Story = () => {
 export const Default = Template.bind({});
 
 const UseFormTemplate: Story = () => {
+    const options = [
+        {
+            value: 1,
+            text: 'Option 1',
+        },
+        {
+            value: 2,
+            text: 'Option 2',
+        },
+        {
+            value: 3,
+            text: 'Option 3',
+        },
+    ];
     const [form] = Form.useForm();
     const { formProps, formLoading, defaultFormValuesLoading } = useForm({
         form,
@@ -129,6 +144,8 @@ const UseFormTemplate: Story = () => {
                     currency: '2',
                     number: 23,
                 },
+                singleSelect: options[0],
+                multiSelect: [options[0], options[1]],
                 emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
                 URLInput: 'https://www.test.com',
@@ -251,6 +268,18 @@ const UseFormTemplate: Story = () => {
                     name="textarea"
                     rules={[{ required: true, message: 'Required..' }]}>
                     <Textarea />
+                </FormField>
+                <FormField
+                    label="Single Select"
+                    name="singleSelect"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <SelectV2 options={options} />
+                </FormField>
+                <FormField
+                    label="Multi Select"
+                    name="multiSelect"
+                    rules={[{ required: true, message: 'Required..' }]}>
+                    <SelectV2.Multiple options={options} />
                 </FormField>
                 <Space>
                     <Button

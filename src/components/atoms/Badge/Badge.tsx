@@ -20,7 +20,7 @@ export interface BadgeProps {
      */
     size?: 'small' | 'medium' | 'large';
 
-    text: 'string';
+    text: string;
 }
 
 const Badge = ({
