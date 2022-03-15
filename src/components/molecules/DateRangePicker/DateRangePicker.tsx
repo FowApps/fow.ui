@@ -105,7 +105,9 @@ const DateRangePicker = (
             const momentStartDate = moment(new Date(value[0]));
             const momentEndDate = moment(new Date(value[1]));
             setVal([momentStartDate, momentEndDate]);
+            return;
         }
+        setVal(undefined);
     }, [value]);
 
     return (
