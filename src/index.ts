@@ -47,6 +47,8 @@ export { default as DiscountInput } from './components/atoms/DiscountInput';
 export { default as PriceInput } from './components/atoms/PriceInput';
 export { default as Textarea } from './components/atoms/TextArea';
 export { default as URLInput } from './components/atoms/URLInput';
+export { default as EmailInput } from './components/atoms/EmailInput';
+export { default as PhoneInput } from './components/atoms/PhoneInput';
 
 export const Typography = {
     Heading,
