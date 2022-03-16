@@ -26,6 +26,10 @@ export interface InputProps
      * handle change input value
      */
     onChange?: (value: string) => void;
+    /**
+     * input types
+     */
+    type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
 }
 
 function fixControlledValue<T>(value: T) {
@@ -41,6 +45,7 @@ const Input = (
         suffixIcon = undefined,
         disabled = false,
         hasValidationError = false,
+        type = 'text',
         ...rest
     }: InputProps,
     ref: RefObject<HTMLInputElement>,
@@ -68,7 +73,7 @@ const Input = (
                     value={val}
                     onChange={handleChange}
                     ref={ref}
-                    type="text"
+                    type={type}
                 />
                 {prefixIcon && (
                     <IconWrapper position="prefix">
