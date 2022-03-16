@@ -38,6 +38,8 @@ export interface DropdownProps {
      * initial open
      */
     initialOpen?: boolean;
+    width?: number;
+    disabled?: boolean;
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
 }
 let closeInterval;
@@ -51,14 +53,23 @@ const Dropdown = (
         onClose,
         children,
         initialOpen = false,
+        width,
+        disabled = false,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
     const { isOpen, close, toggle, open } = useDisclosure(initialOpen);
-
     return (
         <PositioningPortal
-            portalElement={<div style={{ zIndex: 802 }} />}
+            portalElement={
+                <div
+                    style={{
+                        zIndex: 802,
+                        minWidth: `${width}px` || '200px',
+                        width: `${width}px` || 'auto',
+                    }}
+                />
+            }
             isOpen={isOpen}
             onOpen={() => {
                 open();
@@ -86,13 +97,15 @@ const Dropdown = (
                         <Content
                             state={state}
                             onMouseEnter={() => {
-                                if (trigger === 'hover') {
+                                if (trigger === 'hover' && !disabled) {
                                     clearInterval(closeInterval);
                                     open();
                                 }
                             }}
                             onMouseLeave={
-                                trigger === 'hover' ? close : undefined
+                                trigger === 'hover' && !disabled
+                                    ? close
+                                    : undefined
                             }>
                             {typeof content === 'function'
                                 ? content(close)
@@ -104,10 +117,10 @@ const Dropdown = (
             <div
                 ref={ref}
                 onClick={() => {
-                    if (trigger === 'click') toggle();
+                    if (trigger === 'click' && !disabled) toggle();
                 }}
                 onMouseEnter={() => {
-                    if (trigger === 'hover') {
+                    if (trigger === 'hover' && !disabled) {
                         if (openInterval) {
                             clearInterval(openInterval);
                         }
@@ -117,7 +130,7 @@ const Dropdown = (
                     }
                 }}
                 onMouseLeave={() => {
-                    if (trigger === 'hover') {
+                    if (trigger === 'hover' && !disabled) {
                         clearInterval(openInterval);
                         closeInterval = setTimeout(() => {
                             close();

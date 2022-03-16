@@ -203,8 +203,9 @@ const Group = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                 });
             }
             return (
-                <div ref={ref}>
+                <div ref={ref} style={{ width: '100%' }}>
                     <Space
+                        style={{ width: '100%' }}
                         direction={props.direction}
                         align="start"
                         size={optionType === 'button' ? 'none' : 'small'}>

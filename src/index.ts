@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 // Vendors
-import Form, { useForm } from 'rc-field-form';
+import Form, { useForm, List } from 'rc-field-form';
 
 // Grid
 import Col from './components/atoms/Col';
@@ -69,6 +69,7 @@ export const FormSystem = {
     useForm,
     Builder: FormBuilder,
     BuilderConfig: FormConfig,
+    List,
 };
 
 // Molecules
@@ -92,6 +93,7 @@ export { default as DateRangePicker } from './components/molecules/DateRangePick
 export { default as OverviewCard } from './components/molecules/OverviewCard';
 export { default as Editor } from './components/molecules/Editor';
 export { default as Section } from './components/molecules/Section';
+export { default as SelectV2 } from './components/molecules/SelectV2';
 
 // Extras
 export { default as Navigation } from './components/molecules/Navigation';
