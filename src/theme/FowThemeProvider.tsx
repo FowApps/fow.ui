@@ -5,6 +5,7 @@ import { theme } from './theme';
 import GlobalStyle from './global-style';
 import ToastContextProvider from '../components/molecules/Toast/ToastProvider';
 import { ConfirmProvider } from '../components/molecules/Confirm/ConfirmContext';
+import { ModalContextProvider } from '../hooks/useModal/useModal';
 
 export interface PrimaryColorTypes {
     darker: string;
@@ -71,9 +72,11 @@ const FowTheme = ({
                     },
                 }}>
                 <GlobalStyle />
-                <ToastContextProvider>
-                    <ConfirmProvider>{children}</ConfirmProvider>
-                </ToastContextProvider>
+                <ModalContextProvider>
+                    <ToastContextProvider>
+                        <ConfirmProvider>{children}</ConfirmProvider>
+                    </ToastContextProvider>
+                </ModalContextProvider>
             </ThemeProvider>
         </ConfigContextProvider>
     );

@@ -109,6 +109,7 @@ export { default as useForm } from './hooks/useForm';
 export { default as useDrawer } from './hooks/useDrawer';
 export { default as useDrawerForm } from './hooks/useDrawerForm';
 export { default as useConfirm } from './hooks/useConfirm';
+export { default as useModal } from './hooks/useModal';
 
 // Providers
 export { FowThemeProvider } from './theme';
