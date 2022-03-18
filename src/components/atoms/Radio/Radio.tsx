@@ -57,6 +57,10 @@ export interface RadioProps {
      * radio button option type
      */
     optionType?: 'button' | 'radio';
+    /**
+     * show only label
+     */
+    onlyLabel?: boolean;
 }
 
 export interface RadioGroupProps extends RadioProps {
@@ -98,6 +102,7 @@ const RadioGroupContextProvider = RadioGroupContext.Provider;
 const Radio = ({
     label = '',
     optionType = 'radio',
+    onlyLabel = false,
     ...rest
 }: RadioProps): JSX.Element => {
     const context = useContext(RadioGroupContext);
@@ -128,10 +133,12 @@ const Radio = ({
                 disabled={rest.disabled}
                 {...radioProps}
             />
-            <MarkBox>
-                <Mark />
-                <HoverCircle />
-            </MarkBox>
+            {!onlyLabel && (
+                <MarkBox>
+                    <Mark />
+                    <HoverCircle />
+                </MarkBox>
+            )}
         </StyledLabel>
     ) : (
         <StyledRadioButton>

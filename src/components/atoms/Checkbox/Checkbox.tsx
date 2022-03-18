@@ -42,6 +42,10 @@ export interface CheckboxProps {
      * color sheme of checkbox
      */
     color?: 'primary' | 'grey';
+    /**
+     * show only label
+     */
+    onlyLabel?: boolean;
 }
 
 export interface CheckboxChangeEventTarget extends CheckboxProps {
@@ -93,6 +97,7 @@ export const GroupContext = React.createContext<CheckboxGroupContext | null>(
 const Checkbox = ({
     label = '',
     color = 'primary',
+    onlyLabel = false,
     children,
     ...rest
 }: CheckboxProps): JSX.Element => {
@@ -143,10 +148,12 @@ const Checkbox = ({
                 disabled={checkboxProps.disabled}
                 color={color}
             />
-            <MarkBox>
-                <HoverCircle />
-                <Mark icon="check" color="white" size="xs" />
-            </MarkBox>
+            {!onlyLabel && (
+                <MarkBox>
+                    <HoverCircle />
+                    <Mark icon="check" color="white" size="xs" />
+                </MarkBox>
+            )}
         </StyledLabel>
     );
 };
