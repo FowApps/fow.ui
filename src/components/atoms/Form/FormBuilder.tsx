@@ -58,6 +58,18 @@ type Config = {
     fields: Field[];
     name?: string;
     id?: string;
+    currencyList?: Currency[];
+};
+
+type Currency = {
+    /**
+     * value of currency
+     */
+    value: string;
+    /**
+     * name of currency
+     */
+    name: string;
 };
 
 export interface FormBuilderProps {
@@ -79,6 +91,7 @@ const FormBuilder = ({
         fields: [],
         name: undefined,
         id: undefined,
+        currencyList: [],
     },
 }: FormBuilderProps) => {
     const [formRef] = useForm(formInstance);
@@ -121,6 +134,15 @@ const FormBuilder = ({
 
     const calculatedProps = (field: Field) => {
         switch (field.type) {
+            case 'price':
+                return {
+                    setFormFieldValue: (value: string) => {
+                        formRef.setFieldsValue({
+                            currencyId: value,
+                        });
+                    },
+                    currencies: config.currencyList,
+                };
             case 'checkbox':
                 return {
                     children: field.label,
@@ -191,6 +213,7 @@ const FormBuilder = ({
                     type={field.type}
                     name={field.name}
                     label={getLabelProp(field)}
+                    hidden={field.hidden}
                     rules={[
                         {
                             required: field.required,

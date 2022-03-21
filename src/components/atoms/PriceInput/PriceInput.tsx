@@ -41,7 +41,7 @@ export interface PriceInputProps {
     /**
      * handle change value
      */
-    onChange?: (value: PriceValue) => void;
+    onChange?: (value?: PriceValue | number) => void;
     /**
      * props of input
      */
@@ -50,25 +50,31 @@ export interface PriceInputProps {
      * select props
      */
     selectProps?: SelectProps;
+    setFormFieldValue?: (fieldValue: string) => void;
 }
 
 const PriceInput = ({
     value = {},
     onChange,
-    currencies,
+    currencies = [],
     inputProps = {},
     selectProps = {},
+    setFormFieldValue,
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>();
     const [currency, setCurrency] = useState<Currency['value']>(
-        currencies[0].value,
+        currencies?.[0]?.value || '',
     );
 
     const triggerChange = (changedValue: {
         number?: number;
         currency?: Currency['value'];
     }) => {
-        onChange?.({ number, currency, ...value, ...changedValue });
+        if (setFormFieldValue) {
+            onChange?.(number);
+        } else {
+            onChange?.({ number, currency, ...value, ...changedValue });
+        }
     };
 
     const onNumberChange = (val: any) => {
@@ -86,6 +92,7 @@ const PriceInput = ({
         if (!('currency' in value)) {
             setCurrency(newCurrency);
         }
+        setFormFieldValue?.(newCurrency);
         triggerChange({ currency: newCurrency });
     };
 
@@ -108,7 +115,7 @@ const PriceInput = ({
                     style={{ width: 150 }}
                     onChange={onCurrencyChange}
                     {...selectProps}>
-                    {currencies.map((curr) => (
+                    {currencies?.map((curr) => (
                         <Option key={curr.value} value={curr.value}>
                             {curr.name}
                         </Option>

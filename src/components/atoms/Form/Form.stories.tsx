@@ -314,14 +314,23 @@ const FormBuilderTemplate: Story = () => {
     const [formInstance] = Form.useForm();
     const [onlyMandatory, setOnlyMandatory] = useState(false);
     const builderConfig = {
+        currencyList: [{
+            value: '1aa008ba-2ba9-49b2-804b-d7e4b4d2d09a',
+            name: 'TRY'
+        }],
         name: 'test',
         id: 'storyform',
         fields: [
             {
+                key: 'price',
+                name: 'estimatedAmount',
+                label: 'Estimated Amount',
+                type: 'price',
+            },
+            {
                 key: 'phone',
                 name: 'phone',
                 label: 'Phone',
-                required: true,
                 type: 'phone',
                 hint: 'Hello Africa',
             },
@@ -329,7 +338,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'firstName',
                 name: 'firstName',
                 label: 'First Name',
-                required: true,
                 type: 'text',
                 hint: 'Hello Africa',
             },
@@ -337,7 +345,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'start-date-time',
                 name: 'startDateTime',
                 label: 'Start Date and Time',
-                required: true,
                 type: 'date-time',
                 hint: 'Hello Africa',
             },
@@ -345,7 +352,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'description',
                 name: 'description',
                 label: 'Description',
-                required: true,
                 type: 'textarea',
                 hint: 'Hello Africa',
             },
@@ -353,7 +359,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'email',
                 name: 'email',
                 label: 'Email',
-                required: true,
                 type: 'email',
                 hint: 'Hello Africa',
             },
@@ -362,7 +367,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'end-date-time-range',
                 name: 'endDateTime',
                 label: 'Start/End Date and Time',
-                required: true,
                 type: 'date-time-range',
                 hint: 'Hello Africa',
             },
@@ -370,7 +374,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'start-date',
                 name: 'startDate',
                 label: 'Start Date',
-                required: true,
                 type: 'date',
                 hint: 'Hello Africa',
             },
@@ -378,7 +381,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'end-date',
                 name: 'endDate',
                 label: 'End Date',
-                required: true,
                 type: 'date-range',
                 hint: 'Hello Africa',
             },
@@ -386,7 +388,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'website',
                 name: 'website',
                 label: 'Website',
-                required: true,
                 type: 'url',
                 hint: 'Hello Africa',
             },
@@ -394,7 +395,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'count',
                 name: 'count',
                 label: 'Count',
-                required: false,
                 type: 'number',
                 hint: 'Hello Africa',
             },
@@ -402,7 +402,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'collection',
                 name: 'collection',
                 label: 'Collection',
-                required: false,
                 type: 'multiple-select',
                 options: [
                     {
@@ -419,7 +418,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'gender',
                 name: 'gender',
                 label: 'Gender',
-                required: false,
                 type: 'single-select',
                 options: [
                     {
@@ -437,7 +435,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'include-tax',
                 name: 'includeTax',
                 label: 'Include Tax',
-                required: false,
                 type: 'checkbox',
                 hint: 'Hello Africa',
             },
@@ -445,7 +442,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'select-items',
                 name: 'selectedItemIds',
                 label: 'Select Items',
-                required: false,
                 type: 'checkbox-group',
                 options: [
                     {
@@ -466,7 +462,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'select-one-items',
                 name: 'selectedItemId',
                 label: 'Select One Item',
-                required: false,
                 type: 'radio-group',
                 options: [
                     {
@@ -483,9 +478,15 @@ const FormBuilderTemplate: Story = () => {
                 key: 'template',
                 name: 'template',
                 label: 'Template',
-                required: true,
                 type: 'rich-textarea',
                 hint: 'Hello Africa',
+            },
+            {
+                key: 'currencyId',
+                name: 'currencyId',
+                label: 'currencyId',
+                type: 'text',
+                hidden: true,
             },
         ],
     };

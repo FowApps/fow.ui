@@ -17,6 +17,7 @@ import Editor from '../../molecules/Editor';
 import DatePicker from '../../molecules/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PhoneInput from '../PhoneInput';
+import PriceInput from '../PriceInput';
 
 type Field = {
     field: any;
@@ -129,6 +130,10 @@ const localization = { tr, en };
         {
             type: 'date-time-range',
             field: DateRangePicker,
+        },
+        {
+            type: 'price',
+            field: PriceInput,
         },
     ];
 
