@@ -53,6 +53,7 @@ type Field = {
     initialVisibleField?: boolean;
     props?: any;
     hidden?: boolean;
+    dependencies?: string[];
 };
 
 type Config = {
@@ -226,7 +227,8 @@ const FormBuilder = ({
                         ...(field.rules ? field.rules : []),
                     ]}
                     hint={field.hint}
-                    initialVisibleField={getinitialVisibleFieldProp(field)}>
+                    initialVisibleField={getinitialVisibleFieldProp(field)}
+                    dependencies={field.dependencies}>
                     <FieldComponent
                         key={field.key}
                         placeholder={getPlaceholderProp(field)}

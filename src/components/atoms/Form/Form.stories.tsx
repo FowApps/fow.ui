@@ -81,7 +81,7 @@ const Template: Story = () => {
                             name="name"
                             label="Name"
                             rules={[
-                                { required: true, message: 'Zorunlu alan' },
+                                { required: false, message: 'Zorunlu alan' },
                             ]}>
                             <Input placeholder="Name" />
                         </FormField>
@@ -91,7 +91,7 @@ const Template: Story = () => {
                             name="sname"
                             label="Surname"
                             rules={[
-                                { required: true, message: 'Zorunlu alan' },
+                                { required: false, message: 'Zorunlu alan' },
                             ]}>
                             <Input placeholder="sname" />
                         </FormField>
@@ -170,20 +170,20 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Hook Name"
                     name="hook"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
                 </FormField>
                 <FormField
                     label="Phone"
                     name="phone"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <PhoneInput />
                 </FormField>
                 <FormField
                     label="URL Input"
                     name="URLInput"
                     rules={[
-                        { required: true, message: 'Required..' },
+                        { required: false, message: 'Required..' },
                         {
                             type: 'url',
                             message: 'invalid url',
@@ -195,7 +195,7 @@ const UseFormTemplate: Story = () => {
                     label="Email Input"
                     name="emailInput"
                     rules={[
-                        { required: true, message: 'Required..' },
+                        { required: false, message: 'Required..' },
                         {
                             type: 'email',
                             message: 'invalid email',
@@ -218,7 +218,7 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Final Amount"
                     name="finalAmount"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <PriceInput
                         inputProps={{
                             placeholder: 'Currency',
@@ -238,7 +238,7 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Hooks"
                     name="hooks"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Select
                         placeholder="Hooks"
                         mode="tags"
@@ -258,31 +258,31 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Description"
                     name="description"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Editor id="description" />
                 </FormField>
                 <FormField
                     label="Summary"
                     name="summary"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Editor id="summary" placeholder="Summary" />
                 </FormField>
                 <FormField
                     label="Textarea"
                     name="textarea"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Textarea />
                 </FormField>
                 <FormField
                     label="Single Select"
                     name="singleSelect"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <SelectV2 options={options} />
                 </FormField>
                 <FormField
                     label="Multi Select"
                     name="multiSelect"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <SelectV2.Multiple options={options} />
                 </FormField>
                 <Space>
@@ -310,14 +310,29 @@ FormConfig.fields.addField([
     },
 ]);
 
+const names = [
+    {
+        gender: 'female',
+        label: 'Ayşe',
+        value: 'ayşe',
+    },
+    {
+        gender: 'male',
+        label: 'Ahmet',
+        value: 'ahmet',
+    },
+];
+
 const FormBuilderTemplate: Story = () => {
     const [formInstance] = Form.useForm();
     const [onlyMandatory, setOnlyMandatory] = useState(false);
     const builderConfig = {
-        currencyList: [{
-            value: '1aa008ba-2ba9-49b2-804b-d7e4b4d2d09a',
-            name: 'TRY'
-        }],
+        currencyList: [
+            {
+                value: '1aa008ba-2ba9-49b2-804b-d7e4b4d2d09a',
+                name: 'TRY',
+            },
+        ],
         name: 'test',
         id: 'storyform',
         fields: [
@@ -430,7 +445,13 @@ const FormBuilderTemplate: Story = () => {
                     },
                 ],
             },
-
+            {
+                key: 'names',
+                name: 'names',
+                label: 'Names',
+                type: 'single-select',
+                options: names,
+            },
             {
                 key: 'include-tax',
                 name: 'includeTax',

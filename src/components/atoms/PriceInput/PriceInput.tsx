@@ -88,16 +88,12 @@ const PriceInput = ({
         if (Number.isNaN(number)) {
             return;
         }
-        if (typeof value === 'object' && !('number' in value)) {
-            setNumber(newNumber);
-        }
+        setNumber(newNumber);
         triggerChange({ number: newNumber });
     };
 
     const onCurrencyChange = (newCurrency: any) => {
-        if (typeof value === 'object' && !('currency' in value)) {
-            setCurrency(newCurrency);
-        }
+        setCurrency(newCurrency);
         setFormFieldValue?.(newCurrency);
         triggerChange({ currency: newCurrency });
     };
