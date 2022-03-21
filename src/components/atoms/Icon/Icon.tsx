@@ -24,7 +24,9 @@ type FowIconsType =
     | 'fow-academy'
     | 'fow-book'
     | 'fow-info'
-    | 'fow-cog';
+    | 'fow-cog'
+    | 'fow-office'
+    | 'fow-google';
 // @ts-ignore
 export interface IconProps extends FontAwesomeIconProps {
     icon: FontAwesomeIconProps['icon'] | FowIconsType;
