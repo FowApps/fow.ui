@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useMemo } from 'react';
+import React, { Suspense, useCallback, useContext, useMemo } from 'react';
 import Form, { useForm, FormInstance } from 'rc-field-form';
 import { Rule } from 'rc-field-form/lib/interface';
 
@@ -66,6 +66,7 @@ export interface FormBuilderProps {
     onSubmit: (values: any) => void;
     config: Config;
     showOnlyMandatory?: boolean;
+    onValuesChange?: (value: any, values: any) => void;
 }
 
 const FormBuilder = ({
@@ -73,6 +74,7 @@ const FormBuilder = ({
     formInstance,
     onSubmit,
     showOnlyMandatory = false,
+    onValuesChange,
     config = {
         fields: [],
         name: undefined,
@@ -164,7 +166,8 @@ const FormBuilder = ({
         }
     };
 
-    const renderField = (field: Field, idx: number) => {
+    let focused = false;
+    const renderField = useCallback((field: Field) => {
         const fieldComponent = field.component
             ? field.component
             : FormConfig.fields.getFields()[field.type]?.component;
@@ -204,7 +207,8 @@ const FormBuilder = ({
                         key={field.key}
                         placeholder={getPlaceholderProp(field)}
                         ref={(ref: any) => {
-                            if (idx === 0 && ref) {
+                            if (ref && !ref.value && !focused) {
+                                focused = true;
                                 setTimeout(() => {
                                     if (typeof ref.focus === 'function') {
                                         ref.focus();
@@ -220,13 +224,13 @@ const FormBuilder = ({
                 </FormField>
             </Col>
         );
-    };
+    }, []);
 
     const fields = showOnlyMandatory
         ? config.fields
               .filter((field) => field.required)
-              .map((field, idx) => renderField(field, idx))
-        : config.fields.map((field, idx) => renderField(field, idx));
+              .map((field) => renderField(field))
+        : config.fields.map((field) => renderField(field));
 
     return (
         <div>
@@ -234,6 +238,7 @@ const FormBuilder = ({
                 id={config.id || formId}
                 name={config.name}
                 form={formRef}
+                onValuesChange={onValuesChange}
                 onFinishFailed={({ errorFields }) => {
                     const name = errorFields[0].name[0];
                     const input = document.querySelector(

@@ -19,8 +19,8 @@ export const ModalContextProvider: React.FC = ({ children }) => {
     const open = useCallback((e) => {
         setIsOpen(true);
         setMousePosition({
-            x: e.pageX,
-            y: e.pageY,
+            x: e?.pageX,
+            y: e?.pageY,
         });
     }, []);
 
