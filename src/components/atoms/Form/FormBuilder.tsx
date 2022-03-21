@@ -52,6 +52,7 @@ type Field = {
     valueProp?: 'value' | 'checked' | 'select' | string;
     initialVisibleField?: boolean;
     props?: any;
+    hidden?: boolean;
 };
 
 type Config = {
