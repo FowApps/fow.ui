@@ -5,6 +5,14 @@ import Input, { InputProps } from './Input';
 
 export default {
     title: 'Atoms/Input',
+    argTypes: {
+        type: {
+            control: {
+                type: 'select',
+            },
+            options: ['text', 'password', 'email', 'number', 'tel', 'url'],
+        },
+    },
     component: Input,
 } as Meta;
 
