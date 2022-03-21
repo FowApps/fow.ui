@@ -63,8 +63,6 @@ type ControlTypeTypes = {
     complex: ControlType[];
 };
 
-const EMPTY_TAG = '<p></p>';
-
 const languageFn = (languages: any, language: IConfig['language']) => {
     const extendedLanguageConfig = {
         ...languages,
@@ -202,8 +200,9 @@ const Editor = (
 
     const handleChange = (currState: EditorState) => {
         const html = currState.toHTML();
-
-        if (html === EMPTY_TAG) {
+        const regex = /(<([^>]+)>)/gi;
+        const trimmedHtml = html?.replace(regex, '');
+        if (trimmedHtml.length === 0) {
             onChange?.(undefined);
             setEditorState(currState);
         } else {

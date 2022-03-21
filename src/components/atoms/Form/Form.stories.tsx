@@ -46,6 +46,37 @@ const Template: Story = () => {
                 <Row>
                     <Col xs={6}>
                         <FormField
+                            preserve
+                            hint="Please type your fullname"
+                            name="email"
+                            label="Email"
+                            rules={[
+                                {
+                                    type: 'email',
+                                    message: 'Invalid Address',
+                                },
+                            ]}>
+                            <EmailInput />
+                        </FormField>
+                    </Col>
+                    <Col xs={6}>
+                        <FormField
+                            preserve
+                            hint="Please type your fullname"
+                            name="url"
+                            label="Website"
+                            rules={[
+                                {
+                                    type: 'url',
+                                    message: 'Invalid Address',
+                                },
+                            ]}>
+                            <URLInput />
+                        </FormField>
+                    </Col>
+                    <Col xs={6}>
+                        <FormField
+                            preserve
                             hint="Please type your fullname"
                             name="name"
                             label="Name"
@@ -63,33 +94,6 @@ const Template: Story = () => {
                                 { required: true, message: 'Zorunlu alan' },
                             ]}>
                             <Input placeholder="sname" />
-                        </FormField>
-                    </Col>
-                    <Col xs={6}>
-                        <FormField
-                            hidden
-                            valuePropName="checked"
-                            name="sw"
-                            label="Switch">
-                            <Switch />
-                        </FormField>
-                    </Col>
-                    <Col xs={12}>
-                        <FormField
-                            name="file"
-                            label="File"
-                            valuePropName="files">
-                            <Upload multiple={false} accept=".zip" />
-                        </FormField>
-                    </Col>
-                    <Col xs={12}>
-                        <FormField
-                            name="labels"
-                            label="Labels"
-                            rules={[
-                                { required: true, message: 'Zorunlu alan' },
-                            ]}>
-                            <LabelInput />
                         </FormField>
                     </Col>
                 </Row>

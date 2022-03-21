@@ -206,6 +206,9 @@ const FormBuilder = ({
                     <FieldComponent
                         key={field.key}
                         placeholder={getPlaceholderProp(field)}
+                        inputProps={{
+                            placeholder: getPlaceholderProp(field),
+                        }}
                         ref={(ref: any) => {
                             if (ref && !ref.value && !focused) {
                                 focused = true;
