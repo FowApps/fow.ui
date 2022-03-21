@@ -100,6 +100,7 @@ const URLInput = (
     }, [value]);
 
     const triggerChange = () => {
+        if (!urlName) return;
         const mergedUrl = `${protocol}${urlName}`;
         onChange?.(mergedUrl);
     };
