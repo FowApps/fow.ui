@@ -87,7 +87,7 @@
         "@storybook/storybook-deployer": "^2.8.10",
         "@types/enzyme": "^3.10.11",
         "@types/jest": "^27.4.1",
-        "@types/react": "^17.0.40",
+        "@types/react": "^17.0.42",
         "@types/react-beautiful-dnd": "^13.1.2",
         "@types/react-dnd-multi-backend": "^6.0.1",
         "@types/react-dom": "^17.0.13",
