@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useMemo } from 'react';
+import React, { Suspense, useCallback, useContext, useMemo } from 'react';
 import Form, { useForm, FormInstance } from 'rc-field-form';
 import { Rule } from 'rc-field-form/lib/interface';
 
@@ -52,12 +52,26 @@ type Field = {
     valueProp?: 'value' | 'checked' | 'select' | string;
     initialVisibleField?: boolean;
     props?: any;
+    hidden?: boolean;
+    dependencies?: string[];
 };
 
 type Config = {
     fields: Field[];
     name?: string;
     id?: string;
+    currencyList?: Currency[];
+};
+
+type Currency = {
+    /**
+     * value of currency
+     */
+    value: string;
+    /**
+     * name of currency
+     */
+    name: string;
 };
 
 export interface FormBuilderProps {
@@ -66,6 +80,7 @@ export interface FormBuilderProps {
     onSubmit: (values: any) => void;
     config: Config;
     showOnlyMandatory?: boolean;
+    onValuesChange?: (value: any, values: any) => void;
 }
 
 const FormBuilder = ({
@@ -73,10 +88,12 @@ const FormBuilder = ({
     formInstance,
     onSubmit,
     showOnlyMandatory = false,
+    onValuesChange,
     config = {
         fields: [],
         name: undefined,
         id: undefined,
+        currencyList: [],
     },
 }: FormBuilderProps) => {
     const [formRef] = useForm(formInstance);
@@ -119,6 +136,15 @@ const FormBuilder = ({
 
     const calculatedProps = (field: Field) => {
         switch (field.type) {
+            case 'price':
+                return {
+                    setFormFieldValue: (value: string) => {
+                        formRef.setFieldsValue({
+                            currencyId: value,
+                        });
+                    },
+                    currencies: config.currencyList,
+                };
             case 'checkbox':
                 return {
                     children: field.label,
@@ -164,7 +190,8 @@ const FormBuilder = ({
         }
     };
 
-    const renderField = (field: Field, idx: number) => {
+    let focused = false;
+    const renderField = useCallback((field: Field) => {
         const fieldComponent = field.component
             ? field.component
             : FormConfig.fields.getFields()[field.type]?.component;
@@ -188,6 +215,7 @@ const FormBuilder = ({
                     type={field.type}
                     name={field.name}
                     label={getLabelProp(field)}
+                    hidden={field.hidden}
                     rules={[
                         {
                             required: field.required,
@@ -199,12 +227,17 @@ const FormBuilder = ({
                         ...(field.rules ? field.rules : []),
                     ]}
                     hint={field.hint}
-                    initialVisibleField={getinitialVisibleFieldProp(field)}>
+                    initialVisibleField={getinitialVisibleFieldProp(field)}
+                    dependencies={field.dependencies}>
                     <FieldComponent
                         key={field.key}
                         placeholder={getPlaceholderProp(field)}
+                        inputProps={{
+                            placeholder: getPlaceholderProp(field),
+                        }}
                         ref={(ref: any) => {
-                            if (idx === 0 && ref) {
+                            if (ref && !ref.value && !focused) {
+                                focused = true;
                                 setTimeout(() => {
                                     if (typeof ref.focus === 'function') {
                                         ref.focus();
@@ -220,13 +253,13 @@ const FormBuilder = ({
                 </FormField>
             </Col>
         );
-    };
+    }, []);
 
     const fields = showOnlyMandatory
         ? config.fields
               .filter((field) => field.required)
-              .map((field, idx) => renderField(field, idx))
-        : config.fields.map((field, idx) => renderField(field, idx));
+              .map((field) => renderField(field))
+        : config.fields.map((field) => renderField(field));
 
     return (
         <div>
@@ -234,6 +267,7 @@ const FormBuilder = ({
                 id={config.id || formId}
                 name={config.name}
                 form={formRef}
+                onValuesChange={onValuesChange}
                 onFinishFailed={({ errorFields }) => {
                     const name = errorFields[0].name[0];
                     const input = document.querySelector(

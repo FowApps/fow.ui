@@ -64,8 +64,6 @@ type ControlTypeTypes = {
     complex: ControlType[] | BuiltInControlType[];
 };
 
-const EMPTY_TAG = '<p></p>';
-
 const fontFamilies = [
     {
         name: 'Arial',
@@ -228,8 +226,9 @@ const Editor = (
 
     const handleChange = (currState: EditorState) => {
         const html = currState.toHTML();
-
-        if (html === EMPTY_TAG) {
+        const regex = /(<([^>]+)>)/gi;
+        const trimmedHtml = html?.replace(regex, '');
+        if (trimmedHtml.length === 0) {
             onChange?.(undefined);
             setEditorState(currState);
         } else {

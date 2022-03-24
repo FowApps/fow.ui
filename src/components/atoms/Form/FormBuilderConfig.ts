@@ -17,6 +17,7 @@ import Editor from '../../molecules/Editor';
 import DatePicker from '../../molecules/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PhoneInput from '../PhoneInput';
+import PriceInput from '../PriceInput';
 
 type Field = {
     field: any;
@@ -69,7 +70,9 @@ const localization = { tr, en };
             field: URLInput,
             predefineRules: [
                 {
-                    type: 'url',
+                    pattern: new RegExp(
+                        /[(http(s)?)://(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/g,
+                    ),
                     message: localization[lang].invalidUrl,
                 },
             ],
@@ -79,7 +82,7 @@ const localization = { tr, en };
             field: EmailInput,
             predefineRules: [
                 {
-                    type: 'email',
+                    pattern: new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g),
                     message: localization[lang].invalidEmail,
                 },
             ],
@@ -127,6 +130,10 @@ const localization = { tr, en };
         {
             type: 'date-time-range',
             field: DateRangePicker,
+        },
+        {
+            type: 'price',
+            field: PriceInput,
         },
     ];
 

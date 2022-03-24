@@ -37,6 +37,7 @@ export interface DropdownProps {
     /**
      * initial open
      */
+    closeAfterClickContent?: boolean;
     initialOpen?: boolean;
     width?: number;
     disabled?: boolean;
@@ -55,6 +56,7 @@ const Dropdown = (
         initialOpen = false,
         width,
         disabled = false,
+        closeAfterClickContent,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
@@ -102,6 +104,7 @@ const Dropdown = (
                                     open();
                                 }
                             }}
+                            onClick={() => closeAfterClickContent && close()}
                             onMouseLeave={
                                 trigger === 'hover' && !disabled
                                     ? close
