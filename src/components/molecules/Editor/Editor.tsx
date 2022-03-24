@@ -13,6 +13,7 @@ import BraftEditor, {
     EditorState,
     ControlType,
     ExtendControlType,
+    BuiltInControlType,
 } from 'braft-editor';
 import { ContentUtils } from 'braft-utils';
 
@@ -59,9 +60,32 @@ export type EditorProps = BraftEditorProps & {
 };
 
 type ControlTypeTypes = {
-    simple: ControlType[];
-    complex: ControlType[];
+    simple: ControlType[] | BuiltInControlType[];
+    complex: ControlType[] | BuiltInControlType[];
 };
+
+const fontFamilies = [
+    {
+        name: 'Arial',
+        family: 'Arial, Helvetica, sans-serif',
+    },
+    {
+        name: 'Georgia',
+        family: 'Georgia, serif',
+    },
+    {
+        name: 'Impact',
+        family: 'Impact, serif',
+    },
+    {
+        name: 'Monospace',
+        family: '"Courier New", Courier, monospace',
+    },
+    {
+        name: 'Tahoma',
+        family: 'Tahoma, Arial, sans-serif',
+    },
+];
 
 const languageFn = (languages: any, language: IConfig['language']) => {
     const extendedLanguageConfig = {
@@ -110,6 +134,7 @@ const controlTypes: ControlTypeTypes = {
         'fullscreen',
         'separator',
         'clear',
+        'font-family',
     ],
     complex: [
         'undo',
@@ -142,6 +167,7 @@ const controlTypes: ControlTypeTypes = {
         'separator',
         'fullscreen',
         'clear',
+        'font-family',
     ],
 };
 
@@ -286,6 +312,7 @@ const Editor = (
                 ref={ref}
                 value={editorState}
                 id={id}
+                fontFamilies={fontFamilies}
                 editorId={id}
                 defaultValue={defaultValue}
                 language={(languages) => languageFn(languages, language)}
