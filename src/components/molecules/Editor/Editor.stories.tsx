@@ -36,5 +36,12 @@ Default.args = {
                 },
             ],
         },
+        {
+            key: 'insert-button',
+            type: 'button',
+            text: 'Page Break',
+            action: 'insert',
+            value: `{{PageBreak}}`,
+        },
     ],
 };
