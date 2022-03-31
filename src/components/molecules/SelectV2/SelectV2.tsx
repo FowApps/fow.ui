@@ -230,6 +230,13 @@ const SelectV2 = ({
             trigger="click"
             onClose={() => setSearchText('')}
             isClosedWhenMouseLeave
+            onAfterVisibleChange={(visible) => {
+                if (visible) {
+                    setTimeout(() => {
+                        searchInputRef.current?.focus();
+                    }, 300);
+                }
+            }}
             content={() => (
                 <DropdownContentWrapper>
                     {(!!options?.length ||
