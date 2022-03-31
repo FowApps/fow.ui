@@ -42,6 +42,7 @@ export interface DropdownProps {
     width?: number;
     disabled?: boolean;
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
+    isClosedWhenMouseLeave?: boolean;
 }
 let closeInterval;
 let openInterval;
@@ -57,6 +58,7 @@ const Dropdown = (
         width,
         disabled = false,
         closeAfterClickContent,
+        isClosedWhenMouseLeave = false,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
@@ -106,7 +108,9 @@ const Dropdown = (
                             }}
                             onClick={() => closeAfterClickContent && close()}
                             onMouseLeave={
-                                trigger === 'hover' && !disabled
+                                (trigger === 'hover' ||
+                                    isClosedWhenMouseLeave) &&
+                                !disabled
                                     ? close
                                     : undefined
                             }>
