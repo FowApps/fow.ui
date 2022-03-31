@@ -163,7 +163,7 @@ const FormBuilder = ({
                     mode: 'single',
                     allowClear: true,
                     options: field?.options?.map((item) => ({
-                        label: item.label,
+                        text: item.label,
                         value: item.value,
                     })),
                     ...field.props,
@@ -173,7 +173,7 @@ const FormBuilder = ({
                     mode: 'multiple',
                     allowClear: true,
                     options: field?.options?.map((item) => ({
-                        label: item.label,
+                        text: item.label,
                         value: item.value,
                     })),
                     ...field.props,
