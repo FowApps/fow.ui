@@ -17,7 +17,12 @@ export const Default = Template.bind({});
 Default.args = {
     picker: 'date',
     today: true,
-    showTime: true,
+    showTime: {
+        showHour: true,
+        showMinute: true,
+        showSecond: true,
+        format: 'HH:mm:ss',
+    },
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
     disabled: false,

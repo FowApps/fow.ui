@@ -23,7 +23,12 @@ const Template: Story<RangePickerProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    showTime: true,
+    showTime: {
+        showHour: true,
+        showMinute: true,
+        showSecond: true,
+        format: 'HH:mm:ss',
+    },
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
     seperator: '-',
