@@ -29,7 +29,10 @@ const SingleSelect = ({
     const handleChange = (selectedOption) => {
         if (!selectedOption) return;
 
-        if (typeof selectedOption === 'string') {
+        if (
+            typeof selectedOption === 'string' ||
+            typeof selectedOption === 'number'
+        ) {
             options.forEach((option) => {
                 if (option.value === selectedOption) {
                     setSelectedItem(option);

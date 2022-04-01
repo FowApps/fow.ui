@@ -152,7 +152,7 @@ const SelectV2 = ({
         if (!values && !options) return;
 
         if (mode === 'multiple') {
-            if (typeof values === 'string') {
+            if (typeof values === 'string' || typeof values === 'number') {
                 options.forEach((item) => {
                     if (item.value === values) {
                         setFormValues([item]);

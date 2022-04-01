@@ -115,7 +115,10 @@ const MultipleSelect = ({
                     }
                 });
             });
-        } else if (typeof selectValues === 'string') {
+        } else if (
+            typeof selectValues === 'string' ||
+            typeof selectValues === 'number'
+        ) {
             missingElements.push(
                 options.filter((i) => i?.value === selectValues),
             );
