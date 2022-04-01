@@ -69,7 +69,12 @@ const DatePicker = (
     {
         picker = 'date',
         showToday,
-        showTime,
+        showTime = {
+            showHour: true,
+            showMinute: true,
+            showSecond: false,
+            format: 'HH:mm',
+        },
         use12Hours,
         disableOptions,
         onChange,

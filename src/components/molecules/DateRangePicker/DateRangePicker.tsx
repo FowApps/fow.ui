@@ -68,7 +68,12 @@ export interface RangePickerProps {
 const DateRangePicker = (
     {
         picker = 'date',
-        showTime,
+        showTime = {
+            showHour: true,
+            showMinute: true,
+            showSecond: false,
+            format: 'HH:mm',
+        },
         use12Hours,
         onChange,
         dateFormat = 'DD/MM/YYYY HH:mm:ss',

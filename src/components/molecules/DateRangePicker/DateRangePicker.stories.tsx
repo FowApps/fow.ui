@@ -26,8 +26,8 @@ Default.args = {
     showTime: {
         showHour: true,
         showMinute: true,
-        showSecond: true,
-        format: 'HH:mm:ss',
+        showSecond: false,
+        format: 'HH:mm',
     },
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
