@@ -576,6 +576,9 @@ const FormBuilderTemplate: Story = () => {
                 config={builderConfig}
                 formInstance={formInstance}
                 onSubmit={handleSubmit}
+                onValuesChange={(value, values) => {
+                    console.log(value);
+                }}
             />
             <Space>
                 <Button onClick={handleSaveClick}>Save</Button>

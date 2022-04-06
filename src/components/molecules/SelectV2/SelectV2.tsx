@@ -149,7 +149,11 @@ const SelectV2 = ({
     };
 
     const updateValues = (values) => {
-        if (!values && !options) return;
+        if (!values && !options) {
+            setSelectedItem(undefined);
+            setFormValues([]);
+            return;
+        }
 
         if (mode === 'multiple') {
             if (typeof values === 'string' || typeof values === 'number') {
@@ -194,6 +198,13 @@ const SelectV2 = ({
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectValues, options]);
+
+    useEffect(() => {
+        if (!selectValues) {
+            setSelectedItem(undefined);
+            setFormValues([]);
+        }
+    }, [selectValues]);
 
     const handleClearSelect = () => {
         setSelectedItem(undefined);

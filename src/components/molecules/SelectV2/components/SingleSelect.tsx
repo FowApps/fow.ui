@@ -6,6 +6,7 @@ import { OptionsWrapper } from '../styles';
 import { tr } from '../locales/tr';
 import { en } from '../locales/en';
 import NotFoundContent from './NotFoundContent';
+import useIsMountFirstTime from '../../../../hooks/useIsMountFirstTime';
 
 const localization = {
     tr,
@@ -26,7 +27,9 @@ const SingleSelect = ({
     selectedItem,
     setSelectedItem,
 }: any): JSX.Element => {
+    const isMountFirstTime = useIsMountFirstTime();
     const handleChange = (selectedOption) => {
+        console.log('submit');
         if (!selectedOption) return;
 
         if (
@@ -46,7 +49,9 @@ const SingleSelect = ({
     };
 
     useEffect(() => {
+        if (isMountFirstTime) return;
         if (!selectValues && !isInitialVal) return;
+
         handleChange(selectValues);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectValues]);

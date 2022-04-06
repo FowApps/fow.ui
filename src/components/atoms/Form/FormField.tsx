@@ -56,6 +56,7 @@ function FormField({
     hint,
     initialVisibleField = true,
     triggerButtonProps = {},
+    dependencies = [],
     children,
     ...restProps
 }: FormFieldProps) {
@@ -66,8 +67,8 @@ function FormField({
     };
 
     return (
-        <Field {...restProps}>
-            {(control, meta) => (
+        <Field dependencies={dependencies} {...restProps}>
+            {(control, meta, form) => (
                 <>
                     {isVisibleField || control.value ? (
                         <Wrapper hidden={hidden}>
@@ -103,6 +104,8 @@ function FormField({
                                     hasValidationError: meta.errors.length > 0,
                                     name: restProps.name,
                                     ...control,
+                                    form,
+                                    dependencies,
                                     onChange: (...args: any) => {
                                         control?.onChange(...args);
                                         children.props?.onChange?.(...args);

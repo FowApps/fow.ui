@@ -1,9 +1,8 @@
-import React, { Suspense, useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import Form, { useForm, FormInstance } from 'rc-field-form';
 import { Rule } from 'rc-field-form/lib/interface';
 
 import { FormConfig } from './FormBuilderConfig';
-import Loader from '../Loader';
 import Row from '../Row';
 import Col from '../Col';
 import FormField from './FormField';
@@ -101,165 +100,182 @@ const FormBuilder = ({
 
     const formId = useMemo(() => uuidv4(), []);
 
-    const getPlaceholderProp = (field) => {
-        if (field.placeholder) return field.placeholder;
-        if (field.type === 'single-select' || field.type === 'multiple-select')
-            return [localization[language].select];
-        if (field.type === 'date-time' || field.type === 'date')
-            return [localization[language].pickDate];
-        if (field.type === 'date-time-range' || field.type === 'date-range')
-            return [
-                localization[language].startDate,
-                localization[language].endDate,
-            ];
-        return field.label || '';
-    };
+    const getPlaceholderProp = useCallback(
+        (field) => {
+            if (field.placeholder) return field.placeholder;
+            if (
+                field.type === 'single-select' ||
+                field.type === 'multiple-select'
+            )
+                return [localization[language].select];
+            if (field.type === 'date-time' || field.type === 'date')
+                return [localization[language].pickDate];
+            if (field.type === 'date-time-range' || field.type === 'date-range')
+                return [
+                    localization[language].startDate,
+                    localization[language].endDate,
+                ];
+            return field.label || '';
+        },
+        [language],
+    );
 
-    const getValueProp = (field: Field) => {
+    const getValueProp = useCallback((field: Field) => {
         if (field.valueProp) return field.valueProp;
         if (field.type === 'checkbox' || field.type === 'checkbox-group')
             return 'checked';
         return 'value';
-    };
+    }, []);
 
-    const getinitialVisibleFieldProp = (field: Field) => {
+    const getinitialVisibleFieldProp = useCallback((field: Field) => {
         if (typeof field.initialVisibleField === 'boolean')
             return field.initialVisibleField;
         if (field.type === 'rich-textarea') return false;
         return true;
-    };
+    }, []);
 
     const getLabelProp = (field) => {
         if (field.type === 'checkbox') return null;
         return field.label;
     };
 
-    const calculatedProps = (field: Field) => {
-        switch (field.type) {
-            case 'price':
-                return {
-                    setFormFieldValue: (value: string) => {
-                        formRef.setFieldsValue({
-                            currencyId: value,
-                        });
-                    },
-                    currencies: config.currencyList,
-                };
-            case 'checkbox':
-                return {
-                    children: field.label,
-                };
-            case 'checkbox-group':
-            case 'radio-group':
-                return {
-                    options: field?.options?.map((item) => ({
-                        label: item.label,
-                        value: item.value,
-                    })),
-                    ...field.props,
-                };
-            case 'single-select':
-                return {
-                    mode: 'single',
-                    allowClear: true,
-                    options: field?.options?.map((item) => ({
-                        text: item.label,
-                        value: item.value,
-                    })),
-                    ...field.props,
-                };
-            case 'multiple-select':
-                return {
-                    mode: 'multiple',
-                    allowClear: true,
-                    options: field?.options?.map((item) => ({
-                        text: item.label,
-                        value: item.value,
-                    })),
-                    ...field.props,
-                };
-            case 'date':
-            case 'date-range':
-                return {
-                    showTime: false,
-                    ...field.props,
-                };
+    const calculatedProps = useCallback(
+        (field: Field) => {
+            switch (field.type) {
+                case 'price':
+                    return {
+                        setFormFieldValue: (value: string) => {
+                            formRef.setFieldsValue({
+                                currencyId: value,
+                            });
+                        },
+                        currencies: config.currencyList,
+                        ...field.props,
+                    };
+                case 'checkbox':
+                    return {
+                        children: field.label,
+                        ...field.props,
+                    };
+                case 'checkbox-group':
+                case 'radio-group':
+                    return {
+                        options: field?.options?.map((item) => ({
+                            label: item.label,
+                            value: item.value,
+                        })),
+                        ...field.props,
+                    };
+                case 'single-select':
+                    return {
+                        mode: 'single',
+                        allowClear: true,
+                        options: field?.options?.map((item) => ({
+                            text: item.label,
+                            value: item.value,
+                        })),
+                        ...field.props,
+                    };
+                case 'multiple-select':
+                    return {
+                        mode: 'multiple',
+                        allowClear: true,
+                        options: field?.options?.map((item) => ({
+                            text: item.label,
+                            value: item.value,
+                        })),
+                        ...field.props,
+                    };
+                case 'date':
+                case 'date-range':
+                    return {
+                        showTime: false,
+                        ...field.props,
+                    };
 
-            default:
-                return { ...field.props };
-        }
-    };
+                default:
+                    return { ...field.props };
+            }
+        },
+        [config.currencyList],
+    );
 
     let focused = false;
-    const renderField = useCallback((field: Field) => {
-        const fieldComponent = field.component
-            ? field.component
-            : FormConfig.fields.getFields()[field.type]?.component;
-        if (!fieldComponent) {
-            throw new Error(
-                `FormBuilderError: "${field.type}" has not been added to config's field types.`,
-            );
-        }
+    const renderField = useCallback(
+        (field: Field) => {
+            const fieldComponent = field.component
+                ? field.component
+                : FormConfig.fields.getFields()[field.type]?.component;
+            if (!fieldComponent) {
+                throw new Error(
+                    `FormBuilderError: "${field.type}" has not been added to config's field types.`,
+                );
+            }
 
-        const predefineFieldRules = field.rules
-            ? field.rules
-            : FormConfig.fields.getFields()[field.type].rules || [];
+            const predefineFieldRules = field.rules
+                ? field.rules
+                : FormConfig.fields.getFields()[field.type].rules || [];
 
-        const FieldComponent = fieldComponent;
+            const FieldComponent = fieldComponent;
 
-        return (
-            <Col xs={field.props?.fluid ? 12 : 6}>
-                <FormField
-                    key={field.key}
-                    valuePropName={getValueProp(field)}
-                    type={field.type}
-                    name={field.name}
-                    label={getLabelProp(field)}
-                    hidden={field.hidden}
-                    rules={[
-                        {
-                            required: field.required,
-                            message:
-                                field.requiredMessage ||
-                                'This field is required',
-                        },
-                        ...predefineFieldRules,
-                        ...(field.rules ? field.rules : []),
-                    ]}
-                    hint={field.hint}
-                    initialVisibleField={getinitialVisibleFieldProp(field)}
-                    dependencies={field.dependencies}>
-                    <FieldComponent
+            return (
+                <Col xs={field.props?.fluid ? 12 : 6}>
+                    <FormField
                         key={field.key}
-                        placeholder={getPlaceholderProp(field)}
-                        inputProps={{
-                            placeholder: getPlaceholderProp(field),
-                        }}
-                        ref={(ref: any) => {
-                            if (ref && !ref.value && !focused) {
-                                focused = true;
-                                setTimeout(() => {
-                                    if (typeof ref.focus === 'function') {
-                                        ref.focus();
-                                    }
-                                    if (typeof ref.onFocus === 'function') {
-                                        ref.onFocus();
-                                    }
-                                }, 300);
-                            }
-                        }}
-                        {...calculatedProps(field)}
-                    />
-                </FormField>
-            </Col>
-        );
-    }, []);
+                        valuePropName={getValueProp(field)}
+                        type={field.type}
+                        name={field.name}
+                        label={getLabelProp(field)}
+                        hidden={field.hidden}
+                        rules={[
+                            {
+                                required: field.required,
+                                message:
+                                    field.requiredMessage ||
+                                    'This field is required',
+                            },
+                            ...predefineFieldRules,
+                            ...(field.rules ? field.rules : []),
+                        ]}
+                        hint={field.hint}
+                        initialVisibleField={getinitialVisibleFieldProp(field)}
+                        dependencies={field.dependencies}>
+                        <FieldComponent
+                            key={field.key}
+                            placeholder={getPlaceholderProp(field)}
+                            inputProps={{
+                                placeholder: getPlaceholderProp(field),
+                            }}
+                            ref={(ref: any) => {
+                                if (ref && !ref.value && !focused) {
+                                    focused = true;
+                                    setTimeout(() => {
+                                        if (typeof ref.focus === 'function') {
+                                            ref.focus();
+                                        }
+                                        if (typeof ref.onFocus === 'function') {
+                                            ref.onFocus();
+                                        }
+                                    }, 300);
+                                }
+                            }}
+                            {...calculatedProps(field)}
+                        />
+                    </FormField>
+                </Col>
+            );
+        },
+        [config],
+    );
 
-    const fields = showOnlyMandatory
-        ? config.fields
-              .filter((field) => field.required)
-              .map((field) => renderField(field))
-        : config.fields.map((field) => renderField(field));
+    const fields = useMemo(() => {
+        if (showOnlyMandatory) {
+            return config.fields
+                .filter((field) => field.required)
+                .map((field) => renderField(field));
+        }
+        return config.fields.map((field) => renderField(field));
+    }, [config.fields, renderField, showOnlyMandatory]);
 
     return (
         <div>
@@ -286,9 +302,7 @@ const FormBuilder = ({
                 }}
                 onFinish={onSubmit}
                 initialValues={initialValues}>
-                <Suspense fallback={<Loader isLoading />}>
-                    <Row>{fields}</Row>
-                </Suspense>
+                <Row>{fields}</Row>
             </Form>
         </div>
     );

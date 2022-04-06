@@ -11,6 +11,7 @@ import { en } from '../locales/en';
 
 import Link from '../../../atoms/Typography/Link';
 import NotFoundContent from './NotFoundContent';
+import useIsMountFirstTime from '../../../../hooks/useIsMountFirstTime';
 
 const localization = {
     tr,
@@ -43,6 +44,7 @@ const MultipleSelect = ({
 }: any) => {
     const [otherOptions, setOtherOptions] = useState<any>([]);
     const isArrayFormVal = Array.isArray(formValues) && formValues.length > 0;
+    const isMountFirstTime = useIsMountFirstTime();
 
     const handleClearAllSelected = () => {
         setSearchText('');
@@ -81,6 +83,7 @@ const MultipleSelect = ({
     };
 
     useEffect(() => {
+        if (isMountFirstTime) return;
         if (typeof selectValues !== 'object' || !isInitialVal) return;
         if (!selectValues || selectValues?.length === formValues?.length)
             return;

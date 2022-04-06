@@ -73,7 +73,7 @@ const Dropdown = (
             portalElement={
                 <div
                     style={{
-                        zIndex: 802,
+                        zIndex: 9999,
                         minWidth: `${width}px` || '200px',
                         width: `${width}px` || 'auto',
                     }}
