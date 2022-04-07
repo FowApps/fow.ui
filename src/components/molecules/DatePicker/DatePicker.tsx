@@ -12,6 +12,7 @@ import momentGenerateConfig from 'rc-picker/es/generate/moment';
 import 'rc-picker/assets/index.css';
 import en_US from 'rc-picker/lib/locale/en_US';
 import tr_TR from 'rc-picker/lib/locale/tr_TR';
+import { SharedTimeProps } from 'rc-picker/es/panels/TimePanel';
 import { DatePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
@@ -34,7 +35,7 @@ export interface DatePickerProps {
     /**
      * times visibility
      */
-    showTime?: boolean;
+    showTime?: SharedTimeProps<any>;
     /**
      * 12 hours preview
      */
@@ -68,7 +69,12 @@ const DatePicker = (
     {
         picker = 'date',
         showToday,
-        showTime = true,
+        showTime = {
+            showHour: true,
+            showMinute: true,
+            showSecond: false,
+            format: 'HH:mm',
+        },
         use12Hours,
         disableOptions,
         onChange,
@@ -87,9 +93,27 @@ const DatePicker = (
 
     const handleChange = (date: any) => {
         if (date) {
-            const dateObj = moment(new Date(date))
+            let dateObj = moment(new Date(date))
                 .utcOffset(timezone, true)
                 .toISOString();
+            if (showTime) {
+                if (!showTime.showHour) {
+                    dateObj = moment(new Date(date))
+                        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                } else if (!showTime.showMinute) {
+                    dateObj = moment(new Date(date))
+                        .set({ minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                } else if (!showTime.showSecond) {
+                    dateObj = moment(new Date(date))
+                        .set({ second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                }
+            }
             onChange?.(dateObj);
             setVal(date);
         } else {
