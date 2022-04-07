@@ -3,6 +3,7 @@ import setColor from './color';
 
 type ProgressBarProps = {
     progress: number;
+    reverse: boolean;
 };
 
 export const StyledProgressBar = styled.div`
@@ -18,5 +19,5 @@ export const StyledDiv = styled.div<ProgressBarProps>`
     width: ${(props) => props.progress}%;
     height: 100%;
     border-radius: 100px;
-    ${(props) => setColor(props.progress)};
+    ${(props) => setColor(props.progress, props.reverse)};
 `;
