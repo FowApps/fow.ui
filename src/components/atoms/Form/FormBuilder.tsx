@@ -143,6 +143,10 @@ const FormBuilder = ({
                             currencyId: value,
                         });
                     },
+                    initialValue: {
+                        number: initialValues?.[field.name],
+                        currency: initialValues?.currencyId,
+                    },
                     currencies: config.currencyList,
                 };
             case 'checkbox':
@@ -191,69 +195,76 @@ const FormBuilder = ({
     };
 
     let focused = false;
-    const renderField = useCallback((field: Field) => {
-        const fieldComponent = field.component
-            ? field.component
-            : FormConfig.fields.getFields()[field.type]?.component;
-        if (!fieldComponent) {
-            throw new Error(
-                `FormBuilderError: "${field.type}" has not been added to config's field types.`,
-            );
-        }
+    const renderField = useCallback(
+        (field: Field) => {
+            const fieldComponent = field.component
+                ? field.component
+                : FormConfig.fields.getFields()[field.type]?.component;
+            if (!fieldComponent) {
+                throw new Error(
+                    `FormBuilderError: "${field.type}" has not been added to config's field types.`,
+                );
+            }
 
-        const predefineFieldRules = field.rules
-            ? field.rules
-            : FormConfig.fields.getFields()[field.type].rules || [];
+            const predefineFieldRules = field.rules
+                ? field.rules
+                : FormConfig.fields.getFields()[field.type].rules || [];
 
-        const FieldComponent = fieldComponent;
+            const FieldComponent = fieldComponent;
 
-        return (
-            <Col xs={field.props?.fluid ? 12 : 6}>
-                <FormField
-                    key={field.key}
-                    valuePropName={getValueProp(field)}
-                    type={field.type}
-                    name={field.name}
-                    label={getLabelProp(field)}
-                    hidden={field.hidden}
-                    rules={[
-                        {
-                            required: field.required,
-                            message:
-                                field.requiredMessage ||
-                                'This field is required',
-                        },
-                        ...predefineFieldRules,
-                        ...(field.rules ? field.rules : []),
-                    ]}
-                    hint={field.hint}
-                    initialVisibleField={getinitialVisibleFieldProp(field)}
-                    dependencies={field.dependencies}>
-                    <FieldComponent
+            return (
+                <Col
+                    xs={field.props?.fluid ? 12 : 6}
+                    style={{
+                        display: field.hidden ? 'none' : 'block',
+                    }}>
+                    <FormField
                         key={field.key}
-                        placeholder={getPlaceholderProp(field)}
-                        inputProps={{
-                            placeholder: getPlaceholderProp(field),
-                        }}
-                        ref={(ref: any) => {
-                            if (ref && !ref.value && !focused) {
-                                focused = true;
-                                setTimeout(() => {
-                                    if (typeof ref.focus === 'function') {
-                                        ref.focus();
-                                    }
-                                    if (typeof ref.onFocus === 'function') {
-                                        ref.onFocus();
-                                    }
-                                }, 300);
-                            }
-                        }}
-                        {...calculatedProps(field)}
-                    />
-                </FormField>
-            </Col>
-        );
-    }, []);
+                        valuePropName={getValueProp(field)}
+                        type={field.type}
+                        name={field.name}
+                        label={getLabelProp(field)}
+                        hidden={field.hidden}
+                        rules={[
+                            {
+                                required: field.required,
+                                message:
+                                    field.requiredMessage ||
+                                    'This field is required',
+                            },
+                            ...predefineFieldRules,
+                            ...(field.rules ? field.rules : []),
+                        ]}
+                        hint={field.hint}
+                        initialVisibleField={getinitialVisibleFieldProp(field)}
+                        dependencies={field.dependencies}>
+                        <FieldComponent
+                            key={field.key}
+                            placeholder={getPlaceholderProp(field)}
+                            inputProps={{
+                                placeholder: getPlaceholderProp(field),
+                            }}
+                            ref={(ref: any) => {
+                                if (ref && !ref.value && !focused) {
+                                    focused = true;
+                                    setTimeout(() => {
+                                        if (typeof ref.focus === 'function') {
+                                            ref.focus();
+                                        }
+                                        if (typeof ref.onFocus === 'function') {
+                                            ref.onFocus();
+                                        }
+                                    }, 300);
+                                }
+                            }}
+                            {...calculatedProps(field)}
+                        />
+                    </FormField>
+                </Col>
+            );
+        },
+        [initialValues],
+    );
 
     const fields = showOnlyMandatory
         ? config.fields
