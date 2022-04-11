@@ -199,7 +199,7 @@ const FormBuilder = ({
                     return { ...field.props };
             }
         },
-        [config.currencyList],
+        [config.currencyList, initialValues],
     );
 
     let focused = false;
