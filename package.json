@@ -36,7 +36,7 @@
         "@fullcalendar/react": "^5.9.0",
         "@fullcalendar/timegrid": "^5.9.0",
         "immutable": "^4.0.0",
-        "moment": "^2.29.1",
+        "moment": "^2.29.2",
         "polished": "4.1.4",
         "rc-dialog": "^8.7.0",
         "rc-drawer": "^4.4.3",
