@@ -31,7 +31,7 @@ export interface EmailProps {
     /**
      * handle change value
      */
-    onChange?: (value: string) => void;
+    onChange?: (value?: string) => void;
     /**
      * props of input
      */
@@ -81,8 +81,12 @@ const EmailInput = (
     const isFirstTime = useIsMountFirstTime();
 
     const triggerChange = () => {
-        const mergeEmail = `${email}@${extension}`;
-        onChange?.(mergeEmail);
+        if (email) {
+            const mergeEmail = `${email}@${extension}`;
+            onChange?.(mergeEmail);
+        } else {
+            onChange?.(undefined);
+        }
     };
 
     const handleChange = (val: string) => {
@@ -126,6 +130,7 @@ const EmailInput = (
             </FixedWrapper>
             <SelectWrapper>
                 <Select
+                    allowClear
                     mode="combobox"
                     value={extension}
                     onChange={onExtensionChange}

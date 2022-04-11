@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Button, Space } from '../../../..';
+import Button from '../../../atoms/Button';
+import Space from '../../../atoms/Space';
 import Dropdown from '../../Dropdown';
 
 type ButtonProps = {

@@ -10,6 +10,8 @@ import Academy from './icons/Academy';
 import Book from './icons/Book';
 import Info from './icons/Info';
 import Cog from './icons/Cog';
+import Office from './icons/Office';
+import Google from './icons/Google';
 
 export default {
     Logo,
@@ -24,4 +26,6 @@ export default {
     Book,
     Info,
     Cog,
+    Office,
+    Google,
 };

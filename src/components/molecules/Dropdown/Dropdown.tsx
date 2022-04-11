@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PositioningPortal } from '@codastic/react-positioning-portal';
 import { Transition } from 'react-transition-group';
 
@@ -37,10 +37,13 @@ export interface DropdownProps {
     /**
      * initial open
      */
+    closeAfterClickContent?: boolean;
     initialOpen?: boolean;
     width?: number;
     disabled?: boolean;
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
+    isClosedWhenMouseLeave?: boolean;
+    onAfterVisibleChange?: (isVisible: boolean) => void;
 }
 let closeInterval;
 let openInterval;
@@ -55,10 +58,16 @@ const Dropdown = (
         initialOpen = false,
         width,
         disabled = false,
+        closeAfterClickContent,
+        isClosedWhenMouseLeave = false,
+        onAfterVisibleChange,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
     const { isOpen, close, toggle, open } = useDisclosure(initialOpen);
+    useEffect(() => {
+        onAfterVisibleChange?.(isOpen);
+    }, [isOpen, onAfterVisibleChange]);
     return (
         <PositioningPortal
             portalElement={
@@ -102,8 +111,11 @@ const Dropdown = (
                                     open();
                                 }
                             }}
+                            onClick={() => closeAfterClickContent && close()}
                             onMouseLeave={
-                                trigger === 'hover' && !disabled
+                                (trigger === 'hover' ||
+                                    isClosedWhenMouseLeave) &&
+                                !disabled
                                     ? close
                                     : undefined
                             }>

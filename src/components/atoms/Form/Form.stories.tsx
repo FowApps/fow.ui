@@ -23,7 +23,7 @@ import Radio from '../Radio';
 import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
-import SelectV2 from '../../molecules/SelectV2/SelectV2';
+import SelectV2 from '../../molecules/SelectV2';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
@@ -46,11 +46,42 @@ const Template: Story = () => {
                 <Row>
                     <Col xs={6}>
                         <FormField
+                            preserve
+                            hint="Please type your fullname"
+                            name="email"
+                            label="Email"
+                            rules={[
+                                {
+                                    type: 'email',
+                                    message: 'Invalid Address',
+                                },
+                            ]}>
+                            <EmailInput />
+                        </FormField>
+                    </Col>
+                    <Col xs={6}>
+                        <FormField
+                            preserve
+                            hint="Please type your fullname"
+                            name="url"
+                            label="Website"
+                            rules={[
+                                {
+                                    type: 'url',
+                                    message: 'Invalid Address',
+                                },
+                            ]}>
+                            <URLInput />
+                        </FormField>
+                    </Col>
+                    <Col xs={6}>
+                        <FormField
+                            preserve
                             hint="Please type your fullname"
                             name="name"
                             label="Name"
                             rules={[
-                                { required: true, message: 'Zorunlu alan' },
+                                { required: false, message: 'Zorunlu alan' },
                             ]}>
                             <Input placeholder="Name" />
                         </FormField>
@@ -60,36 +91,9 @@ const Template: Story = () => {
                             name="sname"
                             label="Surname"
                             rules={[
-                                { required: true, message: 'Zorunlu alan' },
+                                { required: false, message: 'Zorunlu alan' },
                             ]}>
                             <Input placeholder="sname" />
-                        </FormField>
-                    </Col>
-                    <Col xs={6}>
-                        <FormField
-                            hidden
-                            valuePropName="checked"
-                            name="sw"
-                            label="Switch">
-                            <Switch />
-                        </FormField>
-                    </Col>
-                    <Col xs={12}>
-                        <FormField
-                            name="file"
-                            label="File"
-                            valuePropName="files">
-                            <Upload multiple={false} accept=".zip" />
-                        </FormField>
-                    </Col>
-                    <Col xs={12}>
-                        <FormField
-                            name="labels"
-                            label="Labels"
-                            rules={[
-                                { required: true, message: 'Zorunlu alan' },
-                            ]}>
-                            <LabelInput />
                         </FormField>
                     </Col>
                 </Row>
@@ -117,18 +121,19 @@ export const Default = Template.bind({});
 const UseFormTemplate: Story = () => {
     const options = [
         {
-            value: 1,
-            text: 'Option 1',
+            text: 'Label 1',
+            value: 'Label1',
         },
         {
-            value: 2,
-            text: 'Option 2',
+            text: 'Label 2',
+            value: 'Label2',
         },
         {
-            value: 3,
-            text: 'Option 3',
+            text: 'Label 3',
+            value: 'Label3',
         },
     ];
+
     const [form] = Form.useForm();
     const { formProps, formLoading, defaultFormValuesLoading } = useForm({
         form,
@@ -138,14 +143,15 @@ const UseFormTemplate: Story = () => {
             console.log('fewfew', values);
             return 'ok'; // formResult
         },
+
         async initialValues() {
             return {
                 finalAmount: {
                     currency: '2',
                     number: 23,
                 },
-                singleSelect: options[0],
-                multiSelect: [options[0], options[1]],
+                test: options[0],
+                // test: [options[0], options[1]],
                 emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
                 URLInput: 'https://www.test.com',
@@ -166,20 +172,46 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Hook Name"
                     name="hook"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Input placeholder="Hook Name" />
                 </FormField>
                 <FormField
                     label="Phone"
                     name="phone"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <PhoneInput />
+                </FormField>
+                <FormField
+                    label="Test"
+                    name="test"
+                    rules={[{ required: false, message: 'Required..' }]}>
+                    <SelectV2
+                        showSearch
+                        loader={false}
+                        noResultContent="Not Found"
+                        placeholder="Please select"
+                        onSearch={(value) => null}
+                        options={[
+                            {
+                                text: 'Label 1',
+                                value: 'Label1',
+                            },
+                            {
+                                text: 'Label 2',
+                                value: 'Label2',
+                            },
+                            {
+                                text: 'Label 3',
+                                value: 'Label3',
+                            },
+                        ]}
+                    />
                 </FormField>
                 <FormField
                     label="URL Input"
                     name="URLInput"
                     rules={[
-                        { required: true, message: 'Required..' },
+                        { required: false, message: 'Required..' },
                         {
                             type: 'url',
                             message: 'invalid url',
@@ -191,7 +223,7 @@ const UseFormTemplate: Story = () => {
                     label="Email Input"
                     name="emailInput"
                     rules={[
-                        { required: true, message: 'Required..' },
+                        { required: false, message: 'Required..' },
                         {
                             type: 'email',
                             message: 'invalid email',
@@ -214,7 +246,7 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Final Amount"
                     name="finalAmount"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <PriceInput
                         inputProps={{
                             placeholder: 'Currency',
@@ -234,7 +266,7 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Hooks"
                     name="hooks"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Select
                         placeholder="Hooks"
                         mode="tags"
@@ -254,32 +286,32 @@ const UseFormTemplate: Story = () => {
                 <FormField
                     label="Description"
                     name="description"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Editor id="description" />
                 </FormField>
                 <FormField
                     label="Summary"
                     name="summary"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Editor id="summary" placeholder="Summary" />
                 </FormField>
                 <FormField
                     label="Textarea"
                     name="textarea"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <Textarea />
                 </FormField>
                 <FormField
                     label="Single Select"
                     name="singleSelect"
-                    rules={[{ required: true, message: 'Required..' }]}>
+                    rules={[{ required: false, message: 'Required..' }]}>
                     <SelectV2 options={options} />
                 </FormField>
                 <FormField
                     label="Multi Select"
                     name="multiSelect"
-                    rules={[{ required: true, message: 'Required..' }]}>
-                    <SelectV2.Multiple options={options} />
+                    rules={[{ required: false, message: 'Required..' }]}>
+                    <SelectV2 mode="multiple" options={options} />
                 </FormField>
                 <Space>
                     <Button
@@ -306,18 +338,42 @@ FormConfig.fields.addField([
     },
 ]);
 
+const names = [
+    {
+        gender: 'female',
+        label: 'Ayşe',
+        value: 'ayşe',
+    },
+    {
+        gender: 'male',
+        label: 'Ahmet',
+        value: 'ahmet',
+    },
+];
+
 const FormBuilderTemplate: Story = () => {
     const [formInstance] = Form.useForm();
     const [onlyMandatory, setOnlyMandatory] = useState(false);
     const builderConfig = {
+        currencyList: [
+            {
+                value: '1aa008ba-2ba9-49b2-804b-d7e4b4d2d09a',
+                name: 'TRY',
+            },
+        ],
         name: 'test',
         id: 'storyform',
         fields: [
             {
+                key: 'price',
+                name: 'estimatedAmount',
+                label: 'Estimated Amount',
+                type: 'price',
+            },
+            {
                 key: 'phone',
                 name: 'phone',
                 label: 'Phone',
-                required: true,
                 type: 'phone',
                 hint: 'Hello Africa',
             },
@@ -325,7 +381,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'firstName',
                 name: 'firstName',
                 label: 'First Name',
-                required: true,
                 type: 'text',
                 hint: 'Hello Africa',
             },
@@ -333,7 +388,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'start-date-time',
                 name: 'startDateTime',
                 label: 'Start Date and Time',
-                required: true,
                 type: 'date-time',
                 hint: 'Hello Africa',
             },
@@ -341,7 +395,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'description',
                 name: 'description',
                 label: 'Description',
-                required: true,
                 type: 'textarea',
                 hint: 'Hello Africa',
             },
@@ -349,7 +402,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'email',
                 name: 'email',
                 label: 'Email',
-                required: true,
                 type: 'email',
                 hint: 'Hello Africa',
             },
@@ -358,7 +410,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'end-date-time-range',
                 name: 'endDateTime',
                 label: 'Start/End Date and Time',
-                required: true,
                 type: 'date-time-range',
                 hint: 'Hello Africa',
             },
@@ -366,7 +417,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'start-date',
                 name: 'startDate',
                 label: 'Start Date',
-                required: true,
                 type: 'date',
                 hint: 'Hello Africa',
             },
@@ -374,7 +424,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'end-date',
                 name: 'endDate',
                 label: 'End Date',
-                required: true,
                 type: 'date-range',
                 hint: 'Hello Africa',
             },
@@ -382,7 +431,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'website',
                 name: 'website',
                 label: 'Website',
-                required: true,
                 type: 'url',
                 hint: 'Hello Africa',
             },
@@ -390,7 +438,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'count',
                 name: 'count',
                 label: 'Count',
-                required: false,
                 type: 'number',
                 hint: 'Hello Africa',
             },
@@ -398,7 +445,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'collection',
                 name: 'collection',
                 label: 'Collection',
-                required: false,
                 type: 'multiple-select',
                 options: [
                     {
@@ -415,7 +461,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'gender',
                 name: 'gender',
                 label: 'Gender',
-                required: false,
                 type: 'single-select',
                 options: [
                     {
@@ -428,12 +473,17 @@ const FormBuilderTemplate: Story = () => {
                     },
                 ],
             },
-
+            {
+                key: 'names',
+                name: 'names',
+                label: 'Names',
+                type: 'single-select',
+                options: names,
+            },
             {
                 key: 'include-tax',
                 name: 'includeTax',
                 label: 'Include Tax',
-                required: false,
                 type: 'checkbox',
                 hint: 'Hello Africa',
             },
@@ -441,7 +491,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'select-items',
                 name: 'selectedItemIds',
                 label: 'Select Items',
-                required: false,
                 type: 'checkbox-group',
                 options: [
                     {
@@ -462,7 +511,6 @@ const FormBuilderTemplate: Story = () => {
                 key: 'select-one-items',
                 name: 'selectedItemId',
                 label: 'Select One Item',
-                required: false,
                 type: 'radio-group',
                 options: [
                     {
@@ -479,9 +527,15 @@ const FormBuilderTemplate: Story = () => {
                 key: 'template',
                 name: 'template',
                 label: 'Template',
-                required: true,
                 type: 'rich-textarea',
                 hint: 'Hello Africa',
+            },
+            {
+                key: 'currencyId',
+                name: 'currencyId',
+                label: 'currencyId',
+                type: 'text',
+                hidden: true,
             },
         ],
     };

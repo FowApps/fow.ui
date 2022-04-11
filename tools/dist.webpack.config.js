@@ -66,5 +66,9 @@ module.exports = (distRoot, optimize) => ({
             '@fortawesome/react-fontawesome': '@fortawesome/react-fontawesome',
         },
         { 'framer-motion': 'framer-motion' },
+        { 'braft-editor': 'braft-editor' },
+        { 'braft-extensions': 'braft-extensions' },
+        { 'braft-utils': 'braft-utils' },
+        { 'draftjs-utils': 'draftjs-utils' },
     ],
 });
