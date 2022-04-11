@@ -18,6 +18,7 @@ import BraftEditor, {
 import { ContentUtils } from 'braft-utils';
 
 import Table from 'braft-extensions/dist/table';
+import styled from 'styled-components';
 import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
 
 import { uuidv4 } from '../../../utils/uuid';
@@ -29,11 +30,18 @@ import { Dropdown, Item, Search, Wrapper } from './styles';
 
 import en from './locales/en';
 import tr from './locales/tr';
+import Button from '../../atoms/Button';
 
 const localization = {
     tr,
     en,
 };
+
+const ButtonWrapper = styled(Button)`
+    font-weight: normal;
+    margin-top: 5px;
+    margin-left: 10px;
+`;
 
 BraftEditor.use(
     Table({
@@ -49,6 +57,7 @@ export type CustomControlType = {
     text?: string | React.ReactNode;
     title?: string;
     html?: string | null;
+    value: string;
     component: React.ReactNode;
 };
 
@@ -249,7 +258,7 @@ const Editor = (
         (text: string) => {
             const newState = ContentUtils.insertHTML(
                 editorState,
-                `<p>${text}</p>`,
+                `${text}`,
                 text,
             );
             setEditorState(newState);
@@ -278,6 +287,24 @@ const Editor = (
                                     }}
                                     control={control}
                                 />
+                            ),
+                        };
+                    }
+                    if (control.type === 'button') {
+                        return {
+                            key: control.type,
+                            type: 'component',
+                            component: (
+                                <ButtonWrapper
+                                    color="grey"
+                                    type="button"
+                                    size="medium"
+                                    variant="text"
+                                    onClick={() => {
+                                        insertText(control.value);
+                                    }}>
+                                    {control.text}
+                                </ButtonWrapper>
                             ),
                         };
                     }

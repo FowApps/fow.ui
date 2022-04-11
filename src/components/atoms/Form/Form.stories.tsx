@@ -23,7 +23,7 @@ import Radio from '../Radio';
 import Select from '../Select';
 import LabelInput from '../../molecules/LabelInput';
 import DatePicker from '../../molecules/DatePicker/DatePicker';
-import SelectV2 from '../../molecules/SelectV2/SelectV2';
+import SelectV2 from '../../molecules/SelectV2';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PriceInput from '../PriceInput';
 import Editor from '../../molecules/Editor/Editor';
@@ -121,18 +121,19 @@ export const Default = Template.bind({});
 const UseFormTemplate: Story = () => {
     const options = [
         {
-            value: 1,
-            text: 'Option 1',
+            text: 'Label 1',
+            value: 'Label1',
         },
         {
-            value: 2,
-            text: 'Option 2',
+            text: 'Label 2',
+            value: 'Label2',
         },
         {
-            value: 3,
-            text: 'Option 3',
+            text: 'Label 3',
+            value: 'Label3',
         },
     ];
+
     const [form] = Form.useForm();
     const { formProps, formLoading, defaultFormValuesLoading } = useForm({
         form,
@@ -142,14 +143,15 @@ const UseFormTemplate: Story = () => {
             console.log('fewfew', values);
             return 'ok'; // formResult
         },
+
         async initialValues() {
             return {
                 finalAmount: {
                     currency: '2',
                     number: 23,
                 },
-                singleSelect: options[0],
-                multiSelect: [options[0], options[1]],
+                test: options[0],
+                // test: [options[0], options[1]],
                 emailInput: 'test@ex.com',
                 hook: 'Fow UI Form Hook',
                 URLInput: 'https://www.test.com',
@@ -178,6 +180,32 @@ const UseFormTemplate: Story = () => {
                     name="phone"
                     rules={[{ required: false, message: 'Required..' }]}>
                     <PhoneInput />
+                </FormField>
+                <FormField
+                    label="Test"
+                    name="test"
+                    rules={[{ required: false, message: 'Required..' }]}>
+                    <SelectV2
+                        showSearch
+                        loader={false}
+                        noResultContent="Not Found"
+                        placeholder="Please select"
+                        onSearch={(value) => null}
+                        options={[
+                            {
+                                text: 'Label 1',
+                                value: 'Label1',
+                            },
+                            {
+                                text: 'Label 2',
+                                value: 'Label2',
+                            },
+                            {
+                                text: 'Label 3',
+                                value: 'Label3',
+                            },
+                        ]}
+                    />
                 </FormField>
                 <FormField
                     label="URL Input"
@@ -283,7 +311,7 @@ const UseFormTemplate: Story = () => {
                     label="Multi Select"
                     name="multiSelect"
                     rules={[{ required: false, message: 'Required..' }]}>
-                    <SelectV2.Multiple options={options} />
+                    <SelectV2 mode="multiple" options={options} />
                 </FormField>
                 <Space>
                     <Button

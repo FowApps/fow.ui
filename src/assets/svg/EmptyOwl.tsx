@@ -1,9 +1,13 @@
 import React from 'react';
 
-const EmptyOwl = () => (
+type Props = {
+    width?: number;
+};
+
+const EmptyOwl = ({ width }: Props) => (
     <svg
-        width="118"
-        height="160"
+        width={width || '118'}
+        height={width || '160'}
         viewBox="0 0 118 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">
