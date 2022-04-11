@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyledCol } from './styles';
 
-export interface ColProps {
+export interface ColProps extends React.HTMLAttributes<HTMLElement> {
     /**
      * column size of less then 768px
      */
