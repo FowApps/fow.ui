@@ -11,7 +11,7 @@ const Template: Story = (args) => {
     return (
         <>
             {args.multiple ? (
-                <SelectV2.Multiple {...args} />
+                <SelectV2 mode="multiple" {...args} />
             ) : (
                 <SelectV2 {...args} />
             )}
@@ -27,7 +27,7 @@ Default.args = {
     onSelect: (value, option) => {
         console.log(value, option);
     },
-    multiple: true,
+    mode: 'single',
     loader: false,
     noResultContent: 'Not Found',
     placeholder: 'Please select',

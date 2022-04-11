@@ -27,7 +27,7 @@ export interface URLInputProps {
     /**
      * handle change value
      */
-    onChange?: (value: string) => void;
+    onChange?: (value?: string) => void;
     /**
      * props of input
      */
@@ -100,8 +100,12 @@ const URLInput = (
     }, [value]);
 
     const triggerChange = () => {
-        const mergedUrl = `${protocol}${urlName}`;
-        onChange?.(mergedUrl);
+        if (!urlName) {
+            onChange?.(undefined);
+        } else {
+            const mergedUrl = `${protocol}${urlName}`;
+            onChange?.(mergedUrl);
+        }
     };
 
     const handleChange = (inputValue: string) => {

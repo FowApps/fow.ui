@@ -37,18 +37,19 @@ export interface MessageProps {
      * action button click event
      */
     onClickAction?: () => void;
+    iconSize?: number;
 }
 
-const renderImage = (type: MessageProps['type']) => {
+const renderImage = (type: MessageProps['type'], size) => {
     switch (type) {
         case 'empty':
-            return <EmptyOwl />;
+            return <EmptyOwl width={size} />;
         case 'error':
-            return <ErrorOwl />;
+            return <ErrorOwl width={size} />;
         case 'plus':
-            return <PlusOwl />;
+            return <PlusOwl width={size} />;
         case 'success':
-            return <CheckOwl />;
+            return <CheckOwl width={size} />;
         default:
             return null;
     }
@@ -60,10 +61,11 @@ const Message = ({
     actionIcon,
     onClickAction,
     type,
+    iconSize,
 }: MessageProps): JSX.Element => (
     <Wrapper>
         <Space direction="vertical" size="large" align="center">
-            {renderImage(type)}
+            {renderImage(type, iconSize)}
             <Subtitle color="disabled">{message}</Subtitle>
             {actionText && (
                 <Button

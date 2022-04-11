@@ -1,9 +1,10 @@
 import { css } from 'styled-components';
 
-const setColor = (progress: number): any => {
+const setColor = (progress: number, reverse: boolean): any => {
     if (progress >= 70) {
         return css`
-            background-color: ${(props) => props.theme.fow.colors.success.dark};
+            background-color: ${(props) =>
+                props.theme.fow.colors[reverse ? 'error' : 'success'].dark};
         `;
     }
     if (progress > 30 && progress < 70) {
@@ -12,7 +13,8 @@ const setColor = (progress: number): any => {
         `;
     }
     return css`
-        background-color: ${(props) => props.theme.fow.colors.error.dark};
+        background-color: ${(props) =>
+            props.theme.fow.colors[reverse ? 'success' : 'error'].dark};
     `;
 };
 
