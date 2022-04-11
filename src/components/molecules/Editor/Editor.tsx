@@ -13,10 +13,12 @@ import BraftEditor, {
     EditorState,
     ControlType,
     ExtendControlType,
+    BuiltInControlType,
 } from 'braft-editor';
 import { ContentUtils } from 'braft-utils';
 
 import Table from 'braft-extensions/dist/table';
+import styled from 'styled-components';
 import { ConfigContext, IConfig } from '../../../theme/FowThemeProvider';
 
 import { uuidv4 } from '../../../utils/uuid';
@@ -28,11 +30,18 @@ import { Dropdown, Item, Search, Wrapper } from './styles';
 
 import en from './locales/en';
 import tr from './locales/tr';
+import Button from '../../atoms/Button';
 
 const localization = {
     tr,
     en,
 };
+
+const ButtonWrapper = styled(Button)`
+    font-weight: normal;
+    margin-top: 5px;
+    margin-left: 10px;
+`;
 
 BraftEditor.use(
     Table({
@@ -48,6 +57,7 @@ export type CustomControlType = {
     text?: string | React.ReactNode;
     title?: string;
     html?: string | null;
+    value: string;
     component: React.ReactNode;
 };
 
@@ -59,9 +69,32 @@ export type EditorProps = BraftEditorProps & {
 };
 
 type ControlTypeTypes = {
-    simple: ControlType[];
-    complex: ControlType[];
+    simple: ControlType[] | BuiltInControlType[];
+    complex: ControlType[] | BuiltInControlType[];
 };
+
+const fontFamilies = [
+    {
+        name: 'Arial',
+        family: 'Arial, Helvetica, sans-serif',
+    },
+    {
+        name: 'Georgia',
+        family: 'Georgia, serif',
+    },
+    {
+        name: 'Impact',
+        family: 'Impact, serif',
+    },
+    {
+        name: 'Monospace',
+        family: '"Courier New", Courier, monospace',
+    },
+    {
+        name: 'Tahoma',
+        family: 'Tahoma, Arial, sans-serif',
+    },
+];
 
 const languageFn = (languages: any, language: IConfig['language']) => {
     const extendedLanguageConfig = {
@@ -110,6 +143,7 @@ const controlTypes: ControlTypeTypes = {
         'fullscreen',
         'separator',
         'clear',
+        'font-family',
     ],
     complex: [
         'undo',
@@ -142,6 +176,7 @@ const controlTypes: ControlTypeTypes = {
         'separator',
         'fullscreen',
         'clear',
+        'font-family',
     ],
 };
 
@@ -223,7 +258,7 @@ const Editor = (
         (text: string) => {
             const newState = ContentUtils.insertHTML(
                 editorState,
-                `<p>${text}</p>`,
+                `${text}`,
                 text,
             );
             setEditorState(newState);
@@ -252,6 +287,24 @@ const Editor = (
                                     }}
                                     control={control}
                                 />
+                            ),
+                        };
+                    }
+                    if (control.type === 'button') {
+                        return {
+                            key: control.type,
+                            type: 'component',
+                            component: (
+                                <ButtonWrapper
+                                    color="grey"
+                                    type="button"
+                                    size="medium"
+                                    variant="text"
+                                    onClick={() => {
+                                        insertText(control.value);
+                                    }}>
+                                    {control.text}
+                                </ButtonWrapper>
                             ),
                         };
                     }
@@ -286,6 +339,7 @@ const Editor = (
                 ref={ref}
                 value={editorState}
                 id={id}
+                fontFamilies={fontFamilies}
                 editorId={id}
                 defaultValue={defaultValue}
                 language={(languages) => languageFn(languages, language)}

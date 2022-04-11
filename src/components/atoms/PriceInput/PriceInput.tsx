@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
 import Select, { Props as SelectProps } from '../Select';
@@ -51,6 +51,10 @@ export interface PriceInputProps {
      */
     selectProps?: SelectProps;
     setFormFieldValue?: (fieldValue: string) => void;
+    initialValue?: {
+        number?: number;
+        currency?: Currency['value'];
+    };
 }
 
 const PriceInput = ({
@@ -60,10 +64,13 @@ const PriceInput = ({
     inputProps = {},
     selectProps = {},
     setFormFieldValue,
+    initialValue,
 }: PriceInputProps): JSX.Element => {
-    const [number, setNumber] = useState<number | undefined>();
+    const [number, setNumber] = useState<number | undefined>(
+        initialValue?.number || undefined,
+    );
     const [currency, setCurrency] = useState<Currency['value']>(
-        currencies?.[0]?.value || '',
+        initialValue?.currency || currencies?.[0]?.value || '',
     );
 
     const triggerChange = (changedValue: {
@@ -93,10 +100,17 @@ const PriceInput = ({
     };
 
     const onCurrencyChange = (newCurrency: any) => {
+        setNumber(undefined);
         setCurrency(newCurrency);
         setFormFieldValue?.(newCurrency);
         triggerChange({ currency: newCurrency });
     };
+
+    useEffect(() => {
+        if (setFormFieldValue) {
+            setFormFieldValue(currency);
+        }
+    }, []);
 
     return (
         <Space size="xxsmall" inline={false}>
