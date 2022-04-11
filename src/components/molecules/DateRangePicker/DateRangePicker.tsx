@@ -12,6 +12,7 @@ import momentGenerateConfig from 'rc-picker/es/generate/moment';
 import 'rc-picker/assets/index.css';
 import tr_TR from 'rc-picker/lib/locale/tr_TR';
 import en_US from 'rc-picker/lib/locale/en_US';
+import { SharedTimeProps } from 'rc-picker/es/panels/TimePanel';
 import { DateRangePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
@@ -34,7 +35,7 @@ export interface RangePickerProps {
     /**
      * times visibility
      */
-    showTime?: boolean;
+    showTime?: SharedTimeProps<any>;
     /**
      * 12 hours preview
      */
@@ -67,7 +68,12 @@ export interface RangePickerProps {
 const DateRangePicker = (
     {
         picker = 'date',
-        showTime = true,
+        showTime = {
+            showHour: true,
+            showMinute: true,
+            showSecond: false,
+            format: 'HH:mm',
+        },
         use12Hours,
         onChange,
         dateFormat = 'DD/MM/YYYY HH:mm:ss',
@@ -86,12 +92,42 @@ const DateRangePicker = (
 
     const handleChange = (values: any) => {
         if (values) {
-            const startTime = moment(new Date(values[0]))
+            let startTime = moment(new Date(values[0]))
                 .utcOffset(timezone, true)
                 .toISOString();
-            const endTime = moment(new Date(values[1]))
+            let endTime = moment(new Date(values[1]))
                 .utcOffset(timezone, true)
                 .toISOString();
+            if (showTime) {
+                if (!showTime.showHour) {
+                    startTime = moment(new Date(values[0]))
+                        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                    endTime = moment(new Date(values[1]))
+                        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                } else if (!showTime.showMinute) {
+                    startTime = moment(new Date(values[0]))
+                        .set({ minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                    endTime = moment(new Date(values[1]))
+                        .set({ minute: 0, second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                } else if (!showTime.showSecond) {
+                    startTime = moment(new Date(values[0]))
+                        .set({ second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                    endTime = moment(new Date(values[1]))
+                        .set({ second: 0, millisecond: 0 })
+                        .utcOffset(timezone, true)
+                        .toISOString();
+                }
+            }
             onChange?.([startTime, endTime]);
             setVal(values);
         } else {

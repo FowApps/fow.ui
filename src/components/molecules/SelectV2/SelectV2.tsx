@@ -193,6 +193,7 @@ const SelectV2 = ({
 
     useEffect(() => {
         if (!isInitialVal && selectValues && options?.length > 0) {
+            if (Array.isArray(selectValues) && !selectValues.length) return;
             updateValues(selectValues);
             setIsInitialVal(true);
         }

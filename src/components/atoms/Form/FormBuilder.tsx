@@ -149,13 +149,15 @@ const FormBuilder = ({
                                 currencyId: value,
                             });
                         },
+                        initialValue: {
+                            number: initialValues?.[field.name],
+                            currency: initialValues?.currencyId,
+                        },
                         currencies: config.currencyList,
-                        ...field.props,
                     };
                 case 'checkbox':
                     return {
                         children: field.label,
-                        ...field.props,
                     };
                 case 'checkbox-group':
                 case 'radio-group':
@@ -219,7 +221,11 @@ const FormBuilder = ({
             const FieldComponent = fieldComponent;
 
             return (
-                <Col xs={field.props?.fluid ? 12 : 6}>
+                <Col
+                    xs={field.props?.fluid ? 12 : 6}
+                    style={{
+                        display: field.hidden ? 'none' : 'block',
+                    }}>
                     <FormField
                         key={field.key}
                         valuePropName={getValueProp(field)}
@@ -265,7 +271,7 @@ const FormBuilder = ({
                 </Col>
             );
         },
-        [config],
+        [config, initialValues],
     );
 
     const fields = useMemo(() => {
