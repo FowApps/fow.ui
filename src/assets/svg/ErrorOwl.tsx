@@ -1,9 +1,13 @@
 import React from 'react';
 
-const ErrorOwl = () => (
+type Props = {
+    width?: number;
+};
+
+const ErrorOwl = ({ width }: Props) => (
     <svg
-        width="86"
-        height="110"
+        width={width || '86'}
+        height={width || '110'}
         viewBox="0 0 86 110"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">

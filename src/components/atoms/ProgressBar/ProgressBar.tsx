@@ -6,14 +6,19 @@ export interface ProgressBarProps {
      * decides the height of the bar
      */
     progress?: number;
+    /**
+     * color range change direction
+     */
+    reverse?: boolean | undefined;
 }
 
 const ProgressBar = ({
     progress = 50,
+    reverse = false,
     ...rest
 }: ProgressBarProps): JSX.Element => (
     <StyledProgressBar {...rest}>
-        <StyledDiv progress={progress} />
+        <StyledDiv progress={progress} reverse={reverse} />
     </StyledProgressBar>
 );
 
