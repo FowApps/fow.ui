@@ -204,6 +204,7 @@ const Table = ({
     const [pageSize, setPageSize] = useState(controlledPageSize);
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [columnQuery, setColumnQuery] = useState('');
+    const [isDragTouched, setIsDragTouched] = useState(false);
 
     const isMountFirstTime = useIsMountFirstTime();
 
@@ -303,11 +304,13 @@ const Table = ({
     }, [sortBy]);
 
     useEffect(() => {
-        const filteredColumns = visibleColumns.filter(
-            (column) => column.id !== 'selection',
-        );
-        onChangeColumns?.(filteredColumns);
-    }, [onChangeColumns, visibleColumns]);
+        if (isDragTouched) {
+            const filteredColumns = visibleColumns.filter(
+                (column) => column.id !== 'selection',
+            );
+            onChangeColumns?.(filteredColumns);
+        }
+    }, [onChangeColumns, visibleColumns, isDragTouched]);
 
     useEffect(() => {
         setHiddenColumns(
@@ -422,6 +425,7 @@ const Table = ({
         }
 
         setColumnOrder(orderedColumns.map((col) => col.id));
+        setIsDragTouched(true);
     };
 
     const handleScrollTable = (e) => {
@@ -528,6 +532,18 @@ const Table = ({
                                                                                                         <Icon icon="fow-order-dots" />
                                                                                                     </OrderDots>
                                                                                                     <Checkbox
+                                                                                                        disabled={
+                                                                                                            allColumns.filter(
+                                                                                                                (
+                                                                                                                    c,
+                                                                                                                ) =>
+                                                                                                                    c.id !==
+                                                                                                                        'selection' &&
+                                                                                                                    c.isVisible,
+                                                                                                            )
+                                                                                                                .length ===
+                                                                                                            1
+                                                                                                        }
                                                                                                         label={
                                                                                                             column.Header
                                                                                                         }
@@ -535,6 +551,18 @@ const Table = ({
                                                                                                             column.id
                                                                                                         }
                                                                                                         {...column.getToggleHiddenProps()}
+                                                                                                        onChange={(
+                                                                                                            e,
+                                                                                                        ) => {
+                                                                                                            column
+                                                                                                                .getToggleHiddenProps()
+                                                                                                                .onChange(
+                                                                                                                    e,
+                                                                                                                );
+                                                                                                            setIsDragTouched(
+                                                                                                                true,
+                                                                                                            );
+                                                                                                        }}
                                                                                                     />
                                                                                                 </Space>
                                                                                                 {

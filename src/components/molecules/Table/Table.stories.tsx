@@ -69,11 +69,12 @@ const Template: Story<TableProps> = (args) => {
     }, [pagination]);
 
     const renderAction = (row) => {
-        return <div style={{padding: 24}}>Action Buttons</div>;
+        return <div style={{ padding: 24 }}>Action Buttons</div>;
     };
 
     return (
         <Table
+            showColumnControls
             data={users?.data || []}
             columns={columns}
             renderAction={renderAction}
