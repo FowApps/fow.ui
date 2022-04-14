@@ -1,3 +1,4 @@
+import { KeyboardEvent } from 'react';
 import useDrawer from '../useDrawer';
 import useForm, { UseFormConfig } from '../useForm';
 
@@ -80,7 +81,7 @@ const useDrawerForm = (config: UseDrawerFormConfig) => {
         drawerProps: drawerFormProps,
         formProps: {
             ...formProps,
-            onKeyDown: (e: KeyboardEvent) => {
+            onKeyDown: (e: KeyboardEvent<HTMLFormElement>) => {
                 if (e.key === 'Enter') {
                     formSubmit().then(() => {
                         if (autoSubmitClose) {
