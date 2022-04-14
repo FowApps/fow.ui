@@ -78,7 +78,22 @@ const useDrawerForm = (config: UseDrawerFormConfig) => {
         open,
         close,
         drawerProps: drawerFormProps,
-        formProps,
+        formProps: {
+            ...formProps,
+            onKeyDown: (e: KeyboardEvent) => {
+                if (e.key === 'Enter') {
+                    formSubmit().then(() => {
+                        if (autoSubmitClose) {
+                            close();
+                        }
+
+                        if (autoResetForm) {
+                            formInstance.resetFields();
+                        }
+                    });
+                }
+            },
+        },
         formLoading,
         defaultFormValuesLoading,
         formValues,
