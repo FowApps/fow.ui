@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import SelectV2, { Props as SelectProps } from '../../molecules/SelectV2';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
+import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
 
@@ -127,10 +127,11 @@ const PriceInput = ({
                 />
             </InputWrapper>
             <SelectWrapper>
-                <SelectV2
+                <Select
+                    allowClear={false}
                     options={currencies?.map((curr) => ({
                         value: curr.value,
-                        text: curr.name,
+                        label: curr.name,
                     }))}
                     disabled={disabled}
                     value={value.currency || currency}

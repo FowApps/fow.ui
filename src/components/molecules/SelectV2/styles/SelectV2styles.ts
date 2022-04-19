@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '../../../atoms/Button';
 import Space from '../../../atoms/Space';
 import Dropdown from '../../Dropdown';
@@ -6,6 +6,7 @@ import Dropdown from '../../Dropdown';
 type ButtonProps = {
     isOpen: boolean;
     buttonType: string;
+    hasValidationError?: boolean;
 };
 
 export const DropdownWrapper = styled(Dropdown)`
@@ -32,18 +33,25 @@ export const DropdownButtonWrapper = styled(Button)<ButtonProps>`
         props.buttonType === 'white'
             ? props.theme.fow.colors.common.white
             : props.theme.fow.colors.greyLight.light};
+
     ::placeholder {
         color: ${(props) => props.theme.fow.colors.text.disabled};
     }
 
     :hover:not(:disabled) {
         border: 1px solid
-            ${(props) => props.theme.fow.colors.error.transparent48} !important;
+            ${(props) =>
+                props.hasValidationError
+                    ? props.theme.fow.colors.error.main
+                    : props.theme.fow.colors.grey.transparent32};
     }
 
     :focus:not(:disabled) {
         border: 1px solid
-            ${(props) => props.theme.fow.colors.primary.transparent48} !important;
+            ${(props) =>
+                props.hasValidationError
+                    ? props.theme.fow.colors.error.main
+                    : props.theme.fow.colors.grey.transparent32};
         box-shadow: 0px 0px 0px 4px
             ${(props) => props.theme.fow.colors.primary.transparent12};
     }
@@ -58,6 +66,13 @@ export const DropdownButtonWrapper = styled(Button)<ButtonProps>`
             cursor: not-allowed;
         }
     }
+
+    ${(props) =>
+        props.hasValidationError &&
+        css`
+            border: 1px solid ${props.theme.fow.colors.error.main} !important;
+        `};
+
     > span {
         width: 100%;
         > div {

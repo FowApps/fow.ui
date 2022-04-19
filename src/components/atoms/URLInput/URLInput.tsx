@@ -1,8 +1,8 @@
 import React, { forwardRef, RefObject, useEffect, useState } from 'react';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
-import SelectV2, { Props as SelectProps } from '../../molecules/SelectV2';
 
 import Input, { InputProps } from '../Input';
+import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
 
@@ -125,11 +125,12 @@ const URLInput = (
     return (
         <Space size="xxsmall" inline={false}>
             <SelectWrapper>
-                <SelectV2
+                <Select
                     options={protocols?.map((prot) => ({
                         value: prot.value,
-                        text: prot.name,
+                        label: prot.name,
                     }))}
+                    allowClear={false}
                     value={protocol}
                     style={{ width: 150 }}
                     onChange={ProtocolChange}

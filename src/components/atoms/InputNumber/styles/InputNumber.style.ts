@@ -24,16 +24,14 @@ export const Wrapper = styled.div<InputProps>`
             ${(props) =>
                 !props.disabled &&
                 css`
-                    border-color:
-                        props.hasValidationError
-                            ? props.theme.fow.colors.error.main
-                            : props.theme.fow.colors.error.transparent48};
+                    border-color: ${props.hasValidationError
+                        ? props.theme.fow.colors.error.main
+                        : props.theme.fow.colors.error.transparent48};
                     .rc-input-number-handler-up,
                     .rc-input-number-handler-wrap {
-                        border-color:
-                            props.hasValidationError
-                                ? props.theme.fow.colors.error.main
-                                : props.theme.fow.colors.error.transparent48};
+                        border-color: ${props.hasValidationError
+                            ? props.theme.fow.colors.error.main
+                            : props.theme.fow.colors.error.transparent48};
                     }
 
                     .rc-input-number-handler-wrap {

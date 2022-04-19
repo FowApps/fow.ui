@@ -96,6 +96,8 @@ export interface Props {
     style?: CSSProperties;
     value?: any;
     hasValidationError?: boolean;
+    allowClear?: boolean;
+    width?: number;
 }
 
 type StateProps = {
@@ -118,6 +120,9 @@ const SelectV2 = ({
     variant = 'white',
     mode = 'single',
     placeholder,
+    allowClear = true,
+    hasValidationError = false,
+    width,
     ...props
 }: Props) => {
     const { language } = useContext(ConfigContext);
@@ -243,7 +248,7 @@ const SelectV2 = ({
         <DropdownWrapper
             ref={ref}
             disabled={disabled}
-            width={wrapperWidth}
+            width={width || wrapperWidth}
             trigger="click"
             onClose={() => setSearchText('')}
             onAfterVisibleChange={(visible) => {
@@ -294,7 +299,8 @@ const SelectV2 = ({
                     disabled={disabled}
                     buttonType={variant}
                     isOpen={isOpen}
-                    className={isOpen ? 'opened' : ''}>
+                    className={isOpen ? 'opened' : ''}
+                    hasValidationError={hasValidationError}>
                     <DropdownButtonContent
                         justify="space-between"
                         inline={false}>
@@ -306,7 +312,7 @@ const SelectV2 = ({
                                     )}
                             </Body>
 
-                            {selectedItem && !disabled && (
+                            {selectedItem && !disabled && allowClear && (
                                 <ClearButtonWrapper
                                     color="primary"
                                     size="small"

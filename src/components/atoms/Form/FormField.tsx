@@ -46,6 +46,7 @@ export interface FormFieldProps<Values = any> extends RcFieldProps<Values> {
     type?: string;
     initialVisibleField?: boolean;
     triggerButtonProps?: ButtonProps;
+    triggerButtonText?: string;
 }
 
 const { Field } = Form;
@@ -56,6 +57,7 @@ function FormField({
     hint,
     initialVisibleField = true,
     triggerButtonProps = {},
+    triggerButtonText = '',
     dependencies = [],
     children,
     ...restProps
@@ -140,7 +142,7 @@ function FormField({
                                     variant="text"
                                     {...triggerButtonProps}
                                     onClick={handleVisibleField}>
-                                    {label}
+                                    {triggerButtonText || label}
                                 </Button>
                             </Text>
                         </div>
