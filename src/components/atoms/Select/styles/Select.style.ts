@@ -30,7 +30,7 @@ export const Wrapper = styled.div<WrapperProps>`
         cursor: not-allowed;
     }
     .rc-select-disabled .rc-select-selector {
-        opacity: 0.3;
+        background-color: #fafafa;
     }
     .rc-select-disabled .rc-select-arrow {
         color: ${(props) => props.theme.fow.colors.greyLight.main} !important;

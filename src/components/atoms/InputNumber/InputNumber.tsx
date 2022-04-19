@@ -6,14 +6,15 @@ import { Wrapper } from './styles';
 
 export interface IInputNumber extends InputNumberProps {
     hasValidationError?: boolean;
+    disabled?: boolean;
 }
 
 const InputNumber = (
-    { hasValidationError = false, ...rest }: IInputNumber,
+    { hasValidationError = false, disabled = false, ...rest }: IInputNumber,
     ref,
 ): JSX.Element => (
-    <Wrapper hasValidationError={hasValidationError}>
-        <RcInputNumber {...rest} ref={ref} />
+    <Wrapper hasValidationError={hasValidationError} disabled={disabled}>
+        <RcInputNumber {...rest} ref={ref} disabled={disabled} />
     </Wrapper>
 );
 

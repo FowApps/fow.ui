@@ -66,6 +66,7 @@ export type EditorProps = BraftEditorProps & {
     hasValidationError?: boolean;
     extraControls?: CustomControlType[];
     name?: string;
+    disabled?: boolean;
 };
 
 type ControlTypeTypes = {
@@ -333,7 +334,8 @@ const Editor = (
         <Wrapper
             isFocused={isFocused}
             hasValidationError={hasValidationError}
-            name={name}>
+            name={name}
+            disabled={rest.disabled}>
             <BraftEditor
                 {...rest}
                 ref={ref}

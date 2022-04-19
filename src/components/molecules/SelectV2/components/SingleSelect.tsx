@@ -26,12 +26,11 @@ const SingleSelect = ({
     isInitialVal,
     selectedItem,
     setSelectedItem,
+    close,
 }: any): JSX.Element => {
     const isMountFirstTime = useIsMountFirstTime();
     const handleChange = (selectedOption) => {
-        console.log('submit');
         if (!selectedOption) return;
-
         if (
             typeof selectedOption === 'string' ||
             typeof selectedOption === 'number'
@@ -46,6 +45,7 @@ const SingleSelect = ({
             onChange?.(selectedOption.value, selectedOption);
             setSelectedItem(selectedOption);
         }
+        close();
     };
 
     useEffect(() => {

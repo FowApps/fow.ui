@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type InputProps = {
     hasValidationError: boolean;
+    disabled?: boolean;
 };
 
 export const Wrapper = styled.div<InputProps>`
@@ -20,22 +21,25 @@ export const Wrapper = styled.div<InputProps>`
                 : props.theme.fow.colors.grey.transparent32};
 
         &:hover {
-            border-color: ${(props) =>
-                props.hasValidationError
-                    ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.error.transparent48};
+            ${(props) =>
+                !props.disabled &&
+                css`
+                    border-color:
+                        props.hasValidationError
+                            ? props.theme.fow.colors.error.main
+                            : props.theme.fow.colors.error.transparent48};
+                    .rc-input-number-handler-up,
+                    .rc-input-number-handler-wrap {
+                        border-color:
+                            props.hasValidationError
+                                ? props.theme.fow.colors.error.main
+                                : props.theme.fow.colors.error.transparent48};
+                    }
 
-            .rc-input-number-handler-up,
-            .rc-input-number-handler-wrap {
-                border-color: ${(props) =>
-                    props.hasValidationError
-                        ? props.theme.fow.colors.error.main
-                        : props.theme.fow.colors.error.transparent48};
-            }
-
-            .rc-input-number-handler-wrap {
-                opacity: 1;
-            }
+                    .rc-input-number-handler-wrap {
+                        opacity: 1;
+                    }
+                `}
         }
 
         &.rc-input-number-focused {
@@ -66,13 +70,17 @@ export const Wrapper = styled.div<InputProps>`
             line-height: 2.4rem;
         }
 
-        .rc-input-number-handler-wrap {
-            opacity: 0;
-        }
-
         .rc-input-number-handler {
             cursor: pointer;
             height: 15px;
         }
+
+        ${(props) =>
+            props.disabled &&
+            css`
+                .rc-input-number-handler {
+                    cursor: not-allowed;
+                }
+            `}
     }
 `;

@@ -42,6 +42,7 @@ export interface EmailProps {
     selectProps?: SelectProps;
     name?: string;
     hasValidationError?: boolean;
+    disabled?: boolean;
 }
 
 const defaultExtensions: Extension[] = [
@@ -72,6 +73,7 @@ const EmailInput = (
         inputProps = {},
         selectProps = {},
         hasValidationError,
+        disabled,
     }: EmailProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
@@ -116,6 +118,7 @@ const EmailInput = (
         <Space size="xxsmall" inline={false}>
             <InputWrapper>
                 <Input
+                    disabled={disabled}
                     ref={ref}
                     name={name}
                     type="text"
@@ -130,6 +133,7 @@ const EmailInput = (
             </FixedWrapper>
             <SelectWrapper>
                 <Select
+                    disabled={disabled}
                     allowClear
                     mode="combobox"
                     value={extension}

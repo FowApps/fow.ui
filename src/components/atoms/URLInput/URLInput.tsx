@@ -1,12 +1,10 @@
 import React, { forwardRef, RefObject, useEffect, useState } from 'react';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
+import SelectV2, { Props as SelectProps } from '../../molecules/SelectV2';
 
 import Input, { InputProps } from '../Input';
-import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
-
-const { Option } = Select;
 
 interface Protocol {
     /**
@@ -41,6 +39,7 @@ export interface URLInputProps {
      */
     name?: string;
     hasValidationError?: boolean;
+    disabled?: boolean;
 }
 
 const protocols: Protocol[] = [
@@ -62,6 +61,7 @@ const URLInput = (
         selectProps = {},
         name,
         hasValidationError = false,
+        disabled = false,
     }: URLInputProps,
     ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
@@ -125,18 +125,18 @@ const URLInput = (
     return (
         <Space size="xxsmall" inline={false}>
             <SelectWrapper>
-                <Select
+                <SelectV2
+                    options={protocols?.map((prot) => ({
+                        value: prot.value,
+                        text: prot.name,
+                    }))}
                     value={protocol}
                     style={{ width: 150 }}
                     onChange={ProtocolChange}
                     hasValidationError={hasValidationError}
-                    {...selectProps}>
-                    {protocols?.map((prot) => (
-                        <Option value={prot.value} key={prot.value}>
-                            {prot.name}
-                        </Option>
-                    ))}
-                </Select>
+                    disabled={disabled}
+                    {...selectProps}
+                />
             </SelectWrapper>
             <InputWrapper>
                 <Input
@@ -146,6 +146,7 @@ const URLInput = (
                     value={urlName}
                     onChange={handleChange}
                     hasValidationError={hasValidationError}
+                    disabled={disabled}
                     {...inputProps}
                 />
             </InputWrapper>

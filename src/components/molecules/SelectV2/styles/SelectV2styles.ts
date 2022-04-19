@@ -102,3 +102,7 @@ export const ClearButtonWrapper = styled(Button)`
         background: ${(props) => props.theme.fow.colors.error.transparent32};
     }
 `;
+
+export const Placeholder = styled.span`
+    color: ${(props) => props.theme.fow.colors.text.disabled};
+`;

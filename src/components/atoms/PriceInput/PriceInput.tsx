@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import SelectV2, { Props as SelectProps } from '../../molecules/SelectV2';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
-import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
-
-const { Option } = Select;
 
 interface Currency {
     /**
@@ -55,6 +53,7 @@ export interface PriceInputProps {
         number?: number;
         currency?: Currency['value'];
     };
+    disabled?: boolean;
 }
 
 const PriceInput = ({
@@ -65,6 +64,7 @@ const PriceInput = ({
     selectProps = {},
     setFormFieldValue,
     initialValue,
+    disabled = false,
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
         initialValue?.number || undefined,
@@ -116,6 +116,7 @@ const PriceInput = ({
         <Space size="xxsmall" inline={false}>
             <InputWrapper>
                 <InputNumber
+                    disabled={disabled}
                     type="text"
                     value={value.number || number}
                     onChange={onNumberChange}
@@ -126,17 +127,17 @@ const PriceInput = ({
                 />
             </InputWrapper>
             <SelectWrapper>
-                <Select
+                <SelectV2
+                    options={currencies?.map((curr) => ({
+                        value: curr.value,
+                        text: curr.name,
+                    }))}
+                    disabled={disabled}
                     value={value.currency || currency}
                     style={{ width: 150 }}
                     onChange={onCurrencyChange}
-                    {...selectProps}>
-                    {currencies?.map((curr) => (
-                        <Option key={curr.value} value={curr.value}>
-                            {curr.name}
-                        </Option>
-                    ))}
-                </Select>
+                    {...selectProps}
+                />
             </SelectWrapper>
         </Space>
     );

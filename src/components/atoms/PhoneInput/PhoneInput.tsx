@@ -24,6 +24,7 @@ export interface Props extends PhoneInputProps {
     search?: boolean;
     hasValidationError?: boolean;
     name?: string;
+    disabled?: boolean;
 }
 
 function fixControlledValue<T>(value: T) {
@@ -39,6 +40,7 @@ const PhoneInput = (
         country = 'tr',
         search = true,
         onChange,
+        disabled = false,
         ...rest
     }: Props,
     ref: LegacyRef<HTMLInputElement>,
@@ -64,7 +66,10 @@ const PhoneInput = (
     };
 
     return (
-        <Wrapper hasValidationError={hasValidationError} isFocused={isFocused}>
+        <Wrapper
+            hasValidationError={hasValidationError}
+            isFocused={isFocused}
+            disabled={disabled}>
             <ReactPhoneInput
                 {...rest}
                 inputProps={{
@@ -81,6 +86,7 @@ const PhoneInput = (
                 jumpCursorToEnd
                 value={value}
                 onChange={handleChange}
+                disabled={disabled}
             />
         </Wrapper>
     );

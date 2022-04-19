@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 type PhoneInputProps = {
     hasValidationError: boolean;
     isFocused: boolean;
+    disabled: boolean;
 };
 
 export const Wrapper = styled.div<PhoneInputProps>`
@@ -17,12 +18,15 @@ export const Wrapper = styled.div<PhoneInputProps>`
                 ? props.theme.fow.colors.error.main
                 : props.theme.fow.colors.grey.transparent32};
 
-    :hover:not(:disabled) {
-        border: 1px solid
-            ${(props) =>
-                props.hasValidationError
-                    ? props.theme.fow.colors.error.main
-                    : props.theme.fow.colors.error.transparent48};
+    :hover {
+        ${(props) =>
+            !props.disabled &&
+            css`
+                border: 1px solid
+                        props.hasValidationError
+                            ? props.theme.fow.colors.error.main
+                            : props.theme.fow.colors.error.transparent48};
+            `}
     }
 
     ${(props) =>
@@ -42,6 +46,10 @@ export const Wrapper = styled.div<PhoneInputProps>`
             border: none;
             width: 100%;
             height: 30px;
+
+            &[disabled] {
+                background-color: #fafafa;
+            }
         }
     }
 

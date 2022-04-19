@@ -18,7 +18,6 @@ type LabelProps = {
 
 export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
     width: 100%;
-    margin-bottom: ${(props) => props.theme.fow.spacing.xsmall};
     padding-top: ${(props) => props.theme.fow.spacing.xxsmall};
     padding-right: ${(props) => props.theme.fow.spacing.xsmall};
     padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
@@ -34,7 +33,7 @@ export const StyledTextArea = styled(TextareaAutosize)<TextProps>`
     font-size: 1.4rem;
     line-height: 2.4rem;
     transition: all 0.3s ease;
-    height: 32px;
+    height: 32px !important;
     resize: ${(props) => (props.autosize ? 'auto' : 'none')} !important;
     disabled: ${(props) => (props.disabled ? 'true' : 'false')};
 

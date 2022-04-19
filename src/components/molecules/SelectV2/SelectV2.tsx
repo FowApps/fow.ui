@@ -4,6 +4,7 @@ import React, {
     useEffect,
     useRef,
     useState,
+    CSSProperties,
 } from 'react';
 import useStateRef from '../../../hooks/useStateRef';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
@@ -24,6 +25,7 @@ import {
     DropdownButtonWrapper,
     DropdownContentWrapper,
     DropdownWrapper,
+    Placeholder,
 } from './styles';
 
 export type OptionType = {
@@ -91,6 +93,9 @@ export interface Props {
      * onsearch event
      */
     onSearch?: (value: string) => void;
+    style?: CSSProperties;
+    value?: any;
+    hasValidationError?: boolean;
 }
 
 type StateProps = {
@@ -241,7 +246,6 @@ const SelectV2 = ({
             width={wrapperWidth}
             trigger="click"
             onClose={() => setSearchText('')}
-            isClosedWhenMouseLeave
             onAfterVisibleChange={(visible) => {
                 if (visible) {
                     setTimeout(() => {
@@ -249,7 +253,7 @@ const SelectV2 = ({
                     }, 300);
                 }
             }}
-            content={() => (
+            content={(close) => (
                 <DropdownContentWrapper>
                     {(!!options?.length ||
                         !!formValues.length ||
@@ -277,7 +281,7 @@ const SelectV2 = ({
                             {mode === 'multiple' ? (
                                 <MultipleSelect {...rest} />
                             ) : (
-                                <SingleSelect {...rest} />
+                                <SingleSelect {...rest} close={close} />
                             )}
                         </>
                     )}
@@ -297,11 +301,12 @@ const SelectV2 = ({
                         <Space justify="space-between" inline={false}>
                             <Body level={1} color="secondary">
                                 {selectedItem?.text ||
-                                    formValues?.[0]?.text ||
-                                    placeholder}
+                                    formValues?.[0]?.text || (
+                                        <Placeholder>{placeholder}</Placeholder>
+                                    )}
                             </Body>
 
-                            {selectedItem && (
+                            {selectedItem && !disabled && (
                                 <ClearButtonWrapper
                                     color="primary"
                                     size="small"

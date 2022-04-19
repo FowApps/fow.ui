@@ -4,6 +4,7 @@ type WrapperProps = {
     hasValidationError?: boolean;
     isFocused?: boolean;
     name?: string;
+    disabled?: boolean;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -31,6 +32,12 @@ export const Wrapper = styled.div<WrapperProps>`
     }
 
     ${(props) =>
+        props.disabled &&
+        css`
+            cursor: not-allowed;
+        `}
+
+    ${(props) =>
         props.isFocused &&
         css`
             box-shadow: 0px 0px 0px 4px
@@ -53,6 +60,11 @@ export const Wrapper = styled.div<WrapperProps>`
         height: unset;
         font-size: 14px;
         color: ${(props) => props.theme.fow.colors.text.secondary};
+        ${(props) =>
+            props.disabled &&
+            css`
+                background-color: #fafafa;
+            `}
     }
 
     .bf-image-link-editor input:hover,
