@@ -266,7 +266,6 @@ const FormBuilder = ({
                                 }
                             }}
                             {...calculatedProps(field)}
-                            disabled
                         />
                     </FormField>
                 </Col>
