@@ -2,7 +2,7 @@ import React from 'react';
 import Space from '../Space';
 import { StyledBadge } from './styles';
 
-export interface BadgeProps {
+export type BadgeProps = {
     /**
      * color scheme of label
      */
@@ -21,7 +21,7 @@ export interface BadgeProps {
     size?: 'small' | 'medium' | 'large';
 
     text: string;
-}
+};
 
 const Badge = ({
     shape = 'rounded',
@@ -29,10 +29,12 @@ const Badge = ({
     variant = 'filled',
     color = 'primary',
     text,
-}: BadgeProps): JSX.Element => {
+    ...rest
+}: BadgeProps & React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const textLength = text.length;
     return (
         <StyledBadge
+            {...rest}
             textLength={textLength}
             shape={shape}
             size={size}

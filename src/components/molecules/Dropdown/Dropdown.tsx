@@ -44,6 +44,7 @@ export interface DropdownProps {
     children: React.ReactNode | ((api: RenderProps) => React.ReactNode);
     isClosedWhenMouseLeave?: boolean;
     onAfterVisibleChange?: (isVisible: boolean) => void;
+    transitionDuration?: number;
 }
 let closeInterval;
 let openInterval;
@@ -61,13 +62,16 @@ const Dropdown = (
         closeAfterClickContent,
         isClosedWhenMouseLeave = false,
         onAfterVisibleChange,
+        transitionDuration = 300,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
     const { isOpen, close, toggle, open } = useDisclosure(initialOpen);
+
     useEffect(() => {
         onAfterVisibleChange?.(isOpen);
     }, [isOpen, onAfterVisibleChange]);
+
     return (
         <PositioningPortal
             portalElement={
@@ -104,6 +108,7 @@ const Dropdown = (
                     onExited={transitionEnded}>
                     {(state) => (
                         <Content
+                            transitionDuration={transitionDuration}
                             state={state}
                             onMouseEnter={() => {
                                 if (trigger === 'hover' && !disabled) {

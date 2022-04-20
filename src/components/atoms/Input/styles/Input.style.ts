@@ -19,7 +19,7 @@ type IconWrapperProps = {
 
 export const IconWrapper = styled.div<IconWrapperProps>`
     position: absolute;
-    top: 1rem;
+    top: 0.9rem;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 

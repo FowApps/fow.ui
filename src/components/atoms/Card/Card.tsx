@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyledCard } from './styles';
 
-export interface CardProps {
+export type CardProps = {
     isActive?: boolean;
     children: React.ReactNode;
-}
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const Card = ({
     isActive = false,

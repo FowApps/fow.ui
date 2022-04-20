@@ -138,7 +138,10 @@ const Checkbox = ({
     return (
         <StyledLabel>
             {(label || children) && (
-                <LabelText level={2} disabled={checkboxProps.disabled}>
+                <LabelText
+                    lineClamp={1}
+                    level={2}
+                    disabled={checkboxProps.disabled}>
                     {label || children}
                 </LabelText>
             )}

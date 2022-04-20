@@ -49,6 +49,7 @@ export { default as Textarea } from './components/atoms/TextArea';
 export { default as URLInput } from './components/atoms/URLInput';
 export { default as EmailInput } from './components/atoms/EmailInput';
 export { default as PhoneInput } from './components/atoms/PhoneInput';
+export { default as SelectV3 } from './components/atoms/SelectV3';
 
 export const Typography = {
     Heading,

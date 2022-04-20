@@ -5,7 +5,11 @@ interface LabelTextProps extends BodyProps {
     disabled?: boolean;
 }
 
-export const StyledLabel = styled.label`
+interface LabelProps {
+    fluid?: boolean;
+}
+
+export const StyledLabel = styled.label<LabelProps>`
     position: relative;
     display: inline-flex;
     flex-direction: row-reverse;
@@ -13,6 +17,7 @@ export const StyledLabel = styled.label`
     justify-content: flex-end;
     cursor: pointer;
     user-select: none;
+    width: ${(props) => (props.fluid ? '100%' : 'auto')};
 `;
 
 export const LabelText = styled(Body)<LabelTextProps>`

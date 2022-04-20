@@ -61,6 +61,7 @@ export interface RadioProps {
      * show only label
      */
     onlyLabel?: boolean;
+    fluid?: boolean;
 }
 
 export interface RadioGroupProps extends RadioProps {
@@ -103,6 +104,7 @@ const Radio = ({
     label = '',
     optionType = 'radio',
     onlyLabel = false,
+    fluid = false,
     ...rest
 }: RadioProps): JSX.Element => {
     const context = useContext(RadioGroupContext);
@@ -122,9 +124,9 @@ const Radio = ({
     }
 
     return optionType === 'radio' ? (
-        <StyledLabel>
+        <StyledLabel fluid={fluid}>
             {label && (
-                <LabelText level={2} disabled={rest.disabled}>
+                <LabelText lineClamp={1} level={2} disabled={rest.disabled}>
                     {label}
                 </LabelText>
             )}
@@ -215,7 +217,7 @@ const Group = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                         style={{ width: '100%' }}
                         direction={props.direction}
                         align="start"
-                        size={optionType === 'button' ? 'none' : 'small'}>
+                        size={optionType === 'button' ? 'none' : 'xsmall'}>
                         {childrenToRender}
                     </Space>
                 </div>

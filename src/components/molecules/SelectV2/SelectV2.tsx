@@ -206,6 +206,7 @@ const SelectV2 = ({
             if (Array.isArray(selectValues) && !selectValues.length) return;
             updateValues(selectValues);
             setIsInitialVal(true);
+            onChange?.(selectValues, selectValues);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectValues, options]);
