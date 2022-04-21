@@ -27,11 +27,13 @@ import Loader from '../Loader';
 import Body from '../Typography/Body';
 import Space from '../Space';
 import Checkbox from '../Checkbox';
+import Tooltip from '../Tooltip';
 
 type OptionType = {
     value: any;
     label: string;
     disabled?: boolean;
+    hidden?: boolean;
 };
 
 export interface SelectProps {
@@ -81,15 +83,19 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         hasValidationError,
     } = props;
 
+    const isControlled = 'value' in props;
     const isSingle = mode === 'single';
 
     const searchInputRef = useRef<HTMLInputElement>(null);
     const radioGroupRef = useRef<HTMLDivElement>(null);
     const [ref, { width: elementWidth }] = useElementSize();
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [internalSearchQuery, setInternalSearchQuery] = useState('');
+    const [externalSearchQuery, setExternalSearchQuery] = useState('');
+
     const [internalValue, setInternalValue] = useState(value || defaultValue);
-    const [internalLabel, setInternalLabel] = useState<string | undefined>();
+    const [selected, setSelected] = useState<any | any[]>();
+    const [selecteds, setSelecteds] = useState<any[]>([]);
 
     const handleChangeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value: targetValue } = e.target;
@@ -99,7 +105,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         // TODO: When value is number, e.target.value return string. Fix it.
         onChange?.(targetValue, option);
         setInternalValue(targetValue);
-        setInternalLabel(option?.label);
+        setSelected(option);
     };
 
     const handleChangeCheckbox = (
@@ -112,66 +118,83 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
             let values: any[];
             if (currValues?.indexOf(val) === -1) {
                 values = [val, ...currValues];
-                setInternalLabel(option?.label);
+                setSelected(option);
+                setSelecteds((currSelecteds = []) => [
+                    ...currSelecteds,
+                    option,
+                ]);
             } else {
                 values = currValues.filter((currVal) => currVal !== val);
-                if (values.length === 0) {
-                    setInternalLabel('');
-                } else {
-                    const lastItemValue = values[0];
-                    const lastOption = options.find(
-                        (opt) => lastItemValue === opt.value,
+                setSelecteds((currSelecteds) => {
+                    const filtered = currSelecteds?.filter(
+                        (currSelected) => currSelected.value !== val,
                     );
-                    setInternalLabel(lastOption?.label);
-                }
+                    setSelected(filtered[filtered.length - 1]);
+                    return filtered;
+                });
             }
+
+            if (values.length === 0) {
+                setSelected('');
+            }
+
             onChange?.(values);
             return values;
         });
     };
 
     useEffect(() => {
-        if (!internalLabel) {
-            const label = options.find(
-                (option) => option[valueKey] === internalValue,
-            )?.[labelKey];
-            setInternalLabel(label);
+        if (isControlled) {
+            setInternalValue(value);
         }
-    }, [internalLabel, internalValue, labelKey, options, value, valueKey]);
+        if ((value || defaultValue) && !selected && selecteds.length === 0) {
+            if (isSingle) {
+                const option = options.find(
+                    (opt) => opt.value.toString() === value || defaultValue,
+                );
+                setSelected(option);
+            } else {
+                const lastItemValue = value?.[0] || defaultValue?.[0];
+                const lastOption = options.find(
+                    (opt) => lastItemValue === opt.value,
+                );
+                const selectedOptions = options.filter((opt) =>
+                    (value || defaultValue || []).some(
+                        (v: any) => opt.value === v,
+                    ),
+                );
+                console.log(lastOption, selectedOptions);
 
-    const handleSearch = debounce((query: string) => {
-        if (onSearch) {
-            onSearch?.(query);
-        } else {
-            setSearchQuery(query);
+                setSelected(lastOption);
+                setSelecteds(selectedOptions);
+            }
         }
-    }, 750);
 
-    const searchResultLength = options.filter((option) =>
-        option.label
-            .toLocaleLowerCase()
-            .includes(searchQuery.toLocaleLowerCase()),
-    ).length;
-
-    const calculateInputValue = () => {
-        if (isSingle) {
-            return (
-                internalLabel ||
-                options.find(
-                    (option) => option[valueKey] === (value || internalValue),
-                )?.[labelKey] ||
-                ''
-            );
+        if (!value && isControlled) {
+            setSelected(undefined);
+            setSelecteds([]);
         }
-        return (
-            internalLabel ||
-            options.find(
-                (option) =>
-                    option[valueKey] === (value?.[0] || internalValue?.[0]),
-            )?.[labelKey] ||
-            ''
-        );
-    };
+    }, [defaultValue, isControlled, isSingle, options, value]);
+
+    const handleSearch = debounce(
+        (query: string) => {
+            if (onSearch) {
+                onSearch?.(query);
+                setExternalSearchQuery(query);
+            } else {
+                setInternalSearchQuery(query);
+            }
+        },
+        onSearch ? 750 : 0,
+    );
+
+    const searchResultLength = options
+        .filter((option) => !option.hidden)
+        .filter((option) =>
+            option.label
+                .toLocaleLowerCase()
+                .includes(internalSearchQuery.toLocaleLowerCase()),
+        ).length;
 
     const renderEmptyOrNotFoundState = () => {
         if (options.length === 0 || searchResultLength === 0) {
@@ -232,7 +255,9 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                             <Input
                                 ref={searchInputRef}
                                 onChange={handleSearch}
-                                value={searchQuery}
+                                value={
+                                    externalSearchQuery || internalSearchQuery
+                                }
                                 prefixIcon="search"
                             />
                         </SearchWrapper>
@@ -258,11 +283,12 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                                         }
                                     }}>
                                     {options
+                                        .filter((option) => !option.hidden)
                                         .filter((option) =>
                                             option.label
                                                 .toLocaleLowerCase()
                                                 .includes(
-                                                    searchQuery.toLocaleLowerCase(),
+                                                    internalSearchQuery.toLocaleLowerCase(),
                                                 ),
                                         )
                                         .map((option) => (
@@ -282,11 +308,12 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                                     align="start"
                                     justify="flex-start">
                                     {options
+                                        .filter((option) => !option.hidden)
                                         .filter((option) =>
                                             option.label
                                                 .toLocaleLowerCase()
                                                 .includes(
-                                                    searchQuery.toLocaleLowerCase(),
+                                                    internalSearchQuery.toLocaleLowerCase(),
                                                 ),
                                         )
                                         .map((option) => (
@@ -321,7 +348,14 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                     </OptionsWrapper>
                 </Surface>
             ),
-        [value, internalValue, options, isLoading],
+        [
+            value,
+            internalValue,
+            options,
+            isLoading,
+            externalSearchQuery,
+            internalSearchQuery,
+        ],
     );
 
     return (
@@ -336,7 +370,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                     <Input
                         hasValidationError={hasValidationError}
                         disabled={disabled || isLoading}
-                        value={calculateInputValue()}
+                        value={selected?.label || ''}
                         placeholder={placeholder}
                         readOnly
                         style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
@@ -344,24 +378,52 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                     />
                     <BadgeHolder size="xsmall">
                         {!isSingle && internalValue?.length > 1 && (
-                            <Badge
-                                text={`+${(
-                                    internalValue?.length - 1
-                                ).toString()}`}
-                                variant="outlined"
-                                size="medium"
-                                color="primary"
-                            />
+                            <Tooltip
+                                placement="bottom"
+                                overlay={
+                                    <Space
+                                        align="start"
+                                        direction="vertical"
+                                        size="xxsmall"
+                                        style={{
+                                            width: 150,
+                                            maxHeight: 150,
+                                            overflowY: 'auto',
+                                        }}>
+                                        {selecteds
+                                            .filter(
+                                                (s) =>
+                                                    s.value !== selected.value,
+                                            )
+                                            .map((s) => (
+                                                <Body
+                                                    color="white"
+                                                    lineClamp={1}>
+                                                    {s.label}
+                                                </Body>
+                                            ))}
+                                    </Space>
+                                }>
+                                <Badge
+                                    text={`+${(
+                                        internalValue?.length - 1
+                                    ).toString()}`}
+                                    variant="outlined"
+                                    size="medium"
+                                    color="primary"
+                                />
+                            </Tooltip>
                         )}
                         {allowClear &&
-                            (!!value || !!internalValue) &&
+                            (value?.length > 0 || internalValue?.length > 0) &&
                             !disabled && (
                                 <Badge
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onChange?.(undefined);
                                         setInternalValue(undefined);
-                                        setInternalLabel(undefined);
+                                        setSelected(undefined);
+                                        setSelecteds([]);
                                     }}
                                     text="x"
                                     variant="outlined"

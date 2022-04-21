@@ -37,16 +37,15 @@ export const Surface = styled(Card)`
 `;
 
 export const SearchWrapper = styled.div`
-    position: fixed;
-    width: calc(100% - 5rem);
+    position: sticky;
+    width: 100%;
     background-color: #fff;
     z-index: 12;
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
+    top: 0;
 `;
 
 export const EmptyWrapper = styled.div``;
 
-export const OptionsWrapper = styled.div<OptionsWrapperProps>`
-    padding-top: ${(props) => (props.allowSearch ? 56 : 12)}px;
-`;
+export const OptionsWrapper = styled.div<OptionsWrapperProps>``;

@@ -62,6 +62,7 @@ export interface RadioProps {
      */
     onlyLabel?: boolean;
     fluid?: boolean;
+    style?: React.CSSProperties;
 }
 
 export interface RadioGroupProps extends RadioProps {
@@ -124,7 +125,7 @@ const Radio = ({
     }
 
     return optionType === 'radio' ? (
-        <StyledLabel fluid={fluid}>
+        <StyledLabel fluid={fluid} style={rest.style}>
             {label && (
                 <LabelText lineClamp={1} level={2} disabled={rest.disabled}>
                     {label}
@@ -143,7 +144,7 @@ const Radio = ({
             )}
         </StyledLabel>
     ) : (
-        <StyledRadioButton>
+        <StyledRadioButton style={rest.style}>
             <StyledInput
                 type="radio"
                 disabled={rest.disabled}

@@ -11,6 +11,39 @@ export default {
     component: Select,
 } as Meta;
 
+const SingleStaticControlledTemplate: Story<SelectProps> = (args) => {
+    const [value, setValue] = useState('2');
+
+    return (
+        <Select
+            mode="single"
+            placeholder="Please Select"
+            onChange={(val) => {
+                setValue(val);
+            }}
+            value={value}
+            options={[
+                {
+                    value: '1',
+                    label: 'Item 1',
+                    hidden: false,
+                },
+                {
+                    value: '2',
+                    label: 'Item 2',
+                    hidden: true,
+                },
+            ]}
+        />
+    );
+};
+
+export const SingleStaticControlled = SingleStaticControlledTemplate.bind({});
+SingleStaticControlled.args = {
+    placeholder: 'Please Select',
+    mode: 'single',
+};
+
 const SingleControlledTemplate: Story<SelectProps> = (args) => {
     const [isLoading, setIsLoading] = useState(false);
     const [options, setOptions] = useState([]);
@@ -116,6 +149,7 @@ SingleUncontrolled.args = {
 const SingleWithFormTemplate: Story<SelectProps> = (args) => {
     const [isLoading, setIsLoading] = useState(false);
     const [options, setOptions] = useState([]);
+    const [form] = Form.useForm();
 
     const fetchData = async (query: string = '') => {
         try {
@@ -144,9 +178,16 @@ const SingleWithFormTemplate: Story<SelectProps> = (args) => {
 
     return (
         <Form
+            form={form}
             onFinish={(values) => {
                 console.log(values);
             }}>
+            <Button
+                onClick={() => {
+                    form.setFieldsValue({ user: undefined });
+                }}>
+                Reset
+            </Button>
             <FormField
                 name="user"
                 initialValue={'1'}
@@ -272,6 +313,7 @@ const MultipleUncontrolledTemplate: Story<SelectProps> = (args) => {
             }}
             isLoading={isLoading}
             options={options}
+            defaultValue={['1']}
         />
     );
 };
@@ -286,6 +328,7 @@ MultipleUncontrolled.args = {
 const MultipleWithFormTemplate: Story<SelectProps> = (args) => {
     const [isLoading, setIsLoading] = useState(false);
     const [options, setOptions] = useState([]);
+    const [form] = Form.useForm();
 
     const fetchData = async (query: string = '') => {
         try {
@@ -314,9 +357,16 @@ const MultipleWithFormTemplate: Story<SelectProps> = (args) => {
 
     return (
         <Form
+            form={form}
             onFinish={(values) => {
                 console.log(values);
             }}>
+            <Button
+                onClick={() => {
+                    form.setFieldsValue({ users: undefined });
+                }}>
+                Reset
+            </Button>
             <FormField
                 name="users"
                 initialValue={['1']}
