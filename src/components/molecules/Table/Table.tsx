@@ -17,6 +17,8 @@ import {
     useSortBy,
     useFlexLayout,
     useColumnOrder,
+    useRowSelect,
+    usePagination,
 } from 'react-table';
 import { withTheme } from 'styled-components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -164,6 +166,9 @@ export interface TableProps {
      * props of loader
      */
     loaderProps?: LoaderProps;
+    showSelection?: boolean;
+    selectedRows?: any;
+    onSelectedRowChange?: (rows: any[]) => void;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -173,6 +178,23 @@ const reorder = (list, startIndex, endIndex) => {
 
     return result;
 };
+
+const IndeterminateCheckbox = React.forwardRef(
+    ({ indeterminate, ...rest }, ref) => {
+        const defaultRef = React.useRef();
+        const resolvedRef = ref || defaultRef;
+
+        React.useEffect(() => {
+            resolvedRef.current.indeterminate = indeterminate;
+        }, [resolvedRef, indeterminate]);
+
+        return (
+            <>
+                <Checkbox ref={resolvedRef} {...rest} />
+            </>
+        );
+    },
+);
 
 const localization = {
     tr,
@@ -196,6 +218,10 @@ const Table = ({
     sortBy: controlledSortBy = [],
     initialPage = 1,
     loaderProps = {},
+    manualPagination = true,
+    showSelection = false,
+    selectedRows = {},
+    onSelectedRowChange,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -215,70 +241,129 @@ const Table = ({
             columns,
             data,
             manualSortBy,
-            initialState: { sortBy: controlledSortBy },
+            initialState: {
+                sortBy: controlledSortBy,
+                pageSize: controlledPageSize,
+                pageIndex: 0,
+                selectedRowIds: selectedRows,
+            },
         },
         useSortBy,
         useFlexLayout,
         useColumnOrder,
+        usePagination,
+        useRowSelect,
         (hooks) => {
             hooks.allColumns.push((currColumns) => {
+                let rowSelection: any, rowAction: any;
+
                 if (typeof renderAction === 'function') {
-                    return [
-                        {
-                            id: 'selection',
-                            disableResizing: true,
-                            minWidth: 32,
-                            width: 32,
-                            maxWidth: 32,
-                            actionCell: true,
-                            Header: () => (
-                                <ActionHeader>
-                                    <Icon icon="ellipsis-v" />
-                                </ActionHeader>
-                            ),
-                            Cell: ({ row }) => (
-                                <Dropdown
-                                    trigger="click"
-                                    content={(close) => (
-                                        <ActionCard>
-                                            {renderAction(row.original, close)}
-                                        </ActionCard>
-                                    )}>
-                                    {({ isOpen }) => (
-                                        <ActionTrigger
-                                            className={`action ${
-                                                isOpen ? 'open' : ''
-                                            }`}
-                                            id={row.original?.id}>
-                                            <Icon
-                                                icon="ellipsis-v"
-                                                color="white"
-                                            />
-                                        </ActionTrigger>
-                                    )}
-                                </Dropdown>
-                            ),
-                        },
-                        ...currColumns,
-                    ];
+                    rowAction = {
+                        id: 'selection',
+                        disableResizing: true,
+                        minWidth: 32,
+                        width: 32,
+                        maxWidth: 32,
+                        actionCell: true,
+                        Header: () => (
+                            <ActionHeader>
+                                <Icon icon="ellipsis-v" />
+                            </ActionHeader>
+                        ),
+                        Cell: ({ row }) => (
+                            <Dropdown
+                                trigger="click"
+                                content={(close) => (
+                                    <ActionCard>
+                                        {renderAction(row.original, close)}
+                                    </ActionCard>
+                                )}>
+                                {({ isOpen }) => (
+                                    <ActionTrigger
+                                        className={`action ${
+                                            isOpen ? 'open' : ''
+                                        }`}
+                                        id={row.original?.id}>
+                                        <Icon icon="ellipsis-v" color="white" />
+                                    </ActionTrigger>
+                                )}
+                            </Dropdown>
+                        ),
+                    };
                 }
-                return [...currColumns];
+
+                if (showSelection) {
+                    rowSelection = {
+                        id: 'indeterminate',
+                        Header: ' ',
+                        minWidth: 32,
+                        width: 32,
+                        maxWidth: 32,
+                        actionCell: true,
+                        disableResizing: true,
+                        Cell: ({ row }) => (
+                            <div
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}>
+                                <IndeterminateCheckbox
+                                    disabled={row.original.disabled}
+                                    {...row.getToggleRowSelectedProps()}
+                                />
+                            </div>
+                        ),
+                    };
+                }
+                return [rowAction, rowSelection, ...currColumns].filter(
+                    Boolean,
+                );
             });
         },
     );
 
     const {
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        setPageSize: setUncontrolledPageSize,
+        selectedFlatRows,
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page,
         prepareRow,
         allColumns,
         visibleColumns,
         setColumnOrder,
         setHiddenColumns,
-        state: { sortBy },
+        state: {
+            sortBy,
+            pageSize: uncontrolledPageSize,
+            selectedRowIds,
+            pageIndex,
+        },
     } = tableInstance;
+
+    console.log({
+        canPreviousPage,
+        canNextPage,
+        pageOptions,
+        pageCount,
+        gotoPage,
+        nextPage,
+        previousPage,
+        setPageSize: setUncontrolledPageSize,
+        selectedFlatRows,
+        selectedRowIds,
+    });
 
     const onChangeDebounced = useAsyncDebounce(onChange, 100);
 
@@ -337,6 +422,13 @@ const Table = ({
         setCurrentPage(initialPage);
     }, [initialPage]);
 
+    useEffect(() => {
+        if (onSelectedRowChange) {
+            const rows = selectedFlatRows?.map((row) => row.original);
+            onSelectedRowChange(rows);
+        }
+    }, [selectedFlatRows]);
+
     const handleSorter = (column) => {
         const { isSorted, isSortedDesc } = column;
         if (isSorted) {
@@ -380,18 +472,31 @@ const Table = ({
     };
 
     const handleChangePagination = (currPage: number, currPageSize: number) => {
-        handleChangeTableState({ currPage, currPageSize, currSortBy: sortBy });
-        setCurrentPage(currPage);
+        if (manualPagination) {
+            handleChangeTableState({
+                currPage,
+                currPageSize,
+                currSortBy: sortBy,
+            });
+            setCurrentPage(currPage);
+        } else {
+            gotoPage(currPage - 1);
+        }
     };
 
     const handleChangeSize = (currPageSize) => {
-        handleChangeTableState({
-            currPage: 1,
-            currPageSize,
-            currSortBy: sortBy,
-        });
-        setCurrentPage(1);
-        setPageSize(currPageSize);
+        if (manualPagination) {
+            handleChangeTableState({
+                currPage: 1,
+                currPageSize,
+                currSortBy: sortBy,
+            });
+            setCurrentPage(1);
+            setPageSize(currPageSize);
+        } else {
+            gotoPage(0);
+            setUncontrolledPageSize(currPageSize);
+        }
     };
 
     const paginationRenderer = (current, type, element) => {
@@ -705,7 +810,7 @@ const Table = ({
                         </thead>
                         {data.length > 0 && (
                             <tbody {...getTableBodyProps()}>
-                                {rows.map((row) => {
+                                {page.map((row) => {
                                     prepareRow(row);
                                     return (
                                         <Tr {...row.getRowProps()}>
@@ -750,15 +855,27 @@ const Table = ({
                         </Space>
                     </EmptyPlaceholder>
                 )}
-                {showPagination && (
+                {(showPagination || !manualPagination) && (
                     <PaginationWrapper>
                         <Pagination
-                            defaultPageSize={controlledPageSize}
-                            pageSize={pageSize}
-                            current={currentPage}
-                            defaultCurrent={1}
+                            defaultPageSize={
+                                !manualPagination
+                                    ? uncontrolledPageSize
+                                    : controlledPageSize
+                            }
+                            pageSize={
+                                !manualPagination
+                                    ? uncontrolledPageSize
+                                    : pageSize
+                            }
+                            current={
+                                !manualPagination ? pageIndex + 1 : currentPage
+                            }
+                            defaultCurrent={!manualPagination ? 0 : 1}
                             onChange={handleChangePagination}
-                            total={totalCount}
+                            total={
+                                !manualPagination ? data?.length : totalCount
+                            }
                             showSizeChanger
                             itemRender={paginationRenderer}
                             showTitle={false}
@@ -786,8 +903,10 @@ const Table = ({
                                 <Subtitle level={3}>
                                     <Space>
                                         <span>
-                                            {pageSize} /{' '}
-                                            {localization[language].page}
+                                            {!manualPagination
+                                                ? uncontrolledPageSize
+                                                : pageSize}{' '}
+                                            / {localization[language].page}
                                         </span>
                                         <Icon icon="chevron-down" />
                                     </Space>
@@ -796,11 +915,25 @@ const Table = ({
                         </Dropdown>
                         <Body level={2}>
                             {localization[language].results}:{' '}
-                            {(currentPage - 1) * pageSize} -
-                            {currentPage * pageSize > totalCount
-                                ? totalCount
-                                : currentPage * pageSize}{' '}
-                            / {totalCount}
+                            {manualPagination ? (
+                                <span>
+                                    {(currentPage - 1) * pageSize} -
+                                    {currentPage * pageSize > totalCount
+                                        ? totalCount
+                                        : currentPage * pageSize}{' '}
+                                    / {totalCount}
+                                </span>
+                            ) : (
+                                <span>
+                                    {pageIndex * uncontrolledPageSize} -
+                                    {(pageIndex + 1) * uncontrolledPageSize >
+                                    data.length
+                                        ? data.length
+                                        : (pageIndex + 1) *
+                                          uncontrolledPageSize}
+                                    / {data.length}
+                                </span>
+                            )}
                         </Body>
                     </PaginationWrapper>
                 )}

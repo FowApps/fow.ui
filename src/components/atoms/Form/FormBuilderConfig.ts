@@ -17,7 +17,7 @@ import DatePicker from '../../molecules/DatePicker';
 import DateRangePicker from '../../molecules/DateRangePicker';
 import PhoneInput from '../PhoneInput';
 import PriceInput from '../PriceInput';
-import SelectV2 from '../../molecules/SelectV2';
+import SelectV3 from '../SelectV3';
 
 type Field = {
     field: any;
@@ -109,11 +109,11 @@ const localization = { tr, en };
         },
         {
             type: 'single-select',
-            field: SelectV2,
+            field: SelectV3,
         },
         {
             type: 'multiple-select',
-            field: SelectV2,
+            field: SelectV3,
         },
         {
             type: 'date',

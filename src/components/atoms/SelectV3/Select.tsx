@@ -38,6 +38,7 @@ type OptionType = {
 
 export interface SelectProps {
     width?: number;
+    height?: number;
     options: OptionType[];
     closeAfterSelect?: boolean;
     placeholder?: string;
@@ -62,6 +63,7 @@ export interface SelectProps {
 const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
     const {
         width,
+        height = 280,
         closeAfterSelect = false,
         placeholder,
         allowClear = true,
@@ -105,7 +107,9 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         // TODO: When value is number, e.target.value return string. Fix it.
         onChange?.(targetValue, option);
         setInternalValue(targetValue);
-        setSelected(option);
+        if (!isControlled) {
+            setSelected(option);
+        }
     };
 
     const handleChangeCheckbox = (
@@ -118,20 +122,24 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
             let values: any[];
             if (currValues?.indexOf(val) === -1) {
                 values = [val, ...currValues];
-                setSelected(option);
-                setSelecteds((currSelecteds = []) => [
-                    ...currSelecteds,
-                    option,
-                ]);
+                if (!isControlled) {
+                    setSelected(option);
+                    setSelecteds((currSelecteds = []) => [
+                        ...currSelecteds,
+                        option,
+                    ]);
+                }
             } else {
                 values = currValues.filter((currVal) => currVal !== val);
-                setSelecteds((currSelecteds) => {
-                    const filtered = currSelecteds?.filter(
-                        (currSelected) => currSelected.value !== val,
-                    );
-                    setSelected(filtered[filtered.length - 1]);
-                    return filtered;
-                });
+                if (!isControlled) {
+                    setSelecteds((currSelecteds) => {
+                        const filtered = currSelecteds?.filter(
+                            (currSelected) => currSelected.value !== val,
+                        );
+                        setSelected(filtered[filtered.length - 1]);
+                        return filtered;
+                    });
+                }
             }
 
             if (values.length === 0) {
@@ -147,7 +155,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         if (isControlled) {
             setInternalValue(value);
         }
-        if ((value || defaultValue) && !selected && selecteds.length === 0) {
+        if (value || defaultValue) {
             if (isSingle) {
                 const option = options.find(
                     (opt) => opt.value.toString() === value || defaultValue,
@@ -163,7 +171,6 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                         (v: any) => opt.value === v,
                     ),
                 );
-                console.log(lastOption, selectedOptions);
 
                 setSelected(lastOption);
                 setSelecteds(selectedOptions);
@@ -192,8 +199,8 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         .filter((option) => !option.hidden)
         .filter((option) =>
             option.label
-                .toLocaleLowerCase()
-                .includes(internalSearchQuery.toLocaleLowerCase()),
+                ?.toLocaleLowerCase()
+                ?.includes(internalSearchQuery?.toLocaleLowerCase()),
         ).length;
 
     const renderEmptyOrNotFoundState = () => {
@@ -249,7 +256,10 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
     const content = useCallback(
         (close) =>
             !disabled && (
-                <Surface onScroll={onScroll}>
+                <Surface
+                    height={height}
+                    onScroll={onScroll}
+                    style={{ paddingTop: allowSearch ? 0 : '1.2rem' }}>
                     {allowSearch && (
                         <SearchWrapper>
                             <Input
@@ -286,9 +296,9 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                                         .filter((option) => !option.hidden)
                                         .filter((option) =>
                                             option.label
-                                                .toLocaleLowerCase()
-                                                .includes(
-                                                    internalSearchQuery.toLocaleLowerCase(),
+                                                ?.toLocaleLowerCase()
+                                                ?.includes(
+                                                    internalSearchQuery?.toLocaleLowerCase(),
                                                 ),
                                         )
                                         .map((option) => (
@@ -311,9 +321,9 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                                         .filter((option) => !option.hidden)
                                         .filter((option) =>
                                             option.label
-                                                .toLocaleLowerCase()
-                                                .includes(
-                                                    internalSearchQuery.toLocaleLowerCase(),
+                                                ?.toLocaleLowerCase()
+                                                ?.includes(
+                                                    internalSearchQuery?.toLocaleLowerCase(),
                                                 ),
                                         )
                                         .map((option) => (
@@ -360,6 +370,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
 
     return (
         <Dropdown
+            disabled={disabled}
             ref={ref}
             transitionDuration={50}
             onAfterVisibleChange={handleAfterVisibilityChange}

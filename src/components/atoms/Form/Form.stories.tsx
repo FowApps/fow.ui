@@ -181,56 +181,6 @@ const UseFormTemplate: Story = () => {
                     rules={[{ required: false, message: 'Required..' }]}>
                     <PhoneInput />
                 </FormField>
-                <FormField
-                    label="Test"
-                    name="test"
-                    rules={[{ required: false, message: 'Required..' }]}>
-                    <SelectV2
-                        showSearch
-                        loader={false}
-                        noResultContent="Not Found"
-                        placeholder="Please select"
-                        onSearch={(value) => null}
-                        options={[
-                            {
-                                text: 'Label 1',
-                                value: 'Label1',
-                            },
-                            {
-                                text: 'Label 2',
-                                value: 'Label2',
-                            },
-                            {
-                                text: 'Label 3',
-                                value: 'Label3',
-                            },
-                        ]}
-                    />
-                </FormField>
-                <FormField
-                    label="URL Input"
-                    name="URLInput"
-                    rules={[
-                        { required: false, message: 'Required..' },
-                        {
-                            type: 'url',
-                            message: 'invalid url',
-                        },
-                    ]}>
-                    <URLInput />
-                </FormField>
-                <FormField
-                    label="Email Input"
-                    name="emailInput"
-                    rules={[
-                        { required: false, message: 'Required..' },
-                        {
-                            type: 'email',
-                            message: 'invalid email',
-                        },
-                    ]}>
-                    <EmailInput />
-                </FormField>
                 <FormField valuePropName="checked" label="Hooks" name="hookies">
                     <Checkbox.Group direction="vertical">
                         <Checkbox value="Test" label="Test" checked />
@@ -263,20 +213,6 @@ const UseFormTemplate: Story = () => {
                         ]}
                     />
                 </FormField>
-                <FormField
-                    label="Hooks"
-                    name="hooks"
-                    rules={[{ required: false, message: 'Required..' }]}>
-                    <Select
-                        placeholder="Hooks"
-                        mode="tags"
-                        onChange={(value, option) =>
-                            console.log(value, option)
-                        }>
-                        <Select.Option value="Test">Test</Select.Option>
-                        <Select.Option value="Test2">Test 2</Select.Option>
-                    </Select>
-                </FormField>
                 <FormField label="Date" name="date">
                     <DatePicker placeholder="Start Date" />
                 </FormField>
@@ -300,18 +236,6 @@ const UseFormTemplate: Story = () => {
                     name="textarea"
                     rules={[{ required: false, message: 'Required..' }]}>
                     <Textarea />
-                </FormField>
-                <FormField
-                    label="Single Select"
-                    name="singleSelect"
-                    rules={[{ required: false, message: 'Required..' }]}>
-                    <SelectV2 options={options} />
-                </FormField>
-                <FormField
-                    label="Multi Select"
-                    name="multiSelect"
-                    rules={[{ required: false, message: 'Required..' }]}>
-                    <SelectV2 mode="multiple" options={options} />
                 </FormField>
                 <Space>
                     <Button

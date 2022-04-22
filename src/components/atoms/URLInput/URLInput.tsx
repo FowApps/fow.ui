@@ -2,7 +2,7 @@ import React, { forwardRef, RefObject, useEffect, useState } from 'react';
 import useIsMountFirstTime from '../../../hooks/useIsMountFirstTime';
 
 import Input, { InputProps } from '../Input';
-import Select, { Props as SelectProps } from '../Select';
+import SelectV3, { SelectProps } from '../SelectV3';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
 
@@ -33,7 +33,7 @@ export interface URLInputProps {
     /**
      * select props
      */
-    selectProps?: SelectProps;
+    selectProps?: Omit<SelectProps, 'options'>;
     /**
      * name of input
      */
@@ -124,18 +124,19 @@ const URLInput = (
 
     return (
         <Space size="xxsmall" inline={false}>
-            <SelectWrapper>
-                <Select
+            <SelectWrapper style={{ width: 150 }}>
+                <SelectV3
                     options={protocols?.map((prot) => ({
                         value: prot.value,
                         label: prot.name,
                     }))}
                     allowClear={false}
+                    allowSearch={false}
                     value={protocol}
-                    style={{ width: 150 }}
                     onChange={ProtocolChange}
                     hasValidationError={hasValidationError}
                     disabled={disabled}
+                    closeAfterSelect
                     {...selectProps}
                 />
             </SelectWrapper>

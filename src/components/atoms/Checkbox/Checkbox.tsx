@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import Space from '../Space';
 
 import {
@@ -48,6 +48,13 @@ export interface CheckboxProps {
     onlyLabel?: boolean;
 }
 
+export interface CompoundedComponent
+    extends React.ForwardRefExoticComponent<
+        CheckboxProps & React.RefAttributes<HTMLInputElement>
+    > {
+    Group: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxGroupProps>;
+}
+
 export interface CheckboxChangeEventTarget extends CheckboxProps {
     checked: boolean;
 }
@@ -93,73 +100,79 @@ export interface CheckboxGroupProps extends AbstractCheckboxGroupProps {
 export const GroupContext = React.createContext<CheckboxGroupContext | null>(
     null,
 );
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+    (
+        {
+            label = '',
+            color = 'primary',
+            onlyLabel = false,
+            children,
+            ...rest
+        }: CheckboxProps,
+        ref,
+    ): JSX.Element => {
+        const checkboxGroup = useContext(GroupContext);
+        const prevValue = React.useRef(rest.value);
 
-const Checkbox = ({
-    label = '',
-    color = 'primary',
-    onlyLabel = false,
-    children,
-    ...rest
-}: CheckboxProps): JSX.Element => {
-    const checkboxGroup = useContext(GroupContext);
-    const prevValue = React.useRef(rest.value);
-
-    React.useEffect(() => {
-        checkboxGroup?.registerValue(rest.value);
-    }, [rest.value]);
-
-    React.useEffect(() => {
-        if (rest.value !== prevValue.current) {
-            checkboxGroup?.cancelValue(prevValue.current);
+        React.useEffect(() => {
             checkboxGroup?.registerValue(rest.value);
+        }, [rest.value]);
+
+        React.useEffect(() => {
+            if (rest.value !== prevValue.current) {
+                checkboxGroup?.cancelValue(prevValue.current);
+                checkboxGroup?.registerValue(rest.value);
+            }
+            return () => checkboxGroup?.cancelValue(rest.value);
+        }, [rest.value]);
+
+        const checkboxProps = { ...rest };
+
+        if (checkboxGroup) {
+            checkboxProps.onChange = (...args) => {
+                if (rest.onChange) {
+                    rest.onChange(...args);
+                }
+                if (checkboxGroup.toggleOption) {
+                    checkboxGroup.toggleOption({
+                        label: children,
+                        value: rest.value,
+                    });
+                }
+            };
+            checkboxProps.name = checkboxGroup.name;
+            checkboxProps.checked =
+                checkboxGroup.value.indexOf(rest.value) !== -1;
+            checkboxProps.disabled = rest.disabled || checkboxGroup.disabled;
         }
-        return () => checkboxGroup?.cancelValue(rest.value);
-    }, [rest.value]);
 
-    const checkboxProps = { ...rest };
-
-    if (checkboxGroup) {
-        checkboxProps.onChange = (...args) => {
-            if (rest.onChange) {
-                rest.onChange(...args);
-            }
-            if (checkboxGroup.toggleOption) {
-                checkboxGroup.toggleOption({
-                    label: children,
-                    value: rest.value,
-                });
-            }
-        };
-        checkboxProps.name = checkboxGroup.name;
-        checkboxProps.checked = checkboxGroup.value.indexOf(rest.value) !== -1;
-        checkboxProps.disabled = rest.disabled || checkboxGroup.disabled;
-    }
-
-    return (
-        <StyledLabel>
-            {(label || children) && (
-                <LabelText
-                    lineClamp={1}
-                    level={2}
-                    disabled={checkboxProps.disabled}>
-                    {label || children}
-                </LabelText>
-            )}
-            <StyledInput
-                {...checkboxProps}
-                type="checkbox"
-                disabled={checkboxProps.disabled}
-                color={color}
-            />
-            {!onlyLabel && (
-                <MarkBox>
-                    <HoverCircle />
-                    <Mark icon="check" color="white" size="xs" />
-                </MarkBox>
-            )}
-        </StyledLabel>
-    );
-};
+        return (
+            <StyledLabel>
+                {(label || children) && (
+                    <LabelText
+                        lineClamp={1}
+                        level={2}
+                        disabled={checkboxProps.disabled}>
+                        {label || children}
+                    </LabelText>
+                )}
+                <StyledInput
+                    {...checkboxProps}
+                    ref={ref}
+                    type="checkbox"
+                    disabled={checkboxProps.disabled}
+                    color={color}
+                />
+                {!onlyLabel && (
+                    <MarkBox>
+                        <HoverCircle />
+                        <Mark icon="check" color="white" size="xs" />
+                    </MarkBox>
+                )}
+            </StyledLabel>
+        );
+    },
+) as CompoundedComponent;
 
 const Group: React.ForwardRefRenderFunction<
     HTMLDivElement,
