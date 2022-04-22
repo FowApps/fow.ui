@@ -26,6 +26,22 @@ export const StyledSlider = styled(Slider)`
             }
         }
     }
+    .slick-arrow {
+        background: transparent;
+        color: #919eab;
+        width: auto;
+        font-size: 14px;
+        z-index: 2;
+        &:before {
+            display: none;
+        }
+        &.slick-prev {
+            left: 0;
+        }
+        &.slick-next {
+            right: 0;
+        }
+    }
 `;
 
 export const Arrow = styled(Icon)`
@@ -36,7 +52,7 @@ export const Arrow = styled(Icon)`
 export const Pagination = styled.ul`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin: 0;
     padding: 0;
     padding-top: ${(props) => props.theme.fow.spacing.small};

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Carousel, { CarouselProps } from './Carousel';
+import Icon from '../../atoms/Icon';
 
 export default {
     title: 'Molecules/Carousel',
@@ -41,8 +42,19 @@ const Template: Story<CarouselProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     dots: true,
+    arrows: true,
     infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    adaptiveHeight: true,
+    rtl: false,
+    focusOnSelect: true,
+    pauseOnHover: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    vertical: false,
+    verticalSwiping: false,
+    CustomPrevArrow: <Icon color="#919EAB" icon="angle-left" size="sm" />,
+    CustomNextArrow: <Icon color="#919EAB" icon="angle-right" size="sm" />,
 };
