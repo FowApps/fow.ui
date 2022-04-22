@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-    padding: ${(props) => props.theme.fow.spacing.xxxlarge};
+type WrapperProps = {
+    noGutter?: boolean;
+};
+
+export const Wrapper = styled.div<WrapperProps>`
+    padding: ${(props) =>
+        props.noGutter ? '0' : props.theme.fow.spacing.xxxlarge};
     text-align: center;
 `;

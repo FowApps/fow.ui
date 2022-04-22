@@ -38,9 +38,10 @@ export interface MessageProps {
      */
     onClickAction?: () => void;
     iconSize?: number;
+    noGutter?: boolean;
 }
 
-const renderImage = (type: MessageProps['type'], size) => {
+const renderImage = (type: MessageProps['type'], size?: number) => {
     switch (type) {
         case 'empty':
             return <EmptyOwl width={size} />;
@@ -62,8 +63,9 @@ const Message = ({
     onClickAction,
     type,
     iconSize,
+    noGutter = false,
 }: MessageProps): JSX.Element => (
-    <Wrapper>
+    <Wrapper noGutter={noGutter}>
         <Space direction="vertical" size="large" align="center">
             {renderImage(type, iconSize)}
             <Subtitle color="disabled">{message}</Subtitle>
