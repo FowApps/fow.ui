@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
-import Select, { Props as SelectProps } from '../Select';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
@@ -9,8 +8,7 @@ import { ConfigContext } from '../../../theme/FowThemeProvider';
 // language files
 import { tr } from './locales/tr';
 import { en } from './locales/en';
-
-const { Option } = Select;
+import SelectV3, { SelectProps } from '../SelectV3';
 
 interface DiscountType {
     /**
@@ -50,7 +48,7 @@ export interface DiscountInputProps {
     /**
      * select props
      */
-    selectProps?: SelectProps;
+    selectProps?: Omit<SelectProps, 'options'>;
 }
 
 const discountTypes: DiscountType[] = [
@@ -126,18 +124,21 @@ const DiscountInput = ({
                     {...inputProps}
                 />
             </InputWrapper>
-            <SelectWrapper>
-                <Select
+            <SelectWrapper style={{ width: 150 }}>
+                <SelectV3
                     value={value.type || discountType}
-                    style={{ width: 150 }}
                     onChange={onTypeChange}
-                    {...selectProps}>
-                    {discountTypes.map((type) => (
-                        <Option value={type.value}>
-                            {localization[language][type.name]}
-                        </Option>
-                    ))}
-                </Select>
+                    width={150}
+                    allowClear={false}
+                    allowSearch={false}
+                    height={80}
+                    {...selectProps}
+                    options={discountTypes.map((type) => ({
+                        label: localization[language][type.name],
+                        value: type.value,
+                    }))}
+                    closeAfterSelect
+                />
             </SelectWrapper>
         </Space>
     );

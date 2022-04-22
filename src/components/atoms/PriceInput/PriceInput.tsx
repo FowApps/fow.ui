@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import InputNumber, { IInputNumber } from '../InputNumber';
-import Select, { Props as SelectProps } from '../Select';
+import SelectV3, { SelectProps } from '../SelectV3';
 import Space from '../Space';
 import { InputWrapper, SelectWrapper } from './styles';
 
@@ -47,7 +47,7 @@ export interface PriceInputProps {
     /**
      * select props
      */
-    selectProps?: SelectProps;
+    selectProps?: Omit<SelectProps, 'options'>;
     setFormFieldValue?: (fieldValue: string) => void;
     initialValue?: {
         number?: number;
@@ -67,10 +67,11 @@ const PriceInput = ({
     disabled = false,
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
-        initialValue?.number || undefined,
+        initialValue?.number || value?.number || undefined,
     );
+
     const [currency, setCurrency] = useState<Currency['value']>(
-        initialValue?.currency || currencies?.[0]?.value || '',
+        initialValue?.currency || value?.currency || '',
     );
 
     const triggerChange = (changedValue: {
@@ -126,8 +127,9 @@ const PriceInput = ({
                     {...inputProps}
                 />
             </InputWrapper>
-            <SelectWrapper>
-                <Select
+            <SelectWrapper style={{ width: 150 }}>
+                <SelectV3
+                    allowSearch={false}
                     allowClear={false}
                     options={currencies?.map((curr) => ({
                         value: curr.value,
@@ -135,8 +137,8 @@ const PriceInput = ({
                     }))}
                     disabled={disabled}
                     value={value.currency || currency}
-                    style={{ width: 150 }}
                     onChange={onCurrencyChange}
+                    closeAfterSelect
                     {...selectProps}
                 />
             </SelectWrapper>
