@@ -6,6 +6,10 @@ type OptionsWrapperProps = {
     allowSearch?: boolean;
 };
 
+type SurfaceProps = {
+    height?: number;
+};
+
 export const InputWrapper = styled.div`
     position: relative;
 `;
@@ -17,11 +21,9 @@ export const BadgeHolder = styled(Space)`
     user-select: none;
 `;
 
-export const Surface = styled(Card)`
-    padding-top: 0;
+export const Surface = styled(Card)<SurfaceProps>`
     position: relative;
-    max-height: 280px;
-    min-height: 280px;
+    max-height: ${(props) => props.height}px;
     overflow-y: auto;
     box-shadow: ${(props) => props.theme.fow.shadows.z12};
     border: 1px solid
