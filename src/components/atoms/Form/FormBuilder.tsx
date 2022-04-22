@@ -172,8 +172,9 @@ const FormBuilder = ({
                     return {
                         mode: 'single',
                         allowClear: true,
+                        allowSearch: true,
                         options: field?.options?.map((item) => ({
-                            text: item.label,
+                            label: item.label,
                             value: item.value,
                         })),
                         ...field.props,
@@ -182,8 +183,9 @@ const FormBuilder = ({
                     return {
                         mode: 'multiple',
                         allowClear: true,
+                        allowSearch: true,
                         options: field?.options?.map((item) => ({
-                            text: item.label,
+                            label: item.label,
                             value: item.value,
                         })),
                         ...field.props,
