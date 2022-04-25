@@ -66,6 +66,7 @@ export interface CarouselProps {
     children: React.ReactNode;
     CustomPrevArrow?: React.ReactNode;
     CustomNextArrow?: React.ReactNode;
+    onChange?: (curr: number, next: number) => void;
 }
 
 const Carousel = ({
@@ -86,6 +87,7 @@ const Carousel = ({
     children,
     CustomPrevArrow,
     CustomNextArrow,
+    onChange,
     ...rest
 }: CarouselProps): JSX.Element => {
     const slider = useRef<Slider>();
@@ -108,6 +110,7 @@ const Carousel = ({
         nextArrow: CustomNextArrow,
         prevArrow: CustomPrevArrow,
         appendDots: (allDots) => <Pagination>{allDots}</Pagination>,
+        beforeChange: onChange,
         customPaging: () => <Dot />,
         ...rest,
     };

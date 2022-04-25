@@ -168,6 +168,8 @@ export interface TableProps {
     loaderProps?: LoaderProps;
     showSelection?: boolean;
     selectedRows?: any;
+    notFoundMessage?: string;
+    noDataStyle?: React.CSSProperties;
     onSelectedRowChange?: (rows: any[]) => void;
 }
 
@@ -222,6 +224,8 @@ const Table = ({
     showSelection = false,
     selectedRows = {},
     onSelectedRowChange,
+    noDataStyle,
+    notFoundMessage,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -842,7 +846,10 @@ const Table = ({
                     />
                 </Wrapper>
                 {data.length === 0 && !isLoading && (
-                    <EmptyPlaceholder>
+                    <EmptyPlaceholder
+                        style={{
+                            ...noDataStyle,
+                        }}>
                         <Space direction="vertical">
                             <Icon
                                 icon="inbox"
@@ -850,7 +857,8 @@ const Table = ({
                                 color={theme.fow.colors.text.disabled}
                             />
                             <Subtitle color="disabled">
-                                {localization[language].noData}
+                                {notFoundMessage ||
+                                    localization[language].noData}
                             </Subtitle>
                         </Space>
                     </EmptyPlaceholder>
