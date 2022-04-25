@@ -57,4 +57,7 @@ Default.args = {
     verticalSwiping: false,
     CustomPrevArrow: <Icon color="#919EAB" icon="angle-left" size="sm" />,
     CustomNextArrow: <Icon color="#919EAB" icon="angle-right" size="sm" />,
+    onChange: (_curr, next) => {
+        console.log({ currPage: _curr, nextPage: next });
+    },
 };
