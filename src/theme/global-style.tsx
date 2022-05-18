@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .drawer {
-        z-index: 802 !important;
+        z-index: 802;
     }
     
     .drawer-mask, .drawer-content-wrapper {
