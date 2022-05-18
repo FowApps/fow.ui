@@ -288,7 +288,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
                                     value={value || internalValue}
                                     onChange={(e) => {
                                         handleChangeRadio(e);
-                                        if (closeAfterSelect) {
+                                        if (closeAfterSelect || isSingle) {
                                             close();
                                         }
                                     }}>
