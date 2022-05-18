@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // @ts-nocheck
@@ -356,18 +357,18 @@ const Table = ({
         },
     } = tableInstance;
 
-    console.log({
-        canPreviousPage,
-        canNextPage,
-        pageOptions,
-        pageCount,
-        gotoPage,
-        nextPage,
-        previousPage,
-        setPageSize: setUncontrolledPageSize,
-        selectedFlatRows,
-        selectedRowIds,
-    });
+    // console.log({
+    //     canPreviousPage,
+    //     canNextPage,
+    //     pageOptions,
+    //     pageCount,
+    //     gotoPage,
+    //     nextPage,
+    //     previousPage,
+    //     setPageSize: setUncontrolledPageSize,
+    //     selectedFlatRows,
+    //     selectedRowIds,
+    // });
 
     const onChangeDebounced = useAsyncDebounce(onChange, 100);
 
