@@ -54,6 +54,7 @@ export interface PriceInputProps {
         currency?: Currency['value'];
     };
     disabled?: boolean;
+    baseCurrency?: string;
 }
 
 const PriceInput = ({
@@ -65,13 +66,14 @@ const PriceInput = ({
     setFormFieldValue,
     initialValue,
     disabled = false,
+    baseCurrency,
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
         initialValue?.number || value?.number || undefined,
     );
 
     const [currency, setCurrency] = useState<Currency['value']>(
-        initialValue?.currency || value?.currency || '',
+        initialValue?.currency || value?.currency || baseCurrency || '',
     );
 
     const triggerChange = (changedValue: {
@@ -109,9 +111,9 @@ const PriceInput = ({
 
     useEffect(() => {
         if (setFormFieldValue) {
-            setFormFieldValue(currency);
+            setFormFieldValue(currency || baseCurrency || currencies[0].value);
         }
-    }, []);
+    }, [currency]);
 
     return (
         <Space size="xxsmall" inline={false}>

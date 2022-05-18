@@ -60,6 +60,7 @@ type Config = {
     name?: string;
     id?: string;
     currencyList?: Currency[];
+    baseCurrency?: string;
 };
 
 type Currency = {
@@ -93,6 +94,7 @@ const FormBuilder = ({
         name: undefined,
         id: undefined,
         currencyList: [],
+        baseCurrency: undefined,
     },
 }: FormBuilderProps) => {
     const [formRef] = useForm(formInstance);
@@ -144,6 +146,7 @@ const FormBuilder = ({
             switch (field.type) {
                 case 'price':
                     return {
+                        ...field.props,
                         setFormFieldValue: (value: string) => {
                             formRef.setFieldsValue({
                                 currencyId: value,
@@ -154,6 +157,7 @@ const FormBuilder = ({
                             currency: initialValues?.currencyId,
                         },
                         currencies: config.currencyList,
+                        baseCurrency: config.baseCurrency,
                     };
                 case 'checkbox':
                     return {
