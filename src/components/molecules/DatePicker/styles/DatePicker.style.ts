@@ -116,7 +116,7 @@ export const DatePickerWrapper = styled.div<Wrapper>`
 export const TimePickerStyles = createGlobalStyle`
     .rc-picker-dropdown {
         box-shadow: 0 0;
-        z-index: 2222;
+        z-index: 9999;
         .rc-picker-range-arrow {
             &:before {
                 border-color: 
