@@ -500,8 +500,8 @@ const Table = ({
             setPageSize(currPageSize);
         } else {
             gotoPage(0);
-            setUncontrolledPageSize(currPageSize);
         }
+        setUncontrolledPageSize(currPageSize);
     };
 
     const paginationRenderer = (current, type, element) => {
@@ -757,6 +757,18 @@ const Table = ({
                                                                 }
                                                                 key={column.id}
                                                                 {...column.getToggleHiddenProps()}
+                                                                onChange={(
+                                                                    e,
+                                                                ) => {
+                                                                    column
+                                                                        .getToggleHiddenProps()
+                                                                        .onChange(
+                                                                            e,
+                                                                        );
+                                                                    setIsDragTouched(
+                                                                        true,
+                                                                    );
+                                                                }}
                                                             />
                                                         ))}
                                                 </Space>
