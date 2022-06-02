@@ -23,6 +23,9 @@ Default.args = {
             </Button>
         </div>
     ),
+    style: {
+        zIndex: 100,
+    },
     content: (toggle) => (
         <Menu>
             <Menu.Item onClick={toggle} index={1}>

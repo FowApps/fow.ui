@@ -73,7 +73,11 @@ const PriceInput = ({
     );
 
     const [currency, setCurrency] = useState<Currency['value']>(
-        initialValue?.currency || value?.currency || baseCurrency || '',
+        initialValue?.currency ||
+            value?.currency ||
+            baseCurrency ||
+            currencies?.[0]?.value ||
+            '',
     );
 
     const triggerChange = (changedValue: {
@@ -82,11 +86,11 @@ const PriceInput = ({
     }) => {
         if (setFormFieldValue) {
             setFormFieldValue(currency);
-            onChange?.(changedValue.number);
+            onChange?.(changedValue);
         } else {
             onChange?.({
-                number: changedValue.number,
-                currency,
+                number: changedValue?.number || number,
+                currency: changedValue?.currency || currency,
                 ...value,
                 ...changedValue,
             });
@@ -99,14 +103,14 @@ const PriceInput = ({
             return;
         }
         setNumber(newNumber);
-        triggerChange({ number: newNumber });
+        triggerChange({ number: newNumber, currency });
     };
 
     const onCurrencyChange = (newCurrency: any) => {
         setNumber(undefined);
         setCurrency(newCurrency);
         setFormFieldValue?.(newCurrency);
-        triggerChange({ currency: newCurrency });
+        triggerChange({ number, currency: newCurrency });
     };
 
     useEffect(() => {

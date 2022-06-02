@@ -45,6 +45,7 @@ export interface DropdownProps {
     isClosedWhenMouseLeave?: boolean;
     onAfterVisibleChange?: (isVisible: boolean) => void;
     transitionDuration?: number;
+    style?: React.CSSProperties;
 }
 let closeInterval;
 let openInterval;
@@ -63,6 +64,7 @@ const Dropdown = (
         isClosedWhenMouseLeave = false,
         onAfterVisibleChange,
         transitionDuration = 300,
+        style,
     }: DropdownProps,
     ref: any,
 ): JSX.Element => {
@@ -80,6 +82,7 @@ const Dropdown = (
                         zIndex: 9999,
                         minWidth: `${width}px` || '200px',
                         width: `${width}px` || 'auto',
+                        ...style,
                     }}
                 />
             }
