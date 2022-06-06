@@ -554,6 +554,14 @@ const Table = ({
         }
     };
 
+    const renderTableCellValue = (value) => {
+        const regex = /<[^>]*>/g;
+        if (typeof value === 'string' && value.match(regex)) {
+            return value.replace(new RegExp('<[^>]*>', 'g'), '');
+        }
+        return value;
+    };
+
     return (
         <Loader
             isLoading={isLoading}
@@ -833,7 +841,9 @@ const Table = ({
                                         <Tr {...row.getRowProps()}>
                                             {row.cells.map((cell) => (
                                                 <Td
-                                                    title={cell.value}
+                                                    title={renderTableCellValue(
+                                                        cell.value,
+                                                    )}
                                                     isActionCell={
                                                         cell.column?.actionCell
                                                     }
