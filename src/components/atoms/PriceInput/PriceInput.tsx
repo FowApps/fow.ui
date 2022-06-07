@@ -86,13 +86,18 @@ const PriceInput = ({
     }) => {
         if (setFormFieldValue) {
             setFormFieldValue(currency);
-            onChange?.(changedValue);
+            onChange?.({
+                number: changedValue?.number || number,
+                currency: changedValue?.currency || currency,
+                // ...value,
+                // ...changedValue,
+            });
         } else {
             onChange?.({
                 number: changedValue?.number || number,
                 currency: changedValue?.currency || currency,
-                ...value,
-                ...changedValue,
+                // ...value,
+                // ...changedValue,
             });
         }
     };
@@ -107,9 +112,8 @@ const PriceInput = ({
     };
 
     const onCurrencyChange = (newCurrency: any) => {
-        setNumber(undefined);
-        setCurrency(newCurrency);
-        setFormFieldValue?.(newCurrency);
+        setCurrency(newCurrency?.currency || newCurrency);
+        setFormFieldValue?.(newCurrency?.currency || newCurrency);
         triggerChange({ number, currency: newCurrency });
     };
 
