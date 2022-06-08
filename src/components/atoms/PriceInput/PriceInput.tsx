@@ -69,12 +69,11 @@ const PriceInput = ({
     baseCurrency,
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
-        initialValue?.number || value?.number || undefined,
+        value?.number || initialValue?.number || undefined,
     );
-
     const [currency, setCurrency] = useState<Currency['value']>(
-        initialValue?.currency ||
-            value?.currency ||
+        value?.currency ||
+            initialValue?.currency ||
             baseCurrency ||
             currencies?.[0]?.value ||
             '',

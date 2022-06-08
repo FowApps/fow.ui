@@ -136,11 +136,9 @@ const FormBuilder = ({
         return true;
     }, []);
 
-    const getLabelProp = (field) => {
-        if (field.type === 'checkbox') return null;
-        return field.label;
-    };
-
+    // const getLabelProp = (field) =>
+    // if (field.type === 'checkbox') return null;
+    // field.label;
     const calculatedProps = useCallback(
         (field: Field) => {
             switch (field.type) {
@@ -237,7 +235,7 @@ const FormBuilder = ({
                         valuePropName={getValueProp(field)}
                         type={field.type}
                         name={field.name}
-                        label={getLabelProp(field)}
+                        label={field.label}
                         hidden={field.hidden}
                         rules={[
                             {
