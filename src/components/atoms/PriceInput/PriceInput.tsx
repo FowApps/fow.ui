@@ -122,13 +122,18 @@ const PriceInput = ({
         }
     }, [currency]);
 
+    useEffect(() => {
+        setNumber(value?.number || initialValue?.number || 0);
+        setCurrency(value?.currency || baseCurrency || currencies[0].value);
+    }, [value]);
+
     return (
         <Space size="xxsmall" inline={false}>
             <InputWrapper>
                 <InputNumber
                     disabled={disabled}
                     type="text"
-                    value={value.number || number}
+                    value={number}
                     onChange={onNumberChange}
                     formatter={(val) =>
                         `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -145,7 +150,7 @@ const PriceInput = ({
                         label: curr.name,
                     }))}
                     disabled={disabled}
-                    value={value.currency || currency}
+                    value={currency}
                     onChange={onCurrencyChange}
                     closeAfterSelect
                     {...selectProps}
