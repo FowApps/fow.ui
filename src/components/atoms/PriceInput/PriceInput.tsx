@@ -122,6 +122,12 @@ const PriceInput = ({
         }
     }, [currency]);
 
+    useEffect(() => {
+        setNumber(value?.number || initialValue?.number || 0);
+        setCurrency(value?.currency || baseCurrency || currencies[0].value);
+        onChange?.({ number: number || 0, currency });
+    }, []);
+
     return (
         <Space size="xxsmall" inline={false}>
             <InputWrapper>
