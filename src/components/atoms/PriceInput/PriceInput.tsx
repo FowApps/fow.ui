@@ -134,7 +134,7 @@ const PriceInput = ({
                 <InputNumber
                     disabled={disabled}
                     type="text"
-                    value={value.number || number}
+                    value={number}
                     onChange={onNumberChange}
                     formatter={(val) =>
                         `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -151,7 +151,7 @@ const PriceInput = ({
                         label: curr.name,
                     }))}
                     disabled={disabled}
-                    value={value.currency || currency}
+                    value={currency}
                     onChange={onCurrencyChange}
                     closeAfterSelect
                     {...selectProps}
