@@ -35,7 +35,7 @@ import { en } from './locales/en';
 
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 25000000;
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 50000000;
 
 export interface LocalizationType {
     placeholder?: string;
