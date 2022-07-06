@@ -102,7 +102,8 @@ const PriceInput = ({
     };
 
     const onNumberChange = (val: any) => {
-        const newNumber = parseInt(val || '0', 10);
+        // const newNumber = parseInt(val || '0', 10);
+        const newNumber = parseFloat(val || '0');
         if (Number.isNaN(number)) {
             return;
         }
