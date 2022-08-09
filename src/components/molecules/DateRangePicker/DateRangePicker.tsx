@@ -17,11 +17,15 @@ import { DateRangePickerWrapper, TimePickerStyles } from './styles';
 import { ConfigContext } from '../../../theme/FowThemeProvider';
 import Icon from '../../atoms/Icon';
 import Button from '../../atoms/Button';
+import { tr } from './locales/tr';
+import { en } from './locales/en';
 
 const locales = {
     tr: { ...tr_TR, ok: 'Tamam' },
     en: en_US,
 };
+
+const localization = { tr, en };
 
 export interface RangePickerProps {
     /**
@@ -68,6 +72,7 @@ export interface RangePickerProps {
 const DateRangePicker = (
     {
         picker = 'date',
+        showToday = false,
         showTime = {
             showHour: true,
             showMinute: true,
@@ -89,7 +94,7 @@ const DateRangePicker = (
     const theme = useTheme();
     const { language, timezone } = useContext(ConfigContext);
     const [val, setVal] = useState<Moment[]>();
-
+    const todayButton = localization[language].now;
     const handleChange = (values: any) => {
         if (values) {
             let startTime = moment(new Date(values[0]))
@@ -161,6 +166,13 @@ const DateRangePicker = (
                 placeholder={placeholder}
                 use12Hours={use12Hours}
                 className="fow-range-picker"
+                ranges={
+                    showToday
+                        ? {
+                              [todayButton]: [moment(), moment()],
+                          }
+                        : {}
+                }
                 suffixIcon={
                     <Icon
                         size="lg"
