@@ -33,4 +33,5 @@ Default.args = {
     dateFormat: 'DD-MM-YYYY',
     seperator: '-',
     disabled: false,
+    showToday: true,
 };
