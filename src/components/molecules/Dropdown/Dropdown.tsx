@@ -63,7 +63,7 @@ const Dropdown = (
         closeAfterClickContent,
         isClosedWhenMouseLeave = false,
         onAfterVisibleChange,
-        transitionDuration = 300,
+        transitionDuration = 100,
         style,
     }: DropdownProps,
     ref: any,
