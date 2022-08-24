@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import Table, { TableProps } from './Table';
+import Checkbox from '../../atoms/Checkbox';
 
 export default {
     title: 'Molecules/Table',
@@ -15,7 +16,7 @@ const ManualPaginationTemplate: Story<TableProps> = (args) => {
     });
     const [isLoading, setIsLoading] = useState(true);
     const [pagination, setPagination] = useState({ page: 1, pageSize: 10 });
-
+    const [selectedRows, setSelectedRows] = useState<any>({});
     const columns = useMemo(
         () => [
             {
@@ -72,22 +73,44 @@ const ManualPaginationTemplate: Story<TableProps> = (args) => {
         return <div style={{ padding: 24 }}>Action Buttons</div>;
     };
 
+    const handleChangeCheckbox = (e) => {
+        if (!e.target.checked) {
+            setSelectedRows({});
+            return;
+        }
+        let value = {};
+
+        users?.data.forEach((item, key) => {
+            value = {
+                0: true,
+                1: true,
+            };
+        });
+
+        setSelectedRows(value);
+    };
+
     return (
-        <Table
-            showColumnControls
-            data={users?.data || []}
-            columns={columns}
-            renderAction={renderAction}
-            onChange={handleChange}
-            showPagination
-            isLoading={isLoading}
-            totalCount={users?.total || 0}
-            manualSortBy
-            initialPage={pagination.page}
-            pageSize={pagination.pageSize}
-            sortBy={[{ id: 'first_name', desc: false }]}
-            showSelection
-        />
+        <>
+            <Checkbox onChange={handleChangeCheckbox} />
+            <Table
+                showColumnControls
+                data={users?.data || []}
+                columns={columns}
+                renderAction={renderAction}
+                onChange={handleChange}
+                showPagination
+                isLoading={isLoading}
+                totalCount={users?.total || 0}
+                manualSortBy
+                initialPage={pagination.page}
+                pageSize={pagination.pageSize}
+                sortBy={[{ id: 'first_name', desc: false }]}
+                selectedRows={selectedRows}
+                showSelection
+                onChangeValue={(values) => {}}
+            />
+        </>
     );
 };
 

@@ -9,6 +9,7 @@ import React, {
     useState,
     useContext,
     useCallback,
+    useMemo,
 } from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
@@ -172,6 +173,7 @@ export interface TableProps {
     notFoundMessage?: string;
     noDataStyle?: React.CSSProperties;
     onSelectedRowChange?: (rows: any[]) => void;
+    onChangeValue?: any;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -183,9 +185,19 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const IndeterminateCheckbox = React.forwardRef(
-    ({ indeterminate, ...rest }, ref) => {
+    ({ indeterminate, value, ...rest }, ref) => {
         const defaultRef = React.useRef();
         const resolvedRef = ref || defaultRef;
+
+        const handleChangeValue = () => {
+            if (value === true) {
+                return true;
+            }
+
+            return rest.checked;
+        };
+
+        const checked = handleChangeValue();
 
         React.useEffect(() => {
             resolvedRef.current.indeterminate = indeterminate;
@@ -193,7 +205,7 @@ const IndeterminateCheckbox = React.forwardRef(
 
         return (
             <>
-                <Checkbox ref={resolvedRef} {...rest} />
+                <Checkbox ref={resolvedRef} {...rest} checked={checked} />
             </>
         );
     },
@@ -227,6 +239,7 @@ const Table = ({
     onSelectedRowChange,
     noDataStyle,
     notFoundMessage,
+    onChangeValue,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -236,11 +249,12 @@ const Table = ({
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [columnQuery, setColumnQuery] = useState('');
     const [isDragTouched, setIsDragTouched] = useState(false);
-
+    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedRowsState, setSelectedRowsState] = useState(selectedRows);
     const isMountFirstTime = useIsMountFirstTime();
-
     const scrollRef = useRef(null);
 
+    // eslint-disable-next-line arrow-body-style
     const tableInstance = useTable(
         {
             columns,
@@ -261,7 +275,6 @@ const Table = ({
         (hooks) => {
             hooks.allColumns.push((currColumns) => {
                 let rowSelection: any, rowAction: any;
-
                 if (typeof renderAction === 'function') {
                     rowAction = {
                         id: 'selection',
@@ -300,12 +313,19 @@ const Table = ({
                 if (showSelection) {
                     rowSelection = {
                         id: 'indeterminate',
-                        Header: ' ',
                         minWidth: 32,
                         width: 32,
                         maxWidth: 32,
                         actionCell: true,
                         disableResizing: true,
+                        Header: ({ getToggleAllRowsSelectedProps }) => (
+                            <div>
+                                <IndeterminateCheckbox
+                                    {...getToggleAllRowsSelectedProps()}
+                                    formInstance={tableInstance}
+                                />
+                            </div>
+                        ),
                         Cell: ({ row }) => (
                             <div
                                 style={{
@@ -318,6 +338,10 @@ const Table = ({
                                 <IndeterminateCheckbox
                                     disabled={row.original.disabled}
                                     {...row.getToggleRowSelectedProps()}
+                                    value={Object.keys(
+                                        tableInstance.initialState
+                                            .selectedRowIds,
+                                    ).includes(row.id)}
                                 />
                             </div>
                         ),
@@ -356,6 +380,28 @@ const Table = ({
             pageIndex,
         },
     } = tableInstance;
+
+    useEffect(() => {
+        if (data?.length > 0) {
+            const selectedValues = Object.keys(selectedRows);
+
+            Object.keys(selectedRowIds)?.forEach((value) => {
+                if (!selectedValues.includes(value)) {
+                    selectedValues.push(value);
+                }
+            });
+
+            const values = [];
+            data.forEach((item, key) => {
+                if (selectedValues?.includes(String(key))) {
+                    values.push(item);
+                }
+            });
+
+            setSelectedItems(values);
+            onChangeValue?.(values);
+        }
+    }, [Object.keys(selectedRowIds)?.length, data]);
 
     // console.log({
     //     canPreviousPage,
