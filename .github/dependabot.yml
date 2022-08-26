@@ -6,7 +6,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 20
     commit-message:
       prefix: "⬆️ "
 
@@ -14,11 +14,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-    ignore:
-      - dependency-name: "react-dnd"
-      - dependency-name: "execa"
-      - dependency-name: "rc-field-form"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 20
     versioning-strategy: increase
     commit-message:
       prefix: "⬆️ "
