@@ -673,6 +673,10 @@ const Table = ({
                                                                                     idx,
                                                                                 ) => (
                                                                                     <Draggable
+                                                                                        isDragDisabled={
+                                                                                            column?.id ===
+                                                                                            'indeterminate'
+                                                                                        }
                                                                                         key={
                                                                                             column.id
                                                                                         }
@@ -706,7 +710,9 @@ const Table = ({
                                                                                                                     c.isVisible,
                                                                                                             )
                                                                                                                 .length ===
-                                                                                                            1
+                                                                                                                1 ||
+                                                                                                            column?.id ===
+                                                                                                                'indeterminate'
                                                                                                         }
                                                                                                         label={
                                                                                                             column.Header
