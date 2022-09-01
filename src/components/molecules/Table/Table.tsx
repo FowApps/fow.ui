@@ -174,6 +174,7 @@ export interface TableProps {
     noDataStyle?: React.CSSProperties;
     onSelectedRowChange?: (rows: any[]) => void;
     onChangeValue?: any;
+    footerAction?: any;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -240,6 +241,7 @@ const Table = ({
     noDataStyle,
     notFoundMessage,
     onChangeValue,
+    footerAction,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -938,88 +940,96 @@ const Table = ({
                         </Space>
                     </EmptyPlaceholder>
                 )}
-                {(showPagination || !manualPagination) && (
-                    <PaginationWrapper>
-                        <Pagination
-                            defaultPageSize={
-                                !manualPagination
-                                    ? uncontrolledPageSize
-                                    : controlledPageSize
-                            }
-                            pageSize={
-                                !manualPagination
-                                    ? uncontrolledPageSize
-                                    : pageSize
-                            }
-                            current={
-                                !manualPagination ? pageIndex + 1 : currentPage
-                            }
-                            defaultCurrent={!manualPagination ? 0 : 1}
-                            onChange={handleChangePagination}
-                            total={
-                                !manualPagination ? data?.length : totalCount
-                            }
-                            showSizeChanger
-                            itemRender={paginationRenderer}
-                            showTitle={false}
-                        />
-                        <Dropdown
-                            trigger="click"
-                            closeAfterClickContent
-                            content={(close) => (
-                                <Menu>
-                                    {[10, 20, 30, 40, 50].map((size) => (
-                                        <Menu.Item
-                                            index={size}
-                                            key={size}
-                                            onClick={() => {
-                                                handleChangeSize(size);
-                                                close();
-                                            }}>
-                                            {size} /{' '}
-                                            {localization[language].page}
-                                        </Menu.Item>
-                                    ))}
-                                </Menu>
-                            )}>
-                            <SizePicker>
-                                <Subtitle level={3}>
-                                    <Space>
-                                        <span>
-                                            {!manualPagination
-                                                ? uncontrolledPageSize
-                                                : pageSize}{' '}
-                                            / {localization[language].page}
-                                        </span>
-                                        <Icon icon="chevron-down" />
-                                    </Space>
-                                </Subtitle>
-                            </SizePicker>
-                        </Dropdown>
-                        <Body level={2}>
-                            {localization[language].results}:{' '}
-                            {manualPagination ? (
-                                <span>
-                                    {(currentPage - 1) * pageSize} -
-                                    {currentPage * pageSize > totalCount
-                                        ? totalCount
-                                        : currentPage * pageSize}{' '}
-                                    / {totalCount}
-                                </span>
-                            ) : (
-                                <span>
-                                    {pageIndex * uncontrolledPageSize} -
-                                    {(pageIndex + 1) * uncontrolledPageSize >
-                                    data.length
-                                        ? data.length
-                                        : (pageIndex + 1) *
-                                          uncontrolledPageSize}
-                                    / {data.length}
-                                </span>
-                            )}
-                        </Body>
-                    </PaginationWrapper>
-                )}
+                <PaginationWrapper>
+                    {footerAction}
+                    {(showPagination || !manualPagination) && (
+                        <>
+                            <Pagination
+                                defaultPageSize={
+                                    !manualPagination
+                                        ? uncontrolledPageSize
+                                        : controlledPageSize
+                                }
+                                pageSize={
+                                    !manualPagination
+                                        ? uncontrolledPageSize
+                                        : pageSize
+                                }
+                                current={
+                                    !manualPagination
+                                        ? pageIndex + 1
+                                        : currentPage
+                                }
+                                defaultCurrent={!manualPagination ? 0 : 1}
+                                onChange={handleChangePagination}
+                                total={
+                                    !manualPagination
+                                        ? data?.length
+                                        : totalCount
+                                }
+                                showSizeChanger
+                                itemRender={paginationRenderer}
+                                showTitle={false}
+                            />
+                            <Dropdown
+                                trigger="click"
+                                closeAfterClickContent
+                                content={(close) => (
+                                    <Menu>
+                                        {[10, 20, 30, 40, 50].map((size) => (
+                                            <Menu.Item
+                                                index={size}
+                                                key={size}
+                                                onClick={() => {
+                                                    handleChangeSize(size);
+                                                    close();
+                                                }}>
+                                                {size} /{' '}
+                                                {localization[language].page}
+                                            </Menu.Item>
+                                        ))}
+                                    </Menu>
+                                )}>
+                                <SizePicker>
+                                    <Subtitle level={3}>
+                                        <Space>
+                                            <span>
+                                                {!manualPagination
+                                                    ? uncontrolledPageSize
+                                                    : pageSize}{' '}
+                                                / {localization[language].page}
+                                            </span>
+                                            <Icon icon="chevron-down" />
+                                        </Space>
+                                    </Subtitle>
+                                </SizePicker>
+                            </Dropdown>
+                            <Body level={2}>
+                                {localization[language].results}:{' '}
+                                {manualPagination ? (
+                                    <span>
+                                        {(currentPage - 1) * pageSize} -
+                                        {currentPage * pageSize > totalCount
+                                            ? totalCount
+                                            : currentPage * pageSize}{' '}
+                                        / {totalCount}
+                                    </span>
+                                ) : (
+                                    <span>
+                                        {pageIndex * uncontrolledPageSize} -
+                                        {(pageIndex + 1) *
+                                            uncontrolledPageSize >
+                                        data.length
+                                            ? data.length
+                                            : (pageIndex + 1) *
+                                              uncontrolledPageSize}
+                                        / {data.length}
+                                    </span>
+                                )}
+                            </Body>
+                        </>
+                    )}
+                </PaginationWrapper>
             </Container>
         </Loader>
     );
