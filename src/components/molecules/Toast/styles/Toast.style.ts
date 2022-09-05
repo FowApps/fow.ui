@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import setAppearance from './appearance';
+
+type ToastContainerType = {
+    toastTop?: number;
+};
 
 type ToastWrapperType = {
     appearance?: 'default' | 'success' | 'info' | 'warning' | 'error';
@@ -9,11 +13,16 @@ type CloseIconType = {
     appearance?: 'default' | 'success' | 'info' | 'warning' | 'error';
 };
 
-export const ToastContainer = styled.div`
+export const ToastContainer = styled.div<ToastContainerType>`
     position: absolute;
     top: 2rem;
     right: 2rem;
     z-index: 10000;
+    ${(props) =>
+        props.toastTop &&
+        css`
+            top: ${props.toastTop}px;
+        `}
 `;
 
 export const ToastWrapper = styled.div<ToastWrapperType>`
