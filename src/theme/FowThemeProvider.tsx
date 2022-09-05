@@ -25,6 +25,7 @@ export type IConfig = {
     language: 'tr' | 'en';
     timezone: string;
     location?: any;
+    themeGlobalStyles?: any;
 };
 export interface FowThemeProps {
     appPrimaryColors?: PrimaryColorTypes;
@@ -43,7 +44,13 @@ const FowTheme = ({
     appPrimaryColors,
     oldUITheme, // temporary old ui theme variables
     children,
-    config = { language: 'tr', timezone: '+03:00' },
+    config = {
+        language: 'tr',
+        timezone: '+03:00',
+        themeGlobalStyles: {
+            toastTop: 0,
+        },
+    },
 }: FowThemeProps): JSX.Element => {
     useEffect(() => {
         localStorage.setItem('language', config.language);
@@ -73,7 +80,8 @@ const FowTheme = ({
                 }}>
                 <GlobalStyle />
                 <ModalContextProvider>
-                    <ToastContextProvider>
+                    <ToastContextProvider
+                        toastTop={config.themeGlobalStyles.toastTop}>
                         <ConfirmProvider>{children}</ConfirmProvider>
                     </ToastContextProvider>
                 </ModalContextProvider>

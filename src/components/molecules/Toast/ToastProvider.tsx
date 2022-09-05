@@ -61,7 +61,7 @@ const itemVariants = {
     },
 };
 
-const ToastContextProvider = ({ children }) => {
+const ToastContextProvider = ({ children, toastTop = 0 }: any) => {
     const [toasts, setToasts] = useState<ToastProps[]>([]);
 
     const add = useCallback(
@@ -90,7 +90,7 @@ const ToastContextProvider = ({ children }) => {
     return (
         <ToastContext.Provider value={providerValue}>
             {children}
-            <ToastContainer>
+            <ToastContainer toastTop={toastTop}>
                 <Space direction="vertical">
                     <AnimatePresence>
                         {toasts.map((toast) => (
