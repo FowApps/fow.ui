@@ -13,6 +13,6 @@ jobs:
             - run: yarn install --frozen-lockfile
             - uses: paambaati/codeclimate-action@v3.0.0
               env:
-                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID__FOW_UI_V2 }}
+                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID__FOW_UI }}
               with:
                   coverageCommand: yarn run test
