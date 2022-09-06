@@ -1,18 +1,18 @@
 name: Pull Request Build & Test
 
 on:
-  pull_request:
-    branches: [master]
+    pull_request:
+        branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Lint
-        run: yarn run pre-commit-lint
-      - name: Build
-        run: yarn run build
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+            - name: Lint
+              run: yarn run pre-commit-lint
+            - name: Build
+              run: yarn run build

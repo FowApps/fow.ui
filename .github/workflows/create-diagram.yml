@@ -2,18 +2,18 @@
 
 name: Create diagram
 on:
-  workflow_dispatch: {}
-  push:
-    branches:
-      - master
+    workflow_dispatch: {}
+    push:
+        branches:
+            - main
 jobs:
-  get_data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Update diagram
-        uses: githubocto/repo-visualizer@main
-        with:
-          output_file: ".github/diagram.svg"
-          excluded_paths: ".github,.husky,.storybook,.vs,.vscode"
+    get_data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: Update diagram
+              uses: githubocto/repo-visualizer@main
+              with:
+                  output_file: '.github/diagram.svg'
+                  excluded_paths: '.github,.husky,.storybook,.vs,.vscode'

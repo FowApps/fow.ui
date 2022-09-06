@@ -1,18 +1,18 @@
 name: Test & publish code coverage
 
 on:
-  push:
-    branches: [master]
+    push:
+        branches: [main]
 
 jobs:
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: yarn install --frozen-lockfile
-      - uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID__FOW_UI_V2 }}
-        with:
-          coverageCommand: yarn run test
+    coverage:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+            - run: yarn install --frozen-lockfile
+            - uses: paambaati/codeclimate-action@v3.0.0
+              env:
+                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID__FOW_UI_V2 }}
+              with:
+                  coverageCommand: yarn run test
