@@ -48,7 +48,7 @@ const FowTheme = ({
         language: 'tr',
         timezone: '+03:00',
         themeGlobalStyles: {
-            toastTop: 0,
+            toastTop: 100,
         },
     },
 }: FowThemeProps): JSX.Element => {
@@ -81,7 +81,7 @@ const FowTheme = ({
                 <GlobalStyle />
                 <ModalContextProvider>
                     <ToastContextProvider
-                        toastTop={config.themeGlobalStyles.toastTop}>
+                        toastTop={config?.themeGlobalStyles?.toastTop || 0}>
                         <ConfirmProvider>{children}</ConfirmProvider>
                     </ToastContextProvider>
                 </ModalContextProvider>

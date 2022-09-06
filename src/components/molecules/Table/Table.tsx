@@ -892,7 +892,9 @@ const Table = ({
                                 {page.map((row) => {
                                     prepareRow(row);
                                     return (
-                                        <Tr {...row.getRowProps()}>
+                                        <Tr
+                                            {...row.getRowProps()}
+                                            className="table-row">
                                             {row.cells.map((cell) => (
                                                 <Td
                                                     title={renderTableCellValue(
