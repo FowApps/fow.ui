@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/FowApps/fow.ui/raw/master/.github/fow.opensource.png" style="max-width:100%;" height="80" />
+  <img src="https://github.com/FowApps/fow.ui/raw/main/.github/fow.opensource.png" style="max-width:100%;" height="80" />
 </p>
 
 # fow.ui
