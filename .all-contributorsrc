@@ -1,8 +1,8 @@
 {
-  "projectName": "@fowapps/fow-ui",
-  "projectOwner": "fowapps",
+  "projectName": "fow.ui",
+  "projectOwner": "FowApps",
   "repoType": "github",
-  "repoHost": "https://github.com/FowApps/fow.ui.v2",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
@@ -60,7 +60,8 @@
       "profile": "https://github.com/alikaraarslan",
       "contributions": [
         "code",
-        "bug"
+        "bug",
+        "review"
       ]
     }
   ],
