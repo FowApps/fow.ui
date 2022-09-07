@@ -17,4 +17,4 @@ jobs:
               with:
                   output_file: '.github/diagram.svg'
                   excluded_paths: '.github,.husky,.storybook,.vs,.vscode'
-                  commit_message: '📝 Repo visualizer: updated diagram'
+                  commit_message: '📝 Update repository diagram'
