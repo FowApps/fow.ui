@@ -1,103 +1,104 @@
 {
-  "projectName": "fow.ui",
-  "projectOwner": "FowApps",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": false,
-  "commitConvention": "gitmoji",
-  "contributors": [
-    {
-      "login": "sercanuste",
-      "name": "Sercan Üste",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5119317?v=4",
-      "profile": "https://sercanuste.com/",
-      "contributions": [
-        "projectManagement",
-        "code",
-        "review"
-      ]
-    },
-    {
-      "login": "alikaraarslan",
-      "name": "Ali Karaarslan",
-      "avatar_url": "https://avatars.githubusercontent.com/u/70697091?v=4",
-      "profile": "https://github.com/alikaraarslan",
-      "contributions": [
-        "code",
-        "maintenance",
-        "review"
-      ]
-    },
-    {
-      "login": "mehmetsagir",
-      "name": "Mehmet Sağır",
-      "avatar_url": "https://avatars.githubusercontent.com/u/62952843?v=4",
-      "profile": "https://github.com/mehmetsagir",
-      "contributions": [
-        "code",
-        "maintenance"
-      ]
-    },
-    {
-      "login": "betulkyaa",
-      "name": "betulkyaa",
-      "avatar_url": "https://avatars.githubusercontent.com/u/93906386?v=4",
-      "profile": "https://github.com/betulkyaa",
-      "contributions": [
-        "code",
-        "maintenance"
-      ]
-    },
-    {
-      "login": "grkmtsn",
-      "name": "Görkem Tosun",
-      "avatar_url": "https://avatars.githubusercontent.com/u/23257390?v=4",
-      "profile": "https://github.com/grkmtsn",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "savasozcan",
-      "name": "Savaş Özcan",
-      "avatar_url": "https://avatars.githubusercontent.com/u/40321541?v=4",
-      "profile": "https://github.com/savasozcan",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "mcagataykaban",
-      "name": "Cagatay",
-      "avatar_url": "https://avatars.githubusercontent.com/u/52887078?v=4",
-      "profile": "https://github.com/mcagataykaban",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "EnesZhr",
-      "name": "EnesZhr",
-      "avatar_url": "https://avatars.githubusercontent.com/u/88950377?v=4",
-      "profile": "https://github.com/EnesZhr",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "mrtcnbb",
-      "name": "Muratcan Baba",
-      "avatar_url": "https://avatars.githubusercontent.com/u/88939219?v=4",
-      "profile": "https://github.com/mrtcnbb",
-      "contributions": [
-        "code"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7,
-  "skipCi": false
+    "projectName": "fow.ui",
+    "projectOwner": "FowApps",
+    "repoType": "github",
+    "repoHost": "https://github.com",
+    "files": [
+        "README.md"
+    ],
+    "imageSize": 100,
+    "commit": false,
+    "commitConvention": "gitmoji",
+    "contributors": [
+        {
+            "login": "sercanuste",
+            "name": "Sercan Üste",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5119317?v=4",
+            "profile": "https://sercanuste.com/",
+            "contributions": [
+                "projectManagement",
+                "code",
+                "review"
+            ]
+        },
+        {
+            "login": "alikaraarslan",
+            "name": "Ali Karaarslan",
+            "avatar_url": "https://avatars.githubusercontent.com/u/70697091?v=4",
+            "profile": "https://github.com/alikaraarslan",
+            "contributions": [
+                "code",
+                "maintenance",
+                "review"
+            ]
+        },
+        {
+            "login": "mehmetsagir",
+            "name": "Mehmet Sağır",
+            "avatar_url": "https://avatars.githubusercontent.com/u/62952843?v=4",
+            "profile": "https://github.com/mehmetsagir",
+            "contributions": [
+                "code",
+                "maintenance"
+            ]
+        },
+        {
+            "login": "betulkyaa",
+            "name": "betulkyaa",
+            "avatar_url": "https://avatars.githubusercontent.com/u/93906386?v=4",
+            "profile": "https://github.com/betulkyaa",
+            "contributions": [
+                "code",
+                "maintenance"
+            ]
+        },
+        {
+            "login": "grkmtsn",
+            "name": "Görkem Tosun",
+            "avatar_url": "https://avatars.githubusercontent.com/u/23257390?v=4",
+            "profile": "https://github.com/grkmtsn",
+            "contributions": [
+                "code"
+            ]
+        },
+        {
+            "login": "savasozcan",
+            "name": "Savaş Özcan",
+            "avatar_url": "https://avatars.githubusercontent.com/u/40321541?v=4",
+            "profile": "https://github.com/savasozcan",
+            "contributions": [
+                "code"
+            ]
+        },
+        {
+            "login": "mcagataykaban",
+            "name": "Cagatay",
+            "avatar_url": "https://avatars.githubusercontent.com/u/52887078?v=4",
+            "profile": "https://github.com/mcagataykaban",
+            "contributions": [
+                "code"
+            ]
+        },
+        {
+            "login": "EnesZhr",
+            "name": "EnesZhr",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88950377?v=4",
+            "profile": "https://github.com/EnesZhr",
+            "contributions": [
+                "code"
+            ]
+        },
+        {
+            "login": "mrtcnbb",
+            "name": "Muratcan Baba",
+            "avatar_url": "https://avatars.githubusercontent.com/u/88939219?v=4",
+            "profile": "https://github.com/mrtcnbb",
+            "contributions": [
+                "code"
+            ]
+        }
+    ],
+    "contributorsPerLine": 7,
+    "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-informational.svg)](#contributors)",
+    "skipCi": false
 }

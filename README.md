@@ -4,13 +4,15 @@
 
 # fow.ui
 
-[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://fowapps.github.io/fow.ui/)
+[![npm](https://img.shields.io/npm/v/@fowapps/fow-ui?color=success)](https://npmjs.com/package/@fowapps/fow-ui) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://fowapps.github.io/fow.ui/)
 
-[![npm](https://img.shields.io/npm/v/@fowapps/fow-ui?color=success)](https://npmjs.com/package/@fowapps/fow-ui) [![Maintainability](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/maintainability)](https://codeclimate.com/github/FowApps/fow.ui/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/test_coverage)](https://codeclimate.com/github/FowApps/fow.ui/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/maintainability)](https://codeclimate.com/github/FowApps/fow.ui/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/test_coverage)](https://codeclimate.com/github/FowApps/fow.ui/test_coverage)
+
+[![CodeQL](https://github.com/FowApps/fow.ui/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/FowApps/fow.ui/actions/workflows/codeql-analysis.yml) [![Test & publish code coverage](https://github.com/FowApps/fow.ui/actions/workflows/coverage.yml/badge.svg)](https://github.com/FowApps/fow.ui/actions/workflows/coverage.yml)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-informational.svg)](#contributors)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
