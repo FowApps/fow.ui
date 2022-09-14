@@ -75,7 +75,7 @@
         "@react-bootstrap/babel-preset": "^2.1.0",
         "@react-bootstrap/eslint-config": "^2.0.0",
         "@storybook/addon-actions": "6.4.19",
-        "@storybook/addon-essentials": "6.4.19",
+        "@storybook/addon-essentials": "6.5.12",
         "@storybook/addon-links": "6.4.19",
         "@storybook/builder-webpack5": "6.4.19",
         "@storybook/manager-webpack5": "6.4.19",
