@@ -13037,10 +13037,10 @@ typescript-workspace-plugin@^2.0.1:
   resolved "https://registry.yarnpkg.com/typescript-workspace-plugin/-/typescript-workspace-plugin-2.0.1.tgz#3d88be1c35a7fdf2c0160c8cf569ca8993439a12"
   integrity sha512-xjIYNFlPIA7IWXvnOFJoAeHPbPJSo0AiQDCRJzaAp3+xZwz6maTgeRLB0oEHVtCqz4Q1CDN6U9kh/2z8sxdDBQ==
 
-typescript@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.2.tgz#fe12d2727b708f4eef40f51598b3398baa9611d4"
-  integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
+typescript@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
+  integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
 
 ua-parser-js@^0.7.30:
   version "0.7.31"
