@@ -38,7 +38,7 @@
         "immutable": "^4.1.0",
         "moment": "^2.29.4",
         "polished": "4.2.2",
-        "rc-dialog": "^8.7.0",
+        "rc-dialog": "^8.9.0",
         "rc-drawer": "^4.4.3",
         "rc-field-form": "1.22.0",
         "rc-input-number": "^7.3.4",
