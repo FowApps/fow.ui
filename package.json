@@ -37,7 +37,7 @@
         "@fullcalendar/timegrid": "^5.9.0",
         "immutable": "^4.0.0",
         "moment": "^2.29.4",
-        "polished": "4.1.4",
+        "polished": "4.2.2",
         "rc-dialog": "^8.7.0",
         "rc-drawer": "^4.4.3",
         "rc-field-form": "1.22.0",
