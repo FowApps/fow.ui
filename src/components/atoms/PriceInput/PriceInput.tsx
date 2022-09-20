@@ -80,9 +80,9 @@ const PriceInput = ({
     );
 
     useEffect(() => {
-        setNumber(value?.number);
-        setCurrency(value?.currency || '');
-    }, [value]);
+        setNumber(value?.number || 0);
+        setCurrency(value?.currency || currencies[0].value);
+    }, []);
 
     const triggerChange = (changedValue: {
         number?: number;
