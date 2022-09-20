@@ -320,14 +320,52 @@ const Table = ({
                         maxWidth: 32,
                         actionCell: true,
                         disableResizing: true,
-                        Header: ({ getToggleAllRowsSelectedProps }) => (
-                            <div>
-                                <IndeterminateCheckbox
-                                    {...getToggleAllRowsSelectedProps()}
-                                    formInstance={tableInstance}
-                                />
-                            </div>
-                        ),
+                        Header: ({
+                            getToggleAllRowsSelectedProps,
+                            toggleRowSelected,
+                            isAllPageRowsSelected,
+                            page,
+                        }) => {
+                            const modifiedOnChange = (event) => {
+                                page.forEach((row) => {
+                                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                    !row.original.disabled &&
+                                        toggleRowSelected(
+                                            row.id,
+                                            event.currentTarget.checked,
+                                        );
+                                });
+                            };
+
+                            let selectableRowsInCurrentPage = 0;
+                            let selectedRowsInCurrentPage = 0;
+                            page.forEach((row) => {
+                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                row.isSelected && selectedRowsInCurrentPage++;
+                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                !row.original.disabled &&
+                                    selectableRowsInCurrentPage++;
+                            });
+
+                            const disabled = selectableRowsInCurrentPage === 0;
+                            const checked =
+                                (isAllPageRowsSelected ||
+                                    selectableRowsInCurrentPage ===
+                                        selectedRowsInCurrentPage) &&
+                                !disabled;
+
+                            return (
+                                <div>
+                                    <IndeterminateCheckbox
+                                        {...getToggleAllRowsSelectedProps()}
+                                        formInstance={tableInstance}
+                                        onChange={modifiedOnChange}
+                                        checked={checked}
+                                        disabled={disabled}
+                                    />
+                                </div>
+                            );
+                        },
                         Cell: ({ row }) => (
                             <div
                                 style={{
