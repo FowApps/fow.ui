@@ -175,6 +175,7 @@ export interface TableProps {
     onSelectedRowChange?: (rows: any[]) => void;
     onChangeValue?: any;
     footerAction?: any;
+    showTable?: boolean;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -242,6 +243,7 @@ const Table = ({
     notFoundMessage,
     onChangeValue,
     footerAction,
+    showTable = true,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -501,11 +503,15 @@ const Table = ({
     }, [setHiddenColumns, columns]);
 
     useLayoutEffect(() => {
-        leftShadowRef.current.style.display = 'none';
-        rightShadowRef.current.style.display = 'none';
+        if (showTable) {
+            leftShadowRef.current.style.display = 'none';
+            rightShadowRef.current.style.display = 'none';
 
-        if (scrollRef.current?.scrollWidth > scrollRef.current?.clientWidth) {
-            rightShadowRef.current.style.display = 'block';
+            if (
+                scrollRef.current?.scrollWidth > scrollRef.current?.clientWidth
+            ) {
+                rightShadowRef.current.style.display = 'block';
+            }
         }
     }, []);
 
@@ -888,188 +894,227 @@ const Table = ({
                         </div>
                     </Space>
                 )}
-                <Wrapper
-                    isLoading={isLoading && data.length === 0}
-                    onScroll={handleScrollTable}
-                    ref={scrollRef}>
-                    <LeftShadow
-                        ref={leftShadowRef}
-                        hasPagination={showPagination}
-                        hasHeader={showColumnControls || !!renderFilters}
-                    />
-                    <StyledTable {...getTableProps()}>
-                        <thead>
-                            {headerGroups.map((headerGroup) => (
-                                <Tr {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map((column) =>
-                                        column.canSort ? (
-                                            <Th
-                                                canSort={column.canSort}
-                                                {...column.getHeaderProps(
-                                                    column.getSortByToggleProps(),
-                                                )}>
-                                                {column.render('Header')}
-                                                {column.canSort &&
-                                                    handleSorter(column)}
-                                            </Th>
-                                        ) : (
-                                            <Th
-                                                isActionCell={column.actionCell}
-                                                {...column.getHeaderProps(
-                                                    column.getSortByToggleProps(),
-                                                )}>
-                                                {column.render('Header')}
-                                            </Th>
-                                        ),
-                                    )}
-                                </Tr>
-                            ))}
-                        </thead>
-                        {data.length > 0 && (
-                            <tbody {...getTableBodyProps()}>
-                                {page.map((row) => {
-                                    prepareRow(row);
-                                    return (
+                {showTable && (
+                    <>
+                        <Wrapper
+                            isLoading={isLoading && data.length === 0}
+                            onScroll={handleScrollTable}
+                            ref={scrollRef}>
+                            <LeftShadow
+                                ref={leftShadowRef}
+                                hasPagination={showPagination}
+                                hasHeader={
+                                    showColumnControls || !!renderFilters
+                                }
+                            />
+                            <StyledTable {...getTableProps()}>
+                                <thead>
+                                    {headerGroups.map((headerGroup) => (
                                         <Tr
-                                            {...row.getRowProps()}
-                                            className="table-row">
-                                            {row.cells.map((cell) => (
-                                                <Td
-                                                    title={renderTableCellValue(
-                                                        cell.value,
-                                                    )}
-                                                    isActionCell={
-                                                        cell.column?.actionCell
-                                                    }
-                                                    className={
-                                                        cell.column
-                                                            ?.clickable &&
-                                                        'clickable'
-                                                    }
-                                                    {...cell.getCellProps()}>
-                                                    {cell.render('Cell')}
-                                                </Td>
-                                            ))}
+                                            {...headerGroup.getHeaderGroupProps()}>
+                                            {headerGroup.headers.map((column) =>
+                                                column.canSort ? (
+                                                    <Th
+                                                        canSort={column.canSort}
+                                                        {...column.getHeaderProps(
+                                                            column.getSortByToggleProps(),
+                                                        )}>
+                                                        {column.render(
+                                                            'Header',
+                                                        )}
+                                                        {column.canSort &&
+                                                            handleSorter(
+                                                                column,
+                                                            )}
+                                                    </Th>
+                                                ) : (
+                                                    <Th
+                                                        isActionCell={
+                                                            column.actionCell
+                                                        }
+                                                        {...column.getHeaderProps(
+                                                            column.getSortByToggleProps(),
+                                                        )}>
+                                                        {column.render(
+                                                            'Header',
+                                                        )}
+                                                    </Th>
+                                                ),
+                                            )}
                                         </Tr>
-                                    );
-                                })}
-                            </tbody>
-                        )}
-                    </StyledTable>
-                    <RightShadow
-                        ref={rightShadowRef}
-                        hasPagination={showPagination}
-                        hasHeader={showColumnControls || !!renderFilters}
-                    />
-                </Wrapper>
-                {data.length === 0 && !isLoading && (
-                    <EmptyPlaceholder
-                        style={{
-                            ...noDataStyle,
-                        }}>
-                        <Space direction="vertical">
-                            <Icon
-                                icon="inbox"
-                                size="4x"
-                                color={theme.fow.colors.text.disabled}
-                            />
-                            <Subtitle color="disabled">
-                                {notFoundMessage ||
-                                    localization[language].noData}
-                            </Subtitle>
-                        </Space>
-                    </EmptyPlaceholder>
-                )}
-                <PaginationWrapper>
-                    {footerAction}
-                    {(showPagination || !manualPagination) && (
-                        <>
-                            <Pagination
-                                defaultPageSize={
-                                    !manualPagination
-                                        ? uncontrolledPageSize
-                                        : controlledPageSize
-                                }
-                                pageSize={
-                                    !manualPagination
-                                        ? uncontrolledPageSize
-                                        : pageSize
-                                }
-                                current={
-                                    !manualPagination
-                                        ? pageIndex + 1
-                                        : currentPage
-                                }
-                                defaultCurrent={!manualPagination ? 0 : 1}
-                                onChange={handleChangePagination}
-                                total={
-                                    !manualPagination
-                                        ? data?.length
-                                        : totalCount
-                                }
-                                showSizeChanger
-                                itemRender={paginationRenderer}
-                                showTitle={false}
-                            />
-                            <Dropdown
-                                trigger="click"
-                                closeAfterClickContent
-                                content={(close) => (
-                                    <Menu>
-                                        {[10, 20, 30, 40, 50].map((size) => (
-                                            <Menu.Item
-                                                index={size}
-                                                key={size}
-                                                onClick={() => {
-                                                    handleChangeSize(size);
-                                                    close();
-                                                }}>
-                                                {size} /{' '}
-                                                {localization[language].page}
-                                            </Menu.Item>
-                                        ))}
-                                    </Menu>
-                                )}>
-                                <SizePicker>
-                                    <Subtitle level={3}>
-                                        <Space>
-                                            <span>
-                                                {!manualPagination
-                                                    ? uncontrolledPageSize
-                                                    : pageSize}{' '}
-                                                / {localization[language].page}
-                                            </span>
-                                            <Icon icon="chevron-down" />
-                                        </Space>
-                                    </Subtitle>
-                                </SizePicker>
-                            </Dropdown>
-                            <Body level={2}>
-                                {localization[language].results}:{' '}
-                                {manualPagination ? (
-                                    <span>
-                                        {(currentPage - 1) * pageSize} -
-                                        {currentPage * pageSize > totalCount
-                                            ? totalCount
-                                            : currentPage * pageSize}{' '}
-                                        / {totalCount}
-                                    </span>
-                                ) : (
-                                    <span>
-                                        {pageIndex * uncontrolledPageSize} -
-                                        {(pageIndex + 1) *
-                                            uncontrolledPageSize >
-                                        data.length
-                                            ? data.length
-                                            : (pageIndex + 1) *
-                                              uncontrolledPageSize}
-                                        / {data.length}
-                                    </span>
+                                    ))}
+                                </thead>
+                                {data.length > 0 && (
+                                    <tbody {...getTableBodyProps()}>
+                                        {page.map((row) => {
+                                            prepareRow(row);
+                                            return (
+                                                <Tr
+                                                    {...row.getRowProps()}
+                                                    className="table-row">
+                                                    {row.cells.map((cell) => (
+                                                        <Td
+                                                            title={renderTableCellValue(
+                                                                cell.value,
+                                                            )}
+                                                            isActionCell={
+                                                                cell.column
+                                                                    ?.actionCell
+                                                            }
+                                                            className={
+                                                                cell.column
+                                                                    ?.clickable &&
+                                                                'clickable'
+                                                            }
+                                                            {...cell.getCellProps()}>
+                                                            {cell.render(
+                                                                'Cell',
+                                                            )}
+                                                        </Td>
+                                                    ))}
+                                                </Tr>
+                                            );
+                                        })}
+                                    </tbody>
                                 )}
-                            </Body>
-                        </>
-                    )}
-                </PaginationWrapper>
+                            </StyledTable>
+                            <RightShadow
+                                ref={rightShadowRef}
+                                hasPagination={showPagination}
+                                hasHeader={
+                                    showColumnControls || !!renderFilters
+                                }
+                            />
+                        </Wrapper>
+                        {data.length === 0 && !isLoading && (
+                            <EmptyPlaceholder
+                                style={{
+                                    ...noDataStyle,
+                                }}>
+                                <Space direction="vertical">
+                                    <Icon
+                                        icon="inbox"
+                                        size="4x"
+                                        color={theme.fow.colors.text.disabled}
+                                    />
+                                    <Subtitle color="disabled">
+                                        {notFoundMessage ||
+                                            localization[language].noData}
+                                    </Subtitle>
+                                </Space>
+                            </EmptyPlaceholder>
+                        )}
+                        <PaginationWrapper>
+                            {footerAction}
+                            {(showPagination || !manualPagination) && (
+                                <>
+                                    <Pagination
+                                        defaultPageSize={
+                                            !manualPagination
+                                                ? uncontrolledPageSize
+                                                : controlledPageSize
+                                        }
+                                        pageSize={
+                                            !manualPagination
+                                                ? uncontrolledPageSize
+                                                : pageSize
+                                        }
+                                        current={
+                                            !manualPagination
+                                                ? pageIndex + 1
+                                                : currentPage
+                                        }
+                                        defaultCurrent={
+                                            !manualPagination ? 0 : 1
+                                        }
+                                        onChange={handleChangePagination}
+                                        total={
+                                            !manualPagination
+                                                ? data?.length
+                                                : totalCount
+                                        }
+                                        showSizeChanger
+                                        itemRender={paginationRenderer}
+                                        showTitle={false}
+                                    />
+                                    <Dropdown
+                                        trigger="click"
+                                        closeAfterClickContent
+                                        content={(close) => (
+                                            <Menu>
+                                                {[10, 20, 30, 40, 50].map(
+                                                    (size) => (
+                                                        <Menu.Item
+                                                            index={size}
+                                                            key={size}
+                                                            onClick={() => {
+                                                                handleChangeSize(
+                                                                    size,
+                                                                );
+                                                                close();
+                                                            }}>
+                                                            {size} /{' '}
+                                                            {
+                                                                localization[
+                                                                    language
+                                                                ].page
+                                                            }
+                                                        </Menu.Item>
+                                                    ),
+                                                )}
+                                            </Menu>
+                                        )}>
+                                        <SizePicker>
+                                            <Subtitle level={3}>
+                                                <Space>
+                                                    <span>
+                                                        {!manualPagination
+                                                            ? uncontrolledPageSize
+                                                            : pageSize}{' '}
+                                                        /{' '}
+                                                        {
+                                                            localization[
+                                                                language
+                                                            ].page
+                                                        }
+                                                    </span>
+                                                    <Icon icon="chevron-down" />
+                                                </Space>
+                                            </Subtitle>
+                                        </SizePicker>
+                                    </Dropdown>
+                                    <Body level={2}>
+                                        {localization[language].results}:{' '}
+                                        {manualPagination ? (
+                                            <span>
+                                                {(currentPage - 1) * pageSize} -
+                                                {currentPage * pageSize >
+                                                totalCount
+                                                    ? totalCount
+                                                    : currentPage *
+                                                      pageSize}{' '}
+                                                / {totalCount}
+                                            </span>
+                                        ) : (
+                                            <span>
+                                                {pageIndex *
+                                                    uncontrolledPageSize}{' '}
+                                                -
+                                                {(pageIndex + 1) *
+                                                    uncontrolledPageSize >
+                                                data.length
+                                                    ? data.length
+                                                    : (pageIndex + 1) *
+                                                      uncontrolledPageSize}
+                                                / {data.length}
+                                            </span>
+                                        )}
+                                    </Body>
+                                </>
+                            )}
+                        </PaginationWrapper>
+                    </>
+                )}
             </Container>
         </Loader>
     );
