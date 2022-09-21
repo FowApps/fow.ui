@@ -82,7 +82,7 @@ const PriceInput = ({
     useEffect(() => {
         setNumber(value?.number || 0);
         setCurrency(value?.currency || currencies[0].value);
-    }, []);
+    }, [value]);
 
     const triggerChange = (changedValue: {
         number?: number;
@@ -106,21 +106,21 @@ const PriceInput = ({
         }
     };
 
-    const onNumberChange = (val: any) => {
-        // const newNumber = parseInt(val || '0', 10);
-        const newNumber = parseFloat(val || '0');
-        if (Number.isNaN(number)) {
-            return;
-        }
-        setNumber(newNumber);
-        triggerChange({ number: newNumber, currency });
-    };
+    // const onNumberChange = (val: any) => {
+    //     // const newNumber = parseInt(val || '0', 10);
+    //     const newNumber = parseFloat(val || '0');
+    //     if (Number.isNaN(number)) {
+    //         return;
+    //     }
+    //     setNumber(newNumber);
+    //     triggerChange({ number: newNumber, currency });
+    // };
 
-    const onCurrencyChange = (newCurrency: any) => {
-        setCurrency(newCurrency?.currency || newCurrency);
-        setFormFieldValue?.(newCurrency?.currency || newCurrency);
-        triggerChange({ number, currency: newCurrency });
-    };
+    // const onCurrencyChange = (newCurrency: any) => {
+    //     setCurrency(newCurrency?.currency || newCurrency);
+    //     setFormFieldValue?.(newCurrency?.currency || newCurrency);
+    //     triggerChange({ number, currency: newCurrency });
+    // };
 
     useEffect(() => {
         if (setFormFieldValue) {
@@ -141,7 +141,12 @@ const PriceInput = ({
                     disabled={disabled}
                     type="text"
                     value={number}
-                    onChange={onNumberChange}
+                    onChange={(e) =>
+                        triggerChange({
+                            number: Number(e),
+                            currency,
+                        })
+                    }
                     formatter={(val) =>
                         `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                     }
@@ -158,7 +163,12 @@ const PriceInput = ({
                     }))}
                     disabled={disabled}
                     value={currency}
-                    onChange={onCurrencyChange}
+                    onChange={(e) =>
+                        triggerChange({
+                            number,
+                            currency: e,
+                        })
+                    }
                     closeAfterSelect
                     {...selectProps}
                 />
