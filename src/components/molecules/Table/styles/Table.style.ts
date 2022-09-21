@@ -215,7 +215,7 @@ export const ColumnList = styled.div`
     display: flex;
     flex-direction: row;
     overflow: auto;
-    width: 450px;
+    width: ${(props) => (props?.showTable ? '450px' : '100%')};
     height: 400px;
     padding: ${(props) => props.theme.fow.spacing.medium};
     border-radius: 8px;
