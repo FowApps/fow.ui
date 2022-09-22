@@ -653,6 +653,158 @@ const Table = ({
         }
         return value;
     };
+    const content = (
+        <ColumnList>
+            <div>
+                <Space direction="vertical" align="start" size="xsmall">
+                    <Subtitle level={1}>
+                        {localization[language].selectedColumns}
+                    </Subtitle>
+                    <DragDropContext onDragEnd={handleColumnDragEnd}>
+                        <Droppable droppableId="droppable">
+                            {(dropProvided) => (
+                                <div
+                                    {...dropProvided.droppableProps}
+                                    ref={dropProvided.innerRef}>
+                                    <Space
+                                        direction="vertical"
+                                        align="start"
+                                        size="xsmall">
+                                        {allColumns
+                                            .filter(
+                                                (column) =>
+                                                    column.id !== 'selection' &&
+                                                    column.isVisible,
+                                            )
+                                            .map((column, idx) => (
+                                                <Draggable
+                                                    isDragDisabled={
+                                                        column?.id ===
+                                                        'indeterminate'
+                                                    }
+                                                    key={column.id}
+                                                    draggableId={column.id}
+                                                    index={idx}>
+                                                    {(dragProvided) => (
+                                                        <div
+                                                            ref={
+                                                                dragProvided.innerRef
+                                                            }
+                                                            {...dragProvided.draggableProps}
+                                                            {...dragProvided.dragHandleProps}>
+                                                            <Space>
+                                                                <OrderDots>
+                                                                    <Icon icon="fow-order-dots" />
+                                                                </OrderDots>
+                                                                <Checkbox
+                                                                    disabled={
+                                                                        allColumns.filter(
+                                                                            (
+                                                                                c,
+                                                                            ) =>
+                                                                                c.id !==
+                                                                                    'selection' &&
+                                                                                c.isVisible,
+                                                                        )
+                                                                            .length ===
+                                                                            1 ||
+                                                                        column?.id ===
+                                                                            'indeterminate'
+                                                                    }
+                                                                    label={
+                                                                        column.Header
+                                                                    }
+                                                                    key={
+                                                                        column.id
+                                                                    }
+                                                                    {...column.getToggleHiddenProps()}
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) => {
+                                                                        column
+                                                                            .getToggleHiddenProps()
+                                                                            .onChange(
+                                                                                e,
+                                                                            );
+                                                                        setIsDragTouched(
+                                                                            true,
+                                                                        );
+                                                                    }}
+                                                                />
+                                                            </Space>
+                                                            {
+                                                                dragProvided.placeholder
+                                                            }
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                            ))}
+                                    </Space>
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+                </Space>
+            </div>
+            <Divider
+                direction="vertical"
+                size="small"
+                style={{
+                    flex: 'unset',
+                    height: '100%',
+                }}
+            />
+            <div>
+                <Space direction="vertical" align="start" size="xsmall">
+                    <Input
+                        placeholder="Search"
+                        suffixIcon="search"
+                        onChange={(value) => setColumnQuery(value)}
+                        value={columnQuery}
+                    />
+                    {allColumns
+                        .filter(
+                            (column) =>
+                                column.id !== 'selection' && !column.isVisible,
+                        )
+                        .filter(
+                            (column) =>
+                                column.Header.toLowerCase().indexOf(
+                                    columnQuery.toLocaleLowerCase(),
+                                ) > -1,
+                        ).length === 0 && (
+                        <Message
+                            message={localization[language].allColumnSelected}
+                            type="empty"
+                            width="100"
+                        />
+                    )}
+                    {allColumns
+                        .filter(
+                            (column) =>
+                                column.id !== 'selection' && !column.isVisible,
+                        )
+                        .filter(
+                            (column) =>
+                                column.Header.toLowerCase().indexOf(
+                                    columnQuery.toLocaleLowerCase(),
+                                ) > -1,
+                        )
+                        .map((column) => (
+                            <Checkbox
+                                label={column.Header}
+                                key={column.id}
+                                {...column.getToggleHiddenProps()}
+                                onChange={(e) => {
+                                    column.getToggleHiddenProps().onChange(e);
+                                    setIsDragTouched(true);
+                                }}
+                            />
+                        ))}
+                </Space>
+            </div>
+        </ColumnList>
+    );
 
     return (
         <Loader
@@ -671,227 +823,28 @@ const Table = ({
                             {typeof renderFilters === 'function' &&
                                 renderFilters()}
                         </div>
-                        <div>
-                            {showColumnControls && (
-                                <Dropdown
-                                    trigger="click"
-                                    content={
-                                        <ColumnList>
-                                            <div>
-                                                <Space
-                                                    direction="vertical"
-                                                    align="start"
-                                                    size="xsmall">
-                                                    <Subtitle level={1}>
-                                                        {
-                                                            localization[
-                                                                language
-                                                            ].selectedColumns
-                                                        }
-                                                    </Subtitle>
-                                                    <DragDropContext
-                                                        onDragEnd={
-                                                            handleColumnDragEnd
-                                                        }>
-                                                        <Droppable droppableId="droppable">
-                                                            {(dropProvided) => (
-                                                                <div
-                                                                    {...dropProvided.droppableProps}
-                                                                    ref={
-                                                                        dropProvided.innerRef
-                                                                    }>
-                                                                    <Space
-                                                                        direction="vertical"
-                                                                        align="start"
-                                                                        size="xsmall">
-                                                                        {allColumns
-                                                                            .filter(
-                                                                                (
-                                                                                    column,
-                                                                                ) =>
-                                                                                    column.id !==
-                                                                                        'selection' &&
-                                                                                    column.isVisible,
-                                                                            )
-                                                                            .map(
-                                                                                (
-                                                                                    column,
-                                                                                    idx,
-                                                                                ) => (
-                                                                                    <Draggable
-                                                                                        isDragDisabled={
-                                                                                            column?.id ===
-                                                                                            'indeterminate'
-                                                                                        }
-                                                                                        key={
-                                                                                            column.id
-                                                                                        }
-                                                                                        draggableId={
-                                                                                            column.id
-                                                                                        }
-                                                                                        index={
-                                                                                            idx
-                                                                                        }>
-                                                                                        {(
-                                                                                            dragProvided,
-                                                                                        ) => (
-                                                                                            <div
-                                                                                                ref={
-                                                                                                    dragProvided.innerRef
-                                                                                                }
-                                                                                                {...dragProvided.draggableProps}
-                                                                                                {...dragProvided.dragHandleProps}>
-                                                                                                <Space>
-                                                                                                    <OrderDots>
-                                                                                                        <Icon icon="fow-order-dots" />
-                                                                                                    </OrderDots>
-                                                                                                    <Checkbox
-                                                                                                        disabled={
-                                                                                                            allColumns.filter(
-                                                                                                                (
-                                                                                                                    c,
-                                                                                                                ) =>
-                                                                                                                    c.id !==
-                                                                                                                        'selection' &&
-                                                                                                                    c.isVisible,
-                                                                                                            )
-                                                                                                                .length ===
-                                                                                                                1 ||
-                                                                                                            column?.id ===
-                                                                                                                'indeterminate'
-                                                                                                        }
-                                                                                                        label={
-                                                                                                            column.Header
-                                                                                                        }
-                                                                                                        key={
-                                                                                                            column.id
-                                                                                                        }
-                                                                                                        {...column.getToggleHiddenProps()}
-                                                                                                        onChange={(
-                                                                                                            e,
-                                                                                                        ) => {
-                                                                                                            column
-                                                                                                                .getToggleHiddenProps()
-                                                                                                                .onChange(
-                                                                                                                    e,
-                                                                                                                );
-                                                                                                            setIsDragTouched(
-                                                                                                                true,
-                                                                                                            );
-                                                                                                        }}
-                                                                                                    />
-                                                                                                </Space>
-                                                                                                {
-                                                                                                    dragProvided.placeholder
-                                                                                                }
-                                                                                            </div>
-                                                                                        )}
-                                                                                    </Draggable>
-                                                                                ),
-                                                                            )}
-                                                                    </Space>
-                                                                </div>
-                                                            )}
-                                                        </Droppable>
-                                                    </DragDropContext>
-                                                </Space>
-                                            </div>
-                                            <Divider
-                                                direction="vertical"
-                                                size="small"
-                                                style={{
-                                                    flex: 'unset',
-                                                    height: '100%',
-                                                }}
-                                            />
-                                            <div>
-                                                <Space
-                                                    direction="vertical"
-                                                    align="start"
-                                                    size="xsmall">
-                                                    <Input
-                                                        placeholder="Search"
-                                                        suffixIcon="search"
-                                                        onChange={(value) =>
-                                                            setColumnQuery(
-                                                                value,
-                                                            )
-                                                        }
-                                                        value={columnQuery}
-                                                    />
-                                                    {allColumns
-                                                        .filter(
-                                                            (column) =>
-                                                                column.id !==
-                                                                    'selection' &&
-                                                                !column.isVisible,
-                                                        )
-                                                        .filter(
-                                                            (column) =>
-                                                                column.Header.toLowerCase().indexOf(
-                                                                    columnQuery.toLocaleLowerCase(),
-                                                                ) > -1,
-                                                        ).length === 0 && (
-                                                        <Message
-                                                            message={
-                                                                localization[
-                                                                    language
-                                                                ]
-                                                                    .allColumnSelected
-                                                            }
-                                                            type="empty"
-                                                            width="100"
-                                                        />
-                                                    )}
-                                                    {allColumns
-                                                        .filter(
-                                                            (column) =>
-                                                                column.id !==
-                                                                    'selection' &&
-                                                                !column.isVisible,
-                                                        )
-                                                        .filter(
-                                                            (column) =>
-                                                                column.Header.toLowerCase().indexOf(
-                                                                    columnQuery.toLocaleLowerCase(),
-                                                                ) > -1,
-                                                        )
-                                                        .map((column) => (
-                                                            <Checkbox
-                                                                label={
-                                                                    column.Header
-                                                                }
-                                                                key={column.id}
-                                                                {...column.getToggleHiddenProps()}
-                                                                onChange={(
-                                                                    e,
-                                                                ) => {
-                                                                    column
-                                                                        .getToggleHiddenProps()
-                                                                        .onChange(
-                                                                            e,
-                                                                        );
-                                                                    setIsDragTouched(
-                                                                        true,
-                                                                    );
-                                                                }}
-                                                            />
-                                                        ))}
-                                                </Space>
-                                            </div>
-                                        </ColumnList>
-                                    }>
-                                    <Subtitle level={1} color="secondary">
-                                        <Space>
-                                            <Icon icon="columns" />
-                                            <span>
-                                                {localization[language].columns}
-                                            </span>
-                                        </Space>
-                                    </Subtitle>
-                                </Dropdown>
-                            )}
-                        </div>
+
+                        {showColumnControls && (
+                            <>
+                                {showTable ? (
+                                    <Dropdown trigger="click" content={content}>
+                                        <Subtitle level={1} color="secondary">
+                                            <Space>
+                                                <Icon icon="columns" />
+                                                <span>
+                                                    {
+                                                        localization[language]
+                                                            .columns
+                                                    }
+                                                </span>
+                                            </Space>
+                                        </Subtitle>
+                                    </Dropdown>
+                                ) : (
+                                    content
+                                )}
+                            </>
+                        )}
                     </Space>
                 )}
                 {showTable && (
