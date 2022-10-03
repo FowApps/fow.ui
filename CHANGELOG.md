@@ -1,5 +1,97 @@
 # Changelog
 
+<a name="0.1.1-alpha.3"></a>
+## 0.1.1-alpha.3 (2022-10-03)
+
+### Added
+
+- ➕ Add Page component [[e123de4](https://github.com/FowApps/fow.ui/commit/e123de42a32df80c786daa2473d2004a6c6a9d50)]
+
+### Changed
+
+- ⬆️ udate package version [[a0af325](https://github.com/FowApps/fow.ui/commit/a0af325a2dc9041c32a54341e84b4e213f737e54)]
+- ♻️ Update getFirstLetters [[68adaa1](https://github.com/FowApps/fow.ui/commit/68adaa165a099f18a3568b0dfc63584dc2ed3512)]
+- ⬆️ Bump @storybook/react from 6.4.19 to 6.5.12 [[76781e7](https://github.com/FowApps/fow.ui/commit/76781e7a3b0c503465dfb65e8becfe9a78ddc54e)]
+- ⬆️ Bump @storybook/addon-links from 6.4.19 to 6.5.12 [[46c7630](https://github.com/FowApps/fow.ui/commit/46c76304abbb1af52663b38b293971b884edb7d1)]
+- ⬆️ Bump @storybook/addon-actions from 6.4.19 to 6.5.12 [[d23357a](https://github.com/FowApps/fow.ui/commit/d23357a7b7980be3203b90535f516d6b5b4fc9bc)]
+- ⬆️ Bump @fullcalendar/react from 5.9.0 to 5.11.2 [[cb1ee81](https://github.com/FowApps/fow.ui/commit/cb1ee816a2941b4c6fd0299256721f3f48a256ca)]
+- ⬆️ Bump @fullcalendar/interaction from 5.9.0 to 5.11.3 [[8bbaf9b](https://github.com/FowApps/fow.ui/commit/8bbaf9b1e28f5da96baae87b675a6c12e3f3df0a)]
+- ⬆️ Bump @storybook/manager-webpack5 from 6.4.19 to 6.5.12 [[a81bf53](https://github.com/FowApps/fow.ui/commit/a81bf535541a86ac959348c9de625150058d8cfd)]
+- ⬆️ Bump @storybook/addon-essentials from 6.4.19 to 6.5.12 [[5b75e4f](https://github.com/FowApps/fow.ui/commit/5b75e4fe2d166be144ad8036ddf0e9dd17cfe370)]
+- ⬆️ Bump @storybook/builder-webpack5 from 6.4.19 to 6.5.12 [[03ab587](https://github.com/FowApps/fow.ui/commit/03ab587a8806861c56db0372d30c1fd678391752)]
+- 🔧 Update Repo Visualizer commit message [[0036324](https://github.com/FowApps/fow.ui/commit/00363247f29768c36744385cd1616142cf4a07bf)]
+- 🔧 Update Repo Visualizer commit message [[bf18e57](https://github.com/FowApps/fow.ui/commit/bf18e5747812a317ecc4a96830087afb46ae970f)]
+- 🔧 Update default branch name [[e04eac9](https://github.com/FowApps/fow.ui/commit/e04eac9c8be6f6a413c127e5c5439ec69b000b76)]
+- ⬆️ Bump babel-loader from 8.2.3 to 8.2.5 [[2ba2955](https://github.com/FowApps/fow.ui/commit/2ba2955cadac3cd754364d2b22306fbd27b2ef4c)]
+- ⬆️ Bump react-transition-group and @types/react-transition-group [[e0ddc3c](https://github.com/FowApps/fow.ui/commit/e0ddc3c6d273974c67b7ae37c991c8fbd333bd5b)]
+- ⬆️ Bump @types/enzyme from 3.10.11 to 3.10.12 [[c75cd13](https://github.com/FowApps/fow.ui/commit/c75cd13510baca8e336c2b630ee852d3615755f5)]
+- ⬆️ Bump fs-extra from 10.0.1 to 10.1.0 [[cd2c202](https://github.com/FowApps/fow.ui/commit/cd2c2026630634a35f8183842a94506c88fc92f3)]
+- ⬆️ Bump eslint-config-4catalyzer-typescript from 3.2.0 to 3.3.0 [[6de3970](https://github.com/FowApps/fow.ui/commit/6de3970af23a4bb4054402bf6fd87d084235f84a)]
+- ⬆️ Bump immutable from 4.0.0 to 4.1.0 [[8b9e2f0](https://github.com/FowApps/fow.ui/commit/8b9e2f0a027fbf94f6e3fef83aea5fdc343db410)]
+- ⬆️ Bump eslint-plugin-jsx-a11y from 6.5.1 to 6.6.1 [[e919d15](https://github.com/FowApps/fow.ui/commit/e919d158ee0c5cbf2d1cab861903f11b6f9136a0)]
+- ⬆️ Bump ts-jest from 27.1.3 to 27.1.5 [[d02c9f1](https://github.com/FowApps/fow.ui/commit/d02c9f18486ebe1af073592632fcd77467babd52)]
+- ⬆️ Bump polished from 4.1.4 to 4.2.2 [[a08b35f](https://github.com/FowApps/fow.ui/commit/a08b35faae14c980046db825b7632840b569d16d)]
+- ⬆️ Bump @fullcalendar/timegrid from 5.10.1 to 5.11.3 [[c978de8](https://github.com/FowApps/fow.ui/commit/c978de8a3aa8f65172e820e980b6dce38c228464)]
+- ⬆️ Bump framer-motion from 6.2.8 to 6.5.1 [[66f9505](https://github.com/FowApps/fow.ui/commit/66f9505d0981503c1d355a166707a78a17f58b25)]
+- ⬆️ Bump @wojtekmaj/enzyme-adapter-react-17 from 0.6.6 to 0.6.7 [[f5b0cb0](https://github.com/FowApps/fow.ui/commit/f5b0cb0638a133224de3997b9faf7a6616f630ee)]
+- ⬆️ Bump @fullcalendar/daygrid from 5.10.1 to 5.11.3 [[7f5301b](https://github.com/FowApps/fow.ui/commit/7f5301b7486c0066df50d19d8d809e378b30a8fb)]
+
+### Miscellaneous
+
+-  Merge pull request [#719](https://github.com/FowApps/fow.ui/issues/719) from FowApps/improvement/page-component [[0b93f32](https://github.com/FowApps/fow.ui/commit/0b93f325631a29039b986eb2e8f05c4797492a9b)]
+-  Fix datePicker and rangePicker clickable bugs [[7f77a17](https://github.com/FowApps/fow.ui/commit/7f77a17ec98f7f60e4213bed68a048bb76fdbcb2)]
+-  👷 Add sercanuste/gitmoji-changelog-action [[b8e1571](https://github.com/FowApps/fow.ui/commit/b8e1571bc53676c4f4a8253accaecdeb518a5a84)]
+- 📝 Update README.md [[1418605](https://github.com/FowApps/fow.ui/commit/1418605145f3ae404187cfb616a4fa2995622a2c)]
+- 📝 Update CHANGELOG.md [[3a4feeb](https://github.com/FowApps/fow.ui/commit/3a4feebd8c8554ebad5a6bfa0a3ccbaa44a09082)]
+-  Merge pull request [#712](https://github.com/FowApps/fow.ui/issues/712) from FowApps/change-table [[82da0ed](https://github.com/FowApps/fow.ui/commit/82da0ed136501284c45b8c202bbe4add24deb7e1)]
+- 📝 Update repository diagram [[c92c18d](https://github.com/FowApps/fow.ui/commit/c92c18dc308e9f0705e7f2e35cd8b6c0dd1e02e7)]
+-  update version [[a4122c2](https://github.com/FowApps/fow.ui/commit/a4122c2a223331da2ba4618a6a6671b79fd23da9)]
+-  fix price input [[5a8f7e0](https://github.com/FowApps/fow.ui/commit/5a8f7e0ca95d10c8c003beccd6c81b6f76e5fcd3)]
+-  add showTable prop to table component [[a187b42](https://github.com/FowApps/fow.ui/commit/a187b426c44e2e554f070426fdd67543159b512c)]
+-  Merge pull request [#711](https://github.com/FowApps/fow.ui/issues/711) from FowApps/export-useStepForm-hook [[d2ab16b](https://github.com/FowApps/fow.ui/commit/d2ab16b226b1440f561c56f4061138e2d5400244)]
+-  update version [[fbc7d12](https://github.com/FowApps/fow.ui/commit/fbc7d12360194f1dc621f3feaf4e7f17521b6ca4)]
+-  fixes price input [[42074b2](https://github.com/FowApps/fow.ui/commit/42074b2ac5b721d78a7e81f117875b560244a352)]
+-  add showTable prop [[bed9e72](https://github.com/FowApps/fow.ui/commit/bed9e725d7757053312cfb5a36a12b299c424da5)]
+-  Merge branch &#x27;main&#x27; into export-useStepForm-hook [[031d239](https://github.com/FowApps/fow.ui/commit/031d2398c076642f00d6153a0969fe97e150fd3d)]
+- 📝 Update repository diagram [[10c77e8](https://github.com/FowApps/fow.ui/commit/10c77e80f8d5f437bd5c78173c84eb7cbe688cda)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/babel-loader-8.2.5&#x27; [[f7ba4ff](https://github.com/FowApps/fow.ui/commit/f7ba4ff022b3515db481fea2e68e1767fcf41cc6)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/fs-extra-10.1.0&#x27; [[ccc0d68](https://github.com/FowApps/fow.ui/commit/ccc0d68d4d5a271a52be8f6598c14854f4ed91df)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/ts-jest-27.1.5&#x27; [[cbe238c](https://github.com/FowApps/fow.ui/commit/cbe238c1b99bfdd8a84b47243f4123df2efe37f8)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/eslint-plugin-jsx-a11y-6.6.1&#x27; [[16cfece](https://github.com/FowApps/fow.ui/commit/16cfece6595130cff10a2e003f41fbd99e1ed1bf)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/eslint-config-4catalyzer-typescript-3.3.0&#x27; [[d307d24](https://github.com/FowApps/fow.ui/commit/d307d244f71f2843db58e6039d97a96acdff5045)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/wojtekmaj/enzyme-adapter-react-17-0.6.7&#x27; [[7428fe3](https://github.com/FowApps/fow.ui/commit/7428fe34e84012e8f75958361ea1c5a1fb8c7957)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/storybook/manager-webpack5-6.5.12&#x27; [[5cbfffb](https://github.com/FowApps/fow.ui/commit/5cbfffb355006eae6315aa089c1b7bd6f1ff3280)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/storybook/addon-essentials-6.5.12&#x27; [[33b59b0](https://github.com/FowApps/fow.ui/commit/33b59b04c06c7bbb4d1945033543ff0c838ff79d)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/storybook/builder-webpack5-6.5.12&#x27; [[8c07cb1](https://github.com/FowApps/fow.ui/commit/8c07cb150dce9c8e6c74dfa7dabe63c0e11c36f4)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/react-transition-group-and-types/react-transition-group-4.4.5&#x27; [[8b18dc8](https://github.com/FowApps/fow.ui/commit/8b18dc8b985303a28bc81d1a392348e7b6aa15ba)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/types/enzyme-3.10.12&#x27; [[bfa4aa3](https://github.com/FowApps/fow.ui/commit/bfa4aa33e05bf712465b9e9480033316a4b6de19)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/immutable-4.1.0&#x27; [[0032031](https://github.com/FowApps/fow.ui/commit/0032031c08e0a08e2faa92a06f22561b3d9a8cbf)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/fullcalendar/daygrid-5.11.3&#x27; [[74f641c](https://github.com/FowApps/fow.ui/commit/74f641cb57e6ae8827b22ddf4dbce686ef425e5f)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/fullcalendar/timegrid-5.11.3&#x27; [[65ef3e9](https://github.com/FowApps/fow.ui/commit/65ef3e90f25c8734b7cbd8adfad1da4621db681c)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/framer-motion-6.5.1&#x27; [[7c1b2cb](https://github.com/FowApps/fow.ui/commit/7c1b2cbab7e98ad822ec1291377f5165095b1ad6)]
+- 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/polished-4.2.2&#x27; [[881ec81](https://github.com/FowApps/fow.ui/commit/881ec81dd918b32f7b4961bac6e72848179031ac)]
+- 📝 Update repository diagram [[c17df32](https://github.com/FowApps/fow.ui/commit/c17df3290cfba26a26ec4d8760fb5dd491cf6300)]
+- 📝 Update repository diagram [[55f3e1b](https://github.com/FowApps/fow.ui/commit/55f3e1bda8e36adf77c059a40f95ae1d0005830f)]
+-  Merge pull request [#686](https://github.com/FowApps/fow.ui/issues/686) from FowApps/refactor/table-component [[3170249](https://github.com/FowApps/fow.ui/commit/31702493b82fdedcdf42f8a48b1f4d0f4702964a)]
+-  refactor table component [[f5b9629](https://github.com/FowApps/fow.ui/commit/f5b9629c31d96cc88f38f1b14a6a79136c28cc22)]
+- 📝 Update repository diagram [[1f95b9d](https://github.com/FowApps/fow.ui/commit/1f95b9dd049e6382637894e16fd25f69ff73c1c5)]
+-  export useStepForm hook [[65424d8](https://github.com/FowApps/fow.ui/commit/65424d88206c42b335b43fa9d0ff3735903c4082)]
+- 📝 Update repository diagram [[14625fd](https://github.com/FowApps/fow.ui/commit/14625fd68a77f484538675d2134fa45413466092)]
+- 📝 Repo visualizer: updated diagram [[ae85e90](https://github.com/FowApps/fow.ui/commit/ae85e90b0679da8c86527d647e0b7d09ed28c9c8)]
+-  Repo visualizer: updated diagram [[3734123](https://github.com/FowApps/fow.ui/commit/37341235087908fe6f82886d5ca843d81b63c7e4)]
+-  Merge branch &#x27;main&#x27; of https://github.com/FowApps/fow.ui [[e809378](https://github.com/FowApps/fow.ui/commit/e809378b33543812c5e6d31ed4229db72629d24d)]
+- 📝 Update badges [[3d80072](https://github.com/FowApps/fow.ui/commit/3d800726713b5d4c9e0bba4ec271bf16cdbb82a3)]
+-  👷 Update codeql-analysis.yml [[18384f4](https://github.com/FowApps/fow.ui/commit/18384f411ec39f9cf4f3274a866def3b20c952b6)]
+-  👷 Create CodeQL analysis workflow [[bba159f](https://github.com/FowApps/fow.ui/commit/bba159f275a1cbbc7fc2ba7c5c8d8fbdaddb43db)]
+- 📝 Update CodeClimate badges [[6b59285](https://github.com/FowApps/fow.ui/commit/6b59285adbaea498fec4e2396afc7723bef7923b)]
+-  👷 Update coverage.yml [[34f7755](https://github.com/FowApps/fow.ui/commit/34f77559e58fe49fc0786e29664a09fd57f2d230)]
+- 📝 Update Contributors [[de2fccb](https://github.com/FowApps/fow.ui/commit/de2fccb7cdf8ed59c5539d76d5427564372333ff)]
+- 🔀 Merge remote-tracking branch &#x27;origin/all-contributors/add-alikaraarslan&#x27; [[40ef276](https://github.com/FowApps/fow.ui/commit/40ef2763c36b71f3dcb880553731f2298f7c0e40)]
+- 📝 Update npm badge [[323bcba](https://github.com/FowApps/fow.ui/commit/323bcba618fa640195d62df6c338a32dd34dd922)]
+-  docs: update .all-contributorsrc [[646140b](https://github.com/FowApps/fow.ui/commit/646140be4a7cbecaa3bf3c2702807184e04f9183)]
+-  docs: update README.md [[9ac4d45](https://github.com/FowApps/fow.ui/commit/9ac4d45ab98e9eedaac7e5333c73a8db30bb205f)]
+
+
 <a name="0.1.0"></a>
 ## 0.1.0 (2022-09-06)
 
