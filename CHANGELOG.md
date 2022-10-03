@@ -1,19 +1,20 @@
 # Changelog
 
-<a name="next"></a>
-## next
+<a name="0.1.1-alpha.3"></a>
+## 0.1.1-alpha.3 (2022-10-03)
 
 ### Changed
 
+- 🔧 Update gitmoji-changelog configuration [[0462b3c](https://github.com/FowApps/fow.ui/commit/0462b3cd0f13fab4193325dcd2b2b580038eda62)]
 - ♻️ Update getFirstLetters [[68adaa1](https://github.com/FowApps/fow.ui/commit/68adaa165a099f18a3568b0dfc63584dc2ed3512)]
 - 🔧 Update Repo Visualizer commit message [[0036324](https://github.com/FowApps/fow.ui/commit/00363247f29768c36744385cd1616142cf4a07bf)]
 - 🔧 Update Repo Visualizer commit message [[bf18e57](https://github.com/FowApps/fow.ui/commit/bf18e5747812a317ecc4a96830087afb46ae970f)]
 - 🔧 Update default branch name [[e04eac9](https://github.com/FowApps/fow.ui/commit/e04eac9c8be6f6a413c127e5c5439ec69b000b76)]
-- ➕ Add Page component [[e123de4](https://github.com/FowApps/fow.ui/commit/e123de42a32df80c786daa2473d2004a6c6a9d50)]
 
 ### Dependency Changed
 
 - ⬆️ udate package version [[a0af325](https://github.com/FowApps/fow.ui/commit/a0af325a2dc9041c32a54341e84b4e213f737e54)]
+- ➕ Add Page component [[e123de4](https://github.com/FowApps/fow.ui/commit/e123de42a32df80c786daa2473d2004a6c6a9d50)]
 - ⬆️ Bump @storybook/react from 6.4.19 to 6.5.12 [[76781e7](https://github.com/FowApps/fow.ui/commit/76781e7a3b0c503465dfb65e8becfe9a78ddc54e)]
 - ⬆️ Bump @storybook/addon-links from 6.4.19 to 6.5.12 [[46c7630](https://github.com/FowApps/fow.ui/commit/46c76304abbb1af52663b38b293971b884edb7d1)]
 - ⬆️ Bump @storybook/addon-actions from 6.4.19 to 6.5.12 [[d23357a](https://github.com/FowApps/fow.ui/commit/d23357a7b7980be3203b90535f516d6b5b4fc9bc)]
