@@ -12,10 +12,10 @@ export const DatePickerWrapper = styled.div<Wrapper>`
         width: 100%;
         &-input {
             input {
-                padding: ${(props) => props.theme.fow.spacing.xxsmall}
-                    ${(props) => props.theme.fow.spacing.xsmall}
-                    ${(props) => props.theme.fow.spacing.xxsmall}
-                    ${(props) => props.theme.fow.spacing.xxlarge};
+                padding-top: ${(props) => props.theme.fow.spacing.xxsmall};
+                padding-right: ${(props) => props.theme.fow.spacing.xsmall};
+                padding-bottom: ${(props) => props.theme.fow.spacing.xxsmall};
+                padding-left: ${(props) => props.theme.fow.spacing.xxlarge};
                 width: 100%;
                 border: 1px solid
                     ${(props) =>
@@ -450,6 +450,17 @@ export const TimePickerStyles = createGlobalStyle`
                             &:hover {
                                 background: ${(props) =>
                                     props.theme.fow.colors.success.darker};
+                            }
+                        }
+                    }
+                    .rc-picker-ranges {
+                        display: flex;
+                        .rc-picker-now {
+                            width: 100%;
+                            a, span {
+                                width: 100%;
+                                height: 100%;
+                                display: block;
                             }
                         }
                     }

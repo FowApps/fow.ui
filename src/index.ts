@@ -104,6 +104,7 @@ export { default as Modal } from './components/molecules/Modal';
 export { default as Navigation } from './components/molecules/Navigation';
 export { default as Sidebar } from './components/molecules/Sidebar';
 export { default as GridLayout } from './components/molecules/GridLayout';
+export { default as Page } from './components/molecules/Page';
 
 // Hooks
 export { default as useToast } from './components/molecules/Toast/useToast';
