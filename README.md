@@ -1,10 +1,10 @@
-<p align="center">
-  <img src="https://github.com/FowApps/fow.ui/raw/main/.github/fow.opensource.png" style="max-width:100%;" height="80" />
-</p>
-
 # fow.ui
 
-[![npm](https://img.shields.io/npm/v/@fowapps/fow-ui?color=success)](https://npmjs.com/package/@fowapps/fow-ui) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://fowapps.github.io/fow.ui/)
+🎨 UI library for FowApps products.
+
+<br />
+
+[![npm](https://img.shields.io/npm/v/@fowapps/fow-ui?color=success)](https://npmjs.com/package/@fowapps/fow-ui) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://fowapps.github.io/fow.ui/) [![gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/maintainability)](https://codeclimate.com/github/FowApps/fow.ui/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/704584552f8d986fe44e/test_coverage)](https://codeclimate.com/github/FowApps/fow.ui/test_coverage)
 
