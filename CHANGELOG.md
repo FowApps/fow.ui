@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="next"></a>
-## next
+<a name="0.1.1-alpha.3"></a>
+## 0.1.1-alpha.3 (2022-10-03)
 
 ### Added
 
@@ -38,6 +38,7 @@
 
 ### Miscellaneous
 
+- 📝 Update CHANGELOG.md [[c08537d](https://github.com/FowApps/fow.ui/commit/c08537d451c4e25d332e67143c87ca3695a4d8dd)]
 -  Merge pull request [#719](https://github.com/FowApps/fow.ui/issues/719) from FowApps/improvement/page-component [[0b93f32](https://github.com/FowApps/fow.ui/commit/0b93f325631a29039b986eb2e8f05c4797492a9b)]
 -  Fix datePicker and rangePicker clickable bugs [[7f77a17](https://github.com/FowApps/fow.ui/commit/7f77a17ec98f7f60e4213bed68a048bb76fdbcb2)]
 -  👷 Add sercanuste/gitmoji-changelog-action [[b8e1571](https://github.com/FowApps/fow.ui/commit/b8e1571bc53676c4f4a8253accaecdeb518a5a84)]
