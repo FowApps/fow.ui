@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.3"></a>
-## 0.1.1-alpha.3 (2022-10-03)
+<a name="0.1.1-alpha.4"></a>
+## 0.1.1-alpha.4 (2022-10-05)
 
 ### Changed
 
@@ -40,6 +40,7 @@
 ### Documentation
 
 - 📝 Update CHANGELOG.md [[c08537d](https://github.com/FowApps/fow.ui/commit/c08537d451c4e25d332e67143c87ca3695a4d8dd)]
+- 📝 Update CHANGELOG.md [[22ac5ef](https://github.com/FowApps/fow.ui/commit/22ac5ef6324de56d529b49a381162a166d45bbea)]
 - 📝 Update CHANGELOG.md [[04231df](https://github.com/FowApps/fow.ui/commit/04231df9313089327766db6b110a2211c3e23b64)]
 - 📝 Update README.md [[1418605](https://github.com/FowApps/fow.ui/commit/1418605145f3ae404187cfb616a4fa2995622a2c)]
 - 📝 Update CHANGELOG.md [[a6a0715](https://github.com/FowApps/fow.ui/commit/a6a0715416b6e036af9598f89049d70ff8b2fcac)]
@@ -78,6 +79,9 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#720](https://github.com/FowApps/fow.ui/issues/720) from FowApps/disabled-step-item [[101badf](https://github.com/FowApps/fow.ui/commit/101badfa4c2acf443ddbc8f99bbb1724a36ef0ae)]
+-  update version [[f35f068](https://github.com/FowApps/fow.ui/commit/f35f0682328c6cf6666b620a9c533127f86200b4)]
+-  add else condition for diasbled prop in step component [[70d88fd](https://github.com/FowApps/fow.ui/commit/70d88fd660351d01afdedffa8e76c6be113edc82)]
 -  Merge pull request [#719](https://github.com/FowApps/fow.ui/issues/719) from FowApps/improvement/page-component [[0b93f32](https://github.com/FowApps/fow.ui/commit/0b93f325631a29039b986eb2e8f05c4797492a9b)]
 -  Fix datePicker and rangePicker clickable bugs [[7f77a17](https://github.com/FowApps/fow.ui/commit/7f77a17ec98f7f60e4213bed68a048bb76fdbcb2)]
 -  👷 Add sercanuste/gitmoji-changelog-action [[b8e1571](https://github.com/FowApps/fow.ui/commit/b8e1571bc53676c4f4a8253accaecdeb518a5a84)]
