@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.4"></a>
-## 0.1.1-alpha.4 (2022-10-05)
+<a name="0.1.1-alpha.5"></a>
+## 0.1.1-alpha.5 (2022-10-05)
 
 ### Changed
 
@@ -39,6 +39,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [[b2319d7](https://github.com/FowApps/fow.ui/commit/b2319d7582d1cd2c917b269109dbeedf6b94cb57)]
 - 📝 Update CHANGELOG.md [[c08537d](https://github.com/FowApps/fow.ui/commit/c08537d451c4e25d332e67143c87ca3695a4d8dd)]
 - 📝 Update CHANGELOG.md [[22ac5ef](https://github.com/FowApps/fow.ui/commit/22ac5ef6324de56d529b49a381162a166d45bbea)]
 - 📝 Update CHANGELOG.md [[04231df](https://github.com/FowApps/fow.ui/commit/04231df9313089327766db6b110a2211c3e23b64)]
@@ -79,6 +80,7 @@
 
 ### Miscellaneous
 
+- 🔨 Add publish-dev script [[a07f09b](https://github.com/FowApps/fow.ui/commit/a07f09b71036121f616604a34076b412899be7ba)]
 -  Merge pull request [#720](https://github.com/FowApps/fow.ui/issues/720) from FowApps/disabled-step-item [[101badf](https://github.com/FowApps/fow.ui/commit/101badfa4c2acf443ddbc8f99bbb1724a36ef0ae)]
 -  update version [[f35f068](https://github.com/FowApps/fow.ui/commit/f35f0682328c6cf6666b620a9c533127f86200b4)]
 -  add else condition for diasbled prop in step component [[70d88fd](https://github.com/FowApps/fow.ui/commit/70d88fd660351d01afdedffa8e76c6be113edc82)]
