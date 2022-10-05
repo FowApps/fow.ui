@@ -21,7 +21,11 @@ export enum Status {
     WAIT = 'wait',
     FINISH = 'finish',
 }
-
+export const accessibilityProps: {
+    role?: string;
+    tabIndex?: number;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
+} = {};
 const Step = ({
     onClick,
     onStepClick,
@@ -40,16 +44,12 @@ const Step = ({
         onStepClick?.(stepIndex);
     };
 
-    const accessibilityProps: {
-        role?: string;
-        tabIndex?: number;
-        onClick?: React.MouseEventHandler<HTMLDivElement>;
-    } = {};
-
     if (!disabled) {
         accessibilityProps.role = 'button';
         accessibilityProps.tabIndex = 0;
         accessibilityProps.onClick = handleClick;
+    } else {
+        accessibilityProps.role = 'div';
     }
 
     return (
