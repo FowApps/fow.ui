@@ -14,8 +14,9 @@ jobs:
               uses: 'actions/checkout@v3'
               with:
                   fetch-depth: 0 # Required for fetch all history
+                  token: ${{ secrets.CHANGELOG_TOKEN }}
 
             - name: 'Generate Changelog'
               uses: sercanuste/gitmoji-changelog-action@v1
               with:
-                  commit_message: '📝 Update CHANGELOG.md'
+                  commit_message: '📝 Update CHANGELOG.md [skip ci]'
