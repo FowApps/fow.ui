@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.5"></a>
-## 0.1.1-alpha.5 (2022-10-05)
+## 0.1.1-alpha.5 (2022-10-09)
 
 ### Changed
 
@@ -13,6 +13,11 @@
 
 ### Dependency Changed
 
+- ⬆️ Bump lint-staged from 12.3.7 to 13.0.3 ([#699](https://github.com/FowApps/fow.ui/issues/699)) [[370f31d](https://github.com/FowApps/fow.ui/commit/370f31d67ffafbe2b2d54641128c04b16cbf807e)]
+- ⬆️ Bump eslint-plugin-import from 2.25.4 to 2.26.0 ([#709](https://github.com/FowApps/fow.ui/issues/709)) [[8764eab](https://github.com/FowApps/fow.ui/commit/8764eab921a420816daf20a4492750cd86692751)]
+- ⬆️ Bump @babel/cli from 7.17.6 to 7.19.3 ([#716](https://github.com/FowApps/fow.ui/issues/716)) [[16be0b6](https://github.com/FowApps/fow.ui/commit/16be0b6193133baa76bc1c1f0874487f362aa67a)]
+- ⬆️ Bump prettier from 2.6.2 to 2.7.1 ([#723](https://github.com/FowApps/fow.ui/issues/723)) [[13dcc6b](https://github.com/FowApps/fow.ui/commit/13dcc6b57f5b144fe6d020d4edef45217f60bd91)]
+- ⬆️ Bump all-contributors-cli from 6.20.0 to 6.23.0 ([#721](https://github.com/FowApps/fow.ui/issues/721)) [[2b447a0](https://github.com/FowApps/fow.ui/commit/2b447a00daa67a93180e5a5fb0ee979129011aef)]
 - ⬆️ udate package version [[a0af325](https://github.com/FowApps/fow.ui/commit/a0af325a2dc9041c32a54341e84b4e213f737e54)]
 - ➕ Add Page component [[e123de4](https://github.com/FowApps/fow.ui/commit/e123de42a32df80c786daa2473d2004a6c6a9d50)]
 - ⬆️ Bump @storybook/react from 6.4.19 to 6.5.12 [[76781e7](https://github.com/FowApps/fow.ui/commit/76781e7a3b0c503465dfb65e8becfe9a78ddc54e)]
@@ -39,6 +44,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [[50a560e](https://github.com/FowApps/fow.ui/commit/50a560e370e4595adf7e4d3668cbd4d10c532944)]
 - 📝 Update CHANGELOG.md [[b2319d7](https://github.com/FowApps/fow.ui/commit/b2319d7582d1cd2c917b269109dbeedf6b94cb57)]
 - 📝 Update CHANGELOG.md [[c08537d](https://github.com/FowApps/fow.ui/commit/c08537d451c4e25d332e67143c87ca3695a4d8dd)]
 - 📝 Update CHANGELOG.md [[22ac5ef](https://github.com/FowApps/fow.ui/commit/22ac5ef6324de56d529b49a381162a166d45bbea)]
@@ -60,6 +66,7 @@
 
 ### Merged
 
+- 🔀 Bump @babel/preset-env from 7.16.11 to 7.19.3 ([#722](https://github.com/FowApps/fow.ui/issues/722)) [[eecff47](https://github.com/FowApps/fow.ui/commit/eecff474df790f16785a40625eb3367154d891af)]
 - 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/babel-loader-8.2.5&#x27; [[f7ba4ff](https://github.com/FowApps/fow.ui/commit/f7ba4ff022b3515db481fea2e68e1767fcf41cc6)]
 - 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/fs-extra-10.1.0&#x27; [[ccc0d68](https://github.com/FowApps/fow.ui/commit/ccc0d68d4d5a271a52be8f6598c14854f4ed91df)]
 - 🔀 Merge remote-tracking branch &#x27;origin/dependabot/npm_and_yarn/ts-jest-27.1.5&#x27; [[cbe238c](https://github.com/FowApps/fow.ui/commit/cbe238c1b99bfdd8a84b47243f4123df2efe37f8)]
@@ -80,6 +87,8 @@
 
 ### Miscellaneous
 
+-  👷 Update gitmoji-changelog.yml [[fcc40da](https://github.com/FowApps/fow.ui/commit/fcc40da1cf01662d9a5454b65061eeda9de0832f)]
+-  👷 Update gitmoji-changelog.yml [[8d2305f](https://github.com/FowApps/fow.ui/commit/8d2305fbc538467bb1f643e7ce1580d5c9439d8b)]
 - 🔨 Add publish-dev script [[a07f09b](https://github.com/FowApps/fow.ui/commit/a07f09b71036121f616604a34076b412899be7ba)]
 -  Merge pull request [#720](https://github.com/FowApps/fow.ui/issues/720) from FowApps/disabled-step-item [[101badf](https://github.com/FowApps/fow.ui/commit/101badfa4c2acf443ddbc8f99bbb1724a36ef0ae)]
 -  update version [[f35f068](https://github.com/FowApps/fow.ui/commit/f35f0682328c6cf6666b620a9c533127f86200b4)]
