@@ -7,12 +7,16 @@ export const PageWrapper = styled(Space)`
 export const SidebarWrapper = styled(Space)`
     width: 240px;
     height: 100vh;
-    box-shadow: inset -1px 0px 0px rgba(145, 158, 171, 0.24);
+    box-shadow: inset -1px 0px 0px ${(props) => props.theme.fow.colors.grey.transparent24};
 `;
-export const HeaderWrapper = styled(Space)`
-    margin-bottom: 16px;
-`;
+export const HeaderWrapper = styled(Space)``;
+export const FooterWrapper = styled(Space)``;
 export const BodyWrapper = styled(Space)`
-    padding: 0 48px;
     overflow-y: auto;
+`;
+export const ContentWrapper = styled(Space)`
+    border-top: 1px solid
+        ${(props) => props.theme.fow.colors.grey.transparent24};
+    border-bottom: 1px solid
+        ${(props) => props.theme.fow.colors.grey.transparent24};
 `;

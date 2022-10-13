@@ -25,6 +25,8 @@ const Template: Story = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+    customHeader: <Space>Header Content</Space>,
+    customFooter: <Space>Footer Content</Space>,
     title: 'Ali Page Test',
     icon: <Icon size="sm" icon="fow-logo" color="black" />,
     quickActions: (
