@@ -1,10 +1,11 @@
 # Changelog
 
-<a name="0.1.1-alpha.5"></a>
-## 0.1.1-alpha.5 (2022-10-09)
+<a name="0.1.1-alpha.6"></a>
+## 0.1.1-alpha.6 (2022-10-13)
 
 ### Changed
 
+- ♻️ refactor page component with custom render [[ab4a005](https://github.com/FowApps/fow.ui/commit/ab4a0055df5f9397c74d2a6b2112f56e0592ffaf)]
 - 🔧 Update gitmoji-changelog configuration [[0462b3c](https://github.com/FowApps/fow.ui/commit/0462b3cd0f13fab4193325dcd2b2b580038eda62)]
 - ♻️ Update getFirstLetters [[68adaa1](https://github.com/FowApps/fow.ui/commit/68adaa165a099f18a3568b0dfc63584dc2ed3512)]
 - 🔧 Update Repo Visualizer commit message [[0036324](https://github.com/FowApps/fow.ui/commit/00363247f29768c36744385cd1616142cf4a07bf)]
@@ -44,6 +45,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[597aabf](https://github.com/FowApps/fow.ui/commit/597aabf51adad7a0cb4bcf4336f7d324f407f408)]
 - 📝 Update CHANGELOG.md [[50a560e](https://github.com/FowApps/fow.ui/commit/50a560e370e4595adf7e4d3668cbd4d10c532944)]
 - 📝 Update CHANGELOG.md [[b2319d7](https://github.com/FowApps/fow.ui/commit/b2319d7582d1cd2c917b269109dbeedf6b94cb57)]
 - 📝 Update CHANGELOG.md [[c08537d](https://github.com/FowApps/fow.ui/commit/c08537d451c4e25d332e67143c87ca3695a4d8dd)]
