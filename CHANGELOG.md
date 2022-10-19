@@ -1,7 +1,11 @@
 # Changelog
 
-<a name="0.1.1-alpha.6"></a>
-## 0.1.1-alpha.6 (2022-10-13)
+<a name="0.1.1-alpha.7"></a>
+## 0.1.1-alpha.7 (2022-10-19)
+
+### Added
+
+- ✨ Improve components ([#732](https://github.com/FowApps/fow.ui/issues/732)) [[06dc027](https://github.com/FowApps/fow.ui/commit/06dc0274aaa587809ff9351040a2e9302209257b)]
 
 ### Changed
 
@@ -45,6 +49,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[cbd0515](https://github.com/FowApps/fow.ui/commit/cbd05152658553d947565bdbc96be7dcbdaf047d)]
 - 📝 Update CHANGELOG.md [skip ci] [[597aabf](https://github.com/FowApps/fow.ui/commit/597aabf51adad7a0cb4bcf4336f7d324f407f408)]
 - 📝 Update CHANGELOG.md [[50a560e](https://github.com/FowApps/fow.ui/commit/50a560e370e4595adf7e4d3668cbd4d10c532944)]
 - 📝 Update CHANGELOG.md [[b2319d7](https://github.com/FowApps/fow.ui/commit/b2319d7582d1cd2c917b269109dbeedf6b94cb57)]
