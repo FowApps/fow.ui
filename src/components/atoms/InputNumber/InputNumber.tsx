@@ -14,7 +14,16 @@ const InputNumber = (
     ref,
 ): JSX.Element => (
     <Wrapper hasValidationError={hasValidationError} disabled={disabled}>
-        <RcInputNumber {...rest} ref={ref} disabled={disabled} />
+        <RcInputNumber
+            onKeyPress={(event) => {
+                if (!/[0-9.,]/.test(event.key)) {
+                    event.preventDefault();
+                }
+            }}
+            {...rest}
+            ref={ref}
+            disabled={disabled}
+        />
     </Wrapper>
 );
 

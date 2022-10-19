@@ -67,6 +67,7 @@ export interface RangePickerProps {
     placeholder?: [string, string];
     name?: string;
     hasValidationError?: boolean;
+    ranges?: any;
 }
 
 const DateRangePicker = (
@@ -88,6 +89,7 @@ const DateRangePicker = (
         placeholder,
         name,
         hasValidationError = false,
+        ranges,
     }: RangePickerProps,
     ref: LegacyRef<RangePicker<Moment>>,
 ): JSX.Element => {
@@ -151,6 +153,28 @@ const DateRangePicker = (
         setVal(undefined);
     }, [value]);
 
+    const getRanges = () => {
+        if (ranges) {
+            if (Object.keys(ranges)?.length > 3) {
+                Object.entries(ranges).forEach(([n, _], index) => {
+                    if (index > 3) {
+                        delete ranges[n];
+                    }
+                });
+            }
+
+            return ranges;
+        }
+
+        // eslint-disable-next-line no-else-return
+        else if (showToday)
+            return {
+                [todayButton]: [moment(), moment()],
+            };
+
+        return {};
+    };
+
     return (
         <DateRangePickerWrapper
             name={name}
@@ -166,13 +190,7 @@ const DateRangePicker = (
                 placeholder={placeholder}
                 use12Hours={use12Hours}
                 className="fow-range-picker"
-                ranges={
-                    showToday
-                        ? {
-                              [todayButton]: [moment(), moment()],
-                          }
-                        : {}
-                }
+                ranges={getRanges()}
                 suffixIcon={
                     <Icon
                         size="lg"
