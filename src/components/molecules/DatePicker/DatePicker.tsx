@@ -63,6 +63,12 @@ export interface DatePickerProps {
     placeholder?: string;
     name?: string;
     hasValidationError?: boolean;
+    defaultValue?:
+        | false
+        | 'today'
+        | 'oneWeekLater'
+        | 'oneMonthLater'
+        | 'oneYearLater';
 }
 
 const DatePicker = (
@@ -84,6 +90,7 @@ const DatePicker = (
         placeholder,
         name,
         hasValidationError = false,
+        defaultValue = 'today',
     }: DatePickerProps,
     ref: LegacyRef<Picker<Moment>>,
 ): JSX.Element => {
@@ -149,6 +156,24 @@ const DatePicker = (
         setVal(undefined);
     }, [value]);
 
+    useEffect(() => {
+        // eslint-disable-next-line default-case
+        switch (defaultValue) {
+            case 'today':
+                handleChange(moment());
+                break;
+            case 'oneWeekLater':
+                handleChange(moment().add(1, 'weeks'));
+                break;
+            case 'oneMonthLater':
+                handleChange(moment().add(1, 'months'));
+                break;
+            case 'oneYearLater':
+                handleChange(moment().add(1, 'years'));
+                break;
+        }
+    }, []);
+
     return (
         <DatePickerWrapper name={name} hasValidationError={hasValidationError}>
             <TimePickerStyles />
@@ -184,7 +209,6 @@ const DatePicker = (
                     </Button>
                 }
                 format={dateFormat}
-                defaultValue={moment(val)}
                 value={val ? moment(val) : null}
                 name={name}
             />
