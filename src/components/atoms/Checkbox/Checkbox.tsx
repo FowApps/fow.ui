@@ -266,7 +266,7 @@ const Group: React.ForwardRefRenderFunction<
     return (
         <div ref={ref}>
             <GroupContext.Provider value={context}>
-                <Space direction={direction} align="start">
+                <Space direction={direction} align="start" {...restProps}>
                     {children}
                 </Space>
             </GroupContext.Provider>
