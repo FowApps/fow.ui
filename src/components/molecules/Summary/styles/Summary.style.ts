@@ -20,4 +20,5 @@ export const SummaryCardItem = styled.div<SummaryItemProps>`
     display: ${(props) => (props.hidden ? 'none' : 'inline-block')};
     width: 100%;
     margin-bottom: ${(props) => props.theme.fow.spacing.xsmall};
+    padding-right: ${(props) => props.theme.fow.spacing.xsmall};
 `;
