@@ -84,7 +84,7 @@ const EmailInput = (
 
     const triggerChange = () => {
         if (email) {
-            const mergeEmail = `${email}@${extension}`;
+            const mergeEmail = `${email}@${extension || ''}`;
             onChange?.(mergeEmail);
         } else {
             onChange?.(undefined);
