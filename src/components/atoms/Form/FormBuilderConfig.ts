@@ -82,7 +82,7 @@ const localization = { tr, en };
             field: EmailInput,
             predefineRules: [
                 {
-                    pattern: new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}'),
+                    pattern: new RegExp('[a-z0-9]+@[a-z0-9]+.[a-z]{2,3}'),
                     message: localization[lang].invalidEmail,
                 },
             ],
