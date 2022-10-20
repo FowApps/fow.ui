@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.7"></a>
-## 0.1.1-alpha.7 (2022-10-19)
+<a name="0.1.1-alpha.8"></a>
+## 0.1.1-alpha.8 (2022-10-20)
 
 ### Added
 
@@ -9,6 +9,7 @@
 
 ### Changed
 
+- ♻️ Improve email input regex in form builder [[5c5c375](https://github.com/FowApps/fow.ui/commit/5c5c375b41e376f71aea3f0f54cfa7e5cd1c1b0f)]
 - ♻️ refactor page component with custom render [[ab4a005](https://github.com/FowApps/fow.ui/commit/ab4a0055df5f9397c74d2a6b2112f56e0592ffaf)]
 - 🔧 Update gitmoji-changelog configuration [[0462b3c](https://github.com/FowApps/fow.ui/commit/0462b3cd0f13fab4193325dcd2b2b580038eda62)]
 - ♻️ Update getFirstLetters [[68adaa1](https://github.com/FowApps/fow.ui/commit/68adaa165a099f18a3568b0dfc63584dc2ed3512)]
@@ -49,6 +50,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[1f77adc](https://github.com/FowApps/fow.ui/commit/1f77adc46b7e80862d880df159044bc147eac943)]
 - 📝 Update CHANGELOG.md [skip ci] [[cbd0515](https://github.com/FowApps/fow.ui/commit/cbd05152658553d947565bdbc96be7dcbdaf047d)]
 - 📝 Update CHANGELOG.md [skip ci] [[597aabf](https://github.com/FowApps/fow.ui/commit/597aabf51adad7a0cb4bcf4336f7d324f407f408)]
 - 📝 Update CHANGELOG.md [[50a560e](https://github.com/FowApps/fow.ui/commit/50a560e370e4595adf7e4d3668cbd4d10c532944)]
@@ -94,6 +96,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#733](https://github.com/FowApps/fow.ui/issues/733) from FowApps/refactor-email-input-regex [[3e4025e](https://github.com/FowApps/fow.ui/commit/3e4025e06a5ec63c48c1bda2d167180083fc41b7)]
 -  👷 Update gitmoji-changelog.yml [[fcc40da](https://github.com/FowApps/fow.ui/commit/fcc40da1cf01662d9a5454b65061eeda9de0832f)]
 -  👷 Update gitmoji-changelog.yml [[8d2305f](https://github.com/FowApps/fow.ui/commit/8d2305fbc538467bb1f643e7ce1580d5c9439d8b)]
 - 🔨 Add publish-dev script [[a07f09b](https://github.com/FowApps/fow.ui/commit/a07f09b71036121f616604a34076b412899be7ba)]
