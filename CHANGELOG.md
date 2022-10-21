@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.9"></a>
-## 0.1.1-alpha.9 (2022-10-20)
+## 0.1.1-alpha.9 (2022-10-21)
 
 ### Added
 
@@ -20,6 +20,7 @@
 
 ### Dependency Changed
 
+- ⬆️ Bump paambaati/codeclimate-action from 3.0.0 to 3.1.1 ([#735](https://github.com/FowApps/fow.ui/issues/735)) [[2660b15](https://github.com/FowApps/fow.ui/commit/2660b15f4aee2d802e947101d6fe0aa68f2637bb)]
 - ⬆️ Bump lint-staged from 12.3.7 to 13.0.3 ([#699](https://github.com/FowApps/fow.ui/issues/699)) [[370f31d](https://github.com/FowApps/fow.ui/commit/370f31d67ffafbe2b2d54641128c04b16cbf807e)]
 - ⬆️ Bump eslint-plugin-import from 2.25.4 to 2.26.0 ([#709](https://github.com/FowApps/fow.ui/issues/709)) [[8764eab](https://github.com/FowApps/fow.ui/commit/8764eab921a420816daf20a4492750cd86692751)]
 - ⬆️ Bump @babel/cli from 7.17.6 to 7.19.3 ([#716](https://github.com/FowApps/fow.ui/issues/716)) [[16be0b6](https://github.com/FowApps/fow.ui/commit/16be0b6193133baa76bc1c1f0874487f362aa67a)]
@@ -51,6 +52,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[34a3357](https://github.com/FowApps/fow.ui/commit/34a335786523e3c20cfeadecf78c0075d95ff681)]
 - 📝 Update CHANGELOG.md [skip ci] [[5967733](https://github.com/FowApps/fow.ui/commit/5967733671a1308f708a3f5783ca08d1d7a65179)]
 - 📝 Update CHANGELOG.md [skip ci] [[1f77adc](https://github.com/FowApps/fow.ui/commit/1f77adc46b7e80862d880df159044bc147eac943)]
 - 📝 Update CHANGELOG.md [skip ci] [[cbd0515](https://github.com/FowApps/fow.ui/commit/cbd05152658553d947565bdbc96be7dcbdaf047d)]
