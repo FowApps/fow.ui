@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.9"></a>
-## 0.1.1-alpha.9 (2022-10-21)
+<a name="0.1.1-alpha.10"></a>
+## 0.1.1-alpha.10 (2022-10-21)
 
 ### Added
 
@@ -20,6 +20,7 @@
 
 ### Dependency Changed
 
+- ➖ Remove date picker default value in builder if not required [[68c7fd6](https://github.com/FowApps/fow.ui/commit/68c7fd62738e39b68085290be0aaea1324950e6c)]
 - ⬆️ Bump paambaati/codeclimate-action from 3.0.0 to 3.1.1 ([#735](https://github.com/FowApps/fow.ui/issues/735)) [[2660b15](https://github.com/FowApps/fow.ui/commit/2660b15f4aee2d802e947101d6fe0aa68f2637bb)]
 - ⬆️ Bump lint-staged from 12.3.7 to 13.0.3 ([#699](https://github.com/FowApps/fow.ui/issues/699)) [[370f31d](https://github.com/FowApps/fow.ui/commit/370f31d67ffafbe2b2d54641128c04b16cbf807e)]
 - ⬆️ Bump eslint-plugin-import from 2.25.4 to 2.26.0 ([#709](https://github.com/FowApps/fow.ui/issues/709)) [[8764eab](https://github.com/FowApps/fow.ui/commit/8764eab921a420816daf20a4492750cd86692751)]
@@ -52,6 +53,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[894a38c](https://github.com/FowApps/fow.ui/commit/894a38ca0376a1fab4c647adbefef4c39277d372)]
 - 📝 Update CHANGELOG.md [skip ci] [[34a3357](https://github.com/FowApps/fow.ui/commit/34a335786523e3c20cfeadecf78c0075d95ff681)]
 - 📝 Update CHANGELOG.md [skip ci] [[5967733](https://github.com/FowApps/fow.ui/commit/5967733671a1308f708a3f5783ca08d1d7a65179)]
 - 📝 Update CHANGELOG.md [skip ci] [[1f77adc](https://github.com/FowApps/fow.ui/commit/1f77adc46b7e80862d880df159044bc147eac943)]
@@ -100,6 +102,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#738](https://github.com/FowApps/fow.ui/issues/738) from FowApps/fix/date-picker-from-builder [[3e1f130](https://github.com/FowApps/fow.ui/commit/3e1f1305b85bc4cb300cc52120c56cfd323142ad)]
 -  Merge pull request [#734](https://github.com/FowApps/fow.ui/issues/734) from FowApps/refactor-email-input-regex [[02ca507](https://github.com/FowApps/fow.ui/commit/02ca5071ffe4016a6c8595120c5dc900db669abb)]
 -  Merge pull request [#733](https://github.com/FowApps/fow.ui/issues/733) from FowApps/refactor-email-input-regex [[3e4025e](https://github.com/FowApps/fow.ui/commit/3e4025e06a5ec63c48c1bda2d167180083fc41b7)]
 -  👷 Update gitmoji-changelog.yml [[fcc40da](https://github.com/FowApps/fow.ui/commit/fcc40da1cf01662d9a5454b65061eeda9de0832f)]
