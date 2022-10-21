@@ -193,9 +193,15 @@ const FormBuilder = ({
                         ...field.props,
                     };
                 case 'date':
+                case 'date-time':
                 case 'date-range':
                     return {
                         showTime: false,
+                        ...(field.required === false
+                            ? {
+                                  defaultValue: false,
+                              }
+                            : {}),
                         ...field.props,
                     };
 
