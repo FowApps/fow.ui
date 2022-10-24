@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.10"></a>
-## 0.1.1-alpha.10 (2022-10-21)
+## 0.1.1-alpha.10 (2022-10-24)
 
 ### Added
 
@@ -20,6 +20,7 @@
 
 ### Dependency Changed
 
+- ⬆️ Bump paambaati/codeclimate-action from 3.1.1 to 3.2.0 ([#739](https://github.com/FowApps/fow.ui/issues/739)) [[bd763c8](https://github.com/FowApps/fow.ui/commit/bd763c896b7fead04cadf5a32a69187d4dd2597c)]
 - ➖ Remove date picker default value in builder if not required [[68c7fd6](https://github.com/FowApps/fow.ui/commit/68c7fd62738e39b68085290be0aaea1324950e6c)]
 - ⬆️ Bump paambaati/codeclimate-action from 3.0.0 to 3.1.1 ([#735](https://github.com/FowApps/fow.ui/issues/735)) [[2660b15](https://github.com/FowApps/fow.ui/commit/2660b15f4aee2d802e947101d6fe0aa68f2637bb)]
 - ⬆️ Bump lint-staged from 12.3.7 to 13.0.3 ([#699](https://github.com/FowApps/fow.ui/issues/699)) [[370f31d](https://github.com/FowApps/fow.ui/commit/370f31d67ffafbe2b2d54641128c04b16cbf807e)]
@@ -53,6 +54,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[9224249](https://github.com/FowApps/fow.ui/commit/92242495ed99c9f224f3f6fc44a5be730ffc970a)]
 - 📝 Update CHANGELOG.md [skip ci] [[894a38c](https://github.com/FowApps/fow.ui/commit/894a38ca0376a1fab4c647adbefef4c39277d372)]
 - 📝 Update CHANGELOG.md [skip ci] [[34a3357](https://github.com/FowApps/fow.ui/commit/34a335786523e3c20cfeadecf78c0075d95ff681)]
 - 📝 Update CHANGELOG.md [skip ci] [[5967733](https://github.com/FowApps/fow.ui/commit/5967733671a1308f708a3f5783ca08d1d7a65179)]
