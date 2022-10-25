@@ -157,20 +157,22 @@ const DatePicker = (
     }, [value]);
 
     useEffect(() => {
-        // eslint-disable-next-line default-case
-        switch (defaultValue) {
-            case 'today':
-                handleChange(moment());
-                break;
-            case 'oneWeekLater':
-                handleChange(moment().add(1, 'weeks'));
-                break;
-            case 'oneMonthLater':
-                handleChange(moment().add(1, 'months'));
-                break;
-            case 'oneYearLater':
-                handleChange(moment().add(1, 'years'));
-                break;
+        if (!value) {
+            // eslint-disable-next-line default-case
+            switch (defaultValue) {
+                case 'today':
+                    handleChange(moment());
+                    break;
+                case 'oneWeekLater':
+                    handleChange(moment().add(1, 'weeks'));
+                    break;
+                case 'oneMonthLater':
+                    handleChange(moment().add(1, 'months'));
+                    break;
+                case 'oneYearLater':
+                    handleChange(moment().add(1, 'years'));
+                    break;
+            }
         }
     }, []);
 
