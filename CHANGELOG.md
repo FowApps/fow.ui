@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.10"></a>
-## 0.1.1-alpha.10 (2022-10-24)
+<a name="0.1.1-alpha.11"></a>
+## 0.1.1-alpha.11 (2022-10-25)
 
 ### Added
 
@@ -54,6 +54,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[d8c4f4a](https://github.com/FowApps/fow.ui/commit/d8c4f4afc9fcdff8b633b7fe8d9e179f996ad41c)]
 - 📝 Update CHANGELOG.md [skip ci] [[9224249](https://github.com/FowApps/fow.ui/commit/92242495ed99c9f224f3f6fc44a5be730ffc970a)]
 - 📝 Update CHANGELOG.md [skip ci] [[894a38c](https://github.com/FowApps/fow.ui/commit/894a38ca0376a1fab4c647adbefef4c39277d372)]
 - 📝 Update CHANGELOG.md [skip ci] [[34a3357](https://github.com/FowApps/fow.ui/commit/34a335786523e3c20cfeadecf78c0075d95ff681)]
@@ -104,6 +105,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#740](https://github.com/FowApps/fow.ui/issues/740) from FowApps/fix/date-picker-default-value [[1b08466](https://github.com/FowApps/fow.ui/commit/1b0846613eb6c5805a72781d64b60f52b3ce9783)]
+-  Add value check for use default value [[fc805ae](https://github.com/FowApps/fow.ui/commit/fc805aeec7187c1a96b19005cb733bfc258c49f7)]
 -  Merge pull request [#738](https://github.com/FowApps/fow.ui/issues/738) from FowApps/fix/date-picker-from-builder [[3e1f130](https://github.com/FowApps/fow.ui/commit/3e1f1305b85bc4cb300cc52120c56cfd323142ad)]
 -  Merge pull request [#734](https://github.com/FowApps/fow.ui/issues/734) from FowApps/refactor-email-input-regex [[02ca507](https://github.com/FowApps/fow.ui/commit/02ca5071ffe4016a6c8595120c5dc900db669abb)]
 -  Merge pull request [#733](https://github.com/FowApps/fow.ui/issues/733) from FowApps/refactor-email-input-regex [[3e4025e](https://github.com/FowApps/fow.ui/commit/3e4025e06a5ec63c48c1bda2d167180083fc41b7)]
