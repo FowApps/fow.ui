@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.11"></a>
-## 0.1.1-alpha.11 (2022-10-25)
+## 0.1.1-alpha.11 (2022-10-30)
 
 ### Added
 
@@ -9,6 +9,7 @@
 
 ### Changed
 
+- 🔧 Update .gitmoji-changelogrc [[c59b5a3](https://github.com/FowApps/fow.ui/commit/c59b5a36924e8252a87614071c9e59a441fa81d6)]
 - ♻️ Add check if email extension [[ab359d2](https://github.com/FowApps/fow.ui/commit/ab359d2111e1d76245d1995266a151b7a5f4af67)]
 - ♻️ Improve email input regex in form builder [[5c5c375](https://github.com/FowApps/fow.ui/commit/5c5c375b41e376f71aea3f0f54cfa7e5cd1c1b0f)]
 - ♻️ refactor page component with custom render [[ab4a005](https://github.com/FowApps/fow.ui/commit/ab4a0055df5f9397c74d2a6b2112f56e0592ffaf)]
@@ -54,6 +55,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [[0b1ec84](https://github.com/FowApps/fow.ui/commit/0b1ec848ecd52eeb91a3214dfa130c42b808e336)]
 - 📝 Update CHANGELOG.md [skip ci] [[d8c4f4a](https://github.com/FowApps/fow.ui/commit/d8c4f4afc9fcdff8b633b7fe8d9e179f996ad41c)]
 - 📝 Update CHANGELOG.md [skip ci] [[9224249](https://github.com/FowApps/fow.ui/commit/92242495ed99c9f224f3f6fc44a5be730ffc970a)]
 - 📝 Update CHANGELOG.md [skip ci] [[894a38c](https://github.com/FowApps/fow.ui/commit/894a38ca0376a1fab4c647adbefef4c39277d372)]
