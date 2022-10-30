@@ -1,4 +1,5 @@
 {
+    "useSkipChangelog": true,
     "commitMapping": [
         {
             "group": "breaking_changes",
