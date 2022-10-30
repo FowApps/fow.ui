@@ -20,4 +20,4 @@ jobs:
             - name: 'Generate Changelog'
               uses: sercanuste/gitmoji-changelog-action@v1
               with:
-                  commit_message: '📝 Update CHANGELOG.md [skip ci]'
+                  commit_message: '📝 Update CHANGELOG.md [skip ci] [skip cl]'
