@@ -67,6 +67,8 @@ export type EditorProps = BraftEditorProps & {
     extraControls?: CustomControlType[];
     name?: string;
     disabled?: boolean;
+    customControls?: ControlType[] | BuiltInControlType[];
+    minHeight?: string;
 };
 
 type ControlTypeTypes = {
@@ -222,6 +224,8 @@ const Editor = (
         hasValidationError = false,
         extraControls,
         name,
+        customControls,
+        minHeight,
         ...rest
     }: EditorProps,
     ref: LegacyRef<BraftEditor>,
@@ -230,7 +234,6 @@ const Editor = (
     const [editorState, setEditorState] = useState<EditorState>(
         BraftEditor.createEditorState(rest?.value || rest?.defaultValue),
     );
-    const [defaultValue, setDefaultValue] = useState(rest.defaultValue);
     const [isDefaultValueSetted, setIsDefaultValueSetted] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -317,25 +320,32 @@ const Editor = (
     );
 
     useEffect(() => {
-        if (
-            (rest?.value || rest?.defaultValue) &&
-            !isDefaultValueSetted &&
-            !isFocused
-        ) {
-            const html = rest?.value || rest?.defaultValue;
+        if (!isFocused) {
+            const html =
+                rest?.value ||
+                (!isDefaultValueSetted && rest?.defaultValue) ||
+                '';
             const defaultState = BraftEditor.createEditorState(html);
-            setDefaultValue(defaultState);
             setEditorState(defaultState);
             setIsDefaultValueSetted(true);
         }
-    }, [rest?.value, rest?.defaultValue, isDefaultValueSetted, isFocused]);
+    }, [rest?.value, rest?.defaultValue, isFocused]);
+
+    const getControls = () => {
+        if (customControls) {
+            return customControls;
+        }
+
+        return controlTypes[toolbarType] || controlTypes.simple;
+    };
 
     return (
         <Wrapper
             isFocused={isFocused}
             hasValidationError={hasValidationError}
             name={name}
-            disabled={rest.disabled}>
+            disabled={rest?.disabled}
+            minHeight={minHeight}>
             <BraftEditor
                 {...rest}
                 ref={ref}
@@ -343,14 +353,13 @@ const Editor = (
                 id={id}
                 fontFamilies={fontFamilies}
                 editorId={id}
-                defaultValue={defaultValue}
                 language={(languages) => languageFn(languages, language)}
                 imageResizable
                 imageEqualRatio
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                controls={controlTypes[toolbarType] || controlTypes.simple}
+                controls={getControls()}
                 extendControls={extendControls}
             />
         </Wrapper>
