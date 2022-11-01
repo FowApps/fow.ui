@@ -5,6 +5,7 @@ type WrapperProps = {
     isFocused?: boolean;
     name?: string;
     disabled?: boolean;
+    minHeight?: string;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -28,7 +29,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
     .DraftEditor-editorContainer,
     .bf-container .public-DraftEditor-content {
-        min-height: 300px;
+        min-height: ${(props) => props?.minHeight || '300px'};
     }
 
     ${(props) =>
@@ -56,7 +57,7 @@ export const Wrapper = styled.div<WrapperProps>`
     }
 
     .bf-content {
-        min-height: 300px;
+        min-height: ${(props) => props?.minHeight || '300px'};
         height: unset;
         font-size: 14px;
         color: ${(props) => props.theme.fow.colors.text.secondary};

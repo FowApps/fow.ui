@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Editor from './Editor';
 
@@ -19,6 +19,14 @@ export const Default = Template.bind({});
 
 Default.args = {
     onChange: (content: string) => console.log(content),
+    customControls: [
+        'italic',
+        'bold',
+        'underline',
+        'strikethroughstrike-through',
+        'list-ul',
+        'list-ol',
+    ],
     extraControls: [
         {
             key: 'insert-field',
