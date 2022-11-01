@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.11"></a>
-## 0.1.1-alpha.11 (2022-10-30)
+<a name="0.1.1-alpha.12"></a>
+## 0.1.1-alpha.12 (2022-11-01)
 
 ### Added
 
@@ -18,6 +18,10 @@
 - 🔧 Update Repo Visualizer commit message [[0036324](https://github.com/FowApps/fow.ui/commit/00363247f29768c36744385cd1616142cf4a07bf)]
 - 🔧 Update Repo Visualizer commit message [[bf18e57](https://github.com/FowApps/fow.ui/commit/bf18e5747812a317ecc4a96830087afb46ae970f)]
 - 🔧 Update default branch name [[e04eac9](https://github.com/FowApps/fow.ui/commit/e04eac9c8be6f6a413c127e5c5439ec69b000b76)]
+
+### Fixed
+
+- 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
 
 ### Dependency Changed
 
@@ -55,6 +59,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f913f5a](https://github.com/FowApps/fow.ui/commit/f913f5aeb8131615f33628f544778f7f77d3bf4f)]
 - 📝 Update CHANGELOG.md [skip ci] [[77ed61f](https://github.com/FowApps/fow.ui/commit/77ed61fda73fcfe7a20fe99618a265ef21d90674)]
 - 📝 Update CHANGELOG.md [skip ci] [[0b1ec84](https://github.com/FowApps/fow.ui/commit/0b1ec848ecd52eeb91a3214dfa130c42b808e336)]
 - 📝 Update CHANGELOG.md [skip ci] [[d8c4f4a](https://github.com/FowApps/fow.ui/commit/d8c4f4afc9fcdff8b633b7fe8d9e179f996ad41c)]
@@ -108,6 +113,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#742](https://github.com/FowApps/fow.ui/issues/742) from FowApps/improvement-editor [[920d1b4](https://github.com/FowApps/fow.ui/commit/920d1b4cf50ec32b7d368f1e57406e2d5d06e745)]
 -  👷 Update gitmoji-changelog.yml [[03872cb](https://github.com/FowApps/fow.ui/commit/03872cb9886f07ec3bef4c9cb57cdb6f2085f860)]
 -  Merge pull request [#740](https://github.com/FowApps/fow.ui/issues/740) from FowApps/fix/date-picker-default-value [[1b08466](https://github.com/FowApps/fow.ui/commit/1b0846613eb6c5805a72781d64b60f52b3ce9783)]
 -  Add value check for use default value [[fc805ae](https://github.com/FowApps/fow.ui/commit/fc805aeec7187c1a96b19005cb733bfc258c49f7)]
