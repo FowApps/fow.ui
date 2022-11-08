@@ -11054,10 +11054,10 @@ rc-pagination@^3.1.15:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
 
-rc-picker@^2.6.4:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.6.4.tgz#916aa5fcd8abd11106f1c2fb64bfd549439abfa0"
-  integrity sha512-Mnc1udPyGNSG7/ya5SmYltUjCUcsMH7jfJnuuXVAvEaEdx9qZxDGMWtIii//+ARC06CSHQ83s5iwiGFwM+FcDw==
+rc-picker@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.7.0.tgz#3c19881da27a0c5ee4c7e7504e21b552bd43a94c"
+  integrity sha512-oZH6FZ3j4iuBxHB4NvQ6ABRsS2If/Kpty1YFFsji7/aej6ruGmfM7WnJWQ88AoPfpJ++ya5z+nVEA8yCRYGKyw==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
