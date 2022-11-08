@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.12"></a>
-## 0.1.1-alpha.12 (2022-11-01)
+<a name="0.1.1-alpha.13"></a>
+## 0.1.1-alpha.13 (2022-11-08)
 
 ### Added
 
@@ -59,6 +59,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[acc08f3](https://github.com/FowApps/fow.ui/commit/acc08f38640313bb49cd9bea8e96329e5c6ba3b0)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f913f5a](https://github.com/FowApps/fow.ui/commit/f913f5aeb8131615f33628f544778f7f77d3bf4f)]
 - 📝 Update CHANGELOG.md [skip ci] [[77ed61f](https://github.com/FowApps/fow.ui/commit/77ed61fda73fcfe7a20fe99618a265ef21d90674)]
 - 📝 Update CHANGELOG.md [skip ci] [[0b1ec84](https://github.com/FowApps/fow.ui/commit/0b1ec848ecd52eeb91a3214dfa130c42b808e336)]
@@ -113,6 +114,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#743](https://github.com/FowApps/fow.ui/issues/743) from FowApps/refactor/form-builder [[4ff7f8f](https://github.com/FowApps/fow.ui/commit/4ff7f8f798237ada58b16f3db595aec53131239c)]
+-  Add wrapWithForm prop in builder [[da843c7](https://github.com/FowApps/fow.ui/commit/da843c74bc102df53eebfd4ae91c2eca3914135a)]
 -  Merge pull request [#742](https://github.com/FowApps/fow.ui/issues/742) from FowApps/improvement-editor [[920d1b4](https://github.com/FowApps/fow.ui/commit/920d1b4cf50ec32b7d368f1e57406e2d5d06e745)]
 -  👷 Update gitmoji-changelog.yml [[03872cb](https://github.com/FowApps/fow.ui/commit/03872cb9886f07ec3bef4c9cb57cdb6f2085f860)]
 -  Merge pull request [#740](https://github.com/FowApps/fow.ui/issues/740) from FowApps/fix/date-picker-default-value [[1b08466](https://github.com/FowApps/fow.ui/commit/1b0846613eb6c5805a72781d64b60f52b3ce9783)]
