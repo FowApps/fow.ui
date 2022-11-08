@@ -81,6 +81,7 @@ export interface FormBuilderProps {
     config: Config;
     showOnlyMandatory?: boolean;
     onValuesChange?: (value: any, values: any) => void;
+    wrapWithForm?: boolean;
 }
 
 const FormBuilder = ({
@@ -96,6 +97,7 @@ const FormBuilder = ({
         currencyList: [],
         baseCurrency: undefined,
     },
+    wrapWithForm = true,
 }: FormBuilderProps) => {
     const [formRef] = useForm(formInstance);
     const { language } = useContext(ConfigContext);
@@ -295,31 +297,35 @@ const FormBuilder = ({
 
     return (
         <div>
-            <Form
-                id={config.id || formId}
-                name={config.name}
-                form={formRef}
-                onValuesChange={onValuesChange}
-                onFinishFailed={({ errorFields }) => {
-                    const name = errorFields[0].name[0];
-                    const input = document.querySelector(
-                        `*[name=${name}]`,
-                    ) as HTMLElement;
+            {wrapWithForm ? (
+                <Form
+                    id={config.id || formId}
+                    name={config.name}
+                    form={formRef}
+                    onValuesChange={onValuesChange}
+                    onFinishFailed={({ errorFields }) => {
+                        const name = errorFields[0].name[0];
+                        const input = document.querySelector(
+                            `*[name=${name}]`,
+                        ) as HTMLElement;
 
-                    input?.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'start',
-                    });
+                        input?.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                            inline: 'start',
+                        });
 
-                    setTimeout(() => {
-                        input?.focus();
-                    }, 300);
-                }}
-                onFinish={onSubmit}
-                initialValues={initialValues}>
+                        setTimeout(() => {
+                            input?.focus();
+                        }, 300);
+                    }}
+                    onFinish={onSubmit}
+                    initialValues={initialValues}>
+                    <Row>{fields}</Row>
+                </Form>
+            ) : (
                 <Row>{fields}</Row>
-            </Form>
+            )}
         </div>
     );
 };
