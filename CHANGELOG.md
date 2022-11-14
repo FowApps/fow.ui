@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.13"></a>
-## 0.1.1-alpha.13 (2022-11-08)
+<a name="0.1.1-alpha.14"></a>
+## 0.1.1-alpha.14 (2022-11-14)
 
 ### Added
 
@@ -59,6 +59,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[44a8031](https://github.com/FowApps/fow.ui/commit/44a8031586018849d03d385ed2f3ac80965fa27e)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[acc08f3](https://github.com/FowApps/fow.ui/commit/acc08f38640313bb49cd9bea8e96329e5c6ba3b0)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f913f5a](https://github.com/FowApps/fow.ui/commit/f913f5aeb8131615f33628f544778f7f77d3bf4f)]
 - 📝 Update CHANGELOG.md [skip ci] [[77ed61f](https://github.com/FowApps/fow.ui/commit/77ed61fda73fcfe7a20fe99618a265ef21d90674)]
@@ -114,6 +115,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#747](https://github.com/FowApps/fow.ui/issues/747) from FowApps/improvement/date-picker [[87892ed](https://github.com/FowApps/fow.ui/commit/87892ed714bc930960ae83a6f57831f0413f15e1)]
+-  Add renderExtraFooter prop from date picker [[17866a5](https://github.com/FowApps/fow.ui/commit/17866a5ac0902fbae938a34576dd0f86919556ce)]
 -  Merge pull request [#743](https://github.com/FowApps/fow.ui/issues/743) from FowApps/refactor/form-builder [[4ff7f8f](https://github.com/FowApps/fow.ui/commit/4ff7f8f798237ada58b16f3db595aec53131239c)]
 -  Add wrapWithForm prop in builder [[da843c7](https://github.com/FowApps/fow.ui/commit/da843c74bc102df53eebfd4ae91c2eca3914135a)]
 -  Merge pull request [#742](https://github.com/FowApps/fow.ui/issues/742) from FowApps/improvement-editor [[920d1b4](https://github.com/FowApps/fow.ui/commit/920d1b4cf50ec32b7d368f1e57406e2d5d06e745)]
