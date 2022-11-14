@@ -69,6 +69,7 @@ export interface DatePickerProps {
         | 'oneWeekLater'
         | 'oneMonthLater'
         | 'oneYearLater';
+    renderExtraFooter?: any;
 }
 
 const DatePicker = (
@@ -91,6 +92,7 @@ const DatePicker = (
         name,
         hasValidationError = false,
         defaultValue = 'today',
+        renderExtraFooter,
     }: DatePickerProps,
     ref: LegacyRef<Picker<Moment>>,
 ): JSX.Element => {
@@ -213,6 +215,7 @@ const DatePicker = (
                 format={dateFormat}
                 value={val ? moment(val) : null}
                 name={name}
+                renderExtraFooter={renderExtraFooter}
             />
         </DatePickerWrapper>
     );
