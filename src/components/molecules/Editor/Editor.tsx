@@ -69,6 +69,7 @@ export type EditorProps = BraftEditorProps & {
     disabled?: boolean;
     customControls?: ControlType[] | BuiltInControlType[];
     minHeight?: string;
+    externalValue?: string;
 };
 
 type ControlTypeTypes = {
@@ -226,6 +227,7 @@ const Editor = (
         name,
         customControls,
         minHeight,
+        externalValue,
         ...rest
     }: EditorProps,
     ref: LegacyRef<BraftEditor>,
@@ -323,13 +325,14 @@ const Editor = (
         if (!isFocused) {
             const html =
                 rest?.value ||
+                externalValue ||
                 (!isDefaultValueSetted && rest?.defaultValue) ||
                 '';
             const defaultState = BraftEditor.createEditorState(html);
             setEditorState(defaultState);
             setIsDefaultValueSetted(true);
         }
-    }, [rest?.value, rest?.defaultValue, isFocused]);
+    }, [rest?.value, rest?.defaultValue, isFocused, externalValue]);
 
     const getControls = () => {
         if (customControls) {
