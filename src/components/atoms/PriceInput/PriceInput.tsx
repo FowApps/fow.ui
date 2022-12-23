@@ -79,11 +79,6 @@ const PriceInput = ({
             '',
     );
 
-    useEffect(() => {
-        setNumber(value?.number || 0);
-        setCurrency(value?.currency || currencies[0].value);
-    }, [value]);
-
     const triggerChange = (changedValue: {
         number?: number;
         currency?: Currency['value'];
@@ -91,48 +86,24 @@ const PriceInput = ({
         if (setFormFieldValue) {
             setFormFieldValue(currency);
             onChange?.({
-                number: changedValue?.number || number,
+                number: changedValue?.number ?? number,
                 currency: changedValue?.currency || currency,
-                // ...value,
-                // ...changedValue,
             });
         } else {
             onChange?.({
-                number: changedValue?.number || number,
+                number: changedValue?.number ?? number,
                 currency: changedValue?.currency || currency,
-                // ...value,
-                // ...changedValue,
             });
         }
+        setNumber(changedValue?.number ?? number);
+        setCurrency(changedValue?.currency ?? currency);
     };
 
-    // const onNumberChange = (val: any) => {
-    //     // const newNumber = parseInt(val || '0', 10);
-    //     const newNumber = parseFloat(val || '0');
-    //     if (Number.isNaN(number)) {
-    //         return;
-    //     }
-    //     setNumber(newNumber);
-    //     triggerChange({ number: newNumber, currency });
-    // };
-
-    // const onCurrencyChange = (newCurrency: any) => {
-    //     setCurrency(newCurrency?.currency || newCurrency);
-    //     setFormFieldValue?.(newCurrency?.currency || newCurrency);
-    //     triggerChange({ number, currency: newCurrency });
-    // };
-
     useEffect(() => {
-        if (setFormFieldValue) {
-            setFormFieldValue(currency || baseCurrency || currencies[0].value);
+        if (value?.number !== number || value?.currency !== currency) {
+            triggerChange(value);
         }
-    }, [currency]);
-
-    useEffect(() => {
-        setNumber(value?.number || initialValue?.number || 0);
-        setCurrency(value?.currency || baseCurrency || currencies[0].value);
-        onChange?.({ number: number || 0, currency });
-    }, []);
+    }, [value]);
 
     return (
         <Space size="xxsmall" inline={false}>
@@ -140,6 +111,10 @@ const PriceInput = ({
                 <InputNumber
                     disabled={disabled}
                     type="text"
+                    formatter={(val) =>
+                        `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    }
+                    {...inputProps}
                     value={number}
                     onChange={(e) =>
                         triggerChange({
@@ -147,10 +122,6 @@ const PriceInput = ({
                             currency,
                         })
                     }
-                    formatter={(val) =>
-                        `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                    }
-                    {...inputProps}
                 />
             </InputWrapper>
             <SelectWrapper style={{ width: 150 }}>
@@ -162,6 +133,8 @@ const PriceInput = ({
                         label: curr.name,
                     }))}
                     disabled={disabled}
+                    closeAfterSelect
+                    {...selectProps}
                     value={currency}
                     onChange={(e) =>
                         triggerChange({
@@ -169,8 +142,6 @@ const PriceInput = ({
                             currency: e,
                         })
                     }
-                    closeAfterSelect
-                    {...selectProps}
                 />
             </SelectWrapper>
         </Space>
