@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.15"></a>
-## 0.1.1-alpha.15 (2022-11-21)
+<a name="0.1.1-alpha.16"></a>
+## 0.1.1-alpha.16 (2022-12-23)
 
 ### Added
 
@@ -21,6 +21,7 @@
 
 ### Fixed
 
+- 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
 - 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
 
 ### Dependency Changed
@@ -59,6 +60,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d84e423](https://github.com/FowApps/fow.ui/commit/d84e4234bee1305d2d960e3c4d5c449f927af7ad)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[081f7f9](https://github.com/FowApps/fow.ui/commit/081f7f9162b28ff16ee9b5858e500b075cfdf84e)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[44a8031](https://github.com/FowApps/fow.ui/commit/44a8031586018849d03d385ed2f3ac80965fa27e)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[acc08f3](https://github.com/FowApps/fow.ui/commit/acc08f38640313bb49cd9bea8e96329e5c6ba3b0)]
@@ -116,6 +118,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#766](https://github.com/FowApps/fow.ui/issues/766) from FowApps/improvement/price-input [[cbe73f1](https://github.com/FowApps/fow.ui/commit/cbe73f1d356921ee8e465fcd96dd14194d81bda0)]
+-  Update package version [[9175913](https://github.com/FowApps/fow.ui/commit/9175913c8dd98c3966f331ec19dbae092825bb67)]
 -  Merge pull request [#753](https://github.com/FowApps/fow.ui/issues/753) from FowApps/improvement/editor [[7c764bc](https://github.com/FowApps/fow.ui/commit/7c764bc0808848884095b1bab5d82c0047c2f624)]
 -  Add external value from editor [[bea1479](https://github.com/FowApps/fow.ui/commit/bea1479192db90d451c482bc64458749c26d847c)]
 -  Merge pull request [#747](https://github.com/FowApps/fow.ui/issues/747) from FowApps/improvement/date-picker [[87892ed](https://github.com/FowApps/fow.ui/commit/87892ed714bc930960ae83a6f57831f0413f15e1)]
