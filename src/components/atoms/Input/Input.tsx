@@ -30,6 +30,7 @@ export interface InputProps
      * input types
      */
     type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
+    regExp?: RegExp;
 }
 
 function fixControlledValue<T>(value: T) {
@@ -46,6 +47,7 @@ const Input = (
         disabled = false,
         hasValidationError = false,
         type = 'text',
+        regExp,
         ...rest
     }: InputProps,
     ref: RefObject<HTMLInputElement>,
@@ -53,8 +55,12 @@ const Input = (
     const [val, setVal] = useState(fixControlledValue(rest.value));
 
     const handleChange = (e) => {
+        if (regExp && !regExp?.test(e.target.value) && e.target.value !== '')
+            return e.preventDefault();
+
         setVal(e.target.value);
         rest.onChange?.(e.target.value);
+        return false;
     };
 
     useEffect(() => {

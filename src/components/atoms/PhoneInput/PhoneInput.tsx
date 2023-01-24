@@ -1,27 +1,9 @@
-import React, {
-    forwardRef,
-    LegacyRef,
-    useCallback,
-    useContext,
-    useState,
-} from 'react';
+import React, { forwardRef, RefObject, useState } from 'react';
 
-import ReactPhoneInput, { PhoneInputProps } from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
-
+import Input, { InputProps } from '../Input';
 import { Wrapper } from './styles';
 
-import en from './locales/en';
-import tr from './locales/tr';
-import { ConfigContext } from '../../../theme/FowThemeProvider';
-
-const localization = {
-    tr,
-    en,
-};
-export interface Props extends PhoneInputProps {
-    country?: string;
-    search?: boolean;
+export interface PhoneInputProps extends InputProps {
     hasValidationError?: boolean;
     name?: string;
     disabled?: boolean;
@@ -36,26 +18,19 @@ function fixControlledValue<T>(value: T) {
 
 const PhoneInput = (
     {
+        name,
         hasValidationError = false,
-        country = 'tr',
-        search = true,
-        onChange,
         disabled = false,
         ...rest
-    }: Props,
-    ref: LegacyRef<HTMLInputElement>,
+    }: PhoneInputProps,
+    ref: RefObject<HTMLInputElement>,
 ): JSX.Element => {
     const [isFocused, setIsFocused] = useState(false);
-    const { language } = useContext(ConfigContext);
     const [value, setValue] = useState(fixControlledValue(rest?.value));
 
-    const handleChange: Props['onChange'] = useCallback(
-        (v, data, event, formattedValue) => {
-            setValue(v);
-            onChange?.(v, data, event, formattedValue);
-        },
-        [onChange],
-    );
+    const handleChange = (val: string) => {
+        setValue(val);
+    };
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -70,23 +45,17 @@ const PhoneInput = (
             hasValidationError={hasValidationError}
             isFocused={isFocused}
             disabled={disabled}>
-            <ReactPhoneInput
+            <Input
                 {...rest}
-                inputProps={{
-                    ref: ref || { current: null },
-                    name: rest?.name,
-                }}
-                preferredCountries={['tr', 'us', 'de', 'gb']}
+                ref={ref}
+                name={name}
+                type="text"
                 onBlur={handleBlur}
                 onFocus={handleFocus}
-                country={country}
-                enableSearch={search}
-                searchPlaceholder={localization[language].searchPlaceholder}
-                searchNotFound={localization[language].searchNotFound}
-                jumpCursorToEnd
                 value={value}
                 onChange={handleChange}
                 disabled={disabled}
+                regExp={/^[\d#+*]+$/}
             />
         </Wrapper>
     );
