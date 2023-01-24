@@ -49,7 +49,7 @@ const PhoneInput = (
             <Input
                 ref={ref}
                 name={name}
-                type="email"
+                type="text"
                 onBlur={handleBlur}
                 onFocus={handleFocus}
                 value={value}
