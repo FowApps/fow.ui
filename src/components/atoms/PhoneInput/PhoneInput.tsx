@@ -4,10 +4,9 @@ import Input, { InputProps } from '../Input';
 import { Wrapper } from './styles';
 
 export interface PhoneInputProps extends InputProps {
-    country?: string;
-    search?: boolean;
     hasValidationError?: boolean;
     name?: string;
+    disabled?: boolean;
 }
 
 function fixControlledValue<T>(value: T) {
