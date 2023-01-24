@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.16"></a>
-## 0.1.1-alpha.16 (2022-12-23)
+<a name="0.1.1-alpha.17"></a>
+## 0.1.1-alpha.17 (2023-01-24)
 
 ### Added
 
@@ -18,6 +18,10 @@
 - 🔧 Update Repo Visualizer commit message [[0036324](https://github.com/FowApps/fow.ui/commit/00363247f29768c36744385cd1616142cf4a07bf)]
 - 🔧 Update Repo Visualizer commit message [[bf18e57](https://github.com/FowApps/fow.ui/commit/bf18e5747812a317ecc4a96830087afb46ae970f)]
 - 🔧 Update default branch name [[e04eac9](https://github.com/FowApps/fow.ui/commit/e04eac9c8be6f6a413c127e5c5439ec69b000b76)]
+
+### Removed
+
+- 🔥 fix rest props moved to upper line [[4a9a119](https://github.com/FowApps/fow.ui/commit/4a9a1194878134a854dbe6b8abb9327195e4896f)]
 
 ### Fixed
 
@@ -60,6 +64,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5fdac79](https://github.com/FowApps/fow.ui/commit/5fdac7983a3646c22ef0a2bb4b60e7db39262a2b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d84e423](https://github.com/FowApps/fow.ui/commit/d84e4234bee1305d2d960e3c4d5c449f927af7ad)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[081f7f9](https://github.com/FowApps/fow.ui/commit/081f7f9162b28ff16ee9b5858e500b075cfdf84e)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[44a8031](https://github.com/FowApps/fow.ui/commit/44a8031586018849d03d385ed2f3ac80965fa27e)]
@@ -118,6 +123,12 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#773](https://github.com/FowApps/fow.ui/issues/773) from FowApps/refactor/phone-component [[86b6759](https://github.com/FowApps/fow.ui/commit/86b6759519e7745aa469191c9fd5b1fe05347bc3)]
+-  Disabled added back to PhoneInputProps [[6a9334f](https://github.com/FowApps/fow.ui/commit/6a9334fe8368d3b3dc206186b35ccc7415bbee15)]
+-  Update package version [[39c34c5](https://github.com/FowApps/fow.ui/commit/39c34c50e8f0e7eebae47075cade2087e5eedbdd)]
+-  Stories temizlendi [[34ec941](https://github.com/FowApps/fow.ui/commit/34ec94131c39cdc971daf94e8899c72c4327f078)]
+-  Type changed to text [[a386e95](https://github.com/FowApps/fow.ui/commit/a386e95c7c3fc4fbe11200301254b3444b09ebb5)]
+-  Lint fixes [[ce26b50](https://github.com/FowApps/fow.ui/commit/ce26b50c86dbd0775fdd567f22c986ccc678e5e9)]
 -  Merge pull request [#766](https://github.com/FowApps/fow.ui/issues/766) from FowApps/improvement/price-input [[cbe73f1](https://github.com/FowApps/fow.ui/commit/cbe73f1d356921ee8e465fcd96dd14194d81bda0)]
 -  Update package version [[9175913](https://github.com/FowApps/fow.ui/commit/9175913c8dd98c3966f331ec19dbae092825bb67)]
 -  Merge pull request [#753](https://github.com/FowApps/fow.ui/issues/753) from FowApps/improvement/editor [[7c764bc](https://github.com/FowApps/fow.ui/commit/7c764bc0808848884095b1bab5d82c0047c2f624)]
