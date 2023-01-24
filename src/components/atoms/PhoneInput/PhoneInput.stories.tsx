@@ -5,15 +5,7 @@ import PhoneInput from './PhoneInput';
 
 export default {
     title: 'Atoms/Phone',
-    component: PhoneInput,
-    argTypes: {
-        country: {
-            control: {
-                type: 'select',
-            },
-            options: ['tr', 'us', 'de'],
-        },
-    },
+    component: PhoneInput
 } as Meta;
 
 const Template: Story<any> = (args) => <PhoneInput {...args} />;
