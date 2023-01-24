@@ -46,6 +46,7 @@ const PhoneInput = (
             isFocused={isFocused}
             disabled={disabled}>
             <Input
+                {...rest}
                 ref={ref}
                 name={name}
                 type="text"
@@ -55,7 +56,6 @@ const PhoneInput = (
                 onChange={handleChange}
                 disabled={disabled}
                 regExp={/^[\d#+*]+$/}
-                {...rest}
             />
         </Wrapper>
     );
