@@ -84,6 +84,10 @@ export interface UploadProps {
      */
     uploadButtonProps?: ButtonProps;
     /**
+     * upload button text
+     */
+    uploadButtonText?: string;
+    /**
      * show file list
      */
     showFileList?: boolean;
@@ -137,6 +141,7 @@ const Upload = ({
     disabled = false,
     required = false,
     uploadButtonProps = {},
+    uploadButtonText,
     showFileList = true,
     type = 'dragger',
     theme,
@@ -255,7 +260,7 @@ const Upload = ({
                         multiple={multiple}
                         disabled={disabled}
                     />
-                    {localization[language].upload}
+                    {uploadButtonText || localization[language].upload}
                 </Button>
             )}
             {type === 'dragger' && (

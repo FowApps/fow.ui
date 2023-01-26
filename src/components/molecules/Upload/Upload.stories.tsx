@@ -25,4 +25,5 @@ Default.args = {
     multiple: false,
     disabled: false,
     type: 'dragger',
+    uploadButtonText: 'Upload',
 };
