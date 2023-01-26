@@ -32,6 +32,7 @@
 
 ### Dependency Changed
 
+- ➕ add upload button text properties [[9d2c36d](https://github.com/FowApps/fow.ui/commit/9d2c36d1fd10ccbc387afc3f803c3a00c142fcf6)]
 - ⬆️ Bump paambaati/codeclimate-action from 3.1.1 to 3.2.0 ([#739](https://github.com/FowApps/fow.ui/issues/739)) [[bd763c8](https://github.com/FowApps/fow.ui/commit/bd763c896b7fead04cadf5a32a69187d4dd2597c)]
 - ➖ Remove date picker default value in builder if not required [[68c7fd6](https://github.com/FowApps/fow.ui/commit/68c7fd62738e39b68085290be0aaea1324950e6c)]
 - ⬆️ Bump paambaati/codeclimate-action from 3.0.0 to 3.1.1 ([#735](https://github.com/FowApps/fow.ui/issues/735)) [[2660b15](https://github.com/FowApps/fow.ui/commit/2660b15f4aee2d802e947101d6fe0aa68f2637bb)]
@@ -66,6 +67,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[23dd303](https://github.com/FowApps/fow.ui/commit/23dd30367a3c8f4497756a58dae70bb2fe6f22bc)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[756e0d6](https://github.com/FowApps/fow.ui/commit/756e0d67c159818f99746591d3a413fc5ef8358a)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5fdac79](https://github.com/FowApps/fow.ui/commit/5fdac7983a3646c22ef0a2bb4b60e7db39262a2b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d84e423](https://github.com/FowApps/fow.ui/commit/d84e4234bee1305d2d960e3c4d5c449f927af7ad)]
@@ -126,6 +128,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#775](https://github.com/FowApps/fow.ui/issues/775) from FowApps/upload-btn-properties [[db942ad](https://github.com/FowApps/fow.ui/commit/db942ad1c46c1dee60c6dff5654bc97847a13e3c)]
 -  Merge pull request [#774](https://github.com/FowApps/fow.ui/issues/774) from FowApps/refactor/email-component [[a7039d5](https://github.com/FowApps/fow.ui/commit/a7039d575794050062c45cd7492a030cbdaaa3ae)]
 -  Merge pull request [#773](https://github.com/FowApps/fow.ui/issues/773) from FowApps/refactor/phone-component [[86b6759](https://github.com/FowApps/fow.ui/commit/86b6759519e7745aa469191c9fd5b1fe05347bc3)]
 -  Disabled added back to PhoneInputProps [[6a9334f](https://github.com/FowApps/fow.ui/commit/6a9334fe8368d3b3dc206186b35ccc7415bbee15)]
