@@ -21,6 +21,7 @@ const PhoneInput = (
         name,
         hasValidationError = false,
         disabled = false,
+        onChange,
         ...rest
     }: PhoneInputProps,
     ref: RefObject<HTMLInputElement>,
@@ -30,6 +31,7 @@ const PhoneInput = (
 
     const handleChange = (val: string) => {
         setValue(val);
+        onChange?.(val);
     };
 
     const handleFocus = () => {
@@ -55,7 +57,7 @@ const PhoneInput = (
                 value={value}
                 onChange={handleChange}
                 disabled={disabled}
-                regExp={/^[\d#+*]+$/}
+                regExp={/^[\d#+*\s]+$/}
             />
         </Wrapper>
     );
