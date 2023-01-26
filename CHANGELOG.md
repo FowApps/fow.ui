@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.17"></a>
-## 0.1.1-alpha.17 (2023-01-24)
+## 0.1.1-alpha.17 (2023-01-26)
 
 ### Added
 
@@ -9,6 +9,7 @@
 
 ### Changed
 
+- ♻️ Refactor email component [[9c76a7d](https://github.com/FowApps/fow.ui/commit/9c76a7d86adf95f4cc8af47530e6b3c43ac5881d)]
 - 🔧 Update .gitmoji-changelogrc [[c59b5a3](https://github.com/FowApps/fow.ui/commit/c59b5a36924e8252a87614071c9e59a441fa81d6)]
 - ♻️ Add check if email extension [[ab359d2](https://github.com/FowApps/fow.ui/commit/ab359d2111e1d76245d1995266a151b7a5f4af67)]
 - ♻️ Improve email input regex in form builder [[5c5c375](https://github.com/FowApps/fow.ui/commit/5c5c375b41e376f71aea3f0f54cfa7e5cd1c1b0f)]
@@ -25,6 +26,7 @@
 
 ### Fixed
 
+- 🐛 Fix PhoneInput regexp query [[51bcf7f](https://github.com/FowApps/fow.ui/commit/51bcf7fa70cc6e594952913982ce55dbd34628f0)]
 - 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
 - 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
 
@@ -64,6 +66,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[756e0d6](https://github.com/FowApps/fow.ui/commit/756e0d67c159818f99746591d3a413fc5ef8358a)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5fdac79](https://github.com/FowApps/fow.ui/commit/5fdac7983a3646c22ef0a2bb4b60e7db39262a2b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d84e423](https://github.com/FowApps/fow.ui/commit/d84e4234bee1305d2d960e3c4d5c449f927af7ad)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[081f7f9](https://github.com/FowApps/fow.ui/commit/081f7f9162b28ff16ee9b5858e500b075cfdf84e)]
@@ -123,6 +126,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#774](https://github.com/FowApps/fow.ui/issues/774) from FowApps/refactor/email-component [[a7039d5](https://github.com/FowApps/fow.ui/commit/a7039d575794050062c45cd7492a030cbdaaa3ae)]
 -  Merge pull request [#773](https://github.com/FowApps/fow.ui/issues/773) from FowApps/refactor/phone-component [[86b6759](https://github.com/FowApps/fow.ui/commit/86b6759519e7745aa469191c9fd5b1fe05347bc3)]
 -  Disabled added back to PhoneInputProps [[6a9334f](https://github.com/FowApps/fow.ui/commit/6a9334fe8368d3b3dc206186b35ccc7415bbee15)]
 -  Update package version [[39c34c5](https://github.com/FowApps/fow.ui/commit/39c34c50e8f0e7eebae47075cade2087e5eedbdd)]
