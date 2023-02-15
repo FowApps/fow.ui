@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
 import { StyledSummaryCardProps } from '..';
 import Icon from '../../../atoms/Icon/Icon';
 
@@ -10,6 +11,13 @@ export const SummaryWrapper = styled.div<StyledSummaryCardProps>`
     column-count: ${(props) => (props.column ? props.column : 1)};
     column-gap: 0;
     width: 100%;
+    ${(props) =>
+        props?.onlyList &&
+        css`
+            display: flex;
+            white-space: nowrap;
+            overflow-x: auto;
+        `};
 `;
 
 export const IconWrapper = styled(Icon)`

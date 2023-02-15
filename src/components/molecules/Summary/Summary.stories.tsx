@@ -70,7 +70,7 @@ const tempData = [
 
 const Template: Story<SummaryProps> = (args) => {
     return (
-        <Summary.List column={args.column}>
+        <Summary.List column={args.column} onlyList={args.onlyList}>
             {tempData.map((item, index) => (
                 <Summary.Item
                     title={item.label}
@@ -86,4 +86,5 @@ const Template: Story<SummaryProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     column: 2,
+    onlyList: false,
 };
