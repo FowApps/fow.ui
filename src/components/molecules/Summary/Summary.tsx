@@ -11,6 +11,7 @@ export interface StyledSummaryCardProps {
      * increase/decrease column amount
      */
     column?: number;
+    onlyList?: boolean;
 }
 export interface SummaryItemProps {
     /**

@@ -49,6 +49,10 @@ export interface TabItemProps {
      */
     icon?: React.ReactNode;
     /**
+     * title of tab item // this propery ignores label and icon box
+     */
+    title?: React.ReactNode;
+    /**
      * index of tab item
      */
     index: number;
@@ -126,35 +130,42 @@ const Tabs = ({
             <Surface direction={direction} isFloat={isFloat}>
                 {items
                     .filter(Boolean)
-                    .map(({ props: { index, label, icon, disabled } }) => (
-                        <TabItem
-                            fluid={fluid}
-                            direction={direction}
-                            isActive={bindIndex === index}
-                            key={`tab-btn-${index}`}
-                            onClick={() => !disabled && changeTab(index)}
-                            disabled={disabled}
-                            isFloat={isFloat}>
-                            <Space>
-                                {icon && (
-                                    <IconWrapper isActive={bindIndex === index}>
-                                        {icon}
-                                    </IconWrapper>
+                    .map(
+                        ({
+                            props: { index, label, icon, title, disabled },
+                        }) => (
+                            <TabItem
+                                fluid={fluid}
+                                direction={direction}
+                                isActive={bindIndex === index}
+                                key={`tab-btn-${index}`}
+                                onClick={() => !disabled && changeTab(index)}
+                                disabled={disabled}
+                                isFloat={isFloat}>
+                                {title || (
+                                    <Space>
+                                        {icon && (
+                                            <IconWrapper
+                                                isActive={bindIndex === index}>
+                                                {icon}
+                                            </IconWrapper>
+                                        )}
+                                        {label && (
+                                            <Subtitle
+                                                level={2}
+                                                color={
+                                                    bindIndex === index
+                                                        ? 'primary'
+                                                        : 'black'
+                                                }>
+                                                {label}
+                                            </Subtitle>
+                                        )}
+                                    </Space>
                                 )}
-                                {label && (
-                                    <Subtitle
-                                        level={2}
-                                        color={
-                                            bindIndex === index
-                                                ? 'primary'
-                                                : 'black'
-                                        }>
-                                        {label}
-                                    </Subtitle>
-                                )}
-                            </Space>
-                        </TabItem>
-                    ))}
+                            </TabItem>
+                        ),
+                    )}
             </Surface>
             <TabContentHolder direction={direction} isFloat={isFloat}>
                 <TabContent direction={direction}>

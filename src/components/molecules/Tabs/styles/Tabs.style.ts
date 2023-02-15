@@ -16,6 +16,7 @@ type ItemProps = {
 
 type TabItemProps = {
     icon?: React.ReactNode;
+    title?: React.ReactNode;
     index: number;
     label?: string;
     disabled?: boolean;
