@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.19"></a>
-## 0.1.1-alpha.19 (2023-02-15)
+<a name="0.1.1-alpha.20"></a>
+## 0.1.1-alpha.20 (2023-02-17)
 
 ### Added
 
@@ -34,6 +34,7 @@
 
 ### Dependency Changed
 
+- ➕ add opened state and radius prop to accordion component [[c05d550](https://github.com/FowApps/fow.ui/commit/c05d5501db053200d1e0656419a18e57e7547a9a)]
 - ⬆️ upgrade version [[9ce663a](https://github.com/FowApps/fow.ui/commit/9ce663ac843c05c6bd0d7d21effc66640a4dfcff)]
 - ⬆️ upgrade version [[07e3f60](https://github.com/FowApps/fow.ui/commit/07e3f605fbe1970feba0f0e5f557c2982f522c82)]
 - ➕ add upload button text properties [[9d2c36d](https://github.com/FowApps/fow.ui/commit/9d2c36d1fd10ccbc387afc3f803c3a00c142fcf6)]
@@ -71,6 +72,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[82a3efc](https://github.com/FowApps/fow.ui/commit/82a3efcb04eae093c3019b0630749abb9bb0b24b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f50c667](https://github.com/FowApps/fow.ui/commit/f50c667308c20933229bb4fb5eba200a80f9dbdc)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5eed606](https://github.com/FowApps/fow.ui/commit/5eed60604b0183f54d3c5d8a96bff459eb33a459)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[23dd303](https://github.com/FowApps/fow.ui/commit/23dd30367a3c8f4497756a58dae70bb2fe6f22bc)]
@@ -134,6 +136,9 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#785](https://github.com/FowApps/fow.ui/issues/785) from FowApps/accordion-tab-improvements [[5d94445](https://github.com/FowApps/fow.ui/commit/5d94445cf9176f8290052b89a84d5620ac9d8afc)]
+- 🚀 update package version 0.1.1-alpha.20 [[fe5d71b](https://github.com/FowApps/fow.ui/commit/fe5d71b0f14bcfa7b8d97b774ce8a0868d9720bc)]
+- 🌱 update tab items style [[6297831](https://github.com/FowApps/fow.ui/commit/629783105628077b0074f6b66ce821380e33ae82)]
 -  Merge pull request [#784](https://github.com/FowApps/fow.ui/issues/784) from FowApps/tab-summary-features [[288f309](https://github.com/FowApps/fow.ui/commit/288f30905c198624f7156f342304ccf1e9c398dd)]
 -  Merge branch &#x27;main&#x27; of https://github.com/FowApps/fow.ui [[916b9cc](https://github.com/FowApps/fow.ui/commit/916b9cc5055a193e56dc1bd0ba87b610c1d7e638)]
 -  Merge pull request [#775](https://github.com/FowApps/fow.ui/issues/775) from FowApps/upload-btn-properties [[db942ad](https://github.com/FowApps/fow.ui/commit/db942ad1c46c1dee60c6dff5654bc97847a13e3c)]
