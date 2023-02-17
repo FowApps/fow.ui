@@ -25,6 +25,14 @@ export interface AccordionProps {
      */
     bordered?: boolean;
     /**
+     * allOpen/allClose
+     */
+    allOpen?: boolean;
+    /**
+     * borderRadius
+     */
+    borderRadius?: number;
+    /**
      * click event on trigger
      */
     onItemClick: (index: number) => void;
@@ -41,6 +49,7 @@ export interface ItemTitleProps {
 }
 export interface AccordionItemProps {
     title?: string;
+    contentTitle?: React.ReactNode;
     subtitle?: React.ReactNode;
     extra?: React.ReactNode;
     isCollapsed?: boolean;
@@ -62,6 +71,7 @@ const Item = ({
     isCollapsed,
     handleClick,
     title,
+    contentTitle,
     subtitle,
     arrowPosition,
     children,
@@ -92,16 +102,17 @@ const Item = ({
                         />
                     </IconWrapper>
                 )}
-                <Space
-                    inline={false}
-                    align="center"
-                    direction="horizontal"
-                    justify="space-between">
-                    <>
+
+                {contentTitle || (
+                    <Space
+                        inline={false}
+                        align="center"
+                        direction="horizontal"
+                        justify="space-between">
                         <Subtitle level={1}>{title}</Subtitle>
                         {extra && <>{extra}</>}
-                    </>
-                </Space>
+                    </Space>
+                )}
             </Space>
             {subtitle && (
                 <TitleDescription
@@ -135,9 +146,11 @@ const Item = ({
 const Accordion = ({
     defaultIndex,
     bordered = true,
+    borderRadius = 0,
     onItemClick,
-    arrowPosition = 'right',
+    arrowPosition = 'left',
     children,
+    allOpen = false,
 }: AccordionProps): JSX.Element => {
     const [bindIndex, setBindIndex] = useState(() => defaultIndex);
 
@@ -159,12 +172,13 @@ const Accordion = ({
     );
 
     return (
-        <Wrapper bordered={bordered}>
+        <Wrapper bordered={bordered} borderRadius={borderRadius}>
             {items.map(({ props }) => (
                 <Item
                     key={`accordion-item-${props.index}`}
-                    isCollapsed={bindIndex !== props.index}
+                    isCollapsed={allOpen ? false : bindIndex !== props.index}
                     title={props.title}
+                    contentTitle={props?.contentTitle}
                     extra={props.extra}
                     handleClick={() => changeItem(props.index)}
                     index={props.index}

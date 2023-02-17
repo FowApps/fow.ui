@@ -8,6 +8,7 @@ type TriggerProps = {
 
 type WrapperProps = {
     bordered: boolean;
+    borderRadius?: number;
 };
 type IconPositionProps = {
     arrowPosition?: string;
@@ -29,7 +30,7 @@ export const Trigger = styled.div<TriggerProps>`
     flex-direction: column;
     border-bottom: 1px solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
-    background-color: ${(props) => props.theme.fow.colors.common.white};
+    background-color: transparent;
     cursor: pointer;
     padding-inline: ${(props) => props.theme.fow.spacing.xlarge};
     padding-block: ${(props) => props.theme.fow.spacing.small};
@@ -46,7 +47,7 @@ export const Trigger = styled.div<TriggerProps>`
 export const Wrapper = styled.div<WrapperProps>`
     border: ${(props) => (props.bordered ? '1px' : '0')} solid
         ${(props) => props.theme.fow.colors.grey.transparent32};
-    border-radius: 0;
+    border-radius: ${(props) => `${props.borderRadius}px` || '0'};
     background-color: transparent;
 `;
 
