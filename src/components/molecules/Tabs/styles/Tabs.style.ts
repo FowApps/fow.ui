@@ -44,7 +44,7 @@ export const Surface = styled.ul<ContainerProps>`
     margin: 0;
     padding: 0;
     list-style: none;
-
+    gap: 12px;
     ${(props) =>
         props.direction === 'vertical' &&
         css`
@@ -75,7 +75,7 @@ export const Item = styled.li<ItemProps>`
     height: ${(props) => (props.direction === 'vertical' ? 'auto' : '5.4rem')};
     cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
     opacity: ${(props) => (props.disabled ? 0.5 : 1)};
-    padding-inline: ${(props) => props.theme.fow.spacing.large};
+    /* padding-inline: ${(props) => props.theme.fow.spacing.large}; */
     padding-block: ${(props) => props.theme.fow.spacing.medium};
 
     h3,
