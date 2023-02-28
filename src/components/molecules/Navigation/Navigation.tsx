@@ -28,6 +28,10 @@ export interface SubMenuProps {
      */
     title: string;
     /**
+     * initial open
+     */
+    defaultOpen?: boolean;
+    /**
      * icon of sub menu
      */
     icon?: FontAwesomeIconProps['icon'];
@@ -87,10 +91,16 @@ const Menu = ({ mode, bordered = false, children, ...rest }: MenuProps) => {
     );
 };
 
-const SubMenu = ({ icon, title, children, ...rest }: SubMenuProps) => {
+const SubMenu = ({
+    icon,
+    title,
+    children,
+    defaultOpen = false,
+    ...rest
+}: SubMenuProps) => {
     const itemRef = useRef<HTMLDivElement>();
     const { location, mode } = useContext(MenuContext);
-    const { isOpen, toggle, open } = useDisclosure(false);
+    const { isOpen, toggle, open } = useDisclosure(defaultOpen);
 
     const isActivePath = useMemo(() => {
         if (location) {
