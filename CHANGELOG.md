@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.20"></a>
-## 0.1.1-alpha.20 (2023-02-17)
+<a name="0.1.1-alpha.21"></a>
+## 0.1.1-alpha.21 (2023-02-28)
 
 ### Added
 
@@ -34,6 +34,7 @@
 
 ### Dependency Changed
 
+- ⬆️ upgrade version .20 to .21 [[12b5790](https://github.com/FowApps/fow.ui/commit/12b5790cab0672ded4d503b2ed41c239cc01918b)]
 - ➕ add opened state and radius prop to accordion component [[c05d550](https://github.com/FowApps/fow.ui/commit/c05d5501db053200d1e0656419a18e57e7547a9a)]
 - ⬆️ upgrade version [[9ce663a](https://github.com/FowApps/fow.ui/commit/9ce663ac843c05c6bd0d7d21effc66640a4dfcff)]
 - ⬆️ upgrade version [[07e3f60](https://github.com/FowApps/fow.ui/commit/07e3f605fbe1970feba0f0e5f557c2982f522c82)]
@@ -72,6 +73,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[137559f](https://github.com/FowApps/fow.ui/commit/137559ff8864c6e55bcd377d7d8ae7dac8629818)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[82a3efc](https://github.com/FowApps/fow.ui/commit/82a3efcb04eae093c3019b0630749abb9bb0b24b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f50c667](https://github.com/FowApps/fow.ui/commit/f50c667308c20933229bb4fb5eba200a80f9dbdc)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5eed606](https://github.com/FowApps/fow.ui/commit/5eed60604b0183f54d3c5d8a96bff459eb33a459)]
@@ -136,6 +138,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#790](https://github.com/FowApps/fow.ui/issues/790) from FowApps/submenu/init-open [[e60f84e](https://github.com/FowApps/fow.ui/commit/e60f84e068152d3a57f4236221ed308df6d57f7d)]
+-  add sub menu component default open props [[9907222](https://github.com/FowApps/fow.ui/commit/990722278dc5966553dead5f3df79643bbe1bcb6)]
 -  Merge pull request [#785](https://github.com/FowApps/fow.ui/issues/785) from FowApps/accordion-tab-improvements [[5d94445](https://github.com/FowApps/fow.ui/commit/5d94445cf9176f8290052b89a84d5620ac9d8afc)]
 - 🚀 update package version 0.1.1-alpha.20 [[fe5d71b](https://github.com/FowApps/fow.ui/commit/fe5d71b0f14bcfa7b8d97b774ce8a0868d9720bc)]
 - 🌱 update tab items style [[6297831](https://github.com/FowApps/fow.ui/commit/629783105628077b0074f6b66ce821380e33ae82)]
