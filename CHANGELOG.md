@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.21"></a>
-## 0.1.1-alpha.21 (2023-02-28)
+<a name="0.1.1-alpha.22"></a>
+## 0.1.1-alpha.22 (2023-03-01)
 
 ### Added
 
@@ -28,12 +28,14 @@
 
 ### Fixed
 
+- 💚 fix phone input style border err [[9fbfd94](https://github.com/FowApps/fow.ui/commit/9fbfd94fb8f752eb257844535ea78aa460471374)]
 - 🐛 Fix PhoneInput regexp query [[51bcf7f](https://github.com/FowApps/fow.ui/commit/51bcf7fa70cc6e594952913982ce55dbd34628f0)]
 - 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
 - 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
 
 ### Dependency Changed
 
+- ⬆️ upgrade version .21 to .22 [[dbeadf4](https://github.com/FowApps/fow.ui/commit/dbeadf4f4fef4b00c51416a65173314187b873bc)]
 - ⬆️ upgrade version .20 to .21 [[12b5790](https://github.com/FowApps/fow.ui/commit/12b5790cab0672ded4d503b2ed41c239cc01918b)]
 - ➕ add opened state and radius prop to accordion component [[c05d550](https://github.com/FowApps/fow.ui/commit/c05d5501db053200d1e0656419a18e57e7547a9a)]
 - ⬆️ upgrade version [[9ce663a](https://github.com/FowApps/fow.ui/commit/9ce663ac843c05c6bd0d7d21effc66640a4dfcff)]
@@ -73,6 +75,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d8cc5a7](https://github.com/FowApps/fow.ui/commit/d8cc5a7c85513c2bbb34b2f7b37d85f2160accbf)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[137559f](https://github.com/FowApps/fow.ui/commit/137559ff8864c6e55bcd377d7d8ae7dac8629818)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[82a3efc](https://github.com/FowApps/fow.ui/commit/82a3efcb04eae093c3019b0630749abb9bb0b24b)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f50c667](https://github.com/FowApps/fow.ui/commit/f50c667308c20933229bb4fb5eba200a80f9dbdc)]
@@ -138,6 +141,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#792](https://github.com/FowApps/fow.ui/issues/792) from FowApps/fix/phone-style [[a417610](https://github.com/FowApps/fow.ui/commit/a4176107b576974efd78643a7df7026790673027)]
 -  Merge pull request [#790](https://github.com/FowApps/fow.ui/issues/790) from FowApps/submenu/init-open [[e60f84e](https://github.com/FowApps/fow.ui/commit/e60f84e068152d3a57f4236221ed308df6d57f7d)]
 -  add sub menu component default open props [[9907222](https://github.com/FowApps/fow.ui/commit/990722278dc5966553dead5f3df79643bbe1bcb6)]
 -  Merge pull request [#785](https://github.com/FowApps/fow.ui/issues/785) from FowApps/accordion-tab-improvements [[5d94445](https://github.com/FowApps/fow.ui/commit/5d94445cf9176f8290052b89a84d5620ac9d8afc)]
