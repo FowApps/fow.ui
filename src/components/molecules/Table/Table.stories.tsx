@@ -106,7 +106,7 @@ const ManualPaginationTemplate: Story<TableProps> = (args) => {
                 initialPage={pagination.page}
                 pageSize={pagination.pageSize}
                 sortBy={[{ id: 'first_name', desc: false }]}
-                selectedRows={selectedRows}
+                selectedRows={{ '2': true, '4': true }}
                 showSelection
                 onChangeValue={(values) => {}}
             />

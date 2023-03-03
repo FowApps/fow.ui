@@ -383,7 +383,7 @@ const Table = ({
                                     value={Object.keys(
                                         tableInstance.initialState
                                             .selectedRowIds,
-                                    ).includes(row.id)}
+                                    ).includes(Number(row.id))}
                                 />
                             </div>
                         ),
@@ -422,7 +422,7 @@ const Table = ({
             pageIndex,
         },
     } = tableInstance;
-
+    console.log('>>', selectedRows, selectedFlatRows);
     useEffect(() => {
         if (data?.length > 0) {
             const selectedValues = Object.keys(selectedRows);
