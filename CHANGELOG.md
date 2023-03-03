@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.22"></a>
-## 0.1.1-alpha.22 (2023-03-01)
+<a name="0.1.1-alpha.23"></a>
+## 0.1.1-alpha.23 (2023-03-03)
 
 ### Added
 
@@ -11,6 +11,7 @@
 
 ### Changed
 
+- ⚡ add config focus and disabled full content [[310345e](https://github.com/FowApps/fow.ui/commit/310345e61d9c79cc62f7ee546bbde617e838fe8d)]
 - ♻️ Refactor email component [[9c76a7d](https://github.com/FowApps/fow.ui/commit/9c76a7d86adf95f4cc8af47530e6b3c43ac5881d)]
 - 🔧 Update .gitmoji-changelogrc [[c59b5a3](https://github.com/FowApps/fow.ui/commit/c59b5a36924e8252a87614071c9e59a441fa81d6)]
 - ♻️ Add check if email extension [[ab359d2](https://github.com/FowApps/fow.ui/commit/ab359d2111e1d76245d1995266a151b7a5f4af67)]
@@ -35,6 +36,8 @@
 
 ### Dependency Changed
 
+- ⬆️ upgrade version alpha.22 to alpha.23 [[761255c](https://github.com/FowApps/fow.ui/commit/761255ca154ddbcc3a280cc271b77b86ee1a3688)]
+- ➕ add table default selected items [[ccb851e](https://github.com/FowApps/fow.ui/commit/ccb851e5d25297586717e4f2db875a0720856a2a)]
 - ⬆️ upgrade version .21 to .22 [[dbeadf4](https://github.com/FowApps/fow.ui/commit/dbeadf4f4fef4b00c51416a65173314187b873bc)]
 - ⬆️ upgrade version .20 to .21 [[12b5790](https://github.com/FowApps/fow.ui/commit/12b5790cab0672ded4d503b2ed41c239cc01918b)]
 - ➕ add opened state and radius prop to accordion component [[c05d550](https://github.com/FowApps/fow.ui/commit/c05d5501db053200d1e0656419a18e57e7547a9a)]
@@ -75,6 +78,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[c462d03](https://github.com/FowApps/fow.ui/commit/c462d034f810db97a6415bfa66eb96d74d4447b6)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d8cc5a7](https://github.com/FowApps/fow.ui/commit/d8cc5a7c85513c2bbb34b2f7b37d85f2160accbf)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[137559f](https://github.com/FowApps/fow.ui/commit/137559ff8864c6e55bcd377d7d8ae7dac8629818)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[82a3efc](https://github.com/FowApps/fow.ui/commit/82a3efcb04eae093c3019b0630749abb9bb0b24b)]
@@ -141,6 +145,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#795](https://github.com/FowApps/fow.ui/issues/795) from FowApps/improvement/table-form-builder [[4313b44](https://github.com/FowApps/fow.ui/commit/4313b4482194ec2a4287ade7d80fb26f2d25307f)]
 -  Merge pull request [#792](https://github.com/FowApps/fow.ui/issues/792) from FowApps/fix/phone-style [[a417610](https://github.com/FowApps/fow.ui/commit/a4176107b576974efd78643a7df7026790673027)]
 -  Merge pull request [#790](https://github.com/FowApps/fow.ui/issues/790) from FowApps/submenu/init-open [[e60f84e](https://github.com/FowApps/fow.ui/commit/e60f84e068152d3a57f4236221ed308df6d57f7d)]
 -  add sub menu component default open props [[9907222](https://github.com/FowApps/fow.ui/commit/990722278dc5966553dead5f3df79643bbe1bcb6)]
