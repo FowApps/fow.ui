@@ -61,6 +61,8 @@ type Config = {
     id?: string;
     currencyList?: Currency[];
     baseCurrency?: string;
+    disabledAutoFocused?: boolean;
+    disabledFluid?: false;
 };
 
 type Currency = {
@@ -96,6 +98,8 @@ const FormBuilder = ({
         id: undefined,
         currencyList: [],
         baseCurrency: undefined,
+        disabledAutoFocused: false,
+        disabledFluid: false,
     },
     wrapWithForm = true,
 }: FormBuilderProps) => {
@@ -231,10 +235,16 @@ const FormBuilder = ({
                 : FormConfig.fields.getFields()[field.type].rules || [];
 
             const FieldComponent = fieldComponent;
-
             return (
                 <Col
-                    xs={field.props?.fluid ? 12 : 6}
+                    xs={
+                        // eslint-disable-next-line no-nested-ternary
+                        !config?.disabledFluid
+                            ? field.props?.fluid
+                                ? 12
+                                : 6
+                            : field?.props?.columnSize || 12
+                    }
                     style={{
                         display: field.hidden ? 'none' : 'block',
                     }}>
@@ -265,7 +275,12 @@ const FormBuilder = ({
                                 placeholder: getPlaceholderProp(field),
                             }}
                             ref={(ref: any) => {
-                                if (ref && !ref.value && !focused) {
+                                if (
+                                    ref &&
+                                    !ref.value &&
+                                    !focused &&
+                                    !config?.disabledAutoFocused
+                                ) {
                                     focused = true;
                                     setTimeout(() => {
                                         if (typeof ref.focus === 'function') {

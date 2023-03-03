@@ -285,6 +285,7 @@ const FormBuilderTemplate: Story = () => {
                 name: 'TRY',
             },
         ],
+        disabledFluid: true,
         name: 'test',
         id: 'storyform',
         fields: [
@@ -293,6 +294,7 @@ const FormBuilderTemplate: Story = () => {
                 name: 'estimatedAmount',
                 label: 'Estimated Amount',
                 type: 'price',
+                props: { columnSize: 9 },
             },
             {
                 key: 'phone',
