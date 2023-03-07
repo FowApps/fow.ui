@@ -62,7 +62,7 @@
         "slick-carousel": "^1.8.1"
     },
     "devDependencies": {
-        "@4c/tsconfig": "^0.4.0",
+        "@4c/tsconfig": "^0.4.1",
         "@babel/cli": "^7.19.3",
         "@babel/core": "^7.17.7",
         "@babel/plugin-transform-runtime": "^7.17.0",
