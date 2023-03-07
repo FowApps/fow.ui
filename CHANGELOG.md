@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.23"></a>
-## 0.1.1-alpha.23 (2023-03-03)
+<a name="0.1.1-alpha.24"></a>
+## 0.1.1-alpha.24 (2023-03-07)
 
 ### Added
 
@@ -29,6 +29,7 @@
 
 ### Fixed
 
+- 🐛 fix form builder textarea collapse rule [[eeb7f1f](https://github.com/FowApps/fow.ui/commit/eeb7f1f51ab33552651d846e7de96ff384dbf836)]
 - 💚 fix phone input style border err [[9fbfd94](https://github.com/FowApps/fow.ui/commit/9fbfd94fb8f752eb257844535ea78aa460471374)]
 - 🐛 Fix PhoneInput regexp query [[51bcf7f](https://github.com/FowApps/fow.ui/commit/51bcf7fa70cc6e594952913982ce55dbd34628f0)]
 - 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
@@ -78,6 +79,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5cad7ea](https://github.com/FowApps/fow.ui/commit/5cad7ea2cb0edc15e6618d29448f074e59745e5a)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[c462d03](https://github.com/FowApps/fow.ui/commit/c462d034f810db97a6415bfa66eb96d74d4447b6)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d8cc5a7](https://github.com/FowApps/fow.ui/commit/d8cc5a7c85513c2bbb34b2f7b37d85f2160accbf)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[137559f](https://github.com/FowApps/fow.ui/commit/137559ff8864c6e55bcd377d7d8ae7dac8629818)]
@@ -145,6 +147,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#797](https://github.com/FowApps/fow.ui/issues/797) from FowApps/fix/form-builder-richtextarea-collasible [[417da23](https://github.com/FowApps/fow.ui/commit/417da23b68a03c81b467edfb310fb9d36ce6f903)]
 -  Merge pull request [#795](https://github.com/FowApps/fow.ui/issues/795) from FowApps/improvement/table-form-builder [[4313b44](https://github.com/FowApps/fow.ui/commit/4313b4482194ec2a4287ade7d80fb26f2d25307f)]
 -  Merge pull request [#792](https://github.com/FowApps/fow.ui/issues/792) from FowApps/fix/phone-style [[a417610](https://github.com/FowApps/fow.ui/commit/a4176107b576974efd78643a7df7026790673027)]
 -  Merge pull request [#790](https://github.com/FowApps/fow.ui/issues/790) from FowApps/submenu/init-open [[e60f84e](https://github.com/FowApps/fow.ui/commit/e60f84e068152d3a57f4236221ed308df6d57f7d)]
