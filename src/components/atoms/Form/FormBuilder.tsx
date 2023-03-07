@@ -138,7 +138,6 @@ const FormBuilder = ({
     const getinitialVisibleFieldProp = useCallback((field: Field) => {
         if (typeof field.initialVisibleField === 'boolean')
             return field.initialVisibleField;
-        if (field.type === 'rich-textarea') return false;
         return true;
     }, []);
 
