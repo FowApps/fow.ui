@@ -56,7 +56,7 @@
         "react-lottie": "^1.2.3",
         "react-phone-input-2": "^2.15.0",
         "react-slick": "^0.28.1",
-        "react-table": "^7.7.0",
+        "react-table": "^7.8.0",
         "react-textarea-autosize": "^8.3.3",
         "react-transition-group": "^4.4.5",
         "slick-carousel": "^1.8.1"
@@ -92,7 +92,7 @@
         "@types/react-lottie": "^1.2.6",
         "@types/react-select": "^5.0.1",
         "@types/react-slick": "^0.23.8",
-        "@types/react-table": "^7.7.10",
+        "@types/react-table": "^7.7.14",
         "@types/react-textarea-autosize": "^4.3.6",
         "@types/react-transition-group": "^4.4.5",
         "@types/styled-components": "^5.1.24",
