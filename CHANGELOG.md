@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.24"></a>
-## 0.1.1-alpha.24 (2023-03-07)
+<a name="0.1.1-alpha.25"></a>
+## 0.1.1-alpha.25 (2023-03-10)
 
 ### Added
 
@@ -37,6 +37,8 @@
 
 ### Dependency Changed
 
+- ⬆️ upgrade version 0.1.1-alpha.24 to 0.1.1-alpha.25 [[a7a429d](https://github.com/FowApps/fow.ui/commit/a7a429db4731e4a60f740486c65268ca20b211a6)]
+- ➕ add form builder disabled currencies [[306cbfb](https://github.com/FowApps/fow.ui/commit/306cbfb3c60928480c4c7c77551e54250677df0f)]
 - ⬆️ upgrade version alpha.22 to alpha.23 [[761255c](https://github.com/FowApps/fow.ui/commit/761255ca154ddbcc3a280cc271b77b86ee1a3688)]
 - ➕ add table default selected items [[ccb851e](https://github.com/FowApps/fow.ui/commit/ccb851e5d25297586717e4f2db875a0720856a2a)]
 - ⬆️ upgrade version .21 to .22 [[dbeadf4](https://github.com/FowApps/fow.ui/commit/dbeadf4f4fef4b00c51416a65173314187b873bc)]
@@ -79,6 +81,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[8b12ff9](https://github.com/FowApps/fow.ui/commit/8b12ff9c0cec85b6fa4353d3119192be7c376809)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5cad7ea](https://github.com/FowApps/fow.ui/commit/5cad7ea2cb0edc15e6618d29448f074e59745e5a)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[c462d03](https://github.com/FowApps/fow.ui/commit/c462d034f810db97a6415bfa66eb96d74d4447b6)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d8cc5a7](https://github.com/FowApps/fow.ui/commit/d8cc5a7c85513c2bbb34b2f7b37d85f2160accbf)]
@@ -147,6 +150,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#800](https://github.com/FowApps/fow.ui/issues/800) from FowApps/add/form-builder-disabled-currencies [[3837c10](https://github.com/FowApps/fow.ui/commit/3837c1086b2ddfd797fabf96c3ebd8a7676a7b93)]
 -  Merge pull request [#797](https://github.com/FowApps/fow.ui/issues/797) from FowApps/fix/form-builder-richtextarea-collasible [[417da23](https://github.com/FowApps/fow.ui/commit/417da23b68a03c81b467edfb310fb9d36ce6f903)]
 -  Merge pull request [#795](https://github.com/FowApps/fow.ui/issues/795) from FowApps/improvement/table-form-builder [[4313b44](https://github.com/FowApps/fow.ui/commit/4313b4482194ec2a4287ade7d80fb26f2d25307f)]
 -  Merge pull request [#792](https://github.com/FowApps/fow.ui/issues/792) from FowApps/fix/phone-style [[a417610](https://github.com/FowApps/fow.ui/commit/a4176107b576974efd78643a7df7026790673027)]
