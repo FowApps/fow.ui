@@ -101,11 +101,7 @@ const PriceInput = ({
         setCurrency(changedValue?.currency ?? currency);
     };
     const singleOnChange = (changedValue: number) => {
-        if (setFormFieldValue) {
-            onChange?.(changedValue);
-        } else {
-            onChange?.(changedValue);
-        }
+        onChange?.(changedValue);
         setNumber(changedValue);
     };
 
