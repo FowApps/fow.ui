@@ -42,6 +42,7 @@ type Field = {
     name: string;
     label?: string;
     required?: boolean;
+    disabled?: boolean;
     type: FieldTypes;
     hint?: string;
     options?: Option[];
@@ -84,10 +85,12 @@ export interface FormBuilderProps {
     showOnlyMandatory?: boolean;
     onValuesChange?: (value: any, values: any) => void;
     wrapWithForm?: boolean;
+    disableCurrency?: boolean;
 }
 
 const FormBuilder = ({
     initialValues,
+    disableCurrency = false,
     formInstance,
     onSubmit,
     showOnlyMandatory = false,
@@ -161,6 +164,7 @@ const FormBuilder = ({
                         },
                         currencies: config.currencyList,
                         baseCurrency: config.baseCurrency,
+                        disableCurrency,
                     };
                 case 'checkbox':
                     return {
@@ -273,6 +277,7 @@ const FormBuilder = ({
                             inputProps={{
                                 placeholder: getPlaceholderProp(field),
                             }}
+                            type={field?.type}
                             ref={(ref: any) => {
                                 if (
                                     ref &&

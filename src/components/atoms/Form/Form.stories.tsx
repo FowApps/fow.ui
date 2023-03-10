@@ -294,7 +294,7 @@ const FormBuilderTemplate: Story = () => {
                 name: 'estimatedAmount',
                 label: 'Estimated Amount',
                 type: 'price',
-                props: { columnSize: 9 },
+                props: { columnSize: 12 },
             },
             {
                 key: 'phone',
@@ -309,6 +309,26 @@ const FormBuilderTemplate: Story = () => {
                 label: 'First Name',
                 type: 'text',
                 hint: 'Hello Africa',
+            },
+            {
+                key: 'disabledFirstName',
+                name: 'disabledFirstName',
+                label: 'Disable First Name',
+                type: 'text',
+                hint: 'Hello Africa',
+                props: {
+                    disabled: true,
+                },
+            },
+            {
+                key: 'password',
+                name: 'password',
+                label: 'Password',
+                type: 'password',
+                hint: 'Hello FOWUI',
+                props: {
+                    disabled: true,
+                },
             },
             {
                 key: 'start-date-time',
@@ -487,9 +507,12 @@ const FormBuilderTemplate: Story = () => {
                 Toggle
             </Button>
             <FormBuilder
+                disableCurrency={true}
                 showOnlyMandatory={onlyMandatory}
                 initialValues={{
                     firstName: 'Görkem',
+                    disabledFirstName: 'Ali',
+                    password: 'FowCRM',
                     selectedItemIds: [3, 2],
                     email: 'grkm@test.com',
                     count: 12,
