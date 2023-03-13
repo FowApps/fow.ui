@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.25"></a>
-## 0.1.1-alpha.25 (2023-03-10)
+## 0.1.1-alpha.25 (2023-03-13)
 
 ### Added
 
@@ -34,6 +34,10 @@
 - 🐛 Fix PhoneInput regexp query [[51bcf7f](https://github.com/FowApps/fow.ui/commit/51bcf7fa70cc6e594952913982ce55dbd34628f0)]
 - 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
 - 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
+
+### Security
+
+- 🔒 Update Dependabot config [[79d8268](https://github.com/FowApps/fow.ui/commit/79d8268a0ff1c3d866fabf7bab118d369b6b67cd)]
 
 ### Dependency Changed
 
@@ -81,6 +85,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f0fbe3b](https://github.com/FowApps/fow.ui/commit/f0fbe3b3988fd4015f218663fa1ce9a3e59b6751)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[2d63465](https://github.com/FowApps/fow.ui/commit/2d63465088bb06a39ba231a17dbefd600a1a0389)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[8b12ff9](https://github.com/FowApps/fow.ui/commit/8b12ff9c0cec85b6fa4353d3119192be7c376809)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5cad7ea](https://github.com/FowApps/fow.ui/commit/5cad7ea2cb0edc15e6618d29448f074e59745e5a)]
