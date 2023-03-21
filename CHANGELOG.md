@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.27"></a>
-## 0.1.1-alpha.27 (2023-03-21)
+<a name="0.1.1-alpha.28"></a>
+## 0.1.1-alpha.28 (2023-03-21)
 
 ### Added
 
@@ -88,6 +88,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[fb10c39](https://github.com/FowApps/fow.ui/commit/fb10c39836d4c70f2803b3276c32ff2441d45815)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[091b250](https://github.com/FowApps/fow.ui/commit/091b2506516123382785c29d2f9ef5bb73f47192)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[b3290b3](https://github.com/FowApps/fow.ui/commit/b3290b3ca782b61e3db7d5bc90183c970f3d7432)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f0fbe3b](https://github.com/FowApps/fow.ui/commit/f0fbe3b3988fd4015f218663fa1ce9a3e59b6751)]
@@ -161,6 +162,14 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#809](https://github.com/FowApps/fow.ui/issues/809) from FowApps/fix/select-default-value [[df52ec0](https://github.com/FowApps/fow.ui/commit/df52ec099dc4522f233c3ba12102385cfd9d650a)]
+-  fix packages version [[2ebddbe](https://github.com/FowApps/fow.ui/commit/2ebddbe907d60ea597f14e9da63a90334af5423d)]
+-  update version [[cd49921](https://github.com/FowApps/fow.ui/commit/cd499210c808a9348bce795131b4d937c07ba215)]
+-  update version [[33d15cb](https://github.com/FowApps/fow.ui/commit/33d15cbe0e9b8709a2d52cc65235aa0a588c0c70)]
+-  Merge branch &#x27;main&#x27; into fix/select-default-value [[1b4e662](https://github.com/FowApps/fow.ui/commit/1b4e6620d5a345d0c76f820870d22ecd75ef6aa4)]
+-  update version [[b216fd0](https://github.com/FowApps/fow.ui/commit/b216fd083b12143b732062e54889b6d63ec1d63a)]
+-  Merge branch &#x27;main&#x27; into fix/select-default-value [[eeb2f4a](https://github.com/FowApps/fow.ui/commit/eeb2f4ab73f0f07fb27a8093cce1b3e87d81872d)]
+-  update select value when default value changes [[48d3847](https://github.com/FowApps/fow.ui/commit/48d3847dbec786b4f17271bd2e77069be61fe4f2)]
 -  Merge pull request [#808](https://github.com/FowApps/fow.ui/issues/808) from FowApps/fix/form-builder-min-props [[5bdd67d](https://github.com/FowApps/fow.ui/commit/5bdd67d431861c3cc24fbc87eaebc0d478c7eeee)]
 -  Merge pull request [#807](https://github.com/FowApps/fow.ui/issues/807) from FowApps/fix/builder-error-alert [[8525e73](https://github.com/FowApps/fow.ui/commit/8525e73fc750894c4ac202d319ec0893e272dde3)]
 -  fix singleOnChange err [[cdd0849](https://github.com/FowApps/fow.ui/commit/cdd08494b3deea1e4744182e6240e2e24d787354)]
