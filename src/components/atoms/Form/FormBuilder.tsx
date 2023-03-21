@@ -330,7 +330,7 @@ const FormBuilder = ({
 
                         input?.scrollIntoView({
                             behavior: 'smooth',
-                            block: 'center',
+                            block: 'start',
                             inline: 'start',
                         });
 
