@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.26"></a>
-## 0.1.1-alpha.26 (2023-03-21)
+<a name="0.1.1-alpha.27"></a>
+## 0.1.1-alpha.27 (2023-03-21)
 
 ### Added
 
@@ -29,6 +29,7 @@
 
 ### Fixed
 
+- 🐛 fix builder min prop and number style err [[9dc2f81](https://github.com/FowApps/fow.ui/commit/9dc2f81b2a0be40df2eb3124b34028f0f83bcb33)]
 - 🐛 fix form builder error handle scroll err [[b1f70b0](https://github.com/FowApps/fow.ui/commit/b1f70b0d8d6979345c7a960c8e3ec07cb472b277)]
 - 🐛 fix form builder textarea collapse rule [[eeb7f1f](https://github.com/FowApps/fow.ui/commit/eeb7f1f51ab33552651d846e7de96ff384dbf836)]
 - 💚 fix phone input style border err [[9fbfd94](https://github.com/FowApps/fow.ui/commit/9fbfd94fb8f752eb257844535ea78aa460471374)]
@@ -87,6 +88,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[091b250](https://github.com/FowApps/fow.ui/commit/091b2506516123382785c29d2f9ef5bb73f47192)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[b3290b3](https://github.com/FowApps/fow.ui/commit/b3290b3ca782b61e3db7d5bc90183c970f3d7432)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f0fbe3b](https://github.com/FowApps/fow.ui/commit/f0fbe3b3988fd4015f218663fa1ce9a3e59b6751)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[2d63465](https://github.com/FowApps/fow.ui/commit/2d63465088bb06a39ba231a17dbefd600a1a0389)]
@@ -159,6 +161,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#808](https://github.com/FowApps/fow.ui/issues/808) from FowApps/fix/form-builder-min-props [[5bdd67d](https://github.com/FowApps/fow.ui/commit/5bdd67d431861c3cc24fbc87eaebc0d478c7eeee)]
 -  Merge pull request [#807](https://github.com/FowApps/fow.ui/issues/807) from FowApps/fix/builder-error-alert [[8525e73](https://github.com/FowApps/fow.ui/commit/8525e73fc750894c4ac202d319ec0893e272dde3)]
 -  fix singleOnChange err [[cdd0849](https://github.com/FowApps/fow.ui/commit/cdd08494b3deea1e4744182e6240e2e24d787354)]
 -  Merge pull request [#800](https://github.com/FowApps/fow.ui/issues/800) from FowApps/add/form-builder-disabled-currencies [[3837c10](https://github.com/FowApps/fow.ui/commit/3837c1086b2ddfd797fabf96c3ebd8a7676a7b93)]
