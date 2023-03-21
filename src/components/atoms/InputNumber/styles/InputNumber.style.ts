@@ -9,7 +9,11 @@ export const Wrapper = styled.div<InputProps>`
     input::placeholder {
         color: ${(props) => props.theme.fow.colors.text.disabled};
     }
-
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
     .rc-input-number {
         width: 100%;
         border-radius: 4px;

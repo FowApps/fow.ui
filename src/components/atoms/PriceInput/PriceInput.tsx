@@ -69,6 +69,7 @@ const PriceInput = ({
     disabled = false,
     baseCurrency,
     disableCurrency,
+    ...rest
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
         value?.number || initialValue?.number || undefined,
@@ -121,6 +122,7 @@ const PriceInput = ({
             {disableCurrency ? (
                 <InputWrapper>
                     <InputNumber
+                        {...rest}
                         disabled={disabled}
                         type="text"
                         formatter={(val) =>

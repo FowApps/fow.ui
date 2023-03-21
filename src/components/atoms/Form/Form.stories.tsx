@@ -294,7 +294,7 @@ const FormBuilderTemplate: Story = () => {
                 name: 'estimatedAmount',
                 label: 'Estimated Amount',
                 type: 'price',
-                props: { columnSize: 12 },
+                props: { columnSize: 12, min: 0 },
             },
             {
                 key: 'phone',
@@ -386,6 +386,7 @@ const FormBuilderTemplate: Story = () => {
                 label: 'Count',
                 type: 'number',
                 hint: 'Hello Africa',
+                props: { min: -3 },
             },
             {
                 key: 'collection',
