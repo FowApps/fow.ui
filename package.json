@@ -36,7 +36,6 @@
         "@fullcalendar/interaction": "^5.11.3",
         "@fullcalendar/react": "^5.11.2",
         "@fullcalendar/timegrid": "^5.11.3",
-        "@tanstack/react-table": "^8.7.9",
         "immutable": "^4.1.0",
         "moment": "^2.29.4",
         "polished": "4.2.2",
@@ -57,7 +56,7 @@
         "react-lottie": "^1.2.3",
         "react-phone-input-2": "^2.15.0",
         "react-slick": "^0.28.1",
-        "react-table": "^7.8.0",
+        "react-table": "^7.7.0",
         "react-textarea-autosize": "^8.3.3",
         "react-transition-group": "^4.4.5",
         "slick-carousel": "^1.8.1"
