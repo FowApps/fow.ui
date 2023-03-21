@@ -54,6 +54,7 @@ export interface PriceInputProps {
         currency?: Currency['value'];
     };
     disabled?: boolean;
+    disableCurrency?: boolean;
     baseCurrency?: string;
 }
 
@@ -67,6 +68,8 @@ const PriceInput = ({
     initialValue,
     disabled = false,
     baseCurrency,
+    disableCurrency,
+    ...rest
 }: PriceInputProps): JSX.Element => {
     const [number, setNumber] = useState<number | undefined>(
         value?.number || initialValue?.number || undefined,
@@ -98,52 +101,81 @@ const PriceInput = ({
         setNumber(changedValue?.number ?? number);
         setCurrency(changedValue?.currency ?? currency);
     };
+    const singleOnChange = (changedValue: number) => {
+        onChange?.(changedValue);
+        setNumber(changedValue);
+    };
 
     useEffect(() => {
-        if (value?.number !== number || value?.currency !== currency) {
+        if (disableCurrency) {
+            singleOnChange?.(Number(value));
+        } else if (
+            (value?.number !== number || value?.currency !== currency) &&
+            !disableCurrency
+        ) {
             triggerChange(value);
         }
-    }, [value]);
+    }, [value, disableCurrency]);
 
     return (
         <Space size="xxsmall" inline={false}>
-            <InputWrapper>
-                <InputNumber
-                    disabled={disabled}
-                    type="text"
-                    formatter={(val) =>
-                        `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                    }
-                    {...inputProps}
-                    value={number}
-                    onChange={(e) =>
-                        triggerChange({
-                            number: Number(e),
-                            currency,
-                        })
-                    }
-                />
-            </InputWrapper>
-            <SelectWrapper style={{ width: 150 }}>
-                <SelectV3
-                    allowSearch={false}
-                    allowClear={false}
-                    options={currencies?.map((curr) => ({
-                        value: curr.value,
-                        label: curr.name,
-                    }))}
-                    disabled={disabled}
-                    closeAfterSelect
-                    {...selectProps}
-                    value={currency}
-                    onChange={(e) =>
-                        triggerChange({
-                            number,
-                            currency: e,
-                        })
-                    }
-                />
-            </SelectWrapper>
+            {disableCurrency ? (
+                <InputWrapper>
+                    <InputNumber
+                        {...rest}
+                        disabled={disabled}
+                        type="text"
+                        formatter={(val) =>
+                            `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                        }
+                        {...inputProps}
+                        value={number}
+                        onChange={(e) => {
+                            singleOnChange(Number(e));
+                        }}
+                    />
+                </InputWrapper>
+            ) : (
+                <>
+                    <InputWrapper>
+                        <InputNumber
+                            disabled={disabled}
+                            type="text"
+                            formatter={(val) =>
+                                `${val}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                            }
+                            {...inputProps}
+                            value={number}
+                            onChange={(e) =>
+                                triggerChange({
+                                    number: Number(e),
+                                    currency,
+                                })
+                            }
+                        />
+                    </InputWrapper>
+                    <SelectWrapper style={{ width: 150 }}>
+                        <SelectV3
+                            allowSearch={false}
+                            allowClear={false}
+                            options={currencies?.map((curr) => ({
+                                value: curr.value,
+                                label: curr.name,
+                            }))}
+                            disabled={disabled}
+                            closeAfterSelect
+                            {...selectProps}
+                            value={currency}
+                            onChange={(e) =>
+                                triggerChange({
+                                    number,
+                                    currency: e,
+                                })
+                            }
+                        />
+                    </SelectWrapper>
+                </>
+            )}
         </Space>
     );
 };

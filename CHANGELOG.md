@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.24"></a>
-## 0.1.1-alpha.24 (2023-03-07)
+<a name="0.1.1-alpha.27"></a>
+## 0.1.1-alpha.27 (2023-03-21)
 
 ### Added
 
@@ -29,14 +29,23 @@
 
 ### Fixed
 
+- 🐛 fix builder min prop and number style err [[9dc2f81](https://github.com/FowApps/fow.ui/commit/9dc2f81b2a0be40df2eb3124b34028f0f83bcb33)]
+- 🐛 fix form builder error handle scroll err [[b1f70b0](https://github.com/FowApps/fow.ui/commit/b1f70b0d8d6979345c7a960c8e3ec07cb472b277)]
 - 🐛 fix form builder textarea collapse rule [[eeb7f1f](https://github.com/FowApps/fow.ui/commit/eeb7f1f51ab33552651d846e7de96ff384dbf836)]
 - 💚 fix phone input style border err [[9fbfd94](https://github.com/FowApps/fow.ui/commit/9fbfd94fb8f752eb257844535ea78aa460471374)]
 - 🐛 Fix PhoneInput regexp query [[51bcf7f](https://github.com/FowApps/fow.ui/commit/51bcf7fa70cc6e594952913982ce55dbd34628f0)]
 - 🐛 Fix change of value in input [[1268f0c](https://github.com/FowApps/fow.ui/commit/1268f0c834121467eaf3fbdbfae0e90179fa61ac)]
 - 🐛 Improvement editor component [[da2d58c](https://github.com/FowApps/fow.ui/commit/da2d58cbabcb508ba39696c12a067b1062daa3c7)]
 
+### Security
+
+- 🔒 Update Dependabot config [[79d8268](https://github.com/FowApps/fow.ui/commit/79d8268a0ff1c3d866fabf7bab118d369b6b67cd)]
+
 ### Dependency Changed
 
+- ⬆️ upgrade version 0.1.1-alpha.25 to 0.1.1-alpha.26 [[34dc141](https://github.com/FowApps/fow.ui/commit/34dc14154cd2cd62f2923355285f70a7fb192c63)]
+- ⬆️ upgrade version 0.1.1-alpha.24 to 0.1.1-alpha.25 [[a7a429d](https://github.com/FowApps/fow.ui/commit/a7a429db4731e4a60f740486c65268ca20b211a6)]
+- ➕ add form builder disabled currencies [[306cbfb](https://github.com/FowApps/fow.ui/commit/306cbfb3c60928480c4c7c77551e54250677df0f)]
 - ⬆️ upgrade version alpha.22 to alpha.23 [[761255c](https://github.com/FowApps/fow.ui/commit/761255ca154ddbcc3a280cc271b77b86ee1a3688)]
 - ➕ add table default selected items [[ccb851e](https://github.com/FowApps/fow.ui/commit/ccb851e5d25297586717e4f2db875a0720856a2a)]
 - ⬆️ upgrade version .21 to .22 [[dbeadf4](https://github.com/FowApps/fow.ui/commit/dbeadf4f4fef4b00c51416a65173314187b873bc)]
@@ -79,6 +88,11 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[091b250](https://github.com/FowApps/fow.ui/commit/091b2506516123382785c29d2f9ef5bb73f47192)]
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[b3290b3](https://github.com/FowApps/fow.ui/commit/b3290b3ca782b61e3db7d5bc90183c970f3d7432)]
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[f0fbe3b](https://github.com/FowApps/fow.ui/commit/f0fbe3b3988fd4015f218663fa1ce9a3e59b6751)]
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[2d63465](https://github.com/FowApps/fow.ui/commit/2d63465088bb06a39ba231a17dbefd600a1a0389)]
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[8b12ff9](https://github.com/FowApps/fow.ui/commit/8b12ff9c0cec85b6fa4353d3119192be7c376809)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5cad7ea](https://github.com/FowApps/fow.ui/commit/5cad7ea2cb0edc15e6618d29448f074e59745e5a)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[c462d03](https://github.com/FowApps/fow.ui/commit/c462d034f810db97a6415bfa66eb96d74d4447b6)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d8cc5a7](https://github.com/FowApps/fow.ui/commit/d8cc5a7c85513c2bbb34b2f7b37d85f2160accbf)]
@@ -147,6 +161,10 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#808](https://github.com/FowApps/fow.ui/issues/808) from FowApps/fix/form-builder-min-props [[5bdd67d](https://github.com/FowApps/fow.ui/commit/5bdd67d431861c3cc24fbc87eaebc0d478c7eeee)]
+-  Merge pull request [#807](https://github.com/FowApps/fow.ui/issues/807) from FowApps/fix/builder-error-alert [[8525e73](https://github.com/FowApps/fow.ui/commit/8525e73fc750894c4ac202d319ec0893e272dde3)]
+-  fix singleOnChange err [[cdd0849](https://github.com/FowApps/fow.ui/commit/cdd08494b3deea1e4744182e6240e2e24d787354)]
+-  Merge pull request [#800](https://github.com/FowApps/fow.ui/issues/800) from FowApps/add/form-builder-disabled-currencies [[3837c10](https://github.com/FowApps/fow.ui/commit/3837c1086b2ddfd797fabf96c3ebd8a7676a7b93)]
 -  Merge pull request [#797](https://github.com/FowApps/fow.ui/issues/797) from FowApps/fix/form-builder-richtextarea-collasible [[417da23](https://github.com/FowApps/fow.ui/commit/417da23b68a03c81b467edfb310fb9d36ce6f903)]
 -  Merge pull request [#795](https://github.com/FowApps/fow.ui/issues/795) from FowApps/improvement/table-form-builder [[4313b44](https://github.com/FowApps/fow.ui/commit/4313b4482194ec2a4287ade7d80fb26f2d25307f)]
 -  Merge pull request [#792](https://github.com/FowApps/fow.ui/issues/792) from FowApps/fix/phone-style [[a417610](https://github.com/FowApps/fow.ui/commit/a4176107b576974efd78643a7df7026790673027)]

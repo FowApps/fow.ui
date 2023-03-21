@@ -46,6 +46,10 @@ const localization = { tr, en };
             ],
         },
         {
+            type: 'password',
+            field: Input,
+        },
+        {
             type: 'textarea',
             field: TextArea,
             predefineRules: [
