@@ -183,16 +183,6 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         }
     }, [defaultValue, isControlled, isSingle, options, value]);
 
-    useEffect(() => {
-        const val = options.find(
-            (opt) => opt.value.toString() === defaultValue,
-        );
-
-        if (val) {
-            setSelected(val);
-        }
-    }, [defaultValue]);
-
     const handleSearch = debounce(
         (query: string) => {
             if (onSearch) {
