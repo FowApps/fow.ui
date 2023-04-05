@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.27"></a>
-## 0.1.1-alpha.27 (2023-03-21)
+<a name="0.1.1-alpha.28"></a>
+## 0.1.1-alpha.28 (2023-04-05)
 
 ### Added
 
@@ -29,6 +29,7 @@
 
 ### Fixed
 
+- 🐛 fix select option wordBreak and width err [[8ae33f8](https://github.com/FowApps/fow.ui/commit/8ae33f8ff722ae0da553c5e4cafda52bb2579c57)]
 - 🐛 fix builder min prop and number style err [[9dc2f81](https://github.com/FowApps/fow.ui/commit/9dc2f81b2a0be40df2eb3124b34028f0f83bcb33)]
 - 🐛 fix form builder error handle scroll err [[b1f70b0](https://github.com/FowApps/fow.ui/commit/b1f70b0d8d6979345c7a960c8e3ec07cb472b277)]
 - 🐛 fix form builder textarea collapse rule [[eeb7f1f](https://github.com/FowApps/fow.ui/commit/eeb7f1f51ab33552651d846e7de96ff384dbf836)]
@@ -88,6 +89,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[281c1f4](https://github.com/FowApps/fow.ui/commit/281c1f4940b088b6adc45eb41cf17f9c1c951b63)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5c10ef7](https://github.com/FowApps/fow.ui/commit/5c10ef7e066f3e2100bd45d5e51074c0ec9a5d72)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[fb10c39](https://github.com/FowApps/fow.ui/commit/fb10c39836d4c70f2803b3276c32ff2441d45815)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[091b250](https://github.com/FowApps/fow.ui/commit/091b2506516123382785c29d2f9ef5bb73f47192)]
@@ -163,6 +165,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#821](https://github.com/FowApps/fow.ui/issues/821) from FowApps/fix/select-option-width-err [[75a7e1e](https://github.com/FowApps/fow.ui/commit/75a7e1e1e9295d03a0967cdca726de982c81f94b)]
+-  upgrade version .27 to .28 [[6ce07f3](https://github.com/FowApps/fow.ui/commit/6ce07f34cef5a87a0cbe08db7d45c8d420be32b3)]
 -  Merge pull request [#810](https://github.com/FowApps/fow.ui/issues/810) from FowApps/revert-809-fix/select-default-value [[199cce3](https://github.com/FowApps/fow.ui/commit/199cce3e73bd98531a7549e1b8dd330956fcd0e3)]
 -  Revert &quot;update select value when default value changes&quot; [[90fe529](https://github.com/FowApps/fow.ui/commit/90fe5290696bed18498bd566d25cb88651655da4)]
 -  Merge pull request [#809](https://github.com/FowApps/fow.ui/issues/809) from FowApps/fix/select-default-value [[df52ec0](https://github.com/FowApps/fow.ui/commit/df52ec099dc4522f233c3ba12102385cfd9d650a)]
