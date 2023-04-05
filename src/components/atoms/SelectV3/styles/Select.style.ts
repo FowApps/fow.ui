@@ -50,4 +50,7 @@ export const SearchWrapper = styled.div`
 
 export const EmptyWrapper = styled.div``;
 
-export const OptionsWrapper = styled.div<OptionsWrapperProps>``;
+export const OptionsWrapper = styled.div<OptionsWrapperProps>`
+    max-width: 100%;
+    word-break: break-all;
+`;
