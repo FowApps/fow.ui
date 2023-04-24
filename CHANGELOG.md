@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.28"></a>
-## 0.1.1-alpha.28 (2023-04-05)
+<a name="0.1.1-alpha.29"></a>
+## 0.1.1-alpha.29 (2023-04-24)
 
 ### Added
 
@@ -44,6 +44,8 @@
 
 ### Dependency Changed
 
+- ⬆️ upgrade version .28 to .29 [[79b1ab4](https://github.com/FowApps/fow.ui/commit/79b1ab4b56d0945a734a89ae6396b78a1ab38bee)]
+- ➕ add column list className and empty function state div err [[b0b5fdd](https://github.com/FowApps/fow.ui/commit/b0b5fdd6aef8e408e36e84340558c9745b909a59)]
 - ⬆️ upgrade version 0.1.1-alpha.25 to 0.1.1-alpha.26 [[34dc141](https://github.com/FowApps/fow.ui/commit/34dc14154cd2cd62f2923355285f70a7fb192c63)]
 - ⬆️ upgrade version 0.1.1-alpha.24 to 0.1.1-alpha.25 [[a7a429d](https://github.com/FowApps/fow.ui/commit/a7a429db4731e4a60f740486c65268ca20b211a6)]
 - ➕ add form builder disabled currencies [[306cbfb](https://github.com/FowApps/fow.ui/commit/306cbfb3c60928480c4c7c77551e54250677df0f)]
@@ -89,6 +91,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[4bdc7b0](https://github.com/FowApps/fow.ui/commit/4bdc7b00c6ad0bbaf221405bf8d4a6b91bc2b737)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[281c1f4](https://github.com/FowApps/fow.ui/commit/281c1f4940b088b6adc45eb41cf17f9c1c951b63)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5c10ef7](https://github.com/FowApps/fow.ui/commit/5c10ef7e066f3e2100bd45d5e51074c0ec9a5d72)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[fb10c39](https://github.com/FowApps/fow.ui/commit/fb10c39836d4c70f2803b3276c32ff2441d45815)]
@@ -165,6 +168,7 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#828](https://github.com/FowApps/fow.ui/issues/828) from FowApps/add-columns-class-table [[851ef90](https://github.com/FowApps/fow.ui/commit/851ef9061ad0bb06e9aa924af84420ee605be453)]
 -  Merge pull request [#821](https://github.com/FowApps/fow.ui/issues/821) from FowApps/fix/select-option-width-err [[75a7e1e](https://github.com/FowApps/fow.ui/commit/75a7e1e1e9295d03a0967cdca726de982c81f94b)]
 -  upgrade version .27 to .28 [[6ce07f3](https://github.com/FowApps/fow.ui/commit/6ce07f34cef5a87a0cbe08db7d45c8d420be32b3)]
 -  Merge pull request [#810](https://github.com/FowApps/fow.ui/issues/810) from FowApps/revert-809-fix/select-default-value [[199cce3](https://github.com/FowApps/fow.ui/commit/199cce3e73bd98531a7549e1b8dd330956fcd0e3)]
