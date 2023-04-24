@@ -653,7 +653,7 @@ const Table = ({
         return value;
     };
     const content = (
-        <ColumnList>
+        <ColumnList className="column-list">
             <div>
                 <Space direction="vertical" align="start" size="xsmall">
                     <Subtitle level={1}>
@@ -818,10 +818,9 @@ const Table = ({
                         align="center"
                         justify="space-between"
                         style={{ marginBottom: 16 }}>
-                        <div>
-                            {typeof renderFilters === 'function' &&
-                                renderFilters()}
-                        </div>
+                        {typeof renderFilters === 'function' && (
+                            <div>{renderFilters()}</div>
+                        )}
 
                         {showColumnControls && (
                             <>
