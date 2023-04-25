@@ -59,6 +59,7 @@ export type CustomControlType = {
     html?: string | null;
     value: string;
     component: React.ReactNode;
+    onClick?: (value: string) => void;
 };
 
 export type EditorProps = BraftEditorProps & {
@@ -307,7 +308,11 @@ const Editor = (
                                     size="medium"
                                     variant="text"
                                     onClick={() => {
-                                        insertText(control.value);
+                                        if (control?.onClick) {
+                                            control.onClick(control.value);
+                                        } else {
+                                            insertText(control.value);
+                                        }
                                     }}>
                                     {control.text}
                                 </ButtonWrapper>
@@ -332,7 +337,7 @@ const Editor = (
             setEditorState(defaultState);
             setIsDefaultValueSetted(true);
         }
-    }, [rest?.value, rest?.defaultValue, isFocused, externalValue]);
+    }, [rest?.value, rest?.defaultValue, externalValue]);
 
     const getControls = () => {
         if (customControls) {
