@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.29"></a>
-## 0.1.1-alpha.29 (2023-04-24)
+<a name="0.1.1-alpha.30"></a>
+## 0.1.1-alpha.30 (2023-04-25)
 
 ### Added
 
@@ -91,6 +91,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[0dd32bb](https://github.com/FowApps/fow.ui/commit/0dd32bbb7e97564fc123c17342707b10228a5886)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[4bdc7b0](https://github.com/FowApps/fow.ui/commit/4bdc7b00c6ad0bbaf221405bf8d4a6b91bc2b737)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[281c1f4](https://github.com/FowApps/fow.ui/commit/281c1f4940b088b6adc45eb41cf17f9c1c951b63)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[5c10ef7](https://github.com/FowApps/fow.ui/commit/5c10ef7e066f3e2100bd45d5e51074c0ec9a5d72)]
@@ -168,6 +169,9 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#831](https://github.com/FowApps/fow.ui/issues/831) from FowApps/fix/editor-focus-broken [[37da447](https://github.com/FowApps/fow.ui/commit/37da447e58b2842d748a5d8e1f3b30534b57237c)]
+-  chore: update version [[465c20b](https://github.com/FowApps/fow.ui/commit/465c20ba9bc5e90a7b9b9ca961dfe1e52dc4e540)]
+-  fix: removal of content when focus is broken [[7d74883](https://github.com/FowApps/fow.ui/commit/7d748839dc27331fed9fc50044db1514fca3bff2)]
 -  Merge pull request [#828](https://github.com/FowApps/fow.ui/issues/828) from FowApps/add-columns-class-table [[851ef90](https://github.com/FowApps/fow.ui/commit/851ef9061ad0bb06e9aa924af84420ee605be453)]
 -  Merge pull request [#821](https://github.com/FowApps/fow.ui/issues/821) from FowApps/fix/select-option-width-err [[75a7e1e](https://github.com/FowApps/fow.ui/commit/75a7e1e1e9295d03a0967cdca726de982c81f94b)]
 -  upgrade version .27 to .28 [[6ce07f3](https://github.com/FowApps/fow.ui/commit/6ce07f34cef5a87a0cbe08db7d45c8d420be32b3)]
