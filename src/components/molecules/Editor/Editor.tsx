@@ -71,6 +71,7 @@ export type EditorProps = BraftEditorProps & {
     customControls?: ControlType[] | BuiltInControlType[];
     minHeight?: string;
     externalValue?: string;
+    showControlsAtBottom?: boolean;
 };
 
 type ControlTypeTypes = {
@@ -229,6 +230,7 @@ const Editor = (
         customControls,
         minHeight,
         externalValue,
+        showControlsAtBottom = false,
         ...rest
     }: EditorProps,
     ref: LegacyRef<BraftEditor>,
@@ -369,6 +371,21 @@ const Editor = (
                 onBlur={handleBlur}
                 controls={getControls()}
                 extendControls={extendControls}
+                style={
+                    showControlsAtBottom
+                        ? {
+                              display: 'flex',
+                              flexDirection: 'column-reverse',
+                          }
+                        : {}
+                }
+                controlBarStyle={
+                    showControlsAtBottom
+                        ? {
+                              boxShadow: 'inset 0 1px 0 0 rgba(0,0,0,.2)',
+                          }
+                        : {}
+                }
             />
         </Wrapper>
     );
