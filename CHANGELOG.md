@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.30"></a>
-## 0.1.1-alpha.30 (2023-04-25)
+<a name="0.1.1-alpha.31"></a>
+## 0.1.1-alpha.31 (2023-05-04)
 
 ### Added
 
@@ -11,6 +11,7 @@
 
 ### Changed
 
+- 🎨 Improve editor controls location [[d34e7c6](https://github.com/FowApps/fow.ui/commit/d34e7c61a187dee01525914d4c7160c12f239d54)]
 - ⚡ add config focus and disabled full content [[310345e](https://github.com/FowApps/fow.ui/commit/310345e61d9c79cc62f7ee546bbde617e838fe8d)]
 - ♻️ Refactor email component [[9c76a7d](https://github.com/FowApps/fow.ui/commit/9c76a7d86adf95f4cc8af47530e6b3c43ac5881d)]
 - 🔧 Update .gitmoji-changelogrc [[c59b5a3](https://github.com/FowApps/fow.ui/commit/c59b5a36924e8252a87614071c9e59a441fa81d6)]
@@ -91,6 +92,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[56a5f60](https://github.com/FowApps/fow.ui/commit/56a5f6072fe93f7f62ce2e5a579117b43b0dac24)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[0dd32bb](https://github.com/FowApps/fow.ui/commit/0dd32bbb7e97564fc123c17342707b10228a5886)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[4bdc7b0](https://github.com/FowApps/fow.ui/commit/4bdc7b00c6ad0bbaf221405bf8d4a6b91bc2b737)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[281c1f4](https://github.com/FowApps/fow.ui/commit/281c1f4940b088b6adc45eb41cf17f9c1c951b63)]
@@ -169,6 +171,8 @@
 
 ### Miscellaneous
 
+-  Merge pull request [#835](https://github.com/FowApps/fow.ui/issues/835) from FowApps/improvement-editor-controls [[2f99e86](https://github.com/FowApps/fow.ui/commit/2f99e86862da4b9199fc26a4f36bf6c4eb7b68fe)]
+-  update version [[bfc448e](https://github.com/FowApps/fow.ui/commit/bfc448e73e17e18d97580ebb8758afb8d19d6f76)]
 -  Merge pull request [#831](https://github.com/FowApps/fow.ui/issues/831) from FowApps/fix/editor-focus-broken [[37da447](https://github.com/FowApps/fow.ui/commit/37da447e58b2842d748a5d8e1f3b30534b57237c)]
 -  chore: update version [[465c20b](https://github.com/FowApps/fow.ui/commit/465c20ba9bc5e90a7b9b9ca961dfe1e52dc4e540)]
 -  fix: removal of content when focus is broken [[7d74883](https://github.com/FowApps/fow.ui/commit/7d748839dc27331fed9fc50044db1514fca3bff2)]
