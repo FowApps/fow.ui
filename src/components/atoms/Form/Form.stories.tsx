@@ -421,6 +421,21 @@ const FormBuilderTemplate: Story = () => {
                 ],
             },
             {
+                key: 'coffeeChoice',
+                name: 'coffeeChoice',
+                label: 'Coffee Choice',
+                type: 'single-select',
+                options: [
+                    {
+                        label: 'Filter Coffee',
+                        value: 'filterCoffee',
+                    },
+                ],
+                props: {
+                    isSingleItemSelect: true,
+                },
+            },
+            {
                 key: 'names',
                 name: 'names',
                 label: 'Names',

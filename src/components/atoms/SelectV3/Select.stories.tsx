@@ -44,6 +44,32 @@ SingleStaticControlled.args = {
     mode: 'single',
 };
 
+const SingleStaticSingleValueControlledTemplate: Story<SelectProps> = (
+    args,
+) => {
+    return (
+        <Select
+            mode="single"
+            placeholder="Please Select"
+            isSingleItemSelect={args.isSingleItemSelect}
+            options={[
+                {
+                    value: '1',
+                    label: 'Item 1',
+                    hidden: false,
+                },
+            ]}
+        />
+    );
+};
+
+export const SingleStaticSingleValueControlled =
+    SingleStaticSingleValueControlledTemplate.bind({});
+SingleStaticSingleValueControlled.args = {
+    placeholder: 'Please Select',
+    mode: 'single',
+};
+
 const SingleControlledTemplate: Story<SelectProps> = (args) => {
     const [isLoading, setIsLoading] = useState(false);
     const [options, setOptions] = useState([]);
