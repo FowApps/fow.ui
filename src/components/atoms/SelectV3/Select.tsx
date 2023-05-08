@@ -58,6 +58,7 @@ export interface SelectProps {
     mode?: 'single' | 'multiple' | 'combobox';
     onScroll?: UIEventHandler<HTMLDivElement>;
     hasValidationError?: boolean;
+    isSingleItemSelect?: boolean;
 }
 
 const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
@@ -83,6 +84,7 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
         mode = 'single',
         onScroll,
         hasValidationError,
+        isSingleItemSelect = false,
     } = props;
 
     const isControlled = 'value' in props;
@@ -182,6 +184,20 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
             setSelecteds([]);
         }
     }, [defaultValue, isControlled, isSingle, options, value]);
+
+    useEffect(() => {
+        if (isSingleItemSelect && options?.length === 1 && !isLoading) {
+            const singleItemValue = options?.[0];
+            onChange?.(singleItemValue?.value, singleItemValue);
+            setInternalValue(singleItemValue?.value);
+            if (!isControlled) {
+                setSelected(singleItemValue);
+            }
+        } else {
+            setInternalValue(value || defaultValue);
+            setSelected(undefined);
+        }
+    }, [isSingleItemSelect, isLoading]);
 
     const handleSearch = debounce(
         (query: string) => {
