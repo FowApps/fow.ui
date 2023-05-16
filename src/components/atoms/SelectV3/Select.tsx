@@ -186,16 +186,19 @@ const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
     }, [defaultValue, isControlled, isSingle, options, value]);
 
     useEffect(() => {
-        if (isSingleItemSelect && options?.length === 1 && !isLoading) {
+        if (
+            !!isSingleItemSelect &&
+            options?.length === 1 &&
+            !isLoading &&
+            isSingle &&
+            !value
+        ) {
             const singleItemValue = options?.[0];
             onChange?.(singleItemValue?.value, singleItemValue);
             setInternalValue(singleItemValue?.value);
             if (!isControlled) {
                 setSelected(singleItemValue);
             }
-        } else {
-            setInternalValue(value || defaultValue);
-            setSelected(undefined);
         }
     }, [isSingleItemSelect, isLoading]);
 
