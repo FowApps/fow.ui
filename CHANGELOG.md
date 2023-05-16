@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.32"></a>
-## 0.1.1-alpha.32 (2023-05-08)
+<a name="0.1.1-alpha.33"></a>
+## 0.1.1-alpha.33 (2023-05-16)
 
 ### Added
 
@@ -92,6 +92,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[500cf5f](https://github.com/FowApps/fow.ui/commit/500cf5fda1dbe7281c1fc884823b4db2d3d99f12)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[e0158d6](https://github.com/FowApps/fow.ui/commit/e0158d63ce41cb2c66124c8ee0ceb26e3c578d77)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[56a5f60](https://github.com/FowApps/fow.ui/commit/56a5f6072fe93f7f62ce2e5a579117b43b0dac24)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[0dd32bb](https://github.com/FowApps/fow.ui/commit/0dd32bbb7e97564fc123c17342707b10228a5886)]
@@ -172,6 +173,7 @@
 
 ### Miscellaneous
 
+-  fix isSingleItem property err [[8f7eef9](https://github.com/FowApps/fow.ui/commit/8f7eef9a3c1ccff299833762d8433916cff63791)]
 -  Merge pull request [#838](https://github.com/FowApps/fow.ui/issues/838) from FowApps/improvement/selectV3-single-item, [[2087664](https://github.com/FowApps/fow.ui/commit/2087664f1a55a7893e254f09b35a99607dcd05f1)]
 -  add is single item select props in Select component and form builder [[b99678b](https://github.com/FowApps/fow.ui/commit/b99678b5cdd344428ee51bedfbbdd63b2da040db)]
 -  Merge pull request [#835](https://github.com/FowApps/fow.ui/issues/835) from FowApps/improvement-editor-controls [[2f99e86](https://github.com/FowApps/fow.ui/commit/2f99e86862da4b9199fc26a4f36bf6c4eb7b68fe)]
