@@ -54,6 +54,7 @@ type Field = {
     props?: any;
     hidden?: boolean;
     dependencies?: string[];
+    value: any;
 };
 
 type Config = {
@@ -132,7 +133,8 @@ const FormBuilder = ({
     );
 
     const getValueProp = useCallback((field: Field) => {
-        if (field.valueProp) return field.valueProp;
+        if (field.valueProp || field?.props?.value)
+            return field.valueProp || field?.props?.value;
         if (field.type === 'checkbox' || field.type === 'checkbox-group')
             return 'checked';
         return 'value';
