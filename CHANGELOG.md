@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.33"></a>
-## 0.1.1-alpha.33 (2023-05-24)
+<a name="0.1.1-alpha.34"></a>
+## 0.1.1-alpha.34 (2023-05-24)
 
 ### Added
 
@@ -92,6 +92,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[edc4eac](https://github.com/FowApps/fow.ui/commit/edc4eacd641ceb6409040bff9d913c6e972596fb)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d5ecd10](https://github.com/FowApps/fow.ui/commit/d5ecd101509a5353bfcc2a6cfc0919e909d3aa28)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[500cf5f](https://github.com/FowApps/fow.ui/commit/500cf5fda1dbe7281c1fc884823b4db2d3d99f12)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[e0158d6](https://github.com/FowApps/fow.ui/commit/e0158d63ce41cb2c66124c8ee0ceb26e3c578d77)]
@@ -174,6 +175,8 @@
 
 ### Miscellaneous
 
+-  Merge branch &#x27;main&#x27; of https://github.com/FowApps/fow.ui [[0588db2](https://github.com/FowApps/fow.ui/commit/0588db22b3501eb214a572e14e37cb2d6d35ce12)]
+-  upgrade version [[d05afd2](https://github.com/FowApps/fow.ui/commit/d05afd23d7060d823f42b1b597032f3d1cad234f)]
 -  add field prop value [[b875c7b](https://github.com/FowApps/fow.ui/commit/b875c7b0b9f0d75be49c9355d59e266305e00576)]
 -  fix isSingleItem property err [[8f7eef9](https://github.com/FowApps/fow.ui/commit/8f7eef9a3c1ccff299833762d8433916cff63791)]
 -  Merge pull request [#838](https://github.com/FowApps/fow.ui/issues/838) from FowApps/improvement/selectV3-single-item, [[2087664](https://github.com/FowApps/fow.ui/commit/2087664f1a55a7893e254f09b35a99607dcd05f1)]
