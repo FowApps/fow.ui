@@ -177,6 +177,7 @@ export interface TableProps {
     onChangeValue?: any;
     footerAction?: any;
     showTable?: boolean;
+    hideIndeterminate?: boolean;
 }
 
 const reorder = (list, startIndex, endIndex) => {
@@ -246,6 +247,7 @@ const Table = ({
     onChangeValue,
     footerAction,
     showTable = true,
+    hideIndeterminate = false,
 }: TableProps): JSX.Element => {
     const { language } = useContext(ConfigContext);
     const leftShadowRef = useRef();
@@ -672,10 +674,16 @@ const Table = ({
                                         align="start"
                                         size="xsmall">
                                         {allColumns
-                                            .filter(
-                                                (column) =>
-                                                    column.id !== 'selection' &&
-                                                    column.isVisible,
+                                            .filter((column) =>
+                                                hideIndeterminate
+                                                    ? column?.id !==
+                                                          'indeterminate' &&
+                                                      column.id !==
+                                                          'selection' &&
+                                                      column.isVisible
+                                                    : column.id !==
+                                                          'selection' &&
+                                                      column.isVisible,
                                             )
                                             .map((column, idx) => (
                                                 <Draggable
