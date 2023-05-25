@@ -45,7 +45,7 @@
         "rc-input-number": "^7.3.4",
         "rc-pagination": "^3.1.15",
         "rc-picker": "^2.6.4",
-        "rc-select": "^13.2.1",
+        "rc-select": "^14.5.1",
         "rc-tooltip": "^5.1.1",
         "react-beautiful-dnd": "^13.1.0",
         "react-dnd": "10.0.2",
