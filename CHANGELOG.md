@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.35"></a>
-## 0.1.1-alpha.35 (2023-05-25)
+<a name="0.1.1-alpha.36"></a>
+## 0.1.1-alpha.36 (2023-05-25)
 
 ### Added
 
@@ -92,6 +92,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[9bfe906](https://github.com/FowApps/fow.ui/commit/9bfe9060f07fd712fd841abd568957dbb89eb728)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[cc1fd0f](https://github.com/FowApps/fow.ui/commit/cc1fd0f216f545d2a3773aa5216cccae49a3e958)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[edc4eac](https://github.com/FowApps/fow.ui/commit/edc4eacd641ceb6409040bff9d913c6e972596fb)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[d5ecd10](https://github.com/FowApps/fow.ui/commit/d5ecd101509a5353bfcc2a6cfc0919e909d3aa28)]
@@ -176,6 +177,7 @@
 
 ### Miscellaneous
 
+-  add hideIndeterminate prop in table component [[745d901](https://github.com/FowApps/fow.ui/commit/745d901673acea34d3cd4083527d6e84dfac912f)]
 -  Merge branch &#x27;main&#x27; of https://github.com/FowApps/fow.ui [[6e63793](https://github.com/FowApps/fow.ui/commit/6e63793d3e7e27e5edbb42c94ba6dceeaf1eee70)]
 - 🌱 add pagination size prop in table component [[8893d91](https://github.com/FowApps/fow.ui/commit/8893d914099470ddb7ccbddb05910f82fae3d31c)]
 -  Merge branch &#x27;main&#x27; of https://github.com/FowApps/fow.ui [[0588db2](https://github.com/FowApps/fow.ui/commit/0588db22b3501eb214a572e14e37cb2d6d35ce12)]
