@@ -148,6 +148,7 @@ export interface TableProps {
      * gives the ability of switching between page numbers
      */
     showPagination?: boolean;
+    tableSizeOptions?: Array;
     /**
      * manuel sort by
      */
@@ -231,6 +232,7 @@ const Table = ({
     renderFilters,
     showColumnControls = false,
     showPagination = false,
+    tableSizeOptions,
     manualSortBy = false,
     sortBy: controlledSortBy = [],
     initialPage = 1,
@@ -993,26 +995,28 @@ const Table = ({
                                         closeAfterClickContent
                                         content={(close) => (
                                             <Menu>
-                                                {[10, 20, 30, 40, 50].map(
-                                                    (size) => (
-                                                        <Menu.Item
-                                                            index={size}
-                                                            key={size}
-                                                            onClick={() => {
-                                                                handleChangeSize(
-                                                                    size,
-                                                                );
-                                                                close();
-                                                            }}>
-                                                            {size} /{' '}
-                                                            {
-                                                                localization[
-                                                                    language
-                                                                ].page
-                                                            }
-                                                        </Menu.Item>
-                                                    ),
-                                                )}
+                                                {(
+                                                    tableSizeOptions || [
+                                                        10, 20, 30, 40, 50,
+                                                    ]
+                                                )?.map((size) => (
+                                                    <Menu.Item
+                                                        index={size}
+                                                        key={size}
+                                                        onClick={() => {
+                                                            handleChangeSize(
+                                                                size,
+                                                            );
+                                                            close();
+                                                        }}>
+                                                        {size} /{' '}
+                                                        {
+                                                            localization[
+                                                                language
+                                                            ].page
+                                                        }
+                                                    </Menu.Item>
+                                                ))}
                                             </Menu>
                                         )}>
                                         <SizePicker>

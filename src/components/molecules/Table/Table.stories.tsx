@@ -100,6 +100,7 @@ const ManualPaginationTemplate: Story<TableProps> = (args) => {
                 renderAction={renderAction}
                 onChange={handleChange}
                 showPagination
+                tableSizeOptions={[10, 25, 50, 100]}
                 isLoading={isLoading}
                 totalCount={users?.total || 0}
                 manualSortBy
