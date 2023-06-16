@@ -85,6 +85,7 @@ export interface FormBuilderProps {
     config: Config;
     showOnlyMandatory?: boolean;
     onValuesChange?: (value: any, values: any) => void;
+    onFieldsChange?: (changedFields: any, allFields: any) => void;
     wrapWithForm?: boolean;
     disableCurrency?: boolean;
 }
@@ -96,6 +97,7 @@ const FormBuilder = ({
     onSubmit,
     showOnlyMandatory = false,
     onValuesChange,
+    onFieldsChange,
     config = {
         fields: [],
         name: undefined,
@@ -324,6 +326,11 @@ const FormBuilder = ({
                     name={config.name}
                     form={formRef}
                     onValuesChange={onValuesChange}
+                    onFieldsChange={(changedFields, allFields) => {
+                        if (onFieldsChange) {
+                            onFieldsChange(changedFields, allFields);
+                        }
+                    }}
                     onFinishFailed={({ errorFields }) => {
                         const name = errorFields[0].name[0];
                         const input = document.querySelector(
