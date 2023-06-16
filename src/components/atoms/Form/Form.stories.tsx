@@ -544,6 +544,9 @@ const FormBuilderTemplate: Story = () => {
                 onValuesChange={(value, values) => {
                     console.log(value);
                 }}
+                onFieldsChange={(fields, allFields) => {
+                    console.log('onFieldsChange', fields, allFields);
+                }}
             />
             <Space>
                 <Button onClick={handleSaveClick}>Save</Button>
