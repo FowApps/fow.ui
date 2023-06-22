@@ -26,6 +26,7 @@ Default.args = {
     use12Hours: false,
     dateFormat: 'DD-MM-YYYY',
     disabled: false,
+    minuteStep: 5,
 };
 
 export const Time = Template.bind({});

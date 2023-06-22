@@ -64,6 +64,10 @@ export interface RangePickerProps {
      * disabled
      */
     disabled?: boolean;
+    /**
+     * minute range step value
+     */
+    minuteStep?: number;
     placeholder?: [string, string];
     name?: string;
     hasValidationError?: boolean;
@@ -86,6 +90,7 @@ const DateRangePicker = (
         seperator,
         value,
         disabled = false,
+        minuteStep = 1,
         placeholder,
         name,
         hasValidationError = false,
@@ -203,6 +208,7 @@ const DateRangePicker = (
                     />
                 }
                 locale={locales[language]}
+                minuteStep={minuteStep}
                 allowClear
                 clearIcon={
                     <Button

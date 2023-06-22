@@ -60,6 +60,10 @@ export interface DatePickerProps {
      * disabled
      */
     disabled?: boolean;
+    /**
+     * minute range step value
+     */
+    minuteStep?: number;
     placeholder?: string;
     name?: string;
     hasValidationError?: boolean;
@@ -88,6 +92,7 @@ const DatePicker = (
         dateFormat = 'DD/MM/YYYY HH:mm:ss',
         value,
         disabled = false,
+        minuteStep = 1,
         placeholder,
         name,
         hasValidationError = false,
@@ -202,6 +207,7 @@ const DatePicker = (
                 showTime={showTime}
                 use12Hours={use12Hours}
                 locale={locales[language]}
+                minuteStep={minuteStep}
                 allowClear
                 clearIcon={
                     <Button
