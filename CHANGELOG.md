@@ -1,10 +1,11 @@
 # Changelog
 
-<a name="0.1.1-alpha.37"></a>
-## 0.1.1-alpha.37 (2023-06-16)
+<a name="0.1.1-alpha.38"></a>
+## 0.1.1-alpha.38 (2023-06-22)
 
 ### Added
 
+- ✅ add minute step in datepicker and daterangepicker props [[982c1fe](https://github.com/FowApps/fow.ui/commit/982c1fea4252cc75fd607ae4f5fb8f6f2bdd7f30)]
 - ✅ add summary onlyList property [[7cc291e](https://github.com/FowApps/fow.ui/commit/7cc291e7458d8c46ef42a58b13390b5e0c1aaebe)]
 - ✅ add tab item title property [[60f0809](https://github.com/FowApps/fow.ui/commit/60f080954221877e7078da089239d5b2044ff8a6)]
 - ✨ Improve components ([#732](https://github.com/FowApps/fow.ui/issues/732)) [[06dc027](https://github.com/FowApps/fow.ui/commit/06dc0274aaa587809ff9351040a2e9302209257b)]
@@ -92,6 +93,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[a47c209](https://github.com/FowApps/fow.ui/commit/a47c209e61ff0512ebffebc6581d4b26f4ff352f)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[58caebe](https://github.com/FowApps/fow.ui/commit/58caebe80e42fce971c64455b02f973cb4cc859c)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[9bfe906](https://github.com/FowApps/fow.ui/commit/9bfe9060f07fd712fd841abd568957dbb89eb728)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[cc1fd0f](https://github.com/FowApps/fow.ui/commit/cc1fd0f216f545d2a3773aa5216cccae49a3e958)]
