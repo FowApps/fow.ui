@@ -674,16 +674,10 @@ const Table = ({
                                         align="start"
                                         size="xsmall">
                                         {allColumns
-                                            .filter((column) =>
-                                                hideIndeterminate
-                                                    ? column?.id !==
-                                                          'indeterminate' &&
-                                                      column.id !==
-                                                          'selection' &&
-                                                      column.isVisible
-                                                    : column.id !==
-                                                          'selection' &&
-                                                      column.isVisible,
+                                            .filter(
+                                                (column) =>
+                                                    column.id !== 'selection' &&
+                                                    column.isVisible,
                                             )
                                             .map((column, idx) => (
                                                 <Draggable
@@ -701,7 +695,16 @@ const Table = ({
                                                             }
                                                             {...dragProvided.draggableProps}
                                                             {...dragProvided.dragHandleProps}>
-                                                            <Space>
+                                                            <Space
+                                                                style={{
+                                                                    display: `${
+                                                                        column?.id ===
+                                                                            'indeterminate' &&
+                                                                        hideIndeterminate
+                                                                            ? 'none'
+                                                                            : ''
+                                                                    }`,
+                                                                }}>
                                                                 <OrderDots>
                                                                     <Icon icon="fow-order-dots" />
                                                                 </OrderDots>

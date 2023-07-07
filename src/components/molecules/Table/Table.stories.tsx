@@ -110,6 +110,7 @@ const ManualPaginationTemplate: Story<TableProps> = (args) => {
                 selectedRows={{ '2': true, '4': true }}
                 showSelection
                 onChangeValue={(values) => {}}
+                hideIndeterminate={false}
             />
         </>
     );
