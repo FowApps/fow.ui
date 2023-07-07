@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.1.1-alpha.38"></a>
-## 0.1.1-alpha.38 (2023-06-22)
+<a name="0.1.1-alpha.39"></a>
+## 0.1.1-alpha.39 (2023-07-07)
 
 ### Added
 
@@ -31,6 +31,7 @@
 
 ### Fixed
 
+- 🐛 fix table columns draggable index error [[3c5dded](https://github.com/FowApps/fow.ui/commit/3c5dded07219f332978a72a19663c4b00c8de0d5)]
 - 🐛 fix select option wordBreak and width err [[8ae33f8](https://github.com/FowApps/fow.ui/commit/8ae33f8ff722ae0da553c5e4cafda52bb2579c57)]
 - 🐛 fix builder min prop and number style err [[9dc2f81](https://github.com/FowApps/fow.ui/commit/9dc2f81b2a0be40df2eb3124b34028f0f83bcb33)]
 - 🐛 fix form builder error handle scroll err [[b1f70b0](https://github.com/FowApps/fow.ui/commit/b1f70b0d8d6979345c7a960c8e3ec07cb472b277)]
@@ -93,6 +94,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[173a40b](https://github.com/FowApps/fow.ui/commit/173a40b67d07acdd0e8b5aec38a7cf6c682fbd53)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[a47c209](https://github.com/FowApps/fow.ui/commit/a47c209e61ff0512ebffebc6581d4b26f4ff352f)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[58caebe](https://github.com/FowApps/fow.ui/commit/58caebe80e42fce971c64455b02f973cb4cc859c)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[9bfe906](https://github.com/FowApps/fow.ui/commit/9bfe9060f07fd712fd841abd568957dbb89eb728)]
@@ -180,6 +182,7 @@
 
 ### Miscellaneous
 
+-  update version .38 to .39 [[845fa5d](https://github.com/FowApps/fow.ui/commit/845fa5d95f77e5a371a0659819ab9e558828e9c0)]
 -  Merge pull request [#852](https://github.com/FowApps/fow.ui/issues/852) from FowApps/improvement/form-builder-values-change [[41fa3b2](https://github.com/FowApps/fow.ui/commit/41fa3b283f9680bf27e9b7b7e8e499aae14d40ba)]
 -  add onFieldChange prop to formBuilder [[4b763b9](https://github.com/FowApps/fow.ui/commit/4b763b940af5f02bfdcbaebd5e0bc42f3d854694)]
 -  add hideIndeterminate prop in table component [[745d901](https://github.com/FowApps/fow.ui/commit/745d901673acea34d3cd4083527d6e84dfac912f)]
