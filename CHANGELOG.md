@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="0.1.1-alpha.39"></a>
-## 0.1.1-alpha.39 (2023-07-07)
+## 0.1.1-alpha.39 (2023-07-25)
 
 ### Added
 
@@ -94,6 +94,7 @@
 
 ### Documentation
 
+- 📝 Update CHANGELOG.md [skip ci] [skip cl] [[9dc0158](https://github.com/FowApps/fow.ui/commit/9dc0158027a291e60aab1c0acb570c20aa92c3f8)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[173a40b](https://github.com/FowApps/fow.ui/commit/173a40b67d07acdd0e8b5aec38a7cf6c682fbd53)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[a47c209](https://github.com/FowApps/fow.ui/commit/a47c209e61ff0512ebffebc6581d4b26f4ff352f)]
 - 📝 Update CHANGELOG.md [skip ci] [skip cl] [[58caebe](https://github.com/FowApps/fow.ui/commit/58caebe80e42fce971c64455b02f973cb4cc859c)]
@@ -182,6 +183,7 @@
 
 ### Miscellaneous
 
+- 👥 Update CODEOWNERS [[6e9e0e8](https://github.com/FowApps/fow.ui/commit/6e9e0e8b6e03d824b22035115b0a1d8efd29ba60)]
 -  update version .38 to .39 [[845fa5d](https://github.com/FowApps/fow.ui/commit/845fa5d95f77e5a371a0659819ab9e558828e9c0)]
 -  Merge pull request [#852](https://github.com/FowApps/fow.ui/issues/852) from FowApps/improvement/form-builder-values-change [[41fa3b2](https://github.com/FowApps/fow.ui/commit/41fa3b283f9680bf27e9b7b7e8e499aae14d40ba)]
 -  add onFieldChange prop to formBuilder [[4b763b9](https://github.com/FowApps/fow.ui/commit/4b763b940af5f02bfdcbaebd5e0bc42f3d854694)]
