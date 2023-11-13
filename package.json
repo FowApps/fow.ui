@@ -111,7 +111,7 @@
         "chalk": "^4.1.1",
         "cherry-pick": "^0.5.0",
         "cross-env": "^7.0.3",
-        "css-loader": "^6.7.1",
+        "css-loader": "^6.8.1",
         "draftjs-utils": "^0.10.2",
         "dtslint": "^4.2.1",
         "enzyme": "^3.11.0",
