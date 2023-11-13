@@ -2093,10 +2093,10 @@
   optionalDependencies:
     npmlog "2 || ^3.1.0 || ^4.0.0"
 
-"@react-bootstrap/babel-preset@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@react-bootstrap/babel-preset/-/babel-preset-2.1.0.tgz#cf22707490d9713333de2a9d050b48bccd51a569"
-  integrity sha512-ICZwkMZhEnPcx2HtRMf/18skbJg7GxaF1lBn95arYXDAbJhmlTf7XyOAlB+qTKmRCk+8oRLLtz6sWQuKd8HXiQ==
+"@react-bootstrap/babel-preset@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@react-bootstrap/babel-preset/-/babel-preset-2.2.0.tgz#a866696d4234362611d056e4a8a59199bba06238"
+  integrity sha512-lJNNow6APKf1pH5/R60i7c/QGYbx/VCKdqzWWIMDyyXvNDGFwcM2T0DNOBqe9Rjz8rEROS/mKGLN3C1Im6+adQ==
   dependencies:
     "@babel/core" "^7.13.8"
     "@babel/plugin-proposal-class-properties" "^7.13.0"
@@ -2108,6 +2108,7 @@
     "@babel/preset-react" "^7.12.13"
     babel-plugin-add-module-exports "^1.0.4"
     babel-plugin-dev-expression "^0.2.2"
+    babel-plugin-transform-next-use-client "^1.1.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-env-modules "^1.0.1"
 
@@ -4434,6 +4435,11 @@ babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
+
+babel-plugin-transform-next-use-client@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-next-use-client/-/babel-plugin-transform-next-use-client-1.1.1.tgz#648f3b3de16a09b490f5d0bc34143516ef91a4df"
+  integrity sha512-qqyurXN5ZWP7kqmgzzXaEgF0fCi8d72tE+wCQwSCrjfN+LC0fI1+ejhNE+DtVECY1EvYkUoO0tcr9izwC9xexg==
 
 babel-plugin-transform-react-remove-prop-types@^0.4.24:
   version "0.4.24"
