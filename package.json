@@ -31,6 +31,8 @@
     "sideEffects": false,
     "dependencies": {
         "@babel/runtime": "^7.17.7",
+        "@ckeditor/ckeditor5-build-classic": "^40.0.0",
+        "@ckeditor/ckeditor5-react": "^6.1.0",
         "@codastic/react-positioning-portal": "^0.4.0",
         "@fullcalendar/daygrid": "^5.11.3",
         "@fullcalendar/interaction": "^5.11.3",
