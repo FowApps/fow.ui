@@ -1409,10 +1409,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codastic/react-positioning-portal@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@codastic/react-positioning-portal/-/react-positioning-portal-0.4.0.tgz#9599ecf0be7fb817575351afaaf02b8f72e19d80"
-  integrity sha512-k2b2vA7U4aON885VrqMjJdfkWpN5p626P7m1fe8NbV6MNPnC4adMj3/HfW32y0nBuskMyLvQwTVQ3tJ3oE8RQw==
+"@codastic/react-positioning-portal@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@codastic/react-positioning-portal/-/react-positioning-portal-0.7.0.tgz#7ae5799964aa90ff612eb7d2315e57837a19bc2d"
+  integrity sha512-h+g+ftoqvoneXG6VejWTzzngchfhswtlNvLomCPQ1TOaRPatBIvYOYXzJBBqenlgtpbR4Xd7f3evILDVXLhLow==
 
 "@definitelytyped/header-parser@latest":
   version "0.0.103"

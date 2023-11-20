@@ -31,7 +31,7 @@
     "sideEffects": false,
     "dependencies": {
         "@babel/runtime": "^7.17.7",
-        "@codastic/react-positioning-portal": "^0.4.0",
+        "@codastic/react-positioning-portal": "^0.7.0",
         "@fullcalendar/daygrid": "^5.11.3",
         "@fullcalendar/interaction": "^5.11.3",
         "@fullcalendar/react": "^5.11.2",
