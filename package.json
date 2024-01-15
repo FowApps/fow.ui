@@ -30,7 +30,7 @@
     "types": "lib/esm/index.d.ts",
     "sideEffects": false,
     "dependencies": {
-        "@babel/runtime": "^7.17.7",
+        "@babel/runtime": "^7.23.8",
         "@codastic/react-positioning-portal": "^0.4.0",
         "@fullcalendar/daygrid": "^5.11.3",
         "@fullcalendar/interaction": "^5.11.3",
