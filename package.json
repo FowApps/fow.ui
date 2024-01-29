@@ -96,7 +96,7 @@
         "@types/react-textarea-autosize": "^4.3.6",
         "@types/react-transition-group": "^4.4.5",
         "@types/styled-components": "^5.1.24",
-        "@types/uuid": "^8.3.4",
+        "@types/uuid": "^9.0.8",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
